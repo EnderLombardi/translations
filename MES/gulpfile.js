@@ -122,6 +122,7 @@ gulp.task('copy', ['clean'], function () {
 	return gulp.src([
 		'./shell/config/res_config_prod.properties',
 		'./shell/data/**',
+		'./shell/model/**',
 		'./components/homepage/css/margin.css',
 		'./Sass/global.css',
 		'./Sass/*.png',
@@ -240,6 +241,7 @@ gulp.task('bump', ['bump_ver', 'build'], function () {
 //	 													sass     															//
 //																															//
 //--------------------------------------------------------------------------------------------------------------------------//
+
 
 // gulp.task('styles', function () {
 // 	gulp.src('WebContent/Sass/**/*.scss')

@@ -76,7 +76,7 @@
 						<uiTable:template>
 							<HBox alignItems="Center" justifyContent="Center">
 
-							<core:Icon id="lineTrackerActionIcon" press="openTaktActionPopover"
+							<core:Icon id="lineTrackerActionIcon" press="openTaktActionPopover" tooltip=""
 									  src="{path:'stationDataModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }"/>
 <!-- 									  src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>completion_date'},{path:'stationDataModel>actual_start_date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }"/>											 -->
 								<control:PhysicalStationBox id="linetrackerEditStation"
@@ -148,7 +148,7 @@
 					<uiTable:Column width="6%" resizable="false">
 						<Text text="{i18n>date}" class="taktHeading" />
 						<uiTable:template>
-							<Text class="dateTableLinetracker" text="{stationDataModel>date}" />
+							<Text class="dateTableLinetracker" text="{parts:['stationDataModel>completionTime','stationDataModel>actualEndTime'], formatter:'airbus.mes.linetracker.util.Formatter.forcastEndDate'}" />
 						</uiTable:template>
 
 					</uiTable:Column>

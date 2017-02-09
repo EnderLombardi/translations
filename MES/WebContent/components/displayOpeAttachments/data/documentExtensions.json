@@ -1,0 +1,57 @@
+{
+    "Rowsets": {
+        "DateCreated": "2017-01-19T17:38:56",
+        "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+        "StartDate": "2016-11-17T16:38:56+0100",
+        "EndDate": "2016-11-17T17:38:56+0100",
+        "CachedTime": "",
+        "Rowset": [
+            {
+                "Columns": {
+                    "Column": [
+                        {
+                            "Name": "file_extension",
+                            "SourceColumn": "file_extension",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "mes_viewer_compatibility",
+                            "SourceColumn": "mes_viewer_compatibility",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "converter",
+                            "SourceColumn": "converter",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "default_viewer",
+                            "SourceColumn": "default_viewer",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        }
+                    ]
+                },
+                "Row": [
+                    {
+                        "file_extension":"",
+                        "mes_viewer_compatibility":"",
+                        "converter":"",
+                        "default_viewer":""
+                    }
+                ]
+            }
+        ]
+    }
+}

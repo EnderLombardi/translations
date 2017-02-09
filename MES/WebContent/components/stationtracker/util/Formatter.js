@@ -5,18 +5,18 @@ jQuery.sap.declare("airbus.mes.stationtracker.util.Formatter");
 
 airbus.mes.stationtracker.util.Formatter = {
 
-	dateToStringFormat : function(sDate) {
+	dateToStringFormat: function (sDate) {
 		// Date send by MII are UTC date
 		var oDate = new Date(sDate);
 		var oFormat = sap.ui.core.format.DateFormat.getInstance({
-			UTC : true,
-			pattern : "dd MMM - HH:mm",
-			calendarType : sap.ui.core.CalendarType.Gregorian
+			UTC: true,
+			pattern: "dd MMM - HH:mm",
+			calendarType: sap.ui.core.CalendarType.Gregorian
 		});
 		return oFormat.format(oDate)
 	},
 
-	stringToInt : function(string) {
+	stringToInt: function (string) {
 		if (typeof string == "string") {
 			return parseInt(string, 10)
 		} else {
@@ -24,23 +24,34 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 	},
 
-	dateForWorkTracker : function(startDate, endDate) {
+	dateForWorkTracker: function (startDate, endDate) {
+		var startTime = new Date(startDate);
+		var endTime = new Date(endDate);
+		var returnValue;
+
+		returnValue = ("0" + startTime.getHours()).substr(-2) + ':' + ("0" + startTime.getMinutes()).substr(-2) + ' - ' + ("0" + endTime.getHours()).substr(-2) + ':' + ("0" + endTime.getMinutes()).substr(-2);
+
+		return returnValue;
+
+	},
+
+
+	dateDelayForWorkTracker: function (startDate, endDate) {
 		var startTime = new Date(startDate);
 		var endTime = new Date(endDate);
 		var diffDate;
 		var returnValue;
 
-		returnValue = ("0" + startTime.getHours()).substr(-2) + ':' + ("0" + startTime.getMinutes()).substr(-2) + '-' + ("0" + endTime.getHours()).substr(-2) + ':' + ("0" + endTime.getMinutes()).substr(-2);
-		
+
 		diffDate = endTime.getDay() - startTime.getDay();
-		if(diffDate) {
-			returnValue = returnValue + '(+' + 1 +')';
-		} 
+		if (diffDate > 0) {
+			returnValue = ' (+' + diffDate + ')';
+		}
 		return returnValue;
-		
+
 	},
 
-	KPIiconTrendSrc : function(bTrend) {
+	KPIiconTrendSrc: function (bTrend) {
 		if (bTrend == "true") {
 			return "sap-icon://up"
 		} else if (bTrend == "false") {
@@ -50,7 +61,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 	},
 
-	KPIiconTrendColor : function(bTrend) {
+	KPIiconTrendColor: function (bTrend) {
 		if (bTrend == "true") {
 			return "#84bd00"
 		} else if (bTrend == "false") {
@@ -60,9 +71,9 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 	},
 
-	minSizeMinutes : 30,
+	minSizeMinutes: 30,
 
-	sizeMin : function(sEndDate, sStartDate) {
+	sizeMin: function (sEndDate, sStartDate) {
 
 		var oUtil = airbus.mes.stationtracker.util.Formatter;
 		var oShiftManager = airbus.mes.stationtracker.ShiftManager;
@@ -94,7 +105,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 	},
 
-	openFolder : function(bOpen) {
+	openFolder: function (bOpen) {
 
 		if (bOpen) {
 			return "fa fa-chevron-down custom";
@@ -103,7 +114,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 	},
 
-	spaceInsecable : function(sText) {
+	spaceInsecable: function (sText) {
 
 		var sTextF = "";
 		var aText = sText.split(new RegExp("[ ]+", "g")); // Récupère tous les mots dans un tableau : texte_decoup
@@ -119,7 +130,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		return sTextF;
 	},
 
-	jsDateFromDayTimeStr : function(day) {
+	jsDateFromDayTimeStr: function (day) {
 
 		// return day for IE not working. - 1 on month because 00 = january
 		if (day != undefined) {
@@ -132,7 +143,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 	// Transform object Date to date (without hour)
 
-	dDate2sDate : function(dDate) {
+	dDate2sDate: function (dDate) {
 
 		var sMounth = dDate.getMonth() + 1;
 		var sDay = dDate.getDate();
@@ -140,9 +151,9 @@ airbus.mes.stationtracker.util.Formatter = {
 		var sMinutes = dDate.getMinutes();
 		var sSeconds = dDate.getSeconds();
 
-		var aLoop = [ sMounth, sDay, sHours, sMinutes, sSeconds ]
+		var aLoop = [sMounth, sDay, sHours, sMinutes, sSeconds]
 
-		aLoop.forEach(function(el, index) {
+		aLoop.forEach(function (el, index) {
 
 			if (el < 10) {
 
@@ -155,10 +166,10 @@ airbus.mes.stationtracker.util.Formatter = {
 
 	},
 
-	date2date : function(day) {
+	date2date: function (day) {
 		return day.split(' ')[0];
 	},
-	date2jsDate : function(day) {
+	date2jsDate: function (day) {
 
 		if (day != undefined) {
 
@@ -166,36 +177,36 @@ airbus.mes.stationtracker.util.Formatter = {
 
 		}
 	},
-	date2Hour : function(day) {
+	date2Hour: function (day) {
 
 		var date = new Date(day)
 		return date.toTimeString().split(' ')[0];
 
 	},
-	progress2status : function(sString) {
+	progress2status: function (sString) {
 		switch (sString) {
-		case "0":
-			return "Not started";
-		case "100":
-			return "Finished";
-		default:
-			return "In progress";
+			case "0":
+				return "Not started";
+			case "100":
+				return "Finished";
+			default:
+				return "In progress";
 		}
 		;
 	},
-	progress2percent : function(sString) {
+	progress2percent: function (sString) {
 		return sString + "%";
 	},
-	progress2float : function(sString) {
+	progress2float: function (sString) {
 		return parseFloat(sString);
 	},
-	progress2string : function(sString) {
+	progress2string: function (sString) {
 		return sString.toString();
 	},
-	totalDurationToIM : function(sDuration) {
+	totalDurationToIM: function (sDuration) {
 		return ((sDuration * 100 * 0.001) / 3600).toFixed(0);
 	},
-	isCheckboxVisible : function(sString) {
+	isCheckboxVisible: function (sString) {
 		if (airbus.mes.stationtracker.worklistPopover.unPlanned === true) {
 			return true;
 		} else {
@@ -203,7 +214,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 		;
 	},
-	setmodeList : function() {
+	setmodeList: function () {
 		if (airbus.mes.stationtracker.worklistPopover.unPlanned === true) {
 			return "MultiSelect";
 		} else {
@@ -211,7 +222,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 		;
 	},
-	isDayTimeline : function() {
+	isDayTimeline: function () {
 		if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
 			return airbus.mes.stationtracker.ShiftManager.dayDisplay;
 
@@ -228,7 +239,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	 * @param {oBox} Object wich represent the current event in scheduler
 	 * @return {STRING} html the html wich will apply
 	 ----------------------------------------------------------------------------*/
-	BoxDisplay : function(oBox) {
+	BoxDisplay: function (oBox) {
 
 		// global name
 		var sOSW = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Osw");
@@ -249,17 +260,17 @@ airbus.mes.stationtracker.util.Formatter = {
 		// Text to display different case regarding box selected
 		switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
 
-		case "OPERATION_ID":
-			sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
+			case "OPERATION_ID":
+				sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
 
-			break;
+				break;
 
-		case "WORKORDER_ID":
-			sText = oBox.shopOrderDescription + " - " + oBox.shopOrder;
-			break;
-		default:
-			sText = oBox.realValueBox;
-			break;
+			case "WORKORDER_ID":
+				sText = oBox.shopOrderDescription + " - " + oBox.shopOrder;
+				break;
+			default:
+				sText = oBox.realValueBox;
+				break;
 
 		}
 		if (oBox.type === "I") {
@@ -281,104 +292,104 @@ airbus.mes.stationtracker.util.Formatter = {
 			sLeftIcon3 = boxDisplayManager.leftOswIcon_Constructor(sUNPD);
 		}
 		switch (oBox.status) {
-		// box is active
-		case 2:
-			sColorProgress = boxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
+			// box is active
+			case 2:
+				sColorProgress = boxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
 
-			sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play");
-			break;
-		// box is paused
-		case 3:
-			sColorProgress = boxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play");
+				break;
+			// box is paused
+			case 3:
+				sColorProgress = boxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
 
-			sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-pause");
-			break;
-		// box not started
-		case 1:
-			sRightIcon = "";
-			break;
-		// box Completed
-		case 0:
-			sColorProgress = boxDisplayManager.colorProgress_Constructor("teal-blue-back");
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-pause");
+				break;
+			// box not started
+			case 1:
+				sRightIcon = "";
+				break;
+			// box Completed
+			case 0:
+				sColorProgress = boxDisplayManager.colorProgress_Constructor("teal-blue-back");
 
-			sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-check");
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-check");
 
-			if (oBox.rmaStatus === 1) { //rma
-				sLeftIcon = boxDisplayManager.leftTriangleIcon;
-			}
-			if (oBox.OSW === 3) { //OSW
-				sLeftIcon2 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sOSW);
-			}
-			if (oBox.isUnplanned === 1) { //Unplanned
-				sLeftIcon3 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sUNPD);
-			}
-			break;
+				if (oBox.rmaStatus === 1) { //rma
+					sLeftIcon = boxDisplayManager.leftTriangleIcon;
+				}
+				if (oBox.OSW === 3) { //OSW
+					sLeftIcon2 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sOSW);
+				}
+				if (oBox.isUnplanned === 1) { //Unplanned
+					sLeftIcon3 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sUNPD);
+				}
+				break;
 
-		// Opened Blocking and disruption
-		case 4:
-			sColorProgress = boxDisplayManager.colorProgress_OpenBlocked;
-			sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
+			// Opened Blocking and disruption
+			case 4:
+				sColorProgress = boxDisplayManager.colorProgress_OpenBlocked;
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
 
-			if (oBox.rmaStatus === 1) { //rma
-				sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
-			}
-			if (oBox.OSW === 3) { //OSW
-				sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-			}
-			if (oBox.isUnplanned === 1) { //Unplanned
-				sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-			}
-			break;
+				if (oBox.rmaStatus === 1) { //rma
+					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
+				}
+				if (oBox.OSW === 3) { //OSW
+					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+				}
+				if (oBox.isUnplanned === 1) { //Unplanned
+					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+				}
+				break;
 
-		// Opened Blocking disruption
-		case 5:
-			sColorProgress = boxDisplayManager.colorProgress_Escalated;
-			sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop");
+			// Opened Blocking disruption
+			case 5:
+				sColorProgress = boxDisplayManager.colorProgress_Escalated;
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop");
 
-			if (oBox.rmaStatus === 1) { //rma
-				sLeftIcon = boxDisplayManager.leftTriangleIcon;
-			}
-			if (oBox.OSW === 3) { //OSW
-				sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-			}
-			if (oBox.isUnplanned === 1) { //Unplanned
-				sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-			}
-			break;
+				if (oBox.rmaStatus === 1) { //rma
+					sLeftIcon = boxDisplayManager.leftTriangleIcon;
+				}
+				if (oBox.OSW === 3) { //OSW
+					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+				}
+				if (oBox.isUnplanned === 1) { //Unplanned
+					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+				}
+				break;
 
-		// Solved Blocking
-		case 6:
-			sColorProgress = boxDisplayManager.colorProgress_SolvedBlocked;
-			sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play", "petrol");
+			// Solved Blocking
+			case 6:
+				sColorProgress = boxDisplayManager.colorProgress_SolvedBlocked;
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play", "petrol");
 
-			if (oBox.rmaStatus === 1) { //rma
-				sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
-			}
-			if (oBox.OSW === 3) { //OSW
-				sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-			}
+				if (oBox.rmaStatus === 1) { //rma
+					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
+				}
+				if (oBox.OSW === 3) { //OSW
+					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+				}
 
-			if (oBox.isUnplanned === 1) { //Unplanned
-				sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-			}
-			break;
+				if (oBox.isUnplanned === 1) { //Unplanned
+					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+				}
+				break;
 
-		// Solved Blocking and escalated = andon solved
-		case 7:
-			sColorProgress = boxDisplayManager.colorProgress_SolvedBlockedExcalated;
-			sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play");
+			// Solved Blocking and escalated = andon solved
+			case 7:
+				sColorProgress = boxDisplayManager.colorProgress_SolvedBlockedExcalated;
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play");
 
-			if (oBox.rmaStatus === 1) { //rma
-				sLeftIcon = boxDisplayManager.leftTriangleIcon;
-			}
-			if (oBox.OSW === 3) { //OSW
-				sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-			}
-			if (oBox.isUnplanned === 1) { //Unplanned
-				sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-			}
-			break;
-		default:
+				if (oBox.rmaStatus === 1) { //rma
+					sLeftIcon = boxDisplayManager.leftTriangleIcon;
+				}
+				if (oBox.OSW === 3) { //OSW
+					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+				}
+				if (oBox.isUnplanned === 1) { //Unplanned
+					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+				}
+				break;
+			default:
 		}
 
 		//
@@ -414,7 +425,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		return html;
 	},
 
-	initial : function(sText, sProgress) {
+	initial: function (sText, sProgress) {
 		var html = "";
 		html += '<div  style=" border: solid 2px #979797; background-color:#f5f5f5; width:100%; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
 			+ sText + '</div>';
@@ -423,11 +434,11 @@ airbus.mes.stationtracker.util.Formatter = {
 		return html;
 	},
 
-	progressDisplayEvent : function(sDuration) {
+	progressDisplayEvent: function (sDuration) {
 		return ((sDuration * 100 * 0.001) / 3600).toFixed(4);
 	},
 
-	titleWorklist : function(workOrder, workOrderDescritpion) {
+	titleWorklist: function (workOrder, workOrderDescritpion) {
 		if (workOrderDescritpion != "") {
 
 			return workOrder + " - " + workOrderDescritpion;
@@ -438,7 +449,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 	},
 
-	displayValueIM : function(operation, operationDescription, progress, duration) {
+	displayValueIM: function (operation, operationDescription, progress, duration) {
 		progress = ((progress * 100 * 0.001) / 3600).toFixed(0);
 		duration = ((duration * 100 * 0.001) / 3600).toFixed(0);
 
@@ -452,7 +463,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 	},
 
-	percentValue : function(progress, duration) {
+	percentValue: function (progress, duration) {
 		progress = parseInt(progress, 10);
 		duration = parseInt(duration, 10);
 		if (!isNaN(parseInt(progress, 10)) || !isNaN(parseInt(duration, 10))) {
@@ -474,7 +485,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	 *
 	 * @param {oSection} Object wich represent the current Row
 	----------------------------------------------------------------------------*/
-	YdisplayRules : function(oSection) {
+	YdisplayRules: function (oSection) {
 		var html = "";
 		var oHierarchyDelay;
 		var fProgress;
@@ -651,7 +662,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	 * UPDATE : order operations in oWorkList by start-time
 	 * @param oWorkList
 	 */
-	sortWorkList : function(oWorkList) {
+	sortWorkList: function (oWorkList) {
 		/*  var oWL2 = [];
 		  var oWOList = [];
 		  var i;*/
@@ -659,7 +670,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		// Sort by WO number (to group operations with same WO)
 		// Also group by operation, because the sort order is kept for
 		// operations
-		oWorkList.sort(this.fieldComparator([ 'START_TIME' ]));
+		oWorkList.sort(this.fieldComparator(['START_TIME']));
 
 		//                   // Constitute a table of WO groups with operations associated
 		//                   // The group object has template bellow.
@@ -731,13 +742,13 @@ airbus.mes.stationtracker.util.Formatter = {
 	 * @param pathSorter : attribute to sort the worklist (workorder_id for example)
 	 * @param aModel (optional) : data source of worklist.
 	 */
-	sortWorklistAndBind : function(pathSorter, aModel) {
+	sortWorklistAndBind: function (pathSorter, aModel) {
 
 		// sort worklist according start_time
 		airbus.mes.stationtracker.worklistPopover.aModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(aModel);
 
 		// get workorder_id without duplicate, to make easier the comparator during ordering
-		airbus.mes.stationtracker.worklistPopover.groupedWorkList = aModel.reduce(function(acc, obj) {
+		airbus.mes.stationtracker.worklistPopover.groupedWorkList = aModel.reduce(function (acc, obj) {
 			var d1 = obj.START_TIME;
 			var d2 = acc[obj[pathSorter].toUpperCase()];
 			if (d2 === undefined) {
@@ -749,39 +760,39 @@ airbus.mes.stationtracker.util.Formatter = {
 		}, {});
 
 		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
-			path : "WorkListModel>/",
-			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
-			sorter : [
+			path: "WorkListModel>/",
+			template: sap.ui.getCore().byId("worklistPopover--sorterList"),
+			sorter: [
 
-			new sap.ui.model.Sorter({
-				path : pathSorter,
-				group : function(oContext) {
-					var v = oContext.getProperty(pathSorter);
+				new sap.ui.model.Sorter({
+					path: pathSorter,
+					group: function (oContext) {
+						var v = oContext.getProperty(pathSorter);
 
-					return {
-						key : v,
-						text : v
-					};
-				},
-				descending : false,
-				comparator : function(a, b) {
-					var earlierDateA = airbus.mes.stationtracker.worklistPopover.groupedWorkList[a];
-					var earlierDateB = airbus.mes.stationtracker.worklistPopover.groupedWorkList[b];
+						return {
+							key: v,
+							text: v
+						};
+					},
+					descending: false,
+					comparator: function (a, b) {
+						var earlierDateA = airbus.mes.stationtracker.worklistPopover.groupedWorkList[a];
+						var earlierDateB = airbus.mes.stationtracker.worklistPopover.groupedWorkList[b];
 
-					if (earlierDateA < earlierDateB) {
-						return -1;
+						if (earlierDateA < earlierDateB) {
+							return -1;
+						}
+
+						if (earlierDateA > earlierDateB) {
+							return 1;
+						}
+
+						if (earlierDateA === earlierDateB) { //as worklist is already sorted, when 2 operations belong the same group, order is ok
+							return 0;
+						}
+
 					}
-
-					if (earlierDateA > earlierDateB) {
-						return 1;
-					}
-
-					if (earlierDateA === earlierDateB) { //as worklist is already sorted, when 2 operations belong the same group, order is ok
-						return 0;
-					}
-
-				}
-			})
+				})
 
 			]
 
@@ -797,9 +808,9 @@ airbus.mes.stationtracker.util.Formatter = {
 	 *            fields, Array of object
 	 * @returns {Function} comparator
 	 */
-	fieldComparator : function(fields) {
-		return function(a, b) {
-			return fields.map(function(o) {
+	fieldComparator: function (fields) {
+		return function (a, b) {
+			return fields.map(function (o) {
 				var dir = 1;
 				if (o[0] === '-') {
 					dir = -1;
@@ -823,8 +834,8 @@ airbus.mes.stationtracker.util.Formatter = {
 	 * Author: Stefan Goessner/2006 Web:
 	 * http://goessner.net/download/prj/jsonxml/json2xml.js
 	 */
-	json2xml : function(o, tab) {
-		var toXml = function(v, name, ind) {
+	json2xml: function (o, tab) {
+		var toXml = function (v, name, ind) {
 			var xml = "";
 			if (v instanceof Array) {
 				for (var i = 0, n = v.length; i < n; i++)
@@ -832,7 +843,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			} else if (typeof (v) == "object") {
 				var hasChild = false;
 				xml += ind + "<" + name;
-				for ( var m in v) {
+				for (var m in v) {
 					if (m.charAt(0) == "@")
 						xml += " " + m.substr(1) + "=\"" + v[m].toString() + "\"";
 					else
@@ -840,7 +851,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 				xml += hasChild ? ">" : "/>";
 				if (hasChild) {
-					for ( var m in v) {
+					for (var m in v) {
 						if (m == "#text")
 							xml += v[m];
 						else if (m == "#cdata")
@@ -855,21 +866,21 @@ airbus.mes.stationtracker.util.Formatter = {
 			}
 			return xml;
 		}, xml = "";
-		for ( var m in o)
+		for (var m in o)
 			xml += toXml(o[m], m, "");
 		return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
 	},
 
-	datepicker : function(sString) {
+	datepicker: function (sString) {
 		return "toto";
 	},
-	productionGroup : function(sProductionG) {
+	productionGroup: function (sProductionG) {
 
 		return sProductionG;
 
 	},
 
-	msToTime : function(s) {
+	msToTime: function (s) {
 		var ms = s % 1000;
 		s = (s - ms) / 1000;
 		var secs = s % 60;
@@ -886,7 +897,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		return hrs + ':' + mins + ':' + secs;
 	},
 
-	computeDelay : function(fProgress, fDuration) {
+	computeDelay: function (fProgress, fDuration) {
 
 		var sBlank = "";
 		if (fProgress === undefined || fDuration === undefined) {
@@ -915,13 +926,13 @@ airbus.mes.stationtracker.util.Formatter = {
 
 	},
 	//                Calculate Total Takt
-	totalTakt : function(inTakt, outTakt, notAck) {
+	totalTakt: function (inTakt, outTakt, notAck) {
 		var total;
 		total = inTakt + outTakt + notAck;
 		return total;
 
 	},
-	createDelaySpan : function(fProgress, fDuration, sSpanWarn) {
+	createDelaySpan: function (fProgress, fDuration, sSpanWarn) {
 		var html = "";
 		if (sSpanWarn === undefined) {
 			sSpanWarn = "";
@@ -929,7 +940,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		return html += '<span  class="yMoreLabel" >' + sSpanWarn + '<span title=' + airbus.mes.stationtracker.util.Formatter.computeDelay(fProgress, fDuration)
 			+ '>' + airbus.mes.stationtracker.util.Formatter.computeDelay(fProgress, fDuration) + '</span>' + '</span>';
 	},
-	sumKPI : function(value1, value2, value3) {
+	sumKPI: function (value1, value2, value3) {
 		return parseFloat(value1) + parseFloat(value2) + parseFloat(value3);
 	}
 

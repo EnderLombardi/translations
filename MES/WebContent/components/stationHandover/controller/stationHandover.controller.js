@@ -151,7 +151,9 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
             airbus.mes.stationHandover.typeFilter  = sap.ui.xmlfragment("typeFilter", "airbus.mes.stationHandover.fragments.typeFilter", airbus.mes.stationHandover.oView.getController());
             airbus.mes.stationHandover.typeFilter.addStyleClass("alignTextLeft");
             oView.addDependent(airbus.mes.stationHandover.typeFilter);
-        
+            //As a default, option 1 ‘OW still assigned to previous stations’ should be selected.
+            airbus.mes.stationHandover.typeFilter.getContent()[0].getItems()[0].setSelected(true);
+            
 			}
 		
         airbus.mes.stationHandover.typeFilter.openBy(oView.byId("typeHandOver"));
@@ -167,10 +169,14 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	        
 			if (airbus.mes.stationHandover.stationFilter === undefined) {
 	            
+				var sIndice = airbus.mes.stationHandover.util.ModelManager.Indice;
+				
 	            airbus.mes.stationHandover.stationFilter  = sap.ui.xmlfragment("stationFilter", "airbus.mes.stationHandover.fragments.stationFilter", airbus.mes.stationHandover.oView.getController());
 	            airbus.mes.stationHandover.stationFilter.addStyleClass("alignTextLeft");
 	            oView.addDependent(airbus.mes.stationHandover.stationFilter);
-	        
+	            //As a default, the physical station with the biggest planned start date/time should be selected.
+	            airbus.mes.stationHandover.stationFilter.getContent()[0].getItems()[sIndice].setSelected(true);
+   
 				}
 			
 	        airbus.mes.stationHandover.stationFilter.openBy(oView.byId("originHandOver"));
@@ -186,7 +192,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var aPath = oEvt.getSource().getContent()[0].getSelectedContextPaths()
 		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		
-		airbus.mes.stationHandover.util.ModelManager.filter.station = undefined;
+		//airbus.mes.stationHandover.util.ModelManager.filter.station = undefined;
 		airbus.mes.stationHandover.util.ModelManager.filter.aStation = [];
 		
 		aPath.forEach(function(el){
@@ -196,18 +202,18 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			
 		});
 		
-		airbus.mes.stationHandover.util.ModelManager.filter.station = new sap.ui.model.Filter({ 
-			path :  "ORIGIN_STATION",
-			test : function(oValue){
-				
-				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
-					
-					return true;
-			} else {
-				
-				return false;
-			}
-		}});
+//		airbus.mes.stationHandover.util.ModelManager.filter.station = new sap.ui.model.Filter({ 
+//			path :  "ORIGIN_STATION",
+//			test : function(oValue){
+//				
+//				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
+//					
+//					return true;
+//			} else {
+//				
+//				return false;
+//			}
+//		}});
 			
 		this.applyMyFilter();
 		
@@ -222,7 +228,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var aPath = oEvt.getSource().getContent()[0].getSelectedContextPaths()
 		var oModel = airbus.mes.stationHandover.oView.getModel("typeModel");
 		
-		airbus.mes.stationHandover.util.ModelManager.filter.type = undefined;
+		//airbus.mes.stationHandover.util.ModelManager.filter.type = undefined;
 		airbus.mes.stationHandover.util.ModelManager.filter.aType = [];
 		
 		aPath.forEach(function(el){
@@ -232,19 +238,19 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			
 		});
 		
-		airbus.mes.stationHandover.util.ModelManager.filter.type = new sap.ui.model.Filter({ 
-			path :  "TYPE",
-			test : function(oValue){
-				
-				if ( airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1 ){
-					
-					return true;
-			} else {
-				
-				return false;
-			}
-		}});
-		
+//		airbus.mes.stationHandover.util.ModelManager.filter.type = new sap.ui.model.Filter({ 
+//			path :  "TYPE",
+//			test : function(oValue){
+//				
+//				if ( airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1 ){
+//					
+//					return true;
+//			} else {
+//				
+//				return false;
+//			}
+//		}});
+//		
 		
 		this.applyMyFilter();
 		

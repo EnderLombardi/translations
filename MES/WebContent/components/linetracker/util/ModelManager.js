@@ -8,8 +8,11 @@ airbus.mes.linetracker.util.ModelManager = {
 	program : undefined,
 	customLineBO : undefined,
 	aTaktAction : ["LOAD_NEXT_MSN","START_OF_ASSEMBLY","END_OF_ASSEMBLY","EMPTY_STATION","UNDO"],
+	oView:undefined,
 	init : function(core) {
+		
 
+		
 		var aModel = [ "stationDataModel", // Model for Station Data
 		"lineVariantModel", // Model for Line variant Data
 		"statusActionModel"
@@ -87,7 +90,7 @@ airbus.mes.linetracker.util.ModelManager = {
 				oViewModel.setData(data);
 				// this is required to scroll the Linetracker table. Don't
 				// remove/comment
-				sap.ui.getCore().byId("idLinetracker1--linetrackerTable").rerender();
+				sap.ui.getCore().byId("idLinetracker--linetrackerTable").rerender();
 				airbus.mes.shell.busyManager.unsetBusy(airbus.mes.linetracker.oView, "linetrackerTable");
 			},
 
@@ -103,7 +106,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	 */
 	loadLineVariantModel : function() {
 		var oViewModel = sap.ui.getCore().getModel("lineVariantModel");
-		 //sap.ui.getCore().byId("idLinetracker1").setBusy(true);
+		 //sap.ui.getCore().byId("idLinetracker").setBusy(true);
 		jQuery.ajax({
 			type : 'post',
 			url : this.urlModel.getProperty("urlLineVariant"),
@@ -121,13 +124,13 @@ airbus.mes.linetracker.util.ModelManager = {
 					data.variantNameList = [data.variantNameList];
 				}
 				oViewModel.setData(data);
-				 //sap.ui.getCore().byId("idLinetracker1").setBusy(false);
+				 //sap.ui.getCore().byId("idLinetracker").setBusy(false);
 			},
 
 			error : function(error, jQXHR) {
 				jQuery.sap.log.info(error);
 				airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("couldNotPerformRequestedAction"));
-				// sap.ui.getCore().byId("idLinetracker1").setBusy(false);
+				// sap.ui.getCore().byId("idLinetracker").setBusy(false);
 			}
 		});
 	},
@@ -516,6 +519,8 @@ airbus.mes.linetracker.util.ModelManager = {
 				}
 				if(data.success=="true"){
 					airbus.mes.linetracker.util.ModelManager.loadStationDataModel();
+					if(data.value && data.value=="ERROR")
+						airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("ErrorForecastingEndOfAssembly"));
 				}else{
 					airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("couldNotPerformRequestedAction"));
 				}

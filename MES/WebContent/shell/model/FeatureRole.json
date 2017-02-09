@@ -132,7 +132,7 @@
 			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
-			"Feature": "PROFILE _PREF_LANG",
+			"Feature": "PROFILE_PREF_LANG",
 			"Description": "My_Profile>Preference>langage",
 			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
 		}, {

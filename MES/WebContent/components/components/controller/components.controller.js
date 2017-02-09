@@ -278,6 +278,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     onbtnComponentsSave: function(oEvent){
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         var count = oTable.getBinding("rows").oList.length;
+        if(airbus.mes.components.util.ModelManager.dataSaveJson != []){
+            airbus.mes.components.util.ModelManager.dataSaveJson = [];
+        }
         for(var i = 0; i < count; i++){
             var tableVal = oTable.getRows()[i].getCells()[11].getItems()[1].getValue();
             var tableValFitt = oTable.getRows()[i].getCells()[12].getItems()[1].getValue();
@@ -288,8 +291,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             if(dataIndex.fitted != tableValFitt){
                 dataIndex.fitted = tableValFitt;
             }
-            airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
+                airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
+                airbus.mes.components.util.Formatter.convertJsontoXml( airbus.mes.components.util.ModelManager.dataSaveJson);
         }
+
     },
     onbtnComponentsFreeze: function(oEvent){
         var buttonText = oEvent.getSource().getText();

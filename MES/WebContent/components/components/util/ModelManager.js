@@ -12,6 +12,7 @@ airbus.mes.components.util.ModelManager = {
     },
 
     dataSaveJson: [],
+    jsonConvertedToXml: undefined,
 
     // variable for filter
     productionOrder : "P",

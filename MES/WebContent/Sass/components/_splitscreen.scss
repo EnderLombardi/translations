@@ -3,22 +3,29 @@
 	margin: 20px auto;
 	padding:0 ;
 	>table {
-		>thead {
-			>tr {
-				>th {
-					border-bottom:1px solid black;
-				}
-			}
-		}
 		>tbody {
 				tr:nth-child(even) {background: transparent}
 				tr:nth-child(odd) {background: transparent}
 				tr:hover{background-color: #ffffff }
 				>tr{
+					padding-left: 12px;
 					>td{
 						text-align:left !important;
-						border-bottom: 1p solid #f7f7f7;
+						border: none;
 					}
+					>td:first-child {
+						padding-left:1.5rem;
+					}
+					.work-tracker-delay-time {
+						font-size: 0.7rem;
+						color: $cherry-red;
+						padding-left: 6px;
+					}
+				}
+				.sapMGHLITitle {
+					color: $teal-blue;
+					font-weight: 500;
+					text-decoration-line: none;
 				}
 		}   
 	}

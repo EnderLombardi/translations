@@ -350,9 +350,9 @@
 						
 									<Button text="{StationTrackerI18n>disruptions/andon}" press="showDisruption"
 										type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd" visible = "{Profile>/identifiedUser/permissions/STATION_DRILL_DISRUPTION}"></Button>
-									<Button id="oswButton" text="{StationTrackerI18n>ButtonOutstandingWork}"
-										type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"
-										press="onOSWPress" visible = "{Profile>/identifiedUser/permissions/STATION_DRILL_OSW}"></Button>
+									<custom:customButton id="oswButton" text1="{StationTrackerI18n>ButtonOutstandingWork}" text2="10"
+										type="Transparent" class="sapUiTinyMarginBeginEnd"
+										press="onOSWPress" visible = "{Profile>/identifiedUser/permissions/STATION_DRILL_OSW}"></custom:customButton>
 									<Button id="unplannedButton" text="{StationTrackerI18n>UnplannedActivities}" type="Transparent"
 										icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
 									<ToggleButton text="{StationTrackerI18n>ButtonInitial}" type="Transparent"

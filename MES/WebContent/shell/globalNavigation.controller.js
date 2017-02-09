@@ -185,7 +185,7 @@ sap.ui.controller(
                             textButtonTo = "Go to Polypoly";
                             airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "polypoly");
                             break;
-                        case "idLinetracker1":
+                        case "idLinetracker":
                             textButtonTo = "Go to LineTracker";
                             airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
                             break;
@@ -236,11 +236,11 @@ sap.ui.controller(
                                 airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
 
                                 break;
-                            case "idLinetracker1":
+                            case "idLinetracker":
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
                                 //refresh
                                 airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
-                                airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker1");
+                                airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker");
                                 
                                 break;
                             case "calendar":
@@ -319,11 +319,11 @@ sap.ui.controller(
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;
                             
-                        case "idLinetracker1":
+                        case "idLinetracker":
                         	this.renderLineTracker();
                         	//refresh
 
-                        	airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker1");
+                        	airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker");
                             airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
@@ -784,7 +784,7 @@ sap.ui.controller(
                      * Need to get the current variant from user settings and load it.
                      */
                     renderLineTracker : function(){
-                    	if (  nav.getCurrentPage().getId() == "idLinetracker1" ) {
+                    	if (  nav.getCurrentPage().getId() == "idLinetracker" ) {
                             //active busy
                             airbus.mes.shell.busyManager.setBusy(airbus.mes.linetracker.oView, "linetrackerTable");
                             airbus.mes.shell.oView.getController().setInformationVisibility(true);

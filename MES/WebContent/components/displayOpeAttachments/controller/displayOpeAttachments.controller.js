@@ -206,7 +206,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 		//if there are some documents undisplayed of the doc type collapsed, we need not to count them in elementsAvailableAfter
 		var numberOfDocsByType = treeTableArray[arrayIndex].nbOfDocs;
-		var elementsAvailableAfter = elementsAvailableAfter - (numberOfDocsByType - nbOfDocsDisplayed);
+		elementsAvailableAfter = elementsAvailableAfter - (numberOfDocsByType - nbOfDocsDisplayed);
 
 		//then we check if there is enough documents (if not there will be a rerender)
 		var gapAfter = nbOfDocsDisplayed - elementsAvailableAfter;
@@ -361,22 +361,22 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	//open the choice popup
 	openDocumentPopup: function (oEvent) {
-		if (!airbus.mes.displayOpeAttachments.doaPopup) {
-			airbus.mes.displayOpeAttachments.doaPopup = sap.ui.xmlfragment("airbus.mes.displayOpeAttachments.view.doaPopup", this);
+		if (!airbus.mes.shell.doaPopup) {
+			airbus.mes.shell.doaPopup = sap.ui.xmlfragment("airbus.mes.shell.doaPopup", this);
 		}
 
 		airbus.mes.displayOpeAttachments.oView.oController.popUrl = oEvent.handleObj.data.url;
 
-		airbus.mes.displayOpeAttachments.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments"), "getOpeAttachments");
-		airbus.mes.displayOpeAttachments.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("i18nDisplayOpeAttachmentsModel"), "i18nDisplayOpeAttachmentsModel");
+		airbus.mes.shell.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments"), "getOpeAttachments");
+		airbus.mes.shell.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("i18nDisplayOpeAttachmentsModel"), "i18nDisplayOpeAttachmentsModel");
 
-		airbus.mes.displayOpeAttachments.doaPopup.open();
+		airbus.mes.shell.doaPopup.open();
 	},
 
 	//close the choice popup
 	closeDocumentPopup: function () {
 		this.popUrl = null;
-		airbus.mes.displayOpeAttachments.doaPopup.close();
+		airbus.mes.shell.doaPopup.close();
 	},
 
 	downloadDocument: function () {

@@ -5,10 +5,10 @@ LINETRACKER
 LineTracker Header
 ****************************/
 
-#idLinetracker1--linetrackerHeaderKPI-CollapsedImg{
+#idLinetracker--linetrackerHeaderKPI-CollapsedImg{
     visibility: hidden;
 }
-#idLinetracker1--linetrackerHeaderKPI{
+#idLinetracker--linetrackerHeaderKPI{
     header{
         &.sapMPanelWrappingDivTb{
             border-bottom: none;
@@ -23,7 +23,7 @@ LineTracker Header
     padding: 12px 0px 12px 25px;
 }
 
-#idLinetracker1--linetracker_dateLabel{
+#idLinetracker--linetracker_dateLabel{
     color: #ffffff !important;
     padding: 17px 20px 17px 10px;
     border-right: solid 1px #74d2e7 !important;
@@ -31,7 +31,7 @@ LineTracker Header
     margin-right: 15px;
 }
 
-#idLinetracker1--linetracker_timeLabel{
+#idLinetracker--linetracker_timeLabel{
     color: #ffffff !important;
     margin-top: 2px;
     text-shadow: none;
@@ -43,18 +43,18 @@ LineTracker Header
     font-size: 1.5rem;
 }
 
-#idLinetracker1--hideKPI-content, #idLinetracker1--hideKPI-img{
+#idLinetracker--hideKPI-content, #idLinetracker--hideKPI-img{
     color: #74d2e7 !important;
     text-shadow: none;
 }
-#idLinetracker1 .sapMBtnTransparent > .sapMBtnIcon {
+#idLinetracker .sapMBtnTransparent > .sapMBtnIcon {
     color: #0D5D76 !important;
    }
 
 /************************
 Linetracker View (Main Table)
 *************************/
-#idLinetracker1{
+#idLinetracker{
     header.sapMPanelWrappingDivTbExpanded{
         div.sapMIBar.sapMTB.sapMTB-Transparent-CTX.sapMTBInactive.sapMTBNewFlex{
             margin-left: 0rem;
@@ -204,7 +204,7 @@ Linetracker View (Main Table)
     .classLineTrackerTable .stationPopoverBtns div span {
         background-color: #FFFFFF !important;
     }
-    #idLinetracker1--linetrackerTablePercentage{
+    #idLinetracker--linetrackerTablePercentage{
         font-weight: 600;
     }
     .headerTextTableLinetracker{
@@ -254,7 +254,7 @@ Linetracker View (Main Table)
     		        width: 163px !important;
     	padding: 0 25px !important;
         }
-    #idLinetracker1--linetrackerTable{
+    #idLinetracker--linetrackerTable{
         div{
             &:nth-child(2){
                 div{
@@ -469,13 +469,13 @@ TASK ADHERENCE
   text-align: right !important;
   width: 100%; }
 /*
-#idLinetracker1--takt_adherence_adherence_value {
+#idLinetracker--takt_adherence_adherence_value {
   font-size: 15px; }
 */
 /*************
 ARE CHART for Header KPI of Line Tracker
 **************/
-svg#idLinetracker1--takt_adherence_area_chart {
+svg#idLinetracker--takt_adherence_area_chart {
   border: none; }
 
 .classTaktAdherenceAreaChart div:nth-child(2) {
@@ -502,43 +502,43 @@ svg#idLinetracker1--takt_adherence_area_chart {
   top: 10px;
   left: 0; }
 
-#idLinetracker1--takt_adherence_area_chart .yaxis {
+#idLinetracker--takt_adherence_area_chart .yaxis {
   fill: white;
   font-size: 7px; }
-#idLinetracker1--takt_adherence_area_chart .yaxelabel {
+#idLinetracker--takt_adherence_area_chart .yaxelabel {
   fill: white;
   font-size: 7px;
   margin-bottom: 2px; }
-#idLinetracker1--takt_adherence_area_chart .axis path,
-#idLinetracker1--takt_adherence_area_chart .axis line {
+#idLinetracker--takt_adherence_area_chart .axis path,
+#idLinetracker--takt_adherence_area_chart .axis line {
   fill: none;
   stroke: grey;
   shape-rendering: crispEdges; }
-#idLinetracker1--takt_adherence_area_chart .area {
+#idLinetracker--takt_adherence_area_chart .area {
   fill: #E5002B; }
-#idLinetracker1--takt_adherence_area_chart .line {
+#idLinetracker--takt_adherence_area_chart .line {
   fill: none;
   stroke: #0D2C63;
   stroke-width: 2; }
-#idLinetracker1--takt_adherence_area_chart .realLine {
+#idLinetracker--takt_adherence_area_chart .realLine {
   fill: none;
   stroke: white;
   stroke-width: 2; }
-#idLinetracker1--takt_adherence_area_chart .estimateLine {
+#idLinetracker--takt_adherence_area_chart .estimateLine {
   fill: none;
   stroke: white;
   stroke-width: 1;
   stroke-dasharray: 10; }
-#idLinetracker1--takt_adherence_area_chart .ygrid .tick {
+#idLinetracker--takt_adherence_area_chart .ygrid .tick {
   stroke: rgba(109, 147, 194, 0.39);
   opacity: 0.7; }
-#idLinetracker1--takt_adherence_area_chart .ygrid path {
+#idLinetracker--takt_adherence_area_chart .ygrid path {
   stroke-width: 0; }
 
 /*************
 ARE CHART  for Station specific(below slide)
 **************/
-svg#idLinetracker1--station_takt_adherence_area_chart{
+svg#idLinetracker--station_takt_adherence_area_chart{
   border: none; }
 
 .classTaktAdherenceAreaChart div:nth-child(2) {
@@ -565,74 +565,74 @@ svg#idLinetracker1--station_takt_adherence_area_chart{
   top: 10px;
   left: 0; }
 
-#idLinetracker1--station_takt_adherence_area_chart .yaxis {
+#idLinetracker--station_takt_adherence_area_chart .yaxis {
 /*   fill: white; */
   font-size: 7px; }
-#idLinetracker1--station_takt_adherence_area_chart .yaxelabel {
+#idLinetracker--station_takt_adherence_area_chart .yaxelabel {
 /*   fill: white; */
   font-size: 7px;
   margin-bottom: 2px; }
-#idLinetracker1--station_takt_adherence_area_chart .axis path,
-#idLinetracker1--station_takt_adherence_area_chart .axis line {
+#idLinetracker--station_takt_adherence_area_chart .axis path,
+#idLinetracker--station_takt_adherence_area_chart .axis line {
   fill: none;
   stroke: grey;
   shape-rendering: crispEdges; }
-#idLinetracker1--station_takt_adherence_area_chart .area {
+#idLinetracker--station_takt_adherence_area_chart .area {
   fill: #E5002B; }
-#idLinetracker1--station_takt_adherence_area_chart .line {
+#idLinetracker--station_takt_adherence_area_chart .line {
   fill: none;
   stroke: #0D2C63;
   stroke-width: 2; }
-#idLinetracker1--station_takt_adherence_area_chart .realLine {
+#idLinetracker--station_takt_adherence_area_chart .realLine {
   fill: none;
   stroke: white;
   stroke-width: 2; }
-#idLinetracker1--station_takt_adherence_area_chart .estimateLine {
+#idLinetracker--station_takt_adherence_area_chart .estimateLine {
   fill: none;
   stroke: white;
   stroke-width: 1;
   stroke-dasharray: 10; }
-#idLinetracker1--station_takt_adherence_area_chart .ygrid .tick {
+#idLinetracker--station_takt_adherence_area_chart .ygrid .tick {
   stroke: rgba(109, 147, 194, 0.39);
   opacity: 0.7; }
-#idLinetracker1--station_takt_adherence_area_chart .ygrid path {
+#idLinetracker--station_takt_adherence_area_chart .ygrid path {
   stroke-width: 0; }
 
 /*******************************
 BOX RESOLUTION EFFICIENCY
 ********************************/
-#idLinetracker1--boxResolutionEfficiency .boxResolutionEfficiencyGoodValue {
+#idLinetracker--boxResolutionEfficiency .boxResolutionEfficiencyGoodValue {
   color: #84bd00; }
-#idLinetracker1--boxResolutionEfficiency .boxResolutionEfficiencyBadValue {
+#idLinetracker--boxResolutionEfficiency .boxResolutionEfficiencyBadValue {
   color: #fe5000; }
 
-#idLinetracker1--boxSLBEfficiecy_chart-chart-item-3,
-#idLinetracker1--boxResolutionEfficiecy_chart-chart-item-3 {
+#idLinetracker--boxSLBEfficiecy_chart-chart-item-3,
+#idLinetracker--boxResolutionEfficiecy_chart-chart-item-3 {
   opacity: 0; }
 
 /*******************************
 SHIFT STAFFING
 ********************************/
-#idLinetracker1--shifStaffingHeader-dmc-chart .Left {
+#idLinetracker--shifStaffingHeader-dmc-chart .Left {
   background-color: #84bd00; }
 
-#idLinetracker1--shifStaffingHeader .sapSuiteDmcTitle,
-#idLinetracker1--shifStaffingHeader .sapSuiteDmcLbls {
+#idLinetracker--shifStaffingHeader .sapSuiteDmcTitle,
+#idLinetracker--shifStaffingHeader .sapSuiteDmcLbls {
   font-size: 0.8vw; }
-#idLinetracker1--shifStaffingHeader .sapSuiteDmcCnt {
+#idLinetracker--shifStaffingHeader .sapSuiteDmcCnt {
   right: 2rem; }
-#idLinetracker1--shifStaffingHeader .sapSuiteDmcDelta {
+#idLinetracker--shifStaffingHeader .sapSuiteDmcDelta {
    color: white;
    }
-#idLinetracker1--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
+#idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
   background: #fe5000; }
-#idLinetracker1--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
+#idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
   background-color: #74D2E7; }
 
 /*******************************
 BOX RESOLUTION EFFICIENCY
 ********************************/
-#idLinetracker1--boxResolutionEfficiency{
+#idLinetracker--boxResolutionEfficiency{
     .boxResolutionEfficiencyGoodValue{
         color: $dark-lime-green;
     }
@@ -640,18 +640,18 @@ BOX RESOLUTION EFFICIENCY
         color: $blood-orange;
     }
 }
-#idLinetracker1--boxSLBEfficiecy_chart-chart-item-3,
-#idLinetracker1--boxResolutionEfficiecy_chart-chart-item-3 {
+#idLinetracker--boxSLBEfficiecy_chart-chart-item-3,
+#idLinetracker--boxResolutionEfficiecy_chart-chart-item-3 {
     opacity: 0;
 }
 /*******************************
 SHIFT STAFFING for Station KPI
 ********************************/
 
-#idLinetracker1--stationshifStaffingHeader-dmc-chart .Left {
+#idLinetracker--stationshifStaffingHeader-dmc-chart .Left {
     background-color: $dark-lime-green;
 }
-#idLinetracker1--shifStaffingHeader{
+#idLinetracker--shifStaffingHeader{
     .sapSuiteDmcTitle,
     .sapSuiteDmcLbls{
         font-size: 0.8vw;

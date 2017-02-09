@@ -85,9 +85,28 @@ sap.ui
                                                 var oBinding = oItem.getContent()[0]
                                                               .getContent()[3].getBinding("items");
                                                 
-                                                // Apply filter
-                                                oBinding.filter([ new sap.ui.model.Filter(
-                                                              "MessageRef", "EQ", messageRef) ]);
+                                                var oFilters = [];
+                                                
+                                                oFilters.push([ new sap.ui.model.Filter("MessageRef", "EQ", messageRef) ]);
+                                                
+                                                
+                                                
+                                                if(nav.getCurrentPage().getId() == "stationTrackerView"){
+                                                	var firstRowFlag = true;
+                                                	oFilters.push(new sap.ui.model.Filter({
+                                                        test: function () {
+                                                            if (firstRowFlag){
+                                                            	firstRowFlag = false;
+                                                                return true;
+                                                            }
+                                                            return false;
+                                                        }
+                                                    }));
+                                                }
+                                                
+                                                
+                                                // Apply Filters                                                
+                                                oBindings.filter(oFilters);
                                                 
                                                 // Hide Comment Box every time on data re-load
                                                 oItem.getContent()[0].getContent()[4].setVisible(false);

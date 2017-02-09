@@ -1,42 +1,35 @@
-<core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
-	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
-
-			<Table 	id="splitWorTra" 
- 					class="splitWorTra" 
- 					items="{path: 'SplitDetailModel>/Rowsets/Rowset/0/Row'}" >
-					
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:u="sap.ui.unified" 
+	xmlns:table="sap.ui.table">
+		<Table id="splitWorTra" class="splitWorTra" items="{path: 'SplitDetailModel>/Rowsets/Rowset/0/Row', sorter:{
+            path : 'PP_STATION' , descending : false , group: true}}">
 			<columns>
 				<Column>
-					<Text text="Start - End Time" />
 				</Column>
 				<Column>
-					<Text text="Operation description" />
 				</Column>
 				<Column>
-					<Text text="Work order description" />
 				</Column>
 				<Column>
-					<Text text="Work center" />
 				</Column>
 				<Column>
-					<Text text="Competency" />
 				</Column>
 				<Column>
-					<Text text="Physical station " />
 				</Column>
 			</columns>
-
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text key="{SplitDetailModel>START_TIME}" text="{ parts: ['SplitDetailModel>START_TIME', 'SplitDetailModel>END_TIME'], formatter: 'airbus.mes.stationtracker.util.Formatter.dateForWorkTracker'}" />
+						<HBox><Text key="{SplitDetailModel>START_TIME}" text="{ parts: ['SplitDetailModel>START_TIME', 'SplitDetailModel>END_TIME'], formatter: 'airbus.mes.stationtracker.util.Formatter.dateForWorkTracker'}" />
+						<Text class="work-tracker-delay-time" text="{ parts: ['SplitDetailModel>START_TIME', 'SplitDetailModel>END_TIME'], formatter: 'airbus.mes.stationtracker.util.Formatter.dateDelayForWorkTracker'}" /></HBox>
 						<Text key="{SplitDetailModel>OPERATION_DESCRIPTION}" text="{SplitDetailModel>OPERATION_DESCRIPTION}" />
 						<Text key="{SplitDetailModel>WORKORDER_DESCRIPTION}" text="{SplitDetailModel>WORKORDER_DESCRIPTION}" />
-						<Text key="{SplitDetailModel>WORK_CENTER}" 		text="{SplitDetailModel>WORK_CENTER}" />
-						<Text key="{SplitDetailModel>COMPETENCY}" 	text="{SplitDetailModel>COMPETENCY}" />
-						<Text key="{SplitDetailModel>PP_STATION}" 	text="{SplitDetailModel>PP_STATION}" />
-						
+						<Text key="{SplitDetailModel>WORK_CENTER}" text="{SplitDetailModel>WORK_CENTER}" />
+						<Text key="{SplitDetailModel>COMPETENCY}" text="{SplitDetailModel>COMPETENCY}" />
 					</cells>
 				</ColumnListItem>
 			</items>

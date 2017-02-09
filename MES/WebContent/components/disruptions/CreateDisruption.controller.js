@@ -130,7 +130,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 
                            var oModel = oView.getModel("DisruptionDetailModel");
 
-                           // Set Responsible Gro     up
+                           // Set Responsible Group
                             oView.byId("selectResponsibleGrp").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
 
                            // Set Reason
@@ -622,10 +622,10 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 
                      this.getView().byId("selectCategory").getBinding("items").filter();
                      
-
-                     this.getView().byId("expectedDate").setDateValue(new Date());
-                     this.getView().byId("expectedTime").setDateValue(new Date());
-                     this.getView().byId("openTime").setDateValue(new Date());
+                    // var oDate = new Date();
+                    // this.getView().byId("openTime").setDateValue(oDate);
+                    // this.getView().byId("expectedDate").setDateValue(oDate);
+                    // this.getView().byId("expectedTime").setDateValue(oDate);
 
                      this.getView().byId("selectreason").setSelectedKey();
                      this.getView().byId("selectResponsibleGrp").setSelectedKey();

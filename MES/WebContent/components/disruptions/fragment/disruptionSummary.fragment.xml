@@ -6,12 +6,12 @@
 			<VBox class="setMinWidth">
 
 				<HBox>
-					<Label text="{i18nModel>start}:" class="sapUiSmallMarginBegin" />
-					<Text text="10:30"  />
+					<Label text="{i18nModel>start}:" class= "sapUiSmallMarginBegin" />
+					<Text text="{DisruptionDetailModel>/OpeningTime}"  />
 					</HBox>
 					<HBox>
 					<Label text="{i18nModel>end}:" class="sapUiSmallMarginBegin" />
-					<Text text="12:30"  />
+					<Text text="{DisruptionDetailModel>/ClosureDate}"  />
 				</HBox>
 				<HBox>
 					<Label text="{i18nModel>workcenter}:" class="sapUiSmallMarginBegin" />
@@ -27,11 +27,11 @@
 				</HBox>
 				<HBox class=" sapUiSmallMarginTop sapUiTinyMarginBegin">
 				<Image class="ylabelUserImage setImage" width="100%"
-												visible="{ path : 'DisruptionDetailModel>OriginatorID', formatter : 'airbus.mes.shell.UserImageManager.displayImage' }"
-												error = "{ path : 'DisruptionDetailModel>OriginatorID', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
-												src="{ path : 'DisruptionDetailModel>OriginatorID', formatter : 'airbus.mes.shell.UserImageManager.selectImageToDisplay' }"
+												visible="{ path : 'DisruptionDetailModel>/OriginatorID', formatter : 'airbus.mes.shell.UserImageManager.displayImage' }"
+												error = "{ path : 'DisruptionDetailModel>/OriginatorID', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
+												src="{ path : 'DisruptionDetailModel>/OriginatorID', formatter : 'airbus.mes.shell.UserImageManager.selectImageToDisplay' }"
 												></Image>
-				<Text text="{i18nModel>issuedBy} {DisruptionDetailModel>OriginatorName}" class=" sapUiSmallMarginBegin">
+				<Text text="{i18nModel>issuedBy} {DisruptionDetailModel>/OriginatorName}" >
 				</Text>
 				<layoutData>
 					<l:GridData span="L12 M8 S8" />
@@ -40,11 +40,11 @@
 
 			<HBox class="sapUiSmallMarginTop sapUiTinyMarginBegin">
 				<Image class="ylabelUserImage setImage" width="100%"
-												visible="{ path : 'DisruptionDetailModel>ResolverID', formatter : 'airbus.mes.shell.UserImageManager.displayImage' }"
-												error = "{ path : 'DisruptionDetailModel>ResolverID', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
-												src="{ path : 'DisruptionDetailModel>ResolverID', formatter : 'airbus.mes.shell.UserImageManager.selectImageToDisplay' }"
+												visible="{ path : 'DisruptionDetailModel>/ResolverID', formatter : 'airbus.mes.shell.UserImageManager.displayImage' }"
+												error = "{ path : 'DisruptionDetailModel>/ResolverID', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
+												src="{ path : 'DisruptionDetailModel>/ResolverID', formatter : 'airbus.mes.shell.UserImageManager.selectImageToDisplay' }"
 												></Image>
-				<Text text="{i18nModel>assignedTo} {DisruptionDetailModel>ResolverName}" class="sapUiSmallMarginBegin">
+				<Text text="{i18nModel>assignedTo} {DisruptionDetailModel>/ResolverName}" >
 				</Text>
 				<layoutData>
 					<l:GridData span="L6 M8 S8" />
@@ -55,7 +55,7 @@
 
 				<core:Icon src="sap-icon://pending" color="#009de0" size="2.5rem" class="sapUiTinyMarginBegin">
 				</core:Icon>
-				<Text text="{i18nModel>timeLost}:25min" class="sapUiSmallMarginBegin sapUiSmallMarginTop" />
+				<Text text="{i18nModel>timeLost}:{DisruptionDetailModel>/TimeLost}" class="sapUiSmallMarginBegin sapUiSmallMarginTop" />
 				<layoutData>
 					<l:GridData span="L6 M8 S8" />
 				</layoutData>
