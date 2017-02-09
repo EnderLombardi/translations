@@ -679,46 +679,12 @@ sap.ui
 										   	+ this.getView().sId + "--disrptlist-"
 										   	+ listnum).getValue();
 						
-<<<<<<< Upstream, based on origin/MESv1.5
 						if(!sComment.length || sComment.length<1)
 							return;
-=======
-						var currDate = new Date();
-						// Corrections done for month
-						var mm = currDate.getMonth() + 1; // January is 0!
->>>>>>> 85bff01 [Disruption] V1.5 dev
 
-<<<<<<< Upstream, based on origin/MESv1.5
 						var msgRef = oEvt.getSource().getBindingContext(
 								"operationDisruptionsModel").getObject(
 								"MessageRef");
-=======
-						if (mm < 10) {
-							mm = '0' + mm
-						}
-						
-						var dd = currDate.getDate();
-						
-						if (dd < 10) {
-							dd = '0' + dd
-						}
-						
-						var hh = currDate.getHours()<10 ? '0' + currDate.getHours() :currDate.getHours();  
-						var min = currDate.getMinutes()<10 ? '0' + currDate.getMinutes() :currDate.getMinutes(); 
-						var ss  = currDate.getSeconds()<10 ? '0' + currDate.getSeconds() :currDate.getSeconds();
-						
-						var date = currDate.getFullYear() + "-" + mm + "-" + dd + " " + hh + ":" + min + ":" + ss;
-						
-						var oComment = {
-								"Action" : this.getView().getModel("i18nModel").getProperty("comment"),
-								"Comments" : sComment,
-								"Counter" : "",
-								"Date" : date,
-								"MessageRef" : msgRef,
-								"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
-										   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
-						};
->>>>>>> 85bff01 [Disruption] V1.5 dev
 
 						var i18nModel = airbus.mes.disruptions.oView.viewDisruption
 								.getModel("i18nModel");
