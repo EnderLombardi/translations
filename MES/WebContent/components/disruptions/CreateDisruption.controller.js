@@ -130,7 +130,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 
                            var oModel = oView.getModel("DisruptionDetailModel");
 
-                           // Set Responsible Gro     up
+                           // Set Responsible Group
                             oView.byId("selectResponsibleGrp").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
 
                            // Set Reason

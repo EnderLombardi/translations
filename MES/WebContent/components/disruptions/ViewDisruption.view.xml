@@ -24,7 +24,7 @@
 								<Text
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>ClosureDate}"
 									visible="{path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"
-									class="msgHeaderText" />
+									class="disrptlistdesc" />
 								
 								<Button text="{i18nModel>close}" type="Accept"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
@@ -190,7 +190,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{path: 'operationDisruptionsModel>ResolverName'}">
+												<Text text="{=${operationDisruptionsModel>ResolverName} == '' ? '-' : ${operationDisruptionsModel>ResolverName}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
