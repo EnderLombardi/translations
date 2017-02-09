@@ -273,7 +273,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<DatePicker enabled="false" id="OpenDate"
+										<DatePicker enabled="false" id="openDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
 											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
@@ -301,7 +301,7 @@
 									<f:fields>
 										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getFixedByDate'}">
+											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
 												<l:GridData span="L2 M5 S6" />
 											</layoutData>
@@ -310,7 +310,7 @@
 										</DatePicker>
 										<TimePicker id="expectedTime" displayFormat="HH:mm:ss"
 											valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">>
+											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 											<layoutData>
 												<l:GridData span="L1 M4 S6" />
 											</layoutData>

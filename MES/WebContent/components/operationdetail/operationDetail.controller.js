@@ -384,7 +384,6 @@ sap.ui
                         sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
                         sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(true);
                         sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);                        
-                        sap.ui.getCore().byId("createDisruptionView--status").setValue(this.getView().getModel("i18n").getProperty("Pending"));
                     }
 
                     break;

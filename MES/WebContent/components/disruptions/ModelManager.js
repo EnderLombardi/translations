@@ -35,67 +35,6 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	/***************************************************************************
-	 * Set busy for disruptions pop-up
-	 **************************************************************************/
-	setBusy : function() {
-		switch (nav.getCurrentPage().getId()) {
-
-		case "stationTrackerView":
-			sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusyIndicatorDelay(0);
-			sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(true);
-			break;
-		case "disruptiontrackerView":
-			if(!sap.ui.Device.system.desktop){
-				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusyIndicatorDelay(0);
-				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(true);
-			} else{
-				sap.ui.getCore().byId("disruptionDetailView").setBusyIndicatorDelay(0);
-				sap.ui.getCore().byId("disruptionDetailView").setBusy(true);
-			}
-			break;
-		case "disruptionDetailView":
-			sap.ui.getCore().byId("disruptionDetailView").setBusyIndicatorDelay(0);
-			sap.ui.getCore().byId("disruptionDetailView").setBusy(true);
-		default:
-			break;
-		}
-	},
-
-	/***************************************************************************
-	 * Un-Set busy for disruptions pop-up
-	 **************************************************************************/
-	unSetBusy : function() {
-		switch (nav.getCurrentPage().getId()) {
-
-		case "stationTrackerView":
-			sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(false);
-			break;
-		case "disruptiontrackerView":
-			if(!sap.ui.Device.system.desktop){
-				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(false);
-			} else{
-				sap.ui.getCore().byId("disruptionDetailView").setBusy(false);
-			}
-			break;
-		case "disruptionDetailView":
-			sap.ui.getCore().byId("disruptionDetailView").setBusy(false);
-		default:
-			break;
-		}
-	},
-	
-	/***************************************************************************
-	 * Get View object
-	 **************************************************************************/
-	getView: function(){
-		if (airbus.mes.disruptions.Formatter.isSupportTeamViaDestop()) {
-			return airbus.mes.disruptions.oView.disruptionDetail;
-		} else {
-			return airbus.mes.disruptions.oView.createDisruption;
-		}
-	},
-
-	/***************************************************************************
 	 * Load Category and custom Data
 	 */
 	loadData : function(sMode) {
@@ -103,17 +42,24 @@ airbus.mes.disruptions.ModelManager = {
 		this.createViewMode = sMode;
 
 		// Set Busy Indicator
-		airbus.mes.disruptions.ModelManager.setBusy();
+		airbus.mes.disruptions.func.setBusy();
+		
+		// Get View
+		var oView = airbus.mes.disruptions.func.getView();
 		
 		// Reset All fields
-		airbus.mes.disruptions.oView.createDisruption.oController.resetAllFields();
+		oView.oController.resetAllFields();
 		
 		
 		this.loadDisruptionCategory();
 		this.loadMaterialList();
 		this.loadJigtoolList();
 
-		if (this.createViewMode == "Edit") {
+
+		if (this.createViewMode == "Create") {
+			oView.oController.createDisruptionSettings();
+		}
+		else if (this.createViewMode == "Edit") {
 			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 
 			this.sMsgType = oModel.getProperty("/MessageType");
@@ -122,11 +68,7 @@ airbus.mes.disruptions.ModelManager = {
 			this.loadRsnResponsibleGrp(this.sMsgType);
 			this.loadResolverModel(this.sResolverGroup);
 			
-			if (airbus.mes.disruptions.Formatter.isSupportTeamViaDestop()) {
-				airbus.mes.disruptions.oView.disruptionDetail.oController.editPreSettings();
-			} else {
-				airbus.mes.disruptions.oView.createDisruption.oController.editPreSettings();
-			}
+			oView.oController.editPreSettings();
 
 		}
 
@@ -160,24 +102,17 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionCategory : function() {
-		var oView;
-		if (airbus.mes.disruptions.Formatter.isSupportTeamViaDestop()) {
-			oView = airbus.mes.disruptions.oView.disruptionDetail;
-		} else {
-			oView = airbus.mes.disruptions.oView.createDisruption;
-		}
+		var oView = airbus.mes.disruptions.func.getView();
 
 		// Reset in hard the model of the view otherwise its not rebinded...
 		oView.getModel("disruptionCategoryModel").setData(sap.ui.getCore().getModel("disruptionCategoryModel").oData);
 
-		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
-			oView.oController.createDisruptionSettings();
-		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit") {
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit") {
 			oView.oController.editDisruptionSettings();
 		}
 
 		// Un-Set Busy Indicator
-		airbus.mes.disruptions.ModelManager.unSetBusy();
+		airbus.mes.disruptions.func.unSetBusy();
 	},
 
 	/***************************************************************************
@@ -185,7 +120,7 @@ airbus.mes.disruptions.ModelManager = {
 	 * Group)
 	 **************************************************************************/
 	loadRsnResponsibleGrp : function(sMsgType) {
-		var oView = airbus.mes.disruptions.ModelManager.getView();
+		var oView = airbus.mes.disruptions.func.getView();
 		
 		// Set Busy's
 		oView.byId("selectreason").setBusyIndicatorDelay(0);
@@ -207,7 +142,7 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionRsnRespGrp : function() {
-		var oView = airbus.mes.disruptions.ModelManager.getView();
+		var oView = airbus.mes.disruptions.func.getView();
 		
 		// Reset in hard the model of the view otherwise its not rebinded...
 		oView.getModel("disruptionRsnRespGrp").setData(sap.ui.getCore().getModel("disruptionRsnRespGrp").oData);
@@ -226,7 +161,7 @@ airbus.mes.disruptions.ModelManager = {
 	 * Resolver Group)
 	 **************************************************************************/
 	loadResolverModel : function(sResolverGroup) {
-		var oView = airbus.mes.disruptions.ModelManager.getView();
+		var oView = airbus.mes.disruptions.func.getView();
 
 		// Set Busy's
 		oView.byId("selectResolver").setBusyIndicatorDelay(0);
@@ -245,7 +180,7 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionResolver : function() {
-		var oView = airbus.mes.disruptions.ModelManager.getView();
+		var oView = airbus.mes.disruptions.func.getView();
 		
 		// Reset in hard the model of the view otherwise its not rebinded...
 		oView.getModel("disruptionResolverModel").setData(sap.ui.getCore().getModel("disruptionResolverModel").oData);
@@ -330,7 +265,7 @@ airbus.mes.disruptions.ModelManager = {
 		oView.getModel("operationDisruptionsModel").setData(sap.ui.getCore().getModel("operationDisruptionsModel").oData);
 
 		/* Set filter for Comments on all the disruptions */
-		airbus.mes.disruptions.oView.viewDisruption.oController.applyFiltersOnComments();
+		oView.oController.applyFiltersOnComments();
 		
 		
 		// Un-Set Busy
@@ -399,7 +334,7 @@ airbus.mes.disruptions.ModelManager = {
 	createDisruption : function(messageHandle, messageType, messageBody, payloadData) {
 
 		// Set Busy Indicator
-		airbus.mes.disruptions.ModelManager.setBusy();
+		airbus.mes.disruptions.func.setBusy();
 
 		jQuery.ajax({
 			async : true,
@@ -425,7 +360,7 @@ airbus.mes.disruptions.ModelManager = {
 			},
 			success : function(data, textStatus, jqXHR) {
 				// Un-Set Busy Indicator
-				airbus.mes.disruptions.ModelManager.unSetBusy();
+				airbus.mes.disruptions.func.unSetBusy();
 
 				var rowExists = data.Rowsets.Rowset;
 				if (rowExists != undefined) {
@@ -472,7 +407,7 @@ airbus.mes.disruptions.ModelManager = {
 
 			error : function() {
 				// Un-Set Busy Indicator
-				airbus.mes.disruptions.ModelManager.unSetBusy();
+				airbus.mes.disruptions.func.unSetBusy();
 
 				airbus.mes.shell.ModelManager
 					.messageShow(airbus.mes.disruptions.oView.createDisruption.getModel("i18nModel").getProperty("DisruptionNotSaved"));
@@ -510,7 +445,7 @@ airbus.mes.disruptions.ModelManager = {
 	updateDisruption : function(sMessageRef, sReason, sResponsibleGroup, iTimeLost, dFixedByTime, sComment, iGravity, dPromisedDate) {
 
 		// Set Busy Indicator
-		airbus.mes.disruptions.ModelManager.setBusy();
+		airbus.mes.disruptions.func.setBusy();
 
 		airbus.mes.shell.util.navFunctions.disruptionButtons.update.setEnabled(false);
 		airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(false);
@@ -542,7 +477,7 @@ airbus.mes.disruptions.ModelManager = {
 				var currentPage = nav.getCurrentPage().getId();
 
 				// Un-Set Busy Indicator
-				airbus.mes.disruptions.ModelManager.unSetBusy();
+				airbus.mes.disruptions.func.unSetBusy();
 
 				// Message handling
 				var rowExists = data.Rowsets.Rowset;

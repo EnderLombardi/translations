@@ -101,7 +101,7 @@ airbus.mes.disruptions.Formatter = {
 			return sTime;
 	},
 	
-	getDate : function(datetime) {
+	/*getDate : function(datetime) {
 
 		if (datetime == null || datetime === undefined) {
 			var today = new Date();
@@ -120,11 +120,11 @@ airbus.mes.disruptions.Formatter = {
 			return datetime.split(" ")[0];
 		}
 
-	},
+	},*/
 
 	// New function created for "Required Fix By" as MII parsing error on Date
 	// using getDate function
-	getFixedByDate : function(datetime) {
+	getDate : function(datetime) {
 
 		if (datetime == null || datetime === undefined) {
 			var today = new Date();
@@ -332,6 +332,8 @@ airbus.mes.disruptions.Formatter = {
 		if (comment.indexOf("\$\$") > -1) {
 			comment =  comment.split("\$\$")[1];
 		}
+		if(comment == "" || comment == " ")
+			this.setVisible(false);
 		return comment;
 	},
 
@@ -546,18 +548,4 @@ airbus.mes.disruptions.Formatter = {
 	 * setNumberofAttachment : function(number) { var sValue = number + "\n" + "
 	 * Attachments"; return sValue; }
 	 */
-	
-	
-	/**
-	 * Check and return if Detailed view is opened by support team from disruption tracker
-	 * using Laptop/Desktop
-	 */
-	isSupportTeamViaDestop : function() {
-		if (sap.ui.Device.system.desktop && nav.getPreviousPage().sId == "disruptiontrackerView") {
-			return true;
-		} else {
-			return false;
-		}
-
-	}
 };

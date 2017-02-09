@@ -250,8 +250,10 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 
                            }
 
-                           // Disable/Enable inputs according to
-                           // Originator/Resolution Group
+                           /**********************************************
+                            * Disable/Enable inputs according to 		*
+                            * Originator/Resolution Group				*
+                            * *******************************************/
                            var origFlag = oModel.getProperty("/OriginatorFlag");
                            var resFlag = oModel.getProperty("/ResponsibleFlag");
 
@@ -467,7 +469,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
                      var oView = airbus.mes.disruptions.oView.createDisruption;
 
                      var expectedTime = oView.byId("expectedTime").getValue();
-                     var openDate = oView.byId("OpenDate").getValue();
+                     var openDate = oView.byId("openDate").getValue();
                      var openTime = oView.byId("openTime").getValue();
                      var expectedDate = oView.byId("expectedDate").getValue();
                      if (expectedTime == "") {
@@ -535,47 +537,60 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
               },
 
               originatorGroupSettings : function() {
+            	  var oView = this.getView();
 
-                     this.getView().byId("selectFivemCategory").setEnabled(false);
-                     this.getView().byId("selectCategory").setEnabled(false);
-                     this.getView().byId("selectreason").setEnabled(true);
-                     // this.getView().byId("selectRootCause").setEnabled(true); //-V1.5
-                     this.getView().byId("selectResponsibleGrp").setEnabled(true);
-                     this.getView().byId("selectOriginator").setEnabled(false);
-                     this.getView().byId("description").setEnabled(false);
-                     this.getView().byId("promisedDate").setEnabled(false);
-                     this.getView().byId("promisedTime").setEnabled(false);
-                     this.getView().byId("expectedDate").setEnabled(true);
-                     this.getView().byId("expectedTime").setEnabled(true);
-                     this.getView().byId("gravity").setEnabled(true);
-                     this.getView().byId("timeLost").setEnabled(false);
-                     this.getView().byId("materials").setEnabled(false);
-                     this.getView().byId("jigtools").setEnabled(false);
-                     this.getView().byId("selectResolver").setEnabled(true); // +V1.5
+            	  oView.byId("selectFivemCategory").setEnabled(false);
+            	  oView.byId("selectCategory").setEnabled(false);
+            	  oView.byId("selectreason").setEnabled(true);
+            	  // oView.byId("selectRootCause").setEnabled(true); //-V1.5
+            	  oView.byId("selectResponsibleGrp").setEnabled(true);
+            	  oView.byId("selectOriginator").setEnabled(false);
+            	  oView.byId("description").setEnabled(false);
+            	  oView.byId("promisedDate").setEnabled(false);
+            	  oView.byId("promisedTime").setEnabled(false);
+            	  oView.byId("expectedDate").setEnabled(true);
+            	  oView.byId("expectedTime").setEnabled(true);
+            	  oView.byId("gravity").setEnabled(true);
+            	  oView.byId("timeLost").setEnabled(false);
+            	  oView.byId("materials").setEnabled(false);
+            	  oView.byId("jigtools").setEnabled(false);
+            	  oView.byId("selectResolver").setEnabled(true); // +V1.5
               },
 
               createDisruptionSettings : function() {
+            	  var oView = this.getView();
 
-                     this.getView().byId("selectFivemCategory").setEnabled(true);
-                     this.getView().byId("selectCategory").setEnabled(true);
-                     this.getView().byId("selectreason").setEnabled(false);
-                     // this.getView().byId("selectRootCause").setEnabled(false); //-V1.5
-                     this.getView().byId("selectResponsibleGrp").setEnabled(false);
-                     this.getView().byId("selectResolver").setEnabled(false); // +V1.5
-                     this.getView().byId("selectOriginator").setEnabled(true);
-                     this.getView().byId("description").setEnabled(true);
-                     this.getView().byId("timeLost").setEnabled(true);
-                     this.getView().byId("expectedDate").setEnabled(true);
-                     this.getView().byId("expectedTime").setEnabled(true);
-                     this.getView().byId("gravity").setEnabled(true);
-                     this.getView().byId("timeLost").setEnabled(true);
-                     this.getView().byId("materials").setEnabled(true);
-                     this.getView().byId("jigtools").setEnabled(true);
+            	  oView.byId("selectFivemCategory").setEnabled(true);
+            	  oView.byId("selectCategory").setEnabled(true);
+            	  oView.byId("selectreason").setEnabled(false);
+            	  // oView.byId("selectRootCause").setEnabled(false); //-V1.5
+            	  oView.byId("selectResponsibleGrp").setEnabled(false);
+            	  oView.byId("selectResolver").setEnabled(false); // +V1.5
+            	  oView.byId("selectOriginator").setEnabled(true);
+            	  oView.byId("description").setEnabled(true);
+            	  oView.byId("timeLost").setEnabled(true);
+            	  oView.byId("expectedDate").setEnabled(true);
+            	  oView.byId("expectedTime").setEnabled(true);
+            	  oView.byId("gravity").setEnabled(true);
+            	  oView.byId("timeLost").setEnabled(true);
+            	  oView.byId("materials").setEnabled(true);
+            	  oView.byId("jigtools").setEnabled(true);
+            	  
 
-                     // at the time of creation promised date would be invisible
-                     this.getView().byId("promisedDateLabel").setVisible(false);
-                     this.getView().byId("promisedDate").setVisible(false);
-                     this.getView().byId("promisedTime").setVisible(false);
+                  // Set opening and expected date time
+                  var oDate = new Date();
+                  oView.byId("openDate").setDateValue(oDate);
+                  oView.byId("openTime").setDateValue(oDate);
+                  oView.byId("expectedDate").setDateValue(oDate);
+                  oView.byId("expectedTime").setDateValue(oDate);
+
+            	  // at the time of creation promised date would be invisible
+            	  oView.byId("promisedDateLabel").setVisible(false);
+            	  oView.byId("promisedDate").setVisible(false);
+            	  oView.byId("promisedTime").setVisible(false);
+                     
+            	  // Set Status
+            	  oView.byId("status").setValue(this.getView().getModel("i18n").getProperty("Pending"));
 
               },
 
@@ -621,11 +636,6 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
                      this.getView().byId("selectCategory").setSelectedKey();
 
                      this.getView().byId("selectCategory").getBinding("items").filter();
-                     
-                    // var oDate = new Date();
-                    // this.getView().byId("openTime").setDateValue(oDate);
-                    // this.getView().byId("expectedDate").setDateValue(oDate);
-                    // this.getView().byId("expectedTime").setDateValue(oDate);
 
                      this.getView().byId("selectreason").setSelectedKey();
                      this.getView().byId("selectResponsibleGrp").setSelectedKey();
