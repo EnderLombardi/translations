@@ -13,7 +13,7 @@ var fs = require("fs");
 var connect = require('gulp-connect');
 var runSequence = require('run-sequence');
 var open = require('gulp-open');
-var sass = require('gulp-sass');
+//var sass = require('gulp-sass');
 
 var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 var version = {};
@@ -122,6 +122,7 @@ gulp.task('copy', ['clean'], function () {
 	return gulp.src([
 		'./shell/config/res_config_prod.properties',
 		'./shell/data/**',
+		'./shell/model/**',
 		'./components/homepage/css/margin.css',
 		'./Sass/global.css',
 		'./Sass/*.png',
@@ -241,11 +242,11 @@ gulp.task('bump', ['bump_ver', 'build'], function () {
 //																															//
 //--------------------------------------------------------------------------------------------------------------------------//
 
-gulp.task('styles', function () {
-	gulp.src('WebContent/Sass/**/*.scss')
-		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest('WebContent/Sass/'))
-});
+//gulp.task('styles', function () {
+//	gulp.src('WebContent/Sass/**/*.scss')
+//		.pipe(sass().on('error', sass.logError))
+//		.pipe(gulp.dest('WebContent/Sass/'))
+//});
 
 //--------------------------------------------------------------------------------------------------------------------------//
 //																															//
