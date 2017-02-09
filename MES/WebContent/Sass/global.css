@@ -3773,7 +3773,8 @@ Physical Station
 .imageDiv {
   float: left;
   width: 35%;
-  padding: 8px; }
+  padding: 8px;
+  display: inline-flex; }
 
 .detailDiv {
   float: left;
