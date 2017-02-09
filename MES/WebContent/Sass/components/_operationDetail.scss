@@ -160,9 +160,6 @@
         margin-bottom: 2rem;
     }
 }
-#partial{
-    height: 37%;
-}
 #confirmationCheckList{
     position: absolute;
     top: 15%;
@@ -303,7 +300,12 @@
     border-radius: 0;
     box-shadow: 0 0 5px #333;
 }
-
+#partial{
+    height: 55%;
+}
+#partial-cont{
+    height: 100%;
+}
 #partialConfirmDialogue-header-BarPH{
     background:#d4f1f7;
 }
@@ -316,9 +318,6 @@
 #partialConfirmDialogue-header{
     box-shadow: 0 0 5px #333;
     overflow: visible;
-}
-#partialConfirm{
-    margin-top: 15%;
 }
 //Pop-up confirm delete
 .ClassOperationDetailPopUp{

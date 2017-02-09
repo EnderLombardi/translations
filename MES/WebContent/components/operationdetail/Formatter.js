@@ -216,39 +216,43 @@ airbus.mes.operationdetail.Formatter = {
     setIconTypeConfirmation : function(){
         var jsonModel = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
         var checkList = sap.ui.getCore().byId("confirmationCheckList").getItems();
-
-        $(checkList).each(function(i) {
-            var id = checkList[i].sId;
-            if(jsonModel[id] === true || jsonModel[id] === "true"){
-                sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://accept");
-            }else{
-                sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://decline");
-            }
-        });
+        if(jsonModel != undefined){
+            $(checkList).each(function(i) {
+                var id = checkList[i].sId;
+                if(jsonModel[id] === true || jsonModel[id] === "true"){
+                    sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://accept");
+                }else{
+                    sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://decline");
+                }
+            });
+        }
     },
     //Set dynamycly the SAP Icon color for user checklist
     setIconColor : function(){
+        var check = airbus.mes.operationdetail.Formatter.setIconTypeConfirmation();
         var checkList = sap.ui.getCore().byId("confirmationCheckList").getItems();
-        $(checkList).each(function(i) {
-            var id = checkList[i].sId;
-            var element = sap.ui.getCore().byId(id).getProperty("icon");
+        if(check != undefined){
+            $(checkList).each(function(i) {
+                var id = checkList[i].sId;
+                var element = sap.ui.getCore().byId(id).getProperty("icon");
 
-            if(element == "sap-icon://accept"){
-                sap.ui.getCore().byId(id)._image.setProperty("color", "green");
-            }else{
-                sap.ui.getCore().byId(id)._image.setProperty("color", "red");
-            }
+                if(element == "sap-icon://accept"){
+                    sap.ui.getCore().byId(id)._image.setProperty("color", "green");
+                }else{
+                    sap.ui.getCore().byId(id)._image.setProperty("color", "red");
+                }
 
-        });
+            });
+        }
     },
-    
+
     goToDisrptionVisibility: function(status){
-    	
-    	if(status == airbus.mes.operationdetail.Formatter.status.blocked)
-    		return true;
-    	else
-    		return false;
-    	
+
+        if(status == airbus.mes.operationdetail.Formatter.status.blocked)
+            return true;
+        else
+            return false;
+
     }
-    
+
 };

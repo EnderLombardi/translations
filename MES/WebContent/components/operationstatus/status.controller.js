@@ -210,13 +210,18 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             sap.ui.getCore().byId("pinForConfirmation").setVisible(true);
         }
         airbus.mes.operationdetail.ModelManager.getDataConfirmationCheckList();
-        airbus.mes.operationdetail.Formatter.setIconTypeConfirmation();
-        oView._oUserConfirmationDialog.open();
-        airbus.mes.operationdetail.Formatter.setIconColor();
-        sap.ui.getCore().byId("scanButtonEnd").setProperty("justifyContent", "End");
-        sap.ui.getCore().byId("partialConfirmForm").setProperty("justifyContent", "End");
-        oView._oUserConfirmationDialog.setProperty("contentWidth", "34%");
-        sap.ui.getCore().byId("confirmationCheckList").setVisible(true);
+        var jsonModel = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
+        if(jsonModel === undefined){
+            oView._oUserConfirmationDialog.open();
+            sap.ui.getCore().byId("confirmationCheckList").setVisible(false);
+        }else{
+            airbus.mes.operationdetail.Formatter.setIconTypeConfirmation();
+            oView._oUserConfirmationDialog.open();
+            airbus.mes.operationdetail.Formatter.setIconColor();
+            sap.ui.getCore().byId("scanButtonEnd").setProperty("justifyContent", "End");
+            sap.ui.getCore().byId("partialConfirmForm").setProperty("justifyContent", "End");
+            oView._oUserConfirmationDialog.setProperty("contentWidth", "34%");
+        }
         sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
         sap.ui.getCore().byId("UIDForConfirmation").setValue("");
         sap.ui.getCore().byId("badgeIDForConfirmation").setValue("");
