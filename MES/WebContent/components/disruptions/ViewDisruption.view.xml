@@ -190,7 +190,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{=${operationDisruptionsModel>ResolverName} == '' ? '-' : ${operationDisruptionsModel>ResolverName}">
+												<Text text="{=${operationDisruptionsModel>ResolverName} == '' ? '-' : ${operationDisruptionsModel>ResolverName}}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
