@@ -97,7 +97,7 @@ airbus.mes.operationdetail.ModelManager = {
             },
             success : function(result, status, xhr) {
                 if(result.Rowsets.Rowset === undefined){
-                    return airbus.mes.operationdetail.ModelManager.messageShow("No data returned", 5000);
+                    return;
                 }else{
                     getData = result.Rowsets.Rowset[0].Row[0];
                 }
