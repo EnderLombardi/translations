@@ -10,21 +10,21 @@
 			<Select id="stationComboBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 				selectedKey="" change="filterByStation"
-				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 			</Select>
 
 			<Select id="msnComboBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 				selectedKey="" change="filterByStation"
-				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
 			</Select>
 
 			<Select id="statusComboBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>selectStatus}" selectedKey=""
 				change="filterDisruptions"
-				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>status}" />
 				<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
 				<core:Item key="Acknowledged"
@@ -37,7 +37,7 @@
 			<Select id="resolutionGroupBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
 				selectedKey="" change="filterDisruptions"
-				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}"
 					text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
 			</Select>
