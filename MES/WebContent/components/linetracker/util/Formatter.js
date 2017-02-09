@@ -58,12 +58,22 @@ airbus.mes.linetracker.util.Formatter = {
 	 * BR: SD-PPC-LT-110 Load Airline Logo Model
 	 */
 	// TODO $TF, $Application_ID and $msn values to be changed
-	loadFlightLogo : function(msn) {
+	loadFlightLogo : function(station, msn) {
 		var that = this;
+		/*if(msn==="NA"){
+			sap.ui.getCore().byId("loadNextMSN").setText("No MSN Load");
+			sap.ui.getCore().byId("nextMsnImage").setVisible(false);
+			return;
+		}*/
 		// msn= msn.split("_")[0];//to remove the hand from msn
 		// var oViewModel = sap.ui.getCore().getModel("airlineLogoModel");
 		var url = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
-		url = url.replace("$TF", "V");
+		var oResult = airbus.mes.linetracker.util.ModelManager.getProgramForMsnStation(station, msn);
+		var sProgram;
+		if(oResult && oResult.program){
+			sProgram = oResult.program;
+		}
+		url = url.replace("$TF", sProgram);
 		url = url.replace("$Application_ID", "000000000030");
 		url = url.replace("$msn", msn);
 		jQuery.ajax({
@@ -213,10 +223,13 @@ airbus.mes.linetracker.util.Formatter = {
 
 		}
 
-		if (this.getId() === "nextMsnImage") { // /*status is msn here for last
-												// case*/
+		if (this.getId() === "nextMsnImage") { // /*status is msn here for last									// case*/
 			if (status !== "NA")
 				return true;
+			else{
+				//sap.ui.getCore().byId("loadNextMSN").setText(airbus.mes.linetracker.oView.getModel("i18n").getProperty("NoMSNToLoad"));
+				return false;
+			}
 
 		}
 

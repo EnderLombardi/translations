@@ -662,16 +662,16 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			text=this.getView().getModel("i18n").getProperty("undoActionText6");
 			sap.ui.getCore().byId("idUndoConfirm").setEnabled(false);
 		}
-		else if(!currentMsn && previousMsn && previousMsn!="NA")
+		else if(!currentMsn && previousMsn && previousMsn!="NA"){
 			text=text.replace("$paramCurrentMsn",previousMsn);
 		}
 		else{
 			text=text.replace("$paramCurrentMsn",currentMsn);
 			text=text.replace("$paramPreviousMsn",previousMsn);
-
 		}
 		sap.ui.getCore().byId("undoText").setText(text);
 		this.oUndoAction.open();
+	}
 	},
 	
 	

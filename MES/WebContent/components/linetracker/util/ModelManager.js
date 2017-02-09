@@ -465,11 +465,12 @@ airbus.mes.linetracker.util.ModelManager = {
 	 *  
 	 */
 	setProgramLineForStationMsn : function(station, msn) {
-		var arr = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
+		/*var arr = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
 		var result = arr.filter(function(o) {
 			return o.station == station && o.msn == msn;
 		});
 		result = result ? result[0] : null; // or undefined
+*/		var result = airbus.mes.linetracker.util.ModelManager.getProgramForMsnStation(station, msn);
 		airbus.mes.settings.ModelManager.program = result.program;
 		airbus.mes.settings.ModelManager.station = result.station;
 		airbus.mes.settings.ModelManager.msn = result.msn;
@@ -540,6 +541,13 @@ airbus.mes.linetracker.util.ModelManager = {
 		} 
 		sap.ui.getCore().getModel("statusActionModel").setData(data);
 		sap.ui.getCore().getModel("statusActionModel").refresh();
+	},
+	getProgramForMsnStation : function(station,msn){
+		var arr = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
+		var result = arr.filter(function(o) {
+			return o.station == station && o.msn == msn;
+		});
+		return result = result ? result[0] : null; // or undefined
 	}
 
 };
