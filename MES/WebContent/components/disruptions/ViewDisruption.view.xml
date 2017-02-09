@@ -60,7 +60,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{=${operationDisruptionsModel>CategoryClass} == '' ? '-' : ${operationDisruptionsModel>CategoryClass}}">
+												<Text text="{operationDisruptionsModel>CategoryClass}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
