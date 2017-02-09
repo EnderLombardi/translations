@@ -53,18 +53,32 @@
                 },
                 "Row": [
                     {
-                        "workInstruction": "SOI/123456789/P1/46FB167B401352F8DC91D267812F8599",
+                        "workInstruction": "AASOI/123456789/P1/46FB167B401352F8DC91D267812F8599",
                         "fileName" : "myForecast",
                         "revision": "A",
                         "descriptionWI": "Forecast of new project",
-                        "URL": "http://doc.content.airbus.corp/SOI/123456789/P1/myForecast.pdf"
+                        "URL": "http://doc.content.airbus.corp/AASOI/123456789/P1/myForecast.pdf"
                     },
                     {
-                        "workInstruction": "SOI/123123456/P1/46FB167B401352F8DC91D107812F8599",
+                        "workInstruction": "AASOI/123123456/P1/46FB167B401352F8DC91D107812F8599",
                         "fileName" : "myForecastv2",
                         "revision": "B",
                         "descriptionWI": "Forecast of new project",
-                        "URL": "http://doc.content.airbus.corp/SOI/123123456/P1/myForecastv2.pdf"
+                        "URL": "http://doc.content.airbus.corp/AASOI/123123456/P1/myForecastv2.pdf"
+                    },
+                    {
+                        "workInstruction": "AASOI/123123456/P1/46FB167B401352F8DC91D107812F8599",
+                        "fileName" : "myForecastv9",
+                        "revision": "X",
+                        "descriptionWI": "Forecast of new project",
+                        "URL": "http://doc.content.airbus.corp/AASOI/123123456/P1/myForecastv9.pdf"
+                    },
+                    {
+                        "workInstruction": "AASOI/123123456/P1/46FB167B401352F8DC91D107812F8599",
+                        "fileName" : "myForecastv2",
+                        "revision": "D",
+                        "descriptionWI": "Forecast of new project",
+                        "URL": "http://doc.content.airbus.corp/AASOI/123123456/P1/myForecastv2.pdf"
                     },
                     {
                         "workInstruction": "POC/9014599/M5/46FB167B401352F8DC91D265412F8599",
@@ -79,13 +93,6 @@
                         "revision": "C",
                         "descriptionWI": "Forecast of new project",
                         "URL": "http://doc.content.airbus.corp/POC/123010156/P1/SmallPOC.pdf"
-                    },
-                    {
-                        "workInstruction": "SOI/123123456/P1/46FB167B401352F8DC91D107812F8599",
-                        "fileName" : "myForecastv9",
-                        "revision": "X",
-                        "descriptionWI": "Forecast of new project",
-                        "URL": "http://doc.content.airbus.corp/SOI/123123456/P1/myForecastv9.pdf"
                     },
                     {
                         "workInstruction": "APDF/157898456/P2/10FB167B401352F8DC91D267812F8599",
@@ -103,7 +110,7 @@
                     },
                     {
                         "workInstruction": "AZIP/157898456/P2/78FB167B401352F8DC91D267812F8599",
-                        "fileName" : "thinkbroadbandMP3",
+                        "fileName" : "thinkbroadband",
                         "revision": "A",
                         "descriptionWI": "Small ZIP to test from thinkbroadband",
                         "URL": "http://ipv4.download.thinkbroadband.com/20MB.zip"

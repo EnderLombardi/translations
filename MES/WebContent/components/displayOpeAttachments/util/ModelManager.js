@@ -79,7 +79,8 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 			airbus.mes.displayOpeAttachments.util.Formatter.extractWorkinstruction(row);//create dokar, doknr & doktl using workInstruction
 			airbus.mes.displayOpeAttachments.util.Formatter.sortByDocType(row);//sort the documents by doc type
 			oViewModel.oData.Rowsets.Rowset[0].Row = airbus.mes.displayOpeAttachments.util.Formatter.addDocTypeHierarchy(row);//create a parent object by foc type
-			airbus.mes.displayOpeAttachments.util.Formatter.addDocTypesDescriptions(oViewModel.oData.Rowsets.Rowset[0].Row, docTypesRow);//create dokar, doknr & doktl using workInstruction
+			airbus.mes.displayOpeAttachments.util.Formatter.removeOldVersions(oViewModel.oData.Rowsets.Rowset[0].Row);
+			airbus.mes.displayOpeAttachments.util.Formatter.addDocTypesDescriptions(oViewModel.oData.Rowsets.Rowset[0].Row, docTypesRow);
 			oViewModel.refresh(true);//refresh the model (and so the view)
 		}
 	},
