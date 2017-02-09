@@ -50,7 +50,7 @@ airbus.mes.shell.AutoRefreshConfig = {
 		}
 	},
 
-	idLinetracker1 : {
+	idLinetracker : {
 		"timer" : undefined,
 		"useraction" : false,
 		"area" : function() {

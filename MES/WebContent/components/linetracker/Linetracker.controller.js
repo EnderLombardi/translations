@@ -178,7 +178,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.filterField(this.selectTree);
 		this.oEditStation.open();
 		var pressedBtnId = oEvent.getSource().sId;
-		if (pressedBtnId == "idLinetracker1--linetrackerAddStation") {
+		if (pressedBtnId == "idLinetracker--linetrackerAddStation") {
 
 			sap.ui.getCore().byId("editStation").setTitle(this.oView.getModel("i18n").getProperty("addStation"));
 			sap.ui.getCore().byId("editStation").setIcon("sap-icon://add");
@@ -305,12 +305,12 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * @Param {Object}:evt
 	 */
 	/*displayStationKPIHeader : function(evt) {
-		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();
+		var state = sap.ui.getCore().byId("idLinetracker--idSlideControl").getState();
 		if (state == true) {
-			sap.ui.getCore().byId("idLinetracker1--idSlideControl").closeNavigation();
+			sap.ui.getCore().byId("idLinetracker--idSlideControl").closeNavigation();
 
 		} else
-			sap.ui.getCore().byId("idLinetracker1--idSlideControl").openNavigation();
+			sap.ui.getCore().byId("idLinetracker--idSlideControl").openNavigation();
 
 		this.oPopover.close();
 
@@ -321,9 +321,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * @param evt
 	 */
 	/*hideKPISlide : function(evt) {
-		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();
+		var state = sap.ui.getCore().byId("idLinetracker--idSlideControl").getState();
 		if (state == true) {
-			sap.ui.getCore().byId("idLinetracker1--idSlideControl").closeNavigation();
+			sap.ui.getCore().byId("idLinetracker--idSlideControl").closeNavigation();
 
 		}
 	},*/

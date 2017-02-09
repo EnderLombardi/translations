@@ -65,7 +65,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 	             case "calendar" :
             	 	refreshConfigKey = "REFRESH_CALENDAR_TRACKER_"+airbus.mes.settings.ModelManager.station;
 	             	break;
-	             case "idLinetracker1" :
+	             case "idLinetracker" :
 	            	 refreshConfigKey = "REFRESH_LINE_TRACKER";
 	             default:
             	 

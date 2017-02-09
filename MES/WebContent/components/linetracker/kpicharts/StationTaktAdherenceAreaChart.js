@@ -20,10 +20,10 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.kpicharts.StationTaktAdherenc
 	},
 
 	renderer: function (oRm, oControl) {
-		if ($('#idLinetracker1--chartId').width()) {
+		if ($('#idLinetracker--chartId').width()) {
 			oRm.write("<svg ");
 			oRm.writeControlData(oControl);
-			oRm.write(" class='takt_adherence_area_chart' viewBox='0 0 " + $('#idLinetracker1--chartId').width() + " 119' perserveAspectRatio='xMinYMid'");
+			oRm.write(" class='takt_adherence_area_chart' viewBox='0 0 " + $('#idLinetracker--chartId').width() + " 119' perserveAspectRatio='xMinYMid'");
 			oRm.write(" />");
 		}
 	},
@@ -41,7 +41,7 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.kpicharts.StationTaktAdherenc
 			return { x: c.getX(), y: c.getY() }
 		}
 
-		var oCtrl = airbus.mes.stationtracker.oView.byId("idLinetracker1--station_takt_adherence_area_chart");
+		var oCtrl = airbus.mes.stationtracker.oView.byId("idLinetracker--station_takt_adherence_area_chart");
 		var data = oCtrl.getData().map(bindingToArray);
 		var realData = oCtrl.getRealData().map(bindingToArray);
 		var bDisplayCircles = true;
@@ -63,10 +63,10 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.kpicharts.StationTaktAdherenc
 			bDisplayCircles = false;
 		}
 
-		var chart = $("#idLinetracker1--chartId");
+		var chart = $("#idLinetracker--chartId");
 
 		$(window).on("resize", function () {
-			chart = $("#idLinetracker1--chartId");
+			chart = $("#idLinetracker--chartId");
 			contWidth = chart.width();
 			if (contWidth > 0) {
 				// var resize

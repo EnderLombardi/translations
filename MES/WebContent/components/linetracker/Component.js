@@ -29,7 +29,7 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
 		airbus.mes.linetracker.util.ModelManager.init(sap.ui.getCore());
 
 		this.oView = sap.ui.view({
-			id : "idLinetracker1",
+			id : "idLinetracker",
 			viewName : "airbus.mes.linetracker.Linetracker",
 			type : "XML"
 		});
@@ -70,5 +70,5 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
 		return airbus.mes.linetracker.oView;
 	}
 
-	sap.ui.getCore().byId("idLinetracker1--linetrackerTable").rerender();
+	sap.ui.getCore().byId("idLinetracker--linetrackerTable").rerender();
 };

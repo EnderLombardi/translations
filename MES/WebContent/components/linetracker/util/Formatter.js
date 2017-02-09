@@ -157,6 +157,11 @@ airbus.mes.linetracker.util.Formatter = {
 	 *            Icon
 	 */
 	getActionIcon : function(status) {
+		
+		if(status)
+		this.setTooltip(sap.ui.getCore().byId("idLinetracker").getModel("i18n").getProperty("tooltip_"+status));
+	
+		
 		if (status == "UN_LOADED" || status == "TO_BE_LOADED") {
 			return "sap-icon://border";
 		} else if (status == "COMPLETE") {
