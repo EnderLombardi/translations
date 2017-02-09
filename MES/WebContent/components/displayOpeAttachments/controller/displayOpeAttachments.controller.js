@@ -206,7 +206,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 		//if there are some documents undisplayed of the doc type collapsed, we need not to count them in elementsAvailableAfter
 		var numberOfDocsByType = treeTableArray[arrayIndex].nbOfDocs;
-		var elementsAvailableAfter = elementsAvailableAfter - (numberOfDocsByType - nbOfDocsDisplayed);
+		elementsAvailableAfter = elementsAvailableAfter - (numberOfDocsByType - nbOfDocsDisplayed);
 
 		//then we check if there is enough documents (if not there will be a rerender)
 		var gapAfter = nbOfDocsDisplayed - elementsAvailableAfter;

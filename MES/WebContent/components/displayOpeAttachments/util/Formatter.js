@@ -90,5 +90,17 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
         return newRow;
     },
 
+    addDocTypesDescriptions: function (row, docTypesRow) {
+        for (var i = 0; i < row.length; i++) {
+            var j = 0;
+            while (j!== docTypesRow.length && row[i].description === undefined) {
+                if (row[i].dokarOrDoknr.split(" ")[0] === docTypesRow[j].ERP_DOC_TYPE) {
+                    row[i].description = docTypesRow[j].Description_FR;
+                }
+                j++;
+            }
+        }
+    }
+
 };
 

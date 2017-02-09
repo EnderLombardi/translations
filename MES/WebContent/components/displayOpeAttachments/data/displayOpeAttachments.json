@@ -18,6 +18,14 @@
                             "MaxRange": 1
                         },
                         {
+                            "Name": "fileName",
+                            "SourceColumn": "fileName",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },                       
+                        {
                             "Name": "revision",
                             "SourceColumn": "revision",
                             "Description": "",
@@ -47,7 +55,6 @@
                     {
                         "workInstruction": "SOI/123456789/P1/46FB167B401352F8DC91D267812F8599",
                         "fileName" : "myForecast",
-                        "docTypeDescription": "Description of SOI",
                         "revision": "A",
                         "descriptionWI": "Forecast of new project",
                         "URL": "http://doc.content.airbus.corp/SOI/123456789/P1/myForecast.pdf"
@@ -55,7 +62,6 @@
                     {
                         "workInstruction": "SOI/123123456/P1/46FB167B401352F8DC91D107812F8599",
                         "fileName" : "myForecastv2",
-                        "docTypeDescription": "Description of SOI",
                         "revision": "B",
                         "descriptionWI": "Forecast of new project",
                         "URL": "http://doc.content.airbus.corp/SOI/123123456/P1/myForecastv2.pdf"
@@ -63,7 +69,6 @@
                     {
                         "workInstruction": "POC/9014599/M5/46FB167B401352F8DC91D265412F8599",
                         "fileName" : "SmallPOC",
-                        "docTypeDescription": "POC_description",
                         "revision": "E",
                         "descriptionWI": "A shift",
                         "URL": "http://doc.content.airbus.corp/POC/9014599/M5/SmallPOC.pdf"
@@ -71,7 +76,6 @@
                     {
                         "workInstruction": "POC/123010156/P1/46FB167B401352F8DC91D471812F8599",
                         "fileName" : "SmallPOC",
-                        "docTypeDescription": "POC_description",
                         "revision": "C",
                         "descriptionWI": "Forecast of new project",
                         "URL": "http://doc.content.airbus.corp/POC/123010156/P1/SmallPOC.pdf"
@@ -79,7 +83,6 @@
                     {
                         "workInstruction": "SOI/123123456/P1/46FB167B401352F8DC91D107812F8599",
                         "fileName" : "myForecastv9",
-                        "docTypeDescription": "Description of SOI",
                         "revision": "X",
                         "descriptionWI": "Forecast of new project",
                         "URL": "http://doc.content.airbus.corp/SOI/123123456/P1/myForecastv9.pdf"
@@ -87,7 +90,6 @@
                     {
                         "workInstruction": "APDF/157898456/P2/10FB167B401352F8DC91D267812F8599",
                         "fileName" : "OrimiPdftest",
-                        "docTypeDescription": "APDF files are PDF.",
                         "revision": "B",
                         "descriptionWI": "Basic PDF to test",
                         "URL": "http://www.orimi.com/pdf-test.pdf"
@@ -95,7 +97,6 @@
                     {
                         "workInstruction": "POC/123123456/P1/14FB167B401352F8DC91D267812F8599",
                         "fileName" : "SmallPOC",
-                        "docTypeDescription": "POC_description",
                         "revision": "B",
                         "descriptionWI": "Forecast of new project",
                         "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
@@ -103,7 +104,6 @@
                     {
                         "workInstruction": "AZIP/157898456/P2/78FB167B401352F8DC91D267812F8599",
                         "fileName" : "thinkbroadbandMP3",
-                        "docTypeDescription": "ZIP files",
                         "revision": "A",
                         "descriptionWI": "Small ZIP to test from thinkbroadband",
                         "URL": "http://ipv4.download.thinkbroadband.com/20MB.zip"
@@ -111,7 +111,6 @@
                     {
                         "workInstruction": "POC/901234599/M5/86FB167B401352F8DC91D267812F8599",
                         "fileName" : "SmallPOC",
-                        "docTypeDescription": "POC_description",
                         "revision": "A",
                         "descriptionWI": "A shift",
                         "URL": "http://doc.content.airbus.corp/POC/901234599/M5/SmallPOC.pdf"
@@ -119,7 +118,6 @@
                     {
                         "workInstruction": "POC/123123456/P1/46AB167B401352F8DC91D267812F8599",
                         "fileName" : "SmallPOC",
-                        "docTypeDescription": "POC_description",
                         "revision": "I",
                         "descriptionWI": "It's a small poc",
                         "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
@@ -127,7 +125,6 @@
                     {
                         "workInstruction": "POC/123123456/P1/46ZB167B401352F8DC91D267812F8599",
                         "fileName" : "SmallPOC",
-                        "docTypeDescription": "POC_description",
                         "revision": "J",
                         "descriptionWI": "It's a small poc",
                         "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
@@ -135,7 +132,6 @@
                     {
                         "workInstruction": "POC/123123456/P1/46ZE167B401352F8DC91D267812F8599",
                         "fileName" : "SmallPOC",
-                        "docTypeDescription": "POC_description",
                         "revision": "K",
                         "descriptionWI": "It's a small poc",
                         "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
@@ -143,7 +139,6 @@
                     {
                         "workInstruction": "POC/123123456/P1/46EB167B401352F8DC91D267812F8599",
                         "fileName" : "SmallPOC",
-                        "docTypeDescription": "POC_description",
                         "revision": "L",
                         "descriptionWI": "It's a small poc",
                         "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
@@ -151,7 +146,6 @@
                     {
                         "workInstruction": "POC/123123456/P1/46RB167B401352F8DC91D267812F8599",
                         "fileName" : "SmallPOC",
-                        "docTypeDescription": "POC_description",
                         "revision": "M",
                         "descriptionWI": "It's a small poc",
                         "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
@@ -159,7 +153,6 @@
                     {
                         "workInstruction": "POD/901234599/M5/46TB167B401352F8DC91D267812F8599",
                         "fileName" : "SmallPOC",
-                        "docTypeDescription": "POD_description",
                         "revision": "A",
                         "descriptionWI": "A shift",
                         "URL": "http://doc.content.airbus.corp/POD/901234599/M5/SmallPOC.pdf"
@@ -167,7 +160,6 @@
                     {
                         "workInstruction": "AAUDIO/901234599/M5/46YB167B401352F8DC91D267812F8599",
                         "fileName" : "Sample audio",
-                        "docTypeDescription": "MP3 files",
                         "revision": "P",
                         "descriptionWI": "MP3 sample from All things audio",
                         "URL": "https://allthingsaudio.wikispaces.com/file/view/05%20Piano_Work_02.mp3/504710292/05%20Piano_Work_02.mp3"
@@ -175,7 +167,6 @@
                     {
                         "workInstruction": "TAOW/457823456/M5/46FU167B401352F8DC91D267812F8599",
                         "fileName" : "myTab",
-                        "docTypeDescription": "TAOW : description",
                         "revision": "A",
                         "descriptionWI": "Tab",
                         "URL": "http://doc.content.airbus.corp/TAOW/457823456/M5/myTab.pdf"
@@ -183,7 +174,6 @@
                     {
                         "workInstruction": "APIC/157898456/P2/46FB067B401352V1DC91D267812F8599",
                         "fileName" : "Snake river jpg",
-                        "docTypeDescription": "Pictures",
                         "revision": "B",
                         "descriptionWI": "Snake river picture",
                         "URL": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg"

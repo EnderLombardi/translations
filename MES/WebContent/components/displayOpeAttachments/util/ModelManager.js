@@ -14,7 +14,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 
 	init: function (core) {
 
-		var aModel = ["getOpeAttachments"];
+		var aModel = ["getOpeAttachments", "getDocumentExtensions", "getDocumentTypes"];
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
 		// Handle URL Model
@@ -53,20 +53,26 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	//request + loadData + formatter on response + model refresh
 	loadDOADetail: function () {
 		var oViewModel = airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments");
+		var oViewModelDocTypes = airbus.mes.displayOpeAttachments.oView.getModel("getDocumentTypes");
+		var paramArray;
 
+		sessionStorage.loginType = "local";
 		if (sessionStorage.loginType !== "local") {
-			var paramArray = this.getLoadDOAParam();
+			paramArray = this.getLoadDOAParam();
 		} else {
-			var paramArray = [];
+			paramArray = [];
 		}
-		
+
+		oViewModelDocTypes.loadData(this.getDocumentTypes(paramArray), null, false);
 		oViewModel.loadData(this.getDOADetail(paramArray), null, false);
 
 		if (oViewModel.oData.Rowsets && oViewModel.oData.Rowsets.Rowset && oViewModel.oData.Rowsets.Rowset[0].Row) {
 			var row = oViewModel.oData.Rowsets.Rowset[0].Row;
+			var docTypesRow = oViewModelDocTypes.oData.Rowsets.Rowset[0].Row;
 			airbus.mes.displayOpeAttachments.util.Formatter.extractWorkinstruction(row);//create dokar, doknr & doktl using workInstruction
 			airbus.mes.displayOpeAttachments.util.Formatter.sortByDocType(row);//sort the documents by doc type
 			oViewModel.oData.Rowsets.Rowset[0].Row = airbus.mes.displayOpeAttachments.util.Formatter.addDocTypeHierarchy(row);//create a parent object by foc type
+			airbus.mes.displayOpeAttachments.util.Formatter.addDocTypesDescriptions(oViewModel.oData.Rowsets.Rowset[0].Row, docTypesRow);//create dokar, doknr & doktl using workInstruction
 			oViewModel.refresh(true);//refresh the model (and so the view)
 		}
 	},
@@ -134,5 +140,13 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		document.url = url;
 		return document;
 	},
+
+	//////////////////////////////////////////////////////
+
+	//replace the url with the several parameters needed
+	getDocumentTypes: function () {
+		var url = this.urlModel.getProperty("getDocumentTypesDescriptions");
+		return url;
+	}
 
 };

@@ -1,0 +1,98 @@
+{
+    "Rowsets": {
+        "DateCreated": "2017-01-19T17:38:56",
+        "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+        "StartDate": "2016-11-17T16:38:56+0100",
+        "EndDate": "2016-11-17T17:38:56+0100",
+        "CachedTime": "",
+        "Rowset": [
+            {
+                "Columns": {
+                    "Column": [
+                        {
+                            "Name": "Site",
+                            "SourceColumn": "Site",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "ERP_DOC_TYPE",
+                            "SourceColumn": "ERP_DOC_TYPE",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "Description_FR",
+                            "SourceColumn": "Description_FR",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "Description_DE",
+                            "SourceColumn": "Description_DE",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },                        {
+                            "Name": "Description_EN",
+                            "SourceColumn": "Description_EN",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "Description_ES",
+                            "SourceColumn": "Description_ES",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        }
+                    ]
+                },
+                "Row": [
+                    {
+                        "Site":"SNZ1",
+                        "ERP_DOC_TYPE":"APIC",
+                        "Description_FR":"Une image",
+                        "Description_DE":"Ein bild",
+                        "Description_EN":"A picture",
+                        "Description_ES":"Una imagen"
+                    },
+                    {
+                        "Site":"SNZ1",
+                        "ERP_DOC_TYPE":"AAUDIO",
+                        "Description_FR":"Un fichier audio",
+                        "Description_DE":"Eine Audiodatei",
+                        "Description_EN":"An audio file",
+                        "Description_ES":"Un archivo de audio"
+                    },
+                    {
+                        "Site":"SNZ1",
+                        "ERP_DOC_TYPE":"AZIP",
+                        "Description_FR":"Un fichier zip",
+                        "Description_DE":"Eine Zip-Datei",
+                        "Description_EN":"A zip file",
+                        "Description_ES":"Un archivo zip"
+                    },
+                    {
+                        "Site":"SNZ1",
+                        "ERP_DOC_TYPE":"APDF",
+                        "Description_FR":"Un fichier PDF",
+                        "Description_DE":"Eine PDF-Datei",
+                        "Description_EN":"A PDF file",
+                        "Description_ES":"Un archivo PDF"
+                    }
+                ]
+            }
+        ]
+    }
+}
