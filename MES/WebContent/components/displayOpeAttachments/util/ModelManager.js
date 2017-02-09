@@ -56,19 +56,26 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		var oViewModelDocTypes = airbus.mes.displayOpeAttachments.oView.getModel("getDocumentTypes");
 		var paramArray;
 
-		sessionStorage.loginType = "local";
+		//used to fix bad loginType with localhost
+		//sessionStorage.loginType = "dmi";
+
 		if (sessionStorage.loginType !== "local") {
 			paramArray = this.getLoadDOAParam();
 		} else {
 			paramArray = [];
 		}
 
-		oViewModelDocTypes.loadData(this.getDocumentTypes(paramArray), null, false);
+		//oViewModelDocTypes.loadData(this.getDocumentTypes(), null, false);
 		oViewModel.loadData(this.getDOADetail(paramArray), null, false);
 
 		if (oViewModel.oData.Rowsets && oViewModel.oData.Rowsets.Rowset && oViewModel.oData.Rowsets.Rowset[0].Row) {
 			var row = oViewModel.oData.Rowsets.Rowset[0].Row;
-			var docTypesRow = oViewModelDocTypes.oData.Rowsets.Rowset[0].Row;
+			var docTypesRow;
+
+			if (oViewModelDocTypes.oData.Rowsets){//if data from getDocumentTypes
+				docTypesRow = oViewModelDocTypes.oData.Rowsets.Rowset[0].Row;
+			}
+
 			airbus.mes.displayOpeAttachments.util.Formatter.extractWorkinstruction(row);//create dokar, doknr & doktl using workInstruction
 			airbus.mes.displayOpeAttachments.util.Formatter.sortByDocType(row);//sort the documents by doc type
 			oViewModel.oData.Rowsets.Rowset[0].Row = airbus.mes.displayOpeAttachments.util.Formatter.addDocTypeHierarchy(row);//create a parent object by foc type
@@ -92,6 +99,8 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 				url = this.replaceURI(url, "$RouterBO", paramArray[3]);
 				url = this.replaceURI(url, "$RouterStepBO", paramArray[4]);
 			} else if (set === "P") {
+				url = this.replaceURI(url, "$RouterBO", "");
+				url = this.replaceURI(url, "$RouterStepBO", "");
 			}
 		} else {//LOCAL
 			//operation or work order

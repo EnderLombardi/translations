@@ -91,34 +91,35 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
     },
 
     addDocTypesDescriptions: function (row, docTypesRow) {
-        for (var i = 0; i < row.length; i++) {
-            var j = 0;
+        if (docTypesRow) {
+            for (var i = 0; i < row.length; i++) {
+                var j = 0;
 
-            var langage = sap.ui.getCore().getConfiguration().getLanguage();
-            while (j !== docTypesRow.length && row[i].description === undefined) {
-                if (row[i].dokarOrDoknr.split(" ")[0] === docTypesRow[j].ERP_DOC_TYPE) {
-                    switch (langage) {
-                        case "en":
-                            row[i].description = docTypesRow[j].Description_EN;
-                            break;
-                        case "fr":
-                            row[i].description = docTypesRow[j].Description_FR;
-                            break;
-                        case "de":
-                            row[i].description = docTypesRow[j].Description_DE;
-                            break;
-                        case "es":
-                            row[i].description = docTypesRow[j].Description_ES;
-                            break;
-                        default://english
-                            row[i].description = docTypesRow[j].Description_EN;
-                            break;
+                var langage = sap.ui.getCore().getConfiguration().getLanguage();
+                while (j !== docTypesRow.length && row[i].description === undefined) {
+                    if (row[i].dokarOrDoknr.split(" ")[0] === docTypesRow[j].ERP_DOC_TYPE) {
+                        switch (langage) {
+                            case "en":
+                                row[i].description = docTypesRow[j].Description_EN;
+                                break;
+                            case "fr":
+                                row[i].description = docTypesRow[j].Description_FR;
+                                break;
+                            case "de":
+                                row[i].description = docTypesRow[j].Description_DE;
+                                break;
+                            case "es":
+                                row[i].description = docTypesRow[j].Description_ES;
+                                break;
+                            default://english
+                                row[i].description = docTypesRow[j].Description_EN;
+                                break;
+                        }
                     }
+                    j++;
                 }
-                j++;
             }
         }
     }
-
 };
 

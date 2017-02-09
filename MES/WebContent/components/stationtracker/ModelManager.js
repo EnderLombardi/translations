@@ -16,7 +16,7 @@ airbus.mes.stationtracker.ModelManager = {
        stationInProgress: {
            ShopOrderBO: undefined,
            RouterStepBO: undefined,
-           ErpElement: undefined
+           ERP_SYSTEM: undefined
        },
 
 //     parameters from the settings component

@@ -1219,35 +1219,6 @@ STATION TRACKER TOOLBAR
 
 #stationTrackerView--toolbarstationtracker {
   background-color: #d5f1f8 !important; }
-<<<<<<< Upstream, based on origin/MESv1.5
-  #stationTrackerView--toolbarstationtracker label {
-    color: #0D5D76;
-    padding: 0 0 0 0.625rem; }
-  #stationTrackerView--toolbarstationtracker .comboBoxStyle label,
-  #stationTrackerView--toolbarstationtracker .comboBoxStyle .sapMSltArrow {
-    background-color: transparent;
-    color: #0D5D76;
-    height: 3rem;
-    line-height: 3rem;
-    border-right: 1px solid #8db9ca; }
-  #stationTrackerView--toolbarstationtracker .comboBoxStyle.sapMSltPressed .sapMSltArrow {
-    background-color: #74D2E7; }
-  #stationTrackerView--toolbarstationtracker .sapMBtnIconLeft,
-  #stationTrackerView--toolbarstationtracker .sapMBtnContent {
-    color: #0D5D76; }
-  #stationTrackerView--toolbarstationtracker .sapMBtn:hover:not(.sapMBtnDisabled) {
-    background-color: rgba(0, 86, 112, 0.2); }
-    #stationTrackerView--toolbarstationtracker .sapMBtn:hover:not(.sapMBtnDisabled) > .sapMBtnTransparent.sapMBtnHoverable {
-      background-color: transparent; }
-  #stationTrackerView--toolbarstationtracker .sapMSlt {
-    border: none; }
-  #stationTrackerView--toolbarstationtracker .circle {
-    color: #fe5000;
-    margin-left: 1rem;
-    padding: 5px;
-    border: 1px solid #fe5000;
-    -webkit-border-radius: 90px; }
-=======
 #stationTrackerView--toolbarstationtracker label {
   color: #0D5D76;
   padding: 0 0 0 0.625rem; }
@@ -1275,7 +1246,6 @@ STATION TRACKER TOOLBAR
   padding: 5px;
   border: 1px solid #fe5000;
   -webkit-border-radius: 90px; }
->>>>>>> 8433d79 [stationHandover]  inWork
 
 .sapMPopoverScroll .sapMSelectListItemBaseSelected {
   background-color: #d5f1f8 !important; }
@@ -6611,11 +6581,6 @@ DATE PICKER
   padding-top: 8px;
   padding-left: inherit; }
 
-#doaPopup-scrollCont > div.sapMFlexBox {
-  justify-content: center; }
-#doaPopup-scrollCont > div.sapMFlexBox > div {
-  margin: 0 10px; }
-
 #ncdisplayView--ncDisplay.ncDisplayTable {
   width: 95% !important;
   margin: 0 auto;
@@ -6777,17 +6742,27 @@ DATE PICKER
   width: 95% !important;
   margin: 20px auto;
   padding: 0; }
-#spliterWorkTracker--splitWorTra.splitWorTra > table > thead > tr > th {
-  border-bottom: 1px solid black; }
 #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody tr:nth-child(even) {
   background: transparent; }
 #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody tr:nth-child(odd) {
   background: transparent; }
 #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody tr:hover {
   background-color: #ffffff; }
+#spliterWorkTracker--splitWorTra.splitWorTra > table > tbody > tr {
+  padding-left: 12px; }
 #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody > tr > td {
   text-align: left !important;
-  border-bottom: 1p solid #f7f7f7; }
+  border: none; }
+#spliterWorkTracker--splitWorTra.splitWorTra > table > tbody > tr > td:first-child {
+  padding-left: 1.5rem; }
+#spliterWorkTracker--splitWorTra.splitWorTra > table > tbody > tr .work-tracker-delay-time {
+  font-size: 0.7rem;
+  color: #e4002b;
+  padding-left: 6px; }
+#spliterWorkTracker--splitWorTra.splitWorTra > table > tbody .sapMGHLITitle {
+  color: #0085ad;
+  font-weight: 500;
+  text-decoration-line: none; }
 
 #stationHandoverView--kpiHeaderToolbar .comboStationHandover {
   color: #F5F5F5;
@@ -7145,58 +7120,6 @@ DISRUPTIONTRACKER
 #disruptionDetailView {
   overflow: auto;
   background-color: #E9EEF3; }
-<<<<<<< Upstream, based on origin/MESv1.5
-  #disruptionDetailView .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox {
-    background-color: #E9EEF3; }
-  #disruptionDetailView .sapUiFormTitle {
-    background-color: transparent; }
-  #disruptionDetailView .sapUiFormM .sapUiFormContainerTitle > .sapUiFormTitle {
-    height: 2rem;
-    line-height: 2rem; }
-  #disruptionDetailView .sapMSlt > .sapMSltLabel,
-  #disruptionDetailView .sapMSlt, #disruptionDetailView .sapMSltArrow {
-    line-height: 2.5rem;
-    height: 2.5rem; }
-  #disruptionDetailView .sapUiFormContainerTitle {
-    background-color: #E9EEF3; }
-  #disruptionDetailView .sapUiFormResGrid.sapUiFormBackgrTranslucent > div {
-    background-color: #E9EEF3; }
-  #disruptionDetailView .titleToolbar {
-    background-color: rgba(191, 198, 206, 0.59); }
-  #disruptionDetailView .sapUiForm .sapUiFormTitle {
-    font-weight: bold;
-    line-height: 4rem; }
-  #disruptionDetailView .sapMFlexItem .textSize:nth-child(1) {
-    font-weight: bold;
-    color: black; }
-  #disruptionDetailView .attachmentIcon {
-    margin-top: 0.5rem !important;
-    z-index: 2 !important;
-    Position: absolute !important;
-    right: 1rem !important; }
-  #disruptionDetailView .setMinWidth {
-    min-width: 200px !important; }
-  #disruptionDetailView .pageSubHeader {
-    background: #0f2d65 !important;
-    border-top: 0.6rem solid #ffffff !important; }
-  #disruptionDetailView .GenricBgColor {
-    background-color: #FFFFFF !important; }
-  #disruptionDetailView .ylabelUserImage {
-    width: 4rem !important;
-    height: 3rem !important;
-    line-height: 30px;
-    vertical-align: middle;
-    font-size: 16px;
-    text-align: center;
-    color: #0D5D76;
-    background-color: #D5F1F8;
-    border-radius: 688px;
-    margin-right: 0.8125rem; }
-  #disruptionDetailView .btnRadius {
-    right: -3rem !important; }
-    #disruptionDetailView .btnRadius > .sapMBtnInner {
-      border-radius: 211px; }
-=======
 #disruptionDetailView .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox {
   background-color: #E9EEF3; }
 #disruptionDetailView .sapUiFormTitle {
@@ -7243,10 +7166,9 @@ DISRUPTIONTRACKER
   border-radius: 688px;
   margin-right: 0.8125rem; }
 #disruptionDetailView .btnRadius {
-  right: -6rem !important; }
+  right: -3rem !important; }
 #disruptionDetailView .btnRadius > .sapMBtnInner {
   border-radius: 211px; }
->>>>>>> 8433d79 [stationHandover]  inWork
 
 .trackingTemplateButton .sapMBtnInner.sapMBtnText.sapMBtnIconFirst, .trackingTemplateButton .sapMBtnInner.sapMBtnText.sapMBtnBack {
   border: none;
@@ -7529,5 +7451,10 @@ For Page title in headers
 label.headerText {
   color: #74d2e7 !important;
   text-shadow: none !important; }
+
+#doaPopup-scrollCont > div.sapMFlexBox {
+  justify-content: center; }
+#doaPopup-scrollCont > div.sapMFlexBox > div {
+  margin: 0 10px; }
 
 /*# sourceMappingURL=global.css.map */

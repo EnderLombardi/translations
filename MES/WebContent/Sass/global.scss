@@ -464,3 +464,16 @@ label.headerText {
     text-shadow: none !important;
 }
 
+
+////////////////////////////
+//DOCUMENT POP-UP
+///////////////////////////	
+
+#doaPopup-scrollCont {
+	>div.sapMFlexBox {
+		justify-content: center;
+		>div {
+			margin:0 10px;
+		}
+	}
+}
