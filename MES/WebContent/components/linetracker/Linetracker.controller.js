@@ -654,7 +654,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		sap.ui.getCore().byId("idUndoConfirm").setEnabled(true);
 		var text=this.getView().getModel("i18n").getProperty(undoText);
 		if(text!=undefined){			
-		if(previousMsn=="NA" && currentMsn){
+		if(previousMsn=="NA" && currentMsn && undoStatus!=="COMPLETE" && undoStatus!=="IN_PROGRESS"){
 			text=this.getView().getModel("i18n").getProperty("undoActionText5");
 			text=text.replace("$paramCurrentMsn",currentMsn);
 		}

@@ -238,6 +238,24 @@ airbus.mes.linetracker.util.Formatter = {
 
 		}
 
-	}
+	},
+	forcastEndDate : function(completionTime,actualEndTime){
+		if(!completionTime || completionTime==="NA"){
+			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(actualEndTime);
+		}
+		else{
+			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(completionTime);
+		}
+	},
+	dateToStringFormat : function(sDate) {
+		// Date send by MII are UTC date
+		var oDate = new Date(sDate);
+		var oFormat = sap.ui.core.format.DateFormat.getInstance({
+			UTC : true,
+			pattern : "dd MMM yyyy - HH:mm",
+			calendarType : sap.ui.core.CalendarType.Gregorian
+		});
+		return oFormat.format(oDate)
+	},
 
 }
