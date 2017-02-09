@@ -1105,6 +1105,14 @@ STATION TRACKER TOOLBAR
    .sapMSlt{
    	border :none ;
    }
+    
+    .circle {
+            color: $blood-orange;
+            margin-left: 1rem;
+            padding: 5px;
+            border: 1px solid $blood-orange;
+             -webkit-border-radius: 90px;
+        }
 }
 .sapMPopoverScroll{
     .sapMSelectListItemBaseSelected{

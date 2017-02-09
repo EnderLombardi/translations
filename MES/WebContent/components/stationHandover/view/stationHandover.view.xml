@@ -19,7 +19,7 @@
 						<m:Label text="{stationHandoverI18n>stationHandover}" id="headerText"
 							class="headerText sapUiSmallMarginBeginEnd" />
 
-						<m:Select id="selectStationHandover" class="comboStationHandover"
+						<m:Select id="selectStationHandover" visible="false" class="comboStationHandover"
 							change="changeShift"
 							items="{ path : 'msnModel>/' , sorter : {
             path : 'text' , descending : 'false'            
@@ -27,7 +27,7 @@
 							<core:Item key="{selectMSN>key}" text="{TrackerShift>shiftName}" />
 						</m:Select>
 						<m:Select id="selectMsnHandover" class="comboStationHandover"
-							change="changeShift" items="{ path : 'msnModel>/' }">
+							change="changeShift" items="{ path : 'msnModel>/' }" visible="false">
 							<core:Item key="{msnModel>key}" text="{msnModel>msn}" />
 
 						</m:Select>
@@ -45,7 +45,7 @@
 								text="{path:'groupModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
 						</m:Select>
 						<m:Button id="typeHandOver" press="openFilterType" text="{stationHandoverI18n>typeOfWo}"></m:Button>
-						<m:Button id="originHandOver" press="openFilterStation" text="{stationHandoverI18n>typeOfWo}"></m:Button>
+						<m:Button id="originHandOver" press="openFilterStation" text="{stationHandoverI18n>originStation}"></m:Button>
 						<m:ToolbarSpacer />
 
 						<m:CheckBox text="{stationHandoverI18n>ShowOpwithNoTime}"

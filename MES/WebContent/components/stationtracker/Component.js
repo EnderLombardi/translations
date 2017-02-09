@@ -8,6 +8,7 @@ jQuery.sap.require("airbus.mes.stationtracker.ShiftManager");
 jQuery.sap.require("airbus.mes.stationtracker.ModelManager");
 jQuery.sap.require("airbus.mes.stationtracker.GraphManager");
 jQuery.sap.require("airbus.mes.stationtracker.customProgressIndicator");
+jQuery.sap.require("airbus.mes.stationtracker.customButton");
 
 jQuery.sap.require("airbus.mes.dhtmlx.dhtmlxscheduler");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_limit");
