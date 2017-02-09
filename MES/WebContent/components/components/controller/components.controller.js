@@ -289,6 +289,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
                 dataIndex.fitted = tableValFitt;
             }
             airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
+
+            airbus.mes.components.util.Formatter.convertJsontoXml( airbus.mes.components.util.ModelManager.dataSaveJson);
         }
     },
     onbtnComponentsFreeze: function(oEvent){
