@@ -522,7 +522,10 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         oView._reasonCodeDialog.close();
     },
 
-    
+    /***********************************************************
+     * set Buttons on the screen according to status
+     *
+     **********************************************************/
     setProgressScreenBtn : function(actionBtnStatus, activateBtnStatus, confirmBtnStatus) {
         sap.ui.getCore().byId("operationDetailPopup--btnPause").setVisible(actionBtnStatus);
         sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(actionBtnStatus);
@@ -572,72 +575,4 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
 
     }
 
-//    /**
-//     * Used to know if an operation is started/paused/notStarted/complete
-//     * and Display button to pause/confirm/complete/activate
-//     *
-//     */
-//    operationIsActive : function() {
-//
-//        var aModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-//        var sPreviousStarted = aModel.previously_start;
-//        var sStatus = aModel.realStatus;
-//        var sPaused = aModel.paused;
-//
-//
-////        // Operation is started
-////        if ( sPreviousStarted === "true" ) {
-////            this.setProgressScreenBtn( true, false, true );
-////        }
-////
-////        // Operation is paused
-////        if ( sPaused === "---" && sPreviousStarted === "true" ) {
-////            this.setProgressScreenBtn( false, true, false );
-////        }
-////
-////        // Operation is not started
-////        if (  sPreviousStarted === "false" ) {
-////            this.setProgressScreenBtn( false, true, false );
-////        }
-//
-//        switch    (sPreviousStarted) {
-//
-//        case "true":
-//
-//            switch    (sPaused) {
-//
-//            case "---":
-//                // Operation is paused
-//                this.setProgressScreenBtn( false, true, false );
-//                break;
-//
-//            default :
-//                // Operation is started
-//                this.setProgressScreenBtn( true, false, true );
-//                break;
-//            }
-//
-//            break;
-//        case "false":
-//
-//            this.setProgressScreenBtn( false, false, false );
-//            break;
-//        default :
-//
-//
-//            break;
-//        }
-//
-//        // Operation is complete
-//        if ( sStatus === "0" ) {
-//            //No action available on complete status
-//            this.setProgressScreenBtn( false, false, false );
-//        }
-//
-//        // Operation is blocked
-//        if ( sStatus === "4" ||  sStatus === "5" ) {
-//            //No action available on complete status
-//            this.setProgressScreenBtn( false, false, true );
-//        }
-//    }
 });
