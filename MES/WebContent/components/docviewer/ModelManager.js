@@ -46,7 +46,14 @@ airbus.mes.docviewer.ModelManager = {
             /*custom: JSON.stringify({
             	'save' :  airbus.mes.docviewer.ModelManager.save,
             	'close': airbus.mes.docviewer.ModelManager.onCloseFunction}),*/
-            enableAnnotations: true,
+            enableAnnotations: function(){
+    	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_DIS_ANNOTATE_DOC === true ){
+            	return true;
+            	} else { 
+            	return false;
+           	} 
+            },
+
             streaming: false,
             useDownloader: false
         }, oViewerElement);
