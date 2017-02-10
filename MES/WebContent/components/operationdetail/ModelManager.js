@@ -11,7 +11,7 @@ airbus.mes.operationdetail.ModelManager = {
         'image': undefined
     },
     badgeReader: undefined,
-    statusCheckBoxReasonCode: false,
+    statusCheckBoxReasonCode: "",
     durationNeededForCalc: undefined,
     jsonConfirmationCheckList: undefined,
     brOnMessageCallBack:function (data) {},
@@ -123,7 +123,7 @@ airbus.mes.operationdetail.ModelManager = {
      * Get URL for Operation Confirmation
      **************************************************************************/
     getConfirmationUrl: function (userId, password, confirmationType,
-        percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, osw) {
+            percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, osw, statusReasonCode, erpSystem) {
         var totalPartialConfirmationUrl = this.urlModel
             .getProperty("operationConfirmatonUrl");
         totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
@@ -147,14 +147,18 @@ airbus.mes.operationdetail.ModelManager = {
             totalPartialConfirmationUrl, "$pin", pin);
         totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
             totalPartialConfirmationUrl, "$osw", osw);
+        totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "$statusReasonCode", statusReasonCode);
+        totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "$erpSystem", erpSystem);
 
         return totalPartialConfirmationUrl;
 
     },
 
 
-    confirmOperation: function (userId, password, confirmationType, percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, sMessageError, sMessageSuccess, osw) {
-        var url = this.getConfirmationUrl(userId, password, confirmationType, percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, osw);
+    confirmOperation: function (userId, password, confirmationType, percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, sMessageError, sMessageSuccess, osw, statusReasonCode, erpSystem) {
+        var url = this.getConfirmationUrl(userId, password, confirmationType, percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, osw, statusReasonCode, erpSystem);
         var flagSuccess;
         jQuery
             .ajax({
