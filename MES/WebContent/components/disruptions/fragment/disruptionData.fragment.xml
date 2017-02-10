@@ -41,6 +41,14 @@
 						<core:Item text="{DisruptionDetailModel>/OriginatorName}" />
 					</items>
 				</Select>
+				<Label text="{i18nModel>issuerGroup}" />
+				<Select id="selectOriginator" selectedKey="" forceSelection="false"
+					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}">
+					<items>
+						<core:Item text="{disruptionCategoryModel>group_desc}"
+							key="{disruptionCategoryModel>group_name}" />
+					</items>
+				</Select>
 
 
 
@@ -72,15 +80,16 @@
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
 				</TimePicker>
-
-				<Label text="{i18nModel>issuerGroup}" />
-				<Select id="selectOriginator" selectedKey="" forceSelection="false"
-					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}">
+				<Label text="{i18nModel>resGroup}" />
+				<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
+					change="onSelectionChange" forceSelection="false">
 					<items>
-						<core:Item text="{disruptionCategoryModel>group_desc}"
-							key="{disruptionCategoryModel>group_name}" />
+						<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
+							key="{disruptionRsnRespGrp>ResponsibleGroup}" />
 					</items>
 				</Select>
+
+				
 
 
 
@@ -101,14 +110,10 @@
 					tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
 					enabled="false">
 				</MultiInput>
-				<Label text="{i18nModel>resGroup}" />
-				<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
-					change="onSelectionChange" forceSelection="false">
-					<items>
-						<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
-							key="{disruptionRsnRespGrp>ResponsibleGroup}" />
-					</items>
-				</Select>
+				<Label text="{i18nModel>TimeLost}" />
+				<Input placeholder="" id="timeLost" type="Number" value=""
+					enabled="false">
+				</Input>
 
 
 
@@ -128,10 +133,7 @@
 				<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
 					tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange"
 					enabled="false" />
-				<Label text="{i18nModel>TimeLost}" />
-				<Input placeholder="" id="timeLost" type="Number" value=""
-					enabled="false">
-				</Input>
+				
 
 
 			</f:content>
@@ -218,16 +220,7 @@
 			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
 			emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
 			<f:content>
-				<HBox justifyContent="End" class="attachmentIcon">
-					<core:Icon src="sap-icon://attachment" width="1rem"
-						class="sapUiSmallMarginEnd" />
-					<core:Icon src="sap-icon://camera" width="1rem" />
-				</HBox>
-				<TextArea width="100%" height="100%" id="comment">
-					<layoutData>
-						<l:GridData span="L12 M12 S12" />
-					</layoutData>
-				</TextArea>
+
 				<!-- this handle will be hidden in the UI -->
 				<Select id="handle" selectedKey="" forceSelection="false"
 					items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
@@ -249,27 +242,37 @@
 			emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
 			<f:content>
 				<VBox>
+					<HBox justifyContent="End" class="attachmentIcon">
+						<core:Icon src="sap-icon://attachment" width="1rem"
+							class="sapUiSmallMarginEnd" />
+						<core:Icon src="sap-icon://camera" width="1rem" />
+					</HBox>
+					<TextArea width="100%" height="100%" id="comment">
+						<layoutData>
+							<l:GridData span="L12 M12 S12" />
+						</layoutData>
+					</TextArea>
 
-					<Panel id="commentBox" visible="false">
+					<!-- <Panel id="commentBox" visible="false"> -->
 
-						<VBox>
-							<TextArea id="commentArea" placeholder="{i18nModel>addComment}"
-								width="100%" />
+					<!-- <VBox> -->
+					<!-- <TextArea id="commentArea" placeholder="{i18nModel>addComment}" -->
+					<!-- width="100%" /> -->
 
-							<HBox>
-								<Button text="{i18nModel>submitComment}" type="Accept"
-									press="submitComment" class="sapUiSmallMarginEnd buttonAccept"
-									width="12rem" />
+					<!-- <HBox> -->
+					<!-- <Button text="{i18nModel>submitComment}" type="Accept" -->
+					<!-- press="submitComment" class="sapUiSmallMarginEnd buttonAccept" -->
+					<!-- width="12rem" /> -->
 
-								<Button text="{i18nModel>cancel}" type="Reject" press="hideCommentBox"
-									class="sapUiSmallMarginEnd buttonReject" width="12rem" />
-							</HBox>
+					<!-- <Button text="{i18nModel>cancel}" type="Reject" press="hideCommentBox" -->
+					<!-- class="sapUiSmallMarginEnd buttonReject" width="12rem" /> -->
+					<!-- </HBox> -->
 
-						</VBox>
+					<!-- </VBox> -->
 
-					</Panel>
-					<List showNoData="false" class="sapUiSmallMarginBeginEnd sapUiMediumMarginTopBottom"
-						items="{path: 'DisruptionDetailModel>/comments'}">
+					<!-- </Panel> -->
+					<List showNoData="false"
+						class="sapUiSmallMarginBeginEnd sapUiMediumMarginTopBottom" items="{path: 'DisruptionDetailModel>/comments'}">
 
 						<CustomListItem>
 							<HBox
@@ -280,9 +283,9 @@
 									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 									<Text
 										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>/comments/0/Action'}, {path: 'DisruptionDetailModel>/comments/0/Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
-										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
-										<Text
-											text="{i18nModel>date/time} : {path: 'DisruptionDetailModel>/comments/0/Date'}"></Text>
+									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+									<Text
+										text="{i18nModel>date/time} : {path: 'DisruptionDetailModel>/comments/0/Date'}"></Text>
 								</items>
 							</HBox>
 
