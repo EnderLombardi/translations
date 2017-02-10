@@ -672,11 +672,12 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.5" : dateTime
 			},
 			error : function(xhr, status, error) {
-
-				airbus.mes.disruptions.__enterAckCommentDialogue.setBusy(false);
-
+				if(!airbus.mes.disruptions.func.isSupportTeamViaDestop()){
+					airbus.mes.disruptions.__enterAckCommentDialogue.setBusy(false);
+				}
+				var oView = airbus.mes.disruptions.func.getView();
 				var i18nModel = 
-					airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel");
+					oView.getModel("i18nModel");
 
 				var sMessageError = i18nModel.getProperty("tryAgain");
 
@@ -684,17 +685,18 @@ airbus.mes.disruptions.ModelManager = {
 
 			},
 			success : function(result, status, xhr) {
-
+				if(!airbus.mes.disruptions.func.isSupportTeamViaDestop()){
 				airbus.mes.disruptions.__enterAckCommentDialogue.setBusy(false);
 				airbus.mes.disruptions.__enterAckCommentDialogue.close();
+				}
 				
 				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined
 						&& result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
 					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 
 				} else { // Success
-
-					var i18nModel = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel");
+					var oView = airbus.mes.disruptions.func.getView();
+					var i18nModel = oView.getModel("i18nModel");
 					var sMessageSuccess = i18nModel.getProperty("successfulAcknowledge");
 					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
 
