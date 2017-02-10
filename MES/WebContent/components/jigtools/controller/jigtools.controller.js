@@ -71,6 +71,7 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("items").filter();
 				break;
 			default:
+				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("items").filter(new sap.ui.model.Filter("routerStep", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].routerStepBo));
 				break;
 		}
 	}
