@@ -26,6 +26,7 @@
     "gulp-clean": "^0.3.2",
     "gulp-connect": "5.0.0",
     "gulp-if": "^2.0.2",
+    "gulp-livereload": "^3.8.1",
     "gulp-open": "2.0.0",
     "gulp-pretty-data": "^0.1.1",
     "gulp-rename": "^1.2.2",

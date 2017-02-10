@@ -246,7 +246,7 @@ gulp.task('styles', function () {
 	var sass = require('gulp-sass');
 
 	gulp.src('WebContent/Sass/**/*.scss')
-		.pipe(sass({outputStyle: 'compact'}).on('error', sass.logError))
+		.pipe(sass({ outputStyle: 'compact' }).on('error', sass.logError))
 		.pipe(gulp.dest('WebContent/Sass/'))
 });
 
@@ -292,10 +292,16 @@ gulp.task('serve', function (callback) {
 
 
 gulp.task('watch', false, function () {
+	var livereload = require('gulp-livereload');
+
+	livereload.listen();
 	gulp.watch(
 		'WebContent/Sass/**/*.scss',
 		['styles']
 	);
+	gulp.watch('WebContent/Sass/*.css', function(file){
+      livereload.changed(file)
+  });
 });
 
 //--------------------------------------------------------------------------------------------------------------------------//
