@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+
+	<Dialog id="insertOSW" class="pageHeaderDialog classWorklistPopover oswPopover"
+		verticalScrolling="false" title="{stationHandoverI18n>nameInsertOsw}">
+		<content>
+			<VBox>
+				<Select class="comboStationHandover" items="{ path : 'optionInsertOsw>/' }">
+							<core:Item key="{optionInsertOsw>key}" 	text="{path:'optionInsertOsw>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
+				</Select>
+
+				<u:Calendar id="calendar" select="handleCalendarSelect"
+					class="center" />
+		
+				<TimePicker id="TimePicker" valueFormat="hh:mm a" displayFormat="hh:mm a"
+					change="handleChange" placeholder="Enter daily task deadline"
+					class="center" />
+			</VBox>
+		</content>
+
+		<buttons>
+			<Button text="{stationHandoverI18n>Close}" icon="sap-icon://decline"
+				press="onClose" />
+		</buttons>
+	</Dialog>
+
+</core:FragmentDefinition>

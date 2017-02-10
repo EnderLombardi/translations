@@ -4,11 +4,11 @@
 		contentWidth="auto" contentHeight="auto" offsetY="5px" offsetX="5px"
 		class="MyproductionGroupPopover" afterClose="filterStation">
 
-		<List id="typeFilter" items="{ path : 'oswModel>/row/' }" mode="MultiSelect"
+		<List id="typeFilter" items="{ path : 'phStation>/' }" mode="MultiSelect"
 			includeItemInSelection="true" selectionChange="onSelectionChange">
 			<items>
-				<StandardListItem class="stationFilter" key="{oswModel>ORIGIN_STATION}"
-					title="{oswModel>ORIGIN_STATION}" iconDensityAware="false"
+				<StandardListItem class="stationFilter" key="{phStation>station}"
+					title="{phStation>stationDescription}  {phStation>Takt_Start}" iconDensityAware="false"
 					iconInset="false" />
 			</items>
 

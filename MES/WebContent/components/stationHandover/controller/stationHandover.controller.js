@@ -169,13 +169,12 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	        
 			if (airbus.mes.stationHandover.stationFilter === undefined) {
 	            
-				var sIndice = airbus.mes.stationHandover.util.ModelManager.Indice;
-				
 	            airbus.mes.stationHandover.stationFilter  = sap.ui.xmlfragment("stationFilter", "airbus.mes.stationHandover.fragments.stationFilter", airbus.mes.stationHandover.oView.getController());
 	            airbus.mes.stationHandover.stationFilter.addStyleClass("alignTextLeft");
 	            oView.addDependent(airbus.mes.stationHandover.stationFilter);
 	            //As a default, the physical station with the biggest planned start date/time should be selected.
-	            airbus.mes.stationHandover.stationFilter.getContent()[0].getItems()[sIndice].setSelected(true);
+	            var fNumberItems =  airbus.mes.stationHandover.stationFilter.getContent()[0].getItems().length;
+	            airbus.mes.stationHandover.stationFilter.getContent()[0].getItems()[fNumberItems-1].setSelected(true);
    
 				}
 			
@@ -190,31 +189,17 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	filterStation : function(oEvt) {
 		
 		var aPath = oEvt.getSource().getContent()[0].getSelectedContextPaths()
-		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel");
+		var oModel = airbus.mes.stationHandover.oView.getModel("phStation");
 		
-		//airbus.mes.stationHandover.util.ModelManager.filter.station = undefined;
 		airbus.mes.stationHandover.util.ModelManager.filter.aStation = [];
 		
 		aPath.forEach(function(el){
 			
-			var sKey = oModel.getProperty(el).ORIGIN_STATION;
+			var sKey = oModel.getProperty(el).station;
 			airbus.mes.stationHandover.util.ModelManager.filter.aStation.push(sKey.toUpperCase());
 			
 		});
-		
-//		airbus.mes.stationHandover.util.ModelManager.filter.station = new sap.ui.model.Filter({ 
-//			path :  "ORIGIN_STATION",
-//			test : function(oValue){
-//				
-//				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
-//					
-//					return true;
-//			} else {
-//				
-//				return false;
-//			}
-//		}});
-			
+					
 		this.applyMyFilter();
 		
 	},
@@ -228,7 +213,6 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var aPath = oEvt.getSource().getContent()[0].getSelectedContextPaths()
 		var oModel = airbus.mes.stationHandover.oView.getModel("typeModel");
 		
-		//airbus.mes.stationHandover.util.ModelManager.filter.type = undefined;
 		airbus.mes.stationHandover.util.ModelManager.filter.aType = [];
 		
 		aPath.forEach(function(el){
@@ -237,20 +221,6 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			airbus.mes.stationHandover.util.ModelManager.filter.aType.push(sKey.toUpperCase());
 			
 		});
-		
-//		airbus.mes.stationHandover.util.ModelManager.filter.type = new sap.ui.model.Filter({ 
-//			path :  "TYPE",
-//			test : function(oValue){
-//				
-//				if ( airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1 ){
-//					
-//					return true;
-//			} else {
-//				
-//				return false;
-//			}
-//		}});
-//		
 		
 		this.applyMyFilter();
 		
@@ -362,7 +332,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 				if (el != "open") {
 
 					aValueSelected[oModel.WOID][el].open = sValue;
-
+				
 				}
 
 			})
@@ -378,6 +348,55 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true);
 		airbus.mes.stationHandover.util.ModelManager.applyAll = undefined;
 
+	},
+	/***************************************************************************
+	 * trigger when the user Click on insert button check if one or more line are selected
+	 * and display the insert osw pop up
+	 * 
+	 **************************************************************************/
+	onPressInsert: function() {
+		
+//		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
+		var bIsSelected = false;
+		var aRows = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getRows();
+		var aSelectionPath = [];
+		
+		// Parse all Selected line in Table and store Path in array to user when we will saved the OSW to import
+		aRows.forEach(function(el,indice){
+		
+			if ( el.getCells()[0].getSelected() && el.getCells()[0].getEnabled() )
+			
+				aSelectionPath.push(el.getCells()[0].oPropagatedProperties.oBindingContexts.oswModel.sPath);
+			
+		})
+		// Display a dialog to inform if at least one osw is selected or not
+		if ( aSelectionPath.length === 0 ) {
+			jQuery.sap.require("sap.m.MessageBox");
+			
+			sap.m.MessageBox.warning(airbus.mes.stationHandover.oView.getModel("stationHandoverI18n").getProperty("errorSelection"),{
+				
+				
+			});
+			return;			
+		}
+		
+		if (airbus.mes.stationHandover.insertOsw === undefined) {
+            
+            airbus.mes.stationHandover.insertOsw  = sap.ui.xmlfragment("insertOsw", "airbus.mes.stationHandover.fragments.insertOsw", airbus.mes.stationHandover.oView.getController());
+            airbus.mes.stationHandover.oView.addDependent(airbus.mes.stationHandover.insertOsw);
+          
+		}
+		
+		airbus.mes.stationHandover.insertOsw.open();
+		sap.ui.getCore().byId("insertOsw--TimePicker").setDateValue(new Date());
+	},
+	/***************************************************************************
+	 * trigger when the user click on the close button of the dialog
+	 **************************************************************************/
+	onClose : function(oEvt) {
+		
+		oEvt.getSource().getParent().close();
+		
 	}
 
 });
