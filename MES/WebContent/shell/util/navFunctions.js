@@ -433,6 +433,7 @@ airbus.mes.shell.util.navFunctions = {
 		
 		sap.ui.getCore().getModel("DisruptionDetailModel").setData(oData);
 		airbus.mes.disruptions.oView.disruptionDetail.getModel("DisruptionDetailModel").setData(oData);
+		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
 
 		// Load data from back-end services - Call load data function in Edit Mode
 		airbus.mes.disruptions.ModelManager.loadData("Edit");

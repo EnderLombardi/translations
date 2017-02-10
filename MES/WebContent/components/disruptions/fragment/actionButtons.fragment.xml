@@ -41,12 +41,12 @@
 			</Button>
 
 
-			<Button text="{i18nModel>edit}" type="Emphasized" press="onEditDisruption" width="70%"
+			<!-- <Button text="{i18nModel>edit}" type="Emphasized" press="onEditDisruption" width="70%"
 				class="btnRadius" enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_EDIT}">
 				<layoutData>
 					<l:GridData span="L12 M12 S12" />
 				</layoutData>
-			</Button>
+			</Button> -->
 		</f:content>
 	</f:SimpleForm>
 </core:FragmentDefinition> 
