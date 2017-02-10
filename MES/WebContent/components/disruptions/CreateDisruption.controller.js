@@ -37,7 +37,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
        },
 
        // *******************on change of item in the ComboBox
-       // *******************
+
        onSelectionChange : function(oEvt) {
               var id = oEvt.getSource().getId().split("--")[1];
 
@@ -553,7 +553,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
               this.getView().byId("timeLost").setEnabled(false);
               this.getView().byId("materials").setEnabled(false);
               this.getView().byId("jigtools").setEnabled(false);
-              this.getView().byId("selectResolver").setEnabled(false); // +V1.5
+              //this.getView().byId("selectResolver").setEnabled(false); // +V1.5
        },
 
        originatorGroupSettings : function() {
