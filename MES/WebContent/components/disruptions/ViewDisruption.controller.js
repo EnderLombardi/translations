@@ -87,26 +87,26 @@ sap.ui
                                                 
                                                 var oFilters = [];
                                                 
-                                                oFilters.push([ new sap.ui.model.Filter("MessageRef", "EQ", messageRef) ]);
-                                                
-                                                
-                                                
                                                 if(nav.getCurrentPage().getId() == "stationTrackerView"){
                                                 	var firstRowFlag = true;
-                                                	oFilters.push(new sap.ui.model.Filter({
-                                                        test: function () {
-                                                            if (firstRowFlag){
-                                                            	firstRowFlag = false;
-                                                                return true;
-                                                            }
-                                                            return false;
-                                                        }
-                                                    }));
+                                                	oBinding.filter(new sap.ui.model.Filter({
+                                                			path: "MessageRef",
+                                                			test: function (sValue) {
+                                                				if (firstRowFlag && sValue == messageRef.toUpperCase()){
+                                                					firstRowFlag = false;
+                                                					return true;
+                                                				}
+                                                				return false;
+                                                			}
+                                                		})
+                                                	);
+                                                } else{
+                                                	oBinding.filter(new sap.ui.model.Filter("MessageRef", "EQ", messageRef));
                                                 }
                                                 
                                                 
                                                 // Apply Filters                                                
-                                                oBindings.filter(oFilters);
+                                                //oBindings.filter(oFilters);
                                                 
                                                 // Hide Comment Box every time on data re-load
                                                 oItem.getContent()[0].getContent()[4].setVisible(false);
@@ -693,13 +693,15 @@ sap.ui
                                          var listnum = path.split("-");
                                          listnum = listnum[listnum.length - 1];
 
-                                         var sComment = airbus.mes.disruptions.Formatter.actions.comment +
-                                                                 this.getView().byId(this.getView().sId + "--commentArea-"
+                                         var sComment = this.getView().byId(this.getView().sId + "--commentArea-"
                                                                             + this.getView().sId + "--disrptlist-"
                                                                             + listnum).getValue();
                                          
                                          if(!sComment.length || sComment.length<1)
                                                 return;
+                                         
+                                         sComment = airbus.mes.disruptions.Formatter.actions.comment + sComment;
+                                         
 
                                          var msgRef = oEvt.getSource().getBindingContext(
                                                        "operationDisruptionsModel").getObject(
@@ -1025,8 +1027,28 @@ sap.ui
                                          this.getView().oParent.to(airbus.mes.disruptions.oView.createDisruption.getId());
 
                                   },
-                                  
 
+                                  /***********************************************************
+                                  * Load previsous messages to the selected disruption
+                                  */
+                                  seeMoreMesssages: function(oEvt){
+                                	  var sId = oEvt.getSource().sId;
+
+                                      var listNum = sId.split("-");
+                                      listNum = listNum[listNum.length - 1];
+
+                                      var oCommentList = this.getView().byId("messageComments-"
+                                    	  		   + this.getView().sId + "--disrptlist-" + listNum);
+                                      var oBinding = oCommentList.getBinding("items");
+                                      
+                                      // Show all comments to the current disruption
+                                      var messageRef = oEvt.getSource().getCustomData()[0].getValue();
+                                      oBinding.filter(new sap.ui.model.Filter("MessageRef", "EQ", messageRef));
+                                      
+                                      // TODO: if DN doesnt agrre to end dsiruptions in descending order then apply costom logic here.
+                                      this.getView().getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[listNum].prevCommentsLoaded = "true";
+                                      this.getView().getModel("operationDisruptionsModel").refresh();
+                                  },
                                   
                                   /***********************************************************
                                   * Open Attachment linked to a disruptions

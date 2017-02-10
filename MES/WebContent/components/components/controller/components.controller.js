@@ -253,7 +253,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var inputVal = oEvent.getSource().getValue();
         var dataJson = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row;
         var index = oEvent.getSource().oParent.oParent.getIndex();
-        if(inputVal >= 0 && inputVal <= dataJson[index].requiredQty){
+        var compareWith = dataJson[index].requiredQty;
+        var intIndex = parseInt(inputVal);
+        var intcompareWith = parseInt(compareWith);
+        if(intIndex >= 0 && intIndex <= intcompareWith){
             oEvent.getSource().setValue(inputVal);
         }else{
             oEvent.getSource().setValue(0);
@@ -266,7 +269,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var inputVal = oEvent.getSource().getValue();
         var dataJson = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row;
         var index = oEvent.getSource().oParent.oParent.getIndex();
-        if(inputVal >= 0 && inputVal <= dataJson[index].requiredQty){
+        var compareWith = dataJson[index].requiredQty;
+        var intIndex = parseInt(inputVal);
+        var intcompareWith = parseInt(compareWith);
+        if(intIndex >= 0 && intIndex <= intcompareWith){
             oEvent.getSource().setValue(inputVal);
         }else{
             oEvent.getSource().setValue(0);

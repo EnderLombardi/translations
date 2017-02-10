@@ -1,5 +1,6 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	controllerName="airbus.mes.disruptions.ViewDisruption" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page enableScrolling="false" showHeader="false">
 		<content>
@@ -60,7 +61,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{operationDisruptionsModel>CategoryClass}">
+												<Text text="{=${operationDisruptionsModel>CategoryClass} === '' ? '-' : ${operationDisruptionsModel>CategoryClass}}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -190,7 +191,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{=${operationDisruptionsModel>ResolverName} == '' ? '-' : ${operationDisruptionsModel>ResolverName}}">
+												<Text text="{=${operationDisruptionsModel>ResolverName} === '' || ${operationDisruptionsModel>ResolverName} === ' ' ? '-' : ${operationDisruptionsModel>ResolverName}}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -245,7 +246,7 @@
 											<f:fields>
 
 												<Text
-													text="{operationDisruptionsModel>PromisedDateTime}">
+													text="{=${operationDisruptionsModel>PromisedDateTime} === '' ? '-' : ${operationDisruptionsModel>PromisedDateTime}}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -376,10 +377,10 @@
 								class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
 						</VBox>
 						
-						<Button text="{i18nModel>seeMoreMessages}" icon="sap-icon://email" press="viewMoreMesssages"
-							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
+						<Button text="{i18nModel>seeMoreMessages}" icon="sap-icon://email" press="seeMoreMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}"
+							cData:messageRef="{operationDisruptionsModel>MessageRef}" design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
 
-						<List showNoData="false" class="sapUiSmallMarginBeginEnd"
+						<List id="messageComments" showNoData="false" class="sapUiSmallMarginBeginEnd"
 							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
 
 							<CustomListItem class="msgColor">
@@ -444,7 +445,7 @@
 								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRejectButtonVisibility'}"
 								press="onRejectDisruption" design="Transparent"/>
 								
-							<Button id="escalateBtn" text="{i18nModel>escalate}" type="Reject"
+							<Button id="escalateBtn" text="{i18nModel>escalate}" type="Reject" enabled= "{Profile>/identifiedUser/permissions/STATION_DRILL_ESCALATE}"
 								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>EscalationLevel'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEscalateButtonVisibility'}"
 								press="onEscalateDisruption" design="Transparent"/>
 

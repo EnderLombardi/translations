@@ -67,14 +67,14 @@ airbus.mes.shell.RoleManager = {
 	 */
 	fetchFunctionnalFeatures: function() {
 		var roleModel = airbus.mes.shell.ModelManager.getRolesForSite();
-		var roleTable = jQuery.sap.getObject("Rowsets.Rowset.0.Row", undefined, roleModel) || [];
+		var roleTable = jQuery.sap.getObject("data", undefined, roleModel) || [];
 		
 		function collectRoles(col, rec) {
-			col[rec.Feature] = col[rec.Feature] || { positiveRoles: { funcRoles: [], techRoles: [] },
+			col[rec.feature] = col[rec.feature] || { positiveRoles: { funcRoles: [], techRoles: [] },
 													 negativeRoles: { funcRoles: [], techRoles: [] } };
-			var attr = rec.Roles[0] == '!' ? 'negativeRoles' : 'positiveRoles';
-			var role = rec.Roles[0] == '!' ? rec.Roles.substring(1) : rec.Roles;
-			col[rec.Feature][attr].funcRoles.push(role);
+			var attr = rec.roles[0] == '!' ? 'negativeRoles' : 'positiveRoles';
+			var role = rec.roles[0] == '!' ? rec.roles.substring(1) : rec.roles;
+			col[rec.feature][attr].funcRoles.push(role);
 			return col;
 		}
 		

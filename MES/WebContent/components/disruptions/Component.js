@@ -3,6 +3,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 jQuery.sap.require("airbus.mes.disruptions.Formatter");
+jQuery.sap.require("airbus.mes.disruptions.func");
 jQuery.sap.require("airbus.mes.disruptions.AttachmentManager");
 
 

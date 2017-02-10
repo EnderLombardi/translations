@@ -110,6 +110,8 @@
                                value="{componentsWorkOrderDetail>committed}"
                                width="{width}"
                                enabled="true"
+                               max=""
+                               min=""
                                editable="true"
                                change="committedLiveChange"/>
                    </HBox>
@@ -125,6 +127,8 @@
                                    value="{componentsWorkOrderDetail>fitted}"
                                    width="{width}"
                                    enabled="true"
+                                   max=""
+                                   min=""
                                    editable="true"
                                    change="fittedLiveChange"/>
                     </HBox>

@@ -115,6 +115,11 @@ airbus.mes.shell.ModelManager = {
 	            async : false,
 	            url : this.urlModel.getProperty('urlgetrolesfromsite'), 
 	            type : 'POST',
+	            contentType : 'application/json',
+				data : JSON.stringify({
+					"site" : "FNZ1",
+					"lang" : "en"
+				}),
 	        });
 	        return rep.responseJSON;
 	        

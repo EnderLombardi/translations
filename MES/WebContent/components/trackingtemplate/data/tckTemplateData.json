@@ -1,156 +1,195 @@
 {
     "Rowsets": {
-        "DateCreated": "2016-11-17T17:38:56",
+        "DateCreated": "2017-02-09T14:59:11",
         "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
-        "StartDate": "2016-11-17T16:38:56+0100",
-        "EndDate": "2016-11-17T17:38:56+0100",
+        "StartDate": "2017-02-09T13:59:11+0100",
+        "EndDate": "2017-02-09T14:59:11+0100",
         "CachedTime": "",
-        "Rowset": [{
-            "Columns": {
-                "Column": [{
-                    "Name": "user",
-                    "SourceColumn": "user",
-                    "Description": "",
-                    "SQLDataType": 1,
-                    "MinRange": 1,
-                    "MaxRange": 1
-                }, {
-                    "Name": "firstName",
-                    "SourceColumn": "firstName",
-                    "Description": "",
-                    "SQLDataType": 1,
-                    "MinRange": 1,
-                    "MaxRange": 1
-                }, {
-                    "Name": "lastName",
-                    "SourceColumn": "lastName",
-                    "Description": "",
-                    "SQLDataType": 1,
-                    "MinRange": 1,
-                    "MaxRange": 1
-                }, {
-                    "Name": "picture",
-                    "SourceColumn": "picture",
-                    "Description": "",
-                    "SQLDataType": 1,
-                    "MinRange": 1,
-                    "MaxRange": 1
-                }, {
-                    "Name": "avlLine",
-                    "SourceColumn": "avlLine",
-                    "Description": "",
-                    "SQLDataType": 1,
-                    "MinRange": 1,
-                    "MaxRange": 1
-                }, {
-                    "Name": "shiftName",
-                    "SourceColumn": "shiftName",
-                    "Description": "",
-                    "SQLDataType": 1,
-                    "MinRange": 1,
-                    "MaxRange": 1
-                }, {
-                    "Name": "shiftID",
-                    "SourceColumn": "shiftID",
-                    "Description": "",
-                    "SQLDataType": 1,
-                    "MinRange": 1,
-                    "MaxRange": 1
-                }, {
-                    "Name": "day",
-                    "SourceColumn": "day",
-                    "Description": "",
-                    "SQLDataType": 1,
-                    "MinRange": 1,
-                    "MaxRange": 1
-                }, {
-                    "Name": "warn",
-                    "SourceColumn": "warn",
-                    "Description": "",
-                    "SQLDataType": 1,
-                    "MinRange": 1,
-                    "MaxRange": 1
-                }, {
-                    "Name": "skills",
-                    "SourceColumn": "skills",
-                    "Description": "",
-                    "SQLDataType": 1,
-                    "MinRange": 1,
-                    "MaxRange": 1
-                }]
-            },
-            "Row": [
-                {
-                    "status": "Open",
-                    "type": "NC",
-                    "referenceNumber": "0 - -857",
-                    "title": "Essie",
-                    "idOpe": "0020"
+        "Rowset": [
+            {
+                "Columns": {
+                    "Column": [
+                        {
+                            "Name": "ACTIVITY",
+                            "SourceColumn": "ACTIVITY",
+                            "Description": "ACTIVITY",
+                            "SQLDataType": -9,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "COMMENTS",
+                            "SourceColumn": "COMMENTS",
+                            "Description": "COMMENTS",
+                            "SQLDataType": 2011,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "COMMENT_TYPE",
+                            "SourceColumn": "COMMENT_TYPE",
+                            "Description": "COMMENT_TYPE",
+                            "SQLDataType": -9,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "CONTEXT_GBO",
+                            "SourceColumn": "CONTEXT_GBO",
+                            "Description": "CONTEXT_GBO",
+                            "SQLDataType": -9,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "CREATED_DATE_TIME",
+                            "SourceColumn": "CREATED_DATE_TIME",
+                            "Description": "CREATED_DATE_TIME",
+                            "SQLDataType": 93,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "HANDLE",
+                            "SourceColumn": "HANDLE",
+                            "Description": "HANDLE",
+                            "SQLDataType": -9,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "MODIFIED_DATE_TIME",
+                            "SourceColumn": "MODIFIED_DATE_TIME",
+                            "Description": "MODIFIED_DATE_TIME",
+                            "SQLDataType": 93,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "PRODUCTION_CONTEXT_GBO",
+                            "SourceColumn": "PRODUCTION_CONTEXT_GBO",
+                            "Description": "PRODUCTION_CONTEXT_GBO",
+                            "SQLDataType": -9,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "REASON_CODE_BO",
+                            "SourceColumn": "REASON_CODE_BO",
+                            "Description": "REASON_CODE_BO",
+                            "SQLDataType": -9,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "SEQUENCE",
+                            "SourceColumn": "SEQUENCE",
+                            "Description": "SEQUENCE",
+                            "SQLDataType": 2,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "SITE",
+                            "SourceColumn": "SITE",
+                            "Description": "SITE",
+                            "SQLDataType": -9,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "STATE",
+                            "SourceColumn": "STATE",
+                            "Description": "STATE",
+                            "SQLDataType": -9,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "TXN_ID",
+                            "SourceColumn": "TXN_ID",
+                            "Description": "TXN_ID",
+                            "SQLDataType": -9,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        },
+                        {
+                            "Name": "USER_BO",
+                            "SourceColumn": "USER_BO",
+                            "Description": "USER_BO",
+                            "SQLDataType": -9,
+                            "MinRange": 1.0,
+                            "MaxRange": 1.0
+                        }
+                    ]
                 },
-                {
-                    "status": "Open",
-                    "type": "NC",
-                    "referenceNumber": "5987 - 11117",
-                    "title": "Jean",
-                    "idOpe": "0054"
-                },
-                {
-                    "status": "Open",
-                    "type": "NC",
-                    "referenceNumber": "11974 - 23091",
-                    "title": "Yang",
-                    "idOpe": "0020"
-                },
-                {
-                    "status": "Open",
-                    "type": "DQN",
-                    "referenceNumber": "17961 - 35065",
-                    "title": "Gabrielle",
-                    "idOpe": "5462"
-                },
-                {
-                    "status": "Open",
-                    "type": "IR",
-                    "referenceNumber": "23948 - 47039",
-                    "title": "Manning",
-                    "idOpe": "0065"
-                },
-                {
-                    "status": "Closed",
-                    "type": "IR",
-                    "referenceNumber": "29935 - 59013",
-                    "title": "Becker",
-                    "idOpe": "0020"
-                },
-                {
-                    "status": "Closed",
-                    "type": "NC",
-                    "referenceNumber": "35922 - 70987",
-                    "title": "Logan",
-                    "idOpe": "0016"
-                },
-                {
-                    "status": "Closed",
-                    "type": "IR",
-                    "referenceNumber": "41909 - 82961",
-                    "title": "Roy",
-                    "idOpe": "0016"
-                },
-                {
-                    "status": "Open",
-                    "type": "WO",
-                    "referenceNumber": "47896 - 94935",
-                    "title": "Dickerson",
-                    "idOpe": 16
-                },
-                {
-                    "status": "Open",
-                    "type": "IR",
-                    "referenceNumber": "53883 - 106909",
-                    "title": "Natalia",
-                    "idOpe": 16
-                }
-            ]
-        }]
+                "Row": [
+                    {
+                        "ACTIVITY": "EXTERNAL",
+                        "COMMENTS": "0000-test",
+                        "COMMENT_TYPE": "C",
+                        "CONTEXT_GBO": "ShopOrderBO:FNZ1,11016229",
+                        "CREATED_DATE_TIME": "12/13/2016 09:10:16",
+                        "HANDLE": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,0",
+                        "MODIFIED_DATE_TIME": "12/13/2016 09:10:16",
+                        "PRODUCTION_CONTEXT_GBO": "---",
+                        "REASON_CODE_BO": "ReasonCodeBO:FNZ1,0000,C",
+                        "SEQUENCE": 0.00,
+                        "SITE": "FNZ1",
+                        "STATE": "---",
+                        "TXN_ID": "19544234553436636-2c62c87:158f42f86e1:-2b0c",
+                        "USER_BO": "UserBO:FNZ1,MESYS"
+                    },
+                    {
+                        "ACTIVITY": "EXTERNAL",
+                        "COMMENTS": "0000-test",
+                        "COMMENT_TYPE": "C",
+                        "CONTEXT_GBO": "ShopOrderBO:FNZ1,11016229",
+                        "CREATED_DATE_TIME": "12/13/2016 10:09:28",
+                        "HANDLE": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,1",
+                        "MODIFIED_DATE_TIME": "12/13/2016 10:09:28",
+                        "PRODUCTION_CONTEXT_GBO": "---",
+                        "REASON_CODE_BO": "ReasonCodeBO:FNZ1,0000,C",
+                        "SEQUENCE": 1.00,
+                        "SITE": "FNZ1",
+                        "STATE": "---",
+                        "TXN_ID": "1813431033442835-2c62c87:158f42f86e1:-116d",
+                        "USER_BO": "UserBO:FNZ1,MESYS"
+                    },
+                    {
+                        "ACTIVITY": "EXTERNAL",
+                        "COMMENTS": "0000-test",
+                        "COMMENT_TYPE": "C",
+                        "CONTEXT_GBO": "ShopOrderBO:FNZ1,11016229",
+                        "CREATED_DATE_TIME": "12/13/2016 10:12:38",
+                        "HANDLE": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,2",
+                        "MODIFIED_DATE_TIME": "12/13/2016 10:12:38",
+                        "PRODUCTION_CONTEXT_GBO": "---",
+                        "REASON_CODE_BO": "ReasonCodeBO:FNZ1,0000,C",
+                        "SEQUENCE": 2.00,
+                        "SITE": "FNZ1",
+                        "STATE": "---",
+                        "TXN_ID": "13048652133443509-2c62c87:158f42f86e1:-eaf",
+                        "USER_BO": "UserBO:FNZ1,MESYS"
+                    },
+                    {
+                        "ACTIVITY": "EXTERNAL",
+                        "COMMENTS": "0000-test",
+                        "COMMENT_TYPE": "C",
+                        "CONTEXT_GBO": "ShopOrderBO:FNZ1,11016229",
+                        "CREATED_DATE_TIME": "12/13/2016 10:21:13",
+                        "HANDLE": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,3",
+                        "MODIFIED_DATE_TIME": "12/13/2016 10:21:13",
+                        "PRODUCTION_CONTEXT_GBO": "---",
+                        "REASON_CODE_BO": "ReasonCodeBO:FNZ1,0000,C",
+                        "SEQUENCE": 3.00,
+                        "SITE": "FNZ1",
+                        "STATE": "---",
+                        "TXN_ID": "16053528943444684-2c62c87:158f42f86e1:-9e4",
+                        "USER_BO": "UserBO:FNZ1,MESYS"
+                    }
+                ]
+            }
+        ]
     }
 }

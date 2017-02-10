@@ -13,7 +13,7 @@
 						<l:GridData span="L2 M2 S12" />
 					</layoutData>
 					</Label>
-					<Input id="closeDisruption-timeLost" type="Number" >
+					<Input id="closeDisruption-timeLost" type="Number" enabled="{Profile>/identifiedUser/permissions/WORK_DIS_TIME_LOST}" >
 					<layoutData>
 						<l:GridData span="L2 M6 S8" />
 					</layoutData>
@@ -41,7 +41,7 @@
 
 		<buttons>
 			<Button text="{i18nModel>ok}" press="onAcceptCloseDisruption"
-				type="Accept" />
+				type="Accept"  enabled="{Profile>/identifiedUser/permissions/WORK_DIS_TIME_LOST}"  />
 			<Button text="{i18nModel>cancel}" press="cancelClosingDisruption" />
 		</buttons>
 

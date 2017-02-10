@@ -78,12 +78,9 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
         //we need now to push each documents at the right place in newRow
         var index = 0;
         for (var k = 0; k < row.length; k++) {
-
-            //TODO : same thing to do with document description
             newRow[index].documents.push(row[k]);
-
             if (k + 1 === changeDocumentTypeArray[index + 1]) { //check if we have to change of object filled
-                index++;//
+                index++;
             }
         }
 
@@ -118,6 +115,50 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
                     }
                     j++;
                 }
+            }
+        }
+    },
+
+    //remove the oldest versions of a same document
+    removeOldVersions: function (row) {
+        this.unique(row, this.documentsCompareFunc);
+    },
+
+    //a is an array of object
+    unique: function (a, documentsCompareFunc) {
+        var x;
+        for (var h = 0; h < a.length; h++) {//for each document type
+            a[h].documents.sort(documentsCompareFunc);//we sort the documents
+            for (var i = 1; i < a[h].documents.length;) {//and compare them
+                x = documentsCompareFunc(a[h].documents[i - 1], a[h].documents[i]);//-1, 1 or 0
+                if (x !== 0) {
+                    i++;
+                } else {//we remove the one with the oldest version
+                    if (a[h].documents[i - 1].revision < a[h].documents[i].revision) {
+                        a[h].documents.splice(i - 1, 1);
+                    } else {
+                        a[h].documents.splice(i, 1);
+                    }
+                    a[h].dokarOrDoknr = a[h].dokarOrDoknr.replace(/\d+/g, function (a) { return a - 1; }); //decrement nb of documents
+                }
+            }
+        }
+        return a;
+    },
+
+    //based on dokarOrDoknr then doc_part
+    documentsCompareFunc: function (eltA, eltB) {
+        if (eltA.dokarOrDoknr < eltB.dokarOrDoknr) {
+            return -1;
+        } else if (eltA.dokarOrDoknr > eltB.dokarOrDoknr) {
+            return 1;
+        } else {
+            if (eltA.doc_part < eltB.doc_part) {
+                return -1;
+            } else if (eltA.doc_part > eltB.doc_part) {
+                return 1;
+            } else {
+                return 0;
             }
         }
     }

@@ -38,7 +38,7 @@
 				<Label text="{i18nModel>issuer}" />
 				<Select enabled="false">
 					<items>
-						<core:Item text="vinay" />
+						<core:Item text="{DisruptionDetailModel>/OriginatorName}" />
 					</items>
 				</Select>
 
@@ -279,7 +279,10 @@
 										text="{i18nModel>from} : {path: 'DisruptionDetailModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
 									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 									<Text
-										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>Action'}, {path: 'operationDisruptionsModel>Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>/comments/0/Action'}, {path: 'DisruptionDetailModel>/comments/0/Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+										<Text
+											text="{i18nModel>date/time} : {path: 'DisruptionDetailModel>/comments/0/Date'}"></Text>
 								</items>
 							</HBox>
 

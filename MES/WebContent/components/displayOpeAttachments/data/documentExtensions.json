@@ -45,10 +45,25 @@
                 },
                 "Row": [
                     {
-                        "file_extension":"",
-                        "mes_viewer_compatibility":"",
+                        "file_extension":"pdf",
+                        "mes_viewer_compatibility":"Native",
                         "converter":"",
-                        "default_viewer":""
+                        "default_viewer":"mesViewer"
+                    },{
+                        "file_extension":"mp3",
+                        "mes_viewer_compatibility":"None",
+                        "converter":"",
+                        "default_viewer":"download"
+                    },{
+                        "file_extension":"txt",
+                        "mes_viewer_compatibility":"Converted",
+                        "converter":"",
+                        "default_viewer":"mesViewer"
+                    },{
+                        "file_extension":"jpg",
+                        "mes_viewer_compatibility":"Converted",
+                        "converter":"",
+                        "default_viewer":"none"
                     }
                 ]
             }
