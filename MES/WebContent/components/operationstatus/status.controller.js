@@ -110,7 +110,6 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     },
 
     pauseOperation : function() {
-
         //active busy
         airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
 
