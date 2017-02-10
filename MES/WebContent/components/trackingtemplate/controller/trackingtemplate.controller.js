@@ -65,21 +65,21 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     /***********************************************************    
 * Show Upload Box to Add Comments
 */
-    showUploadBox: function (oEvt) {
-        var commentBox = this.getView().byId("trackingtemplateView--commentBox");
-        commentBox.setVisible(true);
-        var uploadBox = this.getView().byId("trackingtemplateView--UploadCollection");
-        uploadBox.setVisible(true);
-        console.log(uploadBox);
-    },
+    // showUploadBox: function (oEvt) {
+    //     var commentBox = this.getView().byId("trackingtemplateView--commentBox");
+    //     commentBox.setVisible(true);
+    //     var uploadBox = this.getView().byId("trackingtemplateView--UploadCollection");
+    //     uploadBox.setVisible(true);
+    //     console.log(uploadBox);
+    // },
 
-    /***********************************************************
-     * Hide Upload Box to Add Comments
-     */
-    hideUploadBox: function (oEvt) {
-        var uploadBox = this.getView().byId("trackingtemplateView--UploadCollection");
-        uploadBox.setVisible(false);
-    },
+    // /***********************************************************
+    //  * Hide Upload Box to Add Comments
+    //  */
+    // hideUploadBox: function (oEvt) {
+    //     var uploadBox = this.getView().byId("trackingtemplateView--UploadCollection");
+    //     uploadBox.setVisible(false);
+    // },
 
     /***********************************************************
      * Submit Disruption Comment

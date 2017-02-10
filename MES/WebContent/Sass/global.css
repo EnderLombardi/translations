@@ -2218,10 +2218,7 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*!
-*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
-*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-*/
+/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -4150,6 +4147,8 @@ DISRUPTIONTRACKER
 #disruptionDetailView .btnRadius > .sapMBtnInner { border-radius: 211px; }
 
 #disruptionDetailView .msgHeaderText { font-weight: 700 !important; text-transform: capitalize !important; background: #F5F5F5 !important; color: #0f86ae !important; padding-bottom: 0.5rem; }
+
+#trackingtemplateView { height: 100% !important; overflow: auto !important; }
 
 .trackingTemplate .trackingTemplateButton .sapMBtnInner.sapMBtnText.sapMBtnBack, .trackingTemplate .trackingTemplateButton .sapMBtnInner.sapMBtnText.sapMBtnIconFirst { border: none; background: transparent; color: rgba(0, 86, 112, 0.94); }
 

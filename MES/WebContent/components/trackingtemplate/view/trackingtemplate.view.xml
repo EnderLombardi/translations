@@ -7,7 +7,7 @@
 	xmlns:l="sap.ui.layout" 
 	xmlns:html="http://www.w3.org/1999/xhtml" 
 	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	<Page enableScrolling="false" showHeader="false" class="trackingTemplate">
+	<Page enableScrolling="true" showHeader="false" class="trackingTemplate">
 		<content>
 			<!-- Confirmation Notes -->
 			<Panel expandable="true" expanded="false" headerText="{i18n>cn_title}" width="auto" class="sapUiResponsiveMargin">
@@ -38,9 +38,18 @@
 						<CheckBox id="idCheckBox" text="{i18n>won_toolbar_last}" enabled="true" selected="false"/>
 						<ToolbarSpacer />
 						<Button class="icon-edit" text="{i18n>won_toolbar_edit}" press="showCommentBox" icon="sap-icon://edit" />
-						<Button class="icon-add" text="{i18n>won_toolbar_add}" press="showUploadBox" icon="sap-icon://add"/>
+						<!--<Button class="icon-add" text="{i18n>won_toolbar_add}" press="showUploadBox" icon="sap-icon://add"/>-->
 						<Button class="icon-print" text="{i18n>won_toolbar_print}" icon="sap-icon://print"/>
 					</OverflowToolbar>
+					<!-- Comment box -->
+						<Panel id="commentBox" visible="false" class="commentPanel">
+						<TextArea id="TypeHere" value="{/InputValue}" valueLiveUpdate="{/ValueLiveUpdate}" liveChange="handleLiveChange"/>
+						<UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true" instantUpload="false" showSeparators="All" change="onChange" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"></UploadCollection>
+						<HBox>
+							<Button text="{i18n>submitComment}" type="Accept" press="submitComment" class="sapUiSmallMarginEnd buttonAccept" width="12rem" />
+							<Button text="{i18n>cancel}" type="Reject" press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject" width="12rem" />
+						</HBox>
+					</Panel>
 					<!-- List Comment -->
 					<List items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" headerText="Notes">
 						<items>
@@ -54,15 +63,7 @@
 							</ObjectListItem>
 						</items>
 					</List>
-					<!-- Comment box -->
-					<Panel id="commentBox" visible="false" class="commentPanel">
-						<TextArea id="TypeHere" value="{/InputValue}" valueLiveUpdate="{/ValueLiveUpdate}" liveChange="handleLiveChange"/>
-						<UploadCollection id="UploadCollection" visible="false" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true" instantUpload="false" showSeparators="All" change="onChange" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"></UploadCollection>
-						<HBox>
-							<Button text="{i18n>submitComment}" type="Accept" press="submitComment" class="sapUiSmallMarginEnd buttonAccept" width="12rem" />
-							<Button text="{i18n>cancel}" type="Reject" press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject" width="12rem" />
-						</HBox>
-					</Panel>
+				
 				</content>
 			</Panel>
 		</content>
