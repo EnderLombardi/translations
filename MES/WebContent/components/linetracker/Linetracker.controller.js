@@ -651,7 +651,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		}else{
 			undoText="undoActionText1";
 		}
-		sap.ui.getCore().byId("idUndoConfirm").setEnabled(true);
+		sap.ui.getCore().byId("idUndoConfirm").setVisible(true);
 		var text=this.getView().getModel("i18n").getProperty(undoText);
 		if(text!=undefined){			
 		if(previousMsn=="NA" && currentMsn && undoStatus!=="COMPLETE" && undoStatus!=="IN_PROGRESS"){
@@ -660,7 +660,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		}
 		else if(!currentMsn && previousMsn=="NA"){
 			text=this.getView().getModel("i18n").getProperty("undoActionText6");
-			sap.ui.getCore().byId("idUndoConfirm").setEnabled(false);
+			sap.ui.getCore().byId("idUndoConfirm").setVisible(false);
 		}
 		else if(!currentMsn && previousMsn && previousMsn!="NA"){
 			text=text.replace("$paramCurrentMsn",previousMsn);
