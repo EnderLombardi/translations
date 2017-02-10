@@ -216,7 +216,6 @@ airbus.mes.operationdetail.Formatter = {
     setIconTypeConfirmation : function(){
         var jsonModel = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
         var checkList = sap.ui.getCore().byId("confirmationCheckList").getItems();
-        if(jsonModel != undefined){
             $(checkList).each(function(i) {
                 var id = checkList[i].sId;
                 if(jsonModel[id] === true || jsonModel[id] === "true"){
@@ -225,13 +224,11 @@ airbus.mes.operationdetail.Formatter = {
                     sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://decline");
                 }
             });
-        }
     },
     //Set dynamycly the SAP Icon color for user checklist
     setIconColor : function(){
         var check = airbus.mes.operationdetail.Formatter.setIconTypeConfirmation();
         var checkList = sap.ui.getCore().byId("confirmationCheckList").getItems();
-        if(check != undefined){
             $(checkList).each(function(i) {
                 var id = checkList[i].sId;
                 var element = sap.ui.getCore().byId(id).getProperty("icon");
@@ -243,7 +240,6 @@ airbus.mes.operationdetail.Formatter = {
                 }
 
             });
-        }
     },
 
     goToDisrptionVisibility: function(status){

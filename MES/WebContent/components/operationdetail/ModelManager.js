@@ -82,15 +82,20 @@ airbus.mes.operationdetail.ModelManager = {
 
         return urlStartOperation;
     },
-    getUrlConfirmationCheckList : function(){
+    getUrlConfirmationCheckList : function(data){
         var urlConfirmationCheckList = this.urlModel.getProperty("confirmationCheckList");
-
+        urlConfirmationCheckList = airbus.mes.shell.ModelManager
+            .replaceURI(urlConfirmationCheckList, "$Site", airbus.mes.settings.ModelManager.site);
+        urlConfirmationCheckList = airbus.mes.shell.ModelManager
+            .replaceURI(urlConfirmationCheckList, "$Sfc", data.sfc);
+        urlConfirmationCheckList = airbus.mes.shell.ModelManager
+            .replaceURI(urlConfirmationCheckList, "$SfcStepRef", data.sfc_step_ref);
         return urlConfirmationCheckList;
     },
-    getDataConfirmationCheckList : function(){
+    getDataConfirmationCheckList : function(data){
         var getData;
         jQuery.ajax({
-            url : airbus.mes.operationdetail.ModelManager.getUrlConfirmationCheckList(),
+            url : airbus.mes.operationdetail.ModelManager.getUrlConfirmationCheckList(data),
             async : false,
             error : function(xhr, status, error) {
                 airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);

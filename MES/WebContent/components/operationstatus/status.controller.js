@@ -208,7 +208,8 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             sap.ui.getCore().byId("confirmPinLabel").setVisible(true);
             sap.ui.getCore().byId("pinForConfirmation").setVisible(true);
         }
-        airbus.mes.operationdetail.ModelManager.getDataConfirmationCheckList();
+        var dataRequest = airbus.mes.operationstatus.oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
+        airbus.mes.operationdetail.ModelManager.getDataConfirmationCheckList(dataRequest);
         var jsonModel = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
         if(jsonModel === undefined){
             oView._oUserConfirmationDialog.open();
