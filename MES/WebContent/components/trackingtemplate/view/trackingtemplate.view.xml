@@ -42,14 +42,14 @@
 						<Button class="icon-print" text="{i18n>won_toolbar_print}" icon="sap-icon://print"/>
 					</OverflowToolbar>
 					<!-- List Comment -->
-					<List items="{/Rowsets}" headerText="{/Rowsets>DateCreated}">
+					<List items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" headerText="Notes">
 						<items>
-							<ObjectListItem title="{Name} FileName" type="Active">
+							<ObjectListItem title="{TrackingTemplate>ACTIVITY}">
 								<firstStatus>
-									<ObjectStatus text="{Status} Type "/>
+									<ObjectStatus text="{TrackingTemplate>MODIFIED_DATE_TIME}"/>
 								</firstStatus>
 								<attributes>
-									<ObjectAttribute text="{WeightMeasure} path of file" />
+									<ObjectAttribute text="{TrackingTemplate>COMMENTS}" />
 								</attributes>
 							</ObjectListItem>
 						</items>
