@@ -21,14 +21,6 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.displayOpeAttachments.config.url_config");
 	},
 
-	/* *********************************************************************** *
-	 *  Replace URL Parameters                                                 *
-	 * *********************************************************************** */
-	//replace URL with parameter
-	replaceURI: function (sURI, sFrom, sTo) {
-		return sURI.replace(sFrom, encodeURIComponent(sTo));
-	},
-
 	//load the parameters needed for the documents request
 	getLoadDOAParam: function () {
 		var paramArray = [], shopOrderBO, routerBO, site, routerStepBO, erpId;
@@ -54,6 +46,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	loadDOADetail: function () {
 		var oViewModel = airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments");
 		var oViewModelDocTypes = airbus.mes.displayOpeAttachments.oView.getModel("getDocumentTypes");
+		var oViewModelExtensions = airbus.mes.displayOpeAttachments.oView.getModel("getDocumentExtensions");
 		var paramArray;
 
 		//used to fix bad loginType with localhost
@@ -65,14 +58,15 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 			paramArray = [];
 		}
 
-		//oViewModelDocTypes.loadData(this.getDocumentTypes(), null, false);
+		oViewModelDocTypes.loadData(this.getDocumentTypes(), null, false);
+		oViewModelExtensions.loadData(this.getDocumentExtensions(), null, false);
 		oViewModel.loadData(this.getDOADetail(paramArray), null, false);
 
 		if (oViewModel.oData.Rowsets && oViewModel.oData.Rowsets.Rowset && oViewModel.oData.Rowsets.Rowset[0].Row) {
 			var row = oViewModel.oData.Rowsets.Rowset[0].Row;
 			var docTypesRow;
 
-			if (oViewModelDocTypes.oData.Rowsets){//if data from getDocumentTypes
+			if (oViewModelDocTypes.oData.Rowsets) {//if data from getDocumentTypes
 				docTypesRow = oViewModelDocTypes.oData.Rowsets.Rowset[0].Row;
 			}
 
@@ -83,35 +77,6 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 			airbus.mes.displayOpeAttachments.util.Formatter.addDocTypesDescriptions(oViewModel.oData.Rowsets.Rowset[0].Row, docTypesRow);
 			oViewModel.refresh(true);//refresh the model (and so the view)
 		}
-	},
-
-	//replace the url with the several parameters needed
-	getDOADetail: function (paramArray) {
-		var url, set = airbus.mes.displayOpeAttachments.util.ModelManager.sSet;
-
-		url = this.urlModel.getProperty("getOpeAttachments");
-		if (sessionStorage.loginType !== "local") {
-			url = this.replaceURI(url, "$Site", paramArray[0]);
-			url = this.replaceURI(url, "$ErpId", paramArray[1]);
-			url = this.replaceURI(url, "$ShopOrderBO", paramArray[2]);
-
-			//operation or work order
-			if (set === "O") {
-				url = this.replaceURI(url, "$RouterBO", paramArray[3]);
-				url = this.replaceURI(url, "$RouterStepBO", paramArray[4]);
-			} else if (set === "P") {
-				url = this.replaceURI(url, "$RouterBO", "");
-				url = this.replaceURI(url, "$RouterStepBO", "");
-			}
-		} else {//LOCAL
-			//operation or work order
-			if (set === "O") {
-				url = this.urlModel.getProperty("getOpeAttachments");
-			} else if (set === "P") {
-				url = this.urlModel.getProperty("getOpeAttachments_wo");
-			}
-		}
-		return url;
 	},
 
 	//create an array which will be used to handle documents downloadable or not (for css and url binding)
@@ -151,12 +116,54 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		return document;
 	},
 
-	//////////////////////////////////////////////////////
+	/* *********************************************************************** *
+	 *  URL                                                 				   *
+	 * *********************************************************************** */
+
+	//replace the url with the several parameters needed
+	getDOADetail: function (paramArray) {
+		var url, set = airbus.mes.displayOpeAttachments.util.ModelManager.sSet;
+
+		url = this.urlModel.getProperty("getOpeAttachments");
+		if (sessionStorage.loginType !== "local") {
+			url = this.replaceURI(url, "$Site", paramArray[0]);
+			url = this.replaceURI(url, "$ErpId", paramArray[1]);
+			url = this.replaceURI(url, "$ShopOrderBO", paramArray[2]);
+
+			//operation or work order
+			if (set === "O") {
+				url = this.replaceURI(url, "$RouterBO", paramArray[3]);
+				url = this.replaceURI(url, "$RouterStepBO", paramArray[4]);
+			} else if (set === "P") {
+				url = this.replaceURI(url, "$RouterBO", "");
+				url = this.replaceURI(url, "$RouterStepBO", "");
+			}
+		} else {//LOCAL
+			//operation or work order
+			if (set === "O") {
+				url = this.urlModel.getProperty("getOpeAttachments");
+			} else if (set === "P") {
+				url = this.urlModel.getProperty("getOpeAttachments_wo");
+			}
+		}
+		return url;
+	},
 
 	//replace the url with the several parameters needed
 	getDocumentTypes: function () {
 		var url = this.urlModel.getProperty("getDocumentTypesDescriptions");
 		return url;
+	},
+
+	//replace the url with the several parameters needed
+	getDocumentExtensions: function () {
+		var url = this.urlModel.getProperty("getDocumentExtensions");
+		return url;
+	},
+	
+	//replace URL with parameter
+	replaceURI: function (sURI, sFrom, sTo) {
+		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	}
 
 };

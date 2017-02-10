@@ -78,12 +78,9 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
         //we need now to push each documents at the right place in newRow
         var index = 0;
         for (var k = 0; k < row.length; k++) {
-
-            //TODO : same thing to do with document description
             newRow[index].documents.push(row[k]);
-
             if (k + 1 === changeDocumentTypeArray[index + 1]) { //check if we have to change of object filled
-                index++;//
+                index++;
             }
         }
 
@@ -142,7 +139,7 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
                     } else {
                         a[h].documents.splice(i, 1);
                     }
-                    a[h].dokarOrDoknr = a[h].dokarOrDoknr.replace(/\d+/g, function(a) {return a - 1;}); //decrement nb of documents
+                    a[h].dokarOrDoknr = a[h].dokarOrDoknr.replace(/\d+/g, function (a) { return a - 1; }); //decrement nb of documents
                 }
             }
         }
