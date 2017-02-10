@@ -215,6 +215,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             oView._oUserConfirmationDialog.open();
             sap.ui.getCore().byId("confirmationCheckList").setVisible(false);
         }else{
+            sap.ui.getCore().byId("confirmationCheckList").setVisible(true);
             airbus.mes.operationdetail.Formatter.setIconTypeConfirmation();
             oView._oUserConfirmationDialog.open();
             airbus.mes.operationdetail.Formatter.setIconColor();
