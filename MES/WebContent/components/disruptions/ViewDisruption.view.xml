@@ -403,13 +403,14 @@
 							</CustomListItem>
 						</List>
 
-						<Panel id="commentBox" visible="false">
+						<!-- <Panel id="commentBox" visible="false">
 
-							<VBox width="79%">
+							<VBox width="79%"> -->
 								<TextArea id="commentArea" placeholder="{i18nModel>addComment}"
+									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>ResolverID'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
 									width="100%" />
 
-								<HBox>
+								<!-- <HBox>
 									<Button text="{i18nModel>submitComment}" type="Accept"
 										press="submitComment" class="sapUiSmallMarginEnd buttonAccept"
 										width="12rem" />
@@ -421,7 +422,7 @@
 
 							</VBox>
 
-						</Panel>
+						</Panel> -->
 
 						<Toolbar class="disruptionBottomBar">
 								
@@ -434,7 +435,7 @@
 							<Button id="addComment" text="{i18nModel>addComment}"
 								type="Emphasized"
 								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>ResolverID'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
-								press="showCommentBox" design="Transparent"/>
+								press="submitComment" design="Transparent"/>
 
 							<Button text="{i18nModel>acknowledge}" type="Accept"
 								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
