@@ -1,64 +1,70 @@
-<mvc:View
-          xmlns:core="sap.ui.core"
-          xmlns:mvc="sap.ui.core.mvc"
-          xmlns="sap.m"
-          controllerName="airbus.mes.trackingtemplate.controller.trackingtemplate"
-          xmlns:f="sap.ui.layout.form"
-          xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
-          xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
-
-    <Page enableScrolling="false" showHeader="false" class="trackingTemplate">
-        <content>
-
+<mvc:View 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:u="sap.ui.unified" 
+	xmlns="sap.m" controllerName="airbus.mes.trackingtemplate.controller.trackingtemplate" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:html="http://www.w3.org/1999/xhtml" 
+	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Page enableScrolling="false" showHeader="false" class="trackingTemplate">
+		<content>
 			<!-- Confirmation Notes -->
 			<Panel expandable="true" expanded="false" headerText="{i18n>cn_title}" width="auto" class="sapUiResponsiveMargin">
 				<content>
-				
 					<!-- Header ToolBar -->
 					<OverflowToolbar height="3rem">
 						<CheckBox text="{i18n>cn_toolbar_last}" enabled="true" selected="false"/>
 						<CheckBox text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false"/>
 					</OverflowToolbar>
-					
 					<!-- List Comment -->
-					<List headerText="Custom Content" mode="Delete" items="{path: '/ProductCollection'}" >
-					<CustomListItem>
-					<HBox>
-						<core:Icon size="2rem" src="sap-icon://attachment-photo" />
-						<Label text="REF - "/>
-						<Label text="NAME - "/>
-						<Label text="COMMENT"/>
-					</HBox>
-					</CustomListItem>
+					<List headerText="Custom Content" mode="Delete" items="{path: '/ProductCollection'}">
+						<CustomListItem>
+							<HBox>
+								<core:Icon size="2rem" src="sap-icon://attachment-photo" />
+								<Label text="REF - "/>
+								<Label text="NAME - "/>
+								<Label text="COMMENT"/>
+							</HBox>
+						</CustomListItem>
 					</List>
 				</content>
 			</Panel>
-			
 			<!-- Work Order Notes -->
 			<Panel expandable="true" expanded="false" headerText="{i18n>won_title}" width="auto" class="sapUiResponsiveMargin">
 				<content>
-				
 					<!-- Header ToolBar -->
 					<OverflowToolbar class="trackingTemplateButton" height="3rem">
 						<CheckBox id="idCheckBox" text="{i18n>won_toolbar_last}" enabled="true" selected="false"/>
 						<ToolbarSpacer />
-                		<Button class="icon-edit" text="{i18n>won_toolbar_edit}" icon="sap-icon://edit"/>
-                		<Button class="icon-add" text="{i18n>won_toolbar_add}" icon="sap-icon://add"/>
-                		<Button class="icon-print" text="{i18n>won_toolbar_print}" icon="sap-icon://print"/>
-						<!-- ICON ONLY
-						<ToolbarSpacer />
-						<OverflowToolbarButton text="Create Note" icon="sap-icon://edit"/>
-                		<OverflowToolbarButton text="Attach Document" icon="sap-icon://add"/>
-                		<OverflowToolbarButton text="Print" icon="sap-icon://print"/>
-                		-->
+						<Button class="icon-edit" text="{i18n>won_toolbar_edit}" press="showCommentBox" icon="sap-icon://edit" />
+						<Button class="icon-add" text="{i18n>won_toolbar_add}" press="showUploadBox" icon="sap-icon://add"/>
+						<Button class="icon-print" text="{i18n>won_toolbar_print}" icon="sap-icon://print"/>
 					</OverflowToolbar>
 					<!-- List Comment -->
-					
-					
+					<List items="{/Rowsets}" headerText="{/Rowsets>DateCreated}">
+						<items>
+							<ObjectListItem title="{Name} FileName" type="Active">
+								<firstStatus>
+									<ObjectStatus text="{Status} Type "/>
+								</firstStatus>
+								<attributes>
+									<ObjectAttribute text="{WeightMeasure} path of file" />
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+					<!-- Comment box -->
+					<Panel id="commentBox" visible="false" class="commentPanel">
+						<TextArea id="TypeHere" value="{/InputValue}" valueLiveUpdate="{/ValueLiveUpdate}" liveChange="handleLiveChange"/>
+						<UploadCollection id="UploadCollection" visible="false" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true" instantUpload="false" showSeparators="All" change="onChange" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"></UploadCollection>
+						<HBox>
+							<Button text="{i18n>submitComment}" type="Accept" press="submitComment" class="sapUiSmallMarginEnd buttonAccept" width="12rem" />
+							<Button text="{i18n>cancel}" type="Reject" press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject" width="12rem" />
+						</HBox>
+					</Panel>
 				</content>
 			</Panel>
-        </content>
-    </Page>
+		</content>
+	</Page>
 </mvc:View>
-
-

@@ -1,10 +1,31 @@
-.trackingTemplateButton {
-    .sapMBtnInner.sapMBtnText.sapMBtnIconFirst, .sapMBtnInner.sapMBtnText.sapMBtnBack {
-        border:none;
-        background: transparent;
-        color : $petrol;
+.trackingTemplate {
+  .trackingTemplateButton {
+    .sapMBtnInner.sapMBtnText.sapMBtnBack,
+    .sapMBtnInner.sapMBtnText.sapMBtnIconFirst {
+      border: none;
+      background: transparent;
+      color: $petrol;
     }
+
+    .sapMBtnInner.sapMBtnText.sapMBtnIconFirst:hover {
+      background: $sapui-grey-hover
+    }
+
     .sapUiIcon:before {
-        color : $petrol;
+      color: $petrol;
     }
+  }
+
+  .sapMPanelBGTranslucent .sapMPanelContent {
+    margin:0;
+  }
+  
+  .sapMInputBase.sapMTextArea {
+    width: 100%;
+  }
+  .sapUiFupGroup {
+    .sapUiIcon:before {
+      color: $petrol;
+    }
+  }
 }
