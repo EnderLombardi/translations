@@ -45,7 +45,7 @@ sap.ui.controller("airbus.mes.login.login", {
 		
 		var sUser = airbus.mes.login.oView.byId("login").getValue();
 		var sPass= airbus.mes.login.oView.byId("password").getValue();
-		var sUrl = "https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=XX_MOD1684_MES%2FMII%2FStationTracker%2FUserSettings%2F040_Get_User_Setting_QUE&IsTesting=T&Content-Type=text%2Fjson&j_user=" + sUser +"&j_password=" + sPass 
+		var sUrl = "http://dmivie0.eu.airbus.corp:55600/XMII/Illuminator?QueryTemplate=XX_MOD1684_MES%2FMII%2FStationTracker%2FUserSettings%2F040_Get_User_Setting_QUE&IsTesting=T&Content-Type=text%2Fjson&j_user=" + sUser +"&j_password=" + sPass 
 		
 		jQuery.ajax({
 			url : sUrl,

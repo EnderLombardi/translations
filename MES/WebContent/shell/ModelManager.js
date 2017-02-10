@@ -61,7 +61,7 @@ airbus.mes.shell.ModelManager = {
 
 				// Get Login Type
 				var sopraHostURL = "http://swinsapdi01.ptx.fr.sopra:50000";
-				var dmiHostURL   = "https://dmiswde0.eu.airbus.corp"
+				var dmiHostURL   = "http://dmivie0.eu.airbus.corp:55600"
 					
 				var destHostURL     = sopraHostURL;
 				var replaceHostURL  = dmiHostURL;

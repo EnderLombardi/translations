@@ -28,7 +28,7 @@ var dest = rootdest + '/current';
 
 // url - log - pwd
 // TODO : create a table for multi push
-var miiHost = ['http://swinsapdi01.ptx.fr.sopra:50000', 'https://dmiswde0.eu.airbus.corp'];
+var miiHost = ['http://swinsapdi01.ptx.fr.sopra:50000', 'http://dmivie0.eu.airbus.corp:55600'];
 var miiUser = ['S00DB44', 'NG560DB'];
 var miiPassword = ['start000', 'pierre248'];
 var miiTransaction = 'XX_MOD1684_MES_Temp%2FTools%2FCreateFile';
@@ -264,7 +264,7 @@ gulp.task('connect', function () {
 			return [
 				function (req, res, next) {
 					// treat POST request like GET during dev
-					if (req.headers.referer && req.headers.referer.endsWith('url_config=local')) {
+					if (req.headers.host.startsWith('localhost')) {
 						req.method = 'GET';
 					}
 

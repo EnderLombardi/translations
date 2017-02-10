@@ -50,7 +50,7 @@
                },
                {
                   "Name": "com.sap.security.original_url",
-                  "Value": "https://dmiswde0.eu.airbus.corp:443/XMII/PropertyAccessServlet?Mode=List&Content-Type=text/json&j_user=ZMII1684L201&j_password=DMIDMI03"
+                  "Value": "http://dmivie0.eu.airbus.corp:55600/XMII/PropertyAccessServlet?Mode=List&Content-Type=text/json&j_user=ZMII1684L201&j_password=DMIDMI03"
                },
                {
                   "Name": "Accessibility",
