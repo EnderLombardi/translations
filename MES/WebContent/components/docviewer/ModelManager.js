@@ -32,13 +32,16 @@ airbus.mes.docviewer.ModelManager = {
 		
 		// Firstly - Empty the container
 		oViewerElement.innerHTML = ""
+
+		var urlSplit = fileURL.split(".");
+		var ext      = urlSplit[(urlSplit.length - 1)];
 		
 		// Initialize PDF Tron
         airbus.mes.docviewer.ModelManager.WebViewer = new PDFTron.WebViewer({
             type: "html5",
             path: "../lib/pdftron",
             initialDoc: fileURL,
-            documentType: "xod",
+            documentType: ext,
             config: "../components/docviewer/config.js",
             serverUrl: window.location.host,
             documentId: "mes_document_viewer",

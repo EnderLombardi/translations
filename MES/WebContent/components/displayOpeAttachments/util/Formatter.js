@@ -134,7 +134,7 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
                 if (x !== 0) {
                     i++;
                 } else {//we remove the one with the oldest version
-                    if (a[h].documents[i - 1].revision < a[h].documents[i].revision) {
+                    if (a[h].documents[i - 1].revision.toUpperCase() < a[h].documents[i].revision.toUpperCase()) {
                         a[h].documents.splice(i - 1, 1);
                     } else {
                         a[h].documents.splice(i, 1);
@@ -148,14 +148,14 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
 
     //based on dokarOrDoknr then doc_part
     documentsCompareFunc: function (eltA, eltB) {
-        if (eltA.dokarOrDoknr < eltB.dokarOrDoknr) {
+        if (eltA.dokarOrDoknr.toUpperCase() < eltB.dokarOrDoknr.toUpperCase()) {
             return -1;
-        } else if (eltA.dokarOrDoknr > eltB.dokarOrDoknr) {
+        } else if (eltA.dokarOrDoknr.toUpperCase() > eltB.dokarOrDoknr.toUpperCase()) {
             return 1;
         } else {
-            if (eltA.doc_part < eltB.doc_part) {
+            if (eltA.doktl.toUpperCase() < eltB.doktl.toUpperCase()) {
                 return -1;
-            } else if (eltA.doc_part > eltB.doc_part) {
+            } else if (eltA.doktl.toUpperCase() > eltB.doktl.toUpperCase()) {
                 return 1;
             } else {
                 return 0;

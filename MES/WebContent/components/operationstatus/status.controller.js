@@ -73,7 +73,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
 
                 if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
                     airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
-                    flagSuccess = true;                 
+                    flagSuccess = true;
                 } else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
                     airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
                     flagSuccess = false;
@@ -110,7 +110,6 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     },
 
     pauseOperation : function() {
-
         //active busy
         airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
 
@@ -180,7 +179,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         sap.ui.getCore().byId("reasonCodeSelectBox").clearSelection();
         sap.ui.getCore().byId("reasonCodeComments").setValue();
         sap.ui.getCore().byId("confirmTimeWorked").setSelected(false);
-        airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = false;
+        airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = "";
         if(oModel[0].progres != 0 || oModel[0].progres != "0"){
             var im  = airbus.mes.operationdetail.Formatter.convertProgressBarToImField(oModel[0].progress);
             sap.ui.getCore().byId("imTextArea").setValue(im);
@@ -194,7 +193,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
 
         var oView = airbus.mes.operationstatus.oView;
         var dataConfirm = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
-
+        airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = "";
         // Click on Complete
         oView.getController().operationStatus = "X";
         oView.getController().Mode = "Complete";
@@ -209,12 +208,14 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             sap.ui.getCore().byId("confirmPinLabel").setVisible(true);
             sap.ui.getCore().byId("pinForConfirmation").setVisible(true);
         }
-        airbus.mes.operationdetail.ModelManager.getDataConfirmationCheckList();
+        var dataRequest = airbus.mes.operationstatus.oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
+        airbus.mes.operationdetail.ModelManager.getDataConfirmationCheckList(dataRequest);
         var jsonModel = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
         if(jsonModel === undefined){
             oView._oUserConfirmationDialog.open();
             sap.ui.getCore().byId("confirmationCheckList").setVisible(false);
         }else{
+            sap.ui.getCore().byId("confirmationCheckList").setVisible(true);
             airbus.mes.operationdetail.Formatter.setIconTypeConfirmation();
             oView._oUserConfirmationDialog.open();
             airbus.mes.operationdetail.Formatter.setIconColor();
@@ -426,12 +427,13 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
                 } else {
                     percent = sap.ui.getCore().byId("progressSlider").getValue();
                 }
-
+                var statusReasonCode = airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode;
+                var erpSystem = airbus.mes.operationstatus.oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system;
                 // Call service for Operation Confirmation
                 var flagSuccess = airbus.mes.operationdetail.ModelManager.confirmOperation(user, pass, oView
                         .getController().operationStatus, percent, oView.getModel("operationDetailModel").getProperty(
                         "/Rowsets/Rowset/0/Row/0/sfc_step_ref"), oView.getController().reasonCodeText, oView
-                        .getController().Mode, ID, pin, sMessageError, sMessageSuccess, sWo);
+                        .getController().Mode, ID, pin, sMessageError, sMessageSuccess, sWo, statusReasonCode, erpSystem);
 
                 // Close reason code dialog
                 if (oView._reasonCodeDialog) {
@@ -494,9 +496,9 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             sap.ui.getCore().byId("pinForConfirmation").setVisible(true);
         }
         if($("#confirmTimeWorked-CB").attr("checked") == "checked"){
-            airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = true;
+            airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = "X";
         }else{
-            airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = false;
+            airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = "";
         }
         sap.ui.getCore().byId("confirmationCheckList").setVisible(false);
         oView._oUserConfirmationDialog.open();
@@ -537,7 +539,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
 
          // Not started ever
         if (airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/previously_start") == "true" ||
-        	sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() ) {
+            sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() ) {
 
             // Get status
             var sStatus = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status");
@@ -564,9 +566,9 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
                 this.setProgressScreenBtn(false, false, false);
                 break;
             }
-            
+
             return;
-            
+
         } else {
             this.setProgressScreenBtn(false, false, false);
             return;

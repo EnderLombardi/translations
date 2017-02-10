@@ -102,6 +102,13 @@
                         "URL": "http://www.orimi.com/pdf-test.pdf"
                     },
                     {
+                        "workInstruction": "APDF/151466456/P1/10FB167B401352F8AZ23G267812F8599",
+                        "fileName" : "Adobe Acrobat PDF Files",
+                        "revision": "A",
+                        "descriptionWI": "Basic PDF to test",
+                        "URL": "http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf"
+                    },
+                    {
                         "workInstruction": "POC/123123456/P1/14FB167B401352F8DC91D267812F8599",
                         "fileName" : "SmallPOC",
                         "revision": "B",

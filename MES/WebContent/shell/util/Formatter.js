@@ -97,6 +97,32 @@ airbus.mes.shell.util.Formatter = {
 	},
 	displayPin : function(){
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
-	}
+	},
+		/**
+	 * Returns a comparator function on the provided fields, in the provided
+	 * order of priority, to be used for example by an Array.sort() function.
+	 *
+	 * @param {Array}
+	 *            fields, Array of object
+	 * @returns {Function} comparator
+	 */
+	fieldComparator: function (fields) {
+		return function (a, b) {
+			return fields.map(function (o) {
+				var dir = 1;
+				if (o[0] === '-') {
+					dir = -1;
+					o = o.substring(1);
+				}
+				if (a[o] > b[o])
+					return dir;
+				if (a[o] < b[o])
+					return -(dir);
+				return 0;
+			}).reduce(function firstNonZeroValue(p, n) {
+				return p ? p : n;
+			}, 0);
+		};
+	},
 
 };

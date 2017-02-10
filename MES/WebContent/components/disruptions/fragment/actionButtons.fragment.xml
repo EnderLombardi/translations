@@ -8,7 +8,7 @@
 
 			<Button text="{i18nModel>acknowledge}" type="Accept" width="70%"
 				visible="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
-				press="onAckDisruption" design="Transparent" class="btnRadius"  enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_UPDATE}">
+				press="onAckDisruption" design="Transparent" class="btnRadius"  >
 				<layoutData>
 					<l:GridData span="L12 M12 S12" />
 				</layoutData>

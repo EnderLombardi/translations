@@ -70,8 +70,8 @@ airbus.mes.linetracker.util.Formatter = {
 		var url = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
 		var oResult = airbus.mes.linetracker.util.ModelManager.getProgramForMsnStation(station, msn);
 		var sProgram;
-		if(oResult && oResult.program){
-			sProgram = oResult.program;
+		if(oResult && oResult.TF){
+			sProgram = oResult.TF;
 		}
 		url = url.replace("$TF", sProgram);
 		url = url.replace("$Application_ID", "000000000030");

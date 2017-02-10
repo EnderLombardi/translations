@@ -1,0 +1,10 @@
+[
+	{
+		"type": "insertNextToParentOperation",
+		"key": "insertNextToParentOperation"
+	},
+	{
+		"type": "insertInOswUnplannedSection",
+		"key": "insertInOswUnplannedSection"
+	}
+]

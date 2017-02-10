@@ -386,10 +386,8 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		if (defaultViewer === "download") {
 			airbus.mes.displayOpeAttachments.oView.oController.downloadDocument();
 		} else if (defaultViewer === "mesViewer") {
-			//mesViewer
-			//airbus.mes.shell.util.navFunctions.docViewer(url, undefined);
-			//operationdetail popup to close
-			console.log("mesviewer : in progress");
+			airbus.mes.shell.util.navFunctions.docViewer(url, undefined);
+			airbus.mes.stationtracker.operationDetailPopup.close();
 		} else {//"none" or undefined : we open a choice popup
 			if (!airbus.mes.shell.doaPopup) {
 				airbus.mes.shell.doaPopup = sap.ui.xmlfragment("airbus.mes.shell.doaPopup", this);
@@ -441,9 +439,11 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	},
 
 	openDocumentInMesViewer: function () {
-		// airbus.mes.shell.util.navFunctions.docViewer(airbus.mes.displayOpeAttachments.oView.oController.popUrl, undefined);
-		// this.closeDocumentPopup();
-		console.log("mesviewer : in progress");
+		airbus.mes.shell.util.navFunctions.docViewer(airbus.mes.displayOpeAttachments.oView.oController.popUrl, undefined);
+
+		//close the popups
+		airbus.mes.shell.doaPopup.close();
+		airbus.mes.stationtracker.operationDetailPopup.close();
 	},
 
 	/////////////////////////////////
