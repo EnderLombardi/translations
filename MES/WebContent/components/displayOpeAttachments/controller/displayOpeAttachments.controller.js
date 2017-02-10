@@ -386,9 +386,8 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		if (defaultViewer === "download") {
 			airbus.mes.displayOpeAttachments.oView.oController.downloadDocument();
 		} else if (defaultViewer === "mesViewer") {
-			//mesViewer
-			//airbus.mes.shell.util.navFunctions.docViewer(url, undefined);
-			//operationdetail popup to close
+			airbus.mes.shell.util.navFunctions.docViewer(url, undefined);
+			airbus.mes.stationtracker.operationDetailPopup.close();
 			console.log("mesviewer : in progress");
 		} else {//"none" or undefined : we open a choice popup
 			if (!airbus.mes.shell.doaPopup) {
