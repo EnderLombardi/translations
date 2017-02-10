@@ -118,7 +118,7 @@ sap.ui
                                   * Open Pop-Up to ask Time Lost while Closing the Disruption
                                   */
                                   onCloseDisruption : function(oEvt) {
-                                         
+                                         /*
                                          //Close panel
                                          oEvt.getSource().getParent().getParent().setExpanded(false);
                                          
@@ -140,7 +140,7 @@ sap.ui
 
                                          submitCommentId.setVisible(true);
                                          //*********************************************************
-                                         
+*/                                         
                                          // Get Fields to Pre-Fill Comment Pop-up
                                          var sPath = oEvt.getSource().getParent().getParent()
                                                        .getParent().getBindingContext(
@@ -193,13 +193,13 @@ sap.ui
                                   */
                                   onAcceptCloseDisruption : function(oEvent) {
 
-                                         //hide add comment button
+                                         /*//hide add comment button
                                          this.oView.byId(this._closeDialog.mProperties.disruptionId).setVisible(false);
 
                                          //hide escalate button
                                          var escalateBtnId = this._closeDialog.mProperties.disruptionId.substring(0,20) + "escalateBtn" + 
                                                 this._closeDialog.mProperties.disruptionId.substring(30, this._closeDialog.mProperties.disruptionId.length);
-                                         this.oView.byId(escalateBtnId).setVisible(false);
+                                         this.oView.byId(escalateBtnId).setVisible(false);*/
 
                                          //close the dialog box 
                                          this._closeDialog.close();
@@ -252,8 +252,8 @@ sap.ui
 
                                                               //load again disruptions data
                                                               var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
-                                 var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
-                                      airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO,sSfcStepRef);
+                                                              var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
+                                                              airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO,sSfcStepRef);
 
                                                               
                                                               if (nav.getCurrentPage().sId == "stationTrackerView"){
@@ -334,7 +334,7 @@ sap.ui
                                   */
                                   onDeleteDisruption : function(oEvt) {
                                          
-                                         // Close Comment Box if open
+                                         /*// Close Comment Box if open
                                          var path = oEvt.getSource().sId;
                                          var listnum = path.split("-");
                                          listnum = listnum[listnum.length - 1];
@@ -351,7 +351,7 @@ sap.ui
 
                                          submitCommentId.setVisible(true);
                                          //*********************************************************
-                                         
+*/                                         
                                          var status = oEvt.getSource().getBindingContext(
                                                        "operationDisruptionsModel")
                                                        .getObject("Status");
@@ -454,7 +454,7 @@ sap.ui
                                   */
                                   onRejectDisruption : function(oEvt) {
                                          
-                                         // Close Comment Box if open
+                                         /*// Close Comment Box if open
                                          var path = oEvt.getSource().sId;
                                          var listnum = path.split("-");
                                          listnum = listnum[listnum.length - 1];
@@ -471,7 +471,7 @@ sap.ui
 
                                          submitCommentId.setVisible(true);
                                          //*********************************************************
-                                         
+*/                                         
                                          var title = airbus.mes.disruptions.oView.viewDisruption
                                                        .getModel("i18nModel").getProperty("rejectDisruption");
                                          var msgRef = oEvt.getSource().getBindingContext(
@@ -526,7 +526,7 @@ sap.ui
                                                 var oComment = {
                                                               "Action" : airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("reject"),
                                                               "Comments" : comment,
-                                                             "Counter" : "",
+                                                              "Counter" : "",
                                                               "Date" : date,
                                                               "MessageRef" : msgRef,
                                                               "UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
@@ -632,7 +632,7 @@ sap.ui
                                   /***********************************************************
                                   * Show Comment Box to Add Comments
                                   */
-                                  showCommentBox : function(oEvt) {
+                                  /*showCommentBox : function(oEvt) {
                                          
                                          var path = oEvt.getSource().sId;
                                          var listnum = path.split("-");
@@ -646,12 +646,12 @@ sap.ui
                                          var submitComment = sap.ui.getCore().byId(path);
                                          submitComment.setVisible(false);
 
-                                  },
+                                  },*/
 
                                   /***********************************************************
                                   * Hide Comment Box to Add Comments
                                   */
-                                  hideCommentBox : function(oEvt) {
+                                  /*hideCommentBox : function(oEvt) {
                                          var path = oEvt.getSource().sId;
                                          var listnum = path.split("-");
                                          listnum = listnum[listnum.length - 1];
@@ -670,7 +670,7 @@ sap.ui
 
                                          submitCommentId.setVisible(true);
 
-                                  },
+                                  },*/
 
                                   /***********************************************************
                                   * Submit Disruption Comment
@@ -1046,7 +1046,9 @@ sap.ui
                                       oBinding.filter(new sap.ui.model.Filter("MessageRef", "EQ", messageRef));
                                       
                                       // TODO: if DN doesnt agrre to end dsiruptions in descending order then apply costom logic here.
-                                      this.getView().getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[listNum].prevCommentsLoaded = "true";
+                                      // Update binding inorder to hide the see more button
+                                      var sPath = oEvt.getSource().getBindingInfo("visible").binding.getBindings()[0].getContext().sPath;
+                                      this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/prevCommentsLoaded", "true");
                                       this.getView().getModel("operationDisruptionsModel").refresh();
                                   },
                                   
