@@ -228,7 +228,7 @@ airbus.mes.disruptions.Formatter = {
 				this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("rejected"));
 				this.setEnabled(false);
 
-				return true;
+				return false;
 
 			} else if (status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.acknowledged) {
 

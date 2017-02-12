@@ -522,18 +522,18 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 		this.getView().byId("selectFivemCategory").setEnabled(false);
 		this.getView().byId("selectCategory").setEnabled(false);
 		this.getView().byId("selectreason").setEnabled(true);
-		oView.byId("selectResponsibleGrp").setEnabled(true);
-		oView.byId("selectOriginator").setEnabled(false);
-		oView.byId("description").setEnabled(false);
+		this.getView().byId("selectResponsibleGrp").setEnabled(true);
+		this.getView().byId("selectOriginator").setEnabled(false);
+		this.getView().byId("description").setEnabled(false);
 		this.getView().byId("promisedDate").setEnabled(true);
 		this.getView().byId("promisedTime").setEnabled(true);
-		oView.byId("expectedDate").setEnabled(true);
-		oView.byId("expectedTime").setEnabled(true);
-		oView.byId("gravity").setEnabled(true);
-		oView.byId("timeLost").setEnabled(false);
-		oView.byId("materials").setEnabled(false);
-		oView.byId("jigtools").setEnabled(false);
-		oView.byId("selectResolver").setEnabled(true);
+		this.getView().byId("expectedDate").setEnabled(true);
+		this.getView().byId("expectedTime").setEnabled(true);
+		this.getView().byId("gravity").setEnabled(true);
+		this.getView().byId("timeLost").setEnabled(false);
+		this.getView().byId("materials").setEnabled(false);
+		this.getView().byId("jigtools").setEnabled(false);
+		this.getView().byId("selectResolver").setEnabled(true);
 	},
 	resolutionGroupSettings : function() {
 
@@ -1102,27 +1102,67 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
 		var sStatus = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/Status");
 		var sMessage = i18nModel.getProperty("successReject");
-		var isSuccess = airbus.mes.disruptions.ModelManager.rejectDisruption(sComment, sMessageRef, sStatus, sMessage, i18nModel);
-		/*if (isSuccess) {
+		airbus.mes.disruptions.ModelManager.rejectDisruption(sComment, sMessageRef, sStatus, sMessage, i18nModel);
+		/*
+		 * if (isSuccess) {
+		 * 
+		 * sap.ui.getCore().getModel("DisruptionDetailModel").setProperty("/Status",airbus.mes.disruptions.Formatter.status.rejected)
+		 * 
+		 * var currDate = new Date(); var date = currDate.getFullYear() + "-" +
+		 * currDate.getMonth() + "-" + currDate.getDate();
+		 * 
+		 * var oComment = { "Action" :
+		 * airbus.mes.disruptions.oView.disruptionDetail.getModel("i18nModel").getProperty("reject"),
+		 * "Comments" : sComment, "Counter" : "", "Date" : date, "MessageRef" :
+		 * sMessageRef, "UserFullName" :
+		 * (sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+		 * sap.ui
+		 * .getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase()) };
+		 * this.getView().getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);
+		 * 
+		 * this.getView().getModel("DisruptionDetailModel").refresh(); }
+		 */
 
-			sap.ui.getCore().getModel("DisruptionDetailModel").setProperty("/Status",airbus.mes.disruptions.Formatter.status.rejected)
+	},
+	/***************************************************************************
+	 * solve the Disruption MESV1.5
+	 * 
+	 * @param {object}
+	 *            oEvt object of control
+	 */
+	onMarkSolvedDisruption : function(oEvt) {
+		var i18nModel = this.getView().getModel("i18nModel");
+		if (this.getView().byId("comment").getValue() == "") {
+			sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
+			return;
+		} else {
+			this.sComment = airbus.mes.disruptions.Formatter.actions.solve + this.getView().byId("comment").getValue();
+		}
+		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
+		// Call to Mark Solved Disruption
+		airbus.mes.disruptions.ModelManager.markSolvedDisruption(sMessageRef, this.sComment, i18nModel);
 
-			var currDate = new Date();
-			var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+	},
+	/***************************************************************************
+	 * Refuse the Disruption MESV1.5
+	 * 
+	 * @param {object}
+	 *            oEvt object of control
+	 */
+	onRefuseDisruption : function() {
+		var i18nModel = this.getView().getModel("i18nModel");
 
-			var oComment = {
-				"Action" : airbus.mes.disruptions.oView.disruptionDetail.getModel("i18nModel").getProperty("reject"),
-				"Comments" : sComment,
-				"Counter" : "",
-				"Date" : date,
-				"MessageRef" : sMessageRef,
-				"UserFullName" : (sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + sap.ui
-					.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
-			};
-			this.getView().getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);
+		if (this.getView().byId("comment").getValue() == "") {
+			sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
+			return;
+		} else {
+			this.sComment = airbus.mes.disruptions.Formatter.actions.refuse + this.getView().byId("comment").getValue();
+		}
 
-			this.getView().getModel("DisruptionDetailModel").refresh();
-		}*/
-
+		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
+		var sMessage = i18nModel.getProperty("successRefuse");
+		// Call Disruption Service
+		airbus.mes.disruptions.ModelManager.refuseDisruption(this.sComment, sMessageRef, sMessage, i18nModel);
 	}
+
 });

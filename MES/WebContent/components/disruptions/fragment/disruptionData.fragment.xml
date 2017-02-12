@@ -233,7 +233,7 @@
 					<List showNoData="false"
 						class="sapUiSmallMarginBeginEnd sapUiMediumMarginTopBottom" items="{path: 'DisruptionDetailModel>/comments'}">
 
-						<CustomListItem>
+						<CustomListItem class="msgColor">
 							<HBox
 								class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
 								<items>
@@ -241,10 +241,10 @@
 										text="{i18nModel>from} : {path: 'DisruptionDetailModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
 									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 									<Text
-										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>/comments/0/Action'}, {path: 'DisruptionDetailModel>/comments/0/Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>Action'}, {path: 'DisruptionDetailModel>Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
 									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 									<Text
-										text="{i18nModel>date/time} : {path: 'DisruptionDetailModel>/comments/0/Date'}"></Text>
+										text="{i18nModel>date/time} : {path: 'DisruptionDetailModel>Date'}"></Text>
 								</items>
 							</HBox>
 

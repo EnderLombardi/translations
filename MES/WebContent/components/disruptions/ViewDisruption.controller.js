@@ -728,7 +728,8 @@ sap.ui
                                          var path = oEvt.getSource().sId;
                                          var listnum = path.split("-");
                                          listnum = listnum[listnum.length - 1];
-                                         var commentBox = this.getView().byId(
+                                         //temporary removing so that acknowledge can work
+                                         /*var commentBox = this.getView().byId(
                                                        this.getView().sId + "--commentBox-"
                                                                      + this.getView().sId + "--disrptlist-"
                                                                      + listnum);
@@ -740,7 +741,7 @@ sap.ui
                                                                      + listnum);
 
                                          submitCommentId.setVisible(true);
-                                         //*********************************************************
+*/                                         //*********************************************************
                                          
                                          var title = this.getView().getModel("i18nModel")
                                                        .getProperty("ackDisruption");
