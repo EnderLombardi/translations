@@ -389,6 +389,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		
 		airbus.mes.stationHandover.insertOsw.open();
 		sap.ui.getCore().byId("insertOsw--TimePicker").setDateValue(new Date());
+		sap.ui.getCore().byId("insertOsw--calendar").insertSelectedDate(new sap.ui.unified.DateRange({startDate:new Date()}));
 	},
 	/***************************************************************************
 	 * trigger when the user click on the close button of the dialog
