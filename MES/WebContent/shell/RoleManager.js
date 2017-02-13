@@ -72,8 +72,8 @@ airbus.mes.shell.RoleManager = {
 		function collectRoles(col, rec) {
 			col[rec.feature] = col[rec.feature] || { positiveRoles: { funcRoles: [], techRoles: [] },
 													 negativeRoles: { funcRoles: [], techRoles: [] } };
-			var attr = rec.roles[0] == '!' ? 'negativeRoles' : 'positiveRoles';
-			var role = rec.roles[0] == '!' ? rec.roles.substring(1) : rec.roles;
+			var attr = rec.roles == '!' ? 'negativeRoles' : 'positiveRoles';
+			var role = rec.roles == '!' ? rec.roles.substring(1) : rec.roles;
 			col[rec.feature][attr].funcRoles.push(role);
 			return col;
 		}
