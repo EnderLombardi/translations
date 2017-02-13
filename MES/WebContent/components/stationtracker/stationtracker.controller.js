@@ -231,6 +231,26 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     onResourcePoolOpen: function (oEvt) {
         airbus.mes.shell.util.navFunctions.resourcePool();
     },
+    
+    onMPPress: function () {
+//    	if (airbus.mes.stationtracker.MissingPartPopup === undefined) {
+//            airbus.mes.stationtracker.MissingPartPopup = sap.ui.xmlfragment("MissingPartPopup", "airbus.mes.missingParts.view.missingPartsPopup", airbus.mes.missingParts.oView.getController());
+//            airbus.mes.stationtracker.oView.addDependent(airbus.mes.missingParts.view.missingPartsPopup);
+//            airbus.mes.stationtracker.MissingPartPopup.setModel(sap.ui.getCore().getModel("MissingParts"), "MissingParts");
+//
+//            airbus.mes.stationtracker.MissingPartPopup.setBusyIndicatorDelay(0);
+//
+//        }
+
+    	if (airbus.mes.missingParts === undefined) {
+
+            jQuery.sap.registerModulePath("airbus.mes.missingParts", "../components/missingParts");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.missingParts", });
+            //nav.addPage(airbus.mes.stationHandover.oView);
+        }
+    	airbus.mes.missingParts.oView.getContent()[0].open();
+
+    },
 
     /***************************************************************************
      * Open fragment of unplanned activities

@@ -1,0 +1,67 @@
+<mvc:View controllerName="airbus.mes.missingParts.controller.missingParts"
+	xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.ui.table"
+	xmlns:core="sap.ui.core">
+
+	<m:Dialog id="missingPartsPopUp" class="ClassMissingPartsPopUpPopUp theme-disabled"
+		contentWidth="90%" contentHeight="90%" verticalScrolling="false"
+		showHeader="false" afterClose="afterCloseMissingPartsPopup">
+		<m:content>
+			<Table >
+				<columns>
+					<Column width="10%">
+						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>WorkOrder}" />
+						<template>
+							<m:Text m:Text="{getMissingParts>WorkOrder}" />
+						</template>
+					</Column>
+					<Column width="10%">
+						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>Operation}" />
+						<template>
+							<m:Text m:Text="{getMissingParts>Operation}" />
+						</template>
+					</Column>
+					<Column width="10%">
+						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>PartNumber}" />
+						<template>
+							<m:Text m:Text="{getMissingParts>PartNumber}" />
+						</template>
+					</Column>
+					<Column width="10%">
+						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>PartDescript}" />
+						<template>
+							<m:Text m:Text="{getMissingParts>PartDescript}" />
+						</template>
+					</Column>
+					<Column width="10%">
+						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>Quantity}" />
+						<template>
+							<m:Text m:Text="{getMissingParts>Quantity}" />
+						</template>
+					</Column>
+					<Column width="10%">
+						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>CriticalPart}" />
+						<template>
+							<m:Text m:Text="{getMissingParts>CriticalPart}" />
+						</template>
+					</Column>
+					<Column width="10%">
+						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>ExpectStDate}" />
+						<template>
+							<m:Text m:Text="{getMissingParts>ExpectStDate}" />
+						</template>
+					</Column>
+				</columns>
+			</Table>
+			
+			
+			
+			
+			
+		</m:content>
+
+		<m:buttons>
+			<m:Button m:Text="{StationTrackerI18n>Close}" icon="sap-icon://decline"
+				press="onCloseMPPopup" />
+		</m:buttons>
+	</m:Dialog>
+</mvc:View>

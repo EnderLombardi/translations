@@ -342,8 +342,9 @@
 									<ToolbarSpacer />
 									<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
 									<ToolbarSpacer />
-									<Button text="{StationTrackerI18n>missingParts}" enabled="false"
-										type="Transparent" icon="sap-icon://task" class="sapUiTinyMarginBeginEnd" visible = "{Profile>/identifiedUser/permissions/STATION_DRILL_MISSING}"></Button>
+									<Button text="{StationTrackerI18n>missingParts}" enabled="true"
+										type="Transparent" icon="sap-icon://task" class="sapUiTinyMarginBeginEnd" visible = "{ path : 'groupModel>Value' , formatter : '.setMissingVisible' }"
+										press="onMPPress"></Button>
 									<ToggleButton text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
 										icon="sap-icon://kpi-corporate-performance" class="sapUiTinyMarginBeginEnd"
 										press="onCPPress" pressed="false" visible = "{Profile>/identifiedUser/permissions/STATION_GANTT_CRITICAL}" />
