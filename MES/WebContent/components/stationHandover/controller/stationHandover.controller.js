@@ -2,6 +2,13 @@
 
 sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
+	/************************************************************************/
+    /************************************************************************/
+    /**                                                                    **/
+    /**						Controller for the view	 stationHandover 	   **/
+    /**                                                                    **/
+    /************************************************************************/
+    /************************************************************************/
 	onAfterRendering : function() {
 		var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
 
@@ -373,18 +380,35 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 **************************************************************************/
 	onPressInsert : function() {
 
-		// var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
-		var bIsSelected = false;
-		var aRows = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getRows();
+		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
 		var aSelectionPath = [];
 
-		// Parse all Selected line in Table and store Path in array to use when we will saved the OSW to import
-		aRows.forEach(function(el, indice) {
+		// Parse all Selected line in Table and store osw in modification in order to send it in the saved popup
+		Object.keys(aValueSelected).forEach(function(el, indice) {
 
-			if (el.getCells()[0].getSelected() && el.getCells()[0].getEnabled())
+			if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
 
-				aSelectionPath.push(el.getCells()[0].oPropagatedProperties.oBindingContexts.oswModel.sPath);
+				if ( aValueSelected[el].changed  === true ) {
+					
+					aSelectionPath.push(aValueSelected[el].oswItems);
+					
+				}
+			
+				Object.keys(aValueSelected[el]).forEach(function(al, indice1) {
 
+					if (al != "open" && al != "oswItems" && al != "initial" && al !="changed") {
+
+
+						if ( aValueSelected[el][al].changed  === true ) {
+							
+							aSelectionPath.push(aValueSelected[el][al].oswItems);
+							
+						}
+						
+					}
+
+				})
+			}
 		})
 		// Display a dialog to inform if at least one osw is selected or not
 		if (aSelectionPath.length === 0) {
@@ -403,7 +427,8 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			airbus.mes.stationHandover.oView.addDependent(airbus.mes.stationHandover.insertOsw);
 
 		}
-
+		
+		console.log(aSelectionPath);
 		airbus.mes.stationHandover.insertOsw.open();
 		sap.ui.getCore().byId("insertOsw--TimePicker").setDateValue(new Date());
 		sap.ui.getCore().byId("insertOsw--calendar").insertSelectedDate(new sap.ui.unified.DateRange({
@@ -426,6 +451,15 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		}
 		
 	},	
+	
+	/************************************************************************/
+    /************************************************************************/
+    /**                                                                    **/
+    /**						InsertOsw Fragment						 	   **/
+    /**                                                                    **/
+    /************************************************************************/
+    /************************************************************************/
+	
 	/***************************************************************************
 	 * trigger when the user click on the close button of the dialog
 	 **************************************************************************/
@@ -433,6 +467,16 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		oEvt.getSource().getParent().close();
 
-	}
+	},
+	/***************************************************************************
+	 * trigger when the user click button of jump to Acpng start/End date Select
+	 * in the Date picker the date of acpng Date of the osw selected
+	 **************************************************************************/
+	onPressJumpDate : function(oEvt) {
+		
+		
+		
+		
+	},
 
 });
