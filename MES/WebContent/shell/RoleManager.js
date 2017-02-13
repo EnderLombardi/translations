@@ -57,7 +57,7 @@ airbus.mes.shell.RoleManager = {
 			return col;
 		}
 		
-		this.features = roleTable.reduce(collectRoles, {}); // Populate initially
+//		this.features = roleTable.reduce(collectRoles, {}); // Populate initially
 	},
 	
 	/**
