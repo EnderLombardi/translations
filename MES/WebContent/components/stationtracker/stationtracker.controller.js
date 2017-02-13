@@ -232,24 +232,19 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         airbus.mes.shell.util.navFunctions.resourcePool();
     },
     
+    /***************************************************************************
+     * Open Missing Parts View
+     *
+     ****************************************************************************/
     onMPPress: function () {
-//    	if (airbus.mes.stationtracker.MissingPartPopup === undefined) {
-//            airbus.mes.stationtracker.MissingPartPopup = sap.ui.xmlfragment("MissingPartPopup", "airbus.mes.missingParts.view.missingPartsPopup", airbus.mes.missingParts.oView.getController());
-//            airbus.mes.stationtracker.oView.addDependent(airbus.mes.missingParts.view.missingPartsPopup);
-//            airbus.mes.stationtracker.MissingPartPopup.setModel(sap.ui.getCore().getModel("MissingParts"), "MissingParts");
-//
-//            airbus.mes.stationtracker.MissingPartPopup.setBusyIndicatorDelay(0);
-//
-//        }
-
     	if (airbus.mes.missingParts === undefined) {
-
             jQuery.sap.registerModulePath("airbus.mes.missingParts", "../components/missingParts");
             sap.ui.getCore().createComponent({ name: "airbus.mes.missingParts", });
-            //nav.addPage(airbus.mes.stationHandover.oView);
         }
+        //load data
+        airbus.mes.missingParts.model.ModelManager.loadMPDetail();
+        //Show popup
     	airbus.mes.missingParts.oView.getContent()[0].open();
-
     },
 
     /***************************************************************************

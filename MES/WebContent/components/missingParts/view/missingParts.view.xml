@@ -1,53 +1,69 @@
 <mvc:View controllerName="airbus.mes.missingParts.controller.missingParts"
 	xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.ui.table"
+	xmlns:l="sap.ui.layout"
+	xmlns:fb="sap.ui.comp.filterbar"
 	xmlns:core="sap.ui.core">
 
 	<m:Dialog id="missingPartsPopUp" class="ClassMissingPartsPopUpPopUp theme-disabled"
-		contentWidth="90%" contentHeight="90%" verticalScrolling="false"
+		contentWidth="100%" contentHeight="90%" verticalScrolling="true"
 		showHeader="false" afterClose="afterCloseMissingPartsPopup">
 		<m:content>
-			<Table >
+		
+		<l:HorizontalLayout width="100%">
+			<m:Button m:Text="{StationTrackerI18n>Close}" icon="sap-icon://arrow-down"
+				press="onCloseMPPopup" />
+			<m:Label text="{i18nmissingPartsModel>title}" width="100%" TextAlign="Center"/>
+		</l:HorizontalLayout>
+
+
+			<Table id="MPTable"
+					class="MPTable"
+                    rows="{getMissingParts>/Rowsets/Rowset/0/Row}"
+					ariaLabelledBy="title"
+					selectionMode="Single"
+					visibleRowCount="30">
+
 				<columns>
 					<Column width="10%">
-						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>WorkOrder}" />
+						<m:Label class="MPTLabel" text="{i18nmissingPartsModel>WorkOrder}" />
 						<template>
-							<m:Text m:Text="{getMissingParts>WorkOrder}" />
+							<m:Text text="{getMissingParts>WorkOrder}" />
 						</template>
 					</Column>
 					<Column width="10%">
-						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>Operation}" />
+						<m:Label class="MPTLabel" text="{i18nmissingPartsModel>Operation}" />
 						<template>
-							<m:Text m:Text="{getMissingParts>Operation}" />
+							<m:Text text="{getMissingParts>Operation}" />
 						</template>
 					</Column>
 					<Column width="10%">
-						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>PartNumber}" />
+						<m:Label class="MPTLabel" text="{i18nmissingPartsModel>PartNumber}" />
 						<template>
-							<m:Text m:Text="{getMissingParts>PartNumber}" />
+							<m:Text text="{getMissingParts>PartNumber}" />
 						</template>
 					</Column>
 					<Column width="10%">
-						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>PartDescript}" />
+						<m:Label class="MPTLabel" text="{i18nmissingPartsModel>PartDescript}" />
 						<template>
-							<m:Text m:Text="{getMissingParts>PartDescript}" />
+							<m:Text text="{getMissingParts>PartDescript}" />
 						</template>
 					</Column>
 					<Column width="10%">
-						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>Quantity}" />
+						<m:Label class="MPTLabel" text="{i18nmissingPartsModel>Quantity}" />
 						<template>
-							<m:Text m:Text="{getMissingParts>Quantity}" />
+							<m:Text text="{getMissingParts>Quantity}" />
 						</template>
 					</Column>
 					<Column width="10%">
-						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>CriticalPart}" />
+						<m:Label class="MPTLabel" text="{i18nmissingPartsModel>CriticalPart}" />
 						<template>
-							<m:Text m:Text="{getMissingParts>CriticalPart}" />
+							<m:Text text="{getMissingParts>CriticalPart}" />
 						</template>
 					</Column>
 					<Column width="10%">
-						<m:Label class="MPTLabel" m:Text="{i18nmissingPartsModel>ExpectStDate}" />
+						<m:Label class="MPTLabel" text="{i18nmissingPartsModel>ExpectStDate}" />
 						<template>
-							<m:Text m:Text="{getMissingParts>ExpectStDate}" />
+							<m:Text text="{path:'getMissingParts>ExpectStDate', formatter:'airbus.mes.stationtracker.util.Formatter.dateToStringFormat'}" />
 						</template>
 					</Column>
 				</columns>
@@ -60,8 +76,6 @@
 		</m:content>
 
 		<m:buttons>
-			<m:Button m:Text="{StationTrackerI18n>Close}" icon="sap-icon://decline"
-				press="onCloseMPPopup" />
 		</m:buttons>
 	</m:Dialog>
 </mvc:View>
