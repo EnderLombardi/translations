@@ -7,8 +7,8 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		aColumns.forEach(function(el, indice) {
 			// Don't do auto resize blocked line it bug
-			if ( indice != 1 ) {
-			airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
+			if (indice != 1) {
+				airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
 			}
 
 		});
@@ -47,7 +47,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	/***************************************************************************
 	 * trigger when the user write in the search it filter the treetable on
 	 * workorder
-	 * 
+	 * @param {oEvt} Object wich represent the sapui5 event obejct"
 	 **************************************************************************/
 	filterWo : function(oEvt) {
 
@@ -81,11 +81,11 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		for ( var i in oMyfilter) {
 
 			if (oMyfilter[i] != undefined) {
-				
+
 				if (!Array.isArray(oMyfilter[i])) {
-				
+
 					aFilter.push(oMyfilter[i]);
-				} 
+				}
 			}
 		}
 
@@ -144,19 +144,20 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 **************************************************************************/
 	openFilterType : function(oEvt) {
 
-        var oView = airbus.mes.stationHandover.oView;
-        
+		var oView = airbus.mes.stationHandover.oView;
+
 		if (airbus.mes.stationHandover.typeFilter === undefined) {
-            
-            airbus.mes.stationHandover.typeFilter  = sap.ui.xmlfragment("typeFilter", "airbus.mes.stationHandover.fragments.typeFilter", airbus.mes.stationHandover.oView.getController());
-            airbus.mes.stationHandover.typeFilter.addStyleClass("alignTextLeft");
-            oView.addDependent(airbus.mes.stationHandover.typeFilter);
-            //As a default, option 1 ‘OW still assigned to previous stations’ should be selected.
-            airbus.mes.stationHandover.typeFilter.getContent()[0].getItems()[0].setSelected(true);
-            
-			}
-		
-        airbus.mes.stationHandover.typeFilter.openBy(oView.byId("typeHandOver"));
+
+			airbus.mes.stationHandover.typeFilter = sap.ui.xmlfragment("typeFilter", "airbus.mes.stationHandover.fragments.typeFilter",
+				airbus.mes.stationHandover.oView.getController());
+			airbus.mes.stationHandover.typeFilter.addStyleClass("alignTextLeft");
+			oView.addDependent(airbus.mes.stationHandover.typeFilter);
+			//As a default, option 1 ‘OW still assigned to previous stations’ should be selected.
+			airbus.mes.stationHandover.typeFilter.getContent()[0].getItems()[0].setSelected(true);
+
+		}
+
+		airbus.mes.stationHandover.typeFilter.openBy(oView.byId("typeHandOver"));
 
 	},
 	/***************************************************************************
@@ -164,22 +165,23 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 * 
 	 **************************************************************************/
 	openFilterStation : function(oEvt) {
-		
-		 var oView = airbus.mes.stationHandover.oView;
-	        
-			if (airbus.mes.stationHandover.stationFilter === undefined) {
-	            
-	            airbus.mes.stationHandover.stationFilter  = sap.ui.xmlfragment("stationFilter", "airbus.mes.stationHandover.fragments.stationFilter", airbus.mes.stationHandover.oView.getController());
-	            airbus.mes.stationHandover.stationFilter.addStyleClass("alignTextLeft");
-	            oView.addDependent(airbus.mes.stationHandover.stationFilter);
-	            //As a default, the physical station with the biggest planned start date/time should be selected.
-	            var fNumberItems =  airbus.mes.stationHandover.stationFilter.getContent()[0].getItems().length;
-	            airbus.mes.stationHandover.stationFilter.getContent()[0].getItems()[fNumberItems-1].setSelected(true);
-   
-				}
-			
-	        airbus.mes.stationHandover.stationFilter.openBy(oView.byId("originHandOver"));
-		
+
+		var oView = airbus.mes.stationHandover.oView;
+
+		if (airbus.mes.stationHandover.stationFilter === undefined) {
+
+			airbus.mes.stationHandover.stationFilter = sap.ui.xmlfragment("stationFilter", "airbus.mes.stationHandover.fragments.stationFilter",
+				airbus.mes.stationHandover.oView.getController());
+			airbus.mes.stationHandover.stationFilter.addStyleClass("alignTextLeft");
+			oView.addDependent(airbus.mes.stationHandover.stationFilter);
+			//As a default, the physical station with the biggest planned start date/time should be selected.
+			var fNumberItems = airbus.mes.stationHandover.stationFilter.getContent()[0].getItems().length;
+			airbus.mes.stationHandover.stationFilter.getContent()[0].getItems()[fNumberItems - 1].setSelected(true);
+
+		}
+
+		airbus.mes.stationHandover.stationFilter.openBy(oView.byId("originHandOver"));
+
 	},
 	/***************************************************************************
 	 * trigger when the user Select the ph station and filter the tree table on
@@ -187,21 +189,21 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 * 
 	 **************************************************************************/
 	filterStation : function(oEvt) {
-		
+
 		var aPath = oEvt.getSource().getContent()[0].getSelectedContextPaths()
 		var oModel = airbus.mes.stationHandover.oView.getModel("phStation");
-		
+
 		airbus.mes.stationHandover.util.ModelManager.filter.aStation = [];
-		
-		aPath.forEach(function(el){
-			
+
+		aPath.forEach(function(el) {
+
 			var sKey = oModel.getProperty(el).station;
 			airbus.mes.stationHandover.util.ModelManager.filter.aStation.push(sKey.toUpperCase());
-			
+
 		});
-					
+
 		this.applyMyFilter();
-		
+
 	},
 	/***************************************************************************
 	 * Trigger when the use leave the typeSelection popOver it filter the osw
@@ -212,18 +214,18 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		var aPath = oEvt.getSource().getContent()[0].getSelectedContextPaths()
 		var oModel = airbus.mes.stationHandover.oView.getModel("typeModel");
-		
+
 		airbus.mes.stationHandover.util.ModelManager.filter.aType = [];
-		
-		aPath.forEach(function(el){
-			
+
+		aPath.forEach(function(el) {
+
 			var sKey = oModel.getProperty(el).key;
 			airbus.mes.stationHandover.util.ModelManager.filter.aType.push(sKey.toUpperCase());
-			
+
 		});
-		
+
 		this.applyMyFilter();
-		
+
 	},
 	/***************************************************************************
 	 * trigger when the user check/unechek the NO time checkbox it filter the
@@ -288,23 +290,28 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 * 
 	 **************************************************************************/
 	selectAll : function(oEvt) {
-
+		var that = this;
 		var sValue = oEvt.getSource().mProperties.selected;
 		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
 
 		Object.keys(aValueSelected).forEach(function(el, indice) {
 
-			if (el != "open") {
+			if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
 
 				aValueSelected[el].open = sValue;
+				//Store the stat of the selected row in the object to know if it is in modification or not
+				that.isSelected(aValueSelected[el],sValue);
 
 				Object.keys(aValueSelected[el]).forEach(function(al, indice1) {
 
-					if (al != "open") {
+					if (al != "open" && al != "oswItems" && al != "initial" && al !="changed") {
 
 						aValueSelected[el][al].open = sValue;
+						//Store the stat of the selected row in the object to know if it is in modification or not
+						that.isSelected(aValueSelected[el][al],sValue);
 
 					}
+
 				})
 			}
 		})
@@ -321,26 +328,36 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
 		var sPath = oEvt.getSource().oPropagatedProperties.oBindingContexts.oswModel.sPath;
 		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").getProperty(sPath);
+		var that = this;
 
 		// Check if we selected a chill or not
 		if (oModel.MATERIAL_DESCRIPTION != undefined) {
 
 			aValueSelected[oModel.WOID].open = sValue;
+			//Store the stat of the selected row in the object to know if it is in modification or not
+			that.isSelected(aValueSelected[oModel.WOID],sValue);
 
 			Object.keys(aValueSelected[oModel.WOID]).forEach(function(el, indice) {
 
-				if (el != "open") {
+				if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
 
 					aValueSelected[oModel.WOID][el].open = sValue;
-				
+								
+					//Store the stat of the selected row in the object to know if it is in modification or not
+					that.isSelected(aValueSelected[oModel.WOID][el],sValue);
+
+
 				}
 
 			})
 		} else {
-			// store in array the WOID + OPERATION TO select
+			// store in object the WOID + OPERATION TO select
 			var sID = oModel.WOID + "##||##" + oModel.REFERENCE
 
 			aValueSelected[oModel.WOID][sID].open = sValue;
+			
+			//Store the stat of the selected row in the object to know if it is in modification or not
+			that.isSelected(aValueSelected[oModel.WOID][sID],sValue);
 
 		}
 
@@ -354,49 +371,68 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 * and display the insert osw pop up
 	 * 
 	 **************************************************************************/
-	onPressInsert: function() {
-		
-//		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
+	onPressInsert : function() {
+
+		// var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
 		var bIsSelected = false;
 		var aRows = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getRows();
 		var aSelectionPath = [];
-		
-		// Parse all Selected line in Table and store Path in array to user when we will saved the OSW to import
-		aRows.forEach(function(el,indice){
-		
-			if ( el.getCells()[0].getSelected() && el.getCells()[0].getEnabled() )
-			
+
+		// Parse all Selected line in Table and store Path in array to use when we will saved the OSW to import
+		aRows.forEach(function(el, indice) {
+
+			if (el.getCells()[0].getSelected() && el.getCells()[0].getEnabled())
+
 				aSelectionPath.push(el.getCells()[0].oPropagatedProperties.oBindingContexts.oswModel.sPath);
-			
+
 		})
 		// Display a dialog to inform if at least one osw is selected or not
-		if ( aSelectionPath.length === 0 ) {
+		if (aSelectionPath.length === 0) {
 			jQuery.sap.require("sap.m.MessageBox");
-			
-			sap.m.MessageBox.warning(airbus.mes.stationHandover.oView.getModel("stationHandoverI18n").getProperty("errorSelection"),{
-				
-				
+
+			sap.m.MessageBox.warning(airbus.mes.stationHandover.oView.getModel("stationHandoverI18n").getProperty("errorSelection"), {
+
 			});
-			return;			
+			return;
 		}
-		
+
 		if (airbus.mes.stationHandover.insertOsw === undefined) {
-            
-            airbus.mes.stationHandover.insertOsw  = sap.ui.xmlfragment("insertOsw", "airbus.mes.stationHandover.fragments.insertOsw", airbus.mes.stationHandover.oView.getController());
-            airbus.mes.stationHandover.oView.addDependent(airbus.mes.stationHandover.insertOsw);
-          
+
+			airbus.mes.stationHandover.insertOsw = sap.ui.xmlfragment("insertOsw", "airbus.mes.stationHandover.fragments.insertOsw",
+				airbus.mes.stationHandover.oView.getController());
+			airbus.mes.stationHandover.oView.addDependent(airbus.mes.stationHandover.insertOsw);
+
 		}
-		
+
 		airbus.mes.stationHandover.insertOsw.open();
 		sap.ui.getCore().byId("insertOsw--TimePicker").setDateValue(new Date());
+		sap.ui.getCore().byId("insertOsw--calendar").insertSelectedDate(new sap.ui.unified.DateRange({
+			startDate : new Date()
+		}));
 	},
+	/***************************************************************************
+	 * 	permit to know if the  row in the object is in modification or not
+	 **************************************************************************/
+	isSelected : function(oToTest,bValue) {
+		
+		if (oToTest.initial != bValue) {
+	
+			// Store also the modification on the object itself to send back whens saved the modification during the import of osw
+			oToTest.oswItems.INSERTED = bValue;
+			oToTest.changed = true;
+		} else {
+			
+			oToTest.changed = false;
+		}
+		
+	},	
 	/***************************************************************************
 	 * trigger when the user click on the close button of the dialog
 	 **************************************************************************/
 	onClose : function(oEvt) {
-		
+
 		oEvt.getSource().getParent().close();
-		
+
 	}
 
 });

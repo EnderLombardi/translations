@@ -10,7 +10,10 @@ jQuery.sap.declare("airbus.mes.displayOpeAttachments.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.displayOpeAttachments.Component", {
 	metadata: {
-		properties: {},
+		properties: {
+			sSet : undefined,
+			phStation: undefined
+		},
 	}
 });
 

@@ -26,28 +26,27 @@ airbus.mes.stationHandover.util.Formatter = {
 			var sPath = this.oPropagatedProperties.oBindingContexts.oswModel.sPath;
 			var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").getProperty(sPath);
 
-			if (oModel.INSERTED === "true") {
+			//			if (oModel.INSERTED === "true") {
+			//
+			//				return true;
+			//
+			//			}
 
-				return true;
+			//if (oModel.INSERTED === "false") {
+			// Apply selection/unselection of box all only when clicking on
+
+			// Check if we selected a chill or not
+			if (oModel.MATERIAL_DESCRIPTION != undefined) {
+
+				return aValueSelected[oModel.WOID].open;
+
+			} else {
+
+				return aValueSelected[oModel.WOID][oModel.WOID + "##||##" + oModel.REFERENCE].open;
 
 			}
 
-			if (oModel.INSERTED === "false") {
-				// Apply selection/unselection of box all only when clicking on
-				
-					// Check if we selected a chill or not
-					if (oModel.MATERIAL_DESCRIPTION != undefined) {
-						
-						return aValueSelected[oModel.WOID].open;
-
-						
-					} else {
-						
-						return aValueSelected[oModel.WOID][oModel.WOID + "##||##" + oModel.REFERENCE].open;
-						
-					}
-				
-			}
+			//}
 
 		}
 	},

@@ -10,8 +10,8 @@ airbus.mes.jigtools.util.ModelManager = {
 	operation : "O",
 
 //	variable for operation
-	site      : undefined,
-	workOrder : undefined,
+//	site      : undefined,
+//	workOrder : undefined,
 		
 
 	init : function(core) {

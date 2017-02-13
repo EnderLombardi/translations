@@ -85,8 +85,6 @@ sap.ui
                                                 var oBinding = oItem.getContent()[0]
                                                               .getContent()[3].getBinding("items");
                                                 
-                                                var oFilters = [];
-                                                
                                                 if(nav.getCurrentPage().getId() == "stationTrackerView"){
                                                 	var firstRowFlag = true;
                                                 	oBinding.filter(new sap.ui.model.Filter({
@@ -852,23 +850,22 @@ sap.ui
                                   * When Comment is Submitted to Mark Solved Disruption
                                   */
                                   onMarkSolvedDisruptionComment : function() {
+                                	  
+                                	  // Set Busy
+                                      airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
+                                      airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
 
-                                         var msgRef = sap.ui.getCore().byId(
-                                                       "disruptionCommentMsgRef").getText();
+                                      var msgRef = sap.ui.getCore().byId( "disruptionCommentMsgRef").getText();
 
-                                         var comment = airbus.mes.disruptions.Formatter.actions.solve +
-                                                                sap.ui.getCore().byId("disruptionCommentBox").getValue();
+                                      var comment = airbus.mes.disruptions.Formatter.actions.solve +
+                                                            sap.ui.getCore().byId("disruptionCommentBox").getValue();
 
-                                         var i18nModel = sap.ui.getCore().byId("ViewDisruptionView").getModel("i18nModel");
+                                      //var i18nModel = sap.ui.getCore().byId("ViewDisruptionView").getModel("i18nModel");
 
-                                         // Call to Mark Solved Disruption
-                                         var isSuccess = airbus.mes.disruptions.ModelManager
-                                                       .markSolvedDisruption(msgRef, comment,
-                                                                     i18nModel);
+                                      // Call to Mark Solved Disruption
+                                      airbus.mes.disruptions.ModelManager.markSolvedDisruption(msgRef, comment);
 
-                                         airbus.mes.disruptions.__enterCommentDialogue.close();
-
-                                         if (isSuccess) {
+                                      /*   if (isSuccess) {
                                                 var sPath = sap.ui.getCore().byId(
                                                               "disruptionCommentSpath").getText();
                                                 sap.ui.getCore().byId("ViewDisruptionView").getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.solved;
@@ -890,7 +887,7 @@ sap.ui
                                                 
                                                 sap.ui.getCore().byId("ViewDisruptionView").getModel("operationDisruptionsModel")
                                                               .refresh();
-                                         }
+                                         }*/
                                   },
 
                                   /***********************************************************
