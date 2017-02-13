@@ -10,6 +10,8 @@
 					icon="sap-icon://business-card" press="goToMyProfile" class="blackButton"
 					enabled="{ path : 'ShellI18n>', formatter : 'airbus.mes.shell.util.Formatter.checkToEnableProfile' }">
 				</Button>
+				<Button id="idLogout" width="100%" type="Transparent" text="{ShellI18n>logout}"
+					icon="sap-icon://log" press="onLogOutPress" class="blackButton"/>
 			</items>
 		</VBox>
 	</Popover>
