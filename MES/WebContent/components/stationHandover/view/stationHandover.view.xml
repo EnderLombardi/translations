@@ -11,7 +11,7 @@
 			<TreeTable id="TreeTableBasic"
 				rows="{path:'oswModel>/', parameters: {arrayNames:['row']}}"
 				selectionMode="None" enableSelectAll="true" visibleRowCountMode="Auto"
-				enableBusyIndicator="true" enableCellFilter="true">
+				enableBusyIndicator="true" enableCellFilter="true" showColumnVisibilityMenu="">
 				<extension>
 
 					<m:Toolbar id="kpiHeaderToolbar"
@@ -68,7 +68,7 @@
 						<template>
 							<m:CheckBox select="onSelectRow"
 								selected="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}"
-								enabled="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsertEnabled'}" />
+								/>
 						</template>
 					</Column>
 					<Column autoResizable="true" width="5rem">
