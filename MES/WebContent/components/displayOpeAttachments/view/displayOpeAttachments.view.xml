@@ -8,10 +8,10 @@
 	<m:Page id="doaPage" showHeader="false" enableScrolling="false" height="100%">
 
         <m:VBox id="displayOpeAttachmentsCheck" class="DOACheck">
-            <m:RadioButtonGroup columns="2" select="onSelectLevel">
+            <m:RadioButtonGroup columns="2" select="changeLevel">
                 <m:buttons>
-                    <m:RadioButton id="workOrderButton" text="{i18nDisplayOpeAttachmentsModel>DOA_displayForOperation}"/>
-                    <m:RadioButton id="operationButton" text="{i18nDisplayOpeAttachmentsModel>DOA_displayForWO}"/>
+                    <m:RadioButton id="operationButton" text="{i18nDisplayOpeAttachmentsModel>DOA_displayForOperation}"/>
+                    <m:RadioButton id="workOrderButton" text="{i18nDisplayOpeAttachmentsModel>DOA_displayForWO}"/>
                 </m:buttons>
             </m:RadioButtonGroup>
         </m:VBox>

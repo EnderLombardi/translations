@@ -4,13 +4,15 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	firstVisibleRow: 0, //first row displayed (it changes on scroll)
 	popUrl: null,
-	$idown: null,
 
 	onAfterRendering: function () {
 		this.init();
 	},
 
+	//create/update model + update view
 	init: function () {
+		this.selectLevel(this.getOwnerComponent().getSSet());
+
 		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
 		oModule.loadDOADetail();
 		var model = airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments");
@@ -30,6 +32,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		}
 	},
 
+	//expand all nodes
 	treeExpandAll: function (treeTableArray, oTTbl) {
 		var nbOfDocTypes = this.getNbOfDocTypes(treeTableArray);
 		for (var i = nbOfDocTypes; i > 0; i--) {
@@ -67,11 +70,12 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var treeTableArray = airbus.mes.displayOpeAttachments.util.ModelManager.treeTableArray;
 		var bExpanded = oEvent.getParameter("expanded");//expanding (true) or collapsing (false)
 		var iRowIndex = oEvent.getParameter("rowIndex");//row index (sapui5)
+		var documentsGap;
 
 		//we check if the first row has changed, this case happens when we have scroll bottom and collapsed an element, which ends with less than 9 elements in the array
 		if (!bExpanded) {
 			//if the first row has changed, we may have a gap of elements in the view to anticipate
-			var documentsGap = this.checkIfFirstRowChanged(treeTableArray, iRowIndex);//indicate the number of rows in the gap
+			documentsGap = this.checkIfFirstRowChanged(treeTableArray, iRowIndex);//indicate the number of rows in the gap
 		}
 		if (!bExpanded && documentsGap > 0) {
 			this.updateTreeTableArrayIfFirstRowChanged(oEvent, treeTableArray, documentsGap);
@@ -450,25 +454,39 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	//	SELECT LEVEL
 	/////////////////////////////////
 
-	onSelectLevel: function (oEvent) {
-		var previousSet;
+	changeLevel: function (oEvent) {
+		var set = this.getOwnerComponent().getSSet();
 
 		//change operation/wo mode
-		previousSet = airbus.mes.displayOpeAttachments.util.ModelManager.sSet;
-		switch (previousSet) {
+		switch (set) {
 			case "O"://operation
-				sap.ui.getCore().byId("displayOpeAttachmentsView--operationButton").setSelected(true);
-				airbus.mes.displayOpeAttachments.util.ModelManager.sSet = "P";
+				sap.ui.getCore().byId("displayOpeAttachmentsView--workOrderButton").setSelected(true);
+				this.getOwnerComponent().setSSet("P");
 				break;
 			case "P"://work order
-				sap.ui.getCore().byId("displayOpeAttachmentsView--workOrderButton").setSelected(true);
-				airbus.mes.displayOpeAttachments.util.ModelManager.sSet = "O";
+				sap.ui.getCore().byId("displayOpeAttachmentsView--operationButton").setSelected(true);
+				this.getOwnerComponent().setSSet("O");
 				break;
-			default: //if Null
+			default:
 				break;
 		}
 
 		this.init();
 	},
+
+
+	selectLevel: function (set) {
+		//change operation/wo mode
+		switch (set) {
+			case "O"://operation
+				sap.ui.getCore().byId("displayOpeAttachmentsView--operationButton").setSelected(true);
+				break;
+			case "P"://work order
+				sap.ui.getCore().byId("displayOpeAttachmentsView--workOrderButton").setSelected(true);
+				break;
+			default:
+				break;
+		}
+	}
 
 });

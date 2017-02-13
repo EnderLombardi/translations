@@ -8,10 +8,6 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	treeTableArray: [],
 	nbOfDocTypes: 0,
 
-	//todo :will be the configuration received in AppConfManager
-	//sSet : airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");
-	sSet: "O",
-
 	init: function (core) {
 
 		var aModel = ["getOpeAttachments", "getDocumentExtensions", "getDocumentTypes"];
@@ -122,7 +118,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 
 	//replace the url with the several parameters needed
 	getDOADetail: function (paramArray) {
-		var url, set = airbus.mes.displayOpeAttachments.util.ModelManager.sSet;
+		var url, set = airbus.mes.displayOpeAttachments.component.mProperties.sSet;
 
 		url = this.urlModel.getProperty("getOpeAttachments");
 		if (sessionStorage.loginType !== "local") {
@@ -164,6 +160,16 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	//replace URL with parameter
 	replaceURI: function (sURI, sFrom, sTo) {
 		return sURI.replace(sFrom, encodeURIComponent(sTo));
-	}
+	},
+
+	/* *********************************************************************** *
+	 *  operation/wo mode                                               	   *
+	 * *********************************************************************** */
+
+	 checkOperationWorkOrderMode: function () {
+		 if (["O", "P"].indexOf(airbus.mes.displayOpeAttachments.component.mProperties.sSet) === -1) {
+			airbus.mes.displayOpeAttachments.component.mProperties.sSet ="O";
+		 }
+	 }
 
 };
