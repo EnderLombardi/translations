@@ -293,29 +293,65 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	selectAll : function(oEvt) {
 		var that = this;
 		var sValue = oEvt.getSource().mProperties.selected;
+		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
+		var aRows = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getRows();
+				
+		aRows.forEach(function(el){
+			// Parse only Row of table displayed
+			if ( el._oNodeState != undefined ) {
+				
+				var sPath = el.getCells()[0].oPropagatedProperties.oBindingContexts.oswModel.sPath;
+				var oModelOsw = oModel.getProperty(sPath);			
+				
+				if (oModelOsw.MATERIAL_DESCRIPTION != undefined) {
+					
+					aValueSelected[oModelOsw.WOID].open = sValue;
+					//Store the stat of the selected row in the object to know if it is in modification or not
+					that.isSelected(aValueSelected[oModelOsw.WOID],sValue);
+					
+				} else {
+					
+					// store in object the WOID + OPERATION TO select
+					var sID = oModelOsw.WOID + "##||##" + oModelOsw.REFERENCE
 
-		Object.keys(aValueSelected).forEach(function(el, indice) {
-
-			if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
-
-				aValueSelected[el].open = sValue;
-				//Store the stat of the selected row in the object to know if it is in modification or not
-				that.isSelected(aValueSelected[el],sValue);
-
-				Object.keys(aValueSelected[el]).forEach(function(al, indice1) {
-
-					if (al != "open" && al != "oswItems" && al != "initial" && al !="changed") {
-
-						aValueSelected[el][al].open = sValue;
-						//Store the stat of the selected row in the object to know if it is in modification or not
-						that.isSelected(aValueSelected[el][al],sValue);
-
-					}
-
-				})
+					aValueSelected[oModelOsw.WOID][sID].open = sValue;
+					
+					//Store the stat of the selected row in the object to know if it is in modification or not
+					that.isSelected(aValueSelected[oModelOsw.WOID][sID],sValue);
+		
+				}
+								
 			}
 		})
+		
+//		
+//		
+//		
+//		airbus.mes.stationHandover.oView.byId("TreeTableBasic").getRows()[1].getCells()[0].oPropagatedProperties.oBindingContexts.oswModel.sPath
+//		
+//		
+//		Object.keys(aValueSelected).forEach(function(el, indice) {
+//
+//			if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
+//
+//				aValueSelected[el].open = sValue;
+//				//Store the stat of the selected row in the object to know if it is in modification or not
+//				that.isSelected(aValueSelected[el],sValue);
+//
+//				Object.keys(aValueSelected[el]).forEach(function(al, indice1) {
+//
+//					if (al != "open" && al != "oswItems" && al != "initial" && al !="changed") {
+//
+//						aValueSelected[el][al].open = sValue;
+//						//Store the stat of the selected row in the object to know if it is in modification or not
+//						that.isSelected(aValueSelected[el][al],sValue);
+//
+//					}
+//
+//				})
+//			}
+//		})
 
 		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true);
 	},
