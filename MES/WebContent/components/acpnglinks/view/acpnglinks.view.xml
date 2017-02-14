@@ -9,7 +9,7 @@
                 <tab:TreeTable id="ACPnGTreeTable" class="ACPnGTreeTable"
                     rows="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/}"
                     cellClick="OnSelectionChange"
-                    visibleRowCountMode="Fixed" height="100%" enableColumnReordering="true"  columnMove="updateColumn">
+                    visibleRowCountMode="Fixed" height="100%" enableColumnReordering="false"  columnMove="updateColumn">
                     <tab:toolbar>
                     <Toolbar>
                         <Title id="title" text="ACPnG Links"/>
@@ -24,30 +24,35 @@
 								<Text text="{acpnglinksWorkOrderDetail>Type}" class="AllignItem" />
 							</tab:template>
 						</tab:Column>
-						<tab:Column id="Reference" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/2/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Reference">
+						<tab:Column id="Reference" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/1/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Reference">
 							<Label  class="ACPnGtLabel" text="Reference" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>Ref}" class="AllignItem" />
+								<Label text="{acpnglinksWorkOrderDetail>Reference}" class="AllignItem" />
 							</tab:template>
 						</tab:Column>
-						<tab:Column id="Review_end" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/3/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Review_end">
+						<tab:Column id="Review_end" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/2/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Review_end">
 							<Label  class="ACPnGtLabel" text="ACPnG review end date" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>Review_end}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
-						<tab:Column id="Note" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/4/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Note">
+						<tab:Column id="Note" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/3/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Note">
 							<Label  class="ACPnGtLabel" text="Note" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>Note}" class="AllignItem" />
 							</tab:template>
 						</tab:Column>
-						<tab:Column id="Family_target" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/5/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Family_target">
-							<Label class="ACPnGtLabel" text="Family target" />
+						<tab:Column id="Family_target" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/4/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Family_target">
+							<Label  class="ACPnGtLabel" text="Family target" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>Family_target}"
-									class="AllignItem" />
+								<Label text="{acpnglinksWorkOrderDetail>Family_target}" class="AllignItem" />
+							</tab:template>
+						</tab:Column>
+						<tab:Column id="Confirmed_time" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/5/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Confirmed_time">
+							<Label  class="ACPnGtLabel" text="Confirmed_time" />
+							<tab:template>
+								<Label text="{acpnglinksWorkOrderDetail>Family_target}" class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="STV" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/6/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}">

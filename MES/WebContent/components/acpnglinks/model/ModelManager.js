@@ -33,7 +33,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	},
 	
 	transformTreeData : function(nodesIn) {
-		var nodes = [];          // ’deep’ object structure
+		var nodes = [];        // ’deep’ object structure
 		var nodeMap = {};      // ’map’, each node is an attribute
 	
 		if (nodesIn) {
@@ -44,7 +44,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 				var nodeIn = nodesIn[i];
 				nodeOut = {
 					Type : nodeIn.Type,
-					Ref : nodeIn.Ref,
+					Reference : nodeIn.Reference,
 					Review_end : nodeIn.Review_end,
 					Note : nodeIn.Note,
 					Family_target : nodeIn.Family_target,
@@ -80,7 +80,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 				}
 	
 				// add the node to the node map
-				nodeMap[nodeOut.Ref] = nodeOut;
+				nodeMap[nodeOut.Reference] = nodeOut;
 			}
 		}
 		return nodes;
