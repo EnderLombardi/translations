@@ -1,7 +1,7 @@
 "use strict";
 
 jQuery.sap.registerModulePath("airbus.mes.trackingtemplate", "../components/trackingtemplate");
-jQuery.sap.require("airbus.mes.trackingtemplate.ModelManager");
+jQuery.sap.require("airbus.mes.trackingtemplate.util.ModelManager");
 jQuery.sap.declare("airbus.mes.trackingtemplate.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.trackingtemplate.Component", {
@@ -29,7 +29,7 @@ airbus.mes.trackingtemplate.Component.prototype.createContent = function() {
         this.oView.setModel(i18nModel, "i18n");
 
          // Initialize ModelManager and load needed file
-        airbus.mes.trackingtemplate.ModelManager.init(sap.ui.getCore());
+        airbus.mes.trackingtemplate.util.ModelManager.init(sap.ui.getCore());
         
         return this.oView;
     } else {

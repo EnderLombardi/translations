@@ -1,8 +1,8 @@
 "use strict";
 
 jQuery.sap.require("sap.ui.core.format.DateFormat");
-jQuery.sap.declare("airbus.mes.trackingtemplate.ModelManager");
-airbus.mes.trackingtemplate.ModelManager = {
+jQuery.sap.declare("airbus.mes.trackingtemplate.util.ModelManager");
+airbus.mes.trackingtemplate.util.ModelManager = {
 
 
     urlModel: undefined,
