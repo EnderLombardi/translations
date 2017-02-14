@@ -26,7 +26,7 @@
 									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
 									<HBox class="fixHboxItemDisplay">
 										<ui:HorizontalLayout>
-											<Text text="{acpnglinksWorkOrderDetail>Name}"></Text>
+											<Text class="acpnglinksNotVisible" text="{acpnglinksWorkOrderDetail>Name}"></Text>
 										</ui:HorizontalLayout>
 									</HBox>
 								</CustomListItem>
@@ -66,7 +66,7 @@
 									<content>
 										<HBox class="fixHboxItemDisplay">
 											<ui:HorizontalLayout>
-												<Text text="{acpnglinksWorkOrderDetail>Name}">
+												<Text class="acpnglinksVisible" text="{acpnglinksWorkOrderDetail>Name}">
 												</Text>
 											</ui:HorizontalLayout>
 										</HBox>

@@ -16,8 +16,8 @@
 					"MaxRange": 1.0,
 					"Visible": "true"
 				}, {
-					"Name": "Ref",
-					"SourceColumn": "Ref",
+					"Name": "Reference",
+					"SourceColumn": "Reference",
 					"Description": "",
 					"SQLDataType": 1,
 					"MinRange": 1.0,
