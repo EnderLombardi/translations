@@ -75,7 +75,16 @@
     }
 }
 #componentsView--ComponentsList-sapUiTableColHdrScr{
-    height: 32px;
+    height: 43px;
+    border: solid 1px #97999b;
+    background-color: #0085ad;
+    .sapUiTableCol{
+        height: 43px;
+        .sapMLabel{
+            color: white;
+            vertical-align: middle;
+        }
+    }
 }
 #componentsView--servicesButtonComponents{
     float: right;
