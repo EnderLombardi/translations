@@ -1,3 +1,6 @@
 .AllignItem{
 	Display:flex;
 }
+.adjustwidth{
+	width: 85% !important;
+}
