@@ -115,7 +115,7 @@ sap.ui
 
 
                 } else {
-                    this.setToolbarVisible();
+                    //this.setToolbarVisible();
                     oSwitchButton.setEnabled(true);
                     oSwitchButton.setState(false);
                     this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("ReadOnly"));
@@ -124,7 +124,7 @@ sap.ui
             } else {
                 this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("ReadOnly"));
                 //Define visibility for header sections
-                this.setToolbarVisible();
+                //this.setToolbarVisible();
             }
 
         },
@@ -140,7 +140,6 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailsView--idJignTools").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(false);
-//                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(false);
             } else {
                 sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(true);
