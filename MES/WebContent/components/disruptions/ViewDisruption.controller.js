@@ -795,7 +795,24 @@ sap.ui
                                   /***********************************************************
                                   * When Comment is Submitted to Escalate Disruption
                                   */
+                                  onEscalateDisruptionComment : function (oEvt) {
+                                	  
+                                	  var title = airbus.mes.disruptions.oView.viewDisruption
+                                      .getModel("i18nModel").getProperty("escalateDisruption");
+                            	       
+                                       var msgRef = oEvt.getSource().getBindingContext(
+                                      "operationDisruptionsModel").getObject("MessageRef");
+                    
+                                       var sStatus = oEvt.getSource().getBindingContext(
+                                          "operationDisruptionsModel").getObject("Status");
+
+                                    this.onOpenDisruptionComment(title, msgRef, '', this.onEscalateDisruption, sStatus);
+                                	  
+                                  },
+                                  
                                   onEscalateDisruption : function(oEvent) {
+                                	  
+                                	       
                                          
                                          var msgRef = oEvent.getSource().getBindingContext(
                                                        "operationDisruptionsModel").getObject(
