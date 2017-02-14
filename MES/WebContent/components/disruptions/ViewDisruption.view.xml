@@ -378,6 +378,8 @@
 						</VBox>
 						
 						<Button text="{i18nModel>seeMoreMessages}" icon="sap-icon://email" press="seeMoreMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}"
+							cData:messageRef="{operationDisruptionsModel>MessageRef}" design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />	
+						<Button text="{i18nModel>seeLessMessages}" icon="sap-icon://email" press="seeLessMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
 							cData:messageRef="{operationDisruptionsModel>MessageRef}" design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
 
 						<List id="messageComments" showNoData="false" class="sapUiSmallMarginBeginEnd"
@@ -403,26 +405,22 @@
 							</CustomListItem>
 						</List>
 
-						<!-- <Panel id="commentBox" visible="false">
-
-							<VBox width="79%"> -->
-								<TextArea id="commentArea" placeholder="{i18nModel>addComment}"
-									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>ResolverID'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
-									width="100%" />
-
-								<!-- <HBox>
-									<Button text="{i18nModel>submitComment}" type="Accept"
+						<Panel id="commentBox" class="sapUiSmallMarginBegin" visible="{=${operationDisruptionsModel>commentBoxOpened} === 'true'}">
+							<VBox width="100%">
+								<TextArea id="commentArea" placeholder="{i18nModel>addComment}" width="90%"
+									visible="{=${operationDisruptionsModel>commentBoxOpened} === 'true'}" value="{operationDisruptionsModel>disruptionNewComment}" />
+									
+								<HBox>
+									<Button text="{i18nModel>submitComment}" type="Accept" width="12rem"
 										press="submitComment" class="sapUiSmallMarginEnd buttonAccept"
-										width="12rem" />
+										visible="{=${operationDisruptionsModel>commentBoxOpened} === 'true'}" />									 
 
-									<Button text="{i18nModel>cancel}" type="Reject"
+									<Button text="{i18nModel>cancel}" type="Reject" width="12rem"
 										press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject"
-										width="12rem" />
+										visible="{=${operationDisruptionsModel>commentBoxOpened} === 'true'}" />
 								</HBox>
-
 							</VBox>
-
-						</Panel> -->
+						</Panel>
 
 						<Toolbar class="disruptionBottomBar">
 								
@@ -434,8 +432,8 @@
 
 							<Button id="addComment" text="{i18nModel>addComment}"
 								type="Emphasized"
-								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>ResolverID'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
-								press="submitComment" design="Transparent"/>
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>ResolverID'}, {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>commentBoxOpened'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
+								press="showCommentBox" design="Transparent"/>
 
 							<Button text="{i18nModel>acknowledge}" type="Accept"
 								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"

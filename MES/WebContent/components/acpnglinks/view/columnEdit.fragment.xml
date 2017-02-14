@@ -21,12 +21,13 @@
 					<content height="100%">
 						<HBox height="100%" class="fixHboxItemDisplay">
 							<List id="listAvailableColumns" mode="SingleSelectMaster"
-								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}">
+								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
+								sorter="{path : 'Sort'" >
 								<CustomListItem
 									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
 									<HBox class="fixHboxItemDisplay">
 										<ui:HorizontalLayout>
-											<Text text="{acpnglinksWorkOrderDetail>Name}"></Text>
+											<Text class="acpnglinksNotVisible" text="{acpnglinksWorkOrderDetail>Name}"></Text>
 										</ui:HorizontalLayout>
 									</HBox>
 								</CustomListItem>
@@ -59,6 +60,7 @@
 						<HBox height="100%" class="fixHboxItemDisplay">
 							<List id="listAllocatedcolumns"
 								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
+								sorter="{path : 'Sort'"
 								mode="SingleSelectMaster" growingScrollToLoad="true" growing="true"
 								growingThreshold="1000">
 								<CustomListItem
@@ -66,7 +68,7 @@
 									<content>
 										<HBox class="fixHboxItemDisplay">
 											<ui:HorizontalLayout>
-												<Text text="{acpnglinksWorkOrderDetail>Name}">
+												<Text class="acpnglinksVisible" text="{acpnglinksWorkOrderDetail>Name}">
 												</Text>
 											</ui:HorizontalLayout>
 										</HBox>

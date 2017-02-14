@@ -19,7 +19,7 @@
 										<Label 					text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/lineDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
 							       	<ToolbarSpacer />	                   
 									<Button id="refreshTime"  		type="Transparent"									icon="sap-icon://refresh" press="refreshbtn" text="" visible="false" enabled="false" ></Button>
-									<Button id="localDELog" press="logOut" text="{ShellI18n>Cookie}" type="Transparent"></Button>                      
+									<Button id="localDELog" press="onRemoveCookie" text="{ShellI18n>Cookie}" type="Transparent"></Button>                      
 		                         	<Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd" enabled="{Profile>/identifiedUser/permissions/PROFILE_PREF_LANG}" change="onChangeLanguage"> 
 			                           	<core:Item text="English" key="en"/>
 			                           	<core:Item text="Deutsch" key="de"/>

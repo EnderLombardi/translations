@@ -231,6 +231,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     onResourcePoolOpen: function (oEvt) {
         airbus.mes.shell.util.navFunctions.resourcePool();
     },
+    
+    /***************************************************************************
+     * Open Missing Parts View
+     *
+     ****************************************************************************/
+    onMPPress: function () {
+    	if (airbus.mes.missingParts === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.missingParts", "../components/missingParts");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.missingParts", });
+        }
+        //load data
+        airbus.mes.missingParts.model.ModelManager.loadMPDetail();
+        //Show popup
+    	airbus.mes.missingParts.oView.getContent()[0].open();
+    },
 
     /***************************************************************************
      * Open fragment of unplanned activities

@@ -4,23 +4,31 @@
 	<Dialog id="insertOSW" class="pageHeaderDialog classWorklistPopover oswPopover"
 		verticalScrolling="false" title="{stationHandoverI18n>nameInsertOsw}">
 		<content>
-			<VBox>
 				<Select class="comboStationHandover" items="{ path : 'optionInsertOsw>/' }">
-							<core:Item key="{optionInsertOsw>key}" 	text="{path:'optionInsertOsw>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
+					<core:Item key="{optionInsertOsw>key}"
+						text="{path:'optionInsertOsw>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
 				</Select>
+
+			
+						<Button text="{stationHandoverI18n>jumpToStart}"
+							press="onPressJumpDate" key="shift" />
+						<Button text="{stationHandoverI18n>jumpToEnd}"
+							press="onPressJumpDate" key="day" />
+					
 
 				<u:Calendar id="calendar" select="handleCalendarSelect"
 					class="center" />
-		
-				<TimePicker id="TimePicker" valueFormat="hh:mm a" displayFormat="hh:mm a"
-					change="handleChange" placeholder="Enter daily task deadline"
+
+				<TimePicker id="TimePicker" valueFormat="hh:mm a"
+					displayFormat="hh:mm a" change="handleChange" placeholder="Enter daily task deadline"
 					class="center" />
-			</VBox>
 		</content>
 
 		<buttons>
 			<Button text="{stationHandoverI18n>Close}" icon="sap-icon://decline"
 				press="onClose" />
+			<Button text="{stationHandoverI18n>ok}" icon="sap-icon://decline"
+				press="onOk" />
 		</buttons>
 	</Dialog>
 

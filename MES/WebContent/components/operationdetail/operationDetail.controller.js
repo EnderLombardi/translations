@@ -115,7 +115,7 @@ sap.ui
 
 
                 } else {
-                    this.setToolbarVisible();
+                    //this.setToolbarVisible();
                     oSwitchButton.setEnabled(true);
                     oSwitchButton.setState(false);
                     this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("ReadOnly"));
@@ -124,7 +124,7 @@ sap.ui
             } else {
                 this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("ReadOnly"));
                 //Define visibility for header sections
-                this.setToolbarVisible();
+                //this.setToolbarVisible();
             }
 
         },

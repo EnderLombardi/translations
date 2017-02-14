@@ -1,0 +1,91 @@
+////////////////////////////
+//page
+///////////////////////////
+
+#missingPartsView--mpPage{
+	>section#missingPartsView--mpPage-cont{
+		height: 100%;
+	}
+}
+
+////////////////////////////
+//table
+///////////////////////////
+
+#missingPartsView--MPTable{
+	width:95% !important;
+	margin: 0 auto;
+	padding:0;
+	.sapUiTableCnt{
+		height: calc(100% - 10px);
+		border-bottom: 1px solid #767879;
+		.sapUiTableColHdrCnt{
+			height:46px !important;
+			background-color : $teal-blue;
+			.sapUiTableColHdrScr {
+				border: solid 1px $cool-grey;
+				background-color : $teal-blue;
+				>div {
+					height: 100%;
+					>div.sapUiTableCol {
+						border-right:1px solid white;
+					}
+				}	
+			}
+		}
+		.sapUiTableCCnt {
+			border-right: 1px solid #767879;
+		}
+	}
+}
+
+#missingPartsView--MPTable-table{
+	>tbody {
+		tr:nth-child(even) {background: #fff}
+		tr:nth-child(odd) {background: #fcfcfc}
+		tr:hover{background-color: #efefef}
+		>tr{
+			height : 46px;
+			>td{
+				text-align:left !important;
+				border-left:1px solid $cool-grey-hover;
+			}
+		}
+	}
+}	
+
+.document {
+	>td:nth-child(1) {
+		>div {
+			>span:nth-child(2){
+				color: $petrol;
+				text-decoration: underline;
+			}
+		}
+		&:hover {
+			background-color: $sapui-grey-hover !important;
+			cursor : pointer;
+			span {
+				cursor : pointer;
+			}
+		}
+	}
+}
+
+////////////////////////////
+//labels
+///////////////////////////	
+
+.MPTLabel{
+	color:black;
+	padding-top: 8px;
+    padding-left: inherit;
+}
+
+MPTableTitle{
+	color:black;
+	padding-top: 16px;
+    padding-left: inherit;
+	text-align: center !important;;
+}
+

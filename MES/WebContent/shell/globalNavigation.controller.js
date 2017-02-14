@@ -772,10 +772,11 @@ sap.ui.controller(
 
                     },
 
-                    logOut : function() {
+                    onRemoveCookie : function() {
                         Cookies.remove("login");
                         sessionStorage.loginType = "";
                         location.reload();
+
 
                     },
                     
@@ -800,5 +801,19 @@ sap.ui.controller(
                                 	sap.ui.getCore().byId("idLinetracker--selectLine").onsapshow()
                        }
                     },
+                    
+                    onLogOutPress: function(){
+                		jQuery.ajax({
+                			url : airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout"), 
+                			type : 'POST',
+                			async : false,
+                			complete : function() {
+                                Cookies.remove("login");
+                                sessionStorage.loginType = "";
+                                location.href = window.location.origin + window.location.pathname;
+                			}
+
+                		})
+                    }
                 });
 

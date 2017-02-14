@@ -26,6 +26,8 @@ airbus.mes.disruptions.Formatter = {
 		"solve" : "solve\$\$",
 		"edit" : "edit\$\$",
 		"create" : "create\$\$",
+		"escalationLevel1" : "escalationLevel1\$\$",
+		"escalationLevel2" : "escalationLevel2\$\$"
 	},
 
 	opStatus : {
@@ -228,7 +230,7 @@ airbus.mes.disruptions.Formatter = {
 				this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("rejected"));
 				this.setEnabled(false);
 
-				return true;
+				return false;
 
 			} else if (status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.acknowledged) {
 
@@ -241,7 +243,10 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, resolverID, status) {
+	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, resolverID, status, commentBoxOpened) {
+		
+		if(commentBoxOpened === "true")
+			return false;
 		
 		if(status == airbus.mes.disruptions.Formatter.status.acknowledged){
 			if (responsibleFlag == "X" && 
