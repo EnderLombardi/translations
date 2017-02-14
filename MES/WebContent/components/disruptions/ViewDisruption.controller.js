@@ -272,7 +272,7 @@ sap.ui
                                   * Close Pop-Up - Closing Disruption Pop-Up
                                   */
                                   cancelClosingDisruption : function(oEvent) {
-                                         this._closeDialog.close();
+                                	  this._closeDialog.close();
                                   },
 
                                   
@@ -280,39 +280,35 @@ sap.ui
                                   * Open the Enter Comment Pop-Up
                                   */                               
                                   onOpenDisruptionComment : function(title, msgRef, sPath, okEvent, sStatus) {
-                                         // Call Disruption Comment Pop-up fragment
-                                         if (!airbus.mes.disruptions.__enterCommentDialogue) {
-                                                airbus.mes.disruptions.__enterCommentDialogue = sap.ui
-                                                              .xmlfragment(
-                                                                            "airbus.mes.disruptions.fragment.commentBoxDisruption",
-                                                                           this);
-                                                this
-                                                              .getView()
-                                                              .addDependent(
-                                                                            airbus.mes.disruptions.__enterCommentDialogue);
+                                	  // Call Disruption Comment Pop-up fragment
+                                      if (!airbus.mes.disruptions.__enterCommentDialogue) {
+                                            airbus.mes.disruptions.__enterCommentDialogue = sap.ui
+                                                          .xmlfragment(
+                                                                        "airbus.mes.disruptions.fragment.commentBoxDisruption",
+                                                                       this);
+                                            this
+                                                          .getView()
+                                                          .addDependent(
+                                                                        airbus.mes.disruptions.__enterCommentDialogue);
 
-                                         }
-                                         sap.ui.getCore().byId("disruptionCommentDialogue")
-                                                       .setTitle(title);
-                                         sap.ui.getCore().byId("disruptionCommentMsgRef")
-                                                       .setText(msgRef);
-                                         sap.ui.getCore().byId("disruptionCommentSpath")
-                                                       .setText(sPath);
-                                         
-                                         if(sStatus == undefined)
-                                                sStatus = "";
-                                         sap.ui.getCore().byId("disruptionCommentStatus")
-                                                       .setText(sStatus);
-                                         sap.ui.getCore().byId("disruptionCommentBox").setValue("");
-                                         
-                                         
-                                         sap.ui.getCore().byId("disruptionCommentOK")
-                                         .detachPress(this.commentPopUpOkEvt);
-                                         sap.ui.getCore().byId("disruptionCommentOK")
-                                                       .attachPress(okEvent);
-                                         this.commentPopUpOkEvt = okEvent;
-                                         
-                                         airbus.mes.disruptions.__enterCommentDialogue.open();
+                                      }
+                                      sap.ui.getCore().byId("disruptionCommentDialogue").setTitle(title);
+                                      sap.ui.getCore().byId("disruptionCommentMsgRef").setText(msgRef);
+                                      sap.ui.getCore().byId("disruptionCommentSpath").setText(sPath);
+                                     
+                                      if(sStatus == undefined)
+                                    	  sStatus = "";
+                                      sap.ui.getCore().byId("disruptionCommentStatus")
+                                                   .setText(sStatus);
+                                      sap.ui.getCore().byId("disruptionCommentBox").setValue("");
+                                     
+                                     
+                                      sap.ui.getCore().byId("disruptionCommentOK").detachPress(this.commentPopUpOkEvt);
+                                      sap.ui.getCore().byId("disruptionCommentOK")
+                                                   .attachPress(okEvent);
+                                      this.commentPopUpOkEvt = okEvent;
+                                     
+                                      airbus.mes.disruptions.__enterCommentDialogue.open();
                                   },
 
                                   /***********************************************************
@@ -567,7 +563,7 @@ sap.ui
                                   * Show Comment Box to Add Comments
                                   */
                                   showCommentBox : function(oEvt) {
-                                	  var sPath = oEvt.getSource().getBindingInfo("visible").binding.getBindings()[0].getContext().sPath;
+                                	  var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
                                 	  this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/commentBoxOpened", "true");
                                       this.getView().getModel("operationDisruptionsModel").refresh();
 
@@ -577,7 +573,7 @@ sap.ui
                                   * Hide Comment Box to Add Comments
                                   */
                                   hideCommentBox : function(oEvt) {
-                                	  var sPath = oEvt.getSource().getBindingInfo("visible").binding.getBindings()[0].getContext().sPath;
+                                	  var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
                                 	  this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/commentBoxOpened", "false");
                                       this.getView().getModel("operationDisruptionsModel").refresh();
 
@@ -587,47 +583,39 @@ sap.ui
                                   * Submit Disruption Comment
                                   */
                                   submitComment : function(oEvt) {
-                                         
-                                         var status = oEvt.getSource().getBindingContext(
+                                	  var status = oEvt.getSource().getBindingContext(
                                                        "operationDisruptionsModel").getObject("Status");
                                          
-                                         if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
+                                      if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
                                                 
-                                                sap.m.MessageToast.show(this.getView().getModel("i18nModel").getProperty("cannotComment"));
-                                                
-                                                return;
-                                         }
+                                    	  sap.m.MessageToast.show(this.getView().getModel("i18nModel").getProperty("cannotComment"));
+                                          return;
+                                      }
                                          
                                          
-                                         var path = oEvt.getSource().sId;
-
-                                         var listnum = path.split("-");
-                                         listnum = listnum[listnum.length - 1];
-
-                                         var sComment = this.getView().byId(this.getView().sId + "--commentArea-"
-                                                                            + this.getView().sId + "--disrptlist-"
-                                                                            + listnum).getValue();
+                                      var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
+                                      var sComment  = this.getView().getModel("operationDisruptionsModel").getProperty(sPath+"/disruptionNewComment");
+                                                                               
+                                      if(sComment == undefined || !sComment.length || sComment.length<1){
+                                     	 sap.m.MessageToast.show(this.getView().getModel("i18nModel").getProperty("plsEnterComment"));
+                                     	 return;
+                                      }
                                          
-                                         if(!sComment.length || sComment.length<1)
-                                                return;
-                                         
-                                         sComment = airbus.mes.disruptions.Formatter.actions.comment + sComment;
+                                      sComment = airbus.mes.disruptions.Formatter.actions.comment + sComment;
                                          
 
-                                         var msgRef = oEvt.getSource().getBindingContext(
+                                      var msgRef = oEvt.getSource().getBindingContext(
                                                        "operationDisruptionsModel").getObject(
                                                        "MessageRef");
 
-                                         var i18nModel = airbus.mes.disruptions.oView.viewDisruption
+                                      var i18nModel = airbus.mes.disruptions.oView.viewDisruption
                                                        .getModel("i18nModel");
 
-                                         // Call Add comment Service
-                                         airbus.mes.disruptions.ModelManager.addComment(sComment, msgRef, i18nModel);
+                                      // Call Add comment Service
+                                      airbus.mes.disruptions.ModelManager.addComment(sComment, msgRef, i18nModel);
 
-                                         this.getView().byId(
-                                                       this.getView().sId + "--commentArea-"
-                                                                     + this.getView().sId + "--disrptlist-"
-                                                                     + listnum).setValue("");
+                                      this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/disruptionNewComment", "");
+                                      this.getView().getModel("operationDisruptionsModel").refresh(); 
                                   },
 
                                   /***********************************************************
@@ -960,7 +948,7 @@ sap.ui
                                       
                                       // TODO: if DN doesnt agrre to end dsiruptions in descending order then apply costom logic here.
                                       // Update binding inorder to hide the see more button
-                                      var sPath = oEvt.getSource().getBindingInfo("visible").binding.getBindings()[0].getContext().sPath;
+                                      var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
                                       this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/prevCommentsLoaded", "true");
                                       this.getView().getModel("operationDisruptionsModel").refresh();
                                   },

@@ -406,7 +406,7 @@
 						<Panel id="commentBox" class="sapUiSmallMarginBegin" visible="{=${operationDisruptionsModel>commentBoxOpened} === 'true'}">
 							<VBox width="100%">
 								<TextArea id="commentArea" placeholder="{i18nModel>addComment}" width="90%"
-									visible="{=${operationDisruptionsModel>commentBoxOpened} === 'true'}" />
+									visible="{=${operationDisruptionsModel>commentBoxOpened} === 'true'}" value="{operationDisruptionsModel>disruptionNewComment}" />
 									
 								<HBox>
 									<Button text="{i18nModel>submitComment}" type="Accept" width="12rem"
