@@ -5,6 +5,10 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	firstVisibleRow: 0, //first row displayed (it changes on scroll)
 	popUrl: null,
 
+	/////////////////////////////////
+	//	INIT/RENDERING
+	/////////////////////////////////
+
 	onAfterRendering: function () {
 		this.init();
 	},
@@ -275,33 +279,28 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	getIndexOfFirstDocDisplayed: function (treeTableArray, documentsGap) {
 
 		//we find the index of the first row displayed before the collapsing click
-		var firstDocDisplayedIndex = null, i = 0;
-		while (firstDocDisplayedIndex === null) {
-			if (treeTableArray[i].position === 0) {
-				firstDocDisplayedIndex = i;
-			}
-			i++;
+		var firstRowDisplayedIndex = 0;
+		while (treeTableArray[firstRowDisplayedIndex].position !== 0) {
+			firstRowDisplayedIndex++;
 		}
-		i--;//to cancel the last i++ in the while
 
 		//we decrement for each value of documentsGap to get the good index of first document displayed
 		while (documentsGap !== 0) {
-			var obj = this.getNbOfRowsForPreviousFocType(treeTableArray, i);//we get the index and the number of rows of the previous document
+			var obj = this.getNbOfRowsForPreviousFocType(treeTableArray, firstRowDisplayedIndex);//we get the index and the number of rows of the previous document
 			var counter = obj.rows;
 			if (!treeTableArray[obj.index].isOpened) {//if not opened only one row to decrement
 				documentsGap--;
-				i = obj.index;
+				firstRowDisplayedIndex = obj.index;
 			} else {//else more rows to decrement
 				while (documentsGap !== 0 && counter !== 0) {//we go one by one to stop when counter or documentsGap equal 0
-					i--;
+					firstRowDisplayedIndex--;
 					counter--;
 					documentsGap--;
 				}
 			}//if documentsGap don't equal 0 we start again in the while
 		}
 
-		firstDocDisplayedIndex = i;
-		return firstDocDisplayedIndex;
+		return firstRowDisplayedIndex;
 	},
 
 	//get the number of rows displayed for the previous doc type and the index of the doc type 
