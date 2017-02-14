@@ -16,7 +16,7 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 		if (oTTbl != undefined) {
 
 			oTTbl.setVisibleRowCount(this.treeExpandAll(oTTbl));
-			oTTbl.setSelectionMode(sap.ui.table.SelectionMode.Single);
+			oTTbl.setSelectionMode("None");
 		}
 
 	},
