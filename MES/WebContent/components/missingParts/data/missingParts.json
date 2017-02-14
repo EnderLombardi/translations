@@ -121,6 +121,60 @@
                         "Quantity": "2",
                         "CriticalPart": "yes",
                         "ExpectStDate": "2016-11-17 15:00:00"
+                    },
+                    {
+                        "WorkOrder": "123456",
+                        "Operation": "10",
+                        "PartNumber": "A",
+                        "PartDescript": "Rail",
+                        "Quantity": "2",
+                        "CriticalPart": "yes",
+                        "ExpectStDate": "2016-05-18 15:00:00"
+                    },
+                    {
+                        "WorkOrder": "123456",
+                        "Operation": "20",
+                        "PartNumber": "B",
+                        "PartDescript": "Rail",
+                        "Quantity": "2",
+                        "CriticalPart": "yes",
+                        "ExpectStDate": "2016-04-03 15:00:00"
+                    },
+                    {
+                        "WorkOrder": "123456",
+                        "Operation": "30",
+                        "PartNumber": "C",
+                        "PartDescript": "Rail",
+                        "Quantity": "2",
+                        "CriticalPart": "yes",
+                        "ExpectStDate": "2016-11-11 15:00:00"
+                    },
+                    {
+                        "WorkOrder": "123456",
+                        "Operation": "40",
+                        "PartNumber": "D",
+                        "PartDescript": "Rail",
+                        "Quantity": "2",
+                        "CriticalPart": "yes",
+                        "ExpectStDate": "2016-11-17 15:00:00"
+                    },
+                    {
+                        "WorkOrder": "123456",
+                        "Operation": "50",
+                        "PartNumber": "A",
+                        "PartDescript": "Rail",
+                        "Quantity": "2",
+                        "CriticalPart": "yes",
+                        "ExpectStDate": "2016-01-10 15:00:00"
+                    },
+                    {
+                        "WorkOrder": "123456",
+                        "Operation": "10",
+                        "PartNumber": "A",
+                        "PartDescript": "Rail",
+                        "Quantity": "2",
+                        "CriticalPart": "yes",
+                        "ExpectStDate": "2016-11-17 15:00:00"
                     }
                 ]
             }

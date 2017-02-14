@@ -9,7 +9,7 @@ airbus.mes.missingParts.model.ModelManager = {
 
 	init: function (core) {
 
-		var aModel = ["getMissingParts"];
+		var aModel = ["getMissingParts", "getFilters", "getOrder"];
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
 		// Handle URL Model

@@ -54,24 +54,6 @@
 	}
 }	
 
-.document {
-	>td:nth-child(1) {
-		>div {
-			>span:nth-child(2){
-				color: $petrol;
-				text-decoration: underline;
-			}
-		}
-		&:hover {
-			background-color: $sapui-grey-hover !important;
-			cursor : pointer;
-			span {
-				cursor : pointer;
-			}
-		}
-	}
-}
-
 ////////////////////////////
 //labels
 ///////////////////////////	
@@ -82,10 +64,15 @@
     padding-left: inherit;
 }
 
-MPTableTitle{
+
+#missingPartsView--mpPage-title-inner{
 	color:black;
-	padding-top: 16px;
-    padding-left: inherit;
-	text-align: center !important;;
 }
 
+#missingPartsView--searchField-F{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+	width: 280px
+}

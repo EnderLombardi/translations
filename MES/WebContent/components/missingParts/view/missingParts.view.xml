@@ -5,24 +5,45 @@
 	xmlns:core="sap.ui.core">
 
 	<m:Dialog id="missingPartsPopUp" class="ClassMissingPartsPopUpPopUp theme-disabled"
-		contentWidth="100%" contentHeight="90%" verticalScrolling="true"
+		contentWidth="100%" contentHeight="90%" verticalScrolling="false"
 		showHeader="false" afterClose="afterCloseMissingPartsPopup">
 		<m:content>
-		
-		<l:HorizontalLayout width="100%">
+		<m:Page
+		id="mpPage"
+		title="{i18nmissingPartsModel>title}"
+		showNavButton="false" >
+		<m:headerContent>
 			<m:Button m:Text="{StationTrackerI18n>Close}" icon="sap-icon://arrow-down"
 				press="onCloseMPPopup" />
-			<m:Label text="{i18nmissingPartsModel>title}" width="100%" TextAlign="Center"/>
-		</l:HorizontalLayout>
-
-
+		</m:headerContent>
+		<m:subHeader>
+			<m:Toolbar id="SearchBar">
+			<m:HBox width="100%" alignContent="Center">
+			<m:ComboBox
+				placeholder="Select Filter..."
+				items="{path: 'getFilters>Name'}">
+				<core:Item key="{FilterId}" text="{Name}" />
+			</m:ComboBox>
+			<m:ComboBox
+				placeholder="Select Order..."
+				items="{path: 'getOrder>Name'}">
+				<core:Item key="{OrderId}" text="{Name}" />
+			</m:ComboBox>
+			<m:SearchField 
+				id="searchField"
+				width="50%"
+				placeholder="search for..."
+				enableSuggestions="true"
+				search="onSearch"
+				suggest="onSuggest"/>
+			</m:HBox>
+			</m:Toolbar>
+		</m:subHeader>
 			<Table id="MPTable"
 					class="MPTable"
                     rows="{getMissingParts>/Rowsets/Rowset/0/Row}"
-					ariaLabelledBy="title"
-					selectionMode="Single"
-					visibleRowCount="30">
-
+					selectionMode="none"
+					visibleRowCount="auto">
 				<columns>
 					<Column width="10%">
 						<m:Label class="MPTLabel" text="{i18nmissingPartsModel>WorkOrder}" />
@@ -68,13 +89,8 @@
 					</Column>
 				</columns>
 			</Table>
-			
-			
-			
-			
-			
+			</m:Page>
 		</m:content>
-
 		<m:buttons>
 		</m:buttons>
 	</m:Dialog>
