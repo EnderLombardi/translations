@@ -31,6 +31,21 @@ airbus.mes.disruptions.func = {
 			return airbus.mes.disruptions.oView.createDisruption;
 		}
 	},
+	
+	
+	/***************************************************************************
+	 * Show try again error message
+	 **************************************************************************/
+	tryAgainError: function(){
+		var oView = airbus.mes.disruptions.func.getView();
+		var i18nModel = oView.getModel("i18nModel");
+
+		var sMessageError = i18nModel.getProperty("tryAgain");
+
+		airbus.mes.shell.ModelManager.messageShow(sMessageError);
+	},
+	
+	
 
 	/***************************************************************************
 	 * Set busy for disruptions pop-up

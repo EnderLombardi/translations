@@ -597,7 +597,6 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	escalateDisruption : function(msgRef, i18nModel) {
 		var sMessageSuccess = i18nModel.getProperty("successfulEscalation");
-		var sMessageError = i18nModel.getProperty("tryAgain");
 		var flagSuccess;
 
 		jQuery.ajax({
@@ -608,8 +607,8 @@ airbus.mes.disruptions.ModelManager = {
 			},
 			async : false,
 			error : function(xhr, status, error) {
-				airbus.mes.shell.ModelManager.messageShow(sMessageError);
-				flagSuccess = false
+				airbus.mes.disruptions.func.tryAgainError();
+				flagSuccess = false;
 
 			},
 			success : function(result, status, xhr) {
@@ -754,13 +753,7 @@ airbus.mes.disruptions.ModelManager = {
 			error : function(xhr, status, error) {
 
 				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
-
-				var oView = airbus.mes.disruptions.func.getView();
-				var i18nModel = oView.getModel("i18nModel");
-
-				var sMessageError = i18nModel.getProperty("tryAgain");
-
-				airbus.mes.shell.ModelManager.messageShow(sMessageError);
+				airbus.mes.disruptions.func.tryAgainError();
 
 			},
 			success : function(result, status, xhr) {
@@ -884,7 +877,6 @@ airbus.mes.disruptions.ModelManager = {
 	closeDisruption : function(msgRef, comment, timeLost, i18nModel) {
 
 		var sMessageSuccess = i18nModel.getProperty("successClosed");
-		var sMessageError = i18nModel.getProperty("tryAgain");
 		var flagSuccess;
 
 		jQuery.ajax({
@@ -898,7 +890,7 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.5" : timeLost
 			},
 			error : function(xhr, status, error) {
-				airbus.mes.shell.ModelManager.messageShow(sMessageError);
+				airbus.mes.disruptions.func.tryAgainError();
 				flagSuccess = false
 
 			},
@@ -942,13 +934,10 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Reject Disruption Service
 	 **************************************************************************/
-	rejectDisruption : function(comment, msgref, sStatus, sMessageSuccess, i18nModel) {
-		var sMessageError = i18nModel.getProperty("tryAgain");
-		var flagSuccess;
+	rejectDisruption : function(comment, msgref, sStatus) {
 
 		jQuery.ajax({
 			url : this.getUrlToRejectDisruption(),
-			async : false,
 			data : {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
 				"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
@@ -957,40 +946,47 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.5" : sStatus
 			},
 			error : function(xhr, status, error) {
-				airbus.mes.shell.ModelManager.messageShow(sMessageError);
-				flagSuccess = false
+
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
+				airbus.mes.disruptions.func.tryAgainError();
 
 			},
 			success : function(result, status, xhr) {
-				if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
-					flagSuccess = true;
-
-				} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-					flagSuccess = false;
-				} else {
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
+				
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
 					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-					flagSuccess = true;
 
-					if (nav.getCurrentPage().getId() == "disruptiontrackerView")
+				} else { // Success
+					airbus.mes.disruptions.__enterCommentDialogue.close();
+					
+					var oView = airbus.mes.disruptions.func.getView();
+					var i18nModel = oView.getModel("i18nModel");
+					var sMessageSuccess = i18nModel.getProperty("successReject");
+					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+
+					// load again disruptions data
+					if (nav.getCurrentPage().getId() == "stationTrackerView") {
+						var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+						var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
+
+					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
+						var operationBO = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].Operation;
+						var sSfcStepRef = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].SfcStepBO;
+					}
+					airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO, sSfcStepRef);
+					
+					// Refresh station tracker
+					if (nav.getCurrentPage().getId() == "stationtrackerView")
+						airbus.mes.shell.oView.getController().renderStationTracker();
+
+					// Set Refresh disruption tracker flag
+					else if (nav.getCurrentPage().getId() == "disruptiontrackerView")
 						airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
-				}
 
+				}
 			}
 		});
-
-		if (flagSuccess) {
-			if(!airbus.mes.disruptions.func.isSupportTeamViaDestop()){
-			// Refresh station tracker
-			airbus.mes.shell.oView.getController().renderStationTracker();
-			}else {
-				airbus.mes.shell.util.navFunctions.disruptionTracker();
-			}
-
-		}
-
-		return flagSuccess
 	},
 
 	/***************************************************************************
@@ -1013,12 +1009,10 @@ airbus.mes.disruptions.ModelManager = {
 	 * Reject Disruption Service
 	 **************************************************************************/
 	refuseDisruption : function(comment, msgref, sMessageSuccess, i18nModel) {
-		var sMessageError = i18nModel.getProperty("tryAgain");
 		var flagSuccess;
 
 		jQuery.ajax({
 			url : this.getUrlToRefuseDisruption(),
-			async : false,
 			data : {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
 				"Param.2" : msgref,
@@ -1026,7 +1020,7 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.4" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
 			},
 			error : function(xhr, status, error) {
-				airbus.mes.shell.ModelManager.messageShow(sMessageError);
+				airbus.mes.disruptions.func.tryAgainError();
 				flagSuccess = false
 
 			},
