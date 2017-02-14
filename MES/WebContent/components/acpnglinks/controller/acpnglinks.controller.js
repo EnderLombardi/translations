@@ -11,22 +11,24 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 		var oTTbl = sap.ui.getCore().byId("acpnglinksView--ACPnGTreeTable");
 		if (oTTbl != undefined) {
 
-			oTTbl.setVisibleRowCount(this.treeExpandAll(oTTbl));
-			oTTbl.setSelectionMode("None");
-		}
+            oTTbl.setVisibleRowCount(this.treeExpandAll(oTTbl));
+            oTTbl.setSelectionMode("None");
+            airbus.mes.acpnglinks.util.Formatter.changeRowColor();
+        }
+        airbus.mes.acpnglinks.util.Formatter.changeRowColor();
 
-	},
+    },
 
-	treeExpandAll : function(oTTbl) {
-		for (var i = 0; i < oTTbl.getRows().length; i++) {
-			try {
-				oTTbl.expand(i);
-			} catch (exception) {
-				return i;
-			}
-		}
-		return oTTbl.getRows().length;
-	},
+    treeExpandAll : function(oTTbl) {
+        for (var i = 0; i < oTTbl.getRows().length; i++) {
+            try {
+                oTTbl.expand(i);
+            } catch (exception) {
+                return i;
+            }
+        }
+        return oTTbl.getRows().length;
+    },
 
 	OnSelectionChange : function(oEvt) {
 		try {
@@ -36,15 +38,15 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 		}
 	},
 
-	onColumnsChange : function() {
-		if (airbus.mes.acpnglinks.oColumnEditDialog === undefined) {
+    onColumnsChange : function() {
+        if (airbus.mes.acpnglinks.oColumnEditDialog === undefined) {
 
-			airbus.mes.acpnglinks.oColumnEditDialog = sap.ui.xmlfragment("columnEdit", "airbus.mes.acpnglinks.view.columnEdit", airbus.mes.acpnglinks.oView
-				.getController());
-			airbus.mes.acpnglinks.oView.addDependent(airbus.mes.acpnglinks.oColumnEditDialog);
-		}
-		// Open
-		airbus.mes.acpnglinks.oColumnEditDialog.open();
+            airbus.mes.acpnglinks.oColumnEditDialog = sap.ui.xmlfragment("columnEdit", "airbus.mes.acpnglinks.view.columnEdit", airbus.mes.acpnglinks.oView
+                .getController());
+            airbus.mes.acpnglinks.oView.addDependent(airbus.mes.acpnglinks.oColumnEditDialog);
+        }
+        // Open
+        airbus.mes.acpnglinks.oColumnEditDialog.open();
 
 		// Drag drop management
 		var oSortableList = sap.ui.getCore().byId("columnEdit--listAllocatedcolumns");
@@ -61,16 +63,18 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 			}
 		}).disableSelection();
 
-	},
+    },
 
-	onAssignColumns : function(oEvt) {
-		var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAvailableColumns").getSelectedItem();
-		airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath() + "/Visible", "true");
-	},
-	onUnassignColumns : function(oEvt) {
-		var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAllocatedcolumns").getSelectedItem();
-		airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath() + "/Visible", "false");
-	},
+    onAssignColumns : function(oEvt) {
+        var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAvailableColumns").getSelectedItem();
+        airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath() + "/Visible", "true");
+        airbus.mes.acpnglinks.util.Formatter.changeRowColor();
+    },
+    onUnassignColumns : function(oEvt) {
+        var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAllocatedcolumns").getSelectedItem();
+        airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath() + "/Visible", "false");
+        airbus.mes.acpnglinks.util.Formatter.changeRowColor();
+    },
 
 	onDialogClose : function(oEvent) {
 		// Close Popup
