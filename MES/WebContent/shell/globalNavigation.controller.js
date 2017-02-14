@@ -810,7 +810,7 @@ sap.ui.controller(
                 			complete : function() {
                                 Cookies.remove("login");
                                 sessionStorage.loginType = "";
-                                location.reload();
+                                location.href = window.location.origin + window.location.pathname;
                 			}
 
                 		})
