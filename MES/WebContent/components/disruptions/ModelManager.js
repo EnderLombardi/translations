@@ -595,7 +595,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Escalate Disruption Service
 	 **************************************************************************/
-	escalateDisruption : function(msgRef, i18nModel) {
+	escalateDisruption : function(msgRef, sComment) {
 		var sMessageSuccess = i18nModel.getProperty("successfulEscalation");
 		var flagSuccess;
 
@@ -603,41 +603,53 @@ airbus.mes.disruptions.ModelManager = {
 			url : this.getUrlOnEscalate(),
 			data : {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
-				"Param.2" : msgRef
+				"Param.2" : msgRef,
+				"Param.3" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.4" : sComment
 			},
-			async : false,
+			type : 'POST',
 			error : function(xhr, status, error) {
+
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
 				airbus.mes.disruptions.func.tryAgainError();
-				flagSuccess = false;
 
 			},
 			success : function(result, status, xhr) {
-				if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
-					flagSuccess = true;
-
-				} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-					flagSuccess = false;
-				} else {
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
+				
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
 					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-					flagSuccess = true;
 
-					if (nav.getCurrentPage().getId() == "disruptiontrackerView")
+				} else { // Success
+					airbus.mes.disruptions.__enterCommentDialogue.close();
+					
+					var oView = airbus.mes.disruptions.func.getView();
+					var i18nModel = oView.getModel("i18nModel");
+					var sMessageSuccess = i18nModel.getProperty("successSolved");
+					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+
+					// load again disruptions data
+					if (nav.getCurrentPage().getId() == "stationTrackerView") {
+						var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+						var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
+
+					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
+						var operationBO = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].Operation;
+						var sSfcStepRef = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].SfcStepBO;
+					}
+					airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO, sSfcStepRef);
+					
+					// Refresh station tracker
+					if (nav.getCurrentPage().getId() == "stationtrackerView")
+						airbus.mes.shell.oView.getController().renderStationTracker();
+
+					// Set Refresh disruption tracker flag
+					else if (nav.getCurrentPage().getId() == "disruptiontrackerView")
 						airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
-				}
 
+				}
 			}
 		});
-
-		if (flagSuccess) {
-
-			// Refresh station tracker
-			airbus.mes.shell.oView.getController().renderStationTracker();
-
-		}
-
-		return flagSuccess;
 	},
 
 	/***************************************************************************

@@ -378,6 +378,8 @@
 						</VBox>
 						
 						<Button text="{i18nModel>seeMoreMessages}" icon="sap-icon://email" press="seeMoreMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}"
+							cData:messageRef="{operationDisruptionsModel>MessageRef}" design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />	
+						<Button text="{i18nModel>seeLessMessages}" icon="sap-icon://email" press="seeLessMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
 							cData:messageRef="{operationDisruptionsModel>MessageRef}" design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
 
 						<List id="messageComments" showNoData="false" class="sapUiSmallMarginBeginEnd"

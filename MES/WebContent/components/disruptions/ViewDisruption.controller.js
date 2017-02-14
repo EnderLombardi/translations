@@ -952,6 +952,39 @@ sap.ui
                                       this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/prevCommentsLoaded", "true");
                                       this.getView().getModel("operationDisruptionsModel").refresh();
                                   },
+
+                                  /***********************************************************
+                                  * Hide previsous messages to the selected disruption
+                                  */
+                                  seeLessMesssages: function(oEvt){
+                                	  var sId = oEvt.getSource().sId;
+
+                                      var listNum = sId.split("-");
+                                      listNum = listNum[listNum.length - 1];
+
+                                      var oCommentList = this.getView().byId("messageComments-"
+                                    	  		   + this.getView().sId + "--disrptlist-" + listNum);
+                                      var oBinding = oCommentList.getBinding("items");
+                                      
+                                      // Show all comments to the current disruption
+                                      var messageRef   = oEvt.getSource().getCustomData()[0].getValue();
+                                      var firstRowFlag = true;
+                                      oBinding.filter(new sap.ui.model.Filter({
+                                    	  path: "MessageRef",
+                                    	  test: function (sValue) {
+                                    		  if (firstRowFlag && sValue == messageRef.toUpperCase()){
+                                    			  firstRowFlag = false;
+                                    			  return true;
+                                    		  }
+                                    		  return false;
+                                    	  }
+                                      }));
+                                      
+                                      // Update binding inorder to un-hide the see more button
+                                      var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
+                                      this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/prevCommentsLoaded", "false");
+                                      this.getView().getModel("operationDisruptionsModel").refresh();
+                                  },
                                   
                                   /***********************************************************
                                   * Open Attachment linked to a disruptions
