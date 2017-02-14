@@ -14,19 +14,17 @@
 				<content>
 					<!-- Header ToolBar -->
 					<OverflowToolbar height="3rem">
-						<CheckBox text="{i18n>cn_toolbar_last}" enabled="true" selected="false"/>
-						<CheckBox text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false"/>
+						<CheckBox text="{i18n>cn_toolbar_last}" enabled="true" selected="false" select="showOnlyLastNote"/>
+						<CheckBox text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false" select="showOnlyLastNote"/>
 					</OverflowToolbar>
 					<!-- List Comment -->
-					<List headerText="Custom Content" mode="Delete" items="{path: '/ProductCollection'}">
-						<CustomListItem>
-							<HBox>
-								<core:Icon size="2rem" src="sap-icon://attachment-photo" />
-								<Label text="REF - "/>
-								<Label text="NAME - "/>
-								<Label text="COMMENT"/>
-							</HBox>
-						</CustomListItem>
+					<List id="confirmationNotes" items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" includeItemInSelection="true"
+				class="customListItem">
+						<items>
+							<StandardListItem
+								title="{TrackingTemplate>ACTIVITY} : {TrackingTemplate>COMMENTS}"
+								info="{TrackingTemplate>MODIFIED_DATE_TIME}"/>	
+						</items>
 					</List>
 				</content>
 			</Panel>

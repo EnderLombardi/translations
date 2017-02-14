@@ -45,8 +45,35 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     },
 
     /***********************************************************
- * Show Comment Box to Add Comments
- */
+    * Apply a filter on the confirmation Notes List depending 
+    * on the state of the checkbox 
+    * (only not confirmed operation)
+    */
+    showOnlyLastNote: function (oEvent) {
+        var flag = oEvent.getSource().getSelected();
+
+        var listConfirmationNotes = this.getView().byId("trackingtemplateView--confirmationNotes");
+        var aFilters = [];
+
+        //we had the filter only if the checkbox state is true.
+        if (flag) {
+            aFilters.push(new sap.ui.model.Filter({
+                path: "STATE",
+                test: function (oValue) {
+                    if (oValue === "CONFIRMED") {
+                        return true;
+                    }
+                    return false;
+                }
+            }));
+        }
+        //we apply the filter here
+        listConfirmationNotes.getBinding("items").filter(aFilters);
+    },
+
+    /***********************************************************
+    * Show Comment Box to Add Comments
+    */
     showCommentBox: function (oEvt) {
         var commentBox = this.getView().byId("trackingtemplateView--commentBox");
         commentBox.setVisible(true);
@@ -59,7 +86,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         var commentBox = this.getView().byId("trackingtemplateView--commentBox");
         commentBox.setVisible(false);
         console.log(commentBox);
-
     },
 
     /***********************************************************    
