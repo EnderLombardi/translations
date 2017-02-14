@@ -26,6 +26,8 @@ airbus.mes.disruptions.Formatter = {
 		"solve" : "solve\$\$",
 		"edit" : "edit\$\$",
 		"create" : "create\$\$",
+		"escalationLevel1" : "escalationLevel1\$\$",
+		"escalationLevel2" : "escalationLevel2\$\$"
 	},
 
 	opStatus : {
@@ -241,7 +243,10 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, resolverID, status) {
+	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, resolverID, status, commentBoxOpened) {
+		
+		if(commentBoxOpened === "true")
+			return false;
 		
 		if(status == airbus.mes.disruptions.Formatter.status.acknowledged){
 			if (responsibleFlag == "X" && 

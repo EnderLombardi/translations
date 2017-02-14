@@ -63,7 +63,7 @@
                         "file_extension":"jpg",
                         "mes_viewer_compatibility":"Converted",
                         "converter":"",
-                        "default_viewer":"none"
+                        "default_viewer":"download"
                     }
                 ]
             }

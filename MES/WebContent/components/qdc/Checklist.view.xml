@@ -7,11 +7,11 @@
 
 	
 	
-	<Page showHeader="false" height="100%" enableScrolling="false">
+	<Page showHeader="false" height="100%" enableScrolling="true">
 		<content>
 		
 		<VBox id="TabChecklist" class="TabChecklist">
-			<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" class="TabChecklistTable">
+			<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" class="TabChecklistTable" expandFirstLevel="true">
 				<!-- <tab:toolbar>
 					<Toolbar>
 						<Title text="{i18n>CheckListAndRecords}" />
@@ -21,7 +21,10 @@
 					<tab:Column>
 						<Label class="TabChecklistLabel" text="{i18n>PointofAttention}" />
 						<tab:template>
+							<HBox>
 							<Text text="{QDCModel>name}" class="AllignItem" />
+							<core:Icon src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}"></core:Icon>
+							</HBox>
 						</tab:template>
 					</tab:Column>
 					<tab:Column>
