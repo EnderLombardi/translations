@@ -5,13 +5,10 @@
 	<m:Page showHeader="false" enableScrolling="false" height="100%"
 		class="sapUiSizeCozy">
 		<m:content>
-
-
-
 			<TreeTable id="TreeTableBasic"
 				rows="{path:'oswModel>/', parameters: {arrayNames:['row']}}"
 				selectionMode="None" enableSelectAll="true" visibleRowCountMode="Auto"
-				enableBusyIndicator="true" enableCellFilter="true" showColumnVisibilityMenu="">
+				enableBusyIndicator="true" enableCellFilter="true">
 				<extension>
 
 					<m:Toolbar id="kpiHeaderToolbar"
@@ -62,8 +59,7 @@
 
 				</extension>
 				<columns>
-					<Column width="5rem" showFilterMenuEntry="true"
-						showSortMenuEntry="true">
+					<Column width="5rem"	>
 						<m:CheckBox class="DisOpAttLabelHandOver" select="selectAll" />
 						<template>
 							<m:CheckBox select="onSelectRow"
@@ -99,14 +95,14 @@
 						<m:Label class="DisOpAttLabelHandOver"
 							text="{stationHandoverI18n>FrozenTrackingTemplate}" />
 						<template>
-							<m:Label text="{oswModel>FROZEN_TRACKING}" />
+							<m:Label text="{path:'oswModel>FROZEN_TRACKING' , formatter:'airbus.mes.stationHandover.util.Formatter.colorTracking'}"/>
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver"
 							text="{stationHandoverI18n>FrozenListOFittedHandover}" />
 						<template>
-							<m:Label text="{oswModel>FROZEN_LIST}" />
+							<m:Label text="{path:'oswModel>FROZEN_LIST' , formatter:'airbus.mes.stationHandover.util.Formatter.colorTracking'}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">

@@ -4,24 +4,29 @@
 	<Dialog id="insertOSW" class="pageHeaderDialog classWorklistPopover oswPopover"
 		verticalScrolling="false" title="{stationHandoverI18n>nameInsertOsw}">
 		<content>
-				<Select class="comboStationHandover" items="{ path : 'optionInsertOsw>/' }">
-					<core:Item key="{optionInsertOsw>key}"
-						text="{path:'optionInsertOsw>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
-				</Select>
-
-			
-						<Button text="{stationHandoverI18n>jumpToStart}"
+			<Select id="selectMode" class="comboStationHandover" items="{ path : 'optionInsertOsw>/' }" change="selectMode">
+				<core:Item key="{optionInsertOsw>key}"
+					text="{path:'optionInsertOsw>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}"/>
+			</Select>
+			<VBox>
+				<SegmentedButton selectedKey="invisible">
+					<items>
+						<SegmentedButtonItem id="jumpToStart" text="{stationHandoverI18n>jumpToStart}"
 							press="onPressJumpDate" key="shift" />
-						<Button text="{stationHandoverI18n>jumpToEnd}"
+						<SegmentedButtonItem id="jumpToEnd" text="{stationHandoverI18n>jumpToEnd}"
 							press="onPressJumpDate" key="day" />
-					
+					</items>
+
+				</SegmentedButton>
+
 
 				<u:Calendar id="calendar" select="handleCalendarSelect"
-					class="center" />
+					class="center" enabled="false"/>
 
 				<TimePicker id="TimePicker" valueFormat="hh:mm a"
 					displayFormat="hh:mm a" change="handleChange" placeholder="Enter daily task deadline"
 					class="center" />
+			</VBox>
 		</content>
 
 		<buttons>

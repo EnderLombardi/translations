@@ -174,10 +174,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 				aValueSelected[el.WOID] = {
 					"open" : String(el.INSERTED) == "true",
 					"initial" : String(el.INSERTED) == "true",
-					"oswItems" : {
-						WOId : el.WOID,
-						INSERTED : el.INSERTED
-					},
+					"oswItems" : JSON.parse(JSON.stringify(el))
 				};
 
 				aModel[indice].row.forEach(function(al, indice1) {
@@ -187,11 +184,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 					aValueSelected[al.WOID][sID] = {
 						"open" : String(el.INSERTED) == "true",
 						"initial" : String(el.INSERTED) == "true",
-						"oswItems" : {
-							WOId : al.WOID,
-							INSERTED : al.INSERTED
-						},
-
+						"oswItems" : JSON.parse(JSON.stringify(al))
 					};
 
 				})

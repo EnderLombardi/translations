@@ -18,13 +18,15 @@ sap.m.Button.extend("airbus.mes.stationtracker.customButton", {
 				defaultValue : '0'
 			},
 			
-		}
+		},
 	},
+	
 
 	renderer : function(oRm,oControl) {
-
+		
 		oRm.write("<button");
-        oRm.addClass("sapMBtn sapMBtnBase");
+		oRm.writeControlData(oControl);
+		oRm.addClass("sapMBtn sapMBtnBase");
         oRm.writeClasses();
         oRm.write(">");
         oRm.write("<div");

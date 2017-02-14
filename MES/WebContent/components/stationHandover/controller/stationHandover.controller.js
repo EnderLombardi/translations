@@ -54,7 +54,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	/***************************************************************************
 	 * trigger when the user write in the search it filter the treetable on
 	 * workorder
-	 * @param {oEvt} Object wich represent the sapui5 event obejct"
+	 * @param {Object} oEvt wich represent the sapui5 event obejct"
 	 **************************************************************************/
 	filterWo : function(oEvt) {
 
@@ -115,9 +115,8 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	/***************************************************************************
 	 * trigger when the user select a group and sort parent ascending by the
 	 * value selected
-	 * 
 	 **************************************************************************/
-	sorterMode : function(oEvt) {
+	sorterMode : function() {
 
 		var oBinding = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getBinding("rows");
 		var sValue = oEvt.getSource().mProperties.selectedKey;
@@ -147,9 +146,8 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	},
 	/***************************************************************************
 	 * trigger when cick on the type open list selection
-	 * 
 	 **************************************************************************/
-	openFilterType : function(oEvt) {
+	openFilterType : function() {
 
 		var oView = airbus.mes.stationHandover.oView;
 
@@ -169,9 +167,8 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	},
 	/***************************************************************************
 	 * trigger when click on filter on origin station
-	 * 
 	 **************************************************************************/
-	openFilterStation : function(oEvt) {
+	openFilterStation : function() {
 
 		var oView = airbus.mes.stationHandover.oView;
 
@@ -193,7 +190,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	/***************************************************************************
 	 * trigger when the user Select the ph station and filter the tree table on
 	 * station
-	 * 
+	 * @param {Object} oEvt wich represent the sapui5 event obejct"
 	 **************************************************************************/
 	filterStation : function(oEvt) {
 
@@ -215,7 +212,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	/***************************************************************************
 	 * Trigger when the use leave the typeSelection popOver it filter the osw
 	 * list on TYPE
-	 * 
+	 * @param {Object} oEvt wich represent the sapui5 event obejct"
 	 **************************************************************************/
 	filterType : function(oEvt) {
 
@@ -238,6 +235,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 * trigger when the user check/unechek the NO time checkbox it filter the
 	 * tree table regading the NoTime value
 	 * 
+	 * @param {Object} oEvt wich represent the sapui5 event obejct"
 	 **************************************************************************/
 	filterNoTime : function(oEvt) {
 
@@ -258,7 +256,6 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	/***************************************************************************
 	 * trigger when the user check/unechek the INsertedLine checkbox it filter
 	 * the tree table regading the INsertedLine value
-	 * 
 	 **************************************************************************/
 	filterInsertedLines : function(oEvt) {
 
@@ -278,23 +275,20 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	},
 	/***************************************************************************
 	 * trigger when the user Click on a Row and open operationd detail
-	 * 
+	 * @param {Object} oEvt wich represent the sapui5 event obejct"
 	 **************************************************************************/
-	onRowClick : function(oEvt) {
+	onRowClick : function() {
 
 		var sPath = oEvt.mParameters.rowBindingContext.sPath;
-		var oRow = airbus.mes.stationHandover.oView.getModel("oswModel").getProperty(sPath);
 
 		if (oEvt.mParameters.columnIndex != "0") {
-
-			console.log(oEvt);
 
 		}
 
 	},
 	/***************************************************************************
 	 * trigger when the user Click on select all checkBox
-	 * 
+	 * @param {Object} oEvt wich represent the sapui5 event obejct"
 	 **************************************************************************/
 	selectAll : function(oEvt) {
 		var that = this;
@@ -327,7 +321,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	},
 	/***************************************************************************
 	 * trigger when the user Click on combobox of a row
-	 * 
+	 * @param {Object} oEvt wich represent the sapui5 event obejct"
 	 **************************************************************************/
 	onSelectRow : function(oEvt) {
 
@@ -372,6 +366,76 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true);
 		airbus.mes.stationHandover.util.ModelManager.applyAll = undefined;
 
+	},
+	/***************************************************************************
+	 * 	permit to know if the  row in the object is in modification or not
+	 **************************************************************************/
+	isSelected : function(oToTest,bValue) {
+		
+		if (oToTest.initial != bValue) {
+	
+			// Store also the modification on the object itself to send back whens saved the modification during the import of osw
+			oToTest.oswItems.INSERTED = bValue;
+			oToTest.changed = true;
+		} else {
+			
+			oToTest.changed = false;
+		}
+		
+	},	
+	
+	/************************************************************************/
+    /************************************************************************/
+    /**                                                                    **/
+    /**						InsertOsw Fragment						 	   **/
+    /**                                                                    **/
+    /************************************************************************/
+    /************************************************************************/
+	
+	/***************************************************************************
+	 * trigger when the user click on the close button of the dialog
+ 	 * @param {Object} oEvt wich represent the sapui5 event obejct"
+	 **************************************************************************/
+	onClose : function(oEvt) {
+
+		oEvt.getSource().getParent().close();
+
+	},
+	/***************************************************************************
+	 * trigger when the user select an option of insertion of in the insertOsw fragment 
+	 **************************************************************************/
+	selectMode : function() {
+		
+	var sSelected = sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey();
+		
+		if (sSelected === "insertNextToParentOperation") {
+			sap.ui.getCore().byId("insertOsw--calendar").addDisabledDate(new sap.ui.unified.DateRange({startDate : new Date(0), endDate: new Date(86400000000000)})) 
+			sap.ui.getCore().byId("insertOsw--calendar").destroySelectedDates();
+			sap.ui.getCore().byId("insertOsw--TimePicker").setEnabled(false);
+			sap.ui.getCore().byId("insertOsw--jumpToEnd-button").setEnabled(false);
+			sap.ui.getCore().byId("insertOsw--jumpToStart-button").setEnabled(false);
+
+		} else {
+			
+
+			sap.ui.getCore().byId("insertOsw--calendar").destroyDisabledDates();
+			sap.ui.getCore().byId("insertOsw--calendar").destroySelectedDates();
+			sap.ui.getCore().byId("insertOsw--TimePicker").setEnabled(true);
+			sap.ui.getCore().byId("insertOsw--calendar").insertSelectedDate(new sap.ui.unified.DateRange({
+			startDate : new Date()
+			}));
+			sap.ui.getCore().byId("insertOsw--jumpToEnd-button").setEnabled(true);
+			sap.ui.getCore().byId("insertOsw--jumpToStart-button").setEnabled(true);
+			
+		}		
+	},
+	/***************************************************************************
+	 * trigger when the user click button of jump to Acpng start/End date Select
+	 * in the Date picker the date of acpng Date of the osw selected
+	 **************************************************************************/
+	onPressJumpDate : function() {
+		
+				
 	},
 	/***************************************************************************
 	 * trigger when the user Click on insert button check if one or more line are selected
@@ -423,60 +487,14 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		if (airbus.mes.stationHandover.insertOsw === undefined) {
 
 			airbus.mes.stationHandover.insertOsw = sap.ui.xmlfragment("insertOsw", "airbus.mes.stationHandover.fragments.insertOsw",
-				airbus.mes.stationHandover.oView.getController());
+			airbus.mes.stationHandover.oView.getController());
 			airbus.mes.stationHandover.oView.addDependent(airbus.mes.stationHandover.insertOsw);
 
 		}
 		
 		console.log(aSelectionPath);
 		airbus.mes.stationHandover.insertOsw.open();
-		sap.ui.getCore().byId("insertOsw--TimePicker").setDateValue(new Date());
-		sap.ui.getCore().byId("insertOsw--calendar").insertSelectedDate(new sap.ui.unified.DateRange({
-			startDate : new Date()
-		}));
+		// Apply default selection of dialog
+		this.selectMode();
 	},
-	/***************************************************************************
-	 * 	permit to know if the  row in the object is in modification or not
-	 **************************************************************************/
-	isSelected : function(oToTest,bValue) {
-		
-		if (oToTest.initial != bValue) {
-	
-			// Store also the modification on the object itself to send back whens saved the modification during the import of osw
-			oToTest.oswItems.INSERTED = bValue;
-			oToTest.changed = true;
-		} else {
-			
-			oToTest.changed = false;
-		}
-		
-	},	
-	
-	/************************************************************************/
-    /************************************************************************/
-    /**                                                                    **/
-    /**						InsertOsw Fragment						 	   **/
-    /**                                                                    **/
-    /************************************************************************/
-    /************************************************************************/
-	
-	/***************************************************************************
-	 * trigger when the user click on the close button of the dialog
-	 **************************************************************************/
-	onClose : function(oEvt) {
-
-		oEvt.getSource().getParent().close();
-
-	},
-	/***************************************************************************
-	 * trigger when the user click button of jump to Acpng start/End date Select
-	 * in the Date picker the date of acpng Date of the osw selected
-	 **************************************************************************/
-	onPressJumpDate : function(oEvt) {
-		
-		
-		
-		
-	},
-
 });

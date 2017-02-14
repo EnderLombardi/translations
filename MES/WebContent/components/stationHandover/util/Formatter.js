@@ -6,8 +6,6 @@ airbus.mes.stationHandover.util.Formatter = {
 
 	isBlocked : function(oEvt) {
 
-		var oEvt
-
 	},
 
 	translate : function(oEvt) {
@@ -19,23 +17,12 @@ airbus.mes.stationHandover.util.Formatter = {
 	isInsert : function(oEvt) {
 
 		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
-		var applyAll = airbus.mes.stationHandover.util.ModelManager.applyAll;
 
 		if (oEvt != null) {
 
 			var sPath = this.oPropagatedProperties.oBindingContexts.oswModel.sPath;
 			var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").getProperty(sPath);
 
-			//			if (oModel.INSERTED === "true") {
-			//
-			//				return true;
-			//
-			//			}
-
-			//if (oModel.INSERTED === "false") {
-			// Apply selection/unselection of box all only when clicking on
-
-			// Check if we selected a chill or not
 			if (oModel.MATERIAL_DESCRIPTION != undefined) {
 
 				return aValueSelected[oModel.WOID].open;
@@ -45,8 +32,6 @@ airbus.mes.stationHandover.util.Formatter = {
 				return aValueSelected[oModel.WOID][oModel.WOID + "##||##" + oModel.REFERENCE].open;
 
 			}
-
-			//}
 
 		}
 	},
@@ -67,20 +52,20 @@ airbus.mes.stationHandover.util.Formatter = {
 
 	},
 
-//	setColorLine : function(oEvt) {
-//
-//		var oRow = "#" + this.getParent().sId;
-//
-//		if (oEvt != null) {
-//			if (oEvt.TYPE === "0") {
-//
-//				$(oRow).removeClass("blue");
-//				$(oRow).addClass("blue");
-//
-//			}
-//		} else {
-//
-//			$(oRow).removeClass("blue");
-//		} 							visible="{path:'oswModel>' , formatter:'airbus.mes.stationHandover.util.Formatter.setColorLine'}"
-//	}
+	colorTracking : function(oEvt) {
+
+		switch (oEvt) {
+		case "true":
+			this.addStyleClass("green");
+			return oEvt;
+			break;
+		case "false":
+			this.addStyleClass("orange");
+			return oEvt;
+			break;
+		default:
+			return;
+		}
+	}
+
 };
