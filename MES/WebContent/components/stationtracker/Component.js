@@ -43,7 +43,7 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
         // View on XML
         this.oView = sap.ui.view({
             id : "stationTrackerView",
-            viewName : "airbus.mes.stationtracker.stationtracker",
+            viewName : "airbus.mes.stationtracker.view.stationtracker",
             type : "XML",
         });
 

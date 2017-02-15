@@ -3,7 +3,7 @@
 jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
 jQuery.sap.require("airbus.mes.stationtracker.util.ModelManager");
 
-sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
+sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
     /**
      * Called when a controller is instantiated and its View controls (if available) are already created.

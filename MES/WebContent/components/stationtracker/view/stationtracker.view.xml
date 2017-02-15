@@ -1,7 +1,7 @@
 <core:View xmlns:core="sap.ui.core" 
 	xmlns="sap.m"
 	xmlns:suite="sap.suite.ui.commons" 
-	controllerName="airbus.mes.stationtracker.stationtracker"
+	controllerName="airbus.mes.stationtracker.controller.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml" 
 	xmlns:custom="airbus.mes.stationtracker"
 	xmlns:control="airbus.mes.stationtracker.control" 
