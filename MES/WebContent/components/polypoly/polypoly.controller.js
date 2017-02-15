@@ -566,12 +566,15 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
                                                                                      || type == "UA_P"
                                                                              }
                                                                          },
-                                                                         enabled : function(){
-                                                                 	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.PM_POLY_ASSESS === true ){
-                                                                         	return true;
-                                                                         	} else { 
-                                                                         	return false;
-                                                                         	} 
+                                                                         enabled : {
+                                                                             parts : [ "type" ],
+                                                                             formatter : function(){
+                                                                      	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.PM_POLY_ASSESS === true ){
+                                                                                 	return true;
+                                                                                 	} else { 
+                                                                                 	return false;
+                                                                                 	} 
+                                                                                 }
                                                                          },
                                                                          press : function(
                                                                                  oEvt) {
