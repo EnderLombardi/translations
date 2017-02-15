@@ -30,7 +30,7 @@ airbus.mes.acpnglinks.Component.prototype.createContent = function() {
 			bundleName : "airbus.mes.acpnglinks.i18n.i18n"
 	     });
 		
-		this.oView.setModel(i18nModel, "i18nacpnglinksModel");		
+		this.oView.setModel(i18nModel, "i18nAcpngLinksModel");		
 
 		return this.oView;
 	} else {

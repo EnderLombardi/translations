@@ -5,67 +5,67 @@
 				"Column": [{
 					"Name": "Type",
 					"SourceColumn": "Type",
-					"Description": "",
+					"Description": "Type",
 					"Visible": "true",
 					"Sort": 0
 				}, {
 					"Name": "Reference",
 					"SourceColumn": "Reference",
-					"Description": "",
+					"Description": "Reference",
 					"Visible": "true",
 					"Sort": 1
 				}, {
 					"Name": "ReviewEnd",
 					"SourceColumn": "ReviewEnd",
-					"Description": "",
+					"Description": "ACPnG review end date",
 					"Visible": "true",
 					"Sort": 2
 				}, {
 					"Name": "Note",
 					"SourceColumn": "Note",
-					"Description": "",
+					"Description": "Note",
 					"Visible": "true",
 					"Sort": 3
 				}, {
 					"Name": "FamilyTarget",
 					"SourceColumn": "FamilyTarget",
-					"Description": "",
+					"Description": "Family target",
 					"Visible": "true",
 					"Sort": 4
 				}, {
 					"Name": "ConfirmedTime",
 					"SourceColumn": "ConfirmedTime",
-					"Description": "",
+					"Description": "Confirmed time",
 					"Visible": "false",
 					"Sort": 5
 				}, {
 					"Name": "STV",
 					"SourceColumn": "STV",
-					"Description": "",
+					"Description": "STV",
 					"Visible": "false",
 					"Sort": 6
 				}, {
 					"Name": "ACPWorkstation",
 					"SourceColumn": "ACPWorkstation",
-					"Description": "",
+					"Description":  "ACP workstation",
 					"Visible": "false",
 					"Sort": 7
 				}, {
 					"Name": "CA",
 					"SourceColumn": "CA",
-					"Description": "",
+					"Description": "CA",
 					"Visible": "false",
 					"Sort": 8
 				}, {
 					"Name": "FatherLink",
 					"SourceColumn": "FatherLink",
-					"Description": "",
+					"Description": "Father link",
 					"Visible": "false",
 					"Sort": 9
 				}, {
 					"Name": "BlockingReason",
 					"SourceColumn": "BlockingReason",
-					"Description": "",
+					"Description": "Blocking Reason",
 					"Visible": "false",
 					"Sort": 10
 				}, {
@@ -120,13 +120,13 @@
 					"Name": "Father_Type",
 					"SourceColumn": "Father_Type",
 					"Description": "",
-					"Visible": "false",
+					"Visible": "never",
 					"Sort": 19
 				}, {
 					"Name": "Father_ID",
 					"SourceColumn": "Father_ID",
 					"Description": "",
-					"Visible": "false",
+					"Visible": "never",
 					"Sort": 20
 				}]
 			},

@@ -9,9 +9,13 @@ airbus.mes.acpnglinks.util.Formatter = {
 	 * @returns {boolean}
 	 * 		return : true/false
 	 */
-    toBooleanLeft : function(sValue) {
-    return !Boolean(sValue.toUpperCase() == "TRUE");
-    },
+	toBooleanLeft : function(sValue) {
+		if(sValue.toUpperCase() == "NEVER") {
+			return false;
+		}else{
+			return !Boolean(sValue.toUpperCase() == "TRUE");
+		}
+	},
 
 	/**
 	 * Set visibility to true
@@ -20,9 +24,13 @@ airbus.mes.acpnglinks.util.Formatter = {
 	 * @returns {boolean}
 	 * 		return : true/false
 	 */
-    toBooleanRight : function(sValue) {
-    return Boolean(sValue.toUpperCase() == "TRUE");
-    },
+	toBooleanRight : function(sValue) {
+		if(sValue.toUpperCase() == "NEVER") {
+			return false;
+		}else{
+			return Boolean(sValue.toUpperCase() == "TRUE");
+		}
+	},
     
 	/**
 	 * handle Tree table row color
