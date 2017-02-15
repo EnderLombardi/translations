@@ -1,13 +1,13 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:ui="sap.ui.layout">
-	<Dialog title="{i18nacpnglinksModel>ColumnEditTitle}" icon="sap-icon://edit" showCloseButton="true" id="columnEditDialog" horizontalScrolling="false" verticalScrolling="false">
+	<Dialog title="{i18nAcpngLinksModel>ColumnEditTitle}" icon="sap-icon://edit" showCloseButton="true" id="columnEditDialog" horizontalScrolling="false" verticalScrolling="false">
 		<content height="100%" width="100%">
  			<HBox height="100%">
 				<Panel class="panelBorder" expanded="true" expandable="false" id="AcpngPanel" width="100%" height="100%">
 					<headerToolbar>
 						<Toolbar>							
-							<Title text="{i18nacpnglinksModel>ColumnEditUnassignedColumns}" />
+							<Title text="{i18nAcpngLinksModel>ColumnEditUnassignedColumns}" />
 						</Toolbar>
 					</headerToolbar>
 					<content height="100%">
@@ -18,7 +18,8 @@
 									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
 									<HBox width="100%">
 										<ui:HorizontalLayout>
-											<Text class="acpnglinksNotVisible" text="{acpnglinksWorkOrderDetail>Name}"></Text>
+											<Text text="{path:'acpnglinksWorkOrderDetail>Name' , formatter:'.getI18nValue'}"/>
+											<Text class="acpnglinksNotVisible" text="{acpnglinksWorkOrderDetail>Name}" visible="false"></Text>
 										</ui:HorizontalLayout>
 									</HBox>
 								</CustomListItem>
@@ -29,16 +30,16 @@
 				<VBox class="listButtons" justifyContent="Center" alignItems="Center">
 					<items>
 						<Button icon="sap-icon://navigation-right-arrow" press="onAssignColumns"
-							tooltip="{i18nacpnglinksModel>ColumnEditAssign}" />
+							tooltip="{i18nAcpngLinksModel>ColumnEditAssign}" />
 						<Button icon="sap-icon://navigation-left-arrow" press="onUnassignColumns"
-							tooltip="{i18nacpnglinksModel>ColumnEditRemove}" />
+							tooltip="{i18nAcpngLinksModel>ColumnEditRemove}" />
 					</items>
 				</VBox>
 				<Panel class="panelBorder" expanded="true" expandable="false"
 					id="assignedColumnsPanel" width="100%" height="100%">
 					<headerToolbar>
 						<Toolbar>
-							<Title text="{i18nacpnglinksModel>ColumnEditAssignedColumns}" />
+							<Title text="{i18nAcpngLinksModel>ColumnEditAssignedColumns}" />
 						</Toolbar>
 					</headerToolbar>
 					<content>
@@ -51,8 +52,8 @@
 									<content>
 										<HBox class="fixHboxItemDisplay">
 											<ui:HorizontalLayout>
-												<Text class="acpnglinksVisible" text="{acpnglinksWorkOrderDetail>Name}">
-												</Text>
+												<Text text="{path:'acpnglinksWorkOrderDetail>Name' , formatter:'.getI18nValue'}"/>
+											<Text class="acpnglinksVisible" text="{acpnglinksWorkOrderDetail>Name}" visible="false"></Text>
 											</ui:HorizontalLayout>
 										</HBox>
 									</content>
@@ -64,7 +65,7 @@
  			</HBox> 
 		</content>
 		<endButton>
-            <Button type="Transparent" icon="sap-icon://decline" class="sapUiTinyMarginBeginEnd" text="{i18nacpnglinksModel>Close}" press="onDialogClose" />
+            <Button type="Transparent" icon="sap-icon://decline" class="sapUiTinyMarginBeginEnd" text="{i18nAcpngLinksModel>Close}" press="onDialogClose" />
         </endButton>
 	</Dialog>
 </core:FragmentDefinition>

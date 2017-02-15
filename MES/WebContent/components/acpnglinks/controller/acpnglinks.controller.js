@@ -203,5 +203,11 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 				oEvt.getSource().insertColumn(oColumn[0], j++);
 			}
 		}
-	}
+	},
+	/**
+	 * Get Translated value
+	 */
+	 getI18nValue: function (sKey) {
+	        return this.getView().getModel("i18nAcpngLinksModel").getProperty(sKey);
+	    },
 });
