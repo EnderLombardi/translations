@@ -19,5 +19,4 @@ airbus.mes.acpnglinks.util.Formatter = {
         }
 
     }
-
 };

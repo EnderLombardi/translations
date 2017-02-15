@@ -14,11 +14,11 @@
                     <Toolbar>
                         <Title id="title" text="ACPnG Links"/>
                         <ToolbarSpacer/>
-                        <Button text="Change Columns" press="onColumnsChange"/>
+                        <Button text="Modify Columns" press="onColumnsChange"/>
                     </Toolbar>
                     </tab:toolbar>
 					<tab:columns>
-						<tab:Column id="Type" visible="true" sortProperty="Type" >
+						<tab:Column id="Type" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/0/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Type" >
 							<Label class="ACPnGtLabel" text="Type" />
 							<tab:template>
 								<Text text="{acpnglinksWorkOrderDetail>Type}" class="AllignItem" />
@@ -52,97 +52,97 @@
 						<tab:Column id="Confirmed_time" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/5/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Confirmed_time">
 							<Label  class="ACPnGtLabel" text="Confirmed_time" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>Family_target}" class="AllignItem" />
+								<Label text="{acpnglinksWorkOrderDetail>Confirmed_time}" class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="STV" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/6/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}">
 							<Label class="ACPnGtLabel" text="STV" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>STV}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="ACP_workstation" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/7/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="ACP_workstation">
 							<Label   class="ACPnGtLabel" text="ACP workstation" />
 							<tab:template>
-								<Label  text="{acpnglinksWorkOrderDetail>description}"
+								<Label  text="{acpnglinksWorkOrderDetail>ACP_workstation}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="CA" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/8/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="CA">
 							<Label class="ACPnGtLabel" text="CA" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>CA}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="Father_link" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/9/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Father_link">
 							<Label class="ACPnGtLabel" text="Father link" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>Father_link}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="Blocking_reason" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/10/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Blocking_reason">
 							<Label class="ACPnGtLabel" text="Blocking reason" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>Blocking_reason}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="User_status" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/11/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="User_status">
 							<Label class="ACPnGtLabel" text="User status" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>User_status}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="Execution_station" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/12/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Execution_station">
 							<Label class="ACPnGtLabel" text="ACPnG execution station" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>Execution_station}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="Origin_workstation" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/13/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Origin_workstation">
 							<Label class="ACPnGtLabel" text="Origin workstation" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>Origin_workstation}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="TDL" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/14/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="TDL">
 							<Label class="ACPnGtLabel" text="TDL" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>TDL}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="Upper_family" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/15/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Upper_family">
 							<Label class="ACPnGtLabel" text="Upper family" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>Upper_family}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="Zoning" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/16/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Zoning">
 							<Label class="ACPnGtLabel" text="Zoning" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>Zoning}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="Material_description" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/17/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="Material_description">
 							<Label class="ACPnGtLabel" text="Material description" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>Material_description}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="ATA" visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/18/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}" sortProperty="ATA">
 							<Label class="ACPnGtLabel" text="ATA/SUB-ATA" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>description}"
+								<Label text="{acpnglinksWorkOrderDetail>ATA}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>

@@ -38,15 +38,49 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 		}
 	},
 
+	findIndexObjectKey : function(arraytosearch, key, valuetosearch) {
+
+		for (var i = 0; i < arraytosearch.length; i++) {
+
+			if (arraytosearch[i][key] == valuetosearch) {
+				return i;
+			}
+		}
+		return null;
+	},
+	
+	SortColumnModel : function(){
+		var index = 0;
+		var id = "";
+		// Column Model sort
+		try{
+			var model = airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getData().Rowsets.Rowset[0].Columns.Column;
+			var oTTbl = sap.ui.getCore().byId("acpnglinksView--ACPnGTreeTable").getColumns();
+			for (var i = 0; i < oTTbl.length; i++) {
+				index = oTTbl[i].sId.lastIndexOf("--");
+				id = oTTbl[i].sId.slice([index+2], oTTbl[i].sId.length);
+				index = this.findIndexObjectKey(model,"Name",id);
+				model[index].Sort = i;
+			}
+			airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getData().Rowsets.Rowset[0].Columns.Column = model;
+			airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").refresh();
+		}catch(err){
+			// do nothing
+		}
+
+	},
+
     onColumnsChange : function() {
         if (airbus.mes.acpnglinks.oColumnEditDialog === undefined) {
 
-            airbus.mes.acpnglinks.oColumnEditDialog = sap.ui.xmlfragment("columnEdit", "airbus.mes.acpnglinks.view.columnEdit", airbus.mes.acpnglinks.oView
-                .getController());
-            airbus.mes.acpnglinks.oView.addDependent(airbus.mes.acpnglinks.oColumnEditDialog);
-        }
-        // Open
-        airbus.mes.acpnglinks.oColumnEditDialog.open();
+			airbus.mes.acpnglinks.oColumnEditDialog = sap.ui.xmlfragment("columnEdit", "airbus.mes.acpnglinks.view.columnEdit", airbus.mes.acpnglinks.oView
+				.getController());
+			airbus.mes.acpnglinks.oView.addDependent(airbus.mes.acpnglinks.oColumnEditDialog);
+		}
+		// Column Model sort
+		this.SortColumnModel()
+		// Open
+		airbus.mes.acpnglinks.oColumnEditDialog.open();
 
 		// Drag drop management
 		var oSortableList = sap.ui.getCore().byId("columnEdit--listAllocatedcolumns");
@@ -65,16 +99,25 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 
     },
 
-    onAssignColumns : function(oEvt) {
-        var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAvailableColumns").getSelectedItem();
-        airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath() + "/Visible", "true");
-        airbus.mes.acpnglinks.util.Formatter.changeRowColor();
-    },
-    onUnassignColumns : function(oEvt) {
-        var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAllocatedcolumns").getSelectedItem();
-        airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath() + "/Visible", "false");
-        airbus.mes.acpnglinks.util.Formatter.changeRowColor();
-    },
+   onAssignColumns : function(oEvt) {
+		var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAvailableColumns").getSelectedItem();
+		try{
+
+			airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath() + "/Visible", "true");
+		}catch(err){
+			// do nothing
+		}
+		airbus.mes.acpnglinks.util.Formatter.changeRowColor();
+	},
+	onUnassignColumns : function(oEvt) {
+		var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAllocatedcolumns").getSelectedItem();
+		try{
+			airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath() + "/Visible", "false");			
+		}catch(err){
+			// do nothing
+		}
+		airbus.mes.acpnglinks.util.Formatter.changeRowColor();
+	},
 
 	onDialogClose : function(oEvent) {
 		// Close Popup

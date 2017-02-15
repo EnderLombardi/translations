@@ -22,8 +22,8 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	loadacpnglinksWorkOrderDetail : function() {
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
 		oModel.loadData(this.getacpnglinksWorkOrderDetail(), null, false);
-		var transformedModel = this.transformTreeData(oModel.oData.Rowsets.Rowset[0].Row);
-		oModel.oData.Rowsets.Rowset[0].Row = transformedModel;
+		var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row);
+		oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
 	},
 	
 	getacpnglinksWorkOrderDetail : function() {
