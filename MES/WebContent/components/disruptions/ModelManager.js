@@ -1107,7 +1107,7 @@ airbus.mes.disruptions.ModelManager = {
 			// Set status = In Progress if blocked earlier
 
 			// Set the previous status
-			sStatus = airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(
+			sStatus = airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].state,
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].paused,
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].previously_start);

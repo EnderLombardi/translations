@@ -1,5 +1,5 @@
-jQuery.sap.declare("airbus.mes.stationtracker.GraphManager");
-airbus.mes.stationtracker.GraphManager = {
+jQuery.sap.declare("airbus.mes.stationtracker.util.GraphManager");
+airbus.mes.stationtracker.util.GraphManager = {
 
 	loadGraph: function () {
 

@@ -1,7 +1,7 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.stationtracker.AssignmentManager")
-airbus.mes.stationtracker.AssignmentManager = {
+jQuery.sap.declare("airbus.mes.stationtracker.util.AssignmentManager")
+airbus.mes.stationtracker.util.AssignmentManager = {
 	
 	bOpen : undefined,
 	bInitial : false,
@@ -23,39 +23,39 @@ airbus.mes.stationtracker.AssignmentManager = {
 		var sUserID ;
 		switch(sModeAssignment){
 		case "S" :
-			sUserID = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedUser.login;
+			sUserID = airbus.mes.stationtracker.util.AssignmentManager.polypolyAssignment.selectedUser.login;
 			break;
 		case "D" :
 			sUserID = undefined;
 			break;
 		case "W" :
-			sUserID = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine.avlLine][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID][0].user;
-//			airbus.mes.stationtracker.AssignmentManager.checkQA = false;
+			sUserID = airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[airbus.mes.stationtracker.util.AssignmentManager.polypolyAssignment.selectedLine.avlLine][airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID][0].user;
+//			airbus.mes.stationtracker.util.AssignmentManager.checkQA = false;
 			sModeAssignment = "S";
 			break;
 		default:
 		}
-		var sShiftName = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.shiftName;
-		var sDay = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.day;
-		var sAVLLineSKILL = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine.avlLine;
+		var sShiftName = airbus.mes.stationtracker.util.AssignmentManager.polypolyAssignment.selectedShift.shiftName;
+		var sDay = airbus.mes.stationtracker.util.AssignmentManager.polypolyAssignment.selectedShift.day;
+		var sAVLLineSKILL = airbus.mes.stationtracker.util.AssignmentManager.polypolyAssignment.selectedLine.avlLine;
 		var sLine = sAVLLineSKILL.split("_")[0];
 		var sSkill = sAVLLineSKILL.split("_")[1];
-		var sSite = airbus.mes.stationtracker.ModelManager.settings.site;
-		var sStation = airbus.mes.stationtracker.ModelManager.settings.station;
-		var sMSN = airbus.mes.stationtracker.ModelManager.settings.msn;
+		var sSite = airbus.mes.stationtracker.util.ModelManager.settings.site;
+		var sStation = airbus.mes.stationtracker.util.ModelManager.settings.station;
+		var sMSN = airbus.mes.stationtracker.util.ModelManager.settings.msn;
 //		var sMyUserID = "UserBO:" + sSite + ",NG55E48"; //FIXME ??
 //		var sMyUserID = "UserBO:" + sSite + "," + Cookies.getJSON("login").user; //FIXME ??
 
 		
 //		sDay = (new Date(sDay)).toISOString().slice(0,10).replace(/-/g,"");
 		
-		airbus.mes.stationtracker.ModelManager.setLineAssignment(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sModeAssignment, bIgnoreCheckQA);
+		airbus.mes.stationtracker.util.ModelManager.setLineAssignment(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sModeAssignment, bIgnoreCheckQA);
 
 	},
 	
 	computeAffectationHierarchy : function() {
 		
-		var oHierarchy =  airbus.mes.stationtracker.AssignmentManager.affectationHierarchy = {};
+		var oHierarchy =  airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy = {};
 		var oModel = sap.ui.getCore().getModel("affectationModel");
 		
 		// check if model full or not
@@ -110,7 +110,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 			var sAVLKey = Math.floor((new Date() - new Date("2016-11-01")) /100);
 			var newLineText = "_manual";
 
-			airbus.mes.stationtracker.AssignmentManager.bOpen = true;
+			airbus.mes.stationtracker.util.AssignmentManager.bOpen = true;
 			scheduler.addSection({
 				key: sKey + "_" + sAVLKey.toString() + newLineText , 
 				rescheduled:"R" , 

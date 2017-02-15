@@ -1,8 +1,8 @@
 "use strict";
 
 jQuery.sap.require("sap.ui.core.format.DateFormat");
-jQuery.sap.declare("airbus.mes.stationtracker.ModelManager");
-airbus.mes.stationtracker.ModelManager = {
+jQuery.sap.declare("airbus.mes.stationtracker.util.ModelManager");
+airbus.mes.stationtracker.util.ModelManager = {
 
 
     urlModel: undefined,
@@ -54,15 +54,15 @@ airbus.mes.stationtracker.ModelManager = {
         airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
         this.settings = airbus.mes.settings.ModelManager;
 
-        core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
-        core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoadInitial);
-        core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
-        core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
-        core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
-        core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
-        core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
-        core.getModel("phStationSelected").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onPhStationLoad);
-        core.getModel("taktModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onTaktLoad);
+        core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onStationTrackerLoad);
+        core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onStationTrackerLoadInitial);
+        core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onShiftsLoad);
+        core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onAffectationLoad);
+        core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onUnPlannedLoad);
+        core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onOWSLoad);
+        core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onRessourcePoolLoad);
+        core.getModel("phStationSelected").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onPhStationLoad);
+        core.getModel("taktModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onTaktLoad);
         // Handle URL Model
         this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.stationtracker.config.url_config");
 
@@ -125,14 +125,14 @@ airbus.mes.stationtracker.ModelManager = {
 
     loadAffectation: function () {
 
-        var oData = airbus.mes.stationtracker.ModelManager.settings;
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         var geturlAffectation = this.urlModel.getProperty('urlaffectation');
 
-        geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(
+        geturlAffectation = airbus.mes.stationtracker.util.ModelManager.replaceURI(
             geturlAffectation, "$site", oData.site);
-        geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(
+        geturlAffectation = airbus.mes.stationtracker.util.ModelManager.replaceURI(
             geturlAffectation, "$station", oData.station);
-        geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(
+        geturlAffectation = airbus.mes.stationtracker.util.ModelManager.replaceURI(
             geturlAffectation, "$msn", oData.msn);
 
         var oViewModel = sap.ui.getCore().getModel("affectationModel");
@@ -152,33 +152,33 @@ airbus.mes.stationtracker.ModelManager = {
             // oModel.oData.Rowsets.Rowset[0].Row = [];
             console.log("no affectationModel load");
         }
-        airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+        airbus.mes.stationtracker.util.AssignmentManager.computeAffectationHierarchy();
 
     },
 
     loadStationTracker: function (sType) {
 
-        var oData = airbus.mes.stationtracker.ModelManager.settings;
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         this.operationType = sType;
 
         var geturlstationtracker = this.urlModel
             .getProperty('urlstationtrackeroperation');
-        geturlstationtracker = airbus.mes.stationtracker.ModelManager
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlstationtracker, "$site", oData.site);
-        geturlstationtracker = airbus.mes.stationtracker.ModelManager
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlstationtracker, "$station", oData.station);
-        geturlstationtracker = airbus.mes.stationtracker.ModelManager
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlstationtracker, "$msn", oData.msn);
-        geturlstationtracker = airbus.mes.stationtracker.ModelManager
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlstationtracker, "$operationType", sType);
-        geturlstationtracker = airbus.mes.stationtracker.ModelManager
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlstationtracker, "$productionGroup",
             oData.prodGroup);
-        geturlstationtracker = airbus.mes.stationtracker.ModelManager
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(
             geturlstationtracker,
             "$user",
-            airbus.mes.stationtracker.AssignmentManager.userSelected);
+            airbus.mes.stationtracker.util.AssignmentManager.userSelected);
         //console.log(geturlstationtracker);
         var oViewModel;
         switch (sType) {
@@ -275,17 +275,17 @@ airbus.mes.stationtracker.ModelManager = {
 
         var sXml = sXmlStart + sXmlByRow + sXmlEnd;
         var sDateShift = airbus.mes.settings.ModelManager.taktStart;
-        var oData = airbus.mes.stationtracker.ModelManager.settings;
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         var geturlsetosw = this.urlModel.getProperty('urlsetosw');
 
-        geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$site", oData.site);
-        geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sCheckQa", sCheckQa);
-        geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$bOuStanding", bOuStanding);
-        geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sProdgroups", sProdgroups);
-        geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$station", oData.station);
-        geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$msn", oData.msn);
-        geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sDateShift", sDateShift);
-        geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sXml", sXml);
+        geturlsetosw = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlsetosw, "$site", oData.site);
+        geturlsetosw = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlsetosw, "$sCheckQa", sCheckQa);
+        geturlsetosw = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlsetosw, "$bOuStanding", bOuStanding);
+        geturlsetosw = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlsetosw, "$sProdgroups", sProdgroups);
+        geturlsetosw = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlsetosw, "$station", oData.station);
+        geturlsetosw = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlsetosw, "$msn", oData.msn);
+        geturlsetosw = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlsetosw, "$sDateShift", sDateShift);
+        geturlsetosw = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlsetosw, "$sXml", sXml);
 
         $.ajax({
 
@@ -303,7 +303,7 @@ airbus.mes.stationtracker.ModelManager = {
                         var checkQAModel = new sap.ui.model.json.JSONModel();
                         checkQAModel.setData(data.Rowsets.Rowset[1]);
                         //Permit to display button ok and cancel
-                        airbus.mes.stationtracker.AssignmentManager.checkQA = false;
+                        airbus.mes.stationtracker.util.AssignmentManager.checkQA = false;
                         airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
                     } else if (data.Rowsets.Rowset[0].Row[0].message == "S") {
                         // reuse default value of CheckQa permit to add user when checkQa is use
@@ -341,7 +341,7 @@ airbus.mes.stationtracker.ModelManager = {
         }
 
         // Compute status for Unplanned and OSW Model
-        airbus.mes.stationtracker.ModelManager.computeStatus(aModel);
+        airbus.mes.stationtracker.util.ModelManager.computeStatus(aModel);
 
     },
 
@@ -360,7 +360,7 @@ airbus.mes.stationtracker.ModelManager = {
             aModel = aModel.getProperty("/Rowsets/Rowset/0/Row")
         }
         // Compute status for Unplanned and OSW Model
-        airbus.mes.stationtracker.ModelManager.computeStatus(aModel);
+        airbus.mes.stationtracker.util.ModelManager.computeStatus(aModel);
 
     },
 
@@ -368,20 +368,20 @@ airbus.mes.stationtracker.ModelManager = {
         var oViewModel = sap.ui.getCore().getModel("groupModel");
         oViewModel.loadData(this.urlModel.getProperty("urlgroupmodel"), null,
             false);
-        airbus.mes.stationtracker.ModelManager.filterUnplanned = oViewModel;
+        airbus.mes.stationtracker.util.ModelManager.filterUnplanned = oViewModel;
 
     },
     loadRessourcePool: function () {
 
-        var oData = airbus.mes.stationtracker.ModelManager.settings;
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         var oViewModel = sap.ui.getCore().getModel("ressourcePoolModel");
         var geturlressourcepool = this.urlModel.getProperty("urlressourcepool");
 
-        geturlressourcepool = airbus.mes.stationtracker.ModelManager
+        geturlressourcepool = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlressourcepool, "$site", oData.site);
-        geturlressourcepool = airbus.mes.stationtracker.ModelManager
+        geturlressourcepool = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlressourcepool, "$station", oData.station);
-        geturlressourcepool = airbus.mes.stationtracker.ModelManager
+        geturlressourcepool = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlressourcepool, "$msn", oData.msn);
         oViewModel.loadData(geturlressourcepool, null, true);
 
@@ -418,24 +418,24 @@ airbus.mes.stationtracker.ModelManager = {
     },
     loadProductionGroup: function () {
 
-        var oData = airbus.mes.stationtracker.ModelManager.settings;
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         var geturlstationtracker = this.urlModel
             .getProperty('urlproductiongroup');
 
-        geturlstationtracker = airbus.mes.stationtracker.ModelManager
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlstationtracker, "$station", oData.station);
-        geturlstationtracker = airbus.mes.stationtracker.ModelManager
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlstationtracker, "$plant", oData.site);
 
         var oViewModel = sap.ui.getCore().getModel("productionGroupModel");
         oViewModel.loadData(geturlstationtracker, null, true);
-        airbus.mes.stationtracker.ModelManager.ProductionGroup = oViewModel;
+        airbus.mes.stationtracker.util.ModelManager.ProductionGroup = oViewModel;
 
     },
     loadKPI: function () {
         var oViewModel = sap.ui.getCore().getModel("KPI");
         oViewModel.loadData(this.urlModel.getProperty("urlKPI"), null, true);
-        airbus.mes.stationtracker.ModelManager.KPI = oViewModel;
+        airbus.mes.stationtracker.util.ModelManager.KPI = oViewModel;
 
         //        // Model For the Disruption Andon KPI
         //        var oDisruptionAndonModel = sap.ui.getCore().getModel("disruptionAndonKPI");
@@ -520,8 +520,8 @@ airbus.mes.stationtracker.ModelManager = {
                 "site": airbus.mes.settings.ModelManager.site,
                 "physicalStation": airbus.mes.settings.ModelManager.station,
                 "msn": airbus.mes.settings.ModelManager.msn,
-                "day": airbus.mes.stationtracker.ShiftManager.ShiftSelected.day,
-                "shift": airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName
+                "day": airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.day,
+                "shift": airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftName
             }),
 
             success: function (data) {
@@ -666,7 +666,7 @@ airbus.mes.stationtracker.ModelManager = {
     selectMyShift: function () {
         // stationTrackerShift model
         var oView = airbus.mes.stationtracker.oView;
-        var options = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day];
+        var options = airbus.mes.stationtracker.util.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.util.ShiftManager.current_day];
         var modelarray = [];
         var sShiftName = "";
         // var i = 0; not used
@@ -675,18 +675,18 @@ airbus.mes.stationtracker.ModelManager = {
             if (!options.hasOwnProperty(prop))
                 continue;
 
-            airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][prop]
+            airbus.mes.stationtracker.util.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.util.ShiftManager.current_day][prop]
                 .forEach(function (key1, index) {
 
-                    sShiftName = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][prop][index].shiftName;
+                    sShiftName = airbus.mes.stationtracker.util.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.util.ShiftManager.current_day][prop][index].shiftName;
 
                 });
 
             var element = {};
             element.value = prop;
-            element.visible = airbus.mes.stationtracker.ShiftManager.dayDisplay;
+            element.visible = airbus.mes.stationtracker.util.ShiftManager.dayDisplay;
             element.shiftName = sShiftName;
-            element.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
+            element.day = airbus.mes.stationtracker.util.ShiftManager.current_shift.day;
             element.shiftID = prop;
             modelarray.push(element);
 
@@ -695,35 +695,35 @@ airbus.mes.stationtracker.ModelManager = {
         oView.getModel("stationTrackerShift").setData(modelarray);
         oView.getModel("stationTrackerShift").refresh();
 
-        if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
+        if (airbus.mes.stationtracker.util.ShiftManager.dayDisplay) {
 
-            if (airbus.mes.stationtracker.ShiftManager.selectFirstShift) {
+            if (airbus.mes.stationtracker.util.ShiftManager.selectFirstShift) {
 
                 //when using Arrow in gantt we select the first shift of the day
                 airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
-                airbus.mes.stationtracker.ShiftManager.selectFirstShift = false;
+                airbus.mes.stationtracker.util.ShiftManager.selectFirstShift = false;
 
             } else {
 
                 // Select the previous shift selected
-                airbus.mes.stationtracker.oView.byId("selectShift").setSelectedIndex(airbus.mes.stationtracker.ShiftManager.sIndexCombobox);
+                airbus.mes.stationtracker.oView.byId("selectShift").setSelectedIndex(airbus.mes.stationtracker.util.ShiftManager.sIndexCombobox);
                 airbus.mes.stationtracker.oView.byId("selectShift").rerender();
-                //airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);                airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
+                //airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID);                airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID);
                 airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
 
             }
 
         }
 
-        if (airbus.mes.stationtracker.ShiftManager.shiftDisplay && airbus.mes.stationtracker.ShiftManager.current_shift != undefined) {
+        if (airbus.mes.stationtracker.util.ShiftManager.shiftDisplay && airbus.mes.stationtracker.util.ShiftManager.current_shift != undefined) {
 
-            airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = airbus.mes.stationtracker.ShiftManager.current_shift.shiftName;
-            airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = airbus.mes.stationtracker.ShiftManager.current_shift.shiftID;
-            airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
-            airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate = airbus.mes.stationtracker.ShiftManager.current_shift.StartDate;
+            airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftName = airbus.mes.stationtracker.util.ShiftManager.current_shift.shiftName;
+            airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID = airbus.mes.stationtracker.util.ShiftManager.current_shift.shiftID;
+            airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.util.ShiftManager.current_shift.day;
+            airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.StartDate = airbus.mes.stationtracker.util.ShiftManager.current_shift.StartDate;
 
-            airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
-            scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
+            airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID);
+            scheduler.updateView(airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.StartDate);
 
         }
 
@@ -739,13 +739,13 @@ airbus.mes.stationtracker.ModelManager = {
     },
     onStationTrackerLoad: function () {
 
-        var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+        var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
 
-        airbus.mes.stationtracker.ModelManager.fIsLoad++;
+        airbus.mes.stationtracker.util.ModelManager.fIsLoad++;
         // initial model and rescheduled model are load in same time it permit to redenrer stationtracker only one time
         // when both are finish
-        if (airbus.mes.stationtracker.ModelManager.fIsLoad > 1) {
-            airbus.mes.stationtracker.ModelManager.fIsLoad = 0;
+        if (airbus.mes.stationtracker.util.ModelManager.fIsLoad > 1) {
+            airbus.mes.stationtracker.util.ModelManager.fIsLoad = 0;
             GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
         }
 
@@ -753,12 +753,12 @@ airbus.mes.stationtracker.ModelManager = {
 
     onStationTrackerLoadInitial: function () {
 
-        var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-        airbus.mes.stationtracker.ModelManager.fIsLoad++;
+        var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
+        airbus.mes.stationtracker.util.ModelManager.fIsLoad++;
         // initial model and rescheduled model are load in same time it permit to redenrer stationtracker only one time
         // when both are finish
-        if (airbus.mes.stationtracker.ModelManager.fIsLoad > 1) {
-            airbus.mes.stationtracker.ModelManager.fIsLoad = 0;
+        if (airbus.mes.stationtracker.util.ModelManager.fIsLoad > 1) {
+            airbus.mes.stationtracker.util.ModelManager.fIsLoad = 0;
             GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
         }
     },
@@ -767,11 +767,11 @@ airbus.mes.stationtracker.ModelManager = {
 
         var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
         var getUrlShifts = this.urlModel.getProperty("urlshifts");
-        var oData = airbus.mes.stationtracker.ModelManager.settings;
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         var reqResult = "";
-        getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$site", oData.site);
-        getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$station", oData.station);
-        getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$msn", oData.msn);
+        getUrlShifts = airbus.mes.stationtracker.util.ModelManager.replaceURI(getUrlShifts, "$site", oData.site);
+        getUrlShifts = airbus.mes.stationtracker.util.ModelManager.replaceURI(getUrlShifts, "$station", oData.station);
+        getUrlShifts = airbus.mes.stationtracker.util.ModelManager.replaceURI(getUrlShifts, "$msn", oData.msn);
 
         oViewModelshift.loadData(getUrlShifts, null, false);
 
@@ -792,7 +792,7 @@ airbus.mes.stationtracker.ModelManager = {
     },
     onShiftsLoad: function () {
 
-        var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+        var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
         GroupingBoxingManager.parseShift();
     },
 
@@ -804,7 +804,7 @@ airbus.mes.stationtracker.ModelManager = {
 
         // get Url of the service
         var urlReschedulingService = this.urlModel.getProperty("urlReschedulingService");
-        var oData = airbus.mes.stationtracker.ModelManager.settings;
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         var splitId;
         var splitIdI;
         var lengthId;
@@ -859,7 +859,7 @@ airbus.mes.stationtracker.ModelManager = {
                         var checkQAModel = new sap.ui.model.json.JSONModel();
                         checkQAModel.setData(data.Rowsets.Rowset[1]);
                         //Permit to display button continue and cancel
-                        airbus.mes.stationtracker.AssignmentManager.checkQA = false;
+                        airbus.mes.stationtracker.util.AssignmentManager.checkQA = false;
                         //Permit to relaunch rescheduling after the check Qa
                         airbus.mes.stationtracker.CheckQa = "RESCHEDULING";
                         airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
@@ -887,10 +887,10 @@ airbus.mes.stationtracker.ModelManager = {
         var fAllDuration = 0;
         var fAllProgress = 0;
         var fNumberEl = 0;
-        var oHierarchy = airbus.mes.stationtracker.GroupingBoxingManager.operationDateIHierarchy;
+        var oHierarchy = airbus.mes.stationtracker.util.GroupingBoxingManager.operationDateIHierarchy;
         // Check if there is only one operation on the worklist
         // If yes, open the operation list
-        var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box];
+        var aModel = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box];
 
         if (aModel.length === 1) {
             //Get avlDate initial of operation
@@ -903,7 +903,7 @@ airbus.mes.stationtracker.ModelManager = {
 
             }
 
-            airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(aModel, sAvlStart, sAvlEnd);
+            airbus.mes.stationtracker.util.ModelManager.openOperationDetailPopup(aModel, sAvlStart, sAvlEnd);
             return;
         }
 
@@ -936,7 +936,7 @@ airbus.mes.stationtracker.ModelManager = {
         });
 
         // Text to display different case regarding box selected
-        switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
+        switch (airbus.mes.stationtracker.util.GroupingBoxingManager.box) {
 
             case "OPERATION_ID":
                 //sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
@@ -1013,7 +1013,7 @@ airbus.mes.stationtracker.ModelManager = {
      * open work list popover
      **************************************************************************/
     OpenWorkList: function (id) {
-        airbus.mes.stationtracker.ModelManager.openWorkListPopover(id);
+        airbus.mes.stationtracker.util.ModelManager.openWorkListPopover(id);
     },
 
     /***************************************************************************
@@ -1046,14 +1046,14 @@ airbus.mes.stationtracker.ModelManager = {
 
                 //TODO Exception to display to UI
                 if (operation && order) {
-                    spentTimeInMs = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(operation, order);
+                    spentTimeInMs = airbus.mes.stationtracker.util.ModelManager.getSpentTimePerOperation(operation, order);
                 }
 
 
                 //informations for Document request
-                airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO = aModel[0].SHOP_ORDER_BO;
-                airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO = aModel[0].ROUTERSTEPBO;
-                airbus.mes.stationtracker.ModelManager.stationInProgress.ERP_SYSTEM = aModel[0].ERP_SYSTEM;
+                airbus.mes.stationtracker.util.ModelManager.stationInProgress.ShopOrderBO = aModel[0].SHOP_ORDER_BO;
+                airbus.mes.stationtracker.util.ModelManager.stationInProgress.RouterStepBO = aModel[0].ROUTERSTEPBO;
+                airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM = aModel[0].ERP_SYSTEM;
 
 
                 // calculate status of operation
@@ -1173,11 +1173,11 @@ airbus.mes.stationtracker.ModelManager = {
 
         // Check if we are on operation grouping
         // SD-PPC-ST-386
-        if (airbus.mes.stationtracker.GroupingBoxingManager.box !== 'OPERATION_ID') {
+        if (airbus.mes.stationtracker.util.GroupingBoxingManager.box !== 'OPERATION_ID') {
             return;
         }
 
-        var aOperationHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
+        var aOperationHierachy = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy;
         var aModel = [scheduler.getEvent(id)];
 
         // Define all group
@@ -1209,7 +1209,7 @@ airbus.mes.stationtracker.ModelManager = {
 
         // get Url of the service
         var urlsavephstation = this.urlModel.getProperty("urlsavephstation");
-        var oData = airbus.mes.stationtracker.ModelManager.settings;
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
 
         jQuery.ajax({
             async: false,
@@ -1228,11 +1228,11 @@ airbus.mes.stationtracker.ModelManager = {
     getPhStation: function () {
 
         var urlgetphstation = this.urlModel.getProperty("urlgetphstation");
-        var oData = airbus.mes.stationtracker.ModelManager.settings;
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
 
-        urlgetphstation = airbus.mes.stationtracker.ModelManager.replaceURI(urlgetphstation, "$site", oData.site);
-        urlgetphstation = airbus.mes.stationtracker.ModelManager.replaceURI(urlgetphstation, "$station", oData.station);
-        urlgetphstation = airbus.mes.stationtracker.ModelManager.replaceURI(urlgetphstation, "$phStation", oData.station);
+        urlgetphstation = airbus.mes.stationtracker.util.ModelManager.replaceURI(urlgetphstation, "$site", oData.site);
+        urlgetphstation = airbus.mes.stationtracker.util.ModelManager.replaceURI(urlgetphstation, "$station", oData.station);
+        urlgetphstation = airbus.mes.stationtracker.util.ModelManager.replaceURI(urlgetphstation, "$phStation", oData.station);
 
         var oViewModel = sap.ui.getCore().getModel("phStationSelected");
         oViewModel.loadData(urlgetphstation, null, true);
@@ -1297,11 +1297,11 @@ airbus.mes.stationtracker.ModelManager = {
         var oModel = sap.ui.getCore().getModel("taktModel");
         var url = this.urlModel.getProperty("urltakt");
 
-        var oData = airbus.mes.stationtracker.ModelManager.settings;
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
 
-        url = airbus.mes.stationtracker.ModelManager.replaceURI(url, "$site", oData.site);
-        url = airbus.mes.stationtracker.ModelManager.replaceURI(url, "$station", oData.station);
-        url = airbus.mes.stationtracker.ModelManager.replaceURI(url, "$msn", oData.msn);
+        url = airbus.mes.stationtracker.util.ModelManager.replaceURI(url, "$site", oData.site);
+        url = airbus.mes.stationtracker.util.ModelManager.replaceURI(url, "$station", oData.station);
+        url = airbus.mes.stationtracker.util.ModelManager.replaceURI(url, "$msn", oData.msn);
 
 
         oModel.loadData(url, null, true);
@@ -1337,9 +1337,9 @@ airbus.mes.stationtracker.ModelManager = {
         }
 
         airbus.mes.settings.ModelManager.taktDuration = aModel.Rowsets.Rowset[0].Row[0].DURATION;
-        airbus.mes.stationtracker.ModelManager.settings.taktStart = airbus.mes.settings.ModelManager.taktStart
-        airbus.mes.stationtracker.ModelManager.settings.taktEnd = airbus.mes.settings.ModelManager.taktEnd
-        airbus.mes.stationtracker.ModelManager.settings.taktDuration = aModel.Rowsets.Rowset[0].Row[0].DURATION;
+        airbus.mes.stationtracker.util.ModelManager.settings.taktStart = airbus.mes.settings.ModelManager.taktStart
+        airbus.mes.stationtracker.util.ModelManager.settings.taktEnd = airbus.mes.settings.ModelManager.taktEnd
+        airbus.mes.stationtracker.util.ModelManager.settings.taktDuration = aModel.Rowsets.Rowset[0].Row[0].DURATION;
     },
 
     getSpentTimePerOperation: function (operation, order) {
@@ -1377,11 +1377,11 @@ airbus.mes.stationtracker.ModelManager = {
         
         oViewModel = sap.ui.getCore().getModel("SplitDetailModel");
 
-        userSelected = airbus.mes.stationtracker.AssignmentManager.userSelected;
+        userSelected = airbus.mes.stationtracker.util.AssignmentManager.userSelected;
 
         shiftSelected = null;
-        if (airbus.mes.stationtracker.ShiftManager.ShiftSelected && airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName) {
-            shiftSelected = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName;
+        if (airbus.mes.stationtracker.util.ShiftManager.ShiftSelected && airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftName) {
+            shiftSelected = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftName;
         }
 
         startDate = null;
@@ -1392,10 +1392,10 @@ airbus.mes.stationtracker.ModelManager = {
         }
         
         splitModelURL = this.urlModel.getProperty("urlSplitData");
-        splitModelURL = airbus.mes.stationtracker.ModelManager.replaceURI(splitModelURL, "$user", userSelected);
-        splitModelURL = airbus.mes.stationtracker.ModelManager.replaceURI(splitModelURL, "$shift", shiftSelected);
-        splitModelURL = airbus.mes.stationtracker.ModelManager.replaceURI(splitModelURL, "$site", airbus.mes.settings.ModelManager.site);
-        splitModelURL = airbus.mes.stationtracker.ModelManager.replaceURI(splitModelURL, "$startDate", localISOTime);
+        splitModelURL = airbus.mes.stationtracker.util.ModelManager.replaceURI(splitModelURL, "$user", userSelected);
+        splitModelURL = airbus.mes.stationtracker.util.ModelManager.replaceURI(splitModelURL, "$shift", shiftSelected);
+        splitModelURL = airbus.mes.stationtracker.util.ModelManager.replaceURI(splitModelURL, "$site", airbus.mes.settings.ModelManager.site);
+        splitModelURL = airbus.mes.stationtracker.util.ModelManager.replaceURI(splitModelURL, "$startDate", localISOTime);
 
         jQuery.ajax({
             type: 'get',
@@ -1433,11 +1433,11 @@ airbus.mes.stationtracker.ModelManager = {
 
                     });;
                     // Store value in ms
-                    airbus.mes.stationtracker.ModelManager.timeMinR = sValue[0].Value * 1000 * 60;
+                    airbus.mes.stationtracker.util.ModelManager.timeMinR = sValue[0].Value * 1000 * 60;
 
                 } catch (e) {
                     // default value in ms
-                    airbus.mes.stationtracker.ModelManager.timeMinR = 5 * 1000 * 60;
+                    airbus.mes.stationtracker.util.ModelManager.timeMinR = 5 * 1000 * 60;
                     console.log("no min time for rescheduling click load");
                 }
 

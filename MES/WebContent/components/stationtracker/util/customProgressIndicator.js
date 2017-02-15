@@ -1,9 +1,9 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.stationtracker.customProgressIndicator");
+jQuery.sap.declare("airbus.mes.stationtracker.util.customProgressIndicator");
 jQuery.sap.require("airbus.mes.stationtracker.util.BoxDisplayManager");
 
-sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", {
+sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicator", {
 	metadata : {
 		  events: {
               "click" : {}  // this Button has also a "hover" event, in addition to "press" of the normal Button

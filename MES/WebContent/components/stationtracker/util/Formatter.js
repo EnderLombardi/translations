@@ -76,7 +76,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	sizeMin: function (sEndDate, sStartDate) {
 
 		var oUtil = airbus.mes.stationtracker.util.Formatter;
-		var oShiftManager = airbus.mes.stationtracker.ShiftManager;
+		var oShiftManager = airbus.mes.stationtracker.util.ShiftManager;
 		var dEndDate = sEndDate;
 		var dStartDate = sStartDate;
 		var dMaxDate = oShiftManager.shifts[oShiftManager.shifts.length - 1].EndDate;
@@ -223,8 +223,8 @@ airbus.mes.stationtracker.util.Formatter = {
 		;
 	},
 	isDayTimeline: function () {
-		if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
-			return airbus.mes.stationtracker.ShiftManager.dayDisplay;
+		if (airbus.mes.stationtracker.util.ShiftManager.dayDisplay) {
+			return airbus.mes.stationtracker.util.ShiftManager.dayDisplay;
 
 		} else {
 
@@ -258,7 +258,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 		var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress, oBox.totalDuration);
 		// Text to display different case regarding box selected
-		switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
+		switch (airbus.mes.stationtracker.util.GroupingBoxingManager.box) {
 
 			case "OPERATION_ID":
 				sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
@@ -503,30 +503,30 @@ airbus.mes.stationtracker.util.Formatter = {
 
 			html = '<div><span id= folder_' + oSection.key + ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(oSection.open)
 				+ '"></span><div title=' + airbus.mes.stationtracker.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
-				+ '</div><span id= add_' + oSection.key + ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
-				//+ ' style="color: grey;" class="fa fa-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
+				+ '</div><span id= add_' + oSection.key + ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.util.AssignmentManager.newLine(\''
+				//+ ' style="color: grey;" class="fa fa-plus custom" onclick="airbus.mes.stationtracker.util.AssignmentManager.newLine(\''
 				+ oSection.key + '\')"></span></div>';
 			return html;
 		}
 
 		// user affected
-		var sshiftID = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID;
+		var sshiftID = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID;
 		// Check if there is one operation not totally confirmed in previous shift
 		var sNotConfirmedOpLS = "";
-		var bNotConfirmedOpLS = airbus.mes.stationtracker.ShiftManager.noTotalConfLastShift(oSection);
+		var bNotConfirmedOpLS = airbus.mes.stationtracker.util.ShiftManager.noTotalConfLastShift(oSection);
 
 		if (bNotConfirmedOpLS) {
 
 			sNotConfirmedOpLS = '<span class="classNotConfirmedOperation"></span>';
 		}
 
-		if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
+		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
 
-			if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID]) {
+			if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID]) {
 
 				// See SD there is only one user affected for the couple of shift id + avlLine
-				var oCurrentAffectedUser = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
-				oHierarchyDelay = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
+				var oCurrentAffectedUser = airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
+				oHierarchyDelay = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchyDelay;
 				fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
 				fDuration = oHierarchyDelay[oSection.group][oSection.avlLine].duration;
 				sSpanWarn = "";
@@ -582,7 +582,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					+ '">' + oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '</span>' + '<br><span class="ylabel">'
 					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
 
-				oHierarchyDelay = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
+				oHierarchyDelay = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchyDelay;
 				//console.log(oHierarchyDelay);
 
 				if (oHierarchyDelay[oSection.group] != undefined) {
@@ -620,7 +620,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				+ oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '</span>' + '<br><span class="ylabel">'
 				+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
 
-			oHierarchyDelay = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
+			oHierarchyDelay = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchyDelay;
 
 			if (oHierarchyDelay[oSection.group] != undefined) {
 				// Check if the avl exist in the model from mii it check if the avl is not a avlLine just creatd by a user

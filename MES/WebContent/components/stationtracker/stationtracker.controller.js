@@ -1,7 +1,7 @@
 "use strict";
 
 jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
-jQuery.sap.require("airbus.mes.stationtracker.ModelManager");
+jQuery.sap.require("airbus.mes.stationtracker.util.ModelManager");
 
 sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
@@ -118,8 +118,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      ****************************************************************************/
     onShiftPress: function () {
 
-        airbus.mes.stationtracker.ShiftManager.shiftDisplay = true;
-        airbus.mes.stationtracker.ShiftManager.dayDisplay = false;
+        airbus.mes.stationtracker.util.ShiftManager.shiftDisplay = true;
+        airbus.mes.stationtracker.util.ShiftManager.dayDisplay = false;
 
         scheduler.matrix['timeline'].x_unit = 'minute';
         scheduler.matrix['timeline'].x_step = 30;
@@ -133,7 +133,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             $("select[class='selectBoxStation']").eq(i).remove();
         }
 
-        airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.forEach(function (el) {
+        airbus.mes.stationtracker.util.ShiftManager.ShiftMarkerID.forEach(function (el) {
             scheduler.deleteMarkedTimespan(el);
         })
 
@@ -148,8 +148,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      ****************************************************************************/
     onDayPress: function () {
 
-        airbus.mes.stationtracker.ShiftManager.shiftDisplay = false;
-        airbus.mes.stationtracker.ShiftManager.dayDisplay = true;
+        airbus.mes.stationtracker.util.ShiftManager.shiftDisplay = false;
+        airbus.mes.stationtracker.util.ShiftManager.dayDisplay = true;
 
         scheduler.matrix['timeline'].x_unit = 'minute';
         scheduler.matrix['timeline'].x_step = 60;
@@ -178,18 +178,18 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     onInitialPlanPress: function () {
 
         airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
-        var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+        var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
 
-        if (airbus.mes.stationtracker.GroupingBoxingManager.showInitial) {
+        if (airbus.mes.stationtracker.util.GroupingBoxingManager.showInitial) {
 
-            airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
+            airbus.mes.stationtracker.util.GroupingBoxingManager.showInitial = false;
             GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
             airbus.mes.stationtracker.oView.getController().changeShift();
 
 
         } else {
 
-            airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
+            airbus.mes.stationtracker.util.GroupingBoxingManager.showInitial = true;
             GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
             airbus.mes.stationtracker.oView.getController().changeShift();
         }
@@ -203,7 +203,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      ****************************************************************************/
     onCPPress: function () {
 
-        if (airbus.mes.stationtracker.AssignmentManager.CpPress === false) {
+        if (airbus.mes.stationtracker.util.AssignmentManager.CpPress === false) {
             scheduler.templates.event_class = function (start, end, ev) {
                 if (ev.criticalPath != "---") {
                     return "operationCP";
@@ -211,14 +211,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                     return "grey";
                 }
             };
-            airbus.mes.stationtracker.AssignmentManager.CpPress = true;
+            airbus.mes.stationtracker.util.AssignmentManager.CpPress = true;
             scheduler.updateView();
         } else {
             scheduler.templates.event_class = function (start, end, ev) {
                 return "grey";
             };
 
-            airbus.mes.stationtracker.AssignmentManager.CpPress = false;
+            airbus.mes.stationtracker.util.AssignmentManager.CpPress = false;
             scheduler.updateView();
         }
     },
@@ -338,7 +338,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             // We write All instead of concatenantion of production group
             sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusAll");
 
-            airbus.mes.stationtracker.ModelManager.settings.prodGroup = "%";
+            airbus.mes.stationtracker.util.ModelManager.settings.prodGroup = "%";
 
         } else {
             sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().forEach(function (el) {
@@ -346,7 +346,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                 sProdGroupMii += el.mProperties.title + "','";
             });
             sProdGroup = sProdGroup.slice(0, -1);
-            airbus.mes.stationtracker.ModelManager.settings.prodGroup = sProdGroupMii.slice(0, -3);
+            airbus.mes.stationtracker.util.ModelManager.settings.prodGroup = sProdGroupMii.slice(0, -3);
 
         }
 
@@ -360,7 +360,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      *
      ****************************************************************************/
     changeGroup: function () {
-        var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+        var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
 
         GroupingBoxingManager.group = sap.ui.getCore().byId("stationTrackerView").byId("selectGroup").getSelectedKey();
         GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
@@ -375,7 +375,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      *
      ****************************************************************************/
     changeBox: function () {
-        var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+        var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
 
         GroupingBoxingManager.group = sap.ui.getCore().byId("stationTrackerView").byId("selectGroup").getSelectedKey();
         GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
@@ -434,7 +434,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         //Store oFinal and oInitial value in case of check qa is not successfull
         airbus.mes.stationtracker.oFinal = oFinal;
         airbus.mes.stationtracker.oInitial = oInitial;
-        airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(false, oFinal, oInitial);
+        airbus.mes.stationtracker.util.ModelManager.sendRescheduleRequest(false, oFinal, oInitial);
         //Close Popup
         this.onCloseDialog(oEvent);
     },
@@ -474,7 +474,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                 });
                 //store sfcstep and prodgroup if Qa check is not succesfull
                 airbus.mes.stationtracker.ImportOswUnplannedPopover.aSFC_Step = aSFC_Step;
-                airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step, "", false, false);
+                airbus.mes.stationtracker.util.ModelManager.setOSW(aSFC_Step, "", false, false);
 
             } else {
 
@@ -543,7 +543,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         airbus.mes.stationtracker.ImportOswUnplannedPopover.aSFC_Step = aSFC_Step;
         airbus.mes.stationtracker.ImportOswUnplannedPopover.sProdGroup = sProdGroup;
 
-        airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step, sProdGroup, false, true);
+        airbus.mes.stationtracker.util.ModelManager.setOSW(aSFC_Step, sProdGroup, false, true);
 
 
     },
@@ -572,40 +572,40 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     changeShift: function () {
 
         var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
-        airbus.mes.stationtracker.ShiftManager.sIndexCombobox = sPath;
+        airbus.mes.stationtracker.util.ShiftManager.sIndexCombobox = sPath;
         var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
 
-        airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = oModel.shiftName;
-        airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = oModel.shiftID;
-        airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = oModel.day;
+        airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftName = oModel.shiftName;
+        airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID = oModel.shiftID;
+        airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.day = oModel.day;
 
-        if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
+        if (airbus.mes.stationtracker.util.ShiftManager.dayDisplay) {
 
-            var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID];
+            var intervals = airbus.mes.stationtracker.util.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.util.ShiftManager.current_day][airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID];
 
 
-            airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate = intervals[0].StartDate;
-            airbus.mes.stationtracker.ShiftManager.ShiftSelected.EndDate = intervals[intervals.length - 1].EndDate;
+            airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.StartDate = intervals[0].StartDate;
+            airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.EndDate = intervals[intervals.length - 1].EndDate;
             // remove previous marker
-            airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.forEach(function (el) {
+            airbus.mes.stationtracker.util.ShiftManager.ShiftMarkerID.forEach(function (el) {
 
                 scheduler.deleteMarkedTimespan(el);
 
             });
 
-            airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({
+            airbus.mes.stationtracker.util.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({
                 //get startdate of first shift maybe need to get only the shift day before the current to avoid issue perf?
-                start_date: airbus.mes.stationtracker.ShiftManager.shifts[0].StartDate,
-                end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate,
+                start_date: airbus.mes.stationtracker.util.ShiftManager.shifts[0].StartDate,
+                end_date: airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.StartDate,
                 css: "shiftCss",
 
             }));
 
-            airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({
+            airbus.mes.stationtracker.util.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({
 
-                start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelected.EndDate,
+                start_date: airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.EndDate,
                 //get enddate of last shift maybe need to get only the shift day before the current to avoid issue perf?
-                end_date: airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length - 1].EndDate,
+                end_date: airbus.mes.stationtracker.util.ShiftManager.shifts[airbus.mes.stationtracker.util.ShiftManager.shifts.length - 1].EndDate,
                 css: "shiftCss",
 
             }));
@@ -614,14 +614,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         }
 
         // this is permit to display same shift when clicking from day to shift display.
-        if (airbus.mes.stationtracker.ShiftManager.shiftDisplay) {
+        if (airbus.mes.stationtracker.util.ShiftManager.shiftDisplay) {
 
-            scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
-            airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
+            scheduler.updateView(airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.StartDate);
+            airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID);
         }
 
         //        Relaunch service to for KPI header
-        airbus.mes.stationtracker.ModelManager.loadKPIshiftStaffing();
+        airbus.mes.stationtracker.util.ModelManager.loadKPIshiftStaffing();
     },
 
     /***************************************************************************
@@ -869,7 +869,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     ClosePolyPoly: function (oEvent) {
 
         this.onCloseDialog(oEvent);
-        airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
+        airbus.mes.stationtracker.util.AssignmentManager.polypolyAffectation = false;
 
     },
 
@@ -887,10 +887,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         // for specifique users
         if (oSelected.key != "ALL") {
 
-            airbus.mes.stationtracker.AssignmentManager.userSelected = oSelected.key;
+            airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 
-            airbus.mes.stationtracker.ModelManager.loadSplitModel();
+            airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
 
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
                 //show split screen if select user
@@ -900,7 +900,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             // task with no user 
         } else if (oSelected.key === "---") {
 
-            airbus.mes.stationtracker.AssignmentManager.userSelected = oSelected.key;
+            airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
@@ -914,7 +914,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             //for all cases
         } else {
 
-            airbus.mes.stationtracker.AssignmentManager.userSelected = "%";
+            airbus.mes.stationtracker.util.AssignmentManager.userSelected = "%";
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
@@ -931,7 +931,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     showDisruption: function (oEvent) {
         // aboolean variable is taken to know if the button Disruption from station tracker is clicked
         //If yes, then the Disruptiontracker will be loaded with filter on Current Station
-        airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked = true;
+        airbus.mes.stationtracker.util.ModelManager.showDisrupionBtnClicked = true;
         airbus.mes.shell.util.navFunctions.disruptionTracker();
     },
 
@@ -941,7 +941,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     changeDay: function (oEvt) {
 
         scheduler.updateView(oEvt.getSource().getDateValue());
-        airbus.mes.stationtracker.ModelManager.selectMyShift();
+        airbus.mes.stationtracker.util.ModelManager.selectMyShift();
     },
 
     /**
@@ -985,7 +985,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                 el.WORKORDER_ID === sWorkOrder_id;
         });
         // Call the operation list popup
-        airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(aModel);
+        airbus.mes.stationtracker.util.ModelManager.openOperationDetailPopup(aModel);
     },
 
 
@@ -1015,7 +1015,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     dateSelected: function () {
         // Check if current selected date corresponds to range of shift date
         var dSeletectedDate = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
-        if (dSeletectedDate < airbus.mes.stationtracker.GroupingBoxingManager.minDate || dSeletectedDate > airbus.mes.stationtracker.GroupingBoxingManager.maxDate) {
+        if (dSeletectedDate < airbus.mes.stationtracker.util.GroupingBoxingManager.minDate || dSeletectedDate > airbus.mes.stationtracker.util.GroupingBoxingManager.maxDate) {
             // If we are out of range, we display a message and don't close the date picker
             sap.m.MessageToast.show("Selected date out of range");
         } else {
@@ -1035,7 +1035,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             }
             // Search in the shift hierarshy the first date of first shift of the current date
             var sDate = sYear.toString() + sMounth.toString() + sDay.toString();
-            if (airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate] === undefined) {
+            if (airbus.mes.stationtracker.util.GroupingBoxingManager.shiftHierarchy[sDate] === undefined) {
                 sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("noShiftExist"));
                 return;
             }
@@ -1044,14 +1044,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             airbus.mes.stationtracker.oView.getController().updateDateLabel(airbus.mes.stationtracker.oView.oCalendar);
             airbus.mes.stationtracker.datePicker.close();
 
-            var sDateId = Object.keys(airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate])[0];
-            var dStartDate = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
+            var sDateId = Object.keys(airbus.mes.stationtracker.util.GroupingBoxingManager.shiftHierarchy[sDate])[0];
+            var dStartDate = airbus.mes.stationtracker.util.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
 
-            airbus.mes.stationtracker.ShiftManager.changeShift = false; //Airbus Defect #262 - Shift selection is not kept when changing date
+            airbus.mes.stationtracker.util.ShiftManager.changeShift = false; //Airbus Defect #262 - Shift selection is not kept when changing date
             scheduler.updateView(dStartDate);
-            //airbus.mes.stationtracker.ShiftManager.selectFirstShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date
-            airbus.mes.stationtracker.ModelManager.selectMyShift();
-            airbus.mes.stationtracker.ShiftManager.changeShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date
+            //airbus.mes.stationtracker.util.ShiftManager.selectFirstShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date
+            airbus.mes.stationtracker.util.ModelManager.selectMyShift();
+            airbus.mes.stationtracker.util.ShiftManager.changeShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date
         }
     },
 
@@ -1110,24 +1110,24 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             case "UNPLANNED":
                 airbus.mes.stationtracker.CheckQa === "";
                 var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
-                airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step, "", true, false);
+                airbus.mes.stationtracker.util.ModelManager.setOSW(oModel.aSFC_Step, "", true, false);
                 this.onCloseDialog(oEvent);
                 break;
             case "OSW":
                 airbus.mes.stationtracker.CheckQa === "";
                 var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
-                airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step, oModel.sProdGroup, true, true);
+                airbus.mes.stationtracker.util.ModelManager.setOSW(oModel.aSFC_Step, oModel.sProdGroup, true, true);
                 this.onCloseDialog(oEvent);
                 break;
             case "RESCHEDULING":
                 airbus.mes.stationtracker.CheckQa === "";
                 var oModel = airbus.mes.stationtracker;
-                airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(true, oModel.oFinal, oModel.oInitial);
+                airbus.mes.stationtracker.util.ModelManager.sendRescheduleRequest(true, oModel.oFinal, oModel.oInitial);
                 airbus.mes.shell.oView.getController().renderStationTracker();
                 this.onCloseDialog(oEvent);
                 break;
             default:
-                airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
+                airbus.mes.stationtracker.util.AssignmentManager.handleLineAssignment("S", true);
                 this.onCloseDialog(oEvent);
         }
 
@@ -1152,21 +1152,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         });
 
         aConfirmButtons.forEach(function (el) {
-            if (!el.getVisible() && !airbus.mes.stationtracker.AssignmentManager.checkQA) {
+            if (!el.getVisible() && !airbus.mes.stationtracker.util.AssignmentManager.checkQA) {
                 el.setVisible(true);
-            } else if (el.getVisible() && airbus.mes.stationtracker.AssignmentManager.checkQA) {
+            } else if (el.getVisible() && airbus.mes.stationtracker.util.AssignmentManager.checkQA) {
                 el.setVisible(false);
             }
         });
         aInfoButtons.forEach(function (el) {
-            if (!el.getVisible() && airbus.mes.stationtracker.AssignmentManager.checkQA) {
+            if (!el.getVisible() && airbus.mes.stationtracker.util.AssignmentManager.checkQA) {
                 el.setVisible(true);
-            } else if (el.getVisible() && !airbus.mes.stationtracker.AssignmentManager.checkQA) {
+            } else if (el.getVisible() && !airbus.mes.stationtracker.util.AssignmentManager.checkQA) {
                 el.setVisible(false);
             }
         });
         airbus.mes.stationtracker.checkQAPopUp.open();
-        airbus.mes.stationtracker.AssignmentManager.checkQA = false;
+        airbus.mes.stationtracker.util.AssignmentManager.checkQA = false;
     },
 
     onCancelCheckQA: function (oEvent) {
@@ -1174,12 +1174,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
 
     deleteLineAssignment: function () {
-        airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("D", true);
+        airbus.mes.stationtracker.util.AssignmentManager.handleLineAssignment("D", true);
         airbus.mes.stationtracker.oPopoverPolypoly.close();
     },
 
     onCheckQA: function () {
-        airbus.mes.stationtracker.AssignmentManager.checkQA = true;
+        airbus.mes.stationtracker.util.AssignmentManager.checkQA = true;
     },
 
     // Displays the number of items selected in the "Groupe de production
@@ -1207,7 +1207,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         if (aValueSelected.length === 0) {
 
             sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter();
-            airbus.mes.stationtracker.ModelManager.savePhStation(aValueSelected);
+            airbus.mes.stationtracker.util.ModelManager.savePhStation(aValueSelected);
             return;
 
         }
@@ -1228,7 +1228,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
         binding.filter(Filter);
 
-        airbus.mes.stationtracker.ModelManager.savePhStation(aValueSelected);
+        airbus.mes.stationtracker.util.ModelManager.savePhStation(aValueSelected);
     }
 
 });

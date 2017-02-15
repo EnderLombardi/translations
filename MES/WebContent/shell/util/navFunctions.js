@@ -74,7 +74,7 @@ airbus.mes.shell.util.navFunctions = {
 
         if (airbus.mes.polypoly === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.polypoly", "../components/polypoly");
-            airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
+            airbus.mes.stationtracker.util.AssignmentManager.polypolyAffectation = false;
             if (airbus.mes.polypoly == undefined) {
                 sap.ui.getCore().createComponent({
                     name: "airbus.mes.polypoly", // root component folder is resources
@@ -83,7 +83,7 @@ airbus.mes.shell.util.navFunctions = {
         }
 
         airbus.mes.shell.busyManager.setBusy(airbus.mes.polypoly.oView);
-        airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
+        airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.util.AssignmentManager.polypolyAffectation;
 
         if (!nav.getPage("polypolyPage")) {
             oPolypolyPage = new sap.m.Page({
@@ -316,10 +316,10 @@ airbus.mes.shell.util.navFunctions = {
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
 
-        } else if (airbus.mes.stationtracker != undefined && airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked == true) {
+        } else if (airbus.mes.stationtracker != undefined && airbus.mes.stationtracker.util.ModelManager.showDisrupionBtnClicked == true) {
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
-            airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked = false;
+            airbus.mes.stationtracker.util.ModelManager.showDisrupionBtnClicked = false;
 
         } else {
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;

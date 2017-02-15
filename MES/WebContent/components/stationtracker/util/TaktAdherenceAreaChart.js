@@ -1,14 +1,14 @@
 "use strict";
 
-sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
+sap.ui.core.Control.extend("airbus.mes.stationtracker.util.TaktAdherenceAreaChart", {
 	metadata: {
 		aggregations: {
 			"data": {
-				type: "airbus.mes.stationtracker.Coordinates",
+				type: "airbus.mes.stationtracker.util.Coordinates",
 				singularName: "data"
 			},
 			"realData": {
-				type: "airbus.mes.stationtracker.Coordinates",
+				type: "airbus.mes.stationtracker.util.Coordinates",
 				singularName: "realData"
 			}
 		}
@@ -26,7 +26,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 	onAfterRendering: function onAfterRendering(oEvt) {
 
 		if (airbus.mes.stationtracker.oView.byId("stationTrackerView--takt_adherence_area_chart").getData().length !==0) {
-			airbus.mes.stationtracker.GraphManager.loadGraph();
+			airbus.mes.stationtracker.util.GraphManager.loadGraph();
 		}
 
 	}

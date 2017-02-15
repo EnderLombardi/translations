@@ -1,8 +1,8 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.stationtracker.customButton");
+jQuery.sap.declare("airbus.mes.stationtracker.util.customButton");
 
-sap.m.Button.extend("airbus.mes.stationtracker.customButton", {
+sap.m.Button.extend("airbus.mes.stationtracker.util.customButton", {
 	metadata : {
 			  
 		properties : {

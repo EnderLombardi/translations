@@ -538,7 +538,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
                     //Update settings on others components
                     if(airbus.mes.stationtracker !== undefined) {
-                        airbus.mes.stationtracker.ModelManager.settings = airbus.mes.settings.ModelManager;
+                        airbus.mes.stationtracker.util.ModelManager.settings = airbus.mes.settings.ModelManager;
                     }
 
 
