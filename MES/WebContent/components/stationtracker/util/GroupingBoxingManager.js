@@ -1,7 +1,7 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.stationtracker.GroupingBoxingManager")
-airbus.mes.stationtracker.GroupingBoxingManager	 = {
+jQuery.sap.declare("airbus.mes.stationtracker.util.GroupingBoxingManager")
+airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 	
 	constante :  "*@#&~^",
 	operationHierarchyDelay : {},
@@ -24,8 +24,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	parseShift : function()  { 
 		
 	// Tree Shift Model	
-	var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy = {};
-	var aShiftBreak = airbus.mes.stationtracker.GroupingBoxingManager.shiftBreakHierarchy = [];
+	var oHierachy = airbus.mes.stationtracker.util.GroupingBoxingManager.shiftHierarchy = {};
+	var aShiftBreak = airbus.mes.stationtracker.util.GroupingBoxingManager.shiftBreakHierarchy = [];
 	var oModelShift = sap.ui.getCore().getModel("shiftsModel");
 	var oFormatter = airbus.mes.stationtracker.util.Formatter;
 	
@@ -65,7 +65,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		
 	});
 	// Shift Model (without breaks)
-	var oHierachy2 = airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy = [];
+	var oHierachy2 = airbus.mes.stationtracker.util.GroupingBoxingManager.shiftNoBreakHierarchy = [];
 	
 		for( var i in oHierachy ) { 
 			for ( var a in oHierachy[i] ) {
@@ -125,7 +125,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	
 	groupingBoxing : function(sGroup,sBoxing) {
 		
-		airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy = {};
+		airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy = {};
 
 		var aModel = sap.ui.getCore().getModel("stationTrackerRModel");
 		var aModelI = sap.ui.getCore().getModel("stationTrackerIModel");
@@ -144,7 +144,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
         	aModelI = [];
         	console.log("no Initial operation load");
         }
-		//if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
+		//if ( airbus.mes.stationtracker.util.GroupingBoxingManager.showInitial ) {
 			
 			this.computeOperationHierarchy(aModelI,sGroup,sBoxing,"I");
 			this.computeOperationHierarchy(aModel,sGroup,sBoxing);
@@ -158,11 +158,11 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	
 	computeOperationHierarchy : function(oModel,sGroup,sBoxing,sInitial) {
 		
-		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
-		var oHierarchyDelay = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
+		var oHierachy = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy;
+		var oHierarchyDelay = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchyDelay;
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-		var oHierarchyI = airbus.mes.stationtracker.GroupingBoxingManager.operationDateIHierarchy;
-		var sCstSplit = airbus.mes.stationtracker.GroupingBoxingManager.constante;
+		var oHierarchyI = airbus.mes.stationtracker.util.GroupingBoxingManager.operationDateIHierarchy;
+		var sCstSplit = airbus.mes.stationtracker.util.GroupingBoxingManager.constante;
 		var sTaktStart = new Date(airbus.mes.settings.ModelManager.taktStart);
 		var sTaktEnd = new Date(airbus.mes.settings.ModelManager.taktEnd);
 
@@ -202,8 +202,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			}
 					
 			//permit to DO THE boxing on the only corresponding shift selected in day mode
-			if ( airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME)) != -1 ) {
-				oShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME))]; 
+			if ( airbus.mes.stationtracker.util.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME)) != -1 ) {
+				oShift = airbus.mes.stationtracker.util.ShiftManager.shifts[airbus.mes.stationtracker.util.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME))]; 
 			} else {
 				console.log("operation is not in the shift");
 				oShift = "";
@@ -245,7 +245,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			var fRMA = "0";
 			var sUnplanned = "0";
 			
-			sStatus = airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(el.STATE, el.PAUSED, el.PREVIOUSLY_STARTED );
+			sStatus = airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(el.STATE, el.PAUSED, el.PREVIOUSLY_STARTED );
 			
 			//Opened Blocking and Escalated disruption
 			if ( el.DISRUPTION === "D1") {
@@ -340,9 +340,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	
 	parseOperation : function(sGroup,sBox) {		
 //		var t0 = performance.now();	not used
-		var oGroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		var oGroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-		var sCstSplit = airbus.mes.stationtracker.GroupingBoxingManager.constante;
+		var sCstSplit = airbus.mes.stationtracker.util.GroupingBoxingManager.constante;
 
 		oGroupingBoxingManager.groupingBoxing(sGroup,sBox);
 		
@@ -360,7 +360,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			var oRecheduleGroup = {
 					
 					"open": true,
-					"key": airbus.mes.stationtracker.AssignmentManager.idName(key),
+					"key": airbus.mes.stationtracker.util.AssignmentManager.idName(key),
 					"label" : key,
 					"children":[],
 			};
@@ -373,12 +373,12 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 				//Creation of avl line of the current group
 				var fIndex = aElements2.indexOf(oRecheduleGroup);
 			
-				if ( key1.slice(0,2) === "I_" &&  airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
+				if ( key1.slice(0,2) === "I_" &&  airbus.mes.stationtracker.util.GroupingBoxingManager.showInitial ) {
 					
 					var oInitialGroup = {
 							"group" : key,
 							"avlLine" : key1,
-							"key": "I_" + airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
+							"key": "I_" + airbus.mes.stationtracker.util.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.util.AssignmentManager.idName(key1),
 							"initial": "<i>As Planned</i>",
 						};
 				
@@ -402,7 +402,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						"group" : key,
 						"rescheduled" : "R",			
 						"avlLine" : key1,
-						"key": airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
+						"key": airbus.mes.stationtracker.util.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.util.AssignmentManager.idName(key1),
 				};
 				aElements2[fIndex].children.push(ochild);
 					}
@@ -485,7 +485,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						
 					} );
 					
-					if (  key1.slice(0,2) === "I_" &&  airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
+					if (  key1.slice(0,2) === "I_" &&  airbus.mes.stationtracker.util.GroupingBoxingManager.showInitial ) {
 						
 						var oOperationInitial = {
 								
@@ -502,7 +502,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 								"avlLine" : key1,
 								"type":"I",
 								"text" : sOperationDescription,
-								"section_id" : 	"I_" + airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
+								"section_id" : 	"I_" + airbus.mes.stationtracker.util.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.util.AssignmentManager.idName(key1),
 								"totalDuration" : fDuration.toString(), 
 								"progress" : fProgress.toString(),
 								"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
@@ -555,7 +555,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 							"criticalPath": fCriticalPath,
 							"type":"R",
 							"text" : sOperationDescription,
-							"section_id" : 	airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
+							"section_id" : 	airbus.mes.stationtracker.util.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.util.AssignmentManager.idName(key1),
 							"progress" : fProgress.toString(),
 							"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
 							"end_date" :  oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
@@ -578,37 +578,37 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		
 		scheduler.matrix['timeline'].y_unit_original = aElements2;
 		scheduler.callEvent("onOptionsLoad", []);
-		var ShiftManager = airbus.mes.stationtracker.ShiftManager;
+		var ShiftManager = airbus.mes.stationtracker.util.ShiftManager;
 		
 		if ( ShiftManager.current_Date != undefined) {
 		
-			if ( airbus.mes.stationtracker.ShiftManager.closestShift( ShiftManager.currentFullDate ) != -1 ){
+			if ( airbus.mes.stationtracker.util.ShiftManager.closestShift( ShiftManager.currentFullDate ) != -1 ){
 				
 				scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() , new Date( ShiftManager.currentFullDate), "timeline");
 			
 			} else {
 				
-				scheduler.init(airbus.mes.stationtracker.oView.byId("stationtracker").getId(), airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length -1 ].StartDate , "timeline");
+				scheduler.init(airbus.mes.stationtracker.oView.byId("stationtracker").getId(), airbus.mes.stationtracker.util.ShiftManager.shifts[airbus.mes.stationtracker.util.ShiftManager.shifts.length -1 ].StartDate , "timeline");
 				
 			}
 						
-		} else if ( airbus.mes.stationtracker.ShiftManager.closestShift(new Date()) != -1 ){
+		} else if ( airbus.mes.stationtracker.util.ShiftManager.closestShift(new Date()) != -1 ){
 			
-			var fShiftIndex = airbus.mes.stationtracker.ShiftManager.closestShift(new Date());
-			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() ,airbus.mes.stationtracker.ShiftManager.shifts[fShiftIndex].StartDate , "timeline");		
+			var fShiftIndex = airbus.mes.stationtracker.util.ShiftManager.closestShift(new Date());
+			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() ,airbus.mes.stationtracker.util.ShiftManager.shifts[fShiftIndex].StartDate , "timeline");		
 		
 		} else {
 			
-			scheduler.init(airbus.mes.stationtracker.oView.byId("stationtracker").getId(), airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length -1 ].StartDate , "timeline");
+			scheduler.init(airbus.mes.stationtracker.oView.byId("stationtracker").getId(), airbus.mes.stationtracker.util.ShiftManager.shifts[airbus.mes.stationtracker.util.ShiftManager.shifts.length -1 ].StartDate , "timeline");
 			
 		}
 		
 		scheduler.clearAll();
 		scheduler.deleteMarkedTimespan();
 		// Display all marker
-	    airbus.mes.stationtracker.ShiftManager.addMarkedShifts();
+	    airbus.mes.stationtracker.util.ShiftManager.addMarkedShifts();
 		// Update combobox of shift and display the selection of shift
-		airbus.mes.stationtracker.ModelManager.selectMyShift();
+		airbus.mes.stationtracker.util.ModelManager.selectMyShift();
 	   
 		scheduler.xy.scroll_width=20;
 	    scheduler.parse(aBox,"json");

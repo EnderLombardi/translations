@@ -1,12 +1,10 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:ui="sap.ui.layout">
-	<Dialog title="{i18nacpnglinksModel>ColumnEditTitle}" icon="sap-icon://edit" showCloseButton="true"
-		contentWidth="40%" contentHeight="60%" id="columnEditDialog">
+	<Dialog title="{i18nacpnglinksModel>ColumnEditTitle}" icon="sap-icon://edit" showCloseButton="true" class="pageHeaderDialog classWorklistPopover oswPopover" id="columnEditDialog">
 		<content height="100%" width="100%">
-			<HBox height="100%" class="fixHboxItemDisplay">
-				<Panel class="panelBorder" expanded="true" expandable="false"
-					id="AcpngPanel" width="100%" height="100%"
+			<HBox height="100%">
+				<Panel class="panelBorder" expanded="true" expandable="false" id="AcpngPanel" width="100%" height="100%"
 					headerText="i18nacpnglinksModel>ColumnEditUnassignedColumns">
 					<headerToolbar>
 						<Toolbar>
@@ -19,13 +17,12 @@
 						</Toolbar>
 					</headerToolbar>
 					<content height="100%">
-						<HBox height="100%" class="fixHboxItemDisplay">
+						<HBox height="100%" >
 							<List id="listAvailableColumns" mode="SingleSelectMaster"
-								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
-								sorter="{path : 'Sort'" >
+								items="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column' , sorter : {path : 'acpnglinksWorkOrderDetail>Sort' , ascending : 'true'} }">
 								<CustomListItem
 									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
-									<HBox class="fixHboxItemDisplay">
+									<HBox >
 										<ui:HorizontalLayout>
 											<Text class="acpnglinksNotVisible" text="{acpnglinksWorkOrderDetail>Name}"></Text>
 										</ui:HorizontalLayout>
@@ -59,10 +56,8 @@
 					<content>
 						<HBox height="100%" class="fixHboxItemDisplay">
 							<List id="listAllocatedcolumns"
-								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
-								sorter="{path : 'Sort'"
-								mode="SingleSelectMaster" growingScrollToLoad="true" growing="true"
-								growingThreshold="1000">
+								items="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column' , sorter : {path : 'acpnglinksWorkOrderDetail>Sort' , ascending : 'true'} }"
+								mode="SingleSelectMaster">
 								<CustomListItem
 									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}">
 									<content>

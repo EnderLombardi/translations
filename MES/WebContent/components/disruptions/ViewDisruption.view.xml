@@ -446,7 +446,7 @@
 								
 							<Button id="escalateBtn" text="{i18nModel>escalate}" type="Reject" enabled= "{Profile>/identifiedUser/permissions/STATION_DRILL_ESCALATE}"
 								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>EscalationLevel'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEscalateButtonVisibility'}"
-								press="onEscalateDisruption" design="Transparent"/>
+								press="onEscalateDisruptionComment" design="Transparent"/>
 
 							<Button text="{i18nModel>markSolved}" type="Accept"
 								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setMarkSolvedButtonVisibility'}"

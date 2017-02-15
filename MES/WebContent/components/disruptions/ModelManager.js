@@ -5,7 +5,9 @@ jQuery.sap.declare("airbus.mes.disruptions.ModelManager")
 airbus.mes.disruptions.ModelManager = {
 
 	createEditFlag : false,
+    createViewMode : undefined,  // (Values: Create, Edit) To check if create disruption view is called in edit more or creation mode
 	urlModel : undefined,
+	
 
 	init : function(core) {
 
@@ -34,8 +36,10 @@ airbus.mes.disruptions.ModelManager = {
 
 	/***************************************************************************
 	 * Load Category and custom Data
+	 * @param {string} sMode tells it is edit disruption page or new disruption page
+	 * @param {object} oData data to be set on the MOdel
 	 */
-	loadData : function(sMode) {
+	loadData : function(sMode, oData) {
 
 		this.createViewMode = sMode;
 
@@ -53,10 +57,15 @@ airbus.mes.disruptions.ModelManager = {
 		this.loadJigtoolList();
 
 		if (this.createViewMode == "Create") {
+			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel").setData();
+            oView.getModel("DisruptionDetailModel").setData();
+            //oModel.refresh();
 			oView.oController.createDisruptionSettings();
 		} else if (this.createViewMode == "Edit") {
-			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-
+			oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+			oModel.setData(oData);
+			oView.getModel("DisruptionDetailModel").setData(oData);
+			oModel.refresh();
 			this.sMsgType = oModel.getProperty("/MessageType");
 			this.sResolverGroup = oModel.getProperty("/ResponsibleGroup");
 
@@ -723,7 +732,8 @@ airbus.mes.disruptions.ModelManager = {
 								airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 
 						} else {
-							airbus.mes.shell.util.navFunctions.disruptionTracker();
+							//airbus.mes.shell.util.navFunctions.disruptionTracker();
+							this.bSucess = true
 						}
 					}
 
@@ -735,9 +745,9 @@ airbus.mes.disruptions.ModelManager = {
 			// Refresh station tracker
 			airbus.mes.shell.oView.getController().renderStationTracker();
 
-		}
+		}*/
 
-		return flagSuccess;*/
+		return this.bSucess;
 	},
 
 	/***************************************************************************
@@ -1097,7 +1107,7 @@ airbus.mes.disruptions.ModelManager = {
 			// Set status = In Progress if blocked earlier
 
 			// Set the previous status
-			sStatus = airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(
+			sStatus = airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].state,
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].paused,
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].previously_start);

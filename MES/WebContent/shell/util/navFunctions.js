@@ -74,7 +74,7 @@ airbus.mes.shell.util.navFunctions = {
 
         if (airbus.mes.polypoly === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.polypoly", "../components/polypoly");
-            airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
+            airbus.mes.stationtracker.util.AssignmentManager.polypolyAffectation = false;
             if (airbus.mes.polypoly == undefined) {
                 sap.ui.getCore().createComponent({
                     name: "airbus.mes.polypoly", // root component folder is resources
@@ -83,7 +83,7 @@ airbus.mes.shell.util.navFunctions = {
         }
 
         airbus.mes.shell.busyManager.setBusy(airbus.mes.polypoly.oView);
-        airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
+        airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.util.AssignmentManager.polypolyAffectation;
 
         if (!nav.getPage("polypolyPage")) {
             oPolypolyPage = new sap.m.Page({
@@ -316,10 +316,10 @@ airbus.mes.shell.util.navFunctions = {
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
 
-        } else if (airbus.mes.stationtracker != undefined && airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked == true) {
+        } else if (airbus.mes.stationtracker != undefined && airbus.mes.stationtracker.util.ModelManager.showDisrupionBtnClicked == true) {
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
-            airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked = false;
+            airbus.mes.stationtracker.util.ModelManager.showDisrupionBtnClicked = false;
 
         } else {
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
@@ -431,19 +431,20 @@ airbus.mes.shell.util.navFunctions = {
         if (nav.getPage("disruptionDetailView") == null) {
             nav.addPage(airbus.mes.disruptions.oView.disruptionDetail)
         }
-
+  		//[MESV 1.5]
+		/*airbus.mes.disruptions.oView.disruptionDetail.getModel("DisruptionDetailModel").setData(oData);
+		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();*/
+        
         // Navigate
         nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId());
 
         // Set Data in disruption Detail Model with comments
         var oData = oDataset.Rowsets.Rowset[0].Row[0];
         oData.comments = oDataset.Rowsets.Rowset[1].Row;
+		// Load data from back-end services - Call load data function in Edit Mode
+		airbus.mes.disruptions.ModelManager.createEditFlag = false;
+		airbus.mes.disruptions.ModelManager.loadData("Edit",oData);
 
-        sap.ui.getCore().getModel("DisruptionDetailModel").setData(oData);
-        airbus.mes.disruptions.oView.disruptionDetail.getModel("DisruptionDetailModel").setData(oData);
-
-        // Load data from back-end services - Call load data function in Edit Mode
-        airbus.mes.disruptions.ModelManager.loadData("Edit");
     },
 
 

@@ -553,4 +553,140 @@ airbus.mes.disruptions.Formatter = {
 	 * setNumberofAttachment : function(number) { var sValue = number + "\n" + "
 	 * Attachments"; return sValue; }
 	 */
+	setFivemCategoryVisibility : function(originatorFlag, responsibleFlag, status) {
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return true;
+
+		} else
+			return false;
+
+	},
+	setCategoryVisibility : function(originatorFlag, responsibleFlag, status) {
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return true;
+
+		} else
+			return false;
+	},
+	setReasonVisibility : function(originatorFlag, responsibleFlag, status) {
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return false;
+
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && (responsibleFlag == "X" && originatorFlag == "X")
+			&& status == airbus.mes.disruptions.Formatter.status.pending) {
+			return true;
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X"
+			&& status == airbus.mes.disruptions.Formatter.status.pending) {
+			return true;
+		} else
+			return false;
+	},
+	setResponsibleGrpVisibility : function(originatorFlag, responsibleFlag, status) {
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return true;
+
+		} else if ((responsibleFlag == "X" && originatorFlag == "X") && status == "Pending" )
+			return true;
+		else if (status == "Pending" && originatorFlag == "X") {
+			return true;
+		} else if (responsibleFlag == "X")
+			return true;
+		else
+			return false;
+	},
+	selectResolverVisibility : function(originatorFlag, responsibleFlag, status) {
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return true;
+
+		} else if ((responsibleFlag == "X" && originatorFlag == "X") && status == "Pending")
+			return true;
+		else if (status == "Pending" && originatorFlag == "X") {
+			return true;
+		} else if (responsibleFlag == "X")
+			return true;
+		else
+			return false;
+	},
+	
+	
+	promisedDateVisibility : function(originatorFlag, responsibleFlag, status){
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return false;
+
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && (responsibleFlag == "X" && originatorFlag == "X")
+			&& status == airbus.mes.disruptions.Formatter.status.pending) {
+			return true;
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && responsibleFlag == "X"
+			&& status == airbus.mes.disruptions.Formatter.status.pending)
+			return true;
+		else
+			return false;
+	},
+	promisedTimeVisibility : function(originatorFlag, responsibleFlag, status){
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return false;
+
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && (responsibleFlag == "X" && originatorFlag == "X")
+			&& status == airbus.mes.disruptions.Formatter.status.pending) {
+			return true;
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && responsibleFlag == "X"
+			&& status == airbus.mes.disruptions.Formatter.status.pending)
+			return true;
+		else
+			return false;
+	},
+	expectedDateVisibility : function(originatorFlag, responsibleFlag, status){
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return true;
+
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && (responsibleFlag == "X" && originatorFlag == "X")
+			&& status == airbus.mes.disruptions.Formatter.status.pending) {
+			return true;
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X"
+			&& status == airbus.mes.disruptions.Formatter.status.pending)
+			return true;
+		else
+			return false;
+	},
+	expectedTimeVisibility : function(originatorFlag, responsibleFlag, status){
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return true;
+
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && (responsibleFlag == "X" && originatorFlag == "X")
+			&& status == airbus.mes.disruptions.Formatter.status.pending) {
+			return true;
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X"
+			&& status == airbus.mes.disruptions.Formatter.status.pending)
+			return true;
+		else
+			return false;
+	},
+	setGravityVisibility : function(originatorFlag, responsibleFlag, status){
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return true;
+
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && (responsibleFlag == "X" && originatorFlag == "X")
+			&& status == airbus.mes.disruptions.Formatter.status.pending) {
+			return true;
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X"
+			&& status == airbus.mes.disruptions.Formatter.status.pending)
+			return true;
+		else
+			return false;
+	},
+	setIssuerGroupVisibility: function(originatorFlag, responsibleFlag, status){
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return true;
+
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && (responsibleFlag == "X" && originatorFlag == "X")
+			&& status == airbus.mes.disruptions.Formatter.status.pending) {
+			return true;
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X"
+			&& status == airbus.mes.disruptions.Formatter.status.pending)
+			return true;
+		else
+			return false;
+	}
+	
+	
 };

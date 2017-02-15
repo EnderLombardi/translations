@@ -278,7 +278,7 @@ sap.ui.controller(
                             	
                             }                    
                             
-                            airbus.mes.stationtracker.GraphManager.loadGraph();
+                            airbus.mes.stationtracker.util.GraphManager.loadGraph();
                             
                             //refresh
                             airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
@@ -406,8 +406,8 @@ sap.ui.controller(
                             //active busy
                             airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
 
-                            airbus.mes.stationtracker.ShiftManager.updateShift = false;
-                            var oModule = airbus.mes.stationtracker.ModelManager;
+                            airbus.mes.stationtracker.util.ShiftManager.updateShift = false;
+                            var oModule = airbus.mes.stationtracker.util.ModelManager;
                             airbus.mes.shell.oView.getController().setInformationVisibility(true);
                             
                           //show split worktracker
@@ -424,8 +424,8 @@ sap.ui.controller(
                             // ** synchrone call **//
                             oModule.loadShifts();
                             oModule.loadAffectation();
-                            airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-                            airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+                            airbus.mes.stationtracker.util.ShiftManager.init(airbus.mes.stationtracker.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+                            airbus.mes.stationtracker.util.AssignmentManager.computeAffectationHierarchy();
 
                             // ** asynchrone call **//
                             airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
@@ -465,7 +465,7 @@ sap.ui.controller(
                     },
 
                     loadStationTrackerGantKPI : function() {
-                        var oModule = airbus.mes.stationtracker.ModelManager;
+                        var oModule = airbus.mes.stationtracker.util.ModelManager;
                         console.log("LOADGANTKPI");
                         // ** asynchrone call **//
                         oModule.getTakt();                                
@@ -474,7 +474,7 @@ sap.ui.controller(
                         oModule.loadStationTracker("I");
                         oModule.loadStationTracker("U");
                         oModule.loadStationTracker("O");
-                        airbus.mes.stationtracker.ShiftManager.updateShift = false;
+                        airbus.mes.stationtracker.util.ShiftManager.updateShift = false;
                         oModule.loadStationTracker("R");
                         oModule.loadProductionGroup();
                         oModule.loadFilterUnplanned();
@@ -793,7 +793,7 @@ sap.ui.controller(
                             //airbus.mes.shell.oView.oController.loadLineTrackerKPI();
                             //assign the customLineBO to 
                             airbus.mes.linetracker.util.ModelManager.customLineBO = sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO");
-                            if(airbus.mes.linetracker.util.ModelManager.customLineBO || airbus.mes.linetracker.util.ModelManager.customLineBO!="null"){
+                            if(airbus.mes.linetracker.util.ModelManager.customLineBO || airbus.mes.linetracker.util.ModelManager.customLineBO!=null){
                             	airbus.mes.linetracker.oView.byId("selectLine").setValue(airbus.mes.linetracker.util.ModelManager.customLineBO.split(",")[1]);
                             }
                             	airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();

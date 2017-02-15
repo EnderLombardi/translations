@@ -76,7 +76,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * BR:SD-PPC-LT-270
 	 * To hide Header KPI
 	 */
-	hideKPI : function() {
+	/*hideKPI : function() {
 
 		var oPanel = airbus.mes.linetracker.oView.byId("linetrackerHeaderKPI");
 
@@ -92,7 +92,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 		oPanel.setExpanded(!bIsExpanded);
 
-	},
+	},*/
 	/**
 	 * BR:SD-PPC-LT-270
 	 * @param sKey
@@ -107,7 +107,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Called when save button is clicked to save(Global) the
 	 * modified variant line
 	 */
-	onSaveVariant : function() {
+/*	onSaveVariant : function() {
 
 		if (!this.oSaveDialog) {
 			// create dialog via fragment factory
@@ -119,7 +119,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 		this.oSaveDialog.open();
 
-	},
+	},*/
 
 	/** 
 	 * BR:SD-PPC-LT-100
@@ -141,7 +141,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 	/**
 	 * BR:SD-PPC-LT-260
-	 * Called when detailed button clicked
+	 * Called when Station Box is clicked 
 	 * @param oEvent
 	 */
 

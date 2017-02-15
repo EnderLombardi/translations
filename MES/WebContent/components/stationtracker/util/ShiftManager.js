@@ -1,8 +1,8 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.stationtracker.ShiftManager");
+jQuery.sap.declare("airbus.mes.stationtracker.util.ShiftManager");
 
-airbus.mes.stationtracker.ShiftManager = {
+airbus.mes.stationtracker.util.ShiftManager = {
     
 	firstTimelineStart : undefined,
 	updateShift : true,
@@ -138,7 +138,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		}
 		
 //		//Airbus Defect #262 - Shift selection is not kept when changing date
-//		if(!airbus.mes.stationtracker.ShiftManager.changeShift){
+//		if(!airbus.mes.stationtracker.util.ShiftManager.changeShift){
 //			var flag = false;
 //
 //			/********
@@ -146,7 +146,7 @@ airbus.mes.stationtracker.ShiftManager = {
 //			 * because there is a possibility that Dichomatic search result in Shift other than first shift of the day
 //			 */
 //			for(var i = iMed;; i--){
-//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.ShiftManager.current_shift.shiftName)
+//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.util.ShiftManager.current_shift.shiftName)
 //				{ iMed = i; flag= true;	break; }
 //				else if(this.shifts[i].EndDate < date)
 //					break;
@@ -157,7 +157,7 @@ airbus.mes.stationtracker.ShiftManager = {
 //			 */
 //			if(!flag)
 //			for(var i = iMed;; i++){
-//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.ShiftManager.current_shift.shiftName)
+//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.util.ShiftManager.current_shift.shiftName)
 //				{ iMed = i;	break; }
 //				else if(this.shifts[i].EndDate < date)
 //					break;
@@ -225,7 +225,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		if (this.shifts.length === 0)
 		return scheduler.date.add_timeline_old(date, step, mode);
 
-		var c = this.closestShift(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
+		var c = this.closestShift(airbus.mes.stationtracker.util.ShiftManager.currentShiftStart);
 
 		if ( this.dayDisplay ) {
 		
@@ -551,7 +551,7 @@ airbus.mes.stationtracker.ShiftManager = {
 	 */
 	addMarkedShifts : function() {
 
-		var aShiftBreak = airbus.mes.stationtracker.GroupingBoxingManager.shiftBreakHierarchy;
+		var aShiftBreak = airbus.mes.stationtracker.util.GroupingBoxingManager.shiftBreakHierarchy;
 		
 		if (this.shifts.length === 0)
 			return; // do nothing
@@ -639,20 +639,20 @@ airbus.mes.stationtracker.ShiftManager = {
 		//		});
 		
 		// Add maker for takt time
-		var d6 = airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.ModelManager.settings.taktStart);
+		var d6 = airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.util.ModelManager.settings.taktStart);
 		d6.setMinutes(d6.getMinutes() + 5);
 		
 		scheduler.addMarkedTimespan({
-			start_date : airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.ModelManager.settings.taktStart),
+			start_date : airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.util.ModelManager.settings.taktStart),
 			end_date : d6,
 			css : "taktMarker"
 		});
 		
-		var d7 = airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.ModelManager.settings.taktEnd);
+		var d7 = airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.util.ModelManager.settings.taktEnd);
 		d7.setMinutes(d7.getMinutes() + 5);
 		
 		scheduler.addMarkedTimespan({
-			start_date : airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.ModelManager.settings.taktEnd),
+			start_date : airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.util.ModelManager.settings.taktEnd),
 			end_date : d7,
 			css : "taktMarker"
 		});
@@ -679,20 +679,20 @@ airbus.mes.stationtracker.ShiftManager = {
 	 */
 	noTotalConfLastShift : function (oSection) {
 		
-		var oShift = airbus.mes.stationtracker.ShiftManager.ShiftSelected;
-		var fIndexShift = airbus.mes.stationtracker.ShiftManager.closestShift(oShift.StartDate);
+		var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
+		var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
 		var bResult = false;
 		
 		// Selectet only previous shift
 		if ( fIndexShift != -1 && fIndexShift != 0 ) {
 						
-			var oPreviousShift = airbus.mes.stationtracker.ShiftManager.shifts[fIndexShift -1] ;
-			// Check if the avl to parse exist , when we add new avl Line by press + it not exist in the airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy 
-			if ( airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group] != undefined ) {
+			var oPreviousShift = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1] ;
+			// Check if the avl to parse exist , when we add new avl Line by press + it not exist in the airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy 
+			if ( airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group] != undefined ) {
 				
-				if ( airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine] != undefined ) {
+				if ( airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine] != undefined ) {
 					
-					var oOperation = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine];			
+					var oOperation = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine];			
 	
 					for ( var aBox in oOperation ) {
 					
@@ -739,7 +739,7 @@ airbus.mes.stationtracker.ShiftManager = {
 	next : function(e, t) {
 		
         scheduler.setCurrentView(scheduler.date.add(scheduler.date[scheduler._mode + "_start"](scheduler._date), t || 1, scheduler._mode));
-        airbus.mes.stationtracker.ModelManager.selectMyShift();
+        airbus.mes.stationtracker.util.ModelManager.selectMyShift();
         
     },
 	/**

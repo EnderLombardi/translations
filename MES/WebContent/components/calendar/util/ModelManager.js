@@ -70,7 +70,7 @@ airbus.mes.calendar.util.ModelManager = {
 			async : 'true',
 			data : JSON.stringify({
 				"site" : oData.site,
-				"physicalStation" : oData.station,
+				"physicalStationBO" : oData.station,
 				"msn" : oData.msn,
 				
 			}),

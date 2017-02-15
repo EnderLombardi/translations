@@ -62,17 +62,17 @@
 																<Label text="{StationTrackerI18n>Actual}{KPIchartTaktAdherence>/actualUI}"/>
 															</layout:content>
 														</layout:Grid>
-														<custom:TaktAdherenceAreaChart
+														<custom:util.TaktAdherenceAreaChart
 															id="takt_adherence_area_chart" 
 															data="{KPIchartTaktAdherence>/plannedHoursToBeConfirmed}"
 															realData="{KPIchartTaktAdherence>/realHoursConfirmed}">
 															<custom:data>
-																<custom:Coordinates x="{KPIchartTaktAdherence>x}" y="{KPIchartTaktAdherence>y}"></custom:Coordinates>
+																<custom:util.Coordinates x="{KPIchartTaktAdherence>x}" y="{KPIchartTaktAdherence>y}"></custom:util.Coordinates>
 															</custom:data>
 															<custom:realData>
-																<custom:Coordinates x="{KPIchartTaktAdherence>x}" y="{KPIchartTaktAdherence>y}"></custom:Coordinates>
+																<custom:util.Coordinates x="{KPIchartTaktAdherence>x}" y="{KPIchartTaktAdherence>y}"></custom:util.Coordinates>
 															</custom:realData>
-														</custom:TaktAdherenceAreaChart>
+														</custom:util.TaktAdherenceAreaChart>
 														<Label text="{StationTrackerI18n>PlannedStart} / {StationTrackerI18n>EndOfAssembly}" class=" whiteText" />
 														<layout:Grid class="" defaultSpan="L6 M6 S6">
 															<layout:content>
@@ -351,9 +351,9 @@
 						
 									<Button text="{StationTrackerI18n>disruptions/andon}" press="showDisruption"
 										type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd" visible = "{Profile>/identifiedUser/permissions/STATION_DRILL_DISRUPTION}"></Button>
-									<custom:customButton id="oswButton" text1="{StationTrackerI18n>ButtonOutstandingWork}" text2="10"
+									<custom:util.customButton id="oswButton" text1="{StationTrackerI18n>ButtonOutstandingWork}" text2="10"
 										type="Transparent" class="sapUiTinyMarginBeginEnd"
-										press="onOSWPress" visible = "{Profile>/identifiedUser/permissions/STATION_DRILL_OSW}"></custom:customButton>
+										press="onOSWPress" visible = "{Profile>/identifiedUser/permissions/STATION_DRILL_OSW}"></custom:util.customButton>
 									<Button id="unplannedButton" text="{StationTrackerI18n>UnplannedActivities}" type="Transparent"
 										icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
 									<ToggleButton text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
@@ -363,7 +363,7 @@
 							</OverflowToolbar>
 							
 							<layout:Splitter orientation="Vertical" id="splitWorkTra">
-										<custom:DHTMLXScheduler id="stationtracker"></custom:DHTMLXScheduler>
+										<custom:util.DHTMLXScheduler id="stationtracker"></custom:util.DHTMLXScheduler>
 										<!-- For Disruption table in Station Tracker -->
 												<!-- <control:disruptionNotifications id="disruptNotifications"> <control:disruptionContent id="disruptContent"> </control:disruptionContent> </control:disruptionNotifications> -->
 												<!-- <HBox class="slidingUpDownPanel GenricBgColor" id="disruptNotifications">

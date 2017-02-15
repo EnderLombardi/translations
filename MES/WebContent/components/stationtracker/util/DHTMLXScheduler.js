@@ -1,6 +1,6 @@
 "use strict";
 
-sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
+sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler",    {
 
 //                  Define if it is a simple click or a double click. Used on event onDblClick and onClick
                     byPassOnClick: "boolean",
@@ -61,7 +61,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                             x_unit:    "minute",
                             x_date:    "%H:%i",
                             //When coming back from setting permit to display the previous mode shift/day
-                            x_step :  airbus.mes.stationtracker.ShiftManager.dayDisplay ? 60 : 30,
+                            x_step :  airbus.mes.stationtracker.util.ShiftManager.dayDisplay ? 60 : 30,
                             x_size : 18,
                             x_start : 0,
                             //x_length : 18,
@@ -74,8 +74,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                         });
 
                         //Shift Management
-                        airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-                        var ShiftManager = airbus.mes.stationtracker.ShiftManager;
+                        airbus.mes.stationtracker.util.ShiftManager.init(airbus.mes.stationtracker.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+                        var ShiftManager = airbus.mes.stationtracker.util.ShiftManager;
 
                         scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
                         scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
@@ -155,9 +155,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                             
                             
                           //To avoid call rescheduling when drag and drop check if moved the operation if not we dont launch the drag
-                    		if ( sInitialAvlLine === sNewAvlLine && Math.abs(oInitial.start_date - oFinal.start_date) < airbus.mes.stationtracker.ModelManager.timeMinR ) {
+                    		if ( sInitialAvlLine === sNewAvlLine && Math.abs(oInitial.start_date - oFinal.start_date) < airbus.mes.stationtracker.util.ModelManager.timeMinR ) {
                     			
-                    			  airbus.mes.stationtracker.ModelManager.OpenWorkList(this.id);
+                    			  airbus.mes.stationtracker.util.ModelManager.OpenWorkList(this.id);
                     			  delete ev._move_delta
                                   scheduler._drag_mode = ""
                                   this.byPassOnDrag = true;
@@ -176,7 +176,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                 //Store oFinal and oInitial value in case of check qa is not successfull
                                 airbus.mes.stationtracker.oFinal = oFinal;
                                 airbus.mes.stationtracker.oInitial = oInitial;
-                                airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(false,oFinal,oInitial);
+                                airbus.mes.stationtracker.util.ModelManager.sendRescheduleRequest(false,oFinal,oInitial);
                                 return true;
                         }));
 
@@ -201,12 +201,12 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                 return false;
 
                                 
-                            } else if ( airbus.mes.stationtracker.GroupingBoxingManager.box === "OPERATION_ID") {
+                            } else if ( airbus.mes.stationtracker.util.GroupingBoxingManager.box === "OPERATION_ID") {
 
                             	if (this.getEvent(id)) {
 
                         		
-                            		if (airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(this.getEvent(id).state, this.getEvent(id).paused, this.getEvent(id).previouslyStarted) === "0" ) {
+                            		if (airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(this.getEvent(id).state, this.getEvent(id).paused, this.getEvent(id).previouslyStarted) === "0" ) {
                                    		// if current operation is complete, cannot reschedule the operation
                                         setTimeout(function() {
 
@@ -262,19 +262,19 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                         scheduler.eventId.push (scheduler.attachEvent("onYScaleClick", function(index, section, e) {
                         	console.log("click");
 
-                            if (airbus.mes.stationtracker.AssignmentManager.bOpen && section.children != undefined) {
+                            if (airbus.mes.stationtracker.util.AssignmentManager.bOpen && section.children != undefined) {
 
                                 scheduler.openSection(section.key);
-                                airbus.mes.stationtracker.AssignmentManager.bOpen = false;
+                                airbus.mes.stationtracker.util.AssignmentManager.bOpen = false;
                             }
 
                             if (section.rescheduled && !section.children) {
                                 jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
-                                airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = true;
-                                airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine = section;
-                                airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift = airbus.mes.stationtracker.ShiftManager.ShiftSelected;
+                                airbus.mes.stationtracker.util.AssignmentManager.polypolyAffectation = true;
+                                airbus.mes.stationtracker.util.AssignmentManager.polypolyAssignment.selectedLine = section;
+                                airbus.mes.stationtracker.util.AssignmentManager.polypolyAssignment.selectedShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
 
-                                if(!airbus.mes.stationtracker.AssignmentManager.checkQA){
+                                if(!airbus.mes.stationtracker.util.AssignmentManager.checkQA){
                                     if (!airbus.mes.stationtracker.oPopoverPolypoly) {
                                         airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", airbus.mes.stationtracker.oView.getController());
 
@@ -285,7 +285,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                         }
                                     }
                                     //load model of polypoly
-                                    airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.stationtracker.ModelManager.settings.site, airbus.mes.stationtracker.ModelManager.settings.station);
+                                    airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.stationtracker.util.ModelManager.settings.site, airbus.mes.stationtracker.util.ModelManager.settings.station);
 
                                     //active busy
                                     airbus.mes.shell.busyManager.setBusy(airbus.mes.polypoly.oView);
@@ -294,7 +294,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                     airbus.mes.stationtracker.oPopoverPolypoly.open();
 
                                     // set polypoly in non-editable mode
-                                    airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
+                                    airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.util.AssignmentManager.polypolyAffectation;
 
                                     // place this Ui Container with the Component inside into UI Area
                                     airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
@@ -303,8 +303,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                     var myButton = airbus.mes.stationtracker.oPopoverPolypoly.getButtons().find(function(el){
                                         return el.sId == "deleteLineAssignmentButton";
                                     });
-                                    if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[section.avlLine]) {
-                                        if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[section.avlLine][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID]){
+                                    if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[section.avlLine]) {
+                                        if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[section.avlLine][airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID]){
                                             if(!myButton.getVisible()){
                                                 myButton.setVisible(true);
                                             }
@@ -322,7 +322,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                     airbus.mes.polypoly.oView.getController().initiatePolypoly();
 
                                 }else{
-                                    airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("W", false);
+                                    airbus.mes.stationtracker.util.AssignmentManager.handleLineAssignment("W", false);
                                 }
                             }
 
@@ -349,7 +349,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                         $("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
                                         $("div[class='dhx_cal_prev_button']").tap(function() {
                                             scheduler._click.dhx_cal_prev_button();
-                                            //airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
+                                            //airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.util.ShiftManager.current_shift.shiftID);
                                         });
                                     }
 
@@ -382,7 +382,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
 
                         scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id,e) {
 
-                             airbus.mes.stationtracker.ModelManager.OpenWorkList(id);
+                             airbus.mes.stationtracker.util.ModelManager.OpenWorkList(id);
                              scheduler._drag_mode = ""
                              this.byPassOnDrag = true;
                              return false;

@@ -147,7 +147,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             // Refresh User Operation Model and Operation Detail
             airbus.mes.shell.oView.getController().renderStationTracker();
             //update spent time on pause of operation
-            oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].time_spent = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(data.operation_no, data.wo_no);
+            oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].time_spent = airbus.mes.stationtracker.util.ModelManager.getSpentTimePerOperation(data.operation_no, data.wo_no);
             oView.getModel("operationDetailModel").refresh();
 
             oView.byId("operationStatus").setText(oView.getModel("i18n").getProperty("paused"));
@@ -450,7 +450,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
                 if (flagSuccess === true) {
                     //update spent time on success of confirmation
                     var data = oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-                    oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].time_spent = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(data.operation_no, data.wo_no);
+                    oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].time_spent = airbus.mes.stationtracker.util.ModelManager.getSpentTimePerOperation(data.operation_no, data.wo_no);
                     oView.getModel("operationDetailModel").refresh();
                     // Refresh User Operation Model and Operation Detail
                     airbus.mes.shell.oView.getController().renderStationTracker();

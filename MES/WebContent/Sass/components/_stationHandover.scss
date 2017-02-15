@@ -50,28 +50,7 @@
     }    
 }
 
- #stationHandoverView--TreeTableBasic-table{
-	.blue{
-        background-color: aquamarine;     
-     }
-     .sapUiTableCtrlScr {
-                    
-                    margin-left : 25px !important;
-                }
-     .DisOpAttLabelHandOver{
-	color:$cool-black;
-}
-     
-     .sapUiTableTreeIcon {
-         visibility: hidden;
-         width:0px;
-     }
-     
-     .sapUiTableCell{
-     text-align: center;
-     }
-         
-}
+
 #stationHandoverView--TreeTableBasic{
     height: 50%;
 		    .sapUiTableColHdrCnt{
@@ -88,6 +67,35 @@
 			}
     
      
+    
+     #stationHandoverView--TreeTableBasic-table{
+        .blue{
+            background-color: aquamarine;     
+         }
+         .sapUiTableCtrlScr {
+
+                        margin-left : 25px !important;
+                    }
+         .DisOpAttLabelHandOver{
+            color:$cool-black;
+        }
+
+         .sapUiTableTreeIcon {
+             visibility: hidden;
+             width:0px;
+         }
+
+         .sapUiTableCell{
+         text-align: center;
+         }
+         .green{    
+             color:$dark-lime-green;
+         }
+          .orange{    
+             color:$dandelion-hover;
+         }
+        
+}
           
 }
 
@@ -175,5 +183,4 @@
         margin-right: auto;
         display: block;
     }
-        
 }

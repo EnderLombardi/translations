@@ -124,10 +124,13 @@ airbus.mes.linetracker.util.Formatter = {
 	 */
 	stationIconTrendSrc : function(bTrend) {
 		if (bTrend == "true") {
+			//this.color="#84bd00";
 			return "sap-icon://up"
 		} else if (bTrend == "false") {
+			//this.color="#e4002b";
 			return "sap-icon://down"
 		} else {
+			//this.color="#97999b";
 			return "sap-icon://media-play"
 		}
 	},
@@ -239,14 +242,22 @@ airbus.mes.linetracker.util.Formatter = {
 		}
 
 	},
-	forcastEndDate : function(completionTime,actualEndTime){
-		if(!completionTime || completionTime==="NA"){
+	/**
+	 * @param completionTime,actualEndTime
+	 * output show completion date if available , else show actual takt end date
+	 */
+	forcastEndDate : function(completionTime,actualEndTime, status){
+	
+		if(status==="COMPLETE"){
+			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(completionTime);
+		}else{
 			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(actualEndTime);
 		}
-		else{
-			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(completionTime);
-		}
 	},
+	/**
+	 * @param sDate
+	 * output formatted date
+	 */
 	dateToStringFormat : function(sDate) {
 		// Date send by MII are UTC date
 		var oDate = new Date(sDate);

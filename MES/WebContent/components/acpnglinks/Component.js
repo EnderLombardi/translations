@@ -12,11 +12,6 @@ sap.ui.core.UIComponent.extend("airbus.mes.acpnglinks.Component", {
 });
 
 airbus.mes.acpnglinks.Component.prototype.createContent = function() {
-
-//	Set current work Order and operation
-//    airbus.mes.acpnglinks.workOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
-//    airbus.mes.acpnglinks.operation = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
-
 	if (airbus.mes.acpnglinks.oView === undefined) {
 		
         // Initialize ModelManager and load needed file

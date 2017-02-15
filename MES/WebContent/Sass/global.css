@@ -3886,17 +3886,17 @@ DATE PICKER
 
 #componentsView--ComponentsList .stepInputComponent .sapMInputBaseInner { text-align: center !important; }
 
-#componentsView--ComponentsList-sapUiTableColHdrScr { height: 32px; }
+#componentsView--ComponentsList-sapUiTableColHdrScr { height: 43px; border: solid 1px #97999b; background-color: #0085ad; }
+
+#componentsView--ComponentsList-sapUiTableColHdrScr .sapUiTableCol { height: 43px; }
+
+#componentsView--ComponentsList-sapUiTableColHdrScr .sapUiTableCol .sapMLabel { color: white; vertical-align: middle; }
 
 #componentsView--servicesButtonComponents { float: right; margin-right: 43px; }
 
 #componentsView--servicesButtonComponents #componentsView--btnComponentsSave { right: 5px; }
 
-<<<<<<< HEAD
-#spliterWorkTracker--splitWorTra.splitWorTra { width: 95% !important; margin: 20px auto; padding: 0; }
-=======
 #spliterWorkTracker--splitWorTra.splitWorTra { width: 100% !important; margin: 20px auto; height: calc(100% - 20rem); overflow: auto; padding: 20px; }
->>>>>>> bbe3d5cd85df3c3977a765e171059447ae829955
 
 #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody tr:nth-child(even) { background: transparent; }
 
@@ -3930,16 +3930,6 @@ DATE PICKER
 
 #stationHandoverView--searchHandover .sapMSFB.sapMSFS { color: #74d2e7; }
 
-#stationHandoverView--TreeTableBasic-table .blue { background-color: aquamarine; }
-
-#stationHandoverView--TreeTableBasic-table .sapUiTableCtrlScr { margin-left: 25px !important; }
-
-#stationHandoverView--TreeTableBasic-table .DisOpAttLabelHandOver { color: rgba(45, 41, 39, 0.94); }
-
-#stationHandoverView--TreeTableBasic-table .sapUiTableTreeIcon { visibility: hidden; width: 0px; }
-
-#stationHandoverView--TreeTableBasic-table .sapUiTableCell { text-align: center; }
-
 #stationHandoverView--TreeTableBasic { height: 50%; }
 
 #stationHandoverView--TreeTableBasic .sapUiTableColHdrCnt { height: 46px !important; }
@@ -3947,6 +3937,20 @@ DATE PICKER
 #stationHandoverView--TreeTableBasic .sapUiTableColHdrCnt .sapUiTableColHdrScr { border: solid 1px #97999b; background-color: #e6ecf2; box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.5); }
 
 #stationHandoverView--TreeTableBasic .sapUiTableColHdrCnt .sapUiTableColHdrScr .sapUiTableCol { border-right: 1px solid white; }
+
+#stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-table .blue { background-color: aquamarine; }
+
+#stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-table .sapUiTableCtrlScr { margin-left: 25px !important; }
+
+#stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-table .DisOpAttLabelHandOver { color: rgba(45, 41, 39, 0.94); }
+
+#stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-table .sapUiTableTreeIcon { visibility: hidden; width: 0px; }
+
+#stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-table .sapUiTableCell { text-align: center; }
+
+#stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-table .green { color: #84bd00; }
+
+#stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-table .orange { color: #ffbf00; }
 
 #stationHandoverView--TreeTableBasic-rows-row0-rowselecttext.sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableRowHdr::after, .sapUiTableRowHdr::after { width: 1rem !important; height: 1rem !important; border: 1px #bfbfbf solid !important; }
 
@@ -4166,7 +4170,6 @@ DISRUPTIONTRACKER
 
 .trackingTemplate .sapUiFupGroup .sapUiIcon:before { color: rgba(0, 86, 112, 0.94); }
 
-<<<<<<< HEAD
 #missingPartsView--mpPage > section#missingPartsView--mpPage-cont { height: 100%; }
 
 #missingPartsView--MPTable { width: 95% !important; margin: 0 auto; padding: 0; }
@@ -4199,8 +4202,6 @@ DISRUPTIONTRACKER
 
 #missingPartsView--searchField-F { border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; width: 280px; }
 
-=======
->>>>>>> bbe3d5cd85df3c3977a765e171059447ae829955
 /*************
 GENERALE RULES
 **************/

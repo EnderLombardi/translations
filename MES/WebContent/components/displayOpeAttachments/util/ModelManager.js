@@ -22,9 +22,9 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		var paramArray = [], shopOrderBO, routerBO, site, routerStepBO, erpId;
 
 		site = airbus.mes.settings.ModelManager.site;
-		erpId = airbus.mes.stationtracker.ModelManager.stationInProgress.ERP_SYSTEM;
-		shopOrderBO = airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO;
-		routerStepBO = airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO;
+		erpId = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM;
+		shopOrderBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ShopOrderBO;
+		routerStepBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.RouterStepBO;
 		routerBO = routerStepBO.split(":")[1] + ":" + routerStepBO.split(":")[2];//delete the first part ("RouterStepBO:")
 		routerBO = routerBO.replace(/,[^,]+$/, "");//delete all after the last comma
 

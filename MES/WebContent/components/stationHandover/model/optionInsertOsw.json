@@ -4,7 +4,13 @@
 		"key": "insertNextToParentOperation"
 	},
 	{
-		"type": "insertInOswUnplannedSection",
-		"key": "insertInOswUnplannedSection"
+		"type": "insertUsingAcpngStart",
+		"key": "insertUsingAcpngStart"
+	},{
+		"type": "insertUsingAcpngEnd",
+		"key": "insertUsingAcpngEnd"
+	},{
+		"type": "insertManual",
+		"key": "insertManual"
 	}
 ]
