@@ -3833,6 +3833,16 @@ DATE PICKER
 
 #acpnglinksView--ACPnGTreeTable-table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; border-top: 1px solid #e5e5e5; }
 
+.listButtons { padding: 10px; }
+
+.listButtons > div > button:hover > div { background-color: #3F4F54 !important; }
+
+.listButtons > div > button:hover > div > span { color: #ffffff; }
+
+.listButtons > div:first-child span { margin-top: 1px; margin-left: 2px; }
+
+.listButtons > div:nth-child(2) span { margin-top: 1px; margin-right: 2px; }
+
 #idCheckListView--TabChecklist { width: 95% !important; margin: 50px auto; padding: 0; }
 
 #idCheckListView--TabChecklist .sapUiTableCnt { border: solid 1px #97999b; }

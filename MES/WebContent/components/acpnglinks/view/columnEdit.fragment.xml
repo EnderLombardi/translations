@@ -1,38 +1,32 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:ui="sap.ui.layout">
-	<Dialog title="{i18nacpnglinksModel>ColumnEditTitle}" icon="sap-icon://edit" showCloseButton="true" class="pageHeaderDialog classWorklistPopover oswPopover" id="columnEditDialog">
+	<Dialog title="{i18nacpnglinksModel>ColumnEditTitle}" icon="sap-icon://edit" showCloseButton="true" id="columnEditDialog" horizontalScrolling="false" verticalScrolling="false">
 		<content height="100%" width="100%">
-			<HBox height="100%">
-				<Panel class="panelBorder" expanded="true" expandable="false" id="AcpngPanel" width="100%" height="100%"
-					headerText="i18nacpnglinksModel>ColumnEditUnassignedColumns">
+ 			<HBox height="100%">
+				<Panel class="panelBorder" expanded="true" expandable="false" id="AcpngPanel" width="100%" height="100%">
 					<headerToolbar>
-						<Toolbar>
-							<Bar design="Header">
-								<contentMiddle>
-									<Text class="sapMPanelHdr panelHeaderCustomStyle"
-										text="{i18nacpnglinksModel>ColumnEditUnassignedColumns}" />
-								</contentMiddle>
-							</Bar>
+						<Toolbar>							
+							<Title text="{i18nacpnglinksModel>ColumnEditUnassignedColumns}" />
 						</Toolbar>
 					</headerToolbar>
 					<content height="100%">
-						<HBox height="100%" >
+						<!-- <HBox height="100%" > -->
 							<List id="listAvailableColumns" mode="SingleSelectMaster"
 								items="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column' , sorter : {path : 'acpnglinksWorkOrderDetail>Sort' , ascending : 'true'} }">
 								<CustomListItem
 									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
-									<HBox >
+									<HBox width="100%">
 										<ui:HorizontalLayout>
 											<Text class="acpnglinksNotVisible" text="{acpnglinksWorkOrderDetail>Name}"></Text>
 										</ui:HorizontalLayout>
 									</HBox>
 								</CustomListItem>
 							</List>
-						</HBox>
+						<!-- </HBox> -->
 					</content>
 				</Panel>
-				<VBox class="shiftButtons" justifyContent="Center" alignItems="Center">
+				<VBox class="listButtons" justifyContent="Center" alignItems="Center">
 					<items>
 						<Button icon="sap-icon://navigation-right-arrow" press="onAssignColumns"
 							tooltip="{i18nacpnglinksModel>ColumnEditAssign}" />
@@ -41,20 +35,14 @@
 					</items>
 				</VBox>
 				<Panel class="panelBorder" expanded="true" expandable="false"
-					id="assignedColumnsPanel" width="100%" height="100%"
-					headerText="{i18nacpnglinksModel>ColumnEditAssignedColumns}">
+					id="assignedColumnsPanel" width="100%" height="100%">
 					<headerToolbar>
 						<Toolbar>
-							<Bar design="Header">
-								<contentMiddle>
-									<Text class="sapMPanelHdr panelHeaderCustomStyle"
-										text="{i18nacpnglinksModel>ColumnEditAssignedColumns}" />
-								</contentMiddle>
-							</Bar>
+							<Title text="{i18nacpnglinksModel>ColumnEditAssignedColumns}" />
 						</Toolbar>
 					</headerToolbar>
 					<content>
-						<HBox height="100%" class="fixHboxItemDisplay">
+						<HBox height="100%" >
 							<List id="listAllocatedcolumns"
 								items="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column' , sorter : {path : 'acpnglinksWorkOrderDetail>Sort' , ascending : 'true'} }"
 								mode="SingleSelectMaster">
@@ -73,7 +61,7 @@
 						</HBox>
 					</content>
 				</Panel>
-			</HBox>
+ 			</HBox> 
 		</content>
 		<endButton>
             <Button type="Transparent" icon="sap-icon://decline" class="sapUiTinyMarginBeginEnd" text="{i18nacpnglinksModel>Close}" press="onDialogClose" />

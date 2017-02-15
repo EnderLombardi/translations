@@ -41,5 +41,33 @@
 		}
 }		
 
+//buttons in the center of dialog for acpnglinks
+.listButtons{
+    padding: 10px;
+    >div {
+        >button{
+            &:hover {
+                >div {
+                    background-color: $sapui-hover-grey !important;
+                    >span {
+                        color: $white-two;
+                    }
+                }
+            }
+        }
+        &:first-child{
+            span {
+                margin-top: 1px;
+                margin-left: 2px;
+            }
+        }
+        &:nth-child(2){
+            span {
+                margin-top: 1px;
+                margin-right: 2px;
+            }
+        }
+    }
+}
 
 
