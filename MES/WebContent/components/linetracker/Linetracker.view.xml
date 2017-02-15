@@ -148,7 +148,7 @@
 					<uiTable:Column width="6%" resizable="false">
 						<Text text="{i18n>date}" class="taktHeading" />
 						<uiTable:template>
-							<Text class="dateTableLinetracker" text="{parts:['stationDataModel>completionTime','stationDataModel>actualEndTime'], formatter:'airbus.mes.linetracker.util.Formatter.forcastEndDate'}" />
+							<Text class="dateTableLinetracker" text="{parts:['stationDataModel>completionTime','stationDataModel>actualEndTime', 'stationDataModel>status'], formatter:'airbus.mes.linetracker.util.Formatter.forcastEndDate'}" />
 						</uiTable:template>
 
 					</uiTable:Column>

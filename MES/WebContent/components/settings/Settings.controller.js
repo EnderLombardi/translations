@@ -277,7 +277,11 @@ sap.ui.controller("airbus.mes.settings.Settings",
                 this.setEnabledCombobox(true, false, false, false);
 
                 this.filterField(this.selectTree);
-
+                /*remove settings for user in line tracker db if site changes*/
+                sap.ui.getCore().getModel("userSettingModel").setProperty("/Rowsets/Rowset/0/Row/0/customLineBO","");
+                if(airbus.mes.linetracker.util.ModelManager){
+                	airbus.mes.linetracker.util.ModelManager.updateLineInUserSettings();
+                }
             },
 
             // User clicks on a site map
