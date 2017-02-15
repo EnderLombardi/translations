@@ -14,19 +14,17 @@
 				<content>
 					<!-- Header ToolBar -->
 					<OverflowToolbar height="3rem">
-						<CheckBox text="{i18n>cn_toolbar_last}" enabled="true" selected="false"/>
-						<CheckBox text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false"/>
+						<CheckBox text="{i18n>cn_toolbar_last}" enabled="true" selected="false" select="showOnlyLastNote"/>
+						<CheckBox text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false" select="showOnlyLastNote"/>
 					</OverflowToolbar>
 					<!-- List Comment -->
-					<List headerText="Custom Content" mode="Delete" items="{path: '/ProductCollection'}">
-						<CustomListItem>
-							<HBox>
-								<core:Icon size="2rem" src="sap-icon://attachment-photo" />
-								<Label text="REF - "/>
-								<Label text="NAME - "/>
-								<Label text="COMMENT"/>
-							</HBox>
-						</CustomListItem>
+					<List id="confirmationNotes" items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" includeItemInSelection="true"
+				class="customListItem">
+						<items>
+							<StandardListItem
+								title="{TrackingTemplate>ACTIVITY} : {TrackingTemplate>COMMENTS}"
+								info="{TrackingTemplate>MODIFIED_DATE_TIME}"/>	
+						</items>
 					</List>
 				</content>
 			</Panel>
@@ -35,15 +33,14 @@
 				<content>
 					<!-- Header ToolBar -->
 					<OverflowToolbar class="trackingTemplateButton" height="3rem">
-						<CheckBox id="idCheckBox" text="{i18n>won_toolbar_last}" enabled="true" selected="false"/>
+						<CheckBox id="idCheckBox" text="{i18n>won_toolbar_last}" enabled="true" selected="false" select="chckLastNote"/>
 						<ToolbarSpacer />
 						<Button class="icon-edit" text="{i18n>won_toolbar_edit}" press="showCommentBox" icon="sap-icon://edit" />
-						<!--<Button class="icon-add" text="{i18n>won_toolbar_add}" press="showUploadBox" icon="sap-icon://add"/>-->
-						<Button class="icon-print" text="{i18n>won_toolbar_print}" icon="sap-icon://print"/>
+						<Button class="icon-print" text="{i18n>won_toolbar_print}" press="printTrackingTemplate" icon="sap-icon://print"/>
 					</OverflowToolbar>
 					<!-- Comment box -->
 						<Panel id="commentBox" visible="false" class="commentPanel">
-						<TextArea id="TypeHere" value="{/InputValue}" valueLiveUpdate="{/ValueLiveUpdate}" liveChange="handleLiveChange"/>
+						<TextArea id="TypeHere" value="{/InputValue}" valueLiveUpdate="{/ValueLiveUpdate}" liveChange="handleLiveChange" maxLength="255" placeholder="Write your note here... (255 characters maximum)"/>
 						<UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true" instantUpload="false" showSeparators="All" change="onChange" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"></UploadCollection>
 						<HBox>
 							<Button text="{i18n>submitComment}" type="Accept" press="submitComment" class="sapUiSmallMarginEnd buttonAccept" width="12rem" />
@@ -51,7 +48,7 @@
 						</HBox>
 					</Panel>
 					<!-- List Comment -->
-					<List items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" headerText="Notes">
+					<List id="listNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row', sorter: {path: 'MODIFIED_DATE_TIME', descending : true, sizeLimit : 1}}" headerText="Notes">
 						<items>
 							<ObjectListItem title="{TrackingTemplate>ACTIVITY}">
 								<firstStatus>

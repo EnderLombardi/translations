@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+"version": "0.2.0",
+"configurations": [
+        {
+            "preLaunchTask": "service",
+            "name": "Launch localhost with sourcemaps",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:8080/shell",
+            "webRoot": "${workspaceRoot}/WebContent",
+            "sourceMaps": true
+        },
+        {
+            "name": "Launch",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:8080/shell",
+            "port": 9222,
+            "sourceMaps": true,
+            "diagnosticLogging": true,
+            "webRoot": "${workspaceRoot}",
+            "userDataDir": "temp"
+        }
+    ]
+}

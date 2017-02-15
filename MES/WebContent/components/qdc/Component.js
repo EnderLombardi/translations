@@ -1,6 +1,6 @@
 "use strict";
 jQuery.sap.require("airbus.mes.qdc.ModelManager");
-
+jQuery.sap.require("airbus.mes.qdc.util.Formatter");
 
 jQuery.sap.declare("airbus.mes.qdc.Component");
 

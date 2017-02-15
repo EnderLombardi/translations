@@ -5,6 +5,10 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	firstVisibleRow: 0, //first row displayed (it changes on scroll)
 	popUrl: null,
 
+	/////////////////////////////////
+	//	INIT/RENDERING
+	/////////////////////////////////
+
 	onAfterRendering: function () {
 		this.init();
 	},
@@ -94,7 +98,6 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	updateTreeTableArrayIfFirstRowChanged: function (oEvent, treeTableArray, documentsGap) {
 		//var linked to the event
 		var iRowIndex = oEvent.getParameter("rowIndex");//row index (sapui5)
-		var bExpanded = oEvent.getParameter("expanded");//expanding (true) or collapsing (false)
 
 		//first we change the isOpened boolean
 		var arrayIndexOfDocType = this.findSelectedDocType(treeTableArray, iRowIndex);
@@ -104,22 +107,20 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var arrayIndex = arrayIndexOfDocType;
 		while (treeTableArray[arrayIndex + 1] && !treeTableArray[arrayIndex + 1].isDocType) { //while we haven't reach the new doc type
 			arrayIndex++;
-			if (!bExpanded) {
-				treeTableArray[arrayIndex].position = null;
-			}
+			treeTableArray[arrayIndex].position = null;
 		}
 
-		//we need to update the firstVisibleRow and obtain the old position of the first document which will be displayed
-		var arrayIndexOfFirstDocDisplayed = this.findIndexOfFirstDocDisplayed(treeTableArray) - documentsGap;
+		//we need to update the firstVisibleRow and obtain the former position of the first document which will be displayed
+		var arrayIndexOfFirstDocDisplayed = this.getIndexOfFirstDocDisplayed(treeTableArray, documentsGap);
 		if (arrayIndexOfFirstDocDisplayed < 0) {//if negative gap => set to 0
 			arrayIndexOfFirstDocDisplayed = 0;
 		}
-		var oldPosition = treeTableArray[arrayIndexOfFirstDocDisplayed].position || 0;//position of the first document which will be displayed
+		var formerPosition = treeTableArray[arrayIndexOfFirstDocDisplayed].position || 0;//position of the first document which will be displayed
 		this.firstVisibleRow = this.calculateRow(treeTableArray, arrayIndexOfFirstDocDisplayed);//update the first visible row
 
 
 		//then we operate the changes in the array for all the documents after the first document displayed
-		var position = oldPosition;
+		var position = formerPosition;
 		for (var i = arrayIndexOfFirstDocDisplayed; i < treeTableArray.length; i++) {
 			treeTableArray[i].position = position;
 			position++;
@@ -165,7 +166,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	//when we collapse a doc type, the first row may changed
 	// => if we remove more docs by collapsing than the number of elements not displayed displayed but available
-	//we check and calculate the gap if we are in this case
+	//we check and calculate the gap if we are in this case, else gap equals 0
 	checkIfFirstRowChanged: function (treeTableArray, iRowIndex) {
 		var maxPosition = Math.max.apply(Math, treeTableArray.map(function (o) { return o.position; }));
 		if (maxPosition < 8) {// means that the treetable isn't filled with 9 elements so no first row changed
@@ -275,15 +276,54 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		return arrayIndex;//position in the array 	
 	},
 
-	findIndexOfFirstDocDisplayed: function (treeTableArray) {
-		var firstDocDisplayedIndex = null, i = 0;
-		while (firstDocDisplayedIndex === null) {
-			if (treeTableArray[i].position === 0) {
-				firstDocDisplayedIndex = i;
-			}
-			i++;
+	getIndexOfFirstDocDisplayed: function (treeTableArray, documentsGap) {
+
+		//we find the index of the first row displayed before the collapsing click
+		var firstRowDisplayedIndex = 0;
+		while (treeTableArray[firstRowDisplayedIndex].position !== 0) {
+			firstRowDisplayedIndex++;
 		}
-		return firstDocDisplayedIndex;
+
+		//we decrement for each value of documentsGap to get the good index of first document displayed
+		while (documentsGap !== 0) {
+			var obj = this.getNbOfRowsForPreviousFocType(treeTableArray, firstRowDisplayedIndex);//we get the index and the number of rows of the previous document
+			var counter = obj.rows;
+			if (!treeTableArray[obj.index].isOpened) {//if not opened only one row to decrement
+				documentsGap--;
+				firstRowDisplayedIndex = obj.index;
+			} else {//else more rows to decrement
+				while (documentsGap !== 0 && counter !== 0) {//we go one by one to stop when counter or documentsGap equal 0
+					firstRowDisplayedIndex--;
+					counter--;
+					documentsGap--;
+				}
+			}//if documentsGap don't equal 0 we start again in the while
+		}
+
+		return firstRowDisplayedIndex;
+	},
+
+	//get the number of rows displayed for the previous doc type and the index of the doc type 
+	getNbOfRowsForPreviousFocType: function (treeTableArray, i) {
+		var obj = {
+			rows: undefined,
+			index: undefined
+		};
+		var rows;
+
+		i--;//first object to check is indexed by i-1
+		while (!treeTableArray[i].isDocType) {
+			i--;
+		}
+		if (treeTableArray[i].isOpened) {//opened so documents rows and doc type row are displayed
+			rows = treeTableArray[i].nbOfDocs + 1;
+		} else {//collapsed so only the doc type row is displayed
+			rows = 1;
+		}
+
+		obj.rows = rows;//rows able to be displayed for the doc type
+		obj.index = i;//index of the doc type
+		return obj;
 	},
 
 	//calculate the row using the treeTableArray and the index of the document in this array
@@ -455,10 +495,10 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	/////////////////////////////////
 
 	changeLevel: function (oEvent) {
-		var set = this.getOwnerComponent().getSSet();
+		var previousSet = this.getOwnerComponent().getSSet();
 
 		//change operation/wo mode
-		switch (set) {
+		switch (previousSet) {
 			case "O"://operation
 				sap.ui.getCore().byId("displayOpeAttachmentsView--workOrderButton").setSelected(true);
 				this.getOwnerComponent().setSSet("P");

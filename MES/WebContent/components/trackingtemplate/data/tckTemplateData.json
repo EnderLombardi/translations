@@ -136,7 +136,7 @@
                         "REASON_CODE_BO": "ReasonCodeBO:FNZ1,0000,C",
                         "SEQUENCE": 0.00,
                         "SITE": "FNZ1",
-                        "STATE": "---",
+                        "STATE": "CONFIRMED",
                         "TXN_ID": "19544234553436636-2c62c87:158f42f86e1:-2b0c",
                         "USER_BO": "UserBO:FNZ1,MESYS"
                     },
@@ -164,7 +164,7 @@
                         "CREATED_DATE_TIME": "12/13/2016 10:12:38",
                         "HANDLE": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,2",
                         "MODIFIED_DATE_TIME": "12/13/2016 10:12:38",
-                        "PRODUCTION_CONTEXT_GBO": "---",
+                        "PRODUCTION_CONTEXT_GBO": "ShopOrderBO",
                         "REASON_CODE_BO": "ReasonCodeBO:FNZ1,0000,C",
                         "SEQUENCE": 2.00,
                         "SITE": "FNZ1",

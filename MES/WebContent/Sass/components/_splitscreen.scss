@@ -1,7 +1,9 @@
 #spliterWorkTracker--splitWorTra.splitWorTra{
-	width:95% !important;
+	width:100% !important;
 	margin: 20px auto;
-	padding:0 ;
+	height: calc(100% - 20rem);
+	overflow: auto;
+	padding:20px ;
 	>table {
 		>tbody {
 				tr:nth-child(even) {background: transparent}

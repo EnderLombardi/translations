@@ -3892,7 +3892,11 @@ DATE PICKER
 
 #componentsView--servicesButtonComponents #componentsView--btnComponentsSave { right: 5px; }
 
+<<<<<<< HEAD
 #spliterWorkTracker--splitWorTra.splitWorTra { width: 95% !important; margin: 20px auto; padding: 0; }
+=======
+#spliterWorkTracker--splitWorTra.splitWorTra { width: 100% !important; margin: 20px auto; height: calc(100% - 20rem); overflow: auto; padding: 20px; }
+>>>>>>> bbe3d5cd85df3c3977a765e171059447ae829955
 
 #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody tr:nth-child(even) { background: transparent; }
 
@@ -4162,6 +4166,7 @@ DISRUPTIONTRACKER
 
 .trackingTemplate .sapUiFupGroup .sapUiIcon:before { color: rgba(0, 86, 112, 0.94); }
 
+<<<<<<< HEAD
 #missingPartsView--mpPage > section#missingPartsView--mpPage-cont { height: 100%; }
 
 #missingPartsView--MPTable { width: 95% !important; margin: 0 auto; padding: 0; }
@@ -4194,6 +4199,8 @@ DISRUPTIONTRACKER
 
 #missingPartsView--searchField-F { border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; width: 280px; }
 
+=======
+>>>>>>> bbe3d5cd85df3c3977a765e171059447ae829955
 /*************
 GENERALE RULES
 **************/

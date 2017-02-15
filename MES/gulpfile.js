@@ -290,6 +290,13 @@ gulp.task('serve', function (callback) {
 
 });
 
+gulp.task('service', function (callback) {
+	runSequence(
+		'connect',
+		'watch',
+		callback);
+
+});
 
 gulp.task('watch', false, function () {
 	var livereload = require('gulp-livereload');

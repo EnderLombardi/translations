@@ -13,7 +13,7 @@ airbus.mes.qdc.ModelManager = {
     	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
 		
 			// Handle URL Model
-			this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.qdc.attachments.config.url_config");
+			this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.qdc.config.url_config");
 							
 			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
 			this.loadQDCModel();	

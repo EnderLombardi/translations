@@ -11,177 +11,135 @@
 					"Name": "Type",
 					"SourceColumn": "Type",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "true",
+					"Sort": 0
 				}, {
-					"Name": "Ref",
-					"SourceColumn": "Ref",
+					"Name": "Reference",
+					"SourceColumn": "Reference",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "true",
+					"Sort": 2
 				}, {
 					"Name": "Review_end",
 					"SourceColumn": "Review_end",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "true",
+					"Sort": 1
 				}, {
 					"Name": "Note",
 					"SourceColumn": "Note",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "true",
+					"Sort": 3
 				}, {
 					"Name": "Family_target",
 					"SourceColumn": "Family_target",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "true",
+					"Sort": 4
 				}, {
 					"Name": "Confirmed_time",
 					"SourceColumn": "Confirmed_time",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 5
 				}, {
 					"Name": "STV",
 					"SourceColumn": "STV",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 6
 				}, {
 					"Name": "ACP_workstation",
 					"SourceColumn": "ACP_workstation",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 7
 				}, {
 					"Name": "CA",
 					"SourceColumn": "CA",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 8
 				}, {
 					"Name": "Father_link",
 					"SourceColumn": "Father_link",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 9
 				}, {
 					"Name": "Blocking_reason",
 					"SourceColumn": "Blocking_reason",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 10
 				}, {
 					"Name": "User_status",
 					"SourceColumn": "User_status",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 11
 				}, {
 					"Name": "Execution_station",
 					"SourceColumn": "Execution_station",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 12
 				}, {
 					"Name": "Origin_workstation",
 					"SourceColumn": "Origin_workstation",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 13
 				}, {
 					"Name": "TDL",
 					"SourceColumn": "TDL",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 14
 				}, {
 					"Name": "Upper_family",
 					"SourceColumn": "Upper_family",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 15
 				}, {
 					"Name": "Zoning",
 					"SourceColumn": "Zoning",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 16
 				}, {
 					"Name": "Material_description",
 					"SourceColumn": "Material_description",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 17
 				}, {
 					"Name": "ATA",
 					"SourceColumn": "ATA",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 18
 				}, {
 					"Name": "Father_Type",
 					"SourceColumn": "Father_Type",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 19
 				}, {
 					"Name": "Father_ID",
 					"SourceColumn": "Father_ID",
 					"Description": "",
-					"SQLDataType": 1,
-					"MinRange": 1.0,
-					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "false",
+					"Sort": 20
 				}]
 			},
 			"Row": [{
 				"Type": "SO1",
-				"Ref": "10003242224",
+				"Reference": "10003242224",
 				"Review_end": "28/11/2016",
-				"Note": "",
+				"Note": "note",
 				"Family_target": "FAL-PYLON RH",
 				"Confirmed_time": "83",
 				"STV": "",
@@ -201,9 +159,9 @@
 				"Father_ID": ""
 			}, {
 				"Type": "NC",
-				"Ref": "6789685",
+				"Reference": "6789685",
 				"Review_end": "",
-				"Note": "",
+				"Note": "note",
 				"Family_target": "",
 				"Confirmed_time": "",
 				"STV": "",
@@ -223,9 +181,9 @@
 				"Father_ID": "10003242224"
 			}, {
 				"Type": "SO3",
-				"Ref": "10003678688",
+				"Reference": "10003678688",
 				"Review_end": "28/11/2016",
-				"Note": "",
+				"Note": "note",
 				"Family_target": "FAL-CARGO",
 				"Confirmed_time": "54",
 				"STV": "",
@@ -245,9 +203,9 @@
 				"Father_ID": "6789685"
 			}, {
 				"Type": "NC",
-				"Ref": "10003678688",
+				"Reference": "10003678688",
 				"Review_end": "28/11/2016",
-				"Note": "",
+				"Note": "note",
 				"Family_target": "FAL-CARGO",
 				"Confirmed_time": "54",
 				"STV": "",

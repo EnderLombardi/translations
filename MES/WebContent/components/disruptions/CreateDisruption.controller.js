@@ -113,7 +113,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 			oView.byId("selectreason").setSelectedKey();
 			oView.byId("selectResponsibleGrp").setSelectedKey();
 
-			if (this.getView().byId("selectCategory").getSelectedKey() == "") {
+			if (oView.byId("selectCategory").getSelectedKey() == "") {
 				oView.byId("selectreason").setEnabled(false);
 				oView.byId("selectResponsibleGrp").setEnabled(false);
 			} else {
@@ -140,9 +140,9 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 			 * // Apply filter for Root Cause var aFilters = [];
 			 * aFilters.push(new sap.ui.model.Filter("REASON",
 			 * sap.ui.model.FilterOperator.EQ, sReason));
-			 * this.getView().byId("selectRootCause").getBinding("items")
+			 * oView.byId("selectRootCause").getBinding("items")
 			 * .filter(aFilters) // Set Root Cause
-			 * this.getView().byId("selectRootCause")
+			 * oView.byId("selectRootCause")
 			 * .setSelectedKey(oModel.getProperty("/RootCause"));
 			 */
 		}
@@ -156,7 +156,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create" || airbus.mes.disruptions.ModelManager.createViewMode == "Update") {
 
-			if (this.getView().byId("selectResponsibleGrp").getSelectedKey() == "")
+			if (oView.byId("selectResponsibleGrp").getSelectedKey() == "")
 				oView.byId("selectResolver").setEnabled(false);
 			else
 				oView.byId("selectResolver").setEnabled(true);
@@ -188,8 +188,8 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 			oView.byId("timeLost").setValue(airbus.mes.disruptions.Formatter.timeMillisecondsToConfig(oModel.getProperty("/TimeLost")));
 
 			// Set Status and Description
-			this.getView().byId("status").setValue(oModel.getProperty("/Status"));
-			// this.getView().byId("description").setValue(oModel.getProperty("/Description"));
+			oView.byId("status").setValue(oModel.getProperty("/Status"));
+			// oView.byId("description").setValue(oModel.getProperty("/Description"));
 			// V1.5
 
 			// Empty Comment
@@ -536,22 +536,23 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 		this.getView().byId("selectResolver").setEnabled(true);
 	},
 	resolutionGroupSettings : function() {
+		var oView = this.getView();
 
-		this.getView().byId("selectFivemCategory").setEnabled(false);
-		this.getView().byId("selectCategory").setEnabled(false);
-		this.getView().byId("selectreason").setEnabled(false);
-		// this.getView().byId("selectRootCause").setEnabled(true); //-V1.5
-		this.getView().byId("selectResponsibleGrp").setEnabled(true);
-		this.getView().byId("selectOriginator").setEnabled(false);
-		this.getView().byId("description").setEnabled(false);
-		this.getView().byId("promisedDate").setEnabled(true);
-		this.getView().byId("promisedTime").setEnabled(true);
-		this.getView().byId("expectedDate").setEnabled(false);
-		this.getView().byId("expectedTime").setEnabled(false);
-		this.getView().byId("gravity").setEnabled(false);
-		this.getView().byId("timeLost").setEnabled(false);
-		this.getView().byId("materials").setEnabled(false);
-		this.getView().byId("jigtools").setEnabled(false);
+		oView.byId("selectFivemCategory").setEnabled(false);
+		oView.byId("selectCategory").setEnabled(false);
+		oView.byId("selectreason").setEnabled(false);
+		// oView.byId("selectRootCause").setEnabled(true); //-V1.5
+		oView.byId("selectResponsibleGrp").setEnabled(true);
+		oView.byId("selectOriginator").setEnabled(false);
+		oView.byId("description").setEnabled(false);
+		oView.byId("promisedDate").setEnabled(true);
+		oView.byId("promisedTime").setEnabled(true);
+		oView.byId("expectedDate").setEnabled(false);
+		oView.byId("expectedTime").setEnabled(false);
+		oView.byId("gravity").setEnabled(false);
+		oView.byId("timeLost").setEnabled(false);
+		oView.byId("materials").setEnabled(false);
+		oView.byId("jigtools").setEnabled(false);
 		// this.getView().byId("selectResolver").setEnabled(false); // +V1.5
 	},
 
@@ -608,7 +609,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 		oView.byId("promisedTime").setVisible(false);
 
 		// Set Status
-		oView.byId("status").setValue(this.getView().getModel("i18n").getProperty("Pending"));
+		oView.byId("status").setValue(oView.getModel("i18n").getProperty("Pending"));
 
 	},
 
@@ -648,26 +649,28 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 	 * Reset all the fields of Form create disruption
 	 */
 	resetAllFields : function() {
-		this.getView().byId("selectFivemCategory").setSelectedKey();
+		var oView = this.getView();
 
-		this.getView().byId("selectCategory").setSelectedKey();
+		oView.byId("selectFivemCategory").setSelectedKey();
 
-		this.getView().byId("selectCategory").getBinding("items").filter();
+		oView.byId("selectCategory").setSelectedKey();
 
-		this.getView().byId("selectreason").setSelectedKey();
-		this.getView().byId("selectResponsibleGrp").setSelectedKey();
-		this.getView().byId("selectResolver").setSelectedKey(); // +V1.5
-		this.getView().byId("selectOriginator").setSelectedKey();
-		// this.getView().byId("selectRootCause").setSelectedKey(); // MES V1.5
+		oView.byId("selectCategory").getBinding("items").filter();
+
+		oView.byId("selectreason").setSelectedKey();
+		oView.byId("selectResponsibleGrp").setSelectedKey();
+		oView.byId("selectResolver").setSelectedKey(); // +V1.5
+		oView.byId("selectOriginator").setSelectedKey();
+		// oView.byId("selectRootCause").setSelectedKey(); // MES V1.5
 		// root cause Removed
-		this.getView().byId("gravity").setSelectedKey();
-		this.getView().byId("timeLost").setValue();
-		this.getView().byId("comment").setValue();
-		// this.getView().byId("description").setValue(); V1.5 description
+		oView.byId("gravity").setSelectedKey();
+		oView.byId("timeLost").setValue();
+		oView.byId("comment").setValue();
+		// oView.byId("description").setValue(); V1.5 description
 		// no longer needed
 
-		this.getView().byId("materials").destroyTokens();
-		this.getView().byId("jigtools").destroyTokens();
+		oView.byId("materials").destroyTokens();
+		oView.byId("jigtools").destroyTokens();
 	},
 
 	/***************************************************************************
