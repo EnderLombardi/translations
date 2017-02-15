@@ -183,6 +183,9 @@ airbus.mes.polypoly.ModelManager = {
 		$.ajax({
 			url : urlgetpolystation,
 			success : function(data, textStatus, jqXHR) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
 				airbus.mes.polypoly.ModelManager.stationMII = data.Rowsets.Rowset[0].Row[0].PPM_Station;
 			},
 		})
