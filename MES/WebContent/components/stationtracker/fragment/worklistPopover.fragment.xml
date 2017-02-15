@@ -6,7 +6,7 @@
 
 		<content>
 			<VBox class="sapMFooter-CTX classWorklistPopoverHeader">
-				<custom:customProgressIndicator id="overallProgress"
+				<custom:util.customProgressIndicator id="overallProgress"
 					visible="false" width="auto" state="sap.ui.core.ValueState.Success"
 					unplanned="{WorkListOverallModel>/0/ISUNPLANNED}" disruption="{WorkListOverallModel>/0/DISRUPTION}"
 					paused="{WorkListOverallModel>/0/PAUSED}" progress="{WorkListOverallModel>/0/PROGRESS}"
@@ -15,7 +15,7 @@
 					displayValue="{ parts: [ 'WorkListOverallModel>/0/WORKORDER_ID','WorkListOverallModel>/0/WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 					displayValue2="{ parts: [ 'WorkListOverallModel>/0/OPERATION_ID','WorkListOverallModel>/0/OPERATION_DESCRIPTION','WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
 					percentValue="{ parts: [ 'WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
-				</custom:customProgressIndicator>
+				</custom:util.customProgressIndicator>
 			</VBox>
 
 			<VBox>
@@ -44,7 +44,7 @@
 							<content>
 								<HBox>
 									<items>
-										<custom:customProgressIndicator
+										<custom:util.customProgressIndicator
 											width="auto" state="sap.ui.core.ValueState.Success" click="operationWorkListClick"
 											unplanned="{WorkListModel>ISUNPLANNED}" disruption="{WorkListModel>DISRUPTION}"
 											paused="{WorkListModel>PAUSED}" progress="{WorkListModel>PROGRESS}"
@@ -56,7 +56,7 @@
 											<custom:layoutData>
 												<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>
 											</custom:layoutData>
-										</custom:customProgressIndicator>
+										</custom:util.customProgressIndicator>
 									</items>
 								</HBox>
 							</content>

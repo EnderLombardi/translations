@@ -909,7 +909,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 
         if (airbus.mes.stationtracker.worklistPopover === undefined) {
 
-            airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover", "airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
+            airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover", "airbus.mes.stationtracker.fragment.worklistPopover", airbus.mes.stationtracker.oView.getController());
             airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
             airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
         }
@@ -1033,7 +1033,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 
             setTimeout(function () {
                 if (airbus.mes.stationtracker.operationDetailPopup === undefined) {
-                    airbus.mes.stationtracker.operationDetailPopup = sap.ui.xmlfragment("operationDetailPopup", "airbus.mes.stationtracker.fragments.operationDetailPopup", airbus.mes.stationtracker.oView.getController());
+                    airbus.mes.stationtracker.operationDetailPopup = sap.ui.xmlfragment("operationDetailPopup", "airbus.mes.stationtracker.fragment.operationDetailPopup", airbus.mes.stationtracker.oView.getController());
                     airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"), "operationDetailModel");
                     airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
                 }
@@ -1186,7 +1186,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         }
 
         if (airbus.mes.stationtracker.ReschedulePopover === undefined) {
-            airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("ReschedulePopover", "airbus.mes.stationtracker.Reschedule", airbus.mes.stationtracker.oView.getController());
+            airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("ReschedulePopover", "airbus.mes.stationtracker.fragment.Reschedule", airbus.mes.stationtracker.oView.getController());
             airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
 
             airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ReschedulePopover);

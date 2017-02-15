@@ -276,7 +276,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler",    
 
                                 if(!airbus.mes.stationtracker.util.AssignmentManager.checkQA){
                                     if (!airbus.mes.stationtracker.oPopoverPolypoly) {
-                                        airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", airbus.mes.stationtracker.oView.getController());
+                                        airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.fragment..polypolyFragment", airbus.mes.stationtracker.oView.getController());
 
                                         if(airbus.mes.polypoly == undefined){
                                             sap.ui.getCore().createComponent({

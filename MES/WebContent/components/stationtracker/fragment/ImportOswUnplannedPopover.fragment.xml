@@ -50,7 +50,7 @@
 							<content>
 								<HBox>
 									<items>
-										<custom:customProgressIndicator
+										<custom:util.customProgressIndicator
 											width="auto" 
 											state="sap.ui.core.ValueState.Success" 
 											disruption="{WorkListModel>DISRUPTION}"
@@ -67,7 +67,7 @@
 											<custom:layoutData>
 												<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>
 											</custom:layoutData>
-										</custom:customProgressIndicator>
+										</custom:util.customProgressIndicator>
 									</items>
 								</HBox>
 							</content>

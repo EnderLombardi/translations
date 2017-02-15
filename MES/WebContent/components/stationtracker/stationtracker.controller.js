@@ -62,7 +62,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         if (airbus.mes.stationtracker.productionGroupPopover === undefined) {
 
             var oView = airbus.mes.stationtracker.oView;
-            airbus.mes.stationtracker.productionGroupPopover = sap.ui.xmlfragment("productionGroupPopover", "airbus.mes.stationtracker.productionGroupPopover", airbus.mes.stationtracker.oView.getController());
+            airbus.mes.stationtracker.productionGroupPopover = sap.ui.xmlfragment("productionGroupPopover", "airbus.mes.stationtracker.fragment.productionGroupPopover", airbus.mes.stationtracker.oView.getController());
             airbus.mes.stationtracker.productionGroupPopover.addStyleClass("alignTextLeft");
             oView.addDependent(airbus.mes.stationtracker.productionGroupPopover);
 
@@ -103,7 +103,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     onTeamPress: function (oEvent) {
         if (!this._oPopover) {
 
-            this._oPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.teamPopover", this);
+            this._oPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.fragment.teamPopover", this);
             this._oPopover.addStyleClass("alignTextLeft");
             this.getView().addDependent(this._oPopover);
 
@@ -254,7 +254,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     onUnplannedPress: function () {
         if (airbus.mes.stationtracker.ImportOswUnplannedPopover === undefined) {
 
-            airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover", "airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
+            airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover", "airbus.mes.stationtracker.fragment.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
             airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
             airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ImportOswUnplannedPopover);
             airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(sap.ui.getCore().getModel("groupModel"), "groupModel");
@@ -480,7 +480,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
                 var oModel = sap.ui.getCore().getModel("productionGroupModel");
                 if (!airbus.mes.stationtracker.dialogProdGroup) {
-                    airbus.mes.stationtracker.dialogProdGroup = sap.ui.xmlfragment("dialogProdGroup", "airbus.mes.stationtracker.dialogProdGroup", airbus.mes.stationtracker.oView.getController());
+                    airbus.mes.stationtracker.dialogProdGroup = sap.ui.xmlfragment("dialogProdGroup", "airbus.mes.stationtracker.fragment.dialogProdGroup", airbus.mes.stationtracker.oView.getController());
                     airbus.mes.stationtracker.dialogProdGroup.setModel(oModel, "productionGroupModel");
                     airbus.mes.stationtracker.dialogProdGroup.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"), "StationTrackerI18n");
                 }
@@ -997,7 +997,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     //Open datePicker XML fragment
     datePick: function () {
         if (airbus.mes.stationtracker.datePicker === undefined) {
-            airbus.mes.stationtracker.datePicker = sap.ui.xmlfragment("datePickerFragment", "airbus.mes.stationtracker.datePickerFragment", airbus.mes.stationtracker.oView.getController());
+            airbus.mes.stationtracker.datePicker = sap.ui.xmlfragment("datePickerFragment", "airbus.mes.stationtracker.fragment.datePickerFragment", airbus.mes.stationtracker.oView.getController());
             airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.datePicker);
 
             airbus.mes.stationtracker.oView.oCalendar = airbus.mes.stationtracker.datePicker.getContent()[0];
@@ -1135,7 +1135,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
     openCheckQAPopup: function (oModel) {
         if (!airbus.mes.stationtracker.checkQAPopUp) {
-            airbus.mes.stationtracker.checkQAPopUp = sap.ui.xmlfragment("airbus.mes.stationtracker.checkQAPopUp", airbus.mes.stationtracker.oView.getController());
+            airbus.mes.stationtracker.checkQAPopUp = sap.ui.xmlfragment("airbus.mes.stationtracker.fragment.checkQAPopUp", airbus.mes.stationtracker.oView.getController());
         }
         airbus.mes.stationtracker.checkQAPopUp.setModel(oModel, "checkQAModel");
         airbus.mes.stationtracker.checkQAPopUp.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"), "StationTrackerI18n");
