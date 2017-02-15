@@ -6,6 +6,9 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	urlModel : undefined,
 	brOnMessageCallBack:function (data) {},
 
+	/**
+	 * Init of the model
+	 */	
 	init : function(core) {
 
 		this.core = core;
@@ -13,12 +16,15 @@ airbus.mes.acpnglinks.model.ModelManager = {
 		// Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.acpnglinks.config.url_config");
 		
-		// "acpnglinksConfigModel", 
+		// Get main model of this component, 
 		airbus.mes.shell.ModelManager.createJsonModel(core,["acpnglinksWorkOrderDetail"]);
 		this.loadacpnglinksWorkOrderDetail();
 	},
 
 
+	/**
+	 * Load the mai model and transforms it
+	 */
 	loadacpnglinksWorkOrderDetail : function() {
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
 		oModel.loadData(this.getacpnglinksWorkOrderDetail(), null, false);
@@ -26,12 +32,18 @@ airbus.mes.acpnglinks.model.ModelManager = {
 		oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
 	},
 	
+	/**
+	 * get Model using url
+	 */	
 	getacpnglinksWorkOrderDetail : function() {
 		var url = this.urlModel.getProperty("acpnglinksWorkOrderDetail");
 		url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
 		return url;
 	},
 	
+	/**
+	 * Transform a flat JSON model into a TreeTable friendly model using map
+	 */
 	transformTreeData : function(nodesIn) {
 		var nodes = [];        // ’deep’ object structure
 		var nodeMap = {};      // ’map’, each node is an attribute

@@ -13,7 +13,7 @@
 					"SourceColumn": "Reference",
 					"Description": "",
 					"Visible": "true",
-					"Sort": 4
+					"Sort": 1
 				}, {
 					"Name": "Review_end",
 					"SourceColumn": "Review_end",
@@ -31,7 +31,7 @@
 					"SourceColumn": "Family_target",
 					"Description": "",
 					"Visible": "true",
-					"Sort": 1
+					"Sort": 4
 				}, {
 					"Name": "Confirmed_time",
 					"SourceColumn": "Confirmed_time",
