@@ -92,7 +92,7 @@
 											src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }" />
 									</control:actionIconButton> -->
 									<control:image>
-										<Image width="100%"
+										<Image width="100%" height="50%"
 											error="{ path : 'stationDataModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
 											src="{ parts : ['stationDataModel>station', 'stationDataModel>msn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }"></Image>
 									</control:image>
