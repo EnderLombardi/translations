@@ -271,6 +271,10 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 			if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {
 				fOSW = "3";
 			}
+			// Operation is from OSW ACPng
+			if ( el.EXECUTION_STATION_SOURCE[0] === "4" ) {
+				fOSW = "4";
+			}
 			// Operation is from unplanned
 			if ( el.EXECUTION_STATION_SOURCE[0] === "1" ) {
 				sUnplanned = "1";
@@ -318,7 +322,8 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					//"SFC_STEP_REF" : el.SFC_STEP_REF
 					"FAMILY_AVL_GROUPING" : el.FAMILY_AVL_GROUPING,
 					"FAMILY_AVL_BOXING" : el.FAMILY_AVL_BOXING,
-					"ROUTERSTEPBO" : el.ROUTER_STEP_BO
+					"ROUTERSTEPBO" : el.ROUTER_STEP_BO,
+					"ACPNG_STATUS" : el.ACPNG_STATUS
 										
 			};
 			
@@ -421,6 +426,7 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					var aOSW = [];
 					var aRMAStatus = [];
 					var aUnplanned = [];
+					var aAcpngStatus = [];
 					
 					var fProgress = 0;
 					var fDuration = 0;
@@ -438,6 +444,7 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					var sPaused = "";
 					var sPreviouslyStarted = "";
 					var sRouterStepBo = "";
+				
 					
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
@@ -451,6 +458,7 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 						aOSW.push(el.EXECUTION_STATION_SOURCE);
 						aRMAStatus.push(el.RMA_STATUS_COLOR);
 						aUnplanned.push(el.ISUNPLANNED);
+						aAcpngStatus.push(el.ACPNG_STATUS);
 						
 						fProgress += parseFloat(el.PROGRESS);
 						fDuration += parseFloat(el.DURATION);
@@ -561,7 +569,8 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 							"end_date" :  oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
 							"paused" : sPaused,
 							"previouslyStarted" : sPreviouslyStarted,
-							"routerStepBo": sRouterStepBo,							
+							"routerStepBo": sRouterStepBo,	
+							"aAcpngStatus": Math.max.apply(null,aAcpngStatus),
 						};
 					
 					aBox.push(oOperationRescheduling);

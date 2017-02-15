@@ -34,8 +34,8 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon3 + elt + "3" + '</b></i>';
 				        break;
 				    default:
-				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon3 + elt + '</b></i>';
-				    	//return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon1 + elt + "1" + '</b></i>';
+				    	//return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon3 + elt + '</b></i>';
+				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon1 + elt + "1" + '</b></i>';
 
 					}			
 			},
