@@ -36,6 +36,8 @@ airbus.mes.disruptions.ModelManager = {
 
 	/***************************************************************************
 	 * Load Category and custom Data
+	 * @param {string} sMode tells it is edit disruption page or new disruption page
+	 * @param {object} oData data to be set on the MOdel
 	 */
 	loadData : function(sMode, oData) {
 
@@ -57,10 +59,10 @@ airbus.mes.disruptions.ModelManager = {
 		if (this.createViewMode == "Create") {
 			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel").setData();
             oView.getModel("DisruptionDetailModel").setData();
-            oModel.refresh();
+            //oModel.refresh();
 			oView.oController.createDisruptionSettings();
 		} else if (this.createViewMode == "Edit") {
-			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+			oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 			oModel.setData(oData);
 			oView.getModel("DisruptionDetailModel").setData(oData);
 			oModel.refresh();
@@ -730,7 +732,8 @@ airbus.mes.disruptions.ModelManager = {
 								airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 
 						} else {
-							airbus.mes.shell.util.navFunctions.disruptionTracker();
+							//airbus.mes.shell.util.navFunctions.disruptionTracker();
+							this.bSucess = true
 						}
 					}
 
@@ -742,9 +745,9 @@ airbus.mes.disruptions.ModelManager = {
 			// Refresh station tracker
 			airbus.mes.shell.oView.getController().renderStationTracker();
 
-		}
+		}*/
 
-		return flagSuccess;*/
+		return this.bSucess;
 	},
 
 	/***************************************************************************

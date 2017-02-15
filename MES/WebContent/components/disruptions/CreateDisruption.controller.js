@@ -1086,6 +1086,28 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
 		// Call to Acknowledge Disruption
 		airbus.mes.disruptions.ModelManager.ackDisruption(dateTime, sMessageRef, comment);
+		
+		if (isSuccess) {
+            
+            this.getView().getModel("DisruptionDetailModel").setProperty("/Status",airbus.mes.disruptions.Formatter.status.acknowledged);
+            
+            var currDate = new Date();
+            var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+            
+            var oComment = {
+                          "Action" : this.getView().getModel("i18nModel").getProperty("acknowledge"),
+                          "Comments" : comment,
+                          "Counter" : "",
+                          "Date" : date,
+                          "MessageRef" : sMessageRef,
+                          "UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+                                                        sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
+            };
+            this.getView().getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);
+            this.getView().getModel("DisruptionDetailModel").setProperty("/Status",airbus.mes.disruptions.Formatter.status.acknowledged);
+            this.getView().getModel("DisruptionDetailModel").setProperty("/PromisedDateTime",dateTime);
+            this.getView().getModel("DisruptionDetailModel").refresh();
+     }
 
 	},
 	/***************************************************************************
