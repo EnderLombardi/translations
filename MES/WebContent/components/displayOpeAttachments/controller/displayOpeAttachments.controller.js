@@ -15,7 +15,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	//create/update model + update view
 	init: function () {
-		this.selectLevel(this.getOwnerComponent().getSSet());
+		this.selectDocumentFilter (this.getOwnerComponent().getSSet());
 
 		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
 		oModule.loadDOADetail();
@@ -100,7 +100,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var iRowIndex = oEvent.getParameter("rowIndex");//row index (sapui5)
 
 		//first we change the isOpened boolean
-		var arrayIndexOfDocType = this.findSelectedDocType(treeTableArray, iRowIndex);
+		var arrayIndexOfDocType = this.getSelectedDocTypeIndex (treeTableArray, iRowIndex);
 		treeTableArray[arrayIndexOfDocType].isOpened = !treeTableArray[arrayIndexOfDocType].isOpened; //isOpened boolean changed because of the click 
 
 		//then we null the positions of the documents that belong to the doc type
@@ -137,7 +137,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var bExpanded = oEvent.getParameter("expanded");//expanding (true) or collapsing (false)
 
 		//var linked to the array : index & last position
-		var arrayIndex = this.findSelectedDocType(treeTableArray, iRowIndex);//index in the array
+		var arrayIndex = this.getSelectedDocTypeIndex (treeTableArray, iRowIndex);//index in the array
 		var lastPosition = treeTableArray[arrayIndex].position;//position of the node collapsed/expanded in the array
 
 		//first we changed the isOpened boolean
@@ -201,7 +201,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 			}
 		}
 
-		var arrayIndex = this.findSelectedDocType(treeTableArray, iRowIndex);
+		var arrayIndex = this.getSelectedDocTypeIndex (treeTableArray, iRowIndex);
 		var nbOfDocsDisplayed = 0, x = arrayIndex + 1;
 		//calculate numbers of document of this type displayed
 		while (x < treeTableArray.length && treeTableArray[x].position <= 8 && !treeTableArray[x].isDocType) {
@@ -263,7 +263,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	},
 
 	//find the selected doc type in the array (its index) based on the iRowIndex (in UI)
-	findSelectedDocType: function (treeTableArray, iRowIndex) {
+	getSelectedDocTypeIndex : function (treeTableArray, iRowIndex) {
 		var numberOfRows = 0, arrayIndex = 0;
 		while (numberOfRows !== iRowIndex) {//we will increment to have the same numberofRows in the function than the iRowIndex (which represents the number of rows displayed)
 			if (!treeTableArray[arrayIndex].isDocType || (treeTableArray[arrayIndex].isDocType && treeTableArray[arrayIndex].isOpened)) {//if position it's displayed so we increment
@@ -286,7 +286,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 		//we decrement for each value of documentsGap to get the good index of first document displayed
 		while (documentsGap !== 0) {
-			var obj = this.getNbOfRowsForPreviousFocType(treeTableArray, firstRowDisplayedIndex);//we get the index and the number of rows of the previous document
+			var obj = this.getNbOfRowsForPreviousDocType(treeTableArray, firstRowDisplayedIndex);//we get the index and the number of rows of the previous document
 			var counter = obj.rows;
 			if (!treeTableArray[obj.index].isOpened) {//if not opened only one row to decrement
 				documentsGap--;
@@ -304,7 +304,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	},
 
 	//get the number of rows displayed for the previous doc type and the index of the doc type 
-	getNbOfRowsForPreviousFocType: function (treeTableArray, i) {
+	getNbOfRowsForPreviousDocType: function (treeTableArray, i) {
 		var obj = {
 			rows: undefined,
 			index: undefined
@@ -494,7 +494,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	//	SELECT LEVEL
 	/////////////////////////////////
 
-	changeLevel: function (oEvent) {
+	changeDocumentFilter: function (oEvent) {
 		var previousSet = this.getOwnerComponent().getSSet();
 
 		//change operation/wo mode
@@ -515,7 +515,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	},
 
 
-	selectLevel: function (set) {
+	selectDocumentFilter : function (set) {
 		//change operation/wo mode
 		switch (set) {
 			case "O"://operation

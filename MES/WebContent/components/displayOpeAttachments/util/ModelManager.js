@@ -4,12 +4,9 @@ jQuery.sap.declare("airbus.mes.displayOpeAttachments.util.ModelManager")
 airbus.mes.displayOpeAttachments.util.ModelManager = {
 
 	urlModel: undefined,
-	i18nModel: undefined,
 	treeTableArray: [],
-	nbOfDocTypes: 0,
 
 	init: function (core) {
-
 		var aModel = ["getOpeAttachments", "getDocumentExtensions", "getDocumentTypes"];
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
@@ -166,7 +163,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	 *  operation/wo mode                                               	   *
 	 * *********************************************************************** */
 
-	 checkOperationWorkOrderMode: function () {
+	 checkOperationWorkOrderFilter: function () {
 		 if (["O", "P"].indexOf(airbus.mes.displayOpeAttachments.component.mProperties.sSet) === -1) {
 			airbus.mes.displayOpeAttachments.component.mProperties.sSet ="O";
 		 }

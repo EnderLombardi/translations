@@ -225,7 +225,7 @@ airbus.mes.shell.util.navFunctions = {
         var componentProperties = airbus.mes.displayOpeAttachments.component.mProperties;
         componentProperties.phStation = station;
         componentProperties.sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL_" + station);
-        airbus.mes.displayOpeAttachments.util.ModelManager.checkOperationWorkOrderMode();//change the value if not "P" or "O"
+        airbus.mes.displayOpeAttachments.util.ModelManager.checkOperationWorkOrderFilter();//change the value if not "P" or "O"
 
         if (container.getPage("displayOpeAttachmentsView") === null) {
             container.addPage(airbus.mes.displayOpeAttachments.oView);
