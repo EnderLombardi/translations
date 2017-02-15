@@ -5,7 +5,9 @@ jQuery.sap.declare("airbus.mes.disruptions.ModelManager")
 airbus.mes.disruptions.ModelManager = {
 
 	createEditFlag : false,
+    createViewMode : undefined,  // (Values: Create, Edit) To check if create disruption view is called in edit more or creation mode
 	urlModel : undefined,
+	
 
 	init : function(core) {
 
@@ -35,7 +37,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Load Category and custom Data
 	 */
-	loadData : function(sMode) {
+	loadData : function(sMode, oData) {
 
 		this.createViewMode = sMode;
 
@@ -53,10 +55,15 @@ airbus.mes.disruptions.ModelManager = {
 		this.loadJigtoolList();
 
 		if (this.createViewMode == "Create") {
+			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel").setData();
+            oView.getModel("DisruptionDetailModel").setData();
+            oModel.refresh();
 			oView.oController.createDisruptionSettings();
 		} else if (this.createViewMode == "Edit") {
 			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-
+			oModel.setData(oData);
+			oView.getModel("DisruptionDetailModel").setData(oData);
+			oModel.refresh();
 			this.sMsgType = oModel.getProperty("/MessageType");
 			this.sResolverGroup = oModel.getProperty("/ResponsibleGroup");
 

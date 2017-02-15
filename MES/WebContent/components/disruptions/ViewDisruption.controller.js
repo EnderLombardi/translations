@@ -869,7 +869,7 @@ sap.ui
 
                                   onReportDisruption : function(oEvent) {
                                          // Load create view data and Set view mode = Create
-                                         airbus.mes.disruptions.ModelManager.loadData("Create");
+                                         airbus.mes.disruptions.ModelManager.loadData("Create", {});
                                          
                                          
                                          /*// Close expanded disruption panel
@@ -880,8 +880,8 @@ sap.ui
                                          oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
                                          
                                          // clear disruptionDetailModel if edit is loaded before ReportDisruption
-                                         sap.ui.getCore().getModel("DisruptionDetailModel").setData();
-                                         airbus.mes.disruptions.oView.createDisruption.getModel("DisruptionDetailModel").setData();
+                                         //sap.ui.getCore().getModel("DisruptionDetailModel").setData();
+                                         //airbus.mes.disruptions.oView.createDisruption.getModel("DisruptionDetailModel").setData();
                                          
                                          /*// V1.5 [BEG] -- no more required in v1.5
                                          // SD-SP1604983-CDP-010 and SD-SP1604983-DDR-005
@@ -917,8 +917,8 @@ sap.ui
                                   * Edit Disruption
                                   */
                                   onEditDisruption : function(oEvent) {
-                                         
-                                         // Fill model DisruptionDetailModel to show data on
+                                         //[MES V1.5 DEL]
+                                       /*  // Fill model DisruptionDetailModel to show data on
                                          // edit screen
                                          var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
                                          var oModelView = airbus.mes.disruptions.oView.createDisruption.getModel("DisruptionDetailModel");
@@ -929,12 +929,13 @@ sap.ui
                                          oModel.setData(oBindingContext.getProperty(oBindingContext.sPath));
                                          oModel.refresh();
                                          oModelView.setData(oBindingContext.getProperty(oBindingContext.sPath));
-                                         oModelView.refresh(true);                              
-                                         
+                                         oModelView.refresh(true);   */
+                                	  //[DEL end]
+                                	  	var oData = oBindingContext.getProperty(oBindingContext.sPath);
                                          
                                          
                                          // Load create view data and Set view mode = Edit
-                                         airbus.mes.disruptions.ModelManager.loadData("Edit");
+                                         airbus.mes.disruptions.ModelManager.loadData("Edit", oData);
                                                                                   
 
                                          /*// Close expanded disruption panel

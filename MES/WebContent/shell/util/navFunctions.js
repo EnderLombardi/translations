@@ -431,19 +431,20 @@ airbus.mes.shell.util.navFunctions = {
         if (nav.getPage("disruptionDetailView") == null) {
             nav.addPage(airbus.mes.disruptions.oView.disruptionDetail)
         }
-
+  		//[MESV 1.5]
+		/*airbus.mes.disruptions.oView.disruptionDetail.getModel("DisruptionDetailModel").setData(oData);
+		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();*/
+        
         // Navigate
         nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId());
 
         // Set Data in disruption Detail Model with comments
         var oData = oDataset.Rowsets.Rowset[0].Row[0];
         oData.comments = oDataset.Rowsets.Rowset[1].Row;
+		// Load data from back-end services - Call load data function in Edit Mode
+		airbus.mes.disruptions.ModelManager.createEditFlag = false;
+		airbus.mes.disruptions.ModelManager.loadData("Edit",oData);
 
-        sap.ui.getCore().getModel("DisruptionDetailModel").setData(oData);
-        airbus.mes.disruptions.oView.disruptionDetail.getModel("DisruptionDetailModel").setData(oData);
-
-        // Load data from back-end services - Call load data function in Edit Mode
-        airbus.mes.disruptions.ModelManager.loadData("Edit");
     },
 
 
