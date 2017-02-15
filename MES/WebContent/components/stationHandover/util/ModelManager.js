@@ -7,6 +7,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 	queryParams : jQuery.sap.getUriParameters(),
 	i18nModel : undefined,
 	selectAll : false,
+	copyOfModel : {},
 	filter : {
 		"search" : undefined,
 		"type" : new sap.ui.model.Filter({
@@ -164,10 +165,11 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
-
+		
 		try {
 
 			var aModel = oViewModel.oData.row;
+//			airbus.mes.stationHandover.util.ModelManager.copyOfModel = JSON.parse(JSON.stringify(oViewModel.oData));
 			//Create tree of for manage selection of tree
 			aModel.forEach(function(el, indice) {
 

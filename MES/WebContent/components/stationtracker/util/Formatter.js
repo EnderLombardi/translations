@@ -285,8 +285,8 @@ airbus.mes.stationtracker.util.Formatter = {
 		if (oBox.rmaStatus === 1) { //rma
 			sLeftIcon = boxDisplayManager.leftTriangleIcon_Dandelion;
 		}
-		if (oBox.OSW === 3) { //OSW
-			sLeftIcon2 = boxDisplayManager.leftOswIcon_Constructor(sOSW);
+		if (oBox.OSW === 3 ||oBox.OSW === 4) { //OSW
+			sLeftIcon2 = boxDisplayManager.leftOswIcon_Constructor(sOSW,oBox.aAcpngStatus);
 		}
 		if (oBox.isUnplanned === 1) { //Unplanned
 			sLeftIcon3 = boxDisplayManager.leftOswIcon_Constructor(sUNPD);
@@ -317,9 +317,9 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
-				if (oBox.OSW === 3) { //OSW
-					sLeftIcon2 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sOSW);
-				}
+//				if (oBox.OSW === 3) { //OSW
+//					sLeftIcon2 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sOSW);
+//				}
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sUNPD);
 				}
@@ -333,9 +333,9 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 				}
-				if (oBox.OSW === 3) { //OSW
-					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-				}
+//				if (oBox.OSW === 3) { //OSW
+//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+//				}
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
@@ -349,9 +349,9 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
-				if (oBox.OSW === 3) { //OSW
-					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-				}
+//				if (oBox.OSW === 3) { //OSW
+//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+//				}
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
@@ -365,9 +365,9 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 				}
-				if (oBox.OSW === 3) { //OSW
-					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-				}
+//				if (oBox.OSW === 3) { //OSW
+//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+//				}
 
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
@@ -382,9 +382,9 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
-				if (oBox.OSW === 3) { //OSW
-					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-				}
+//				if (oBox.OSW === 3) { //OSW
+//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+//				}
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}

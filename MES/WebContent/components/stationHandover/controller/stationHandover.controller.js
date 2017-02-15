@@ -292,7 +292,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 **************************************************************************/
 	selectAll : function(oEvt) {
 		var that = this;
-		var sValue = oEvt.getSource().mProperties.selected;
+		var bValue = oEvt.getSource().mProperties.selected;
 		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
 		var aRows = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getRows();
@@ -306,52 +306,24 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 				
 				if (oModelOsw.MATERIAL_DESCRIPTION != undefined) {
 					
-					aValueSelected[oModelOsw.WOID].open = sValue;
+					aValueSelected[oModelOsw.WOID].open = bValue;
 					//Store the stat of the selected row in the object to know if it is in modification or not
-					that.isSelected(aValueSelected[oModelOsw.WOID],sValue);
+					that.isSelected(aValueSelected[oModelOsw.WOID],bValue);
 					
 				} else {
 					
 					// store in object the WOID + OPERATION TO select
 					var sID = oModelOsw.WOID + "##||##" + oModelOsw.REFERENCE
 
-					aValueSelected[oModelOsw.WOID][sID].open = sValue;
+					aValueSelected[oModelOsw.WOID][sID].open = bValue;
 					
 					//Store the stat of the selected row in the object to know if it is in modification or not
-					that.isSelected(aValueSelected[oModelOsw.WOID][sID],sValue);
+					that.isSelected(aValueSelected[oModelOsw.WOID][sID],bValue);
 		
 				}
 								
 			}
 		})
-		
-//		
-//		
-//		
-//		airbus.mes.stationHandover.oView.byId("TreeTableBasic").getRows()[1].getCells()[0].oPropagatedProperties.oBindingContexts.oswModel.sPath
-//		
-//		
-//		Object.keys(aValueSelected).forEach(function(el, indice) {
-//
-//			if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
-//
-//				aValueSelected[el].open = sValue;
-//				//Store the stat of the selected row in the object to know if it is in modification or not
-//				that.isSelected(aValueSelected[el],sValue);
-//
-//				Object.keys(aValueSelected[el]).forEach(function(al, indice1) {
-//
-//					if (al != "open" && al != "oswItems" && al != "initial" && al !="changed") {
-//
-//						aValueSelected[el][al].open = sValue;
-//						//Store the stat of the selected row in the object to know if it is in modification or not
-//						that.isSelected(aValueSelected[el][al],sValue);
-//
-//					}
-//
-//				})
-//			}
-//		})
 
 		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true);
 	},
@@ -361,7 +333,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 **************************************************************************/
 	onSelectRow : function(oEvt) {
 
-		var sValue = oEvt.getSource().mProperties.selected;
+		var bValue = oEvt.getSource().mProperties.selected;
 		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
 		var sPath = oEvt.getSource().oPropagatedProperties.oBindingContexts.oswModel.sPath;
 		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").getProperty(sPath);
@@ -369,19 +341,19 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		// Check if we selected a chill or not
 		if (oModel.MATERIAL_DESCRIPTION != undefined) {
-
-			aValueSelected[oModel.WOID].open = sValue;
+				
+			aValueSelected[oModel.WOID].open = bValue;
 			//Store the stat of the selected row in the object to know if it is in modification or not
-			that.isSelected(aValueSelected[oModel.WOID],sValue);
+			that.isSelected(aValueSelected[oModel.WOID],bValue);
 
 			Object.keys(aValueSelected[oModel.WOID]).forEach(function(el, indice) {
 
 				if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
 
-					aValueSelected[oModel.WOID][el].open = sValue;
+					aValueSelected[oModel.WOID][el].open = bValue;
 								
 					//Store the stat of the selected row in the object to know if it is in modification or not
-					that.isSelected(aValueSelected[oModel.WOID][el],sValue);
+					that.isSelected(aValueSelected[oModel.WOID][el],bValue);
 
 
 				}
@@ -391,10 +363,10 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			// store in object the WOID + OPERATION TO select
 			var sID = oModel.WOID + "##||##" + oModel.REFERENCE
 
-			aValueSelected[oModel.WOID][sID].open = sValue;
+			aValueSelected[oModel.WOID][sID].open = bValue;
 			
 			//Store the stat of the selected row in the object to know if it is in modification or not
-			that.isSelected(aValueSelected[oModel.WOID][sID],sValue);
+			that.isSelected(aValueSelected[oModel.WOID][sID],bValue);
 
 		}
 
@@ -408,10 +380,45 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 **************************************************************************/
 	isSelected : function(oToTest,bValue) {
 		
+//		var oModelCopy = airbus.mes.stationHandover.util.ModelManager.copyOfModel;
+//		
+//		if (sPath != undefined) {
+//			
+//			var oIsWorkOrder = oModelCopy.getProperty(sPath);
+//			
+//			if ( oIsWorkOrder.row != undefined ) {
+//							
+//				oIsWorkOrder.row.forEach(function(el) {
+//
+//						el.SELECTED = bValue;
+//								
+//				})
+//				
+//			} else {
+//				
+//				oIsWorkOrder
+//			}
+//			
+//		} else {
+//			
+//			oModelCopy.forEach(function(el)) {
+//				
+//				el.SELECTED = bValue;
+//				
+//				el.forEach(function(al){
+//				
+//					al.SELECTED = bValue;
+//				
+//				}))
+//				
+//			}
+//			
+//		}
+		
+		
 		if (oToTest.initial != bValue) {
 	
 			// Store also the modification on the object itself to send back whens saved the modification during the import of osw
-			oToTest.oswItems.INSERTED = bValue;
 			oToTest.changed = true;
 		} else {
 			

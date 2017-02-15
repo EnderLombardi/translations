@@ -12,13 +12,33 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    leftTriangleIcon_Dandelion: '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>',
 		    leftTriangleIcon_Petrol: '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>',
 		
-		    leftOswIcon: '<i class="fa fa-refresh oswIcon"><b style="padding-left:1px max-width:80px">',
+		    leftOswIcon: '<i class="fa fa-refresh oswIcon blue "><b style="padding-left:1px max-width:80px">',
+		    leftOswIcon1: '<i class="fa fa-refresh oswIcon dandelion"><b style="padding-left:1px max-width:80px">',
+		    leftOswIcon2: '<i class="fa fa-refresh oswIcon green"><b style="padding-left:1px max-width:80px">',
+		    leftOswIcon3: '<i class="fa fa-refresh oswIcon pink"><b style="padding-left:1px max-width:80px">',
+		    
 		    leftOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon"><b style="padding-left:1px">',
 		    leftOswIcon_TealBlueWhite: '<i class="fa fa-refresh oswIcon teal-blue white">',
 		
-		    leftOswIcon_Constructor: function(elt) {
-		        return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon + elt + '</b></i>';
-		    },
+
+			leftOswIcon_Constructor : function(elt, sStatus) {
+			    						
+					switch(sStatus) {
+				    case "1":
+				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon1 + elt + "1" + '</b></i>';
+				        break;
+				    case "2":
+				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon2 + elt + "2" + '</b></i>';
+				        break;
+				    case "3":
+				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon3 + elt + "3" + '</b></i>';
+				        break;
+				    default:
+				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon3 + elt + '</b></i>';
+				    	//return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon1 + elt + "1" + '</b></i>';
+
+					}			
+			},
 		
 		    leftOswIcon_Dandelion_Constructor: function(elt) {
 		        return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Dandelion + elt + '</b></i>';
