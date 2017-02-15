@@ -88,25 +88,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         console.log(commentBox);
     },
 
-    /***********************************************************    
-* Show Upload Box to Add Comments
-*/
-    // showUploadBox: function (oEvt) {
-    //     var commentBox = this.getView().byId("trackingtemplateView--commentBox");
-    //     commentBox.setVisible(true);
-    //     var uploadBox = this.getView().byId("trackingtemplateView--UploadCollection");
-    //     uploadBox.setVisible(true);
-    //     console.log(uploadBox);
-    // },
-
-    // /***********************************************************
-    //  * Hide Upload Box to Add Comments
-    //  */
-    // hideUploadBox: function (oEvt) {
-    //     var uploadBox = this.getView().byId("trackingtemplateView--UploadCollection");
-    //     uploadBox.setVisible(false);
-    // },
-
     /***********************************************************
      * Submit Disruption Comment
      */
@@ -129,6 +110,18 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     },
 
     submitComment: function (oEvt) {
+        var textArea = this.getView().byId('commentArea');
+        console.log(textArea.getValue());
+        textArea.setValue('');
+        var attachmentFilesCollection = this.getView().byId('UploadCollection');
+        var collection = attachmentFilesCollection.getItems();
+        var size = collection.length;
+        console.log(size);
+        var i=0;
+        for( ; i < size ; i+=1) {
+            console.log(collection[i].getAttributes());
+            console.log(collection[i].getFileName());
+        }
 
     },
 
