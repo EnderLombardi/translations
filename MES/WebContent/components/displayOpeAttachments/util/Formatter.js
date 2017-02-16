@@ -3,14 +3,16 @@
 
 airbus.mes.displayOpeAttachments.util.Formatter = {
 
+    /* *********************************************************************** *
+	 *  FORMAT DOCUMENTS DATA                                           	   *
+	 * *********************************************************************** */
+
     //create dokar, dokarOrDoknr & doktl using workInstruction
     extractWorkinstruction: function (row) {
         for (var i = 0; i < row.length; i += 1) {
             row[i].dokar = row[i].workInstruction.split("/")[0];//needed to sort
             row[i].dokarOrDoknr = row[i].workInstruction.split("/")[1];//field that will contain dokar or doknr in the tree table
             row[i].doktl = row[i].workInstruction.split("/")[2];
-            //row[i].fileName = row[i].workInstruction.split("/")[3];
-
             row[i].description = row[i].descriptionWI;//we create one attribute description for both description of doc type and document
         }
     },
@@ -119,6 +121,10 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
         }
     },
 
+    /* *********************************************************************** *
+	 *  FILTER OLD VERSIONS                                              	   *
+	 * *********************************************************************** */
+
     //remove the oldest versions of a same document
     removeOldVersions: function (row) {
         this.unique(row, this.documentsCompareFunc);
@@ -160,6 +166,18 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
             } else {
                 return 0;
             }
+        }
+    },
+
+    /* *********************************************************************** *
+	 *  ICONS                                          	                       *
+	 * *********************************************************************** */
+
+    showHideAnnotate:function(annotate) {
+        if (annotate == "true") {
+            return true;
+        } else {
+            return false;
         }
     }
 };

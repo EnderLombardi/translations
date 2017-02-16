@@ -28,7 +28,7 @@
                     firstVisibleRowChanged="onScroll"
                     visibleRowCount="9">
                 <columns>
-                    <Column width="20%">
+                    <Column width="25%">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>Documents}"/>
                         <template>
                             <m:Text text="{getOpeAttachments>dokarOrDoknr}"/>
@@ -38,12 +38,6 @@
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_description}"/>
                         <template>
                             <m:Text text="{getOpeAttachments>description}"/>
-                        </template>
-                    </Column>
-                    <Column width="15%">
-                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>file_name}"/>
-                        <template>
-                            <m:Text text="{getOpeAttachments>fileName}"/>
                         </template>
                     </Column>
                     <Column width="10%">
@@ -57,7 +51,13 @@
                         <template>
                             <m:Text text="{getOpeAttachments>revision}"/>
                         </template>
-                    </Column>                 
+                    </Column>     
+                    <Column width="10%">
+                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>annotate}"/>
+                        <template>
+                        <core:Icon src="sap-icon://request" visible="{ path : 'getOpeAttachments>annotate', formatter : 'airbus.mes.displayOpeAttachments.util.Formatter.showHideAnnotate' }" />
+                        </template>
+                    </Column>              
                 </columns>
             </TreeTable>
         </m:content>

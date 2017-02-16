@@ -4,8 +4,8 @@
 			<HBox>
 				<Button id="downloadDocument" text="{i18nDisplayOpeAttachmentsModel>Download}" icon="sap-icon://download" 
 						press="airbus.mes.displayOpeAttachments.oView.oController.downloadDocument"/>
-				<Button id="openDocument" text="{i18nDisplayOpeAttachmentsModel>Open}" icon="sap-icon://vds-file" 
-						press="airbus.mes.displayOpeAttachments.oView.oController.openDocumentInMesViewer"/>
+				<Button id="openDocument" text="{i18nDisplayOpeAttachmentsModel>Annotate}" icon="sap-icon://request" 
+						press="airbus.mes.displayOpeAttachments.oView.oController.externOpen"/>
 			</HBox>
 		</content>
 		<buttons>

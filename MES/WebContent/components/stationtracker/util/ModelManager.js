@@ -1054,6 +1054,8 @@ airbus.mes.stationtracker.util.ModelManager = {
                 airbus.mes.stationtracker.util.ModelManager.stationInProgress.ShopOrderBO = aModel[0].SHOP_ORDER_BO;
                 airbus.mes.stationtracker.util.ModelManager.stationInProgress.RouterStepBO = aModel[0].ROUTERSTEPBO;
                 airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM = aModel[0].ERP_SYSTEM;
+                airbus.mes.stationtracker.util.ModelManager.stationInProgress.WORKORDER_ID = aModel[0].WORKORDER_ID;
+                airbus.mes.stationtracker.util.ModelManager.stationInProgress.OPERATION_ID = aModel[0].OPERATION_ID
 
 
                 // calculate status of operation

@@ -5,9 +5,10 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 
 	urlModel: undefined,
 	treeTableArray: [],
+	functions: ["OPEN_DOCUMENT_OPERATION", "OPEN_DOCUMENT_WORKORDER"],
 
 	init: function (core) {
-		var aModel = ["getOpeAttachments", "getDocumentExtensions", "getDocumentTypes"];
+		var aModel = ["getOpeAttachments", "getDocumentTypes", "getExternalUrlTemplate"];
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
 		// Handle URL Model
@@ -15,8 +16,8 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	},
 
 	//load the parameters needed for the documents request
-	getLoadDOAParam: function () {
-		var paramArray = [], shopOrderBO, routerBO, site, routerStepBO, erpId;
+	getDoaParameters: function () {
+		var doaParameters = [], site, erpId, shopOrderBO, routerBO, routerStepBO;
 
 		site = airbus.mes.settings.ModelManager.site;
 		erpId = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM;
@@ -26,46 +27,94 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		routerBO = routerBO.replace(/,[^,]+$/, "");//delete all after the last comma
 
 		//fill the parameters array
-		paramArray.push(site);
-		paramArray.push(erpId);
-		paramArray.push(shopOrderBO);
-		paramArray.push(routerBO);
-		paramArray.push(routerStepBO);
+		doaParameters.push(site);
+		doaParameters.push(erpId);
+		doaParameters.push(shopOrderBO);
+		doaParameters.push(routerBO);
+		doaParameters.push(routerStepBO);
 
-		return paramArray;
+		return doaParameters;
+	},
+
+	//load the parameters needed for the documents request
+	getExternalUrlTemplateParameters: function () {
+		var externalUrlTemplateParameters = [], site, erpId, fct;
+		var set = airbus.mes.displayOpeAttachments.component.mProperties.sSet;
+
+		site = airbus.mes.settings.ModelManager.site;
+		erpId = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM; 
+		if (set === "O") {
+			fct = this.functions[0];
+		} else {
+			fct = this.functions[1];
+		}
+
+		//fill the parameters array
+		externalUrlTemplateParameters.push(site);
+		externalUrlTemplateParameters.push(erpId);
+		externalUrlTemplateParameters.push(fct);
+
+		return externalUrlTemplateParameters;
+	},
+
+		//load the parameters needed for the documents request
+	getExternalUrlParameters: function () {
+		var externalUrlParameters = [], workorder, operation;
+		var set = airbus.mes.displayOpeAttachments.component.mProperties.sSet;
+
+		workorder = airbus.mes.stationtracker.util.ModelManager.stationInProgress.WORKORDER_ID;
+		if (set === "O") {
+			operation = airbus.mes.stationtracker.util.ModelManager.stationInProgress.OPERATION_ID;
+		} else {
+			operation = "";
+		}
+
+		//fill the parameters array
+		externalUrlParameters.push(workorder);
+		externalUrlParameters.push(operation);
+
+		return externalUrlParameters;
 	},
 
 	//request + loadData + formatter on response + model refresh
 	loadDOADetail: function () {
 		var oViewModel = airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments");
-		var oViewModelDocTypes = airbus.mes.displayOpeAttachments.oView.getModel("getDocumentTypes");
-		var oViewModelExtensions = airbus.mes.displayOpeAttachments.oView.getModel("getDocumentExtensions");
-		var paramArray;
+		var vmDocTypes = airbus.mes.displayOpeAttachments.oView.getModel("getDocumentTypes");
+		var vmExternalUrlTemplate = airbus.mes.displayOpeAttachments.oView.getModel("getExternalUrlTemplate");
+		var doaParameters, externalUrlTemplateParameters, externalUrlParameters;
 
 		//used to fix bad loginType with localhost
 		//sessionStorage.loginType = "dmi";
-
 		if (sessionStorage.loginType !== "local") {
-			paramArray = this.getLoadDOAParam();
+			doaParameters = this.getDoaParameters();
+			externalUrlTemplateParameters = this.getExternalUrlTemplateParameters();
+			externalUrlParameters = this.getExternalUrlParameters();
 		} else {
-			paramArray = [];
+			doaParameters = [];
 		}
 
-		oViewModelDocTypes.loadData(this.getDocumentTypes(), null, false);
-		oViewModelExtensions.loadData(this.getDocumentExtensions(), null, false);
-		oViewModel.loadData(this.getDOADetail(paramArray), null, false);
+		vmDocTypes.loadData(this.getDocumentTypes(), null, false);
+		vmExternalUrlTemplate.loadData(this.getExternalUrlTemplate(externalUrlTemplateParameters), null, false);
+		oViewModel.loadData(this.getDOADetail(doaParameters), null, false);
 
+		//format data from getExternalUrlTemplate
+		if (vmExternalUrlTemplate.oData.Rowsets && vmExternalUrlTemplate.oData.Rowsets.Rowset && vmExternalUrlTemplate.oData.Rowsets.Rowset[0].Row) {
+			vmExternalUrlTemplate.oData.externalUrl = vmExternalUrlTemplate.oData.Rowsets.Rowset[0].Row[0].str_output;
+			this.getExternalUrl(externalUrlParameters);
+		}
+
+		//format data from getOpeAttachments and getDocumentTypes
 		if (oViewModel.oData.Rowsets && oViewModel.oData.Rowsets.Rowset && oViewModel.oData.Rowsets.Rowset[0].Row) {
 			var row = oViewModel.oData.Rowsets.Rowset[0].Row;
 			var docTypesRow;
 
-			if (oViewModelDocTypes.oData.Rowsets) {//if data from getDocumentTypes
-				docTypesRow = oViewModelDocTypes.oData.Rowsets.Rowset[0].Row;
+			if (vmDocTypes.oData.Rowsets) {//if data from getDocumentTypes
+				docTypesRow = vmDocTypes.oData.Rowsets.Rowset[0].Row;
 			}
 
 			airbus.mes.displayOpeAttachments.util.Formatter.extractWorkinstruction(row);//create dokar, doknr & doktl using workInstruction
 			airbus.mes.displayOpeAttachments.util.Formatter.sortByDocType(row);//sort the documents by doc type
-			oViewModel.oData.Rowsets.Rowset[0].Row = airbus.mes.displayOpeAttachments.util.Formatter.addDocTypeHierarchy(row);//create a parent object by foc type
+			oViewModel.oData.Rowsets.Rowset[0].Row = airbus.mes.displayOpeAttachments.util.Formatter.addDocTypeHierarchy(row);//create a parent object by doc type
 			airbus.mes.displayOpeAttachments.util.Formatter.removeOldVersions(oViewModel.oData.Rowsets.Rowset[0].Row);
 			airbus.mes.displayOpeAttachments.util.Formatter.addDocTypesDescriptions(oViewModel.oData.Rowsets.Rowset[0].Row, docTypesRow);
 			oViewModel.refresh(true);//refresh the model (and so the view)
@@ -114,19 +163,19 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	 * *********************************************************************** */
 
 	//replace the url with the several parameters needed
-	getDOADetail: function (paramArray) {
+	getDOADetail: function (doaParameters) {
 		var url, set = airbus.mes.displayOpeAttachments.component.mProperties.sSet;
 
 		url = this.urlModel.getProperty("getOpeAttachments");
 		if (sessionStorage.loginType !== "local") {
-			url = this.replaceURI(url, "$Site", paramArray[0]);
-			url = this.replaceURI(url, "$ErpId", paramArray[1]);
-			url = this.replaceURI(url, "$ShopOrderBO", paramArray[2]);
+			url = this.replaceURI(url, "$Site", doaParameters[0]);
+			url = this.replaceURI(url, "$ErpId", doaParameters[1]);
+			url = this.replaceURI(url, "$ShopOrderBO", doaParameters[2]);
 
 			//operation or work order
 			if (set === "O") {
-				url = this.replaceURI(url, "$RouterBO", paramArray[3]);
-				url = this.replaceURI(url, "$RouterStepBO", paramArray[4]);
+				url = this.replaceURI(url, "$RouterBO", doaParameters[3]);
+				url = this.replaceURI(url, "$RouterStepBO", doaParameters[4]);
 			} else if (set === "P") {
 				url = this.replaceURI(url, "$RouterBO", "");
 				url = this.replaceURI(url, "$RouterStepBO", "");
@@ -143,30 +192,48 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	},
 
 	//replace the url with the several parameters needed
+	getExternalUrlTemplate: function (externalUrlTemplateParameters) {
+		var url = this.urlModel.getProperty("getExternalUrlTemplate");
+		if (sessionStorage.loginType !== "local") {
+			url = this.replaceURI(url, "$Site", externalUrlTemplateParameters[0]);
+			url = this.replaceURI(url, "$ErpId", externalUrlTemplateParameters[1]);
+			url = this.replaceURI(url, "$Function", externalUrlTemplateParameters[2]);
+		}
+
+		return url;
+	},
+
+	//replace the url with the several parameters needed
+	getExternalUrl: function (externalUrlTemplateParameters) {
+		var url = this.urlModel.getProperty("getExternalUrlTemplate");
+		if (sessionStorage.loginType !== "local") {
+			url = this.replaceURI(url, "$Site", externalUrlTemplateParameters[0]);
+			url = this.replaceURI(url, "$ErpId", externalUrlTemplateParameters[1]);
+			url = this.replaceURI(url, "$Function", externalUrlTemplateParameters[2]);
+		}
+
+		return url;
+	},
+
+	//replace the url with the several parameters needed
 	getDocumentTypes: function () {
 		var url = this.urlModel.getProperty("getDocumentTypesDescriptions");
 		return url;
 	},
 
-	//replace the url with the several parameters needed
-	getDocumentExtensions: function () {
-		var url = this.urlModel.getProperty("getDocumentExtensions");
-		return url;
-	},
-	
 	//replace URL with parameter
 	replaceURI: function (sURI, sFrom, sTo) {
 		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	},
 
 	/* *********************************************************************** *
-	 *  operation/wo mode                                               	   *
+	 *  operation/wo filter                                               	   *
 	 * *********************************************************************** */
 
-	 checkOperationWorkOrderFilter: function () {
-		 if (["O", "P"].indexOf(airbus.mes.displayOpeAttachments.component.mProperties.sSet) === -1) {
-			airbus.mes.displayOpeAttachments.component.mProperties.sSet ="O";
-		 }
-	 }
+	checkOperationWorkOrderFilter: function () {
+		if (["O", "P"].indexOf(airbus.mes.displayOpeAttachments.component.mProperties.sSet) === -1) {
+			airbus.mes.displayOpeAttachments.component.mProperties.sSet = "O";
+		}
+	}
 
 };
