@@ -40,8 +40,28 @@ airbus.mes.acpnglinks.util.Formatter = {
         var count = oTable.getVisibleRowCount();
         for(var i = 0; i < count; i++){
             var id = oTable.getRows()[i].getId();
-            $("#" + id).css("background-color", "#c5d4e4");
+            var level = $("#" + id)[0].getAttribute("aria-level");
+            $("#" + id).css("background-color", "white");
+            level = parseInt(level,10);
+            switch (level % 5){
+            case 0:
+                $("#" + id).css("background-color", "blue");
+            	break;
+            case 1:
+            	$("#" + id).css("background-color", "green");
+            	break;
+            case 2:
+            	$("#" + id).css("background-color", "red");
+            	break;
+            case 3:
+            	$("#" + id).css("background-color", "pink");
+            	break;
+            case 4:
+            	$("#" + id).css("background-color", "yellow");
+            	break;
+            }
+
         }
 
-    }
+    },
 };

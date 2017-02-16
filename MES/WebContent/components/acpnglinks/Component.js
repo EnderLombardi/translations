@@ -31,7 +31,6 @@ airbus.mes.acpnglinks.Component.prototype.createContent = function() {
 	     });
 		
 		this.oView.setModel(i18nModel, "i18nAcpngLinksModel");		
-
 		return this.oView;
 	} else {
 		
