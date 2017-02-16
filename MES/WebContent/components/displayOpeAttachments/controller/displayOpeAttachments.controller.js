@@ -467,14 +467,6 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		airbus.mes.stationtracker.operationDetailPopup.close();
 	},
 
-	openDocumentInMesViewer: function () {
-		airbus.mes.shell.util.navFunctions.docViewer(airbus.mes.displayOpeAttachments.oView.oController.originalDocumentUrl, undefined);
-
-		//close the popups
-		airbus.mes.shell.doaPopup.close();
-		airbus.mes.stationtracker.operationDetailPopup.close();
-	},
-
 	/////////////////////////////////
 	//	SELECT LEVEL
 	/////////////////////////////////

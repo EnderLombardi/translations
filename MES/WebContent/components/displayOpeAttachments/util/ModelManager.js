@@ -7,73 +7,16 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	treeTableArray: [],
 	functions: ["OPEN_DOCUMENT_OPERATION", "OPEN_DOCUMENT_WORKORDER"],
 
+	/* *********************************************************************** *
+	 *  MAIN FUNCTIONS                                                		   *
+	 * *********************************************************************** */
+
 	init: function (core) {
 		var aModel = ["getOpeAttachments", "getDocumentTypes", "getExternalUrlTemplate"];
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
 		// Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.displayOpeAttachments.config.url_config");
-	},
-
-	//load the parameters needed for the documents request
-	getDoaParameters: function () {
-		var doaParameters = [], site, erpId, shopOrderBO, routerBO, routerStepBO;
-
-		site = airbus.mes.settings.ModelManager.site;
-		erpId = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM;
-		shopOrderBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ShopOrderBO;
-		routerStepBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.RouterStepBO;
-		routerBO = routerStepBO.split(":")[1] + ":" + routerStepBO.split(":")[2];//delete the first part ("RouterStepBO:")
-		routerBO = routerBO.replace(/,[^,]+$/, "");//delete all after the last comma
-
-		//fill the parameters array
-		doaParameters.push(site);
-		doaParameters.push(erpId);
-		doaParameters.push(shopOrderBO);
-		doaParameters.push(routerBO);
-		doaParameters.push(routerStepBO);
-
-		return doaParameters;
-	},
-
-	//load the parameters needed for the documents request
-	getExternalUrlTemplateParameters: function () {
-		var externalUrlTemplateParameters = [], site, erpId, fct;
-		var set = airbus.mes.displayOpeAttachments.component.mProperties.sSet;
-
-		site = airbus.mes.settings.ModelManager.site;
-		erpId = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM; 
-		if (set === "O") {
-			fct = this.functions[0];
-		} else {
-			fct = this.functions[1];
-		}
-
-		//fill the parameters array
-		externalUrlTemplateParameters.push(site);
-		externalUrlTemplateParameters.push(erpId);
-		externalUrlTemplateParameters.push(fct);
-
-		return externalUrlTemplateParameters;
-	},
-
-		//load the parameters needed for the documents request
-	getExternalUrlParameters: function () {
-		var externalUrlParameters = [], workorder, operation;
-		var set = airbus.mes.displayOpeAttachments.component.mProperties.sSet;
-
-		workorder = airbus.mes.stationtracker.util.ModelManager.stationInProgress.WORKORDER_ID;
-		if (set === "O") {
-			operation = airbus.mes.stationtracker.util.ModelManager.stationInProgress.OPERATION_ID;
-		} else {
-			operation = "";
-		}
-
-		//fill the parameters array
-		externalUrlParameters.push(workorder);
-		externalUrlParameters.push(operation);
-
-		return externalUrlParameters;
 	},
 
 	//request + loadData + formatter on response + model refresh
@@ -224,6 +167,71 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	//replace URL with parameter
 	replaceURI: function (sURI, sFrom, sTo) {
 		return sURI.replace(sFrom, encodeURIComponent(sTo));
+	},
+
+/* *********************************************************************** *
+ *  URL PARAMETERS                                              		   *
+ * *********************************************************************** */
+
+	//load the parameters needed for the documents request
+	getDoaParameters: function () {
+		var doaParameters = [], site, erpId, shopOrderBO, routerBO, routerStepBO;
+
+		site = airbus.mes.settings.ModelManager.site;
+		erpId = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM;
+		shopOrderBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ShopOrderBO;
+		routerStepBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.RouterStepBO;
+		routerBO = routerStepBO.split(":")[1] + ":" + routerStepBO.split(":")[2];//delete the first part ("RouterStepBO:")
+		routerBO = routerBO.replace(/,[^,]+$/, "");//delete all after the last comma
+
+		//fill the parameters array
+		doaParameters.push(site);
+		doaParameters.push(erpId);
+		doaParameters.push(shopOrderBO);
+		doaParameters.push(routerBO);
+		doaParameters.push(routerStepBO);
+
+		return doaParameters;
+	},
+
+	//load the parameters needed for the documents request
+	getExternalUrlTemplateParameters: function () {
+		var externalUrlTemplateParameters = [], site, erpId, fct;
+		var set = airbus.mes.displayOpeAttachments.component.mProperties.sSet;
+
+		site = airbus.mes.settings.ModelManager.site;
+		erpId = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM;
+		if (set === "O") {
+			fct = this.functions[0];
+		} else {
+			fct = this.functions[1];
+		}
+
+		//fill the parameters array
+		externalUrlTemplateParameters.push(site);
+		externalUrlTemplateParameters.push(erpId);
+		externalUrlTemplateParameters.push(fct);
+
+		return externalUrlTemplateParameters;
+	},
+
+	//load the parameters needed for the documents request
+	getExternalUrlParameters: function () {
+		var externalUrlParameters = [], workorder, operation;
+		var set = airbus.mes.displayOpeAttachments.component.mProperties.sSet;
+
+		workorder = airbus.mes.stationtracker.util.ModelManager.stationInProgress.WORKORDER_ID;
+		if (set === "O") {
+			operation = airbus.mes.stationtracker.util.ModelManager.stationInProgress.OPERATION_ID;
+		} else {
+			operation = "";
+		}
+
+		//fill the parameters array
+		externalUrlParameters.push(workorder);
+		externalUrlParameters.push(operation);
+
+		return externalUrlParameters;
 	},
 
 	/* *********************************************************************** *
