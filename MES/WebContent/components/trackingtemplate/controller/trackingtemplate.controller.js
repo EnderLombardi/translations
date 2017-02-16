@@ -1,6 +1,6 @@
 "use strict";
 sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
-    
+
     onInit: function () {
 		/*
 		//this.nav = this.getView().byId("operDetailNavContainer");
@@ -100,7 +100,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
 
     printTrackingTemplate: function () {
         var ctrlString = "width=500px, height= 600px";
-        var wind = window.open('','PrintWindow', ctrlString);
+        var wind = window.open('', 'PrintWindow', ctrlString);
         var chart = document.getElementById('trackingtemplateView--listNotes').outerHTML;
         wind.document.write('<html><head><title>Print it!</title><link rel="stylesheet" type="text/css" href="../../../Sass/global.css"></head><body>');
         wind.document.write(chart);
@@ -117,8 +117,8 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         var collection = attachmentFilesCollection.getItems();
         var size = collection.length;
         console.log(size);
-        var i=0;
-        for( ; i < size ; i+=1) {
+        var i = 0;
+        for (; i < size; i += 1) {
             console.log(collection[i].getAttributes());
             console.log(collection[i].getFileName());
         }

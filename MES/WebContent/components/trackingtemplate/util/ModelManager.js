@@ -26,8 +26,8 @@ airbus.mes.trackingtemplate.util.ModelManager = {
 
         var aModel = ["TrackingTemplate"];
 
-        airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
-        
+        airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
+
         // Handle URL Model
         this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.trackingtemplate.config.url_config");
 
@@ -37,9 +37,16 @@ airbus.mes.trackingtemplate.util.ModelManager = {
 
     loadTrackingTemplateModel: function () {
         var oViewModel = sap.ui.getCore().getModel("TrackingTemplate");
+        var reasonCodeModel = sap.ui.getCore().getModel("reasonCodeModel");
+
+        this.loadData(oViewModel, "urltrackingtemplate");
+        this.loadData(reasonCodeModel, "getReasonCodes");
+    },
+
+    loadData: function (oViewModel, model) {
         jQuery.ajax({
             type: 'get',
-            url: this.urlModel.getProperty("urltrackingtemplate"),
+            url: this.urlModel.getProperty(model),
             contentType: 'application/json',
 
             success: function (data) {
@@ -53,7 +60,8 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 jQuery.sap.log.info(error);
             }
         });
-    },
+
+    }
 
 
 

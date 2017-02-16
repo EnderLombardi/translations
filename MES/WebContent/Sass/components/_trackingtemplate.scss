@@ -32,4 +32,18 @@
       color: $petrol;
     }
   }
+
+  .reasonCodeContainer {
+    .sapMPanelContent {
+      display: inline-flex;
+      padding : 0 1rem;
+    }
+    .sapMPanelContent:not(.sapMPanelBGTransparent) {
+      border: 0;
+    }
+    label {
+      margin: auto;
+      margin-right: 10px;
+    }
+  }
 }
