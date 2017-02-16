@@ -34,6 +34,7 @@ airbus.mes.stationHandover.Component.prototype.createContent = function() {
 	        this.oView = sap.ui.view({
 	            id : "stationHandoverView",
 	            viewName : "airbus.mes.stationHandover.view.stationHandover",
+	            height : "100%",
 	            type : "XML",
 	        });
 	        

@@ -1,183 +1,183 @@
 #stationHandoverView--kpiHeaderToolbar {
-    .comboStationHandover{
-    color: #F5F5F5;
-    font-size: 16px;
-    width: auto;
-    height: 3rem;
-    margin: 0;
-    max-width: 100%;
-    line-height: 3rem;
-    text-transform: capitalize;
-    margin-right: 0px !important;
-    border-right: solid 1px #74d2e7 !important;
-    background: #0f2d65 !important ;
-    border: 0;
-    border-left: solid 1px #74d2e7 !important;
-    opacity: 1;  
+    .comboStationHandover {
+        color: #F5F5F5;
+        font-size: 16px;
+        width: auto;
+        height: 3rem;
+        margin: 0;
+        max-width: 100%;
+        line-height: 3rem;
+        text-transform: capitalize;
+        margin-right: 0px !important;
+        border-right: solid 1px #74d2e7 !important;
+        background: #0f2d65 !important;
+        border: 0;
+        border-left: solid 1px #74d2e7 !important;
+        opacity: 1;
     }
-    .sapMSltLabel{
-            line-height: 3rem;  
-            color: #74d2e7; 
-        }
-     #stationHandoverView--selectMsnHandover-arrow,#stationHandoverView--selectStationHandover-arrow{
-     	padding-top:8px;
-     }
+    .sapMSltLabel {
+        line-height: 3rem;
+        color: #74d2e7;
+    }
+    #stationHandoverView--selectMsnHandover-arrow,
+    #stationHandoverView--selectStationHandover-arrow {
+        padding-top: 8px;
+    }
 }
 
-#stationHandoverView--headerstationhandover{
-	background-color: #D5F1F8 !important;
+#oswDialog--oswDialog-scrollCont {
+    padding: 0px
 }
 
-#stationHandoverView--navBack, #stationHandoverView--navBack-inner, #stationHandoverView--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #stationHandoverView--navBack .sapMBtnTransparent > .sapMBtnIcon {
-    color: #0D5D76 !important ;
-   }
-  
-#stationHandoverView--searchHandover{
-      border-left: 1px solid #8db9ca;
-      padding: 4px 10px;
-      border-right: 1px solid #8db9ca;
- }
+.stationHandoverTile {
+    background-color: #D5F1F8 !important;
+}
+
+.stationHandoverDialog {
+    background-color: #D5F1F8;
+    border-top: 1px solid #8db9ca;
+    margin-top: 0.6rem;
+}
+
+#stationHandoverView--navBack,
+#stationHandoverView--navBack-inner,
+#stationHandoverView--navBack-inner .sapMBtnTransparent > .sapMBtnIcon,
+#stationHandoverView--navBack .sapMBtnTransparent > .sapMBtnIcon {
+    color: #0D5D76 !important;
+}
 
 #stationHandoverView--searchHandover {
-    .sapMSFF{
+    border-left: 1px solid #8db9ca;
+    padding: 4px 10px;
+    border-right: 1px solid #8db9ca;
+}
+
+#stationHandoverView--searchHandover {
+    .sapMSFF {
         border-radius: 1em;
         border: 2px solid #74D2E7;
         color: $twilight-blue;
         overflow: hidden;
     }
     .sapMSFB.sapMSFS {
-        color: $twilight-blue;  
-    }    
-}
-
-
-#stationHandoverView--TreeTableBasic{
-    height: 50%;
-		    .sapUiTableColHdrCnt{
-		    	height:46px !important;
-				.sapUiTableColHdrScr {
-						border: solid 1px $cool-grey;
-						background-color : #e6ecf2;
-                        box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.5);
-						.sapUiTableCol{
-							border-right:1px solid white;
-						}		
-				}
-                
-			}
-    
-     
-    
-     #stationHandoverView--TreeTableBasic-table{
-        .blue{
-            background-color: aquamarine;     
-         }
-         .sapUiTableCtrlScr {
-
-                        margin-left : 25px !important;
-                    }
-         .DisOpAttLabelHandOver{
-            color:$cool-black;
-        }
-
-         .sapUiTableTreeIcon {
-             visibility: hidden;
-             width:0px;
-         }
-
-         .sapUiTableCell{
-         text-align: center;
-         }
-         .green{    
-             color:$dark-lime-green;
-         }
-          .orange{    
-             color:$dandelion-hover;
-         }
-        
-}
-          
-}
-
-   	#stationHandoverView--TreeTableBasic-rows-row0-rowselecttext.sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableRowHdr::after, .sapUiTableRowHdr::after{
-	   		width: 1rem !important;
-	   		height: 1rem !important;
-	   		border: 1px #bfbfbf solid !important;
-	   }
-	  
-	#stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr{
-		>.sapUiTableRowHdr{
-		border:none !important;
-		}
-        
-	}
-
-#stationHandoverView--TreeTableBasic-sapUiTableColHdrScr {
-    .sapUiTableColCell{
-          text-align: center ! important;
-         }  
-    
-}
-#stationHandoverView--headerstationhandover{
-    label{
-            background-color: transparent;
-		    color: #0D5D76;
-		    height: 3rem;
-		    line-height: 3rem;
-		    border-right: 1px solid #8db9ca;
-		    padding-right: 5px;
+        color: $twilight-blue;
     }
+}
 
-        .sapMSltArrow{
-                background-color: transparent;
-			    color: #0D5D76;
-			    height: 3rem;
-			    line-height: 3rem;
-			    border-right: 1px solid #8db9ca;
-        }
-        &.sapMSltPressed{
-            .sapMSltArrow{
-                background-color: #74D2E7;
+#stationHandoverView--TreeTableBasic {
+    height: 50%;
+    .sapUiTableColHdrCnt {
+        height: 46px !important;
+        .sapUiTableColHdrScr {
+            border: solid 1px $cool-grey;
+            background-color: #e6ecf2;
+            box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.5);
+            .sapUiTableCol {
+                border-right: 1px solid white;
             }
         }
-  
-   .sapMSlt{
-   	border :none ;
-   	height: 3rem;
-   	background-color: $duck-egg-blue !important;
-   }
+    }
+    #stationHandoverView--TreeTableBasic-table {
+        .blue {
+            background-color: aquamarine;
+        }
+        .sapUiTableCtrlScr {
+            margin-left: 25px !important;
+        }
+        .DisOpAttLabelHandOver {
+            color: $cool-black;
+        }
+        .sapUiTableTreeIcon {
+            visibility: hidden;
+            width: 0px;
+        }
+        .sapUiTableCell {
+            text-align: center;
+        }
+        .green {
+            color: $dark-lime-green;
+        }
+        .orange {
+            color: $dandelion-hover;
+        }
+    }
+}
+
+#stationHandoverView--TreeTableBasic-rows-row0-rowselecttext.sapUiTableColRowHdr.sapUiTableSelAllEnabled::after,
+.sapUiTableColRowHdr.sapUiTableSelAllEnabled::after,
+.sapUiTableRowHdr::after,
+.sapUiTableRowHdr::after {
+    width: 1rem !important;
+    height: 1rem !important;
+    border: 1px #bfbfbf solid !important;
+}
+
+#stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr {
+    >.sapUiTableRowHdr {
+        border: none !important;
+    }
+}
+
+#stationHandoverView--TreeTableBasic-sapUiTableColHdrScr {
+    .sapUiTableColCell {
+        text-align: center ! important;
+    }
+}
+
+#stationHandoverView--headerstationhandover {
+    label {
+        background-color: transparent;
+        color: #0D5D76;
+        height: 3rem;
+        line-height: 3rem;
+        border-right: 1px solid #8db9ca;
+        padding-right: 5px;
+    }
+    .sapMSltArrow {
+        background-color: transparent;
+        color: #0D5D76;
+        height: 3rem;
+        line-height: 3rem;
+        border-right: 1px solid #8db9ca;
+    }
+    &.sapMSltPressed {
+        .sapMSltArrow {
+            background-color: #74D2E7;
+        }
+    }
+    .sapMSlt {
+        border: none;
+        height: 3rem;
+        background-color: $duck-egg-blue !important;
+    }
     .sapMBtnDefault {
         background: transparent;
-    border: none;
-    color: #0D5D76;
-        
+        border: none;
+        color: #0D5D76;
     }
-    
-      
-    #stationHandoverView--typeHandOver{
-      border-right: 1px solid #8db9ca;
-     }
-    #stationHandoverView--originHandOver{
-      border-right: 1px solid #8db9ca;
-     }
-    
-}
-
-#stationHandoverView--insertHandOver{
-	border-left: 1px solid #8db9ca;
-	background-color: $duck-egg-blue !important;
-}
-
-#stationHandoverView--insertHandOver-inner{
-	background: none;
-    border: none;
-    color: #0D5D76;
-    >span{
-        color: #0D5D76;	
+    #stationHandoverView--typeHandOver {
+        border-right: 1px solid #8db9ca;
+    }
+    #stationHandoverView--originHandOver {
+        border-right: 1px solid #8db9ca;
     }
 }
+
+#stationHandoverView--insertHandOver {
+    border-left: 1px solid #8db9ca;
+    background-color: $duck-egg-blue !important;
+}
+
+#stationHandoverView--insertHandOver-inner {
+    background: none;
+    border: none;
+    color: #0D5D76;
+    >span {
+        color: #0D5D76;
+    }
+}
+
 #insertOsw--insertOSW {
-    
     .center {
         margin-left: auto;
         margin-right: auto;

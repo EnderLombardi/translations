@@ -21,19 +21,48 @@ airbus.mes.shell.util.navFunctions = {
         cancel: undefined
     },
 
-    stationHandover: function () {
+    stationHandover: function (bDialog) {
         if (airbus.mes.stationHandover === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.stationHandover", "../components/stationHandover");
             sap.ui.getCore().createComponent({ name: "airbus.mes.stationHandover", });
-            nav.addPage(airbus.mes.stationHandover.oView);
+          
         }
         // reDisplay all columns
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[5].setVisible(true);
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[6].setVisible(true);
         airbus.mes.shell.util.navFunctions.jigsAndTools.configME = undefined;
+        
+		if (bDialog) {
+			
+			if ( nav.getPage("stationHandoverView") != null ) {
+				//Permit to not has conflict with stationTRacker overwise scheduler disepear
+				nav.removePage("stationHandoverView");
+				sap.ui.getCore().byId("oswDialog--oswDialog").addContent(airbus.mes.stationHandover.oView);
 
-        nav.to(airbus.mes.stationHandover.oView.getId());
+			} else {
+				
+				sap.ui.getCore().byId("oswDialog--oswDialog").addContent(airbus.mes.stationHandover.oView);
+								
+			}
+			
+			airbus.mes.stationHandover.oView.byId("kpiHeaderToolbar").setVisible(false);
+			airbus.mes.stationHandover.oView.byId("navBack").setVisible(false);
+			airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverDialog");
+			airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverTile");
+
+		} else {
+			
+			nav.addPage(airbus.mes.stationHandover.oView);
+			nav.to(airbus.mes.stationHandover.oView.getId());
+			airbus.mes.stationHandover.oView.byId("kpiHeaderToolbar").setVisible(true);
+			airbus.mes.stationHandover.oView.byId("navBack").setVisible(true);
+			airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverTile");
+			airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverDialog");
+
+			
+		}
+        
     },
 
     calendar: function () {

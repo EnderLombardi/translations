@@ -357,7 +357,7 @@ sap.ui.controller(
 
                             break;
                         case "stationHandoverView":
-                        	this.stationHandover();
+                        	this.stationHandover(false);
 
                         	//TO DOrefresh
 //                          airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
