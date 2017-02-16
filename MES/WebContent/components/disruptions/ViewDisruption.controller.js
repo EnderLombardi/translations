@@ -900,15 +900,15 @@ sap.ui
                                          // edit screen
                                          var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
                                          var oModelView = airbus.mes.disruptions.oView.createDisruption.getModel("DisruptionDetailModel");
-
-                                         // set the data for this new model from the already loaded model
-                                         var oBindingContext = oEvent.getSource().getBindingContext("operationDisruptionsModel");
                                          
                                          oModel.setData(oBindingContext.getProperty(oBindingContext.sPath));
                                          oModel.refresh();
                                          oModelView.setData(oBindingContext.getProperty(oBindingContext.sPath));
                                          oModelView.refresh(true);   */
                                 	  //[DEL end]
+
+                                	  	// set the data for this new model from the already loaded model
+                                      	var oBindingContext = oEvent.getSource().getBindingContext("operationDisruptionsModel");
                                 	  	var oData = oBindingContext.getProperty(oBindingContext.sPath);
                                          
                                          

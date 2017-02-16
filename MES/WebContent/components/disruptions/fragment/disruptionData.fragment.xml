@@ -42,7 +42,7 @@
 					</items>
 				</Select>
 				<Label text="{i18nModel>issuerGroup}" />
-				<Select id="selectOriginator" selectedKey="" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setIssuerGroupVisibility'}"
+				<Select id="selectOriginator" selectedKey="" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setIssuerGroupEnable'}"
 					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}">
 					<items>
 						<core:Item text="{disruptionCategoryModel>group_desc}"
@@ -67,7 +67,7 @@
 				</Label>
 				<DatePicker id="expectedDate" displayFormat="short"
 					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
-					change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedDateVisibility'}">
+					change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedDateEnable'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
@@ -75,14 +75,14 @@
 				<TimePicker id="expectedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm"
 					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
-					change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedTimeVisibility'}">
+					change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedTimeEnable'}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
 				</TimePicker>
 				<Label text="{i18nModel>resGroup}" />
 				<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
-					change="onSelectionChange" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setResponsibleGrpVisibility'}">
+					change="onSelectionChange" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setResponsibleGrpEnable'}">
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
 							key="{disruptionRsnRespGrp>ResponsibleGroup}" />
@@ -100,7 +100,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>reason}" />
 				<Select id="selectreason" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
-					forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonVisibility'}">
+					forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}">
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>REASON}" key="{disruptionRsnRespGrp>REASON}" />
 					</items>
@@ -122,7 +122,7 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>gravity}" />
-				<Select id="gravity" selectedKey="1" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setGravityVisibility'}">
+				<Select id="gravity" selectedKey="1" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setGravityEnable'}">
 					<items>
 						<core:Item text="{i18nModel>NotBlocked}" key="1" />
 						<core:Item text="{i18nModel>Disturbed}" key="2" />
@@ -157,7 +157,7 @@
 				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 					displayFormat="short"
 					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
-					enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateVisibility'}">
+					enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
@@ -165,7 +165,7 @@
 				<TimePicker id="promisedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm:ss"
 					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
-					enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedTimeVisibility'}">
+					enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedTimeEnable'}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -209,7 +209,7 @@
 				<Select id="selectResolver"
 					items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
 					forceSelection="false"
-					enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.selectResolverVisibility'}">
+					enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.selectResolverEnable'}">
 					<items>
 						<core:Item text="{disruptionResolverModel>Name}" key="{disruptionResolverModel>UserID}" />
 					</items>
