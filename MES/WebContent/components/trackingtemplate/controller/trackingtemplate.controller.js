@@ -89,7 +89,25 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
             console.log(collection[i].getFileName());
         }
 
+        if (!this._oUserConfirmationDialog) {
+
+            this._oUserConfirmationDialog = sap.ui
+                .xmlfragment(
+                "airbus.mes.trackingtemplate.fragments.userConfirmation",
+                this);
+
+            this.getView().addDependent(
+                this._oUserConfirmationDialog);
+        }
+        this._oUserConfirmationDialog.open();
     },
 
+    onCancelConfirmation: function () {
+        this._oUserConfirmationDialog.close();
+    },
+
+    onOKConfirmation: function () {
+        this.onOKConfirmation.close();
+    }
 
 });
