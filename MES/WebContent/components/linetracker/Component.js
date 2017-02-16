@@ -1,7 +1,7 @@
 "use strict";
 //jQuery.sap.registerModulePath("airbus.mes.d3", "../lib/d3");
 //jQuery.sap.require("airbus.mes.d3.d3_3_5_17_min");
-jQuery.sap.require("airbus.mes.linetracker.kpicharts.util.Formatter");
+//jQuery.sap.require("airbus.mes.linetracker.kpicharts.util.Formatter");
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.base.Event");
 jQuery.sap.require("airbus.mes.linetracker.util.ModelManager");

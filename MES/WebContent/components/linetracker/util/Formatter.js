@@ -51,7 +51,7 @@ airbus.mes.linetracker.util.Formatter = {
 	 * @return ImageUrl
 	 */
 	getErrorFlightImage : function() {
-		return "../images_locale/Airbus.jpg";
+		return airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage');
 
 	},
 	/**
@@ -70,6 +70,9 @@ airbus.mes.linetracker.util.Formatter = {
 		var url = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
 		var oResult = airbus.mes.linetracker.util.ModelManager.getProgramForMsnStation(station, msn);
 		var sProgram;
+		//to remove hand from msn if msn exists
+		if(msn)
+			msn=msn.split("_")[0];
 		if(oResult && oResult.TF){
 			sProgram = oResult.TF;
 		}
