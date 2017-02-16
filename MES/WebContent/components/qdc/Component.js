@@ -7,7 +7,7 @@ jQuery.sap.declare("airbus.mes.qdc.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.qdc.Component", {
     metadata : {
         properties : {
-        	 includes : [ "../components/qdc/css/style.css" ]
+//        	 includes : [ "../components/qdc/css/style.css" ]
         },
         //global.css already included in components\settings\manifest.json so no need to include it here
     }

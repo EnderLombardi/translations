@@ -7,7 +7,7 @@
 
 	
 	
-	<Page showHeader="false" height="100%" enableScrolling="true">
+	<Page id="idChecklistPage" showHeader="false" height="100%" enableScrolling="true">
 		<content>
 		
 		<VBox id="TabChecklist" class="TabChecklist">
@@ -21,9 +21,14 @@
 					<tab:Column>
 						<Label class="TabChecklistLabel" text="{i18n>PointofAttention}" />
 						<tab:template>
-							<HBox>
+						<HBox >
+							<HBox justifyContent="Begin" width="100%">
 							<Text text="{QDCModel>name}" class="AllignItem" />
-							<core:Icon src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}"></core:Icon>
+							<Label text="" class="adjustWidth"/>
+							</HBox>
+							<HBox justifyContent="End" >
+							<core:Icon color="orange" src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}"></core:Icon>					
+							</HBox>
 							</HBox>
 						</tab:template>
 					</tab:Column>
@@ -35,9 +40,17 @@
 					</tab:Column>
 				</tab:columns>
 			</tab:TreeTable>
-			<HBox justifyContent="End" >
+			<HBox >
+				<HBox justifyContent="Begin" width="100%">
+				<Button text="{i18n>MEA}" width="100%" class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"></Button>
+				<Button text="{i18n>MAA}" width="100%" class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"></Button>
+				<Button text="{i18n>QDC}" width="100%" class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"></Button>
+				</HBox>
+				<HBox justifyContent="End" >
 				<Button text="Confirm" class="ConfirmChecklist"></Button>
+				</HBox>
 			</HBox>
+			
 			
 		</VBox>
 

@@ -42,5 +42,17 @@
 		}
 }		
 
+.LinkColour {
+ color: rgba(0, 86, 112, 0.94);
+  text-decoration: underline;
+		&:hover {
+			background-color: $sapui-grey-hover !important;
+			cursor : pointer;
+			span {
+				cursor : pointer;
+			}
+		}
+	
+}
 
 
