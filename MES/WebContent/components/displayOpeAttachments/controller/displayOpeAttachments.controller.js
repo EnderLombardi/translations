@@ -3,7 +3,8 @@
 sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachments", {
 
 	firstVisibleRow: 0, //first row displayed (it changes on scroll)
-	popUrl: null,
+	originalDocumentUrl: null,
+	externalUrl: null,
 
 	/////////////////////////////////
 	//	INIT/RENDERING
@@ -15,7 +16,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	//create/update model + update view
 	init: function () {
-		this.selectDocumentFilter (this.getOwnerComponent().getSSet());
+		this.selectDocumentFilter(this.getOwnerComponent().getSSet());
 
 		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
 		oModule.loadDOADetail();
@@ -100,7 +101,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var iRowIndex = oEvent.getParameter("rowIndex");//row index (sapui5)
 
 		//first we change the isOpened boolean
-		var arrayIndexOfDocType = this.getSelectedDocTypeIndex (treeTableArray, iRowIndex);
+		var arrayIndexOfDocType = this.getSelectedDocTypeIndex(treeTableArray, iRowIndex);
 		treeTableArray[arrayIndexOfDocType].isOpened = !treeTableArray[arrayIndexOfDocType].isOpened; //isOpened boolean changed because of the click 
 
 		//then we null the positions of the documents that belong to the doc type
@@ -137,7 +138,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var bExpanded = oEvent.getParameter("expanded");//expanding (true) or collapsing (false)
 
 		//var linked to the array : index & last position
-		var arrayIndex = this.getSelectedDocTypeIndex (treeTableArray, iRowIndex);//index in the array
+		var arrayIndex = this.getSelectedDocTypeIndex(treeTableArray, iRowIndex);//index in the array
 		var lastPosition = treeTableArray[arrayIndex].position;//position of the node collapsed/expanded in the array
 
 		//first we changed the isOpened boolean
@@ -201,7 +202,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 			}
 		}
 
-		var arrayIndex = this.getSelectedDocTypeIndex (treeTableArray, iRowIndex);
+		var arrayIndex = this.getSelectedDocTypeIndex(treeTableArray, iRowIndex);
 		var nbOfDocsDisplayed = 0, x = arrayIndex + 1;
 		//calculate numbers of document of this type displayed
 		while (x < treeTableArray.length && treeTableArray[x].position <= 8 && !treeTableArray[x].isDocType) {
@@ -263,7 +264,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	},
 
 	//find the selected doc type in the array (its index) based on the iRowIndex (in UI)
-	getSelectedDocTypeIndex : function (treeTableArray, iRowIndex) {
+	getSelectedDocTypeIndex: function (treeTableArray, iRowIndex) {
 		var numberOfRows = 0, arrayIndex = 0;
 		while (numberOfRows !== iRowIndex) {//we will increment to have the same numberofRows in the function than the iRowIndex (which represents the number of rows displayed)
 			if (!treeTableArray[arrayIndex].isDocType || (treeTableArray[arrayIndex].isDocType && treeTableArray[arrayIndex].isOpened)) {//if position it's displayed so we increment
@@ -405,56 +406,31 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	//open the choice popup
 	openDocument: function (oEvent) {
-		var url = oEvent.handleObj.data.url;
-		var format = url.substring(url.lastIndexOf(".") + 1).toLowerCase();
-		var model = airbus.mes.displayOpeAttachments.oView.getModel("getDocumentExtensions");
-		var documentExtensionsRows, i = 0, defaultViewer;
+		var ctrl = airbus.mes.displayOpeAttachments.oView.oController;
+		ctrl.originalDocumentUrl = oEvent.handleObj.data.url;//stock var in controller to be called from popup in shell
+		ctrl.externalUrl = airbus.mes.displayOpeAttachments.oView.getModel("getExternalUrlTemplate").oData.externalUrl;//stock var in controller to be called from popup in shell
 
-		if (model.oData.Rowsets && model.oData.Rowsets.Rowset) {//get the rows if it exist
-			documentExtensionsRows = model.oData.Rowsets.Rowset[0].Row;
+		if (!airbus.mes.shell.doaPopup) {
+			airbus.mes.shell.doaPopup = sap.ui.xmlfragment("airbus.mes.shell.doaPopup", this);
 		}
 
-		airbus.mes.displayOpeAttachments.oView.oController.popUrl = oEvent.handleObj.data.url;//stock var in controller to be called from popup in shell
+		//set models
+		airbus.mes.shell.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments"), "getOpeAttachments");
+		airbus.mes.shell.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("i18nDisplayOpeAttachmentsModel"), "i18nDisplayOpeAttachmentsModel");
 
-		if (documentExtensionsRows) {
-			//we find the good format in the array, then get the defaultViewer
-			while (i + 1 < documentExtensionsRows.length && documentExtensionsRows[i].file_extension.toLowerCase() !== format) {//we find the good format in the array
-				i++;
-			}
-			if (documentExtensionsRows[i].file_extension.toLowerCase() === format) {
-				defaultViewer = documentExtensionsRows[i].default_viewer;
-			}
-		}
-
-		//3 choices : download, mesviewer and pop-up to choose
-		if (defaultViewer === "download") {
-			airbus.mes.displayOpeAttachments.oView.oController.downloadDocument();
-		} else if (defaultViewer === "mesViewer") {
-			airbus.mes.shell.util.navFunctions.docViewer(url, undefined);
-			airbus.mes.stationtracker.operationDetailPopup.close();
-		} else {//"none" or undefined : we open a choice popup
-			if (!airbus.mes.shell.doaPopup) {
-				airbus.mes.shell.doaPopup = sap.ui.xmlfragment("airbus.mes.shell.doaPopup", this);
-			}
-
-			//set models
-			airbus.mes.shell.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments"), "getOpeAttachments");
-			airbus.mes.shell.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("i18nDisplayOpeAttachmentsModel"), "i18nDisplayOpeAttachmentsModel");
-
-			airbus.mes.shell.doaPopup.open();
-		}
+		airbus.mes.shell.doaPopup.open();
 	},
 
 	//close the choice popup
 	closeDocumentPopup: function () {
-		this.popUrl = null;
+		this.originalDocumentUrl = null;
 		airbus.mes.shell.doaPopup.close();
 	},
 
 	downloadDocument: function () {
 		//If in Chrome or Safari - download via virtual link click
 		//Creating new link node.
-		var sUrl = airbus.mes.displayOpeAttachments.oView.oController.popUrl;
+		var sUrl = airbus.mes.displayOpeAttachments.oView.oController.originalDocumentUrl;
 		var link = document.createElement('a');
 		link.href = sUrl;
 		link.setAttribute('target', '_blank');
@@ -482,8 +458,9 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		return true;
 	},
 
-	openDocumentInMesViewer: function () {
-		airbus.mes.shell.util.navFunctions.docViewer(airbus.mes.displayOpeAttachments.oView.oController.popUrl, undefined);
+	//open document in an extern tool(touch and go for example)
+	externOpen: function () {
+		window.open(airbus.mes.displayOpeAttachments.oView.oController.externalUrl);
 
 		//close the popups
 		airbus.mes.shell.doaPopup.close();
@@ -515,7 +492,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	},
 
 
-	selectDocumentFilter : function (set) {
+	selectDocumentFilter: function (set) {
 		//change operation/wo mode
 		switch (set) {
 			case "O"://operation

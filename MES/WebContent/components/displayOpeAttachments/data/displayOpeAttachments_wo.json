@@ -57,217 +57,248 @@
                         "fileName": "myGantt",
                         "revision": "A",
                         "descriptionWI": "Page one of Airbus Gantt",
-                        "URL": "http://doc.content.airbus.corp/AOT/902156999/M5/myGantt.pdf"
+                        "URL": "http://doc.content.airbus.corp/AOT/902156999/M5/myGantt.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "SOI/123456789/P1/11111111115AAAADZADZA",
                         "fileName": "myForecast",
                         "revision": "A",
                         "descriptionWI": "Forecast of new project",
-                        "URL": "http://doc.content.airbus.corp/SOI/123456789/P1/myForecast.pdf"
+                        "URL": "http://doc.content.airbus.corp/SOI/123456789/P1/myForecast.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "SOI/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "myForecastv2",
                         "revision": "B",
                         "descriptionWI": "Forecast of new project",
-                        "URL": "http://doc.content.airbus.corp/SOI/123123456/P1/myForecastv2.pdf"
+                        "URL": "http://doc.content.airbus.corp/SOI/123123456/P1/myForecastv2.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "POC/9014599/M5/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "E",
                         "descriptionWI": "A shift",
-                        "URL": "http://doc.content.airbus.corp/POC/9014599/M5/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/9014599/M5/SmallPOC.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "AOT/901234599/M5/11111111115AAAADZADZA",
                         "fileName": "shift",
                         "revision": "O",
                         "descriptionWI": "A shift",
-                        "URL": "http://doc.content.airbus.corp/AOT/901234599/M5/shift.pdf"
+                        "URL": "http://doc.content.airbus.corp/AOT/901234599/M5/shift.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "POC/123010156/P1/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "C",
                         "descriptionWI": "Forecast of new project",
-                        "URL": "http://doc.content.airbus.corp/POC/123010156/P1/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/123010156/P1/SmallPOC.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "POC/901234599/M5/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "D",
                         "descriptionWI": "A shift",
-                        "URL": "http://doc.content.airbus.corp/POC/901234599/M5/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/901234599/M5/SmallPOC.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "AOT/901234599/M5/11111111115AAAADZADZA",
                         "fileName": "shift",
                         "revision": "P",
                         "descriptionWI": "A shift",
-                        "URL": "http://doc.content.airbus.corp/AOT/901234599/M5/shift.pdf"
+                        "URL": "http://doc.content.airbus.corp/AOT/901234599/M5/shift.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "AOT/457823456/M5/11111111115AAAADZADZA",
                         "fileName": "myTab",
                         "revision": "A",
                         "descriptionWI": "Tab",
-                        "URL": "http://doc.content.airbus.corp/AOT/457823456/M5/myTab.pdf"
+                        "URL": "http://doc.content.airbus.corp/AOT/457823456/M5/myTab.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "SOI/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "myForecastv9",
                         "revision": "X",
                         "descriptionWI": "Forecast of new project",
-                        "URL": "http://doc.content.airbus.corp/SOI/123123456/P1/myForecastv9.pdf"
+                        "URL": "http://doc.content.airbus.corp/SOI/123123456/P1/myForecastv9.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "AIPI/157898456/P2/11111111115AAAADZADZA",
                         "fileName": "myTextFile",
                         "revision": "B",
                         "descriptionWI": "It's a text file",
-                        "URL": "http://doc.content.airbus.corp/AIPI/157898456/P2/myTextFile.pdf"
+                        "URL": "http://doc.content.airbus.corp/AIPI/157898456/P2/myTextFile.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "POC/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "B",
                         "descriptionWI": "Forecast of new project",
-                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "POC/901234599/M5/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "A",
                         "descriptionWI": "A shift",
-                        "URL": "http://doc.content.airbus.corp/POC/901234599/M5/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/901234599/M5/SmallPOC.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "SOI/901234599/M2/11111111115AAAADZADZA",
                         "fileName": "chart",
                         "revision": "A",
                         "descriptionWI": "Big chart",
-                        "URL": "http://doc.content.airbus.corp/SOI/901234599/M2/chart.pdf"
+                        "URL": "http://doc.content.airbus.corp/SOI/901234599/M2/chart.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "AOT/457823456/M5/11111111115AAAADZADZA",
                         "fileName": "picture",
                         "revision": "A",
                         "descriptionWI": "Picture of Saint/Nazaire",
-                        "URL": "http://doc.content.airbus.corp/AOT/457823456/M5/picture.pdf"
+                        "URL": "http://doc.content.airbus.corp/AOT/457823456/M5/picture.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "AIPI/157898456/P1/11111111115AAAADZADZA",
                         "fileName": "bigPicture",
                         "revision": "A",
                         "descriptionWI": "High quality picture of the plant",
-                        "URL": "http://doc.content.airbus.corp/AIPI/157898456/P1/bigPicture.pdf"
+                        "URL": "http://doc.content.airbus.corp/AIPI/157898456/P1/bigPicture.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "POC/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "F",
                         "descriptionWI": "It's a small poc",
-                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "POC/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "G",
                         "descriptionWI": "It's a small poc",
-                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "POC/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "H",
                         "descriptionWI": "It's a small poc",
-                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "POC/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "I",
                         "descriptionWI": "It's a small poc",
-                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "POC/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "J",
                         "descriptionWI": "It's a small poc",
-                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "POC/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "K",
                         "descriptionWI": "It's a small poc",
-                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "POC/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "L",
                         "descriptionWI": "It's a small poc",
-                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "POC/123123456/P1/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "M",
                         "descriptionWI": "It's a small poc",
-                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POC/123123456/P1/SmallPOC.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "POD/901234599/M5/11111111115AAAADZADZA",
                         "fileName": "SmallPOC",
                         "revision": "A",
                         "descriptionWI": "A shift",
-                        "URL": "http://doc.content.airbus.corp/POD/901234599/M5/SmallPOC.pdf"
+                        "URL": "http://doc.content.airbus.corp/POD/901234599/M5/SmallPOC.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "AOS/901234599/M5/11111111115AAAADZADZA",
                         "fileName": "shift",
                         "revision": "P",
                         "descriptionWI": "A shift",
-                        "URL": "http://doc.content.airbus.corp/AOS/901234599/M5/shift.pdf"
+                        "URL": "http://doc.content.airbus.corp/AOS/901234599/M5/shift.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "AOU/457823456/M5/11111111115AAAADZADZA",
                         "fileName": "myTab",
                         "revision": "A",
                         "descriptionWI": "Tab",
-                        "URL": "http://doc.content.airbus.corp/AOU/457823456/M5/myTab.pdf"
+                        "URL": "http://doc.content.airbus.corp/AOU/457823456/M5/myTab.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "AIQ/157898456/P2/11111111115AAAADZADZA",
                         "fileName": "myTextFile",
                         "revision": "B",
                         "descriptionWI": "It's a text file",
-                        "URL": "http://doc.content.airbus.corp/AIQ/157898456/P2/myTextFile.pdf"
+                        "URL": "http://doc.content.airbus.corp/AIQ/157898456/P2/myTextFile.pdf",
+                        "annotate" : "false"
                     },
                     {
                         "workInstruction": "AOX/901234599/M5/11111111115AAAADZADZA",
                         "fileName": "shift",
                         "revision": "P",
                         "descriptionWI": "A shift",
-                        "URL": "http://doc.content.airbus.corp/AOX/901234599/M5/shift.pdf"
+                        "URL": "http://doc.content.airbus.corp/AOX/901234599/M5/shift.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "AOW/457823456/M5/11111111115AAAADZADZA",
                         "fileName": "myTab",
                         "revision": "A",
                         "descriptionWI": "Tab",
-                        "URL": "http://doc.content.airbus.corp/AOW/457823456/M5/myTab.pdf"
+                        "URL": "http://doc.content.airbus.corp/AOW/457823456/M5/myTab.pdf",
+                        "annotate" : "true"
                     },
                     {
                         "workInstruction": "AIU/157898456/P2/11111111115AAAADZADZA",
                         "fileName": "myTextFile",
                         "revision": "B",
                         "descriptionWI": "It's a text file",
-                        "URL": "http://doc.content.airbus.corp/AIU/157898456/P2/myTextFile.pdf"
+                        "URL": "http://doc.content.airbus.corp/AIU/157898456/P2/myTextFile.pdf",
+                        "annotate" : "false"
                     }
                 ]
             }

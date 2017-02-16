@@ -1,0 +1,11 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2017-02-16T10:11:05", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-02-16T09:11:05+0100", "EndDate" : "2017-02-16T10:11:05+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "str_output", "SourceColumn" : "str_output", "Description" : "", "SQLDataType" : 1, "MinRange" : 0.0, "MaxRange" : 0.0 } ] }, 
+	"Row" : [ 
+		{ "str_output" : "touchngoqea://openpage/operation?workorder=$workorder&operation=$operation" } ]
+		 } ]
+	 }
+ }

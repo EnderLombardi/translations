@@ -301,13 +301,23 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
     onOSWPress: function () {
     	
     	// Create component and go on stationHandover
-        airbus.mes.shell.util.navFunctions.stationHandover();
        
+        if (airbus.mes.stationtracker.oswDialog === undefined) {
+
+            airbus.mes.stationtracker.oswDialog = sap.ui.xmlfragment("oswDialog", "airbus.mes.stationtracker.fragment.oswDialog", airbus.mes.stationtracker.oView.getController());
+            airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.oswDialog);
+            airbus.mes.stationtracker.oswDialog.setBusyIndicatorDelay(0);
+
+        } 
+
+        airbus.mes.shell.util.navFunctions.stationHandover(true);
+
         //Hide column not used in that mode SD-PPC-ST-1840
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[5].setVisible(false);
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[6].setVisible(false);
         
-        
+        airbus.mes.stationtracker.oswDialog.open();
+
 //        // delay because addDependent will do a async rerendering and the popover will immediately close without it
 //        jQuery.sap.delayedCall(0, this, function () {
 //        	airbus.mes.stationtracker.ImportOswUnplannedPopover;

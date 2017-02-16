@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<Dialog id="oswDialog" afterClose="afterCloseOperationDetailPopup" class="sapUiPopupWithPadding"
+		verticalScrolling="false" horizontalScrolling="false"	afterOpen="onAfterOpenPolypoly" contentWidth="100%"
+		 contentHeight="100%" resizable="false" stretch="false" draggable="false" title="{StationTrackerI18n>Osw}">
+		<content>
+
+		</content>
+
+		<buttons>
+			<Button id="btnReschedule" visible="false"
+				text="{StationTrackerI18n>confirm}" icon="sap-icon://history" type="Transparent"
+				press="onRescheduleConfirm" />
+			<Button text="{StationTrackerI18n>Close}" icon="sap-icon://decline"
+				press="onCloseOperationDetailPopup" />
+		</buttons>
+	</Dialog>
+
+</core:FragmentDefinition>
