@@ -465,7 +465,7 @@ sap.ui.controller(
                     	
                     	//get fragment 
                          if(airbus.mes.stationtracker.splitterWorkTracker === undefined){
-                                airbus.mes.stationtracker.splitterWorkTracker = sap.ui.xmlfragment("spliterWorkTracker","airbus.mes.stationtracker.splitterWorkTracker", airbus.mes.stationtracker.oView.getController());
+                                airbus.mes.stationtracker.splitterWorkTracker = sap.ui.xmlfragment("spliterWorkTracker","airbus.mes.stationtracker.fragment.splitterWorkTracker", airbus.mes.stationtracker.oView.getController());
                                 airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.splitterWorkTracker);
                                 }
                     	
