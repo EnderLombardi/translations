@@ -422,84 +422,55 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var aItems = aContexts.map(function(oEvent) {
 			return oEvent.getObject();
 		});
-		this.jsonToCSVConvertor(aItems, "Disruption Data", true);
+		this.jsonToCSVConvertor(aItems, "Disruption Data");
 
 	},
 
 	
 	getColumnNameInList : function (){
-		var oModel = this.getView().getModel("disruptiontrackerI18n")
-		var aColumn = [];
-		aColumn.push(oModel.getProperty("operation"));
-		aColumn.push(oModel.getProperty("workOrder"));
-		aColumn.push(oModel.getProperty("object"));
-		aColumn.push(oModel.getProperty("attribute"));
-		aColumn.push(oModel.getProperty("originatorGroup"));
-		aColumn.push(oModel.getProperty("originator"));
-		aColumn.push(oModel.getProperty("openDate"));
-		aColumn.push(oModel.getProperty("severity"));
-		aColumn.push(oModel.getProperty("status"));
-		aColumn.push(oModel.getProperty("resolutionGroup"));
-		aColumn.push(oModel.getProperty("resolver"));
-		aColumn.push(oModel.getProperty("expectedResolutionDate"));
-		aColumn.push(oModel.getProperty("escalationLevel"));
-		aColumn.push(oModel.getProperty("dateofescalation"));
-		aColumn.push(oModel.getProperty("dateofanswer"));
-		aColumn.push(oModel.getProperty("solution"));
-		return aColumn;
+		var oModel  = this.getView().getModel("disruptiontrackerI18n");
+		
+		var sHeader = oModel.getProperty("operation") + ',' + 
+					  oModel.getProperty("workOrder") + ',' +
+					  oModel.getProperty("object") + ',' +
+					  oModel.getProperty("attribute") + ',' +
+					  oModel.getProperty("originatorGroup") + ',' +
+					  oModel.getProperty("originator") + ',' +
+					  oModel.getProperty("openDate") + ',' +
+					  oModel.getProperty("severity") + ',' +
+					  oModel.getProperty("status") + ',' +
+					  oModel.getProperty("resolutionGroup") + ',' +
+					  oModel.getProperty("resolver") + ',' +
+					  oModel.getProperty("expectedResolutionDate") + ',' +
+					  oModel.getProperty("escalationLevel") + ',' +
+					  oModel.getProperty("dateofescalation") + ',' +
+					  oModel.getProperty("dateofanswer") + ',' +
+					  oModel.getProperty("solution");
+		return sHeader;
 	},
 
-	jsonToCSVConvertor : function(JSONData, ReportTitle, ShowLabel) {
+	jsonToCSVConvertor : function(JSONData, ReportTitle) {
+		
+		var CSV = '';
+
+		
+		// Get File Header
+		CSV = this.getColumnNameInList() + '\r\n';
+
 
 		// If JSONData is not an object then JSON.parse will parse the JSON
 		// string in an Object
 		var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
-		var CSV = '';
-		var row = "";
-
-		var aColumn;
-
-		// This condition will generate the Label/Header
-		if (ShowLabel) {
-
-			 row = "";
-
-			aColumn = this.getColumnNameInList()
-
-			// This loop will extract the label from 1st index of on array
-			for (var i = 0; i < aColumn.length; i++) {
-				// Now convert each value to string and comma-seprated
-
-				row += aColumn[i] + ',';
-
-
-			}
-			row = row.slice(0, -1);
-			// append Label row with line break
-			CSV += row + '\r\n';
-		}
-
-		// loop is to extract each row
+		
+		// loop to extract each row
 		for (var i = 0; i < arrData.length; i++) {
-			 row = "";
-			row += '"' + arrData[i].Operation + '",';
-			row += '"' + arrData[i].WorkOrder + '",';
-			row += '"' + arrData[i].Category + '",';
-			row += '"' + arrData[i].Reason + '",';
-			row += '"' + arrData[i].OriginatorGroup + '",';
-			row += '"' + arrData[i].OriginatorName + '",';
-			row += '"' + arrData[i].OpeningTime + '",';
-			row += '"' + arrData[i].Gravity + '",';
-			row += '"' + arrData[i].Status + '",';
-			row += '"' + arrData[i].ResponsibleGroup + '",';
-			row += '"' + arrData[i].ResolverName + '",';
-			row += '"' + arrData[i].RequiredFixBy + '",';
-			row += '"' + arrData[i].EscalationLevel + '",';
-			row += '"' + arrData[i].EscalationDateTime + '",';
-			row += '"' + arrData[i].DateOfAnswer + '",';
-			row += '"' + arrData[i].Solution + '",';
+			var row = airbus.mes.disruptiontracker.Formatter.setOperationText(arrData[i].Operation).toString() + ',' + arrData[i].WorkOrder + ',' + arrData[i].Category
+				+ ',' + arrData[i].Reason + ',' + arrData[i].OriginatorGroup + ',' + arrData[i].OriginatorName + ',' + arrData[i].OpeningTime + ','
+				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].Gravity) + ',' + arrData[i].Status + ',' + arrData[i].ResponsibleGroup + ','
+				+ arrData[i].ResolverName + ',' + arrData[i].RequiredFixBy + ','
+				+ airbus.mes.disruptiontracker.Formatter.setEscalationText(arrData[i].EscalationLevel) + ',' + arrData[i].EscalationDateTime + ','
+				+ arrData[i].DateOfAnswer + ',' + arrData[i].Solution;
 
-			row.slice(0, row.length - 1);
 			// add a line break after each row
 			CSV += row + '\r\n';
 		}
