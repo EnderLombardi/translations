@@ -31,7 +31,13 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 
     onCloseMPPopup: function() {
         airbus.mes.missingParts.oView.getContent()[0].close();
-    }
+    },
+
+	onSearch: function(oEvent) {
+		var query = oEvent.getParameter("query");
+		var oViewModel = airbus.mes.missingParts.oView.getModel("getMissingParts");
+
+	}
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

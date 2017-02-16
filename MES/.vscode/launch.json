@@ -15,14 +15,15 @@
         },
         {
             "name": "Launch",
+            "preLaunchTask": "service",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:8080/shell",
             "port": 9222,
             "sourceMaps": true,
             "diagnosticLogging": true,
-            "webRoot": "${workspaceRoot}",
-            "userDataDir": "temp"
+            "webRoot": "${workspaceRoot}/WebContent",
+            "userDataDir": "${workspaceRoot}\\out\\chrome"
         }
     ]
 }

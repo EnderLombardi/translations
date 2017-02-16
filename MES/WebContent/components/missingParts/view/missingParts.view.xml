@@ -33,9 +33,8 @@
 				id="searchField"
 				width="50%"
 				placeholder="search for..."
-				enableSuggestions="true"
-				search="onSearch"
-				suggest="onSuggest"/>
+				enableSuggestions="false"
+				search="onSearch"/>
 			</m:HBox>
 			</m:Toolbar>
 		</m:subHeader>
