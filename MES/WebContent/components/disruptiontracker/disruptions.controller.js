@@ -153,10 +153,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var sStatus = this.getView().byId("statusComboBox").getSelectedKey().toUpperCase();
 		var sResoGroup = this.getView().byId("resolutionGroupBox").getSelectedKey();
 
-		/*
-		 * var sMSN = this.getView().byId( "msnComboBox").getSelectedKey();
-		 */
-
 		var aFilters = [];
 		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
 
@@ -165,12 +161,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if (sResoGroup != "")
 			aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
 
-		/*
-		 * if (sMSN != "") aFilters.push(new sap.ui.model.Filter( "MSN", "EQ",
-		 * sMSN));
-		 */
-
-		if (this.mFilterParams) {
+				if (this.mFilterParams) {
 			jQuery.each(this.mFilterParams.filterItems, function(i, oItem) {
 				var sFilterPath;
 				if (oItem.getParent().getId() == "categoryFilter")
