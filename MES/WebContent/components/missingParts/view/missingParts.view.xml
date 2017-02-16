@@ -20,11 +20,13 @@
 			<m:Toolbar id="SearchBar">
 			<m:HBox width="100%" alignContent="Center">
 			<m:ComboBox
+				id="mpFilter"
 				placeholder="Select Filter..."
-				items="{path: 'getFilters>Name'}">
-				<core:Item key="{FilterId}" text="{Name}" />
+				items="{getMissingParts>/Rowsets/Rowset/0/Columns/Column}">
+				<core:Item key="{FilterId}" text="{path: 'getMissingParts>Name' , formatter: 'airbus.mes.missingParts.util.Formatter.getTranslation'}" />
 			</m:ComboBox>
 			<m:ComboBox
+				id="mpSorter"
 				placeholder="Select Order..."
 				items="{path: 'getOrder>Name'}">
 				<core:Item key="{OrderId}" text="{Name}" />
@@ -41,7 +43,7 @@
 			<Table id="MPTable"
 					class="MPTable"
                     rows="{getMissingParts>/Rowsets/Rowset/0/Row}"
-					selectionMode="none"
+					selectionMode="None"
 					visibleRowCount="auto">
 				<columns>
 					<Column width="10%">

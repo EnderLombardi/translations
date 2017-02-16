@@ -242,7 +242,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             sap.ui.getCore().createComponent({ name: "airbus.mes.missingParts", });
         }
         //load data
-        airbus.mes.missingParts.model.ModelManager.loadMPDetail();
+        airbus.mes.missingParts.util.ModelManager.loadMPDetail();
         //Show popup
     	airbus.mes.missingParts.oView.getContent()[0].open();
     },

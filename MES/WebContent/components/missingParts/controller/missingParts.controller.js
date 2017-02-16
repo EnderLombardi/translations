@@ -35,8 +35,19 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 
 	onSearch: function(oEvent) {
 		var query = oEvent.getParameter("query");
-		var oViewModel = airbus.mes.missingParts.oView.getModel("getMissingParts");
-
+		var mpTable_Binding = this.getView().byId("missingPartsView--MPTable").getBinding("rows");
+		if( !query || query.length == 0 ){
+			mpTable_Binding.filter( [] );
+		}
+		else
+		{
+			mpTable_Binding.filter([new sap.ui.model.Filter([
+				new sap.ui.model.Filter("WorkOrder",  sap.ui.model.FilterOperator.EQ, query),
+				new sap.ui.model.Filter("Operation",  sap.ui.model.FilterOperator.EQ, query),
+				new sap.ui.model.Filter("PartNumber",  sap.ui.model.FilterOperator.EQ, query),
+				new sap.ui.model.Filter("PartDescript",  sap.ui.model.FilterOperator.Contains, query)
+			],false)]);
+		}
 	}
 
 /**

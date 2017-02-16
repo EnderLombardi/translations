@@ -1,7 +1,7 @@
 "use strict";
-jQuery.sap.declare("airbus.mes.missingParts.model.ModelManager")
+jQuery.sap.declare("airbus.mes.missingParts.util.ModelManager")
 
-airbus.mes.missingParts.model.ModelManager = {
+airbus.mes.missingParts.util.ModelManager = {
 
 	urlModel: undefined,
 	i18nModel: undefined,
@@ -28,6 +28,8 @@ airbus.mes.missingParts.model.ModelManager = {
 	loadMPDetail: function () {
 		var oViewModel = airbus.mes.missingParts.oView.getModel("getMissingParts");
 		oViewModel.loadData(this.getMPDetail(), null, false);
+		
+
 		oViewModel.refresh(true);//refresh the model (and so the view)
 	},
 
