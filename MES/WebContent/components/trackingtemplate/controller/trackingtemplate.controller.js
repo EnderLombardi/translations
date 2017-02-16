@@ -61,9 +61,13 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         var ctrlString = "width=500px, height= 600px";
         var wind = window.open('', 'PrintWindow', ctrlString);
         var chart = document.getElementById('trackingtemplateView--listNotes').outerHTML;
-        wind.document.write('<html><head><title>Print it!</title><link rel="stylesheet" type="text/css" href="../../../Sass/global.css"></head><body>');
+        // wind.document.write('<html><head><title>Print it!</title>'
+        // +'<link rel="stylesheet" type="text/css" href="../../../Sass/global.css">'
+        // +'<link rel="stylesheet" type="text/css" href="../../../lib/dhtmlxscheduler/dhtmlxscheduler.css">'
+        // +'<link rel="stylesheet" type="text/css" href="../../../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css">'
+        // +'</head><body>');
         wind.document.write(chart);
-        wind.document.write('</body></html>');
+        // wind.document.write('</body></html>');
         wind.print();
         wind.close();
     },
