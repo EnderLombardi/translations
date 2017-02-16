@@ -1085,20 +1085,20 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 		var comment = airbus.mes.disruptions.Formatter.actions.acknowledge + this.getView().byId("comment").getValue();
 
 		// Call to Acknowledge Disruption
-		airbus.mes.disruptions.ModelManager.ackDisruption(dateTime, sMessageRef, comment);
+		var bSuccess = airbus.mes.disruptions.ModelManager.ackDisruption(dateTime, sMessageRef, comment);
 		
-		if (isSuccess) {
+		if (bSuccess) {
             
             this.getView().getModel("DisruptionDetailModel").setProperty("/Status",airbus.mes.disruptions.Formatter.status.acknowledged);
             
             var currDate = new Date();
-            var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+            var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
             
             var oComment = {
                           "Action" : this.getView().getModel("i18nModel").getProperty("acknowledge"),
                           "Comments" : comment,
                           "Counter" : "",
-                          "Date" : date,
+                          "Date" : commentDate,
                           "MessageRef" : sMessageRef,
                           "UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
                                                         sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
