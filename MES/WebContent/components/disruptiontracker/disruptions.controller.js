@@ -158,7 +158,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		 */
 
 		var aFilters = [];
-		var oBinding = this.byId("disruptionsTable").getBinding("items");
+		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
 
 		if (sStatus != "")
 			aFilters.push(new sap.ui.model.Filter("Status", "EQ", sStatus));
