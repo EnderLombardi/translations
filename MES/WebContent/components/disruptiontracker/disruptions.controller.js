@@ -425,20 +425,140 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		this.jsonToCSVConvertor(aItems, "Disruption Data", true);
 
 	},
+	getColumnNameInList : function (columnName){
+		var oModel = this.getView().getModel("disruptiontrackerI18n")
+		switch (columnName) {
+		case "Operation":
+			return oModel.getProperty("orderOperation");
+			break;
+		case "WorkOrder":
+			return oModel.getProperty("workOrder");
+			break;
+		case "Category":
+			return oModel.getProperty("object");
+			break;
+		case "Reason":
+			return oModel.getProperty("attribute");
+			break;
+		case "OriginatorName":
+			return oModel.getProperty("originator");
+			break;
+		case "OpeningTime":
+			return oModel.getProperty("openDate");
+			break;
+		case "Gravity":
+			return oModel.getProperty("severity");
+			break;
+		case "Status":
+			return oModel.getProperty("status");
+			break;
+		case "ResponsibleGroup":
+			return oModel.getProperty("resolutionGroup");
+			break;
+		case "ResolverName":
+			return oModel.getProperty("resolver");
+			break;
+		case "RequiredFixBy":
+			return oModel.getProperty("expectedResolutionDate");
+			break;
+		case "EscalationLevel":
+			return oModel.getProperty("escalationLevel");
+			break;
+		case "EscalationDateTime":
+			return oModel.getProperty("dateofescalation");
+			break;
+		case "DateOfAnswer":
+			return oModel.getProperty("dateofanswer");
+			break;
+		case "OriginatorGroup":
+			return oModel.getProperty("originatorGroup");
+			break;
+		case "Solution":
+			return oModel.getProperty("solution");
+			break;
+		//case "Time To Get Fix":
+		//case "Resolver after escalation"
+		default:
+			return "";
+			break;
+		}
+	},
+	setVisibilityDisruptionColumnData : function(columnName) {
+		switch (columnName) {
+		case "Operation":
+			return true;
+			break;
+		case "WorkOrder":
+			return true;
+			break;
+		case "Category":
+			return true;
+			break;
+		case "Reason":
+			return true;
+			break;
+		case "OriginatorName":
+			return true;
+			break;
+		case "OpeningTime":
+			return true;
+			break;
+		case "Gravity":
+			return true;
+			break;
+		case "Status":
+			return true;
+			break;
+		case "ResponsibleGroup":
+			return true;
+			break;
+		case "ResolverName":
+			return true;
+			break;
+		case "RequiredFixBy":
+			return true;
+			break;
+		case "EscalationLevel":
+			return true;
+			break;
+		case "EscalationDateTime":
+			return true;
+			break;
+		case "DateOfAnswer":
+			return true;
+			break;
+		case "OriginatorGroup":
+			return true;
+			break;
+		case "Solution":
+			return true;
+			break;
+		// case "Time To Get Fix":
+		// case "Resolver after escalation"
+		default:
+			return false;
+			break;
+		}
+	},
 	jsonToCSVConvertor : function(JSONData, ReportTitle, ShowLabel) {
 
 		// If JSONData is not an object then JSON.parse will parse the JSON
 		// string in an Object
 		var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
 		var CSV = '';
+		var row = "";
 		// This condition will generate the Label/Header
 		if (ShowLabel) {
-			var row = "";
+			 row = "";
 
 			// This loop will extract the label from 1st index of on array
 			for ( var index in arrData[0]) {
 				// Now convert each value to string and comma-seprated
-				row += index + ',';
+				var sColumnName = this.getColumnNameInList(index);
+				if (sColumnName != "") {
+					row += sColumnName + ',';
+				}
+
 			}
 			row = row.slice(0, -1);
 			// append Label row with line break
@@ -447,11 +567,14 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		// 1st loop is to extract each row
 		for (var i = 0; i < arrData.length; i++) {
-			var row = "";
+			 row = "";
 			// 2nd loop will extract each column and convert it in string
 			// comma-seprated
 			for ( var index in arrData[i]) {
+				var bVisibility = this.setVisibilityDisruptionColumnData(index);
+				if(bVisibility){
 				row += '"' + arrData[i][index] + '",';
+				}
 			}
 			row.slice(0, row.length - 1);
 			// add a line break after each row

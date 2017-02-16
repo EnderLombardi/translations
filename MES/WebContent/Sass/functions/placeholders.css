@@ -4,7 +4,18 @@ GLOBAL
 /*********************
 STATION TRACKER
 *********************/
-/*%oswIcon{ position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; color: $petrol; overflow: hidden; }*/
+/*%oswIcon{
+    position: relative;
+    z-index: 1;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    top: 5px;
+   color: $petrol;
+    overflow: hidden;
+}*/
 /**********************
 SETTINGS
 ***********************/
+
+/*# sourceMappingURL=placeholders.css.map */
