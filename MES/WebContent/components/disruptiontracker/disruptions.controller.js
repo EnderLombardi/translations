@@ -386,7 +386,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 */
 	onSearchDisruption : function(oEvt) {
 		var sQuery = oEvt.getSource().getValue();
-		var oBinding = this.getView().byId("disruptionsTable").getBinding("items");
+		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
 		var aFilters = [];
 		var filter1 = new sap.ui.model.Filter("Operation", sap.ui.model.FilterOperator.Contains, sQuery)
 		aFilters.push(filter1);
