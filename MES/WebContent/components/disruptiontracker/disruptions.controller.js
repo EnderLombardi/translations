@@ -460,7 +460,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].Gravity) + ',' + arrData[i].Status + ',' + arrData[i].ResponsibleGroup + ','
 				+ arrData[i].ResolverName + ',' + arrData[i].RequiredFixBy + ','
 				+ airbus.mes.disruptiontracker.Formatter.setEscalationText(arrData[i].EscalationLevel) + ',' + arrData[i].EscalationDateTime + ','
-				+ arrData[i].DateOfAnswer + ',' + arrData[i].Solution;
+				+ arrData[i].DateOfAnswer + ',' + airbus.mes.disruptions.Formatter.formatComment(arrData[i].Solution);
 
 			// add a line break after each row
 			CSV += row + '\r\n';
