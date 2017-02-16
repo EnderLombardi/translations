@@ -858,21 +858,21 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
 	},
 
+	
 	/***************************************************************************
 	 * on click cancel value help jigTool Box
 	 * 
 	 */
-
 	onjigToolValueHelpCancel : function() {
 		this.jigToolSelectDialog.close();
 
 	},
 
+	
 	/***************************************************************************
 	 * on click ok value help jigTool Box
 	 * 
 	 */
-
 	onjigToolValueHelpOk : function(oEvt) {
 		var aSelectedItems = sap.ui.getCore().byId("jigToolList").getSelectedItems();
 
@@ -905,6 +905,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 		this.onJigToolValueHelpRequest();
 	},
 
+	
 	/***************************************************************************
 	 * Settings to be done in parallel to load model when screen called in edit
 	 * mode.
@@ -1046,6 +1047,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
 	onNavBack : function() {
 		nav.back();
+		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 	},
 	/**
 	 * ON acknowledge disruption from disruption detail page from dekstop MES

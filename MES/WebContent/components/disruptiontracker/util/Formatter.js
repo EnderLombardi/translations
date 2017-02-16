@@ -53,6 +53,25 @@ airbus.mes.disruptiontracker.Formatter = {
 			return "";
 		}
 	},
+	setGravityText : function(gravity) {
+
+		var property;
+
+		switch (gravity) {
+		case "1":
+			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotBlocked");
+			break;
+		case "2":
+			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Disturbed");
+			break;
+		case "3":
+			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Blocked");
+			break;
+		default:
+			break;
+		}
+		return property;
+	},
 
 	setIcon : function(status) {
 

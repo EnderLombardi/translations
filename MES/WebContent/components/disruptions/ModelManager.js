@@ -57,15 +57,21 @@ airbus.mes.disruptions.ModelManager = {
 		this.loadJigtoolList();
 
 		if (this.createViewMode == "Create") {
-			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel").setData();
+			
+			// Set Empty Data
+			sap.ui.getCore().getModel("DisruptionDetailModel");
             oView.getModel("DisruptionDetailModel").setData();
-            //oModel.refresh();
+            
 			oView.oController.createDisruptionSettings();
 		} else if (this.createViewMode == "Edit") {
-			oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+			
+			// Set Data
 			oModel.setData(oData);
 			oView.getModel("DisruptionDetailModel").setData(oData);
 			oModel.refresh();
+			
+			
 			this.sMsgType = oModel.getProperty("/MessageType");
 			this.sResolverGroup = oModel.getProperty("/ResponsibleGroup");
 
@@ -608,8 +614,6 @@ airbus.mes.disruptions.ModelManager = {
 	 * Escalate Disruption Service
 	 **************************************************************************/
 	escalateDisruption : function(msgRef, sComment) {
-		var sMessageSuccess = i18nModel.getProperty("successfulEscalation");
-		var flagSuccess;
 
 		jQuery.ajax({
 			url : this.getUrlOnEscalate(),

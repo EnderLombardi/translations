@@ -153,10 +153,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var sStatus = this.getView().byId("statusComboBox").getSelectedKey().toUpperCase();
 		var sResoGroup = this.getView().byId("resolutionGroupBox").getSelectedKey();
 
-		/*
-		 * var sMSN = this.getView().byId( "msnComboBox").getSelectedKey();
-		 */
-
 		var aFilters = [];
 		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
 
@@ -165,12 +161,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if (sResoGroup != "")
 			aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
 
-		/*
-		 * if (sMSN != "") aFilters.push(new sap.ui.model.Filter( "MSN", "EQ",
-		 * sMSN));
-		 */
-
-		if (this.mFilterParams) {
+				if (this.mFilterParams) {
 			jQuery.each(this.mFilterParams.filterItems, function(i, oItem) {
 				var sFilterPath;
 				if (oItem.getParent().getId() == "categoryFilter")
@@ -303,7 +294,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		/***************************
 		 * MES V1.5 Navigate to disruption Detail Page if opened from Desktop/Laptop [Begin]
 		 */
-		if (sap.ui.Device.system.desktop) {
+		if (sap.ui.Device.system.desktop && disruptionData.Rowsets.Rowset[0].Row[0].ResponsibleFlag == "X") {
 			airbus.mes.shell.util.navFunctions.disruptionsDetailScreen(disruptionData);
 			
 			 
@@ -395,7 +386,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 */
 	onSearchDisruption : function(oEvt) {
 		var sQuery = oEvt.getSource().getValue();
-		var oBinding = this.getView().byId("disruptionsTable").getBinding("items");
+		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
 		var aFilters = [];
 		var filter1 = new sap.ui.model.Filter("Operation", sap.ui.model.FilterOperator.Contains, sQuery)
 		aFilters.push(filter1);
@@ -422,161 +413,55 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var aItems = aContexts.map(function(oEvent) {
 			return oEvent.getObject();
 		});
-		this.jsonToCSVConvertor(aItems, "Disruption Data", true);
+		this.jsonToCSVConvertor(aItems, "Disruption Data");
 
 	},
-	getColumnNameInList : function (columnName){
-		var oModel = this.getView().getModel("disruptiontrackerI18n")
-		switch (columnName) {
-		case "Operation":
-			return oModel.getProperty("orderOperation");
-			break;
-		case "WorkOrder":
-			return oModel.getProperty("workOrder");
-			break;
-		case "Category":
-			return oModel.getProperty("object");
-			break;
-		case "Reason":
-			return oModel.getProperty("attribute");
-			break;
-		case "OriginatorName":
-			return oModel.getProperty("originator");
-			break;
-		case "OpeningTime":
-			return oModel.getProperty("openDate");
-			break;
-		case "Gravity":
-			return oModel.getProperty("severity");
-			break;
-		case "Status":
-			return oModel.getProperty("status");
-			break;
-		case "ResponsibleGroup":
-			return oModel.getProperty("resolutionGroup");
-			break;
-		case "ResolverName":
-			return oModel.getProperty("resolver");
-			break;
-		case "RequiredFixBy":
-			return oModel.getProperty("expectedResolutionDate");
-			break;
-		case "EscalationLevel":
-			return oModel.getProperty("escalationLevel");
-			break;
-		case "EscalationDateTime":
-			return oModel.getProperty("dateofescalation");
-			break;
-		case "DateOfAnswer":
-			return oModel.getProperty("dateofanswer");
-			break;
-		case "OriginatorGroup":
-			return oModel.getProperty("originatorGroup");
-			break;
-		case "Solution":
-			return oModel.getProperty("solution");
-			break;
-		//case "Time To Get Fix":
-		//case "Resolver after escalation"
-		default:
-			return "";
-			break;
-		}
+
+	
+	getColumnNameInList : function (){
+		var oModel  = this.getView().getModel("disruptiontrackerI18n");
+		
+		var sHeader = oModel.getProperty("operation") + ',' + 
+					  oModel.getProperty("workOrder") + ',' +
+					  oModel.getProperty("object") + ',' +
+					  oModel.getProperty("attribute") + ',' +
+					  oModel.getProperty("originatorGroup") + ',' +
+					  oModel.getProperty("originator") + ',' +
+					  oModel.getProperty("openDate") + ',' +
+					  oModel.getProperty("severity") + ',' +
+					  oModel.getProperty("status") + ',' +
+					  oModel.getProperty("resolutionGroup") + ',' +
+					  oModel.getProperty("resolver") + ',' +
+					  oModel.getProperty("expectedResolutionDate") + ',' +
+					  oModel.getProperty("escalationLevel") + ',' +
+					  oModel.getProperty("dateofescalation") + ',' +
+					  oModel.getProperty("dateofanswer") + ',' +
+					  oModel.getProperty("solution");
+		return sHeader;
 	},
-	setVisibilityDisruptionColumnData : function(columnName) {
-		switch (columnName) {
-		case "Operation":
-			return true;
-			break;
-		case "WorkOrder":
-			return true;
-			break;
-		case "Category":
-			return true;
-			break;
-		case "Reason":
-			return true;
-			break;
-		case "OriginatorName":
-			return true;
-			break;
-		case "OpeningTime":
-			return true;
-			break;
-		case "Gravity":
-			return true;
-			break;
-		case "Status":
-			return true;
-			break;
-		case "ResponsibleGroup":
-			return true;
-			break;
-		case "ResolverName":
-			return true;
-			break;
-		case "RequiredFixBy":
-			return true;
-			break;
-		case "EscalationLevel":
-			return true;
-			break;
-		case "EscalationDateTime":
-			return true;
-			break;
-		case "DateOfAnswer":
-			return true;
-			break;
-		case "OriginatorGroup":
-			return true;
-			break;
-		case "Solution":
-			return true;
-			break;
-		// case "Time To Get Fix":
-		// case "Resolver after escalation"
-		default:
-			return false;
-			break;
-		}
-	},
-	jsonToCSVConvertor : function(JSONData, ReportTitle, ShowLabel) {
+
+	jsonToCSVConvertor : function(JSONData, ReportTitle) {
+		
+		var CSV = '';
+
+		
+		// Get File Header
+		CSV = this.getColumnNameInList() + '\r\n';
+
 
 		// If JSONData is not an object then JSON.parse will parse the JSON
 		// string in an Object
 		var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
-		var CSV = '';
-		var row = "";
-		// This condition will generate the Label/Header
-		if (ShowLabel) {
-			 row = "";
-
-			// This loop will extract the label from 1st index of on array
-			for ( var index in arrData[0]) {
-				// Now convert each value to string and comma-seprated
-				var sColumnName = this.getColumnNameInList(index);
-				if (sColumnName != "") {
-					row += sColumnName + ',';
-				}
-
-			}
-			row = row.slice(0, -1);
-			// append Label row with line break
-			CSV += row + '\r\n';
-		}
-
-		// 1st loop is to extract each row
+		
+		// loop to extract each row
 		for (var i = 0; i < arrData.length; i++) {
-			 row = "";
-			// 2nd loop will extract each column and convert it in string
-			// comma-seprated
-			for ( var index in arrData[i]) {
-				var bVisibility = this.setVisibilityDisruptionColumnData(index);
-				if(bVisibility){
-				row += '"' + arrData[i][index] + '",';
-				}
-			}
-			row.slice(0, row.length - 1);
+			var row = airbus.mes.disruptiontracker.Formatter.setOperationText(arrData[i].Operation).toString() + ',' + arrData[i].WorkOrder + ',' + arrData[i].Category
+				+ ',' + arrData[i].Reason + ',' + arrData[i].OriginatorGroup + ',' + arrData[i].OriginatorName + ',' + arrData[i].OpeningTime + ','
+				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].Gravity) + ',' + arrData[i].Status + ',' + arrData[i].ResponsibleGroup + ','
+				+ arrData[i].ResolverName + ',' + arrData[i].RequiredFixBy + ','
+				+ airbus.mes.disruptiontracker.Formatter.setEscalationText(arrData[i].EscalationLevel) + ',' + arrData[i].EscalationDateTime + ','
+				+ arrData[i].DateOfAnswer + ',' + airbus.mes.disruptions.Formatter.formatComment(arrData[i].Solution);
+
 			// add a line break after each row
 			CSV += row + '\r\n';
 		}

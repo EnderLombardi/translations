@@ -15,7 +15,7 @@
 					<!-- Header ToolBar -->
 					<OverflowToolbar height="3rem">
 						<CheckBox text="{i18n>cn_toolbar_last}" enabled="true" selected="false" select="showOnlyLastNote"/>
-						<CheckBox text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false" select="showOnlyLastNote"/>
+						<CheckBox text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false" select="showOnlyLastConfirmationNote"/>
 					</OverflowToolbar>
 					<!-- List Comment -->
 					<List id="confirmationNotes" items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" includeItemInSelection="true" class="customListItem">
@@ -30,9 +30,9 @@
 				<content>
 					<!-- Header ToolBar -->
 					<OverflowToolbar class="trackingTemplateButton" height="3rem">
-						<CheckBox id="idCheckBox" text="{i18n>won_toolbar_last}" enabled="true" selected="false" select="chckLastNote"/>
+						<CheckBox id="idCheckBox" text="{i18n>won_toolbar_last}" enabled="true" selected="false" select="showOnlyLastWONote"/>
 						<ToolbarSpacer />
-						<Button class="icon-edit" text="{i18n>won_toolbar_edit}" press="showCommentBox" icon="sap-icon://edit" />
+						<Button class="icon-edit" text="{i18n>won_toolbar_edit}" press="toggleCommentBox(true)" icon="sap-icon://edit" />
 						<Button class="icon-print" text="{i18n>won_toolbar_print}" press="printTrackingTemplate" icon="sap-icon://print"/>
 					</OverflowToolbar>
 					<!-- Comment box -->

@@ -88,6 +88,12 @@ airbus.mes.calendar.util.ModelManager = {
 			},
 
 			error : function(error, jQXHR) {
+				
+				if ( error.responseText != undefined ) {
+					
+					sap.m.MessageToast.show("Error : " + error.responseText);
+					
+				}
 				console.log("NO calendar data load");
 
 			}
