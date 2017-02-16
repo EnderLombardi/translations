@@ -812,34 +812,12 @@ sap.ui
                                   
                                   onEscalateDisruption : function(oEvent) {
                                 	  
-                                	       
-                                         
-                                         var msgRef = oEvent.getSource().getBindingContext(
-                                                       "operationDisruptionsModel").getObject(
-                                                       "MessageRef");
+                                	  var msgRef = sap.ui.getCore().byId( "disruptionCommentMsgRef").getText();
 
-                                         var i18nModel = airbus.mes.disruptions.oView.viewDisruption
-                                                       .getModel("i18nModel");
-
-                                         // Call Escalate Service
-                                         var isSuccess = airbus.mes.disruptions.ModelManager
-                                                       .escalateDisruption(msgRef, i18nModel);
-
-                                         // Change Severity level in model
-                                         if (isSuccess) {
-                                                var sPath = oEvent.getSource().getBindingContext(
-                                                              "operationDisruptionsModel").sPath;
-
-                                                this.getView()
-                                                              .getModel("operationDisruptionsModel")
-                                                              .getProperty(sPath).EscalationLevel = parseInt(this
-                                                              .getView().getModel("operationDisruptionsModel")
-                                                              .getProperty(sPath).EscalationLevel,10) + 1;
-
-                                                this.getView()
-                                                              .getModel("operationDisruptionsModel")
-                                                              .refresh();
-                                         }
+                                      var comment = airbus.mes.disruptions.Formatter.actions.escalation +
+                                                            sap.ui.getCore().byId("disruptionCommentBox").getValue();
+                                      // Call Escalate Service
+                                      airbus.mes.disruptions.ModelManager.escalateDisruption(msgRef, comment);
 
                                   },
 

@@ -608,8 +608,6 @@ airbus.mes.disruptions.ModelManager = {
 	 * Escalate Disruption Service
 	 **************************************************************************/
 	escalateDisruption : function(msgRef, sComment) {
-		var sMessageSuccess = i18nModel.getProperty("successfulEscalation");
-		var flagSuccess;
 
 		jQuery.ajax({
 			url : this.getUrlOnEscalate(),

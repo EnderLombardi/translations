@@ -175,7 +175,7 @@ sap.ui.controller(
                             break;
                         case "disruptiontrackerView":
                             textButtonTo = "Go to Disruption Tracker";
-                            airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "disruptiontracker");
+                            airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
                             break;
                         case "disruptionKPIView":
                             textButtonTo = "Go to Disruption KPI";
@@ -195,6 +195,10 @@ sap.ui.controller(
                             break;
                         case "stationHandoverView":
                        	 	textButtonTo = "Go to Calendar Tracker";
+                       	 	airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                           break;
+                        case "disruptionDetailView":
+                       	 	textButtonTo = "Go to Disruption Detail View";
                        	 	airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
                            break;
                          default:
@@ -296,6 +300,17 @@ sap.ui.controller(
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;
+                            
+                            
+                        // Disruption detailed screen - launched from disruption tracker
+                        case "disruptionDetailView":
+                             airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
+
+                            airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+                            airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
+                            break;
+                            
+                            
                         case "disruptionKPIView":
                             //refresh
 

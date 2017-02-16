@@ -26,6 +26,7 @@ airbus.mes.disruptions.Formatter = {
 		"solve" : "solve\$\$",
 		"edit" : "edit\$\$",
 		"create" : "create\$\$",
+		"escalation" : "escalation\$\$",
 		"escalationLevel1" : "escalationLevel1\$\$",
 		"escalationLevel2" : "escalationLevel2\$\$"
 	},
@@ -325,7 +326,6 @@ airbus.mes.disruptions.Formatter = {
 		return text;
 	},
 	formatCommentAction : function(action, comment) {
-
 		if (comment.indexOf("\$\$") > -1) {
 			action = comment.split("\$\$")[0];
 		}
@@ -333,6 +333,9 @@ airbus.mes.disruptions.Formatter = {
 		return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
 	},
 	formatComment : function(comment) {
+		if(!comment){
+			return "";
+		}
 		
 		if (comment.indexOf("\$\$") > -1) {
 			comment =  comment.split("\$\$")[1];

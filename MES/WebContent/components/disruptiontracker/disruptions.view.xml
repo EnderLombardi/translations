@@ -196,7 +196,7 @@
 				<ui:Column id="solutionCol">
 					<Label text="{disruptiontrackerI18n>solution}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>Solution}" />
+						<Text text="{path: 'disruptionsTrackerModel>Solution', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}" />
 					</ui:template>
 				</ui:Column>
 				

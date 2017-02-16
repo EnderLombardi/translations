@@ -1046,6 +1046,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
 	onNavBack : function() {
 		nav.back();
+		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 	},
 	/**
 	 * ON acknowledge disruption from disruption detail page from dekstop MES
