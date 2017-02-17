@@ -105,13 +105,13 @@
 							<m:Label text="{path:'oswModel>FROZEN_LIST' , formatter:'airbus.mes.stationHandover.util.Formatter.colorTracking'}" />
 						</template>
 					</Column>
-					<Column autoResizable="true">
+					<Column autoResizable="true" width="5rem">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>RemainingTime}" />
 						<template>
 							<m:Label text="{oswModel>REMAINING_TIME}" />
 						</template>
 					</Column>
-					<Column autoResizable="true">
+					<Column autoResizable="true" width="5rem">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Confirmation}" />
 						<template>
 							<m:Label text="{oswModel>CONFIRMATION}" />

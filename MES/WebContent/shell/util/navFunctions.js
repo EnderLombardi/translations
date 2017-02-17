@@ -26,6 +26,8 @@ airbus.mes.shell.util.navFunctions = {
 
             jQuery.sap.registerModulePath("airbus.mes.stationHandover", "../components/stationHandover");
             sap.ui.getCore().createComponent({ name: "airbus.mes.stationHandover", });
+    		//ReloadModel
+    		airbus.mes.shell.oView.getController().stationHandover();
           
         }
         // reDisplay all columns
@@ -50,7 +52,7 @@ airbus.mes.shell.util.navFunctions = {
 			airbus.mes.stationHandover.oView.byId("navBack").setVisible(false);
 			airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverDialog");
 			airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverTile");
-
+				
 		} else {
 			
 			nav.addPage(airbus.mes.stationHandover.oView);
@@ -59,10 +61,22 @@ airbus.mes.shell.util.navFunctions = {
 			airbus.mes.stationHandover.oView.byId("navBack").setVisible(true);
 			airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverTile");
 			airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverDialog");
+			var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
+			//Resize the width of column regarding space free
+			aColumns.forEach(function(el, indice) {
+				// Don't do auto resize blocked line it bug
+				if (indice === 1 ) {
 
-			
+				} else {
+
+					airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
+		
+				}
+
+			});
+
 		}
-        
+
     },
 
     calendar: function () {

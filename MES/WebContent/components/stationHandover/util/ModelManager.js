@@ -49,7 +49,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 		var aModel = [ "oswModel", "msnModel", "typeModel", "groupModel", "phStation", "optionInsertOsw" ]
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
-		core.getModel("oswModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onTestLoad);
+		core.getModel("oswModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onOswLoad);
 
 		var dest;
 
@@ -82,11 +82,6 @@ airbus.mes.stationHandover.util.ModelManager = {
 			}
 		}
 
-		this.loadTest();
-		this.loadType();
-		this.loadGroup();
-		this.loadPhStation();
-		this.loadOptionInsertOsw();
 	},
 
 	/* *********************************************************************** *
@@ -105,7 +100,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 	},
 
-	loadTest : function() {
+	loadOsw : function() {
 
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		var getUrlShifts = this.urlModel.getProperty("urltest");
@@ -161,7 +156,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 	},
 
-	onTestLoad : function() {
+	onOswLoad : function() {
 
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 	//	var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;

@@ -1256,6 +1256,24 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         binding.filter(Filter);
 
         airbus.mes.stationtracker.util.ModelManager.savePhStation(aValueSelected);
-    }
+    },
+    /**
+     * Fire when the user open the osw popup in the stationtracker resize the column regarding space free
+     */
+    resizeDialog : function(oEvt) {
+		
+		var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
+
+		aColumns.forEach(function(el, indice) {
+			// Don't do auto resize blocked line it bug
+			if (indice === 1 ||indice === 5 || indice === 6) {
+
+			} else {
+
+				airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
+	
+			}
+		});
+	},
 
 });
