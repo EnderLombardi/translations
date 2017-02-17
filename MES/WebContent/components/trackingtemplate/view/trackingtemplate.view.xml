@@ -20,7 +20,7 @@
 					<!-- List Comment -->
 					<List id="confirmationNotes" items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" includeItemInSelection="true" class="customListItem">
 						<items>
-							<StandardListItem title="{TrackingTemplate>ACTIVITY} : {TrackingTemplate>COMMENTS}" info="{TrackingTemplate>MODIFIED_DATE_TIME}"/>
+							<StandardListItem title="{TrackingTemplate>Activity} : {TrackingTemplate>Comments}" info="{TrackingTemplate>Modified_Date_Time}"/>
 						</items>
 					</List>
 				</content>
@@ -53,7 +53,7 @@
 					<!-- List Comment -->
 					<List id="listNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row', sorter: {path: 'MODIFIED_DATE_TIME', descending : true}}" class="customListItem">
 						<items>
-							<StandardListItem title="{TrackingTemplate>ACTIVITY} : {TrackingTemplate>COMMENTS}" info="{TrackingTemplate>MODIFIED_DATE_TIME}"/>
+							<StandardListItem title="{TrackingTemplate>Activity} : {TrackingTemplate>Comments}" info="{TrackingTemplate>Modified_Date_Time}"/>
 						</items>
 					</List>
 				</content>

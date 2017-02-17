@@ -41,7 +41,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     hideCommentBox: function () {
         var commentBox = this.getView().byId("trackingtemplateView--commentBox");
         commentBox.setVisible(false);
-        console.log(commentBox);
     },
 
     /**
