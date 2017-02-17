@@ -56,10 +56,8 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 			if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit")
 				airbus.mes.disruptions.ModelManager.createViewMode = "Update";
 
-			if (this.getView().byId("selectCategory").getSelectedKey() == "") { // Avoid
-				// un-necessary
-				// ajax
-				// call
+			// Avoid un-necessary AJAX call
+			if (this.getView().byId("selectCategory").getSelectedKey() == "") {
 				this.afterRsnRespGrpModelLoad();
 				break;
 			}
@@ -74,10 +72,8 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
 			this.getView().byId("selectResolver").setSelectedKey();
 
-			if (this.getView().byId("selectResponsibleGrp").getSelectedKey() == "") { // Avoid
-				// un-necessary
-				// ajax
-				// call
+			// Avoid un-necessary AJAX call
+			if (this.getView().byId("selectResponsibleGrp").getSelectedKey() == "") {
 				this.afterResolverModelLoad();
 				break;
 			}
@@ -86,8 +82,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 			break;
 
 		case "selectreason":
-			// Do nothing - Last field since V1.5. Root Cause was removed in
-			// V1.5
+			// Do nothing
 
 			/*
 			 * // Apply filter var aFilters = []; var sReason =
@@ -99,6 +94,8 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 			 * this.getView().byId("selectRootCause").setEnabled(true);
 			 */
 			break;
+			
+		default:
 		}
 
 	},
@@ -1066,7 +1063,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 		 * currDate.getMonth() + "-" + currDate.getDate();
 		 * 
 		 * var oComment = { "Action" :
-		 * airbus.mes.disruptions.oView.disruptionDetail.getModel("i18nModel").getProperty("reject"),
+		 * airbus.mes.disruptiondetail.oView.getModel("i18nModel").getProperty("reject"),
 		 * "Comments" : sComment, "Counter" : "", "Date" : date, "MessageRef" :
 		 * sMessageRef, "UserFullName" :
 		 * (sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +

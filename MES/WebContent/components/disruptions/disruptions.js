@@ -1138,7 +1138,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.disruptions", {
 		 * currDate.getMonth() + "-" + currDate.getDate();
 		 * 
 		 * var oComment = { "Action" :
-		 * airbus.mes.disruptions.oView.disruptionDetail.getModel("i18nModel").getProperty("reject"),
+		 * airbus.mes.disruptiondetail.oView.getModel("i18nModel").getProperty("reject"),
 		 * "Comments" : sComment, "Counter" : "", "Date" : date, "MessageRef" :
 		 * sMessageRef, "UserFullName" :
 		 * (sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +

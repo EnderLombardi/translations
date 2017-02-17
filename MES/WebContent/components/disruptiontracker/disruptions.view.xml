@@ -104,7 +104,7 @@
 						<HBox>
 							<core:Icon
 								src="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}"
-								color="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>gravity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}"
+								color="{path: 'disruptionsTrackerModel>Gravity', formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}"
 								class="sapUiSmallMarginEnd" />
 							<Text
 								text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>gravity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />

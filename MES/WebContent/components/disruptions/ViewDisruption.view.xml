@@ -382,7 +382,7 @@
 						<Button text="{i18nModel>seeLessMessages}" icon="sap-icon://email" press="seeLessMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
 							cData:messageRef="{operationDisruptionsModel>MessageRef}" design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
 
-						<List id="messageComments" showNoData="false" class="sapUiSmallMarginBeginEnd"
+						<List showNoData="false" class="sapUiSmallMarginBeginEnd"
 							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
 
 							<CustomListItem class="msgColor">

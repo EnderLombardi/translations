@@ -452,26 +452,19 @@ airbus.mes.shell.util.navFunctions = {
     // Screen to be called from disruption tracker on Laptop/Desktop by support team only -  V1.5
     disruptionsDetailScreen: function (oDataset) {
 
-        if (airbus.mes.disruptions === undefined || airbus.mes.disruptions.oView === undefined) {
-            jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
-            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptions", });
+        if (airbus.mes.disruptiondetail === undefined || airbus.mes.disruptiondetail.oView === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.disruptiondetail", "../components/disruptiondetail");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptiondetail", });
+            nav.addPage(airbus.mes.disruptiondetail.oView)
         }
-
-        if (nav.getPage("disruptionDetailView") == null) {
-            nav.addPage(airbus.mes.disruptions.oView.disruptionDetail)
-        }
-  		//[MESV 1.5]
-		/*airbus.mes.disruptions.oView.disruptionDetail.getModel("DisruptionDetailModel").setData(oData);
-		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();*/
         
         // Navigate
-        nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId());
+        nav.to(airbus.mes.disruptiondetail.oView.getId());
 
-        // Set Data in disruption Detail Model with comments
+        // Set Data in disruption Detail Model with disruption comments
         var oData = oDataset.Rowsets.Rowset[0].Row[0];
         oData.comments = oDataset.Rowsets.Rowset[1].Row;
 		// Load data from back-end services - Call load data function in Edit Mode
-		airbus.mes.disruptions.ModelManager.createEditFlag = false;
 		airbus.mes.disruptions.ModelManager.loadData("Edit",oData);
 
     },

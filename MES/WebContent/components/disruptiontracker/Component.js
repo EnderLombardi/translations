@@ -32,6 +32,7 @@ airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
             id : "disruptiontrackerView",
             viewName : "airbus.mes.disruptiontracker.disruptions",
             type : "XML",
+            height:"100%"
         })
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({
