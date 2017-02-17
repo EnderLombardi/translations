@@ -76,18 +76,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Submit a comment 
      */
     submitComment: function () {
-        var textArea = this.getView().byId('commentArea');
-        console.log(textArea.getValue());
-        textArea.setValue('');
-        var attachmentFilesCollection = this.getView().byId('UploadCollection');
-        var collection = attachmentFilesCollection.getItems();
-        var size = collection.length;
-        console.log(size);
-        var i = 0;
-        for (; i < size; i += 1) {
-            console.log(collection[i].getAttributes());
-            console.log(collection[i].getFileName());
-        }
 
         if (!this._oUserConfirmationDialog) {
 
@@ -107,7 +95,62 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     },
 
     onOKConfirmation: function () {
-        this.onOKConfirmation.close();
+        var attachmentFilesCollection = this.getView().byId('UploadCollection');
+        var collection = attachmentFilesCollection.getItems();
+        var size = collection.length;
+        // var i = 0;
+        // for (; i < size; i += 1) {
+        //     console.log(collection[i].getAttributes());
+        //     console.log(collection[i].getFileName());
+        // }
+
+        //work order number Param.1 SHopOrderNumber
+        var shopOrderNum = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
+        console.log(shopOrderNum);
+        //ERPSystem Param.2 ERPSYstem
+        var erpSystem = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system || ''
+        //Param.3 BadgeID
+        var badgeId = '';
+        //Param.4 Desciption
+        var textArea = this.getView().byId('commentArea');
+        //Param.5 ReasonCode
+        var reasonCode = this.getView().byId("reasonCodeSelectBox").getSelectedKey() ||'';
+        //Param.6 password
+        var password = sap.ui.getCore().byId('passwordTckTmpltForConfirmation').getValue();
+        //Param.7 logon
+        var login = sap.ui.getCore().byId('userNameTckTmpltForConfirmation').getValue();
+
+        console.log(airbus.mes.trackingtemplate.util.ModelManager
+            .getSendNotesUrl(
+            shopOrderNum, erpSystem, badgeId, textArea.getValue(), reasonCode, password, login
+            ));
+        jQuery
+            .ajax({
+                url: airbus.mes.trackingtemplate.util.ModelManager
+                    .getSendNotesUrl(
+                        shopOrderNum, erpSystem, badgeId, textArea.getValue(), reasonCode, password, login
+                    ),
+                async: false,
+                error: function (xhr, status, error) {
+                    airbus.mes.trackingtemplate.util.ModelManager
+                        .messageShow(sMessageError);
+
+                },
+                success: function (result, status, xhr) {
+
+                    airbus.mes.trackingtemplate.util.ModelManager
+                        .messageShow(sMessageSuccess);
+
+                }
+            });
+
+        textArea.setValue('');
+        this._oUserConfirmationDialog.close();
+    },
+
+    replaceSendNotesURLWithParams: function () {
+        url = this.urlModel.getProperty("sendNotes");
     }
+
 
 });

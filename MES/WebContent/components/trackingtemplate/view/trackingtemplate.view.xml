@@ -39,8 +39,8 @@
 					<Panel id="commentBox" visible="false" class="commentPanel">
 						<Panel class="reasonCodeContainer">
 							<Label text="{i18n>reasonCode}" />
-							<Select text="{i18n>reasonCode}" change="onSelectionReason" id="reasonCodeSelectBox" forceSelection="false" items="{reasonCodeModel>/Rowsets/Rowset/0/Columns/Column}">
-								<core:Item key="{reasonCodeModel>Name}" text="{reasonCodeModel>Description}" />
+							<Select text="{i18n>reasonCode}" change="onSelectionReason" id="reasonCodeSelectBox" forceSelection="false" items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
+								<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
 							</Select>
 						</Panel>
 						<TextArea id="commentArea" growing="true" maxLength="255" placeholder="{i18n>textAreaPlaceHolder}"/>
@@ -51,16 +51,9 @@
 						</HBox>
 					</Panel>
 					<!-- List Comment -->
-					<List id="listNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row', sorter: {path: 'MODIFIED_DATE_TIME', descending : true, sizeLimit : 1}}" headerText="Notes">
+					<List id="listNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row', sorter: {path: 'MODIFIED_DATE_TIME', descending : true}}" class="customListItem">
 						<items>
-							<ObjectListItem title="{TrackingTemplate>ACTIVITY}">
-								<firstStatus>
-									<ObjectStatus text="{TrackingTemplate>MODIFIED_DATE_TIME}"/>
-								</firstStatus>
-								<attributes>
-									<ObjectAttribute text="{TrackingTemplate>COMMENTS}" />
-								</attributes>
-							</ObjectListItem>
+							<StandardListItem title="{TrackingTemplate>ACTIVITY} : {TrackingTemplate>COMMENTS}" info="{TrackingTemplate>MODIFIED_DATE_TIME}"/>
 						</items>
 					</List>
 				</content>

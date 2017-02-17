@@ -647,6 +647,12 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
+                if (data.realHoursConfirmed.length == undefined){
+                	data.realHoursConfirmed = [data.realHoursConfirmed];
+                }
+                if (data.plannedHoursToBeConfirmed.length == undefined){
+                	data.plannedHoursToBeConfirmed = [data.plannedHoursToBeConfirmed];
+                }
                 oViewModel.setData(data);
                 airbus.mes.stationtracker.oView.byId("chartId").setBusy(false);
             },
