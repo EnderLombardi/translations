@@ -27,7 +27,7 @@ airbus.mes.disruptions.ModelManager = {
 		sap.ui.getCore().getModel("operationDisruptionsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
 		sap.ui.getCore().getModel("disruptionCategoryModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onLoadDisruptionCategory);
 		sap.ui.getCore().getModel("disruptionRsnRespGrp").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onLoadDisruptionRsnRespGrp);
-		//sap.ui.getCore().getModel("disruptionResolverModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onLoadDisruptionResolver);
+		sap.ui.getCore().getModel("disruptionResolverModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onLoadDisruptionResolver);
 
 		// Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.disruptions.config.url_config");
@@ -178,10 +178,8 @@ airbus.mes.disruptions.ModelManager = {
 		oView.byId("selectResolver").setBusy(true);
 
 		var url = airbus.mes.disruptions.ModelManager.getResolverModelURL(sResolverGroup)
-		sap.ui.getCore().getModel("disruptionResolverModel").loadData(url,null,false);
-		//this.getView().byId("selectResponsibleGrp").getSelectedKey();
-		oView.oController.afterResolverModelLoad();
-		oView.byId("selectResolver").setBusy(false);
+		sap.ui.getCore().getModel("disruptionResolverModel").loadData(url);
+		
 	},
 
 	getResolverModelURL : function(sResolverGroup) {
@@ -192,17 +190,17 @@ airbus.mes.disruptions.ModelManager = {
 
 	},
 
-	/*onLoadDisruptionResolver : function() {
-	//	var oView = airbus.mes.disruptions.func.getView();
+	onLoadDisruptionResolver : function() {
+		var oView = airbus.mes.disruptions.func.getView();
 
 		// Reset in hard the model of the view otherwise its not rebinded...
-		//oView.getModel("disruptionResolverModel").setData(sap.ui.getCore().getModel("disruptionResolverModel").oData);
+		oView.getModel("disruptionResolverModel").setData(sap.ui.getCore().getModel("disruptionResolverModel").oData);
 
-		//oView.oController.afterResolverModelLoad();
+		oView.oController.afterResolverModelLoad();
 
 		// Un-Set Busy's
-		//oView.byId("selectResolver").setBusy(false);
-	},*/
+		oView.byId("selectResolver").setBusy(false);
+	},
 
 	/***************************************************************************
 	 * Generic Function to get URL for to get Disruptions with filters or no

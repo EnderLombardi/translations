@@ -26,7 +26,7 @@ airbus.mes.disruptions.func = {
 	 **************************************************************************/
 	getView: function(){
 		if (airbus.mes.disruptions.func.isSupportTeamViaDestop()) {
-			return airbus.mes.disruptions.oView.disruptionDetail;
+			return airbus.mes.disruptiondetail.oView;
 		} else {
 			return airbus.mes.disruptions.oView.createDisruption;
 		}

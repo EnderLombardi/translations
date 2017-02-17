@@ -26,6 +26,8 @@ airbus.mes.shell.util.navFunctions = {
 
             jQuery.sap.registerModulePath("airbus.mes.stationHandover", "../components/stationHandover");
             sap.ui.getCore().createComponent({ name: "airbus.mes.stationHandover", });
+    		//ReloadModel
+    		airbus.mes.shell.oView.getController().stationHandover();
           
         }
         // reDisplay all columns
@@ -50,7 +52,7 @@ airbus.mes.shell.util.navFunctions = {
 			airbus.mes.stationHandover.oView.byId("navBack").setVisible(false);
 			airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverDialog");
 			airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverTile");
-
+				
 		} else {
 			
 			nav.addPage(airbus.mes.stationHandover.oView);
@@ -59,10 +61,22 @@ airbus.mes.shell.util.navFunctions = {
 			airbus.mes.stationHandover.oView.byId("navBack").setVisible(true);
 			airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverTile");
 			airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverDialog");
+			var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
+			//Resize the width of column regarding space free
+			aColumns.forEach(function(el, indice) {
+				// Don't do auto resize blocked line it bug
+				if (indice === 1 ) {
 
-			
+				} else {
+
+					airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
+		
+				}
+
+			});
+
 		}
-        
+
     },
 
     calendar: function () {
@@ -327,6 +341,7 @@ airbus.mes.shell.util.navFunctions = {
         if (container.getPage("trackingtemplateView") === null) {
             container.addPage(airbus.mes.trackingtemplate.oView);
         }
+        airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
     },
 
     disruptionTracker: function () {
@@ -452,26 +467,19 @@ airbus.mes.shell.util.navFunctions = {
     // Screen to be called from disruption tracker on Laptop/Desktop by support team only -  V1.5
     disruptionsDetailScreen: function (oDataset) {
 
-        if (airbus.mes.disruptions === undefined || airbus.mes.disruptions.oView === undefined) {
-            jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
-            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptions", });
+        if (airbus.mes.disruptiondetail === undefined || airbus.mes.disruptiondetail.oView === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.disruptiondetail", "../components/disruptiondetail");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptiondetail", });
+            nav.addPage(airbus.mes.disruptiondetail.oView)
         }
-
-        if (nav.getPage("disruptionDetailView") == null) {
-            nav.addPage(airbus.mes.disruptions.oView.disruptionDetail)
-        }
-  		//[MESV 1.5]
-		/*airbus.mes.disruptions.oView.disruptionDetail.getModel("DisruptionDetailModel").setData(oData);
-		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();*/
         
         // Navigate
-        nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId());
+        nav.to(airbus.mes.disruptiondetail.oView.getId());
 
-        // Set Data in disruption Detail Model with comments
+        // Set Data in disruption Detail Model with disruption comments
         var oData = oDataset.Rowsets.Rowset[0].Row[0];
         oData.comments = oDataset.Rowsets.Rowset[1].Row;
 		// Load data from back-end services - Call load data function in Edit Mode
-		airbus.mes.disruptions.ModelManager.createEditFlag = false;
 		airbus.mes.disruptions.ModelManager.loadData("Edit",oData);
 
     },

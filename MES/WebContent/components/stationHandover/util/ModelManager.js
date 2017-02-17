@@ -49,7 +49,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 		var aModel = [ "oswModel", "msnModel", "typeModel", "groupModel", "phStation", "optionInsertOsw" ]
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
-		core.getModel("oswModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onTestLoad);
+		core.getModel("oswModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onOswLoad);
 
 		var dest;
 
@@ -82,11 +82,6 @@ airbus.mes.stationHandover.util.ModelManager = {
 			}
 		}
 
-		this.loadTest();
-		this.loadType();
-		this.loadGroup();
-		this.loadPhStation();
-		this.loadOptionInsertOsw();
 	},
 
 	/* *********************************************************************** *
@@ -105,7 +100,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 	},
 
-	loadTest : function() {
+	loadOsw : function() {
 
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		var getUrlShifts = this.urlModel.getProperty("urltest");
@@ -161,34 +156,37 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 	},
 
-	onTestLoad : function() {
+	onOswLoad : function() {
 
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
-		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
+	//	var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
 		
 		try {
 
 			var aModel = oViewModel.oData.row;
-//			airbus.mes.stationHandover.util.ModelManager.copyOfModel = JSON.parse(JSON.stringify(oViewModel.oData));
+			airbus.mes.stationHandover.util.ModelManager.copyOfModel = JSON.parse(JSON.stringify(oViewModel.oData));
 			//Create tree of for manage selection of tree
 			aModel.forEach(function(el, indice) {
 
-				aValueSelected[el.WOID] = {
-					"open" : String(el.INSERTED) == "true",
-					"initial" : String(el.INSERTED) == "true",
-					"oswItems" : JSON.parse(JSON.stringify(el))
-				};
+//				aValueSelected[el.WOID] = {
+//					"open" : String(el.INSERTED) == "true",
+//					"initial" : String(el.INSERTED) == "true",
+//					"oswItems" : JSON.parse(JSON.stringify(el))
+//				};
+				
+				el.SELECTED = el.INSERTED;
 
 				aModel[indice].row.forEach(function(al, indice1) {
 
 					var sID = al.WOID + "##||##" + al.REFERENCE;
 
-					aValueSelected[al.WOID][sID] = {
-						"open" : String(el.INSERTED) == "true",
-						"initial" : String(el.INSERTED) == "true",
-						"oswItems" : JSON.parse(JSON.stringify(al))
-					};
+//					aValueSelected[al.WOID][sID] = {
+//						"open" : String(el.INSERTED) == "true",
+//						"initial" : String(el.INSERTED) == "true",
+//						"oswItems" : JSON.parse(JSON.stringify(al))
+//					};
 
+					al.SELECTED = al.INSERTED;
 				})
 			})
 

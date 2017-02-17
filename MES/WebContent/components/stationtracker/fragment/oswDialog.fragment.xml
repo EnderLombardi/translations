@@ -1,9 +1,9 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 
-	<Dialog id="oswDialog" afterClose="afterCloseOperationDetailPopup" class="sapUiPopupWithPadding"
-		verticalScrolling="false" horizontalScrolling="false"	afterOpen="onAfterOpenPolypoly" contentWidth="100%"
-		 contentHeight="100%" resizable="false" stretch="false" draggable="false" title="{StationTrackerI18n>Osw}">
+	<Dialog id="oswDialog" afterClose="afterCloseOperationDetailPopup" class="sapUiPopupWithPadding" 
+		verticalScrolling="false" horizontalScrolling="false"	afterOpen="resizeDialog" contentWidth="100%"
+		 contentHeight="100%" resizable="false" stretch="false" draggable="false" title="{StationTrackerI18n>Osw}" >
 		<content>
 
 		</content>

@@ -10,11 +10,11 @@
 				emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="3"> 
 				<f:content>
 						<Label text="{i18n>username}" required="true" />
-						<Input id="userNameForConfirmation" type="Text" placeholder="{i18n>username}"
+						<Input id="userNameTckTmpltForConfirmation" type="Text" placeholder="{i18n>username}"
 							liveChange="usernameLive" />
 
 						<Label text="{i18n>password}" required="true" />
-						<Input id="passwordForConfirmation" type="Password" placeholder="{i18n>password}"
+						<Input id="passwordTckTmpltForConfirmation" type="Password" placeholder="{i18n>password}"
 							liveChange="passwordLive" />
 
 					</f:content>

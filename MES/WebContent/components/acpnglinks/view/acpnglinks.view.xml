@@ -17,7 +17,7 @@
 						</Toolbar>
 					</tab:toolbar>
 					<tab:columns>
-						<tab:Column id="Type"
+						<tab:Column id="Type" 
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/0/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="Type">
 							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>Type}" />

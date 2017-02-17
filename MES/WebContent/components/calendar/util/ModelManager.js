@@ -62,7 +62,8 @@ airbus.mes.calendar.util.ModelManager = {
 		var oData = airbus.mes.settings.ModelManager;
 		var oViewModel = airbus.mes.calendar.oView.getModel("calendarTrackerModel");
 		var geturlcalendartracker = this.urlModel.getProperty('urlCalendaroperation');
-
+		//Format need to be same format at Ph_Station in table Z_RESOURCE_POOL_ASSIGNMENT 
+		var sPhysicalStationBo =  "WorkCenterBO:" + oData.site + "," + oData.station;
 		jQuery.ajax({
 			type : 'post',
 			url : geturlcalendartracker,
@@ -70,18 +71,31 @@ airbus.mes.calendar.util.ModelManager = {
 			async : 'true',
 			data : JSON.stringify({
 				"site" : oData.site,
-				"physicalStationBO" : oData.station,
+				"physicalStationBO" : sPhysicalStationBo,
 				"msn" : oData.msn,
 				
 			}),
 
 			success : function(data) {
+				
 				try {
+					// In reste service if there is only one response data.resourcePoolList is type of object expected array 
+					if ( !Array.isArray(data.userCalendarDisplayData) ) {
+						
+						var oData = data.userCalendarDisplayData;
+						
+						data.userCalendarDisplayData = [oData];
+						
+					}
+			
 					console.log(data);
 					oViewModel.setData(data);
 					airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad();
+		
 				} catch (e) {
 					console.log("NO calendar data load");
+						oViewModel.setData([]);
+					airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad();
 					
 				}
 
@@ -113,7 +127,7 @@ airbus.mes.calendar.util.ModelManager = {
 
 		var oViewModel = airbus.mes.calendar.oView.getModel("ressourcePoolModel");
 		var geturlRessourcePool = this.urlModel.getProperty('urlRessourcePoolModel');
-
+		
 		jQuery.ajax({
 			type : 'post',
 			url : geturlRessourcePool,

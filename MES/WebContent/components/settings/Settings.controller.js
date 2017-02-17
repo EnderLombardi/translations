@@ -279,6 +279,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                 this.filterField(this.selectTree);
                 /*remove settings for user in line tracker db if site changes*/
                 if(airbus.mes.linetracker && airbus.mes.linetracker.util.ModelManager){
+                	airbus.mes.linetracker.util.ModelManager.customLineBO="";
                     sap.ui.getCore().getModel("userSettingModel").setProperty("/Rowsets/Rowset/0/Row/0/customLineBO","");
                 	airbus.mes.linetracker.util.ModelManager.updateLineInUserSettings();
                 }

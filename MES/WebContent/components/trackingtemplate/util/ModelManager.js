@@ -31,22 +31,26 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         // Handle URL Model
         this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.trackingtemplate.config.url_config");
 
-        this.loadTrackingTemplateModel();
+    },
 
+    refreshTrackingTemplateModel: function () {
+        var oViewModel = sap.ui.getCore().getModel("TrackingTemplate");
+        var reasonCodeModel = sap.ui.getCore().getModel("reasonCodeModel");
+        this.loadTrackingTemplateData(oViewModel, "urltrackingtemplate");
+        this.loadReasonCodeData(reasonCodeModel, "getReasonCodes");
     },
 
     loadTrackingTemplateModel: function () {
-        var oViewModel = sap.ui.getCore().getModel("TrackingTemplate");
-        var reasonCodeModel = sap.ui.getCore().getModel("reasonCodeModel");
-
-        this.loadData(oViewModel, "urltrackingtemplate");
-        this.loadData(reasonCodeModel, "getReasonCodes");
+        this.refreshTrackingTemplateModel();
+        airbus.mes.trackingtemplate.oView.oController.hideCommentBox();
+        airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
     },
 
-    loadData: function (oViewModel, model) {
+    loadTrackingTemplateData: function (oViewModel, model) {
+
         jQuery.ajax({
             type: 'get',
-            url: this.urlModel.getProperty(model),
+            url: this.getTrackingTemplateUrl(model),
             contentType: 'application/json',
 
             success: function (data) {
@@ -60,8 +64,101 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 jQuery.sap.log.info(error);
             }
         });
+    },
 
-    }
+    loadReasonCodeData: function (oViewModel, model) {
+
+        jQuery.ajax({
+            type: 'get',
+            url: this.getReasonCodeUrl(model),
+            contentType: 'application/json',
+
+            success: function (data) {
+                if (typeof data == "string") {
+                    data = JSON.parse(data);
+                }
+                oViewModel.setData(data);
+            },
+
+            error: function (error, jQXHR) {
+                jQuery.sap.log.info(error);
+            }
+        });
+    },
+
+    /***************************************************************************
+     * Get URL for tracking template
+     **************************************************************************/
+    getTrackingTemplateUrl: function (model) {
+        var trackingTemplateUrl = this.urlModel.getProperty(model);
+        var site = airbus.mes.settings.ModelManager.site;
+        trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
+            trackingTemplateUrl, "$site", airbus.mes.settings.ModelManager.site);
+        trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
+            trackingTemplateUrl, "$workOrder", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no);
+        console.log(trackingTemplateUrl.toString());
+        return trackingTemplateUrl;
+    },
+    /***************************************************************************
+     * Get URL for reason code
+     **************************************************************************/
+
+    getReasonCodeUrl: function (model) {
+        var reasonCodeUrl = this.urlModel.getProperty(model);
+        reasonCodeUrl = airbus.mes.shell.ModelManager.replaceURI(
+            reasonCodeUrl, "$site", airbus.mes.settings.ModelManager.site);
+        console.log(reasonCodeUrl);
+        return reasonCodeUrl;
+    },
+
+    /***************************************************************************
+     * Get URL for sending note
+     **************************************************************************/
+    getSendNotesUrl: function (shopOrderNum, erpSystem, badgeID, description, reasonCodeText, password, userId) {
+        var totalPartialConfirmationUrl = this.urlModel
+            .getProperty("sendNotesUrl");
+        totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "SHopOrderNumber", shopOrderNum);
+        totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "ERPSYstem", erpSystem);
+        totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "BadgeID", badgeID);
+        totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "Desciption", description);
+        totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "ReasonCode", reasonCodeText);
+        totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "password", password);
+        totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "logon", userId.toUpperCase());
+
+        return totalPartialConfirmationUrl;
+    },
+
+/***************************************************************************
+ * Show Message Toast
+ **************************************************************************/
+    messageShow: function (text, duration) {
+        if (typeof duration == "undefined")
+            duration = 3000;
+
+        sap.m.MessageToast.show(text, {
+            duration: duration,
+            width: "25em",
+            my: "center center",
+            at: "center center",
+            of: window,
+            offset: "0 0",
+            collision: "fit fit",
+            onClose: null,
+            autoClose: true,
+            animationTimingFunction: "ease",
+            animationDuration: 3000,
+            closeOnBrowserNavigation: false
+        });
+
+    },
+
 
 
 

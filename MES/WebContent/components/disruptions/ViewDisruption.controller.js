@@ -83,7 +83,7 @@ sap.ui
 
                                                 // Get Binding of Comment list for Current item
                                                 var oBinding = oItem.getContent()[0]
-                                                              .getContent()[3].getBinding("items");
+                                                              .getContent()[4].getBinding("items");
                                                 
                                                 if(nav.getCurrentPage().getId() == "stationTrackerView"){
                                                 	var firstRowFlag = true;
@@ -929,20 +929,14 @@ sap.ui
                                   * Load previsous messages to the selected disruption
                                   */
                                   seeMoreMesssages: function(oEvt){
-                                	  var sId = oEvt.getSource().sId;
-
-                                      var listNum = sId.split("-");
-                                      listNum = listNum[listNum.length - 1];
-
-                                      var oCommentList = this.getView().byId("messageComments-"
-                                    	  		   + this.getView().sId + "--disrptlist-" + listNum);
+                                	  
+                                      var oCommentList = oEvt.getSource().getParent().getContent()[4];
                                       var oBinding = oCommentList.getBinding("items");
                                       
                                       // Show all comments to the current disruption
                                       var messageRef = oEvt.getSource().getCustomData()[0].getValue();
                                       oBinding.filter(new sap.ui.model.Filter("MessageRef", "EQ", messageRef));
                                       
-                                      // TODO: if DN doesnt agrre to end dsiruptions in descending order then apply costom logic here.
                                       // Update binding inorder to hide the see more button
                                       var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
                                       this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/prevCommentsLoaded", "true");
@@ -953,13 +947,8 @@ sap.ui
                                   * Hide previsous messages to the selected disruption
                                   */
                                   seeLessMesssages: function(oEvt){
-                                	  var sId = oEvt.getSource().sId;
-
-                                      var listNum = sId.split("-");
-                                      listNum = listNum[listNum.length - 1];
-
-                                      var oCommentList = this.getView().byId("messageComments-"
-                                    	  		   + this.getView().sId + "--disrptlist-" + listNum);
+                                	  
+                                      var oCommentList = oEvt.getSource().getParent().getContent()[4];
                                       var oBinding = oCommentList.getBinding("items");
                                       
                                       // Show all comments to the current disruption

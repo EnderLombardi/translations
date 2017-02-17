@@ -20,7 +20,7 @@
 					<!-- List Comment -->
 					<List id="confirmationNotes" items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" includeItemInSelection="true" class="customListItem">
 						<items>
-							<StandardListItem title="{TrackingTemplate>ACTIVITY} : {TrackingTemplate>COMMENTS}" info="{TrackingTemplate>MODIFIED_DATE_TIME}"/>
+							<StandardListItem title="{TrackingTemplate>Activity} : {TrackingTemplate>Comments}" info="{TrackingTemplate>Modified_Date_Time}"/>
 						</items>
 					</List>
 				</content>
@@ -39,28 +39,21 @@
 					<Panel id="commentBox" visible="false" class="commentPanel">
 						<Panel class="reasonCodeContainer">
 							<Label text="{i18n>reasonCode}" />
-							<Select text="{i18n>reasonCode}" change="onSelectionReason" id="reasonCodeSelectBox" forceSelection="false" items="{reasonCodeModel>/Rowsets/Rowset/0/Columns/Column}">
-								<core:Item key="{reasonCodeModel>Name}" text="{reasonCodeModel>Description}" />
+							<Select text="{i18n>reasonCode}" change="onSelectionReason" id="reasonCodeSelectBox" forceSelection="false" items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
+								<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
 							</Select>
 						</Panel>
 						<TextArea id="commentArea" growing="true" maxLength="255" placeholder="{i18n>textAreaPlaceHolder}"/>
-						<UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true" instantUpload="false" showSeparators="All" change="onChange" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"></UploadCollection>
+						<!--<UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true" instantUpload="false" showSeparators="All" change="onChange" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"></UploadCollection>-->
 						<HBox>
 							<Button text="{i18n>submitComment}" type="Accept" press="submitComment" class="sapUiSmallMarginEnd buttonAccept" width="12rem" />
 							<Button text="{i18n>cancel}" type="Reject" press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject" width="12rem" />
 						</HBox>
 					</Panel>
 					<!-- List Comment -->
-					<List id="listNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row', sorter: {path: 'MODIFIED_DATE_TIME', descending : true, sizeLimit : 1}}" headerText="Notes">
+					<List id="listNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row', sorter: {path: 'MODIFIED_DATE_TIME', descending : true}}" class="customListItem">
 						<items>
-							<ObjectListItem title="{TrackingTemplate>ACTIVITY}">
-								<firstStatus>
-									<ObjectStatus text="{TrackingTemplate>MODIFIED_DATE_TIME}"/>
-								</firstStatus>
-								<attributes>
-									<ObjectAttribute text="{TrackingTemplate>COMMENTS}" />
-								</attributes>
-							</ObjectListItem>
+							<StandardListItem title="{TrackingTemplate>Activity} : {TrackingTemplate>Comments}" info="{TrackingTemplate>Modified_Date_Time}"/>
 						</items>
 					</List>
 				</content>

@@ -41,7 +41,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
             height:"100%"
         })
         
-       if(sap.ui.Device.system.desktop){
+       /*if(sap.ui.Device.system.desktop){
 	       this.oView.disruptionDetail = sap.ui.view({
 	            id : "disruptionDetailView",
 	            viewName : "airbus.mes.disruptions.disruptionDetail",
@@ -49,7 +49,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 	            height:"100%"
 	        })
         }
-        
+        */
         var i18nModel = new sap.ui.model.resource.ResourceModel({
             bundleName : "airbus.mes.disruptions.i18n.i18n"
         });
@@ -58,8 +58,8 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
         this.oView.viewDisruption.setModel(i18nModel, "i18nModel");
         this.oView.createDisruption.setModel(i18nModel, "i18nModel");
         
-        if(sap.ui.Device.system.desktop)
-        	this.oView.disruptionDetail.setModel(i18nModel, "i18nModel");
+      /*  if(sap.ui.Device.system.desktop)
+        	this.oView.disruptionDetail.setModel(i18nModel, "i18nModel");*/
 
         airbus.mes.disruptions.oView = this.oView
 
@@ -87,14 +87,14 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
         /******
          * set models on disruption Detail Page MES V1.5
          */
-        if(sap.ui.Device.system.desktop){
+        /*if(sap.ui.Device.system.desktop){
         	this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("DisruptionDetailModel"),"DisruptionDetailModel");
         	this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("MaterialListModel"),"MaterialListModel");
         	this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("JigtoolListModel"),"JigtoolListModel");
         	this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionCategoryModel"),"disruptionCategoryModel");
         	this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionRsnRespGrp"),"disruptionRsnRespGrp");
         	this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionResolverModel"),"disruptionResolverModel");
-        }
+        }*/
         
         return this.oView.viewDisruption;
 

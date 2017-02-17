@@ -1,0 +1,305 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox>
+		<f:SimpleForm id="SimpleFormChange480_12120" editable="false"
+			minWidth="800" layout="ResponsiveGridLayout" title="Operator Data"
+			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
+			columnsL="4" columnsM="2" columnsS="1">
+			<f:content>
+
+				<core:Title text="" />
+				<!-- 5Mclass is removed according to SD-SP1604983-DT-Detail-010 it's 
+					invisible here not removed to avoid conflicts with disruption create page -->
+				<Label text="{i18nModel>5Mclass}" />
+				<Select id="selectFivemCategory" selectedKey=""
+					forceSelection="false" change="onSelectionChange"
+					items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" visible="false">
+					<items>
+						<core:Item text="{disruptionCustomData>FivemCategory}"
+							key="{disruptionCustomData>FivemCategory}" />
+
+					</items>
+				</Select>
+				<Label text="{i18nModel>OpenDate}" />
+				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
+					value="{path:'DisruptionDetailModel>/OpeningTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
+					<layoutData>
+						<l:GridData span="L7 M7 S7" />
+					</layoutData>
+				</DatePicker>
+				<TimePicker enabled="false" id="openTime" displayFormat="HH:mm"
+					valueFormat="HH:mm"
+					value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+					<layoutData>
+						<l:GridData span="L5 M5 S5" />
+					</layoutData>
+				</TimePicker>
+
+				<Label text="{i18nModel>issuer}" />
+				<Select enabled="false">
+					<items>
+						<core:Item text="{DisruptionDetailModel>/OriginatorName}" />
+					</items>
+				</Select>
+				<Label text="{i18nModel>issuerGroup}" />
+				<Select id="selectOriginator" selectedKey="" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'},{path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setIssuerGroupEnable'}"
+					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}">
+					<items>
+						<core:Item text="{disruptionCategoryModel>group_desc}"
+							key="{disruptionCategoryModel>group_name}" />
+					</items>
+				</Select>
+
+
+
+
+
+				<core:Title text="" />
+				<Label text="{i18nModel>Category}" />
+				<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
+					change="onSelectionChange" forceSelection="false">
+					<items>
+						<core:Item text="{disruptionCategoryModel>DESCRIPTION}"
+							key="{disruptionCategoryModel>MESSAGE_TYPE}" />
+					</items>
+				</Select>
+				<Label text="{i18nModel>Expected}">
+				</Label>
+				<DatePicker id="expectedDate" displayFormat="short"
+					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedDateEnable'}">
+					<layoutData>
+						<l:GridData span="L7 M7 S7" />
+					</layoutData>
+				</DatePicker>
+				<TimePicker id="expectedTime" displayFormat="HH:mm"
+					valueFormat="HH:mm"
+					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedTimeEnable'}">
+					<layoutData>
+						<l:GridData span="L5 M5 S5" />
+					</layoutData>
+				</TimePicker>
+				<Label text="{i18nModel>resGroup}" />
+				<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
+					change="onSelectionChange" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setResponsibleGrpEnable'}">
+					<items>
+						<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
+							key="{disruptionRsnRespGrp>ResponsibleGroup}" />
+					</items>
+				</Select>
+
+
+
+
+
+
+
+
+
+				<core:Title text="" />
+				<Label text="{i18nModel>reason}" />
+				<Select id="selectreason" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
+					forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}">
+					<items>
+						<core:Item text="{disruptionRsnRespGrp>REASON}" key="{disruptionRsnRespGrp>REASON}" />
+					</items>
+				</Select>
+				<Label text="{i18nModel>stMaterial}" />
+				<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
+					tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
+					enabled="false">
+				</MultiInput>
+				<Label text="{i18nModel>TimeLost}" />
+				<Input placeholder="" id="timeLost" type="Number" value=""
+					enabled="false">
+				</Input>
+
+
+
+
+
+
+				<core:Title text="" />
+				<Label text="{i18nModel>gravity}" />
+				<Select id="gravity" selectedKey="1" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setGravityEnable'}">
+					<items>
+						<core:Item text="{i18nModel>NotBlocked}" key="1" />
+						<core:Item text="{i18nModel>Disturbed}" key="2" />
+						<core:Item text="{i18nModel>Blocked}" key="3" />
+					</items>
+				</Select>
+				<Label text="{i18nModel>Jigtool}" />
+				<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
+					tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange"
+					enabled="false" />
+
+
+
+			</f:content>
+		</f:SimpleForm>
+
+		<f:SimpleForm id="Execution" editable="true"
+			layout="ResponsiveGridLayout" title="Execution" labelSpanL="12"
+			labelSpanM="12" width="100%" adjustLabelSpan="false" emptySpanL="0"
+			emptySpanM="0" columnsL="4" columnsM="2" columnsS="1">
+			<f:content>
+				<core:Title text="" />
+				<Label text="{i18nModel>status}" />
+				<Select enabled="false" id="status">
+					<items>
+						<core:Item text="{i18nModel>Pending}" key="{i18nModel>Pending}" />
+						<core:Item text="{i18nModel>acknowledge}" key="{i18nModel>acknowledge}" />
+						<core:Item text="{i18nModel>Closed}" key="{i18nModel>Closed}" />
+					</items>
+				</Select>
+				<Label text="{i18nModel>promisedDateTime}" id="promisedDateLabel" />
+				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
+					displayFormat="short"
+					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
+					<layoutData>
+						<l:GridData span="L7 M7 S7" />
+					</layoutData>
+				</DatePicker>
+				<TimePicker id="promisedTime" displayFormat="HH:mm"
+					valueFormat="HH:mm:ss"
+					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedTimeEnable'}">
+					<layoutData>
+						<l:GridData span="L5 M5 S5" />
+					</layoutData>
+				</TimePicker>
+
+
+				<core:Title text="" />
+				<Label text="{i18nModel>EscalationLevel}" />
+				<Select id="escalationLevel" enabled="false" selectedKey="">
+					<items>
+						<core:Item text="{i18nModel>NotEscalated}" key="1" />
+						<core:Item text="{i18nModel>FirstEscalation}" key="2" />
+						<core:Item text="{i18nModel>FinalEscalation}" key="3" />
+					</items>
+				</Select>
+
+
+
+				<core:Title text="" />
+
+				<Label text="{i18nModel>dateOfEscalation}" />
+				<DatePicker displayFormat="short"
+					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					enabled="false">
+					<layoutData>
+						<l:GridData span="L7 M7 S7" />
+					</layoutData>
+				</DatePicker>
+				<TimePicker valueFormat="HH:mm" enabled="false"
+					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					displayFormat="HH:mm">
+					<layoutData>
+						<l:GridData span="L5 M5 S5" />
+					</layoutData>
+				</TimePicker>
+
+
+
+				<core:Title text="" />
+				<Label text="{i18nModel>Resolver}" />
+				<Select id="selectResolver"
+					items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
+					forceSelection="false"
+					enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.selectResolverEnable'}">
+					<items>
+						<core:Item text="{disruptionResolverModel>Name}" key="{disruptionResolverModel>UserID}" />
+					</items>
+					<!-- this handle will be hidden in the UI -->
+					<Select id="handle" selectedKey="" forceSelection="false"
+						items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
+						visible="false">
+						<items>
+							<core:Item text="{disruptionCustomData>Handle}" key="{disruptionCustomData>Handle}" />
+						</items>
+					</Select>
+					<Input id="description" maxLength="40" visible="false" />
+				</Select>
+			</f:content>
+		</f:SimpleForm>
+		<f:SimpleForm id="Des_sol" editable="true" visible="true"
+			layout="ResponsiveGridLayout" title="{i18nModel>disruptionHistory}"
+			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
+			emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+			<f:content>
+				<VBox>
+					
+					<List showNoData="false"
+						class="sapUiSmallMarginBeginEnd" items="{path: 'DisruptionDetailModel>/comments'}">
+
+						<CustomListItem class="msgColor">
+							<HBox
+								class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
+								<items>
+									<Text
+										text="{i18nModel>from} : {path: 'DisruptionDetailModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
+									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+									<Text
+										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>Action'}, {path: 'DisruptionDetailModel>Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+									<Text
+										text="{i18nModel>date/time} : {path: 'DisruptionDetailModel>Date'}"></Text>
+								</items>
+							</HBox>
+
+							<Text
+								text="{path: 'DisruptionDetailModel>Comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
+								class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom"></Text>
+						</CustomListItem>
+					</List>
+				</VBox>
+
+
+			</f:content>
+
+
+		</f:SimpleForm>
+		<f:SimpleForm id="disruptionComments" editable="false"
+			layout="ResponsiveGridLayout" title="{i18nModel>description_solution}"
+			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
+			emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+			<f:content>
+				<VBox>
+					<HBox justifyContent="End" class="attachmentIcon">
+						<core:Icon src="sap-icon://attachment" width="1rem"
+							class="sapUiSmallMarginEnd" />
+						<core:Icon src="sap-icon://camera" width="1rem" />
+					</HBox>
+					<TextArea width="100%" height="100%" id="comment">
+						<layoutData>
+							<l:GridData span="L12 M12 S12" />
+						</layoutData>
+					</TextArea>
+
+					<!-- <Panel id="commentBox" visible="false"> -->
+
+					<!-- <VBox> -->
+					<!-- <TextArea id="commentArea" placeholder="{i18nModel>addComment}" -->
+					<!-- width="100%" /> -->
+
+					<!-- <HBox> -->
+					<!-- <Button text="{i18nModel>submitComment}" type="Accept" -->
+					<!-- press="submitComment" class="sapUiSmallMarginEnd buttonAccept" -->
+					<!-- width="12rem" /> -->
+
+					<!-- <Button text="{i18nModel>cancel}" type="Reject" press="hideCommentBox" -->
+					<!-- class="sapUiSmallMarginEnd buttonReject" width="12rem" /> -->
+					<!-- </HBox> -->
+
+					<!-- </VBox> -->
+
+					<!-- </Panel> -->
+
+				</VBox>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>
