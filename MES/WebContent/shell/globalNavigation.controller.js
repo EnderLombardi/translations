@@ -814,7 +814,7 @@ sap.ui.controller(
                             	airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
                                 if(!sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO")){
                                 	sap.ui.getCore().byId("idLinetracker--selectLine").onsapshow();
-                                	sap.ui.getCore().byId("idLinetracker--selectLine").setValue();
+                                	sap.ui.getCore().byId("idLinetracker--selectLine").setValue();                         
                                 }
                        }
                     },
