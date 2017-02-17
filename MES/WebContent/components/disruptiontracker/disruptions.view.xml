@@ -70,9 +70,9 @@
 					<Button text="{disruptiontrackerI18n>extractDisruptionList}" icon="sap-icon://excel-attachment"
 						press="handleSelectedRowExcelExport" id="exportbutton" class="borderbutton" />
 
-					<Button id="onDisruptionTableSettings" type="Transparent"
+				<!-- 	<Button id="onDisruptionTableSettings" type="Transparent"
 						press="onDisruptionTableSettings" icon="sap-icon://drop-down-list"
-						tooltip="{disruptiontrackerI18n>disruptionFilter}" class="borderbutton" />
+						tooltip="{disruptiontrackerI18n>disruptionFilter}" class="borderbutton" /> -->
 
 					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
 						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"

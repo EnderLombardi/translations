@@ -652,6 +652,12 @@ airbus.mes.disruptions.Formatter = {
 		
 		else
 			return false;
+	},
+	setUpdateButtonVisibility:function(sstatus){
+		if(sstatus == airbus.mes.disruptions.Formatter.status.solved || sStatus == airbus.mes.disruptions.Formatter.status.deleted){
+			return false;
+		}else
+			return true;
 	}
 	
 	
