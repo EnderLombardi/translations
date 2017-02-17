@@ -1396,7 +1396,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         if (airbus.mes.stationtracker && airbus.mes.stationtracker.oView && airbus.mes.stationtracker.oView.oCalendar) {
             startDate = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
             tzoffset = (startDate).getTimezoneOffset() * 60000; //offset in milliseconds
-            localISOTime = (new Date(startDate - tzoffset)).toISOString().slice(0, -1);
+            localISOTime = (new Date(startDate - tzoffset)).toISOString().slice(0, -5);
         }
 
         splitModelURL = this.urlModel.getProperty("urlSplitData");
