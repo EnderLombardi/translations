@@ -114,7 +114,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         //Param.4 Desciption
         var textArea = this.getView().byId('commentArea');
         //Param.5 ReasonCode
-        var reasonCode = this.getView().byId("reasonCodeSelectBox").getSelectedKey() ||'';
+        var reasonCode = this.getView().byId("reasonCodeSelectBox").getSelectedKey() || '';
         //Param.6 password
         var password = sap.ui.getCore().byId('passwordTckTmpltForConfirmation').getValue();
         //Param.7 logon
@@ -128,28 +128,36 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
             .ajax({
                 url: airbus.mes.trackingtemplate.util.ModelManager
                     .getSendNotesUrl(
-                        shopOrderNum, erpSystem, badgeId, textArea.getValue(), reasonCode, password, login
+                    shopOrderNum, erpSystem, badgeId, textArea.getValue(), reasonCode, password, login
                     ),
                 async: false,
                 error: function (xhr, status, error) {
-                    airbus.mes.trackingtemplate.util.ModelManager
-                        .messageShow(sMessageError);
-
+                    // airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageError);
                 },
                 success: function (result, status, xhr) {
-
-                    airbus.mes.trackingtemplate.util.ModelManager
-                        .messageShow(sMessageSuccess);
+                    // airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
+                    airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
 
                 }
             });
 
-        textArea.setValue('');
+        this.cleanAfterAddingNotes();
         this._oUserConfirmationDialog.close();
     },
 
     replaceSendNotesURLWithParams: function () {
         url = this.urlModel.getProperty("sendNotes");
+    },
+
+    cleanAfterAddingNotes: function () {
+        //Param.4 Desciption
+        airbus.mes.trackingtemplate.oView.byId('commentArea').setValue('');
+        //Param.5 ReasonCode
+        airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").setSelectedKey('');
+        //Param.6 password
+        sap.ui.getCore().byId('passwordTckTmpltForConfirmation').setValue('');
+        //Param.7 logon
+        sap.ui.getCore().byId('userNameTckTmpltForConfirmation').setValue('');
     }
 
 

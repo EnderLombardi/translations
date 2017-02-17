@@ -327,6 +327,7 @@ airbus.mes.shell.util.navFunctions = {
         if (container.getPage("trackingtemplateView") === null) {
             container.addPage(airbus.mes.trackingtemplate.oView);
         }
+        airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
     },
 
     disruptionTracker: function () {

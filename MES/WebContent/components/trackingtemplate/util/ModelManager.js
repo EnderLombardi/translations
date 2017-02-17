@@ -31,8 +31,6 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         // Handle URL Model
         this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.trackingtemplate.config.url_config");
 
-        this.loadTrackingTemplateModel();
-
     },
 
     loadTrackingTemplateModel: function () {
