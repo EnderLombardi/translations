@@ -563,7 +563,7 @@ SHIFT STAFFING
 
 #stationTrackerView--shifStaffingHeader { width: 100%; }
 
-#stationTrackerView--shifStaffingHeader .sapSuiteDmcTitle, #stationTrackerView--shifStaffingHeader .sapSuiteDmcLbls { font-size: 0.8vw; }
+#stationTrackerView--shifStaffingHeader .sapSuiteDMCTitle, #stationTrackerView--shifStaffingHeader .sapSuiteDMCLbls { font-size: 0.8vw; }
 
 #stationTrackerView--shifStaffingHeader .sapSuiteDMCCnt { right: 2rem; }
 

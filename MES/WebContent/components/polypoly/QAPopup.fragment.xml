@@ -8,6 +8,7 @@
 		<content>
 			<table:Table rows="{ path: '/rows' }" columns="{ path: '/columns', factory: '.createColumnQA' }"
 		 	enableColumnReordering="false"
+			selectionMode="None"
 			rowHeight="40" id="oTableQA" enableSelectAll="false"
 			class="backgroundPolypoly">
 			</table:Table>
