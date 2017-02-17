@@ -116,9 +116,9 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         //Param.5 ReasonCode
         var reasonCode = this.getView().byId("reasonCodeSelectBox").getSelectedKey() ||'';
         //Param.6 password
-        var password = sap.ui.getCore().byId('passwordForConfirmation').getValue();
+        var password = sap.ui.getCore().byId('passwordTckTmpltForConfirmation').getValue();
         //Param.7 logon
-        var login = sap.ui.getCore().byId('userNameForConfirmation').getValue();
+        var login = sap.ui.getCore().byId('userNameTckTmpltForConfirmation').getValue();
 
         console.log(airbus.mes.trackingtemplate.util.ModelManager
             .getSendNotesUrl(
