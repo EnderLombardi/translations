@@ -355,7 +355,11 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.oPopover.openBy(oButton);
 		});
 	},
-
+	handleValueHelpClose : function(oEvt){
+		if(!sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO")){
+			nav.back();
+		}
+	},
 	/**
 	 * BR : SD-PPC-LT-240
 	 * To Delete the Station from Line

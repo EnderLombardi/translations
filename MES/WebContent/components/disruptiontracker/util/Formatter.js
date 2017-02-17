@@ -38,7 +38,7 @@ airbus.mes.disruptiontracker.Formatter = {
 			return "";
 	},
 
-	setGravityColor : function(sStatus, iGravity, sEscalation) {
+	setGravityColor : function(iGravity) {
 
 		switch (iGravity) {
 		case "1":

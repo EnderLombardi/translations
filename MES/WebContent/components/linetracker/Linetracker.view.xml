@@ -157,7 +157,7 @@
 						<Text text="{i18n>cycleTime}" class="taktHeading" />
 
 						<uiTable:template>
-							<Text class="fontTableLinetracker" text="{stationDataModel>cycleTime}" />
+							<Text class="fontTableLinetracker" text="{stationDataModel>cycleTime} {i18n>hrs}" />
 						</uiTable:template>
 
 					</uiTable:Column>
@@ -165,7 +165,7 @@
 					<uiTable:Column width="6%" resizable="false">
 						<Text text="{i18n>workContent}" class="taktHeading" />
 						<uiTable:template>
-							<Text class="fontTableLinetracker" text="{stationDataModel>workContent}" />
+							<Text class="fontTableLinetracker" text="{stationDataModel>workContent} {i18n>hrs}" />
 						</uiTable:template>
 
 					</uiTable:Column>
@@ -184,13 +184,13 @@
 					</uiTable:Column>
 				</uiTable:columns>
 			</uiTable:Table>
-			<KPIcontrol:slideControl id="idSlideControl">
+<!-- 			<KPIcontrol:slideControl id="idSlideControl">
 
 				<KPIcontrol:slideContent>
 					<core:Fragment fragmentName="airbus.mes.linetracker.kpicharts.StationSlideKPIs"
 						type="XML" />
 				</KPIcontrol:slideContent>
-			</KPIcontrol:slideControl>
+			</KPIcontrol:slideControl> -->
 		</content>
 
 	</Page>

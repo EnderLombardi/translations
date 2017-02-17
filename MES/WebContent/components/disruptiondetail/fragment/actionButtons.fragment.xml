@@ -49,19 +49,6 @@
 				class="btnRadius" enabled="{Profile>/identifiedUser/permissions/WORK_DIS_CLOSE}" />
 
 
-			<Button text="{i18nModel>update}" type="Accept" width="100%"
-				press="onUpdateDisruptionbySupportTeam" design="Transparent" class="btnRadius"
-				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_UPDATE}">
-				<layoutData>
-					<l:GridData span="L12 M12 S12" />
-				</layoutData>
-			</Button>
-				
-				
-				
-				
-
-
 			<!-- <Button text="{i18nModel>edit}" type="Emphasized" press="onEditDisruption" 
 				width="100%" class="btnRadius" enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_EDIT}"> 
 				<layoutData> <l:GridData span="L12 M12 S12" /> </layoutData> </Button> -->

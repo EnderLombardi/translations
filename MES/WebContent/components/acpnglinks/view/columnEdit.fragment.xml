@@ -11,7 +11,6 @@
 						</Toolbar>
 					</headerToolbar>
 					<content height="100%">
-						<!-- <HBox height="100%" > -->
 							<List id="listAvailableColumns" mode="SingleSelectMaster"
 								items="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column' , sorter : {path : 'acpnglinksWorkOrderDetail>Sort' , ascending : 'true'} }">
 								<CustomListItem
@@ -19,12 +18,11 @@
 									<HBox width="100%">
 										<ui:HorizontalLayout>
 											<Text text="{path:'acpnglinksWorkOrderDetail>Name' , formatter:'.getI18nValue'}"/>
-											<Text class="acpnglinksNotVisible" text="{acpnglinksWorkOrderDetail>Name}" visible="false"></Text>
+											<core:InvisibleText class="acpnglinksNotVisible" text="{acpnglinksWorkOrderDetail>Name}"/>
 										</ui:HorizontalLayout>
 									</HBox>
 								</CustomListItem>
 							</List>
-						<!-- </HBox> -->
 					</content>
 				</Panel>
 				<VBox class="listButtons" justifyContent="Center" alignItems="Center">
@@ -52,8 +50,8 @@
 									<content>
 										<HBox class="fixHboxItemDisplay">
 											<ui:HorizontalLayout>
-												<Text text="{path:'acpnglinksWorkOrderDetail>Name' , formatter:'.getI18nValue'}"/>
-											<Text class="acpnglinksVisible" text="{acpnglinksWorkOrderDetail>Name}" visible="false"></Text>
+											<Text text="{path:'acpnglinksWorkOrderDetail>Name' , formatter:'.getI18nValue'}"/>
+											<core:InvisibleText class="acpnglinksVisible" text="{acpnglinksWorkOrderDetail>Name}"/>
 											</ui:HorizontalLayout>
 										</HBox>
 									</content>

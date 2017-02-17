@@ -298,6 +298,7 @@ sap.ui
 
                     airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
                     this.nav.to(airbus.mes.acpnglinks.oView.getId());
+                    airbus.mes.acpnglinks.oView.rerender();
                     break;
                 case "ncDisplay":
                     //tabselection

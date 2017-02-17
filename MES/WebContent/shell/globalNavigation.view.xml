@@ -22,9 +22,9 @@
 									<Button id="localDELog" press="onRemoveCookie" text="{ShellI18n>Cookie}" type="Transparent"></Button>                      
 		                         	<Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd" enabled="{Profile>/identifiedUser/permissions/PROFILE_PREF_LANG}" change="onChangeLanguage"> 
 			                           	<core:Item text="English" key="en"/>
-			                           	<core:Item text="Deutsch" key="de"/>
-			                           	<core:Item text="Français" key="fr"/>
-			                        	<core:Item text="Spanish" key="sp"/>                                                      
+	                           			<core:Item text="Deutsch" key="de" enabled="false"/>
+	                           			<core:Item text="Fran&#231;ais" key="fr"/> <!-- we use the escape code of "ç" in order to avoid the problem of encoding with shitty MII HTTP Server -->
+	                        	   		<core:Item text="Espa&#241;ol" key="sp" enabled="false"/> <!-- same here, escape "ñ" character - do not change -->
 		                           	</Select>
 		                           	<Button id="informationButton" 	type="Transparent"  								icon="sap-icon://message-information" press="onInformation" visible="false"  class="whiteColor whiteButton" />
 		                           	<Button id="homeButton" 		enabled = "{Profile>/identifiededUser/permissions/PROFILE_PREF_HOME}" type="Transparent" tooltip="{ShellI18n>Home}" 		icon="sap-icon://home"  press="goToHome" visible="false"  class="whiteColor whiteButton" />

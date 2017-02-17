@@ -1,6 +1,7 @@
 "use strict";
 
-jQuery.sap.require("airbus.mes.missingParts.model.ModelManager");
+jQuery.sap.require("airbus.mes.missingParts.util.ModelManager");
+jQuery.sap.require("airbus.mes.missingParts.util.Formatter");
 jQuery.sap.declare("airbus.mes.missingParts.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.missingParts.Component", {
@@ -30,7 +31,7 @@ airbus.mes.missingParts.Component.prototype.createContent = function () {
 		airbus.mes.missingParts.component = this;
 		airbus.mes.missingParts.oView = this.oView;
 		//Bind directly on the view avoid to set in the model in the core
-		airbus.mes.missingParts.model.ModelManager.init(airbus.mes.missingParts.oView);
+		airbus.mes.missingParts.util.ModelManager.init(airbus.mes.missingParts.oView);
 		return this.oView;
 	} else {
 		return airbus.mes.missingParts.oView;

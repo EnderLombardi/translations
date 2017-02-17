@@ -17,9 +17,10 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 			// Expand all nodes of the tree and init the number of visible rows
 			oTTbl.setVisibleRowCount(this.treeExpandAll(oTTbl));
 			oTTbl.setSelectionMode("None");
+			airbus.mes.acpnglinks.util.Formatter.changeRowColor();
 		}
 		airbus.mes.acpnglinks.util.Formatter.changeRowColor();
-
+		sap.ui.getCore().byId("acpnglinksView--ACPnGTreeTable").fireCellClick();
 	},
 
 	/**
@@ -37,9 +38,10 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 	},
 
 	/**
-	 * Clickable Cell managemenr in Tree Table (unscoped for v1.5)
+	 * Clickable Cell management in Tree Table (unscoped for v1.5)
 	 */
 	OnSelectionChange : function(oEvt) {
+		airbus.mes.acpnglinks.util.Formatter.changeRowColor();
 		// try {
 		// airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath);
 		// } catch (exception) {
@@ -73,14 +75,11 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 			var model = airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getData().Rowsets.Rowset[0].Columns.Column;
 			var oTTbl = sap.ui.getCore().byId("acpnglinksView--ACPnGTreeTable").getColumns();
 			for (var i = 0; i < oTTbl.length; i++) {
-				index = oTTbl[i].sId.lastIndexOf("--"); // format :
-														// acpnglinksView--id
-				id = oTTbl[i].sId.slice([ index + 2 ], oTTbl[i].sId.length); // get
-																				// the
-																				// id
-				index = this.findIndexObjectKey(model, "Name", id); // find the
-																	// column in
-																	// the model
+				index = oTTbl[i].sId.lastIndexOf("--"); // format:acpnglinksView--id
+				id = oTTbl[i].sId.slice([ index + 2 ], oTTbl[i].sId.length);
+				// find the column in the model
+				index = this.findIndexObjectKey(model, "Name", id); 
+				
 				model[index].Sort = i; // new sort value
 			}
 			// Model update

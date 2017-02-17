@@ -271,10 +271,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if(sSelectionMode === "None"){
 			return;
 		}
-		if (oEvt.getSource().getSelectedIndices().length > 1) {
-			airbus.mes.shell.ModelManager.messageShow(this.getView().getModel("disruptiontrackerI18n").getProperty("selectOneRowOnly"));
-			return;
-		}
 		// set data of the selected row to Data Model
 		// binding context changed as table used is sap.ui.table
 		var sPath = oEvt.getParameters().rowBindingContext.getPath();

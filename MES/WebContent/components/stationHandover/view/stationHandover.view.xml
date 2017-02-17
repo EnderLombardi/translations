@@ -63,7 +63,7 @@
 						<m:CheckBox class="DisOpAttLabelHandOver" select="selectAll" />
 						<template>
 							<m:CheckBox select="onSelectRow"
-								selected="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}"
+								selected="{path:'oswModel>' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}"
 								/>
 						</template>
 					</Column>

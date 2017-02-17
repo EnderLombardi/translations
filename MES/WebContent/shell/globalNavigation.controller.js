@@ -465,7 +465,7 @@ sap.ui.controller(
                     	
                     	//get fragment 
                          if(airbus.mes.stationtracker.splitterWorkTracker === undefined){
-                                airbus.mes.stationtracker.splitterWorkTracker = sap.ui.xmlfragment("spliterWorkTracker","airbus.mes.stationtracker.splitterWorkTracker", airbus.mes.stationtracker.oView.getController());
+                                airbus.mes.stationtracker.splitterWorkTracker = sap.ui.xmlfragment("spliterWorkTracker","airbus.mes.stationtracker.fragment.splitterWorkTracker", airbus.mes.stationtracker.oView.getController());
                                 airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.splitterWorkTracker);
                                 }
                     	
@@ -812,8 +812,10 @@ sap.ui.controller(
                             	airbus.mes.linetracker.oView.byId("selectLine").setValue(airbus.mes.linetracker.util.ModelManager.customLineBO.split(",")[1]);
                             }
                             	airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
-                                if(!sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO"))
-                                	sap.ui.getCore().byId("idLinetracker--selectLine").onsapshow()
+                                if(!sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO")){
+                                	sap.ui.getCore().byId("idLinetracker--selectLine").onsapshow();
+                                	sap.ui.getCore().byId("idLinetracker--selectLine").setValue();                         
+                                }
                        }
                     },
                     

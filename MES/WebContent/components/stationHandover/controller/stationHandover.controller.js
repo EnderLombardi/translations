@@ -304,23 +304,25 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 				var sPath = el.getCells()[0].oPropagatedProperties.oBindingContexts.oswModel.sPath;
 				var oModelOsw = oModel.getProperty(sPath);			
 				
-				if (oModelOsw.MATERIAL_DESCRIPTION != undefined) {
-					
-					aValueSelected[oModelOsw.WOID].open = bValue;
-					//Store the stat of the selected row in the object to know if it is in modification or not
-					that.isSelected(aValueSelected[oModelOsw.WOID],bValue);
-					
-				} else {
-					
-					// store in object the WOID + OPERATION TO select
-					var sID = oModelOsw.WOID + "##||##" + oModelOsw.REFERENCE
-
-					aValueSelected[oModelOsw.WOID][sID].open = bValue;
-					
-					//Store the stat of the selected row in the object to know if it is in modification or not
-					that.isSelected(aValueSelected[oModelOsw.WOID][sID],bValue);
-		
-				}
+				that.isSelected(/*aValueSelected[oModelOsw.WOID],*/bValue,oModelOsw);			
+								
+//				if (oModelOsw.MATERIAL_DESCRIPTION != undefined) {
+//					
+//					aValueSelected[oModelOsw.WOID].open = bValue;
+//					//Store the stat of the selected row in the object to know if it is in modification or not
+//					that.isSelected(aValueSelected[oModelOsw.WOID],bValue);
+//					
+//				} else {
+//					
+//					// store in object the WOID + OPERATION TO select
+//					var sID = oModelOsw.WOID + "##||##" + oModelOsw.REFERENCE
+//
+//					aValueSelected[oModelOsw.WOID][sID].open = bValue;
+//					
+//					//Store the stat of the selected row in the object to know if it is in modification or not
+//					that.isSelected(aValueSelected[oModelOsw.WOID][sID],bValue);
+//		
+//				}
 								
 			}
 		})
@@ -342,31 +344,39 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		// Check if we selected a chill or not
 		if (oModel.MATERIAL_DESCRIPTION != undefined) {
 				
-			aValueSelected[oModel.WOID].open = bValue;
+			//aValueSelected[oModel.WOID].open = bValue;
 			//Store the stat of the selected row in the object to know if it is in modification or not
-			that.isSelected(aValueSelected[oModel.WOID],bValue);
+			that.isSelected(/*aValueSelected[oModel.WOID],*/bValue,oModel);
 
-			Object.keys(aValueSelected[oModel.WOID]).forEach(function(el, indice) {
-
-				if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
-
-					aValueSelected[oModel.WOID][el].open = bValue;
-								
-					//Store the stat of the selected row in the object to know if it is in modification or not
-					that.isSelected(aValueSelected[oModel.WOID][el],bValue);
-
-
-				}
-
+			oModel.row.forEach(function(el,indice){
+				
+				that.isSelected(/*aValueSelected[oModel.WOID],*/bValue,el);
+				
 			})
-		} else {
-			// store in object the WOID + OPERATION TO select
-			var sID = oModel.WOID + "##||##" + oModel.REFERENCE
-
-			aValueSelected[oModel.WOID][sID].open = bValue;
 			
+			
+//			Object.keys(aValueSelected[oModel.WOID]).forEach(function(el, indice) {
+//
+//				if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
+//
+//					aValueSelected[oModel.WOID][el].open = bValue;
+//								
+//					//Store the stat of the selected row in the object to know if it is in modification or not
+//					that.isSelected(aValueSelected[oModel.WOID][el],bValue);
+//
+//
+//				}
+//
+//			})
+			
+		} else {
+//			// store in object the WOID + OPERATION TO select
+//			var sID = oModel.WOID + "##||##" + oModel.REFERENCE
+//
+//			aValueSelected[oModel.WOID][sID].open = bValue;
+//			
 			//Store the stat of the selected row in the object to know if it is in modification or not
-			that.isSelected(aValueSelected[oModel.WOID][sID],bValue);
+			that.isSelected(/*aValueSelected[oModel.WOID][sID],*/bValue,oModel);
 
 		}
 
@@ -378,7 +388,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	/***************************************************************************
 	 * 	permit to know if the  row in the object is in modification or not
 	 **************************************************************************/
-	isSelected : function(oToTest,bValue) {
+	isSelected : function(/*oToTest,*/bValue,oToTest2) {
 		
 //		var oModelCopy = airbus.mes.stationHandover.util.ModelManager.copyOfModel;
 //		
@@ -415,16 +425,30 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 //			
 //		}
 		
-		
-		if (oToTest.initial != bValue) {
-	
-			// Store also the modification on the object itself to send back whens saved the modification during the import of osw
-			oToTest.changed = true;
+		if ( bValue ) {
+			
+			bValue = "true";
+			
 		} else {
 			
-			oToTest.changed = false;
+			bValue = "false";
+
 		}
 		
+	
+			oToTest2.SELECTED = bValue;
+		
+		
+//		if (oToTest.initial != bValue) {
+//	
+//			// Store also the modification on the object itself to send back whens saved the modification during the import of osw
+//			oToTest.changed = true;
+//			
+//		} else {
+//			
+//			oToTest.changed = false;
+//		}
+//		
 	},	
 	
 	/************************************************************************/
@@ -493,29 +517,29 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		// Parse all Selected line in Table and store osw in modification in order to send it in the saved popup
 		Object.keys(aValueSelected).forEach(function(el, indice) {
 
-			if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
-
-				if ( aValueSelected[el].changed  === true ) {
-					
-					aSelectionPath.push(aValueSelected[el].oswItems);
-					
-				}
-			
-				Object.keys(aValueSelected[el]).forEach(function(al, indice1) {
-
-					if (al != "open" && al != "oswItems" && al != "initial" && al !="changed") {
-
-
-						if ( aValueSelected[el][al].changed  === true ) {
-							
-							aSelectionPath.push(aValueSelected[el][al].oswItems);
-							
-						}
-						
-					}
-
-				})
-			}
+//			if (el != "open" && el != "oswItems" && el != "initial" && el !="changed") {
+//
+//				if ( aValueSelected[el].changed  === true ) {
+//					
+//					aSelectionPath.push(aValueSelected[el].oswItems);
+//					
+//				}
+//			
+//				Object.keys(aValueSelected[el]).forEach(function(al, indice1) {
+//
+//					if (al != "open" && al != "oswItems" && al != "initial" && al !="changed") {
+//
+//
+//						if ( aValueSelected[el][al].changed  === true ) {
+//							
+//							aSelectionPath.push(aValueSelected[el][al].oswItems);
+//							
+//						}
+//						
+//					}
+//
+//				})
+//			}
 		})
 		// Display a dialog to inform if at least one osw is selected or not
 		if (aSelectionPath.length === 0) {

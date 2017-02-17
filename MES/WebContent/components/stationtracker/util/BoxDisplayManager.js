@@ -13,7 +13,7 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    leftTriangleIcon_Petrol: '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>',
 		
 		    leftOswIcon: '<i class="fa fa-refresh oswIcon blue "><b style="padding-left:1px max-width:80px">',
-		    leftOswIcon1: '<i class="fa fa-refresh oswIcon dandelion"><b style="padding-left:1px max-width:80px">',
+		    leftOswIcon1: '<i class="fa fa-refresh oswIcon yellow"><b style="padding-left:1px max-width:80px">',
 		    leftOswIcon2: '<i class="fa fa-refresh oswIcon green"><b style="padding-left:1px max-width:80px">',
 		    leftOswIcon3: '<i class="fa fa-refresh oswIcon pink"><b style="padding-left:1px max-width:80px">',
 		    
