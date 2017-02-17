@@ -30,6 +30,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 		oModel.loadData(this.getacpnglinksWorkOrderDetail(), null, false);
 		var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row);
 		oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
+		oModel.refresh();
 	},
 	
 	/**
@@ -74,6 +75,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 					Zoning : nodeIn.Zoning,
 					MaterialDescription : nodeIn.MaterialDescription,
 					ATA : nodeIn.ATA,
+					Level : 0,
 					Father_Type : nodeIn.Father_Type,
 					Father_ID : nodeIn.Father_ID,
 					children : []

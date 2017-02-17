@@ -17,10 +17,7 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 			// Expand all nodes of the tree and init the number of visible rows
 			oTTbl.setVisibleRowCount(this.treeExpandAll(oTTbl));
 			oTTbl.setSelectionMode("None");
-			airbus.mes.acpnglinks.util.Formatter.changeRowColor();
 		}
-		airbus.mes.acpnglinks.util.Formatter.changeRowColor();
-		sap.ui.getCore().byId("acpnglinksView--ACPnGTreeTable").fireCellClick();
 	},
 
 	/**
@@ -41,7 +38,6 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 	 * Clickable Cell management in Tree Table (unscoped for v1.5)
 	 */
 	OnSelectionChange : function(oEvt) {
-		airbus.mes.acpnglinks.util.Formatter.changeRowColor();
 		// try {
 		// airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath);
 		// } catch (exception) {
@@ -144,7 +140,6 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 		} catch (err) {
 			// do nothing
 		}
-		airbus.mes.acpnglinks.util.Formatter.changeRowColor();
 	},
 
 	/**
@@ -158,7 +153,6 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 		} catch (err) {
 			// do nothing
 		}
-		airbus.mes.acpnglinks.util.Formatter.changeRowColor();
 	},
 
 	/**

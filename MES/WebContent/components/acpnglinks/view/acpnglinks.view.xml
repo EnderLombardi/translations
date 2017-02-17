@@ -22,7 +22,11 @@
 							sortProperty="Type">
 							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>Type}" />
 							<tab:template>
-								<Text text="{acpnglinksWorkOrderDetail>Type}" class="AllignItem" cData:mylevel="test"/>
+								<Text text="{acpnglinksWorkOrderDetail>Type}" class="AllignItem">
+								<customData>
+									<core:CustomData key="level" value="{path : 'acpnglinksWorkOrderDetail>Level', formatter:'airbus.mes.acpnglinks.util.Formatter.levelFormat'}" writeToDom="true" />
+								</customData>
+								</Text>
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="Reference"
