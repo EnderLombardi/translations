@@ -1,6 +1,6 @@
 "use strict";
 
-sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
+sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.disruptions", {
 
 	/**
 	 * Called when a controller is instantiated and its View controls (if

@@ -407,7 +407,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		}
 		var aContexts = [];
 		for(var i=0;i<aIndices.length;i++){
-			aContexts.push( oTable.getContextByIndex(i));
+			aContexts.push( oTable.getContextByIndex(aIndices[i]));
 		}
 		//var aContexts = oTable.getSelectedContexts();
 		var aItems = aContexts.map(function(oEvent) {
