@@ -1,18 +1,56 @@
 "use strict";
 sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
+
+    /**
+    * Apply a filter on the confirmation Notes List and the WO Notes List
+    * depending on the Production_Context_GBO name
+    */
+    onBeforeRendering: function () {
+        var listConfirmationNotes = this.getView().byId("trackingtemplateView--confirmationNotes");
+        var listWONotes = this.getView().byId("trackingtemplateView--listNotes");
+
+        //we apply the filter here
+        listConfirmationNotes.getBinding("items").filter(new sap.ui.model.Filter({
+            path: "Production_Context_GBO",
+            test: function (oValue) {
+                return !oValue.startsWith("ShopOrderBO");
+            }
+        }));
+
+        //we apply the filter here
+        listWONotes.getBinding("items").filter(new sap.ui.model.Filter({
+            path: "Production_Context_GBO",
+            test: function (oValue) {
+                return oValue.startsWith("ShopOrderBO");
+            }
+        }));
+    },
+
     /**
     * Apply a filter on the confirmation Notes List depending 
     * on the state of the checkbox 
     * (only not confirmed operation)
-    * @param {Object} oEvent wich represent the event on press from the CheckBox last note
     */
-    showOnlyLastConfirmationNote: function (oEvent) {
-        var flag = oEvent.getSource().getSelected();
+    filterConfirmationNoteList: function () {
+        // var flag = oEvent.getSource().getSelected();
         var listConfirmationNotes = this.getView().byId("trackingtemplateView--confirmationNotes");
+        var showOnlyLastConfirmationNote = this.getView().byId("trackingtemplateView--showOnlyLastConfirmationNote").getSelected();
+        var showOnlyConfirmedConfirmationNote = this.getView().byId("trackingtemplateView--showOnlyConfirmedConfirmationNote").getSelected();
         var aFilters = [];
 
         //we had the filter only if the checkbox state is true.
-        if (flag) {
+        if (showOnlyLastConfirmationNote) {
+            aFilters.push(new sap.ui.model.Filter({
+                path: "STATE",
+                test: function (oValue) {
+                    if (oValue === "CONFIRMED") {
+                        return true;
+                    }
+                    return false;
+                }
+            }));
+        }
+        if (showOnlyConfirmedConfirmationNote) {
             aFilters.push(new sap.ui.model.Filter({
                 path: "STATE",
                 test: function (oValue) {

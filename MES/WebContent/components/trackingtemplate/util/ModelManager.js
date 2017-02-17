@@ -57,7 +57,17 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
+                data.Rowsets.Rowset[0].Row.sort(function (a, b) {
+                    if (a.Production_Context_GBO < b.Production_Context_GBO)
+                        return -1;
+                    if (a.Production_Context_GBO > b.Production_Context_GBO)
+                        return 1;
+                    return 0;
+                });
+                console.log(data);
+
                 oViewModel.setData(data);
+
             },
 
             error: function (error, jQXHR) {
@@ -135,9 +145,9 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         return totalPartialConfirmationUrl;
     },
 
-/***************************************************************************
- * Show Message Toast
- **************************************************************************/
+    /***************************************************************************
+     * Show Message Toast
+     **************************************************************************/
     messageShow: function (text, duration) {
         if (typeof duration == "undefined")
             duration = 3000;
