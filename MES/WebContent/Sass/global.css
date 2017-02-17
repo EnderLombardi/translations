@@ -3831,12 +3831,6 @@ DATE PICKER
 
 .ACPnGtLabel { color: white; padding-top: 8px; padding-left: inherit; }
 
-#acpnglinksView--ACPnGTreeTable-table > tbody tr:nth-child(even) { background: #fff; }
-
-#acpnglinksView--ACPnGTreeTable-table > tbody tr:nth-child(odd) { background: #fcfcfc; }
-
-#acpnglinksView--ACPnGTreeTable-table > tbody tr:hover { background-color: #efefef; }
-
 #acpnglinksView--ACPnGTreeTable-table > tbody > tr { height: 46px; }
 
 #acpnglinksView--ACPnGTreeTable-table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; border-top: 1px solid #e5e5e5; }
@@ -3850,6 +3844,16 @@ DATE PICKER
 .listButtons > div:first-child span { margin-top: 1px; margin-left: 2px; }
 
 .listButtons > div:nth-child(2) span { margin-top: 1px; margin-right: 2px; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-sap-ui-level="0"] { background-color: #fbefcc; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-sap-ui-level="1"] { background-color: #cfe0e8; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-sap-ui-level="2"] { background-color: #b7d7e8; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-sap-ui-level="3"] { background-color: #87bdd8; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-sap-ui-level="4"] { background-color: #daebe8; }
 
 #idCheckListView--TabChecklist { width: 95% !important; margin: 50px auto; padding: 0; }
 
@@ -4207,7 +4211,7 @@ DISRUPTIONTRACKER
 
 .trackingTemplate .reasonCodeContainer .sapMPanelContent:not(.sapMPanelBGTransparent) { border: 0; }
 
-.trackingTemplate .reasonCodeContainer label { margin: auto; margin-right: 10px; }
+.trackingTemplate .reasonCodeContainer label { margin: auto; padding-right: 10px; }
 
 #missingPartsView--mpPage > section#missingPartsView--mpPage-cont { height: 100%; }
 

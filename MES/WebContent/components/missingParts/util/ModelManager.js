@@ -9,7 +9,7 @@ airbus.mes.missingParts.util.ModelManager = {
 
 	init: function (core) {
 
-		var aModel = ["getMissingParts", "getFilters", "getOrder"];
+		var aModel = ["getMissingParts"];
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
 		// Handle URL Model
@@ -28,8 +28,14 @@ airbus.mes.missingParts.util.ModelManager = {
 	loadMPDetail: function () {
 		var oViewModel = airbus.mes.missingParts.oView.getModel("getMissingParts");
 		oViewModel.loadData(this.getMPDetail(), null, false);
-		
-
+		var sorterCombo = airbus.mes.missingParts.oView.byId("missingPartsView--mpSorter");
+		if ( sorterCombo ){
+			var items  = sorterCombo.getItems();
+			if ( items.length === 0 ){
+				sorterCombo.addItem(new sap.ui.core.ListItem("Descending").setText(airbus.mes.missingParts.util.Formatter.getTranslation("Descending")));
+				sorterCombo.addItem(new sap.ui.core.ListItem("Ascending").setText(airbus.mes.missingParts.util.Formatter.getTranslation("Ascending")));
+			}
+		}
 		oViewModel.refresh(true);//refresh the model (and so the view)
 	},
 

@@ -33,7 +33,7 @@
 			<Button text="{stationHandoverI18n>Close}" icon="sap-icon://decline"
 				press="onClose" />
 			<Button text="{stationHandoverI18n>insert}" icon="sap-icon://slim-arrow-down"
-				press="onOk" />
+				press="onInsertPress" />
 		</buttons>
 	</Dialog>
 
