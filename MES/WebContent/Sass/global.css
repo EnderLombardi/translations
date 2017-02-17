@@ -32,16 +32,7 @@ STATION TRACKER
 *********************/
 .trackerBox .fa { position: relative; z-index: 1; line-height: 24px; color: #ffffff; overflow: hidden; }
 
-/*%oswIcon{
-    position: relative;
-    z-index: 1;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 10px;
-    top: 5px;
-   color: $petrol;
-    overflow: hidden;
-}*/
+/*%oswIcon{ position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; color: $petrol; overflow: hidden; }*/
 .trackerBox .trackerText, .trackerBox .trackerTextBlock { padding-left: 10px; position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; }
 
 .sapMPIText1, .sapMPIText2 { float: left; font-family: Arial, Helvetica, sans-serif; line-height: normal !important; text-overflow: clip; display: inline-block; overflow: hidden; height: 100%; line-height: 1.2em; color: #ffffff; font-size: 100%; word-break: break-all; }
@@ -888,6 +879,10 @@ reschedule
 #reschedulePage--rescheduleLabel.rescheduleLabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; }
 
 #reschedulePage--reschedulefield.sapUiMediumMarginTop { width: 95% !important; margin: 30px auto !important; padding: 0; }
+
+#stationTrackerView--splitWorkTra { height: calc(100% - 18rem) !important; }
+
+#stationTrackerView--splitWorkTra.withoutKPI { height: calc(100% - 6rem) !important; }
 
 /********************
 KPI Header Content
@@ -2236,10 +2231,7 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*!
-*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
-*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-*/
+/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -3933,7 +3925,7 @@ DATE PICKER
 
 #componentsView--servicesButtonComponents #componentsView--btnComponentsSave { right: 5px; }
 
-#spliterWorkTracker--splitWorTra.splitWorTra { width: 100% !important; margin: 20px auto; height: calc(100% - 20rem); overflow: auto; padding: 20px; }
+#spliterWorkTracker--splitWorTra.splitWorTra { width: 100% !important; margin: 20px auto; overflow: auto; padding: 20px; }
 
 #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody tr:nth-child(even) { background: transparent; }
 

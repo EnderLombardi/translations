@@ -364,12 +364,6 @@
 							
 							<layout:Splitter orientation="Vertical" id="splitWorkTra">
 										<custom:util.DHTMLXScheduler id="stationtracker"></custom:util.DHTMLXScheduler>
-										<!-- For Disruption table in Station Tracker -->
-												<!-- <control:disruptionNotifications id="disruptNotifications"> <control:disruptionContent id="disruptContent"> </control:disruptionContent> </control:disruptionNotifications> -->
-												<!-- <HBox class="slidingUpDownPanel GenricBgColor" id="disruptNotifications">
-													<items>
-													</items>
-												</HBox> -->	
 							</layout:Splitter>
 
 		</content>

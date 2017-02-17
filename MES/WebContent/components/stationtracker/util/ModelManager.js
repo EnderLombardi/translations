@@ -1382,7 +1382,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 
     loadSplitModel: function () {
         var splitModelURL, oViewModel, shiftSelected, userSelected, startDate, tzoffset, localISOTime;
-        
+
         oViewModel = sap.ui.getCore().getModel("SplitDetailModel");
 
         userSelected = airbus.mes.stationtracker.util.AssignmentManager.userSelected;
@@ -1393,12 +1393,12 @@ airbus.mes.stationtracker.util.ModelManager = {
         }
 
         startDate = null;
-        if(airbus.mes.stationtracker && airbus.mes.stationtracker.oView && airbus.mes.stationtracker.oView.oCalendar) {
+        if (airbus.mes.stationtracker && airbus.mes.stationtracker.oView && airbus.mes.stationtracker.oView.oCalendar) {
             startDate = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
             tzoffset = (startDate).getTimezoneOffset() * 60000; //offset in milliseconds
-            localISOTime = (new Date(startDate - tzoffset)).toISOString().slice(0,-1);
+            localISOTime = (new Date(startDate - tzoffset)).toISOString().slice(0, -1);
         }
-        
+
         splitModelURL = this.urlModel.getProperty("urlSplitData");
         splitModelURL = airbus.mes.stationtracker.util.ModelManager.replaceURI(splitModelURL, "$user", userSelected);
         splitModelURL = airbus.mes.stationtracker.util.ModelManager.replaceURI(splitModelURL, "$shift", shiftSelected);
@@ -1414,6 +1414,11 @@ airbus.mes.stationtracker.util.ModelManager = {
                     data = JSON.parse(data);
                 }
                 oViewModel.setData(data);
+
+                //if the KPI are hidden we add the class without KPI in order ajust the height correctly
+                if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
+                    $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
+                }
             },
 
             error: function (error, jQXHR) {

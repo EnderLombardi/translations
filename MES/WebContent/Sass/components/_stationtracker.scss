@@ -2075,3 +2075,12 @@ reschedule
     margin: 30px auto !important;
     padding: 0;
 }
+
+
+#stationTrackerView--splitWorkTra {
+  height: calc(100% - 18rem) !important;
+}
+
+#stationTrackerView--splitWorkTra.withoutKPI {
+  height: calc(100% - 6rem) !important;
+}
