@@ -95,9 +95,9 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     },
 
     onOKConfirmation: function () {
-        var attachmentFilesCollection = this.getView().byId('UploadCollection');
-        var collection = attachmentFilesCollection.getItems();
-        var size = collection.length;
+        // var attachmentFilesCollection = this.getView().byId('UploadCollection');
+        // var collection = attachmentFilesCollection.getItems();
+        // var size = collection.length;
         // var i = 0;
         // for (; i < size; i += 1) {
         //     console.log(collection[i].getAttributes());
@@ -120,6 +120,11 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         //Param.7 logon
         var login = sap.ui.getCore().byId('userNameTckTmpltForConfirmation').getValue();
 
+        var sMessageSuccess = this.getView().getModel("i18n")
+            .getProperty("SuccessfulConfirmation");
+        var sMessageError = this.getView().getModel("i18n")
+            .getProperty("ErrorDuringConfirmation");
+
         console.log(airbus.mes.trackingtemplate.util.ModelManager
             .getSendNotesUrl(
             shopOrderNum, erpSystem, badgeId, textArea.getValue(), reasonCode, password, login
@@ -132,16 +137,14 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                     ),
                 async: false,
                 error: function (xhr, status, error) {
-                    // airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageError);
+                    airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageError);
                 },
                 success: function (result, status, xhr) {
-                    // airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
+                    airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
                     airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
-
+                    this.cleanAfterAddingNotes();
                 }
             });
-
-        this.cleanAfterAddingNotes();
         this._oUserConfirmationDialog.close();
     },
 
@@ -150,14 +153,19 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     },
 
     cleanAfterAddingNotes: function () {
-        //Param.4 Desciption
-        airbus.mes.trackingtemplate.oView.byId('commentArea').setValue('');
-        //Param.5 ReasonCode
-        airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").setSelectedKey('');
-        //Param.6 password
-        sap.ui.getCore().byId('passwordTckTmpltForConfirmation').setValue('');
-        //Param.7 logon
-        sap.ui.getCore().byId('userNameTckTmpltForConfirmation').setValue('');
+        //if the view is ready yet, dont try to reset value
+        if (airbus.mes.trackingtemplate.oView.byId('commentArea')) {
+            //Param.4 Desciption
+            airbus.mes.trackingtemplate.oView.byId('commentArea').setValue('');
+            //Param.5 ReasonCode
+            airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").setSelectedKey('');
+        }
+        if (sap.ui.getCore().byId('passwordTckTmpltForConfirmation')) {
+            //Param.6 password
+            sap.ui.getCore().byId('passwordTckTmpltForConfirmation').setValue('');
+            //Param.7 logon
+            sap.ui.getCore().byId('userNameTckTmpltForConfirmation').setValue('');
+        }
     }
 
 

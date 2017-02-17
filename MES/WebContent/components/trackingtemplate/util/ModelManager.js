@@ -33,11 +33,17 @@ airbus.mes.trackingtemplate.util.ModelManager = {
 
     },
 
-    loadTrackingTemplateModel: function () {
+    refreshTrackingTemplateModel: function () {
         var oViewModel = sap.ui.getCore().getModel("TrackingTemplate");
         var reasonCodeModel = sap.ui.getCore().getModel("reasonCodeModel");
         this.loadTrackingTemplateData(oViewModel, "urltrackingtemplate");
         this.loadReasonCodeData(reasonCodeModel, "getReasonCodes");
+    },
+
+    loadTrackingTemplateModel: function () {
+        this.refreshTrackingTemplateModel();
+        airbus.mes.trackingtemplate.oView.oController.hideCommentBox();
+        airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
     },
 
     loadTrackingTemplateData: function (oViewModel, model) {
@@ -127,8 +133,32 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             totalPartialConfirmationUrl, "logon", userId.toUpperCase());
 
         return totalPartialConfirmationUrl;
+    },
+
+/***************************************************************************
+ * Show Message Toast
+ **************************************************************************/
+    messageShow: function (text, duration) {
+        if (typeof duration == "undefined")
+            duration = 3000;
+
+        sap.m.MessageToast.show(text, {
+            duration: duration,
+            width: "25em",
+            my: "center center",
+            at: "center center",
+            of: window,
+            offset: "0 0",
+            collision: "fit fit",
+            onClose: null,
+            autoClose: true,
+            animationTimingFunction: "ease",
+            animationDuration: 3000,
+            closeOnBrowserNavigation: false
+        });
 
     },
+
 
 
 
