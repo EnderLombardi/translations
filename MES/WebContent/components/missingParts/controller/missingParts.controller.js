@@ -34,21 +34,37 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
     },
 
 	onSearch: function(oEvent) {
+		var oFilters = [];
+		var oSorter = null;
 		var query = oEvent.getParameter("query");
 		var mpTable_Binding = this.getView().byId("missingPartsView--MPTable").getBinding("rows");
-		if( !query || query.length == 0 ){
-			mpTable_Binding.filter( [] );
-		}
-		else
+		var comboFilter = airbus.mes.missingParts.oView.byId("missingPartsView--mpFilter");
+		var comboSorter = airbus.mes.missingParts.oView.byId("missingPartsView--mpSorter");
+		var filterSelected = comboFilter.getSelectedItem();
+		var sorterSelected= comboSorter.getSelectedItemId();
+		
+		if ( filterSelected )
 		{
-			mpTable_Binding.filter([new sap.ui.model.Filter([
-				new sap.ui.model.Filter("WorkOrder",  sap.ui.model.FilterOperator.EQ, query),
-				new sap.ui.model.Filter("Operation",  sap.ui.model.FilterOperator.EQ, query),
-				new sap.ui.model.Filter("PartNumber",  sap.ui.model.FilterOperator.EQ, query),
-				new sap.ui.model.Filter("PartDescript",  sap.ui.model.FilterOperator.Contains, query)
-			],false)]);
+			var filterCriteria = filterSelected.getBindingInfo("text").binding.oValue;
+			if( query ){
+				oFilters.push(new sap.ui.model.Filter(filterCriteria,  sap.ui.model.FilterOperator.Contains, query));
+			}
+			if ( sorterSelected == "Ascending" ) {
+				oSorter = new sap.ui.model.Sorter({
+                path: filterCriteria,
+                descending: false});
+			}else
+			{
+			    oSorter = new sap.ui.model.Sorter({
+                path: filterCriteria,
+                descending: true});
+			}
 		}
+	
+		mpTable_Binding.filter(oFilters);
+		mpTable_Binding.sort(oSorter);
 	}
+
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

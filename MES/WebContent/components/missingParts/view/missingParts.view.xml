@@ -22,14 +22,14 @@
 			<m:ComboBox
 				id="mpFilter"
 				placeholder="Select Filter..."
-				items="{getMissingParts>/Rowsets/Rowset/0/Columns/Column}">
+				items="{getMissingParts>/Rowsets/Rowset/0/Columns/Column}"
+				selectionChange="onSearch">
 				<core:Item key="{FilterId}" text="{path: 'getMissingParts>Name' , formatter: 'airbus.mes.missingParts.util.Formatter.getTranslation'}" />
 			</m:ComboBox>
 			<m:ComboBox
 				id="mpSorter"
 				placeholder="Select Order..."
-				items="{path: 'getOrder>Name'}">
-				<core:Item key="{OrderId}" text="{Name}" />
+				selectionChange="onSearch">
 			</m:ComboBox>
 			<m:SearchField 
 				id="searchField"
