@@ -95,9 +95,31 @@ airbus.mes.acpnglinks.model.ModelManager = {
 				nodeMap[nodeOut.Reference] = nodeOut;
 			}
 		}
+		this.setTreeLevel(nodes,1);
 		return nodes;
-	}
+	},
 	
+	/**
+	 * Determine levels in a tree recursive
+	 */
+	setTreeLevel : function(nodes,i) {
+		i++;
+		var nodelength = 0;
+		nodelength = nodes.length
+		if (nodes.length === undefined){
+			nodes.Level = i-1;
+			for (var k = 0; k < nodes.children.length; k++){
+				this.setTreeLevel(nodes.children[k],i);
+			}
+		}else{
+			for (var j = 0; j < nodelength; j++){
+				nodes[j].Level = i-1;	
+				for (var k = 0; k < nodes[j].children.length; k++){
+					this.setTreeLevel(nodes[j].children[k],i);
+				}
+			}
+		}
+	}
 };
 
 

@@ -27,9 +27,9 @@
 
 #acpnglinksView--ACPnGTreeTable-table{
 	>tbody {
-				tr:nth-child(even) {background: #fff}
-				tr:nth-child(odd) {background: #fcfcfc}
-				tr:hover{background-color: #efefef}
+				//tr:nth-child(even) {background: #fff}
+				//tr:nth-child(odd) {background: #fcfcfc}
+				//tr:hover{background-color: #efefef}
 				>tr{
 					height : 46px;
 					>td{
@@ -70,3 +70,24 @@
     }
 }
 
+[id^="acpnglinksView--ACPnGTreeTable-table"]{
+	>tbody{
+	 	>tr{
+	 &[data-sap-ui-level="0"]{
+	 	background-color: #fbefcc;
+	 }
+	  &[data-sap-ui-level="1"]{
+	 	background-color: #cfe0e8;
+	 }
+	  &[data-sap-ui-level="2"]{
+	 	background-color: #b7d7e8;
+	 }
+	  &[data-sap-ui-level="3"]{
+	 	background-color: #87bdd8;
+	 }
+	  &[data-sap-ui-level="4"]{
+	 	background-color: #daebe8;
+	 }
+	}
+  }
+}
