@@ -1,0 +1,77 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<ViewSettingsDialog id="disrptTrackerSettings"
+		confirm="onTableSettingsConfirm" filterDetailPageOpened="onFilterDetailPageOpened"
+		resetFilters="onResetFilters">
+		<!-- <sortItems>
+			<ViewSettingsItem selected="true" key="OpeningTime"
+				text="{disruptiontrackerI18n>openingTime}" />
+			<ViewSettingsItem key="FixedByTime"
+				text="{disruptiontrackerI18n>fixedByTime}" />
+		</sortItems> -->
+		<filterItems>
+			<!-- <ViewSettingsFilterItem
+				filterDetailPageOpened="onFilterDetailPageOpened" text="{disruptiontrackerI18n>status}"
+				key="{disruptiontrackerI18n>status}" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="{disruptiontrackerI18n>status.pending}"
+						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.pending}" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>status.acknowledged}"
+						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.acknowledged}" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>status.solved}"
+						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.solved}" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>status.closed}"
+						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.closed}" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>status.rejected}"
+						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.rejected}" />
+				</items>
+			</ViewSettingsFilterItem> -->
+			<ViewSettingsFilterItem id="categoryFilter" text="{disruptiontrackerI18n>category}"
+				key="{disruptiontrackerI18n>category}" multiSelect="false" items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
+				<items>
+				<ViewSettingsItem text="{disruptionsTrackerModel>Category}"
+						key="{disruptionsTrackerModel>Category}" />
+				</items>	
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem id="reasonFilter" text="{disruptiontrackerI18n>reason}"
+				key="{disruptiontrackerI18n>reason}" multiSelect="false" items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
+				<items>
+					<ViewSettingsItem text="{disruptionsTrackerModel>Reason}"
+						key="{disruptionsTrackerModel>Reason}" />
+				</items>
+			</ViewSettingsFilterItem> 
+			<ViewSettingsFilterItem id="escalationFilter" text="{disruptiontrackerI18n>escalation}"
+				key="{disruptiontrackerI18n>escalationLevel}" multiSelect="false">
+				<items>
+					<ViewSettingsItem 
+						text="{disruptiontrackerI18n>not_Escalated}" key="1" />
+					<ViewSettingsItem
+						text="{disruptiontrackerI18n>first_Escalated}" key="2" />
+					<ViewSettingsItem
+						text="{disruptiontrackerI18n>final_Escalated}" key="3" />
+						<ViewSettingsItem
+						text="{disruptiontrackerI18n>All}" key=" " />
+				</items>
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem id="gravityFilter" text="{disruptiontrackerI18n>gravity}"
+				key="{disruptionsTrackerModel>Gravity}" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="{disruptiontrackerI18n>not_Blocked}" key="1" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>disturbed}" key="2" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>blocked}" key="3" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>All}" key=" " />
+				</items>
+			</ViewSettingsFilterItem>
+			</filterItems>
+			<customTabs>
+			<ViewSettingsCustomTab id="columnOrderSettings" icon="sap-icon://action-settings"  title="Column order" tooltip="Column Order Settings">
+			<content>
+			<Button text="change column order" press="onPersoalisationButtonPressed" />
+			</content>
+			
+				
+			</ViewSettingsCustomTab>
+		</customTabs>
+		
+	</ViewSettingsDialog>
+</core:FragmentDefinition>
