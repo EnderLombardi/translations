@@ -75,18 +75,29 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Submit a comment 
      */
     submitComment: function () {
+        var sMessageError = this.getView().getModel("i18n")
+            .getProperty("ErrorDuringConfirmation");
+        if (airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").getSelectedKey()) {
+            if (this.getView().byId('commentArea').getValue()) {
+                if (!this._oUserConfirmationDialog) {
 
-        if (!this._oUserConfirmationDialog) {
+                    this._oUserConfirmationDialog = sap.ui
+                        .xmlfragment(
+                        "airbus.mes.trackingtemplate.fragments.userConfirmation",
+                        this);
 
-            this._oUserConfirmationDialog = sap.ui
-                .xmlfragment(
-                "airbus.mes.trackingtemplate.fragments.userConfirmation",
-                this);
-
-            this.getView().addDependent(
-                this._oUserConfirmationDialog);
+                    this.getView().addDependent(
+                        this._oUserConfirmationDialog);
+                }
+                this._oUserConfirmationDialog.open();
+            } else {
+                var sMessageError = this.getView().getModel("i18n").getProperty("WriteSomething");
+                airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageError);
+            }
+        } else {
+            var sMessageError = this.getView().getModel("i18n").getProperty("ChooseReasonCode");
+            airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageError);
         }
-        this._oUserConfirmationDialog.open();
     },
 
     onCancelConfirmation: function () {
@@ -141,7 +152,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                 success: function (result, status, xhr) {
                     airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
                     airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
-                    this.cleanAfterAddingNotes();
+                    airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
                 }
             });
         this._oUserConfirmationDialog.close();
