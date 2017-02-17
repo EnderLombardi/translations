@@ -3,7 +3,7 @@ jQuery.sap.declare("airbus.mes.stationHandover.util.ModelManager");
 
 airbus.mes.stationHandover.util.ModelManager = {
 	urlModel : undefined,
-	aSelected : {},
+	aSelected : [],
 	queryParams : jQuery.sap.getUriParameters(),
 	i18nModel : undefined,
 	selectAll : false,
@@ -144,7 +144,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 			// oCurrent.sDate = Date.parse(new Date(oCurrent.Takt_Start))
 			//aPhStation.push(oCurrent);
 			aPhStation.sort(airbus.mes.shell.util.Formatter.fieldComparator([ 'sDate' ]));
-			//				//As a default, the physical station with the biggest planned start date/time should be selected.
+			//As a default, the physical station with the biggest planned start date/time should be selected.
 			oModelManager.filter.aStation.push(aPhStation[aPhStation.length - 1].station);
 			oModelStation.setData(aPhStation);
 			console.log(aPhStation);
@@ -167,25 +167,12 @@ airbus.mes.stationHandover.util.ModelManager = {
 			airbus.mes.stationHandover.util.ModelManager.copyOfModel = JSON.parse(JSON.stringify(oViewModel.oData));
 			//Create tree of for manage selection of tree
 			aModel.forEach(function(el, indice) {
-
-//				aValueSelected[el.WOID] = {
-//					"open" : String(el.INSERTED) == "true",
-//					"initial" : String(el.INSERTED) == "true",
-//					"oswItems" : JSON.parse(JSON.stringify(el))
-//				};
 				
+				//Save in field selected the value INSERTED to manage the selection/unselection of lines 
 				el.SELECTED = el.INSERTED;
 
 				aModel[indice].row.forEach(function(al, indice1) {
-
-					var sID = al.WOID + "##||##" + al.REFERENCE;
-
-//					aValueSelected[al.WOID][sID] = {
-//						"open" : String(el.INSERTED) == "true",
-//						"initial" : String(el.INSERTED) == "true",
-//						"oswItems" : JSON.parse(JSON.stringify(al))
-//					};
-
+					
 					al.SELECTED = al.INSERTED;
 				})
 			})
@@ -239,5 +226,40 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 		oViewModel.setData(aModel);
 		oViewModel.refresh();
-	}
+	},
+	
+	saveOsw : function() {
+		
+		var aData = airbus.mes.stationHandover.util.ModelManager.aSelected;
+				
+		jQuery.ajax({
+			type : 'post',
+			url : geturlRessourcePool,
+			contentType : 'application/json',
+			async : 'false',
+			data : JSON.stringify({
+				"osw" : aData,					               
+			}),
+
+			success : function(data) {
+
+				try {
+					
+					oViewModel.setData(data);
+					airbus.mes.calendar.oView.getModel("ressourcePoolModel").refresh(true);
+
+				} catch (e) {
+
+					console.log("NO ressource pool load");
+				}
+
+			},
+
+			error : function(error, jQXHR) {
+				console.log("NO ressource pool load");
+
+			}
+		});
+		
+	},
 };
