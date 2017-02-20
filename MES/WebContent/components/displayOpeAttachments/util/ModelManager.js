@@ -144,7 +144,6 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		}
 
 		return url;
-	},
 
 	//replace the url with the several parameters needed
 	getExternalUrl: function (externalUrlParameters) {

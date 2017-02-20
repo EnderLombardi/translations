@@ -20,7 +20,7 @@
 
             <Table     id="ncDisplay"
                    class="ncDisplayTable"
-                   items="{path: 'ncdisplaydata>/Rowsets/Rowset/0/Row/'}"
+                   items="{path: 'ncdisplaydata>/ncDetailList/'}"
                    itemPress="onLineClick">
 
                 <headerToolbar>
@@ -54,10 +54,10 @@
                 <items>
                     <ColumnListItem type="Active">
                         <cells>
-                            <Text text="{ncdisplaydata>status}" />
+                            <Text text="{ncdisplaydata>acpStatus}" />
                             <Text text="{ncdisplaydata>type}" />
-                            <Text text="{ncdisplaydata>referenceNumber}" />
-                            <Text text="{ncdisplaydata>title}" />
+                            <Text text="{ncdisplaydata>ncReference}" />
+                            <Text text="{ncdisplaydata>description}" />
                         </cells>
                     </ColumnListItem>
                 </items>
