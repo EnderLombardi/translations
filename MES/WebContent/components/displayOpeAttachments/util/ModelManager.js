@@ -151,8 +151,8 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	getExternalUrl: function (externalUrlParameters) {
 		var url = this.urlModel.getProperty("getExternalUrlTemplate");
 		if (sessionStorage.loginType !== "local") {
-			url = this.replaceURI(url, "$workorder", externalUrlParameters[0]);
-			url = this.replaceURI(url, "$operation", externalUrlParameters[1]);
+			url = this.replaceURI(url, "p_workorder", externalUrlParameters[0]);
+			url = this.replaceURI(url, "p_operation", externalUrlParameters[1]);
 		}
 
 		return url;
