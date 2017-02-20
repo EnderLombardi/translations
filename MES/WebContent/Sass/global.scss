@@ -130,7 +130,7 @@ html
             }
 
             #globalNavView--refreshTime-img{
-                color: $twilight-blue;
+                color: $tiffany-blue;
                 text-shadow: none;
             }
 
@@ -177,9 +177,12 @@ html
                 &:hover{
                     background-color: $petrol-20;
                     &>div{
+                        &:hover {
+                            background-color: transparent;
+                        }
                         &.sapMBtnActive{
                             color:$white-two;
-                            background-color:#74D2E7;
+                            background-color:$tiffany-blue;
                         }
                     }
                 }
@@ -199,7 +202,7 @@ html
                 }
             }
             button[aria-pressed^="true"]{
-                background-color: #74D2E7;
+                background-color: $tiffany-blue;
                 &:hover{
                     background-color: rgb(73,164,188);
                 }
@@ -290,34 +293,43 @@ html
     }
     @at-root #globalNavView--SelectLanguage span, #globalNavView--SelectLanguage label, #globalNavView #globalNavView--informationButton-inner #globalNavView--informationButton-img,
         #globalNavView #globalNavView--homeButton-inner #globalNavView--homeButton-img{
-            color: $twilight-blue;
+            color: $tiffany-blue;
     }
 }
 
 #globalNavView--SelectLanguage {
-    background: $teal-blue-hover !important;
+    background: #0f2d65;
     border: 0;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
+    height: 2.5rem;
+    padding: 0.25rem 0 0.25rem 0;
     >label {
         padding-right: 2rem;
     }
     >span#globalNavView--SelectLanguage-arrow {
         width: 1.8rem;
+        padding: 0.25rem 0 0.25rem 0;
     }
     >select {
         padding-right: 2rem;
     }
+    &:hover:not(.sapMSltPressed) {
+        background-color: $navy-blue-hover;
+        border-radius: 0.125rem;
+        >span {
+            background-color: transparent;
+        }
+    }
 }
 
 #globalNavView--settingsButton {
-    background-color: $twilight-blue;
+    background-color: $tiffany-blue;
     margin-right: 0;
     padding: 0.250rem;
     color:$white-two;
     &.sapMBtn{
         &:hover{
-            background-color: rgba(255, 255, 255, 0.20);
+            background-color: $teal-blue;
             &>.sapMBtnHoverable{
                 background-color: transparent;
                 border-color:transparent;
@@ -357,7 +369,7 @@ FORM
 #mes {
     .sapMInputValHelpInner {
     color: $white-two;
-    background-color: $twilight-blue;
+    background-color: $tiffany-blue;
     cursor: pointer;
     }
     .sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp>.sapMInputValHelpInner:hover, .sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp>.sapMInputValHelpInner:focus {
@@ -368,7 +380,7 @@ FORM
 
     }
     .sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):not(.sapMInputBaseDisabledInner):hover {
-        border-color: $twilight-blue;
+        border-color: $tiffany-blue;
     }
    .oswPopover {
            .sapMComboBoxTextField {
@@ -392,10 +404,10 @@ Datepicker
 **************/
 #mes {
     .sapUiCalItemSel {
-    background-color: $twilight-blue;
+    background-color: $tiffany-blue;
     }
     .sapUiCalHead>.sapUiCalHeadB, .sapUiCalCancel, .sap-desktop .sapUiCalHead>.sapUiCalHeadB:hover, .sap-desktop .sapUiCalHead>.sapUiCalHeadB:focus {
-    color: $twilight-blue;
+    color: $tiffany-blue;
     }
 }
 /*************
@@ -403,16 +415,16 @@ Timepicker
 **************/
 #mes {
     .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem.sapMTimePickerItemSelected {
-        background: $twilight-blue;
+        background: $tiffany-blue;
     }
     .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem:hover {
-        background:  $twilight-blue;
+        background:  $tiffany-blue;
     }
     .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem.sapMTimePickerItemSelected:hover {
         background:  $navy-blue;
     }
     .sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn.sapMTPSliderExpanded .sapMTimePickerSlider .sapMTPPickerSelectionFrame {
-        border: 2px solid $twilight-blue;
+        border: 2px solid $tiffany-blue;
     }
 }
 /*************
@@ -434,7 +446,7 @@ Pop up
         > div {
             color: $white-two;
             .sapMBtnIcon {
-                color: $twilight-blue;
+                color: $tiffany-blue;
             }
         }
     }
@@ -462,7 +474,7 @@ FROM HOMEPAGE
 For Page title in headers
 **************************/
 label.headerText {
-    color: $twilight-blue !important;
+    color: $tiffany-blue !important;
     text-shadow: none !important;
 }
 
