@@ -26,7 +26,7 @@
 						<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
 						<Title class="taktAdherenceLinetrackerTitle" text="{i18n>taktAdherence}"
 							level="H2" />
-						<ToolbarSpacer width="54%" />
+						<ToolbarSpacer width="40%" />
 						<Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
 							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
 						<ToolbarSpacer width="2%" />

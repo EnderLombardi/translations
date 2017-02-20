@@ -19,14 +19,14 @@ LineTracker Header
 .headerIcons{
     font-family: 'SAP-icons';
     color: #FFFFFF;
-    border-left: solid 1px #74d2e7 !important;
+    border-left: solid 1px $tiffany-blue !important;
     padding: 12px 0px 12px 25px;
 }
 
 #idLinetracker--linetracker_dateLabel{
     color: #ffffff !important;
     padding: 17px 20px 17px 10px;
-    border-right: solid 1px #74d2e7 !important;
+    border-right: solid 1px $tiffany-blue !important;
     text-shadow: none;
     margin-right: 15px;
 }
@@ -44,7 +44,7 @@ LineTracker Header
 }
 
 #idLinetracker--hideKPI-content, #idLinetracker--hideKPI-img{
-    color: #74d2e7 !important;
+    color: $tiffany-blue !important;
     text-shadow: none;
 }
 #idLinetracker .sapMBtnTransparent > .sapMBtnIcon {
@@ -222,7 +222,9 @@ Linetracker View (Main Table)
         margin-left: 0;
 
     }
-   
+    #idLinetracker--navBack {
+        @extend %navBack;
+    }
     span{
         &.sapUiIcon{
             &.trendIconLinetracker{
@@ -241,26 +243,16 @@ Linetracker View (Main Table)
         }
     }
     .taktAdherenceLinetrackerTitle{
-            height: 3rem;
-		    border: none;
-		    border-right: 1px solid #8db9ca;
-		    border-left: 1px solid #8db9ca;
-		    background-color: transparent;
-		    color: #0D5D76;
-		    text-transform: uppercase;
-		    line-height: 3rem;
-		    font-size: 0.75em;
-    		text-shadow: none;
-    		        width: 163px !important;
-    	padding: 0 25px !important;
-        }
+        color: #0D5D76;
+        text-transform: uppercase;
+        font-size: 0.75em;
+    }
     #idLinetracker--linetrackerTable{
         div{
             &:nth-child(2){
                 div{
                     &+ div + div.sapUiTableCol{
                         background-color: #D5F1F8;
-                        //border-left: 1px solid #dddddd;
                     }
                 }
             }
@@ -639,7 +631,7 @@ SHIFT STAFFING
 #idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
   background: #fe5000; }
 #idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
-  background-color: #74D2E7; }
+  background-color: $tiffany-blue; }
 
 /*******************************
 BOX RESOLUTION EFFICIENCY
@@ -678,7 +670,7 @@ SHIFT STAFFING for Station KPI
         background: $blood-orange;
     }
     .sapSuiteDmcBarDeltaStripe {
-        background-color: #74D2E7;
+        background-color: $tiffany-blue;
     }
 
 }

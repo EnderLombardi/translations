@@ -131,7 +131,7 @@ STATION TRACKER
     line-height: 3rem;
     text-transform: capitalize;
     margin-right: 0px !important;
-    border-right: solid 1px #74d2e7 !important;
+    border-right: solid 1px $tiffany-blue !important;
     background: $teal-blue-hover !important;
     border: 0;
 }
@@ -465,6 +465,20 @@ STATION TRACKER
         color: white;
         &:hover {
             background-color: $teal-blue;
+        }
+    }
+}
+
+%navBack{
+    >div {
+        >span {
+            color: #0D5D76;
+        }
+    }
+    &:hover {
+        background-color: $petrol-20;
+        >div {
+            background-color: transparent;
         }
     }
 }

@@ -5,7 +5,7 @@ Tcalendar--kpiHeaderToolbar
 
 #calendar--kpiHeaderToolbar{
     >label {
-            color: #74d2e7;
+            color: $tiffany-blue;
 		    text-shadow: none;
 		    padding: 0px 30px;
     }
@@ -22,7 +22,7 @@ Tcalendar--kpiHeaderToolbar
     height: 100%;
     line-height: 3rem;
     border-radius: 0.125rem;
-    border-right: 1px solid #74d2e7;
+    border-right: 1px solid $tiffany-blue;
     margin-right: 0!important;
 }
 
@@ -51,7 +51,7 @@ TABLE
 }
 
 #calendar--DatePicker{
-    border-right: solid 1px #74d2e7;
+    border-right: solid 1px $tiffany-blue;
     margin-right: 0;
     .sapMInputValHelp{
         right: auto;

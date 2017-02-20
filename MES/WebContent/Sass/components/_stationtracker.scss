@@ -416,13 +416,13 @@ KPI HEADER
 
 #stationTrackerView--kpi_header-CollapsedImg {
     right: 0;
-    color: #74d2e7;
+    color: $tiffany-blue;
     display: none;
 }
 
 #stationTrackerView--ProductionButton,
 #stationTrackerView--DisruptionButton {
-    border-right: solid 1px #74d2e7;
+    border-right: solid 1px $tiffany-blue;
     margin-right: 0;
 }
 
@@ -431,7 +431,7 @@ KPI HEADER
 }
 
 #stationTrackerView--DatePicker {
-    border-right: solid 1px #74d2e7;
+    border-right: solid 1px $tiffany-blue;
     margin-right: 0;
     .sapMInputValHelp {
         right: auto;
@@ -444,7 +444,7 @@ KPI HEADER
 }
 
 #stationTrackerView--selectShift {
-    border-left: solid 1px #74d2e7 !important;
+    border-left: solid 1px $tiffany-blue !important;
     opacity: 1;
     @extend %stationTrackerViewShiftAndUser;
     &.sapMSltDisabled {
@@ -494,7 +494,7 @@ KPI HEADER
 #stationTrackerView--TeamButton-content,
 #stationTrackerView--hideKPI-img,
 #stationTrackerView--hideKPI-content {
-    color: #74d2e7 !important;
+    color: $tiffany-blue !important;
 }
 
 
@@ -654,7 +654,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
                 display: none;
             }
             &.dhx_matrix_now_time {
-                min-height: 70px;
+                min-height: 24px;//width of ylabelfolder (line parent), dhtmlx fix, defect 2581
                 border-left-color: purple;
                 opacity: 1;
             }
@@ -1031,7 +1031,7 @@ TASK ADHERENCE
         vertical-align: baseline;
     }
     .KPITaktChartBlueText {
-        color: #74d2e7;
+        color: $tiffany-blue;
     }
     .KPITaktChartRightText {
         text-align: right ! important;
@@ -1147,7 +1147,7 @@ SHIFT STAFFING
         background: $blood-orange;
     }
     .sapSuiteDMCBarDeltaStripe {
-        background-color: #74D2E7 !important;
+        background-color: $tiffany-blue !important;
     }
 }
 
@@ -1199,7 +1199,7 @@ STATION TRACKER TOOLBAR
         }
         &.sapMSltPressed {
             .sapMSltArrow {
-                background-color: #74D2E7;
+                background-color: $tiffany-blue;
             }
         }
     }
