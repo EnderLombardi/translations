@@ -1009,6 +1009,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         });
         // Call the operation list popup
         airbus.mes.stationtracker.util.ModelManager.openOperationDetailPopup(aModel);
+     
     },
 
 

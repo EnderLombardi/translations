@@ -296,7 +296,7 @@ sap.ui
                     this.tabSelected = "#operationDetailsView--idACPnGLinks";
                     $(this.tabSelected).addClass("operationDetailTabSelected");
 
-                    airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
+                    //airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
                     this.nav.to(airbus.mes.acpnglinks.oView.getId());
                     airbus.mes.acpnglinks.oView.rerender();
                     break;

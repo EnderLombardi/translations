@@ -1019,7 +1019,7 @@ airbus.mes.stationtracker.util.ModelManager = {
      * open work list popover
      **************************************************************************/
     OpenWorkList: function (id) {
-        airbus.mes.stationtracker.util.ModelManager.openWorkListPopover(id);
+        airbus.mes.stationtracker.util.ModelManager.openWorkListPopover(id);    
     },
 
     /***************************************************************************
@@ -1042,8 +1042,11 @@ airbus.mes.stationtracker.util.ModelManager = {
                     airbus.mes.stationtracker.operationDetailPopup = sap.ui.xmlfragment("operationDetailPopup", "airbus.mes.stationtracker.fragment.operationDetailPopup", airbus.mes.stationtracker.oView.getController());
                     airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"), "operationDetailModel");
                     airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
+                                    
                 }
-
+                
+                
+                
                 //spent time calculation
                 var operation = aModel[0].OPERATION_BO.split(",")[1];
                 var order = aModel[0].SHOP_ORDER_BO.split(",")[1];
@@ -1169,7 +1172,10 @@ airbus.mes.stationtracker.util.ModelManager = {
                 airbus.mes.stationtracker.operationDetailPopup.open();
                 airbus.mes.operationdetail.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId + "-scrollCont");
 
-
+              //Load acpngLinks if no child find for the wo the button is disabled
+                airbus.mes.shell.util.navFunctions.acpnglinksDetail(airbus.mes.operationdetail.oView.getController().nav);
+                             
+                
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
             }, 0);
         }, 0);
