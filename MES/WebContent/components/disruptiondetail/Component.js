@@ -33,8 +33,8 @@ airbus.mes.disruptiondetail.Component.prototype.createContent = function() {
         })
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({
-            bundleName : "airbus.mes.disruptiondetail.i18n.i18n"
-         });
+            bundleName : "airbus.mes.disruptions.i18n.i18n"
+        });
         this.oView.setModel(i18nModel, "i18nModel");
         airbus.mes.disruptiondetail.oView = this.oView
 

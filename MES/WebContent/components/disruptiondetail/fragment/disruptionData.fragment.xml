@@ -213,18 +213,10 @@
 					<items>
 						<core:Item text="{disruptionResolverModel>Name}" key="{disruptionResolverModel>UserID}" />
 					</items>
-					<!-- this handle will be hidden in the UI -->
-					<Select id="handle" selectedKey="" forceSelection="false"
-						items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
-						visible="false">
-						<items>
-							<core:Item text="{disruptionCustomData>Handle}" key="{disruptionCustomData>Handle}" />
-						</items>
-					</Select>
-					<Input id="description" maxLength="40" visible="false" />
 				</Select>
 			</f:content>
 		</f:SimpleForm>
+		
 		<f:SimpleForm id="Des_sol" editable="true" visible="true"
 			layout="ResponsiveGridLayout" title="{i18nModel>disruptionHistory}"
 			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"

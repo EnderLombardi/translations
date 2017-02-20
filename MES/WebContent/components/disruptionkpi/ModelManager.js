@@ -6,7 +6,6 @@ airbus.mes.disruptionkpi.ModelManager = {
 	oFilters:{
 		line: airbus.mes.settings.ModelManager.line,
 		station: airbus.mes.settings.ModelManager.station,
-		station: airbus.mes.settings.ModelManager.station,
 		startDateTime: "",
 		endDateTime: "",
 		timeUnit: "Minutes"

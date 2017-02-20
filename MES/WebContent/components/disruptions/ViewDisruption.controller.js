@@ -236,8 +236,8 @@ sap.ui
                                                        airbus.mes.operationdetail.oView.setBusy(false);
                                                        
                                                        if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined &&
-                                                              
                                                               result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+                                                    	   
                                                               airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
 
                                                        } else {

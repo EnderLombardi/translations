@@ -50,7 +50,7 @@
 					
 					<ToolbarSpacer />
 					
-					<Label text='{i18nModel>ToggleDiruptions}' design="Bold"></Label>
+					<Label text='{i18nModel>ToggleDisruptions}' design="Bold"></Label>
 					<Switch customTextOn="{i18nModel>On}" customTextOff="{i18nModel>Off}" change='onToggleDisruptions' state="true" />
 					
 				</content>

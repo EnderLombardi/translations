@@ -261,10 +261,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		
 		
 	},
-	onAfterRendering : function(){
-		this.resize();
-		
-	}, 
 	
 	onToggleDisruptions : function(oEvent) {
 		var oVizFrame = this.getView().byId("idParettoCategoryReason");
@@ -352,8 +348,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 	},
 	
 	onAfterRendering: function(oEvent){
-        airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
         airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
+		this.resize();
+        airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
 	}
 	
 
