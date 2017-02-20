@@ -6,6 +6,16 @@
 		<Text id="StatutLabel" class="StatutLabel" text="{i18n>Statut}" />
 		
 		<VBox justifyContent="SpaceBetween"  id="Statutprogress">
+			
+			<HBox justifyContent="Left">
+				  <Label id="labelAssignACPnG" text="Assigned to in ACPnG:"/>
+				  <Text  id="assignACPnGstatus" text="test" />
+			</HBox>
+	 	    <HBox justifyContent="Left">
+				  <Label id="labelAssignMES" text="Assigned to in MES: "/>
+				  <Text  id="assignMESstatus" text="test" />
+			</HBox>
+			
 			<HBox justifyContent="Center" >
 				<items>
 					<Title 	id="operationStatus" 

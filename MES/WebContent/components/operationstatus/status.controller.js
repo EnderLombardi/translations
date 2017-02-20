@@ -23,6 +23,13 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         sap.ui.getCore().byId("operationDetailPopup--btnActivate").attachPress(this.activateOperation);
         sap.ui.getCore().byId("operationDetailPopup--btnComplete").attachPress(this.completeOperation);
         sap.ui.getCore().byId("operationDetailPopup--btnAssignToObserver").attachPress(this.onAssignObserver);
+        
+        sap.ui.getCore().byId("idStatusView--labelAssignACPnG").setVisible(false);
+        sap.ui.getCore().byId("idStatusView--assignACPnGstatus").setVisible(false);
+        sap.ui.getCore().byId("idStatusView--labelAssignMES").setVisible(false);
+        sap.ui.getCore().byId("idStatusView--assignMESstatus").setVisible(false);
+        
+        this.loadAssignStatus();
     },
     /**
      * Similar to onAfterRendering, but this hook is invoked
@@ -248,6 +255,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         oView._dipatchDialog.open();
     },
     
+
    
 
     /***********************************************************
@@ -512,6 +520,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         
         var radioBtnGrp = oView().byId("GroupLevel"); 
         var level = radioBtnGrp.getSelectedItem().getText();
+       /*// standby update of service MII 
         var oFilter = "WO"; 
         
         if (level.includes("operation"))
@@ -519,8 +528,31 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         
         var comFil = new sap.ui.model.Filter([oFilter]);
         
-    	oView().byId("observerSelectBox").getBinding("items").sort(oSorter);
     	oView().byId("observerSelectBox").getBinding("items").filter(comFil,sap.ui.model.FilterType.Application);
+    	
+    	*/
+    	oView().byId("observerSelectBox").getBinding("items").sort(oSorter);
+    },
+    
+    loadAssignStatus : function() {
+    	
+    	var acpngStatus = true;
+    	var mesStatus = true; 
+    	
+    	//only for test
+    	if (acpngStatus) {
+    		 sap.ui.getCore().byId("idStatusView--labelAssignACPnG").setVisible(true);
+             sap.ui.getCore().byId("idStatusView--assignACPnGstatus").setVisible(true);
+    		
+    	}
+    	
+    	if (mesStatus) {
+    		
+    		 sap.ui.getCore().byId("idStatusView--labelAssignMES").setVisible(true);
+             sap.ui.getCore().byId("idStatusView--assignMESstatus").setVisible(true);
+    	}
+    	
+        
     },
     
 
