@@ -340,6 +340,7 @@ sap.ui
             sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(false);
+            sap.ui.getCore().byId("operationDetailPopup--btnAssignToObserver").setVisible(false);
 
             //Case "ViewDisruptionView":
             // Hide buttons

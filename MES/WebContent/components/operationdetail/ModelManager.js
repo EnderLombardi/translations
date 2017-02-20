@@ -21,7 +21,8 @@ airbus.mes.operationdetail.ModelManager = {
         // Handle URL Model
         this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.operationdetail.config.url_config");
 
-        airbus.mes.shell.ModelManager.createJsonModel(core, ["reasonCodeModel"]);
+        airbus.mes.shell.ModelManager.createJsonModel(core, ["reasonCodeModel", "dispatchModel"]);
+        
     },
 
     /***************************************************************************
@@ -64,6 +65,23 @@ airbus.mes.operationdetail.ModelManager = {
         return urlReasonCodes;
 
     },
+    
+    
+    /***************************************************************************
+     * Set the Models for Dispatch to Observer
+     **************************************************************************/
+    loadDispatchModel: function () {
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
+        var oViewModel = sap.ui.getCore().getModel("dispatchModel");
+        var geturlDispatchToObserver = this.urlModel.getProperty("urlDispatchToObserver");
+
+        geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(geturlDispatchToObserver, "$site", oData.site);
+        oViewModel.loadData(geturlDispatchToObserver, null, true);
+    },
+
+    
+    
 
     /***************************************************************************
      * Get URL for Activate Operation
