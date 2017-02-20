@@ -151,7 +151,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 			// Filtering on ressource POOL
 			if ( el.resourcePoolId === sPoolId || sPoolId === "ALL" ) {
 				// Home based
-				if ( el.loanedFrom === "null" && el.loanedTo === "null" ) {
+				if ( el.loanedFrom === "false" && el.loanedTo === "false" ) {
 					
 					var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("HomeBased");
 					
