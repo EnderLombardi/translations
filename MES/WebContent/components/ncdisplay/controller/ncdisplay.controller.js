@@ -93,12 +93,11 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
         	sUrl = airbus.mes.ncdisplay.util.ModelManager.loadExternalUrl();
         	
 //        	Replace parameters
-        	sNcReference = sap.ui.getCore().getModel("ncdisplaydata").getObject(oEvent.getParameter("listItem").getBindingContext("ncdisplaydata").getPath());
+        	sNcReference = sap.ui.getCore().getModel("ncdisplaydata").getObject(oEvent.getParameter("listItem").getBindingContext("ncdisplaydata").getPath()).ncReference;
+        	sUrl = sUrl.replace("p_notification", sNcReference);
 
-        	sUrl.replace("p_notification", sNcReference);
+//			Open URL        	
         	window.open(sUrl);
-//        	airbus.mes.ncdisplay.util.ModelManager.openNcDisplayPopUp();
-            
         }
     },
 

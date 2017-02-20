@@ -22,8 +22,6 @@ airbus.mes.ncdisplay.util.ModelManager = {
         this.loadNcDisplayData();
         airbus.mes.ncdisplay.util.ModelManager.operationData = this.getOperationData();
 
-        this.loadExternalUrl();
-        
     },
     //load
     loadNcDisplayData : function() {
@@ -117,6 +115,22 @@ airbus.mes.ncdisplay.util.ModelManager = {
     	sGetExternalUrl = sGetExternalUrl.replace("$Function", "OPEN_NC");
     
     	var oModel = sap.ui.getCore().getModel("getExternalUrlTemplate");
+//    	var that = this;
+//    	var data;
+//    	
+//		jQuery.ajax({
+//			type : 'get',
+//			url : sGetExternalUrl,
+//			contentType : 'text/html',
+//			async : 'false',
+//            success : function(data) {
+//            	that.data = data;
+//            },
+//
+//            error : function(error, jQXHR) {
+//                console.log(error);
+//            }	
+//		});
     	
     	oModel.loadData(sGetExternalUrl, null, false);
     	
