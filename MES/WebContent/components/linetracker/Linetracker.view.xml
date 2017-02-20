@@ -110,8 +110,7 @@
 					</uiTable:Column>
 
 					<uiTable:Column width="44%" resizable="false">
-						<FlexBox height="2.5rem" alignItems="Center"
-							justifyContent="SpaceAround">
+						<FlexBox height="2rem" alignItems="Center" margin-top="12px" justifyContent="SpaceAround">
 							<Text text="10%" />
 							<Text text="20%" />
 							<Text text="30%" />

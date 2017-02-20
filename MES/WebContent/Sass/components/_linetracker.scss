@@ -81,12 +81,12 @@ Linetracker View (Main Table)
         padding: 0;
       /*  height: auto !important;*/
     }
-    .classLineTrackerTable table tr th,td{
+    /*.classLineTrackerTable table tr th,td{
         text-align: center !important;
         vertical-align: middle !important;
         border-left: 1px solid rgba(50, 131, 154, 0.33);
         border-bottom: 1px solid rgba(0, 0, 0, 0.18);
-    }
+    }*/
 
     .classLineTrackerTable table tr th div {
         border: none !important;
@@ -212,6 +212,7 @@ Linetracker View (Main Table)
         font-weight: 600;
         font-size: 1.1em;
         font-stretch: condensed;
+        text-shadow:none;
     }
     .sapUiTableCnt{
         border-top: transparent;
@@ -221,8 +222,7 @@ Linetracker View (Main Table)
         margin-left: 0;
 
     }
-
-
+   
     span{
         &.sapUiIcon{
             &.trendIconLinetracker{
@@ -236,7 +236,7 @@ Linetracker View (Main Table)
             font-size: 1em;
         }
         &.fontTableLinetracker{
-            font-size: 1.4em;
+            font-size: 1.1em;
             color: #5F7381;
         }
     }
@@ -260,12 +260,24 @@ Linetracker View (Main Table)
                 div{
                     &+ div + div.sapUiTableCol{
                         background-color: #D5F1F8;
-                        border-left: 1px solid #dddddd;
+                        //border-left: 1px solid #dddddd;
                     }
                 }
             }
         }
-    }
+   
+	}
+
+	#idLinetracker--linetrackerTable-sapUiTableColHdrScr{
+		 div{
+			>.sapUiMediumMarginBegin{
+			   	margin-left:0 !important;
+			   }
+			>.sapMTB{
+			   	border:none;
+			   }
+		 }
+	}
 
 }
 
@@ -299,13 +311,13 @@ header#sapContentPopUpLinetracker-intHeader + div#sapContentPopUpLinetracker-con
 Custom Progress Bar
 *************************/
 .progress {
-       height: 36px;
+       height: 30px;
        overflow: hidden;
  }
 
 .progress i {
     float: right;
-    margin-top: 0.7rem;
+    margin-top: 0.5rem;
     margin-right: 0.4rem;
 }
 
@@ -830,3 +842,4 @@ text-align:left !important;
 text-align:left !important;
 
 }
+
