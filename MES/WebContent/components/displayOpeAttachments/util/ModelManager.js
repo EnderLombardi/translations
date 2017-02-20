@@ -144,6 +144,8 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		}
 
 		return url;
+	},
+
 
 	//replace the url with the several parameters needed
 	getExternalUrl: function (externalUrlParameters) {
@@ -167,9 +169,9 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	},
 
-/* *********************************************************************** *
- *  URL PARAMETERS                                              		   *
- * *********************************************************************** */
+	/* *********************************************************************** *
+	 *  URL PARAMETERS                                              		   *
+	 * *********************************************************************** */
 
 	//load the parameters needed for the documents request
 	getDoaParameters: function () {
