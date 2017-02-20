@@ -144,7 +144,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         var trackingTemplateUrl = this.urlModel.getProperty(model);
         var site = airbus.mes.settings.ModelManager.site;
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
-            trackingTemplateUrl, "$site", airbus.mes.settings.ModelManager.site);
+            trackingTemplateUrl, "$site", site);
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
             trackingTemplateUrl, "$workOrder", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no);
         console.log(trackingTemplateUrl.toString());

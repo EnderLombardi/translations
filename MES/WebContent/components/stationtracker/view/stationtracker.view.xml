@@ -203,34 +203,34 @@
 												<VBox width="35%" class="openDisruptionDetail" justifyContent="SpaceAround">
 													<Label text="{StationTrackerI18n>DisruptionDetails}"
 														class="kpiName" design="Bold" />
-													<Label text="{StationTrackerI18n>DisruptionsNC}"/>
-													<Label text="{StationTrackerI18n>missingParts}"/>
-													<Label text="{StationTrackerI18n>DisruptionsTools}"/>
-													<Label text="{StationTrackerI18n>DisruptionFTE}"/>
+													<Label text="{KPIdisruption>/labelType1}"/>
+													<Label text="{KPIdisruption>/labelType2}"/>
+													<Label text="{KPIdisruption>/labelType3}"/>
+													<Label text="{KPIdisruption>/labelType4}"/>
 													<Label text="{StationTrackerI18n>DisruptionOther}"/>
 												</VBox>
 												<VBox alignItems="Center" width="22%" justifyContent="SpaceAround" class="openDisruptionValues kpiName">
 													<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
-													<Label text="{KPIdisruption>/disruptionNCUI}"
+													<Label text="{KPIdisruption>/disruptionType1UI}"
 														class=" whiteText" />
-													<Label text="{KPIdisruption>/disruptionMissingPartsUI}"
+													<Label text="{KPIdisruption>/disruptionType2UI}"
 														class=" whiteText" />
-													<Label text="{KPIdisruption>/disruptionMissingJTUI}"
+													<Label text="{KPIdisruption>/disruptionType3UI}"
 														class=" whiteText" />
-													<Label text="{KPIdisruption>/disruptionMissingFTEUI}"
+													<Label text="{KPIdisruption>/disruptionType4UI}"
 														class=" whiteText" />
 													<Label text="{KPIdisruption>/disruptionOtherUI}"
 														class=" whiteText" />
 												</VBox>
 												<VBox alignItems="Center" width="18%" justifyContent="SpaceAround" class="openDisruptionAndon kpiName">
 													<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
-													<Label text="{KPIdisruption>/andonNCUI}"
+													<Label text="{KPIdisruption>/andonType1UI}"
 														class=" redText kpiErrorValue" />
-													<Label text="{KPIdisruption>/andonMissingPartsUI}"
+													<Label text="{KPIdisruption>/andonType2UI}"
 														class=" redText kpiErrorValue" />
-													<Label text="{KPIdisruption>/andonMissingJTUI}"
+													<Label text="{KPIdisruption>/andonType3UI}"
 														class=" redText kpiErrorValue" />
-													<Label text="{KPIdisruption>/andonMissingFTEUI}"
+													<Label text="{KPIdisruption>/andonType4UI}"
 														class="redText kpiErrorValue" />
 													<Label text="{KPIdisruption>/andonOtherUI}"
 														class="redText kpiErrorValu" />

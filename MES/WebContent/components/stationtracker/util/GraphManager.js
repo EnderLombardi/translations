@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.declare("airbus.mes.stationtracker.util.GraphManager");
 airbus.mes.stationtracker.util.GraphManager = {
 
