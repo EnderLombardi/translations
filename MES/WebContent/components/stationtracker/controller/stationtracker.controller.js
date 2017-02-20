@@ -1275,5 +1275,14 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 			}
 		});
 	},
+	 /**
+     * Go the the calendar view
+     */
+	onCalendarOpen: function(oEvt) {
+		
+
+		airbus.mes.shell.util.navFunctions.calendar();
+		
+	}
 
 });

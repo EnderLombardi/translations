@@ -57,7 +57,7 @@ airbus.mes.shell.AutoRefreshConfig = {
 			return airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
 		}
 	},
-	renderCalendarTracker : {
+	calendar : {
 		"timer" : 180,
 		"useraction" : false,
 		"area" : function() {

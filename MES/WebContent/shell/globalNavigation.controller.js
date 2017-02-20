@@ -348,7 +348,7 @@ sap.ui.controller(
                     this.renderCalendarTracker();
 
                     //refresh
-                    // airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
+                    airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
                     airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
                     airbus.mes.shell.oView.byId("homeButton").setVisible(true);
@@ -399,7 +399,6 @@ sap.ui.controller(
 
             airbus.mes.calendar.util.ShiftManager.updateShift = false;
             var oModule = airbus.mes.calendar.util.ModelManager;
-            airbus.mes.shell.oView.getController().setInformationVisibility(true);
 
             // ** synchrone call **//
             oModule.loadRessourcePool();

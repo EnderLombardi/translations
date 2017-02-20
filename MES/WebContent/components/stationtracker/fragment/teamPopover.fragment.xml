@@ -6,8 +6,8 @@
 			<List id="team-popover">
 				<CustomListItem class="customListItem">
 					<Button type="Transparent" text="{StationTrackerI18n>ButtonOpenTeam}"
-						enabled="false" iconFirst="true" icon="sap-icon://sort"
-						class="blackButton blackTextButton blackTextButton2" press="onPolypolyOpen"></Button>
+						enabled="true" iconFirst="true" icon="sap-icon://sort"
+						class="blackButton blackTextButton blackTextButton2" press="onCalendarOpen"></Button>
 
 					<Button type="Transparent" text="{StationTrackerI18n>ButtonPolypoly}"
 						iconFirst="true" icon="sap-icon://sort" class="blackButton blackTextButton blackTextButton2"
