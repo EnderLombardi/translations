@@ -141,7 +141,7 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(false);
 //                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
-                sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(true);
             } else {
                 sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(true);
@@ -394,7 +394,7 @@ sap.ui
                     airbus.mes.jigtools.oView.oController.checkSettingJigsTools();
                     break;
                 case "ncdisplayView":
-                    airbus.mes.ncdisplay.oView.oController.defaultSelectNcDisplay();
+                    airbus.mes.ncdisplay.oView.oController.checkSettingNCDisplay();
                     break;
                 case "componentsView":
                     airbus.mes.components.oView.oController.checkSettingComponents();
