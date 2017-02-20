@@ -23,6 +23,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.util.ShiftManager.shiftDisplay = true;
         airbus.mes.calendar.util.ShiftManager.dayDisplay = false;
         airbus.mes.calendar.util.ShiftManager.taktDisplay = false;
+        airbus.mes.calendar.oView.byId("calendardateButton").setEnabled(true);
 
         calendar.matrix['timeline'].x_unit = 'minute';
         calendar.matrix['timeline'].x_step = 30;
@@ -50,6 +51,8 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.util.ShiftManager.shiftDisplay = false;
         airbus.mes.calendar.util.ShiftManager.dayDisplay = true;
         airbus.mes.calendar.util.ShiftManager.taktDisplay = false;
+        airbus.mes.calendar.oView.byId("calendardateButton").setEnabled(true);
+
 
 
         calendar.matrix['timeline'].x_unit = 'minute';
@@ -92,6 +95,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.util.ShiftManager.shiftDisplay = false;
         airbus.mes.calendar.util.ShiftManager.dayDisplay = false;
         airbus.mes.calendar.util.ShiftManager.taktDisplay = true;
+        airbus.mes.calendar.oView.byId("calendardateButton").setEnabled(false);
         
         var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart)
        
