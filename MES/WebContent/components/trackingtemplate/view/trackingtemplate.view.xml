@@ -20,7 +20,7 @@
 					<!-- List Comment -->
 					<List id="confirmationNotes" items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" includeItemInSelection="true" class="customListItem">
 						<items>
-							<StandardListItem title="{TrackingTemplate>Context_GBO} : {TrackingTemplate>Comments} - {TrackingTemplate>User_First_Name} {TrackingTemplate>User_Last_Name}" info="{TrackingTemplate>Created_Date_Time}"/>
+							<StandardListItem title="{TrackingTemplate>Context_GBO} : {TrackingTemplate>Comments} - {TrackingTemplate>User_First_Name}.{TrackingTemplate>User_Last_Name}" info="{TrackingTemplate>Created_Date_Time}"/>
 						</items>
 					</List>
 				</content>

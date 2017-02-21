@@ -101,12 +101,17 @@ airbus.mes.trackingtemplate.util.ModelManager = {
 
         index = 1;
         len = array.length;
+
+        //we update the user first name to show only the first letter.
+        array[0]["User_First_Name"] = array[0]["User_First_Name"].substring(0,1);
         array[0].lastOperationNote = true;
         previousRow = array[0];
 
         //we add the attribute lastOperationNote to each item of the array. This attribute is set to true 
         //for each most recent confirmation note of a group of operation(Production_Context_GBO)
         for (; index < len; index += 1) {
+            //we update the user first name to show only the first letter. 
+            array[index]["User_First_Name"] = array[index]["User_First_Name"].substring(0,1);
             if (previousRow.Production_Context_GBO !== array[index].Production_Context_GBO) {
                 array[index].lastOperationNote = true;
             } else {
