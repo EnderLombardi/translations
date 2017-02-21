@@ -14,7 +14,6 @@
 						<core:Icon src="sap-icon://appointment" class="headerIcons" color="#FFFFFF"></core:Icon>
 						<Label id="linetracker_dateLabel" text="" class="classDateLabel"></Label>
 						<ToolbarSpacer />
-						<core:Icon src="sap-icon://info" class="headerIcons1"	color="#FFFFFF"></core:Icon> 
 <!-- 						<Label id="linetracker_timeLabel" text=""></Label> -->
 						
 						<!-- <Button icon="sap-icon://info"></Button> -->

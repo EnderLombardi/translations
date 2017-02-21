@@ -1284,6 +1284,20 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
 		airbus.mes.shell.util.navFunctions.calendar();
 		
+	},
+	onInformation : function(oGlobalNavController){
+        if (airbus.mes.stationtracker.informationPopover === undefined) {
+            var oView = airbus.mes.stationtracker.oView;
+            airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment(
+                "informationPopover",
+                "airbus.mes.stationtracker.fragment.informationPopover",
+                oGlobalNavController
+            );
+            airbus.mes.stationtracker.informationPopover.addStyleClass("alignTextLeft");
+            oView.addDependent(airbus.mes.stationtracker.informationPopover);
+        }
+        return airbus.mes.stationtracker.informationPopover;
+
 	}
 
 });

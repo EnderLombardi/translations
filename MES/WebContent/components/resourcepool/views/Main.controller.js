@@ -740,10 +740,25 @@ sap.ui
                         airbus.mes.resourcepool.help.open();
 
                     },
+                    
 
                     afterHelpOK : function() {
                         airbus.mes.resourcepool.help.close();
                     },
+                    
+                    onInformation :  function(oGlobalNavController) {
+               		 var resourcepool = airbus.mes.resourcepool;
+                       if (resourcepool.informationPopover === undefined) {
+                    	   resourcepool.informationPopover = sap.ui.xmlfragment(
+                    		   "resourcePoolHelp",
+                               "airbus.mes.resourcepool.views.Help",
+                               oGlobalNavController
+                           );
+                    	   //resourcepool.informationPopover.addStyleClass("alignTextLeft");
+                    	   resourcepool.oView.addDependent(resourcepool.informationPopover);
+                       }
+                       return resourcepool.informationPopover;
+                   },
 
                     /***********************************************************
                      * Open Search Resource Pool Dialogue

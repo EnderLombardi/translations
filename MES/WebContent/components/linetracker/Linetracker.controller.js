@@ -688,8 +688,19 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		//extract msn and station
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[4]);
 		this.oUndoAction.close();
-	}
-	
-	
+	},
+	onInformation :  function(oGlobalNavController) {
+		 var lineTracker = airbus.mes.linetracker;
+        if (lineTracker.informationPopover === undefined) {
+        	lineTracker.informationPopover = sap.ui.xmlfragment(
+                "linetrackerHelpPopover",
+                "airbus.mes.linetracker.fragments.informationPopover",
+                oGlobalNavController
+            );
+        	lineTracker.informationPopover.addStyleClass("alignTextLeft");
+        	lineTracker.oView.addDependent(lineTracker.informationPopover);
+        }
+        return lineTracker.informationPopover;
+    },
 
 });

@@ -52,7 +52,7 @@
             </VBox>
         </content>
         <buttons>
-            <Button icon="sap-icon://decline" text="{i18nModel>CloseButton}" press="afterHelpOK" />
+            <Button icon="sap-icon://decline" text="{i18nModel>CloseButton}" press="onCloseInformationDialog" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>
