@@ -150,7 +150,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					// loanedFrom 
 					if ( el.loanedFrom === "true" ) {
 						
-						var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("sizeMin");
+						var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoanedFrom");
 					// loanedTo 	
 					} else {
 						
