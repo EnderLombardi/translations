@@ -18,7 +18,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
 	    // Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.ncdisplay.config.url_config");
 
-        airbus.mes.shell.ModelManager.createJsonModel(core,["ncdisplaydata", "getExternalUrlTemplate"]);
+        airbus.mes.shell.ModelManager.createJsonModel(cre,["ncdisplaydata", "getExternalUrlTemplate"]);
         this.loadNcDisplayData();
         airbus.mes.ncdisplay.util.ModelManager.operationData = this.getOperationData();
 
@@ -66,16 +66,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
 			}
 		});	    	
     	
-//        var oModel = sap.ui.getCore().getModel("ncdisplaydata");
-//        oModel.loadData(this.getNcDisplayData(), null, false);
     },
-
-//    //get
-//    getNcDisplayData : function() {
-//        var url = this.urlModel.getProperty("ncdisplaydata");
-//        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
-//        return url;
-//    },
 
     getOperationData: function(){
         var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
@@ -115,23 +106,6 @@ airbus.mes.ncdisplay.util.ModelManager = {
     	sGetExternalUrl = sGetExternalUrl.replace("$Function", "OPEN_NC");
     
     	var oModel = sap.ui.getCore().getModel("getExternalUrlTemplate");
-//    	var that = this;
-//    	var data;
-//    	
-//		jQuery.ajax({
-//			type : 'get',
-//			url : sGetExternalUrl,
-//			contentType : 'text/html',
-//			async : 'false',
-//            success : function(data) {
-//            	that.data = data;
-//            },
-//
-//            error : function(error, jQXHR) {
-//                console.log(error);
-//            }	
-//		});
-    	
     	oModel.loadData(sGetExternalUrl, null, false);
     	
 //    	Second step, retrieve the url on the model

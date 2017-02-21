@@ -86,7 +86,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     filterComponents: function (sScope) {
         switch (sScope) {
             case airbus.mes.components.util.ModelManager.operation:
-                sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter(new sap.ui.model.Filter("operationNumber", "EQ", "operationNumber1"));
+                sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter(new sap.ui.model.Filter("operationNumber", "EQ", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no));
                 break;
             case airbus.mes.components.util.ModelManager.workOrder:
                 sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter();
@@ -254,8 +254,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var dataJson = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row;
         var index = oEvent.getSource().oParent.oParent.getIndex();
         var compareWith = dataJson[index].requiredQty;
-        var intIndex = parseInt(inputVal);
-        var intcompareWith = parseInt(compareWith);
+        var intIndex = parseInt(inputVal,10);
+        var intcompareWith = parseInt(compareWith,10);
         if(intIndex >= 0 && intIndex <= intcompareWith){
             oEvent.getSource().setValue(inputVal);
         }else{
@@ -270,8 +270,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var dataJson = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row;
         var index = oEvent.getSource().oParent.oParent.getIndex();
         var compareWith = dataJson[index].requiredQty;
-        var intIndex = parseInt(inputVal);
-        var intcompareWith = parseInt(compareWith);
+        var intIndex = parseInt(inputVal,10);
+        var intcompareWith = parseInt(compareWith,10);
         if(intIndex >= 0 && intIndex <= intcompareWith){
             oEvent.getSource().setValue(inputVal);
         }else{

@@ -301,10 +301,14 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     componentsDetail: function (container) {
+//    	Create component
         if (airbus.mes.components === undefined || airbus.mes.components.oView === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.components", "../components/components");
             sap.ui.getCore().createComponent({ name: "airbus.mes.components" });
+        } else { // or load model
+        	airbus.mes.components.loadcomponentsWorkOrderDetail();
+        	airbus.mes.components.loadselectFilterModel();
         }
         if (container.getPage("componentsView") === null) {
             container.addPage(airbus.mes.components.oView);
@@ -323,10 +327,13 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     ncDisplayLink: function (container) {
-        if (airbus.mes.ncdisplay === undefined || airbus.mes.ncdisplay.oView === undefined) {
+		// Create component
+    	if (airbus.mes.ncdisplay === undefined || airbus.mes.ncdisplay.oView === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.ncdisplay", "../components/ncdisplay");
             sap.ui.getCore().createComponent({ name: "airbus.mes.ncdisplay" });
+        } else { // or load data
+        	airbus.mes.ncdisplay.util.ModelManager.loadNcDisplayData();
         }
         if (container.getPage("ncdisplayView") === null) {
             container.addPage(airbus.mes.ncdisplay.oView);
