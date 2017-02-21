@@ -104,12 +104,12 @@
                 <Label text="{i18nComponentsModel>committed}" />
                 <table:template>
                    <HBox>
-                       <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldCommitted" />
+                       <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldCommitted" visible="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}"/>
                        <Input     type="Number"
                                class="stepInputComponent"
                                value="{componentsWorkOrderDetail>committed}"
                                width="{width}"
-                               enabled="true"
+                               enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}"
                                max=""
                                min=""
                                editable="true"
@@ -121,12 +121,12 @@
                 <Label text="{i18nComponentsModel>fitted}" />
                 <table:template>
                     <HBox>
-                        <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldFitted" />
+                        <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldFitted" visible="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}" />
                         <Input        type="Number"
                                    class="stepInputComponent"
                                    value="{componentsWorkOrderDetail>fitted}"
                                    width="{width}"
-                                   enabled="true"
+                                   enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}"
                                    max=""
                                    min=""
                                    editable="true"

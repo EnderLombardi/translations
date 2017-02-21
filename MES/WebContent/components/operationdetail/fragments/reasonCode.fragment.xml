@@ -64,7 +64,7 @@
                 </f:content>
             </f:SimpleForm>
             <HBox>
-                <CheckBox id="confirmTimeWorked" text="{i18n>Statistical confirmation}" selected="false" enabled="true" />
+                <CheckBox id="confirmTimeWorked" text="{i18n>Statistical confirmation}" selected="false" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OP_PROG_STAT}" />
             </HBox>
         </content>
         <buttons>

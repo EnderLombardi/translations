@@ -32,7 +32,7 @@
 					<OverflowToolbar class="trackingTemplateButton">
 						<CheckBox id="showOnlyLastWONote" text="{i18n>won_toolbar_last}" enabled="true" selected="false" select="showOnlyLastWONote"/>
 						<ToolbarSpacer />
-						<Button class="icon-edit" text="{i18n>won_toolbar_edit}" press="showCommentBox" icon="sap-icon://edit" />
+						<Button class="icon-edit" text="{i18n>won_toolbar_edit}" press="showCommentBox" icon="sap-icon://edit" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_NOTE}"/>
 						<Button class="icon-print" text="{i18n>won_toolbar_print}" press="printTrackingTemplate" icon="sap-icon://print"/>
 					</OverflowToolbar>
 					<!-- Comment box -->

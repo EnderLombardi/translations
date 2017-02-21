@@ -11,7 +11,7 @@
 		<content>
 		
 		<VBox id="TabChecklist" class="TabChecklist">
-			<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" class="TabChecklistTable" expandFirstLevel="true">
+			<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" class="TabChecklistTable" selectionMode="None" expandFirstLevel="true">
 				<!-- <tab:toolbar>
 					<Toolbar>
 						<Title text="{i18n>CheckListAndRecords}" />

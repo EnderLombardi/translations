@@ -230,6 +230,30 @@
 			"Feature": "DISPLAY_OPERATION_ATTACHMENTS",
 			"Description": "Station Tracker>An operation>Documents",
 			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+		},
+		{
+			"SITE": "FNZ1",
+			"Feature": "WORK_TRACKER_DOC_VISUALIZE",
+			"Description": "Work Tracker> Document Viewer> Visualize WO/OP documents",
+			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+		},
+		{
+			"SITE": "FNZ1",
+			"Feature": "WORK_TRACKER_OP_PROG_STAT",
+			"Description": "Work Tracker>Operation Progress>Statistical confirmation (GE only)",
+			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+		},
+		{
+			"SITE": "FNZ1",
+			"Feature": "WORK_TRACKER_OSW_NOTE",
+			"Description": "Work Tracker>OSW>Enter notes at WO level",
+			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+		},
+		{
+			"SITE": "FNZ1",
+			"Feature": "WORK_TRACKER_OSW_CAPTURE",
+			"Description": "Work Tracker>OSW>Capture list of non fitted parts",
+			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
 		}
 	]
 }
