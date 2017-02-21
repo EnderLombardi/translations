@@ -63,7 +63,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 }
 
                 oViewModel.setData(data);
-
+                airbus.mes.trackingtemplate.oView.oController.initNotesList();
             },
 
             error: function (error, jQXHR) {
@@ -76,15 +76,16 @@ airbus.mes.trackingtemplate.util.ModelManager = {
 
         var index, len, previousRow, regex;
 
-        regex = /11016386-([^,]*)/;
+        regex = /-([^,]*)/;
         
         //we order the array by grouping the items by operation (beginning string of Production_Content_GBO)
         array.sort(function (a, b) {
-            console.log(regex.exec(a.Production_Context_GBO)[0]);
-            if (regex.exec(a.Production_Context_GBO)[1] < regex.exec(b.Production_Context_GBO)[1]) 
+            if(regex.exec(a.Production_Context_GBO) && regex.exec(b.Production_Context_GBO)) {
+                if (regex.exec(a.Production_Context_GBO)[1] < regex.exec(b.Production_Context_GBO)[1]) 
                 return -1;
             if (regex.exec(a.Production_Context_GBO)[1] > regex.exec(b.Production_Context_GBO)[1])
                 return 1;
+            }
             return 0;
         });
 

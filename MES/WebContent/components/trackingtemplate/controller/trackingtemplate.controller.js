@@ -5,7 +5,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     * Apply a filter on the confirmation Notes List and the WO Notes List
     * depending on the Production_Context_GBO name
     */
-    onBeforeRendering: function () {
+    initNotesList: function () {
         var listConfirmationNotes = this.getView().byId("trackingtemplateView--confirmationNotes");
         var listWONotes = this.getView().byId("trackingtemplateView--listNotes");
 
