@@ -14,6 +14,10 @@
 						<core:Icon src="sap-icon://appointment" class="headerIcons" color="#FFFFFF"></core:Icon>
 						<Label id="linetracker_dateLabel" text="" class="classDateLabel"></Label>
 						<ToolbarSpacer />
+
+<!-- 						<Label id="linetracker_timeLabel" text=""></Label> -->
+						
+						<!-- <Button icon="sap-icon://info"></Button> -->
 					</Toolbar>
 				</headerToolbar>
 			</Panel>
@@ -89,9 +93,15 @@
 											src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }" />
 									</control:actionIconButton> -->
 									<control:image>
+									<!-- src="{stationDataModel>imageUrl}" -->
 										<Image width="100%" 
+									          
+									        src="{ parts : ['stationDataModel>station', 'stationDataModel>msn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo'}"
 											error="airbus.mes.linetracker.util.Formatter.getErrorFlightImage"
-											src="{ parts : ['stationDataModel>station', 'stationDataModel>msn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }"></Image>
+											 ></Image>
+											 <!-- 											src="{ parts : ['stationDataModel>station', 'stationDataModel>msn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo'}"
+											error="airbus.mes.linetracker.util.Formatter.getErrorFlightImage"
+ -->
 									</control:image>
 
 									<control:detailIconButton>

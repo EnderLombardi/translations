@@ -16,45 +16,15 @@ airbus.mes.linetracker.util.ModelManager = {
 		var aModel = [ "stationDataModel", // Model for Station Data
 		"lineVariantModel", // Model for Line variant Data
 		"statusActionModel"
-		//"KPIchartTaktAdherence", // Model for Takt Adherence KPI chart data
-		//"KPItaktAdherence", // Model for KPI Takt Ahderence
-		//"KPItaktEfficiency", // Model for KPI takt efficiency
-		//"KPIdisruption", // Model for KPI Disruption
-		//"KPIresolutionEfficiency", // Model for KPI Resolution Efficiency
-		//"KPIopenAnomalies", // Model for Open Anomalies
-		//"KPIextraWork", // Model for KPI Extra Work
-		//"KPIshiftStaffing", // Model for KPI Shift Staffing
-		//"airlineLogoModel" // Model for Airline Logo
 		]
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
-		// Airline Logo Model
-//		sap.ui.getCore().getModel("airlineLogoModel").attachRequestCompleted(airbus.mes.linetracker.util.ModelManager.loadFlightLogo);
-		//airbus.mes.linetracker.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
-		
 	    // Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.linetracker.config.url_config");
 		
-		//core.getModel("stationDataModel").loadData(this.urlModel.getProperty("urlstationData"), null, false);
-
-		//this.loadStationDataModel();
-		//this.loadLineVariantModel();
-
-		//this.loadPlantModel();
-		//this.loadFlightLogo();
-		//set customLineBO from userSettings Model
 
 	},
 
 	loadLinetrackerKPI : function() {
-		/*this.loadKPIChartTaktAdherence();
-		this.loadKPItaktAdherence();
-		this.loadKPItaktEfficiency();
-		this.loadKPIdisruption();
-		this.loadKPIresolutionEfficiency();
-		this.loadKPIopenAnomalies();
-		this.loadKPIextraWork();
-		this.loadKPIshiftStaffing();
-		this.loadPlantModel();*/
 		this.loadLineVariantModel();
 		this.loadStationDataModel();
 		
@@ -65,8 +35,10 @@ airbus.mes.linetracker.util.ModelManager = {
 	 * Load Station Details in line tracker
 	 */
 	loadStationDataModel : function() {
+		//airbus.mes.shell.busyManager.setBusy(airbus.mes.linetracker.oView, "linetrackerTable");
+		airbus.mes.linetracker.oView.setBusyIndicatorDelay(0);
+		airbus.mes.linetracker.oView.setBusy(true);
 		var oViewModel = sap.ui.getCore().getModel("stationDataModel");
-		airbus.mes.shell.busyManager.setBusy(airbus.mes.linetracker.oView, "linetrackerTable");
 		jQuery.ajax({
 			type : 'post',
 			url : this.urlModel.getProperty("urlstationData"),
@@ -82,9 +54,12 @@ airbus.mes.linetracker.util.ModelManager = {
 				if (typeof data == "string") {
 					data = JSON.parse(data);
 				}
-				if(data.stationData && !data.stationData[0]){
-					data.stationData = [data.stationData];
-				}else if(!data.stationData){
+				if (data.stationData) {
+					if (data.stationData && !data.stationData[0]) {
+						data.stationData = [ data.stationData ];
+					}
+//					data = airbus.mes.linetracker.util.ModelManager.loadDefaultFlightLogoInStationDataModel(data);
+				} else {
 					data.stationData = [];
 				}
 				oViewModel.setData(data);
@@ -92,10 +67,13 @@ airbus.mes.linetracker.util.ModelManager = {
 				// remove/comment
 				sap.ui.getCore().byId("idLinetracker--linetrackerTable").rerender();
 				airbus.mes.shell.busyManager.unsetBusy(airbus.mes.linetracker.oView, "linetrackerTable");
+				airbus.mes.linetracker.oView.setBusy(false);
+				//airbus.mes.linetracker.util.ModelManager.loadFlightLogoInStationDataModel(data);
 			},
 
 			error : function(error, jQXHR) {
-				airbus.mes.shell.busyManager.unsetBusy(airbus.mes.linetracker.oView, "linetrackerTable");
+				//airbus.mes.shell.busyManager.unsetBusy(airbus.mes.linetracker.oView, "linetrackerTable");
+				airbus.mes.linetracker.oView.setBusy(false);
 			}
 		});
 	},
@@ -134,295 +112,6 @@ airbus.mes.linetracker.util.ModelManager = {
 			}
 		});
 	},
-
-	/**
-	 * BR:SD-PPC-LT-270
-	 * Load KPI Chart Takt Adherence Model
-	 */
-/*	loadKPIChartTaktAdherence : function() {
-		var oViewModel = sap.ui.getCore().getModel("KPIchartTaktAdherence");
-		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
-		jQuery.ajax({
-			type : 'post',
-			url : this.urlModel.getProperty("urlKPIChartTaktAdherence"),
-			contentType : 'application/json',
-			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn
-			}),
-
-			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-				oViewModel.setData(data);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			},
-
-			error : function(error, jQXHR) {
-				jQuery.sap.log.info(error);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			}
-		});
-	},
-*/
-	/**
-	 * BR:SD-PPC-LT-270
-	 * Load KPI Takt Adherence Model
-	 */
-/*	loadKPItaktAdherence : function() {
-		var oViewModel = sap.ui.getCore().getModel("KPItaktAdherence");
-		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
-		jQuery.ajax({
-			type : 'post',
-			url : this.urlModel.getProperty("urlKPITaktAdherence"),
-			contentType : 'application/json',
-			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn
-			}),
-
-			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-				oViewModel.setData(data);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			},
-
-			error : function(error, jQXHR) {
-				jQuery.sap.log.info(error);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			}
-		});
-	},*/
-
-	/**
-	 * BR:SD-PPC-LT-270
-	 * Load KPI Takt Efficiency Model
-	 */
-/*	loadKPItaktEfficiency : function() {
-		var oViewModel = sap.ui.getCore().getModel("KPItaktEfficiency");
-		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
-		jQuery.ajax({
-			type : 'post',
-			url : this.urlModel.getProperty("urlKPItaktEfficiency"),
-			contentType : 'application/json',
-			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn
-			}),
-
-			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-				oViewModel.setData(data);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			},
-
-			error : function(error, jQXHR) {
-				jQuery.sap.log.info(error);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			}
-		});
-
-	},*/
-
-	/**
-	 * BR:SD-PPC-LT-270
-	 * Load KPI Disruption/Andon Model
-	 */
-/*	loadKPIdisruption : function() {
-		var oViewModel = sap.ui.getCore().getModel("KPIdisruption");
-		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
-		jQuery.ajax({
-			type : 'post',
-			url : this.urlModel.getProperty("urlKPIdisruption"),
-			contentType : 'application/json',
-			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn
-			}),
-
-			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-				oViewModel.setData(data);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			},
-
-			error : function(error, jQXHR) {
-				jQuery.sap.log.info(error);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			}
-		});
-	},*/
-
-	/**
-	 * BR:SD-PPC-LT-270
-	 * Load KPI Resolution Efficiency Model
-	 */
-/*	loadKPIresolutionEfficiency : function() {
-		var oViewModel = sap.ui.getCore().getModel("KPIresolutionEfficiency");
-		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
-		jQuery.ajax({
-			type : 'post',
-			url : this.urlModel.getProperty("urlKPIresolutionEfficiency"),
-			contentType : 'application/json',
-			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn
-			}),
-
-			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-				oViewModel.setData(data);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			},
-
-			error : function(error, jQXHR) {
-				jQuery.sap.log.info(error);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			}
-		});
-	},*/
-
-	/**
-	 * BR:SD-PPC-LT-270
-	 * Load Open Anomalies Model
-	 */
-/*	loadKPIopenAnomalies : function() {
-		var oViewModel = sap.ui.getCore().getModel("KPIopenAnomalies");
-		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
-		jQuery.ajax({
-			type : 'post',
-			url : this.urlModel.getProperty("urlKPIopenAnomalies"),
-			contentType : 'application/json',
-			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn
-			}),
-
-			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-				oViewModel.setData(data);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			},
-
-			error : function(error, jQXHR) {
-				jQuery.sap.log.info(error);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			}
-		});
-	},*/
-
-	/**
-	 * BR:SD-PPC-LT-270
-	 * Load Extra Work Model
-	 */
-/*	loadKPIextraWork : function() {
-		var oViewModel = sap.ui.getCore().getModel("KPIextraWork");
-		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
-		jQuery.ajax({
-			type : 'post',
-			url : this.urlModel.getProperty("urlKPIextraWork"),
-			contentType : 'application/json',
-			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn
-			}),
-
-			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-				oViewModel.setData(data);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			},
-
-			error : function(error, jQXHR) {
-				jQuery.sap.log.info(error);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			}
-		});
-	},*/
-
-	/**
-	 * BR:SD-PPC-LT-270
-	 * Load KPI shift Staffing Model data
-	 */
-/*	loadKPIshiftStaffing : function() {
-		var oViewModel = sap.ui.getCore().getModel("KPIshiftStaffing");
-		// TODO get current shift from real service
-		var sCurrentShift = "S0";
-		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
-		jQuery.ajax({
-			type : 'post',
-			url : this.urlModel.getProperty("urlKPIshiftStaffing"),
-			contentType : 'application/json',
-			data : JSON.stringify({
-				"day" : airbus.mes.linetracker.util.ModelManager.getCurrentDateFormatted(),
-				"site" : airbus.mes.settings.ModelManager.site,
-				"physicalStation" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn,
-				"shift" : sCurrentShift
-			}),
-
-			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-				oViewModel.setData(data);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			},
-
-			error : function(error, jQXHR) {
-				jQuery.sap.log.info(error);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-			}
-		});
-	},*/
-
-	/**
-	 * Load Plant Model Data
-	 */
-/*	loadPlantModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("plantModel");
-		jQuery.ajax({
-			type : 'post',
-			url : this.urlModel.getProperty("urlPlantData"),
-			contentType : 'application/json',
-			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn
-			}),
-
-			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-				oViewModel.setData(data);
-			},
-
-			error : function(error, jQXHR) {
-				jQuery.sap.log.info(error);
-			}
-		});
-	},*/
 
 	/**
 	 * Get current system date
@@ -520,7 +209,7 @@ airbus.mes.linetracker.util.ModelManager = {
 				if(data.success=="true"){
 					airbus.mes.linetracker.util.ModelManager.loadStationDataModel();
 					if(data.value && data.value=="ERROR")
-						airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("ErrorForecastingEndOfAssembly"));
+						airbus.mes.shell.ModelManager.messageShow(data.message);
 				}else{
 					airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("couldNotPerformRequestedAction"));
 				}
@@ -536,13 +225,14 @@ airbus.mes.linetracker.util.ModelManager = {
 	 * @param msn, status
 	 * to add the nextMsn and status from the chosen row to current popover model
 	 */
-	populateStatusActionModel : function(station, msn, nextMsn, status, previousMsn){
+	populateStatusActionModel : function(station, msn, nextMsn, status, previousMsn, nextMsnImageUrl){
 		var data = {
 			"station":station,
 			"msn":msn,
 			"nextMsn" : nextMsn,
 			"status" : status,
-			"previousMsn" : previousMsn
+			"previousMsn" : previousMsn,
+			"nextMsnImageUrl" : nextMsnImageUrl
 		} 
 		sap.ui.getCore().getModel("statusActionModel").setData(data);
 		sap.ui.getCore().getModel("statusActionModel").refresh();
@@ -553,6 +243,86 @@ airbus.mes.linetracker.util.ModelManager = {
 			return o.station == station && o.msn == msn;
 		});
 		return result = result ? result[0] : null; // or undefined
+	},
+	loadFlightLogoInStationDataModel : function(data) {
+		for(var i=0; i<data.stationData.length;i++){
+			var msn = data.stationData[i].msn;
+			var nextMsn = data.stationData[i].nextMsn
+			var station = data.stationData[i].station		
+			data.stationData[i].imageUrl = airbus.mes.linetracker.util.ModelManager.getLogoImageUrl(station, msn, i);	
+			//data.stationData[i].nextMsnImageUrl = airbus.mes.linetracker.util.ModelManager.getLogoImageUrl(station, nextMsn);
+		}
+		return data;
+		sap.ui.getCore().getModel("stationDataModel").setData(data);
+
+	},
+	getMsnUrl : function(station, msn){
+		var oResult = airbus.mes.linetracker.util.ModelManager.getProgramForMsnStation(station, msn);
+		var tf;
+		//to remove hand from msn if msn exists
+		if(msn)
+			msn=msn.split("_")[0];
+		if(oResult && oResult.TF){
+			tf = oResult.TF;
+		}
+		
+		var url = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
+		url = url.replace("$TF", tf);
+		url = url.replace("$Application_ID", "000000000030");
+		url = url.replace("$msn", msn);
+		return url;
+		
+	},
+	getLogoImageUrl : function(station, msn, index){
+		var url = airbus.mes.linetracker.util.ModelManager.getMsnUrl(station, msn);
+		var sPath = "/data/"+i+"/imageUrl"
+		var imageUrl;
+		var defImg= airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage');
+		jQuery.ajax({
+			async : true,
+			type : 'get',
+			url : url,
+			contentType : 'application/json',
+
+			success : function(data) {
+				if (typeof data == "string") {
+					data = JSON.parse(data);
+				}
+				try {
+					if (data.Rowsets.Rowset[0].Row[0].airline_logo_url && data.Rowsets.Rowset[0].Row[0].airline_logo_url.length != 0) {
+						jQuery.ajax({
+							async : false,
+							type : 'get',
+							url : data.Rowsets.Rowset[0].Row[0].airline_logo_url,
+							success : function(newData) {
+								imageUrl = data.Rowsets.Rowset[0].Row[0].airline_logo_url;
+							},
+							error : function() {
+								imageUrl = defImg;
+							}
+						
+//						imageUrl = data.Rowsets.Rowset[0].Row[0].airline_logo_url;
+					});
+						} else {
+						imageUrl = defImg;
+					}
+				} catch (oException) {
+					imageUrl = defImg
+				}
+			},
+
+			error : function(error, jQXHR) {
+				imageUrl = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage');
+			}
+		});
+		return imageUrl;
+	},
+	loadDefaultFlightLogoInStationDataModel: function(data){
+		for(var i=0; i<data.stationData.length;i++){
+			data.stationData[i].imageUrl = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage');	
+			data.stationData[i].nextMsnImageUrl = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage');
+		}
+		return data;
 	}
 
 };

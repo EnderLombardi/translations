@@ -574,12 +574,15 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		}
 	},*/
 	openTaktActionPopover : function(oEvt){
-		var station = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).station;
-		var status = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).status;
-		var msn = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).msn;
-		var nextMsn = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).nextMsn;
-		var previousMsn = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).previousMsn;
-		airbus.mes.linetracker.util.ModelManager.populateStatusActionModel(station,msn,nextMsn, status, previousMsn);
+		var sPath = oEvt.getSource().getBindingContext("stationDataModel").getPath();
+		var station = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).station;
+		var status = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).status;
+		var msn = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).msn;
+		var nextMsn = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).nextMsn;
+		var previousMsn = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).previousMsn;
+		var nextMsnImageUrl = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).nextMsnImageUrl;
+		
+		airbus.mes.linetracker.util.ModelManager.populateStatusActionModel(station,msn,nextMsn, status, previousMsn,nextMsnImageUrl);
 		if (!this.oTaktActionPopover) {
 			this.oTaktActionPopover = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.taktOperation", this);
 			this.getView().addDependent(this.oTaktActionPopover);

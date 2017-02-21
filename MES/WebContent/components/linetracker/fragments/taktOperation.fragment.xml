@@ -9,8 +9,12 @@
 					enabled="{ path : 'statusActionModel>/status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" visible = "{Profile>/identifiedUser/permissions/LINE_LOAD_MSN}"/>
 				<Image id="nextMsnImage" height="1.8rem" width="auto"
 					visible="{ path : 'statusActionModel>/nextMsn', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }"
-					error="{ path : 'statusActionModel>/nextMsn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
-					src="{ parts : ['statusActionModel>/station','statusActionModel>/nextMsn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }">
+				error="airbus.mes.linetracker.util.Formatter.getErrorFlightImage"
+					src="{ parts : ['statusActionModel>/station','statusActionModel>/nextMsn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }"> 
+<!-- 				>	src="{statusActionModel>/nextMsnImageUrl}" -->
+<!-- 					error="{ path : 'statusActionModel>/nextMsn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }" -->
+<!-- 					error="{ path : 'statusActionModel>/nextMsn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
+					src="{ parts : ['statusActionModel>/station','statusActionModel>/nextMsn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }"> -->
 				</Image>
 			</HBox>
 			<Button id="startAssembly" width="100%" text="{i18n>startAssembly}"
