@@ -25,18 +25,20 @@ airbus.mes.acpnglinks.util.Formatter = {
 	 * @returns {boolean} return : true/false
 	 */
 	toBooleanRight : function(sValue) {
-		if (sValue.toUpperCase() == "NEVER") {
-			return false;
-		} else {
-			return Boolean(sValue.toUpperCase() == "TRUE");
+		if (sValue != undefined) {
+			if (sValue.toUpperCase() == "NEVER") {
+				return false;
+			} else {
+				return Boolean(sValue.toUpperCase() == "TRUE");
+			}
 		}
 	},
-	
-	levelFormat : function(sValue){
+
+	levelFormat : function(sValue) {
 		var result = sValue % 5;
-		if (sValue!= undefined){	
+		if (sValue != undefined) {
 			return result.toString();
-		}else{
+		} else {
 			return "0";
 		}
 	}
