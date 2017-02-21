@@ -26,11 +26,17 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 		switch (text) {
 		case "StationTracker":
 			//variable for split StationTracker
+			if( airbus.mes.stationtracker && airbus.mes.stationtracker.oView){
+				airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
+			}
 			airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
 			airbus.mes.shell.util.navFunctions.stationTracker();
 			break;
 		case "WorkerOrderTracker":
 			//variable for split worktracker
+			if( airbus.mes.stationtracker && airbus.mes.stationtracker.oView) {
+				airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Work Tracker");
+			}
 			airbus.mes.shell.util.navFunctions.splitMode = "WorkTracker";
 			airbus.mes.shell.util.navFunctions.stationTracker();
 			break;
