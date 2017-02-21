@@ -92,6 +92,12 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         var lastWoCheckBox = this.getView().byId("trackingtemplateView--showOnlyLastWONote").getSelected();
         var aFilters = [];
 
+        aFilters.push(new sap.ui.model.Filter({
+            path: "Production_Context_GBO",
+            test: function (oValue) {
+                return oValue.toUpperCase().startsWith("SHOPORDERBO");
+            }
+        }));
         //we had the filter only if the checkbox state is true.
         if (lastWoCheckBox) {
             aFilters.push(new sap.ui.model.Filter({
@@ -233,16 +239,25 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         if (airbus.mes.trackingtemplate.oView.byId('commentArea')) {
             //Param.4 Desciption
             airbus.mes.trackingtemplate.oView.byId('commentArea').setValue();
+        }
+        if (airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox")) {
             //Param.5 ReasonCode
             airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").setSelectedKey('');
         }
         if (sap.ui.getCore().byId('passwordTckTmpltForConfirmation')) {
             //Param.6 password
             sap.ui.getCore().byId('passwordTckTmpltForConfirmation').setValue();
+        }
+        if (sap.ui.getCore().byId('userNameTckTmpltForConfirmation')) {
             //Param.7 logon
             sap.ui.getCore().byId('userNameTckTmpltForConfirmation').setValue();
+        }
+
+        if (sap.ui.getCore().byId("UIDTckTmpltForConfirmation")) {
             sap.ui.getCore().byId("UIDTckTmpltForConfirmation").setValue();
-            sap.ui.getCore().byId("badgeIDForTckTmpltConfirmation").setValue();
+        }
+        if (sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation")) {
+            sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation").setValue();
         }
     },
 
