@@ -3,20 +3,18 @@
     margin: 50px auto;
     padding:0 ;
     border: solid 1px $cool-grey;
-    //height:640px;
     .sapUiTableCnt{
-		    //height: 630px;
-		    .sapUiTableColHdrCnt{
-		    	height:46px !important;
-				.sapUiTableColHdrScr {
-						border: solid 1px $cool-grey;
-						background-color : $teal-blue;
-						.sapUiTableCol{
-							border-right:1px solid white;
-						}		
-				}
+		.sapUiTableColHdrCnt{
+			height:46px !important;
+			background-color : $teal-blue;
+			.sapUiTableColHdrScr {
+				border: solid 1px $cool-grey;
+				.sapUiTableCol{
+					border-right:1px solid white;
+				}		
 			}
 		}
+	}
 }
 
 .ACPnGtLabel{
@@ -25,21 +23,45 @@
     padding-left: inherit;
 }
 
+#acpnglinksView--ACPnGTreeTable {
+	>.sapUiTableMTbr  {
+		background-color : $teal-blue;
+		>div {
+			* {
+				color:white;
+				text-shadow: none;
+			}
+			button:hover {
+				>div {
+					color:$teal-blue;
+					background-color: $teal-blue-hover;
+				}
+			}
+		}
+	}
+}
+
 #acpnglinksView--ACPnGTreeTable-table{
 	>tbody {
-				//tr:nth-child(even) {background: #fff}
-				//tr:nth-child(odd) {background: #fcfcfc}
-				//tr:hover{background-color: #efefef}
-				>tr{
-					height : 46px;
-					>td{
-						text-align:left !important;
-						border-left:1px solid $cool-grey-hover;
-						    border-top: 1px solid #e5e5e5
-					}
-				}
+		>tr{
+			height : 46px;
+			>td{
+				text-align:left !important;
+				border-left:1px solid $cool-grey-hover;
+				border-top: 1px solid #e5e5e5
+			}
 		}
+	}
 }		
+
+#acpnglinksView--ACPnGTreeTable-sapUiTableColHdrScr {
+	>.sapUiTableColHdr {
+		height: 100%;
+		>div {
+			height: 100%;
+		}
+	}
+}
 
 //buttons in the center of dialog for acpnglinks
 .listButtons{
@@ -73,21 +95,21 @@
 [id^="acpnglinksView--ACPnGTreeTable-table"]{
 	>tbody{
 	 	>tr{
-	 &[data-sap-ui-level="0"]{
-	 	background-color: #fbefcc;
-	 }
-	  &[data-sap-ui-level="1"]{
-	 	background-color: #cfe0e8;
-	 }
-	  &[data-sap-ui-level="2"]{
-	 	background-color: #b7d7e8;
-	 }
-	  &[data-sap-ui-level="3"]{
-	 	background-color: #87bdd8;
-	 }
-	  &[data-sap-ui-level="4"]{
-	 	background-color: #daebe8;
-	 }
+			&[data-sap-ui-level="0"]{
+				background-color: #fbefcc;
+			}
+			&[data-sap-ui-level="1"]{
+				background-color: #cfe0e8;
+			}
+			&[data-sap-ui-level="2"]{
+				background-color: #b7d7e8;
+			}
+			&[data-sap-ui-level="3"]{
+				background-color: #87bdd8;
+			}
+			&[data-sap-ui-level="4"]{
+				background-color: #daebe8;
+			}
 	}
   }
 }

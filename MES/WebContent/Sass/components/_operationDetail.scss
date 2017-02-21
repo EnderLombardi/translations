@@ -421,10 +421,6 @@
     margin-left:20px; //to change by % when progress bar is set
 }
 
-#idStatusView--progressSliderDisplay{
-  // to do
-}
-
 //CheckList and Records
 #idCheckListView--Checklist.Checklist{
     width:95% !important;
@@ -454,15 +450,30 @@
 
 #operationDetailsView--opDetailSegmentButtons{
     >div.sapMITH {
-        height: 100%;
         box-shadow:none;
+        height: 3.1rem;
         >span {
+            height: 3.1rem;
             top:0;
         }
-        >div {
-            height: 100%;
+        >.sapMITBScrollContainer {
+            height: 3.1rem;
             >div {
                 margin-top: 0;
+                >:not(.sapMITBDisabled) {
+                    margin: 0;
+                    padding: 0 1rem;
+                    border-radius: 0.125rem;
+                    &:hover {
+                        background-color: $sapui-grey-hover;
+                    }
+                }
+                >.sapMITBDisabled {
+                    cursor:default;
+                    &>* {
+                        cursor:default;
+                    }
+                }
             }
         }
     }

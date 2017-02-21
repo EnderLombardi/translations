@@ -1,5 +1,6 @@
+"use strict";
 sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap/viz/ui5/format/ChartFormatter"], function(Controller, DualCombination, ChartFormatter) {
-	"use strict";
+	
 		
 		
 	return Controller.extend("airbus.mes.disruptionkpi.disruptionKPIChart",{

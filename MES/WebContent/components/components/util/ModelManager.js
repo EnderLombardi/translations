@@ -44,6 +44,8 @@ airbus.mes.components.util.ModelManager = {
     getcomponentsWorkOrderDetail : function() {
         var url = this.urlModel.getProperty("componentsWorkOrderDetail");
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$sfc", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$operation", "");        
         return url;
     },
     loadselectFilterModel : function() {

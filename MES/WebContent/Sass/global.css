@@ -1721,13 +1721,21 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 #operationDetailsView--operDetailNavContainer { height: calc(100% - 4.375rem - 3rem - 1rem) !important; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH { height: 100%; box-shadow: none; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH { box-shadow: none; height: 3.1rem; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH > span { top: 0; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > span { height: 3.1rem; top: 0; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH > div { height: 100%; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer { height: 3.1rem; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH > div > div { margin-top: 0; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div { margin-top: 0; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > :not(.sapMITBDisabled) { margin: 0; padding: 0 1rem; border-radius: 0.125rem; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > :not(.sapMITBDisabled):hover { background-color: rgba(196, 196, 196, 0.5); }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > .sapMITBDisabled { cursor: default; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > .sapMITBDisabled > * { cursor: default; }
 
 #ViewDisruptionView > .sapMPage > section { overflow: sroll !important; height: 100%; }
 
@@ -3834,17 +3842,27 @@ DATE PICKER
 
 #acpnglinksView--ACPnGLinks { width: 95% !important; margin: 50px auto; padding: 0; border: solid 1px #97999b; }
 
-#acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt { height: 46px !important; }
+#acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt { height: 46px !important; background-color: #0085ad; }
 
-#acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt .sapUiTableColHdrScr { border: solid 1px #97999b; background-color: #0085ad; }
+#acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt .sapUiTableColHdrScr { border: solid 1px #97999b; }
 
 #acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt .sapUiTableColHdrScr .sapUiTableCol { border-right: 1px solid white; }
 
 .ACPnGtLabel { color: white; padding-top: 8px; padding-left: inherit; }
 
+#acpnglinksView--ACPnGTreeTable > .sapUiTableMTbr { background-color: #0085ad; }
+
+#acpnglinksView--ACPnGTreeTable > .sapUiTableMTbr > div * { color: white; text-shadow: none; }
+
+#acpnglinksView--ACPnGTreeTable > .sapUiTableMTbr > div button:hover > div { color: #0085ad; background-color: #0f2d65; }
+
 #acpnglinksView--ACPnGTreeTable-table > tbody > tr { height: 46px; }
 
 #acpnglinksView--ACPnGTreeTable-table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; border-top: 1px solid #e5e5e5; }
+
+#acpnglinksView--ACPnGTreeTable-sapUiTableColHdrScr > .sapUiTableColHdr { height: 100%; }
+
+#acpnglinksView--ACPnGTreeTable-sapUiTableColHdrScr > .sapUiTableColHdr > div { height: 100%; }
 
 .listButtons { padding: 10px; }
 

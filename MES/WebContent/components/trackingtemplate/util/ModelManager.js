@@ -63,7 +63,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 }
 
                 oViewModel.setData(data);
-
+                airbus.mes.trackingtemplate.oView.oController.initNotesList();
             },
 
             error: function (error, jQXHR) {
@@ -76,15 +76,16 @@ airbus.mes.trackingtemplate.util.ModelManager = {
 
         var index, len, previousRow, regex;
 
-        regex = /11016386-([^,]*)/;
+        regex = /-([^,]*)/;
         
         //we order the array by grouping the items by operation (beginning string of Production_Content_GBO)
         array.sort(function (a, b) {
-            console.log(regex.exec(a.Production_Context_GBO)[0]);
-            if (regex.exec(a.Production_Context_GBO)[1] < regex.exec(b.Production_Context_GBO)[1]) 
+            if(regex.exec(a.Production_Context_GBO) && regex.exec(b.Production_Context_GBO)) {
+                if (regex.exec(a.Production_Context_GBO)[1] < regex.exec(b.Production_Context_GBO)[1]) 
                 return -1;
             if (regex.exec(a.Production_Context_GBO)[1] > regex.exec(b.Production_Context_GBO)[1])
                 return 1;
+            }
             return 0;
         });
 
@@ -100,6 +101,9 @@ airbus.mes.trackingtemplate.util.ModelManager = {
 
         index = 1;
         len = array.length;
+
+        //we update the user first name to show only the first letter.
+        array[0]["User_First_Name"] = array[0]["User_First_Name"].substring(0,1);
         array[0].lastOperationNote = true;
         array[0].lastNote = true;
         previousRow = array[0];
@@ -107,6 +111,8 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         //we add the attribute lastOperationNote to each item of the array. This attribute is set to true 
         //for each most recent confirmation note of a group of operation(Production_Context_GBO)
         for (; index < len; index += 1) {
+            //we update the user first name to show only the first letter. 
+            array[index]["User_First_Name"] = array[index]["User_First_Name"].substring(0,1);
             if (previousRow.Production_Context_GBO !== array[index].Production_Context_GBO) {
                 array[index].lastOperationNote = true;
             } else {

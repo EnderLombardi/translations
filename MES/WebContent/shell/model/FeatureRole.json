@@ -225,6 +225,11 @@
 			"Feature": "STATION_DRILL_DISRUPTION",
 			"Description": "Station Tracker>Drill Down>Disruption info",
 			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "DISPLAY_OPERATION_ATTACHMENTS",
+			"Description": "Station Tracker>An operation>Documents",
+			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
 		}
 	]
 }
