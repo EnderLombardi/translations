@@ -18,6 +18,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 		
 		// Get main model of this component, 
 		airbus.mes.shell.ModelManager.createJsonModel(core,["acpnglinksWorkOrderDetail"]);
+		
 		this.loadacpnglinksWorkOrderDetail();
 	},
 

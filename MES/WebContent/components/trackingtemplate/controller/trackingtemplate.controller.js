@@ -41,18 +41,15 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         //we had the filter only if the checkbox state is true.
         if (showOnlyLastConfirmationNote) {
             aFilters.push(new sap.ui.model.Filter({
-                path: "STATE",
+                path: "lastOperationNote",
                 test: function (oValue) {
-                    if (oValue === "CONFIRMED") {
-                        return true;
-                    }
-                    return false;
+                    return oValue;
                 }
             }));
         }
         if (showOnlyConfirmedConfirmationNote) {
             aFilters.push(new sap.ui.model.Filter({
-                path: "STATE",
+                path: "State",
                 test: function (oValue) {
                     if (oValue === "CONFIRMED") {
                         return true;

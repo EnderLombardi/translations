@@ -33,7 +33,7 @@
 					</SegmentedButton>
 			
 
-					<Label text="{calendarI18n>teamavaibility}" class="classDateLabel" />
+					<Label text="{calendarI18n>teamavaibility}" class="sapUiSmallMarginBegin" />
 
 				<core:Icon id="calendarAbsence" src="sap-icon://color-fill"/>
 				<Label id="calendarAbsenceLabel" text="{calendarI18n>calendarAbsence}" class="initialFont" />

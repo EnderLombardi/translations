@@ -66,16 +66,16 @@ td{
         .disruptions .sapMSFF{
            padding: 0px 12px;
 		    margin: 0;
-		    border-left: 1px solid #74D2E7;
+		    border-left: 1px solid $tiffany-blue;
     }
     .sapMSFF{
         border-radius: 3em;
-        border: 2px solid #74D2E7;
-        color: #74D2E7;
+        border: 2px solid $tiffany-blue;
+        color: $tiffany-blue;
         overflow: hidden;
         .sapMSFB{
             &.sapMSFS{
-                color: #74D2E7;
+                color: $tiffany-blue;
             }
         }
     }
@@ -110,7 +110,7 @@ td{
 
 // CSS for Header selection boxes
 #disruptiontrackerView--stationComboBox{
-	border-left: solid 1px $twilight-blue !important;
+	border-left: solid 1px $tiffany-blue !important;
 }
 #disruptiontrackerView--stationComboBox,
 #disruptiontrackerView--msnComboBox,
@@ -121,26 +121,26 @@ td{
 
 
 #disruptiontrackerView--headerText-inner{
-    color: #74d2e7;
+    color: $tiffany-blue;
     text-shadow: none;
     padding: 0px 30px;
     font-size: 0.875rem !important ;
     line-height: 27px;
-    }
-   
-#disruptiontrackerView--navBack, #disruptiontrackerView--navBack-inner, #disruptiontrackerView--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #disruptiontrackerView--navBack .sapMBtnTransparent > .sapMBtnIcon{
-    color: #0D5D76 !important;
+}
+
+#disruptiontrackerView--navBack {
+    @extend %navBack;
 }
 
 #disruptiontrackerView--disruptionSearchField{
 	.sapMSFF{
         border-radius: 1em;
-        border: 2px solid #74D2E7;
-        color: $twilight-blue;
+        border: 2px solid $tiffany-blue;
+        color: $tiffany-blue;
         overflow: hidden;
     }
     .sapMSFB.sapMSFS {
-        color: $twilight-blue; 
+        color: $tiffany-blue; 
     }
 }
 

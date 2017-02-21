@@ -57,14 +57,10 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
-                data.Rowsets.Rowset[0].Row.sort(function (a, b) {
-                    if (a.Production_Context_GBO < b.Production_Context_GBO)
-                        return -1;
-                    if (a.Production_Context_GBO > b.Production_Context_GBO)
-                        return 1;
-                    return 0;
-                });
-                console.log(data);
+
+                if (data.Rowsets.Rowset[0] && data.Rowsets.Rowset[0].Row) {
+                    data.Rowsets.Rowset[0].Row = airbus.mes.trackingtemplate.util.ModelManager.sortArrayByOperationAndDate(data.Rowsets.Rowset[0].Row);
+                }
 
                 oViewModel.setData(data);
 
@@ -74,6 +70,51 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 jQuery.sap.log.info(error);
             }
         });
+    },
+
+    sortArrayByOperationAndDate: function (array) {
+
+        var index, len, previousRow, regex;
+
+        regex = /11016386-([^,]*)/;
+        
+        //we order the array by grouping the items by operation (beginning string of Production_Content_GBO)
+        array.sort(function (a, b) {
+            console.log(regex.exec(a.Production_Context_GBO)[0]);
+            if (regex.exec(a.Production_Context_GBO)[1] < regex.exec(b.Production_Context_GBO)[1]) 
+                return -1;
+            if (regex.exec(a.Production_Context_GBO)[1] > regex.exec(b.Production_Context_GBO)[1])
+                return 1;
+            return 0;
+        });
+
+        //we order the array by Created_Date_Time in each group of Production_Context_GBO
+        array.sort(function (a, b) {
+            if (a.Production_Context_GBO === b.Production_Context_GBO) {
+                if (a.Created_Date_Time < b.Created_Date_Time) {
+                    return 1;
+                }
+            }
+            return 0;
+        });
+
+        index = 1;
+        len = array.length;
+        array[0].lastOperationNote = true;
+        previousRow = array[0];
+
+        //we add the attribute lastOperationNote to each item of the array. This attribute is set to true 
+        //for each most recent confirmation note of a group of operation(Production_Context_GBO)
+        for (; index < len; index += 1) {
+            if (previousRow.Production_Context_GBO !== array[index].Production_Context_GBO) {
+                array[index].lastOperationNote = true;
+            } else {
+                array[index].lastOperationNote = false;
+            }
+            previousRow = array[index];
+        }
+
+        return array;
     },
 
     loadReasonCodeData: function (oViewModel, model) {
@@ -103,7 +144,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         var trackingTemplateUrl = this.urlModel.getProperty(model);
         var site = airbus.mes.settings.ModelManager.site;
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
-            trackingTemplateUrl, "$site", airbus.mes.settings.ModelManager.site);
+            trackingTemplateUrl, "$site", site);
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
             trackingTemplateUrl, "$workOrder", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no);
         console.log(trackingTemplateUrl.toString());

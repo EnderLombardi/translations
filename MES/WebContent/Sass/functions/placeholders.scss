@@ -19,7 +19,7 @@ GLOBAL
     line-height: 3rem;
     margin-right: 0px !important;
     border: 0;
-    border-right: solid 1px $twilight-blue !important;
+    border-right: solid 1px $tiffany-blue !important;
     background: $teal-blue-hover !important;
     
     .sapMSltLabel, .sapMSltArrow{
@@ -80,16 +80,6 @@ STATION TRACKER
     color: $white-two;
     overflow: hidden;
 }
-/*%oswIcon{
-    position: relative;
-    z-index: 1;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 10px;
-    top: 5px;
-   color: $petrol;
-    overflow: hidden;
-}*/
 %trackerText{
     padding-left: 10px;
     position: relative;
@@ -141,14 +131,12 @@ STATION TRACKER
     line-height: 3rem;
     text-transform: capitalize;
     margin-right: 0px !important;
-    border-right: solid 1px #74d2e7 !important;
+    border-right: solid 1px $tiffany-blue !important;
     background: $teal-blue-hover !important;
     border: 0;
 }
 %stationTrackerView{
     width: auto;
-    //height: auto !important;
-    //position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -361,8 +349,6 @@ STATION TRACKER
 }
 %trackerBoxTooltip{
     display: none;
-    //background-color: black;
-    //color: #fff !important;
     min-width: 430px;
     padding: 5px 2px;
     border-radius: 6px;
@@ -460,6 +446,41 @@ STATION TRACKER
     left: -10px;
     top: -500px;
     height: 1000px;
+}
+
+%buttonViewMode{
+    height: 3rem;
+    margin: 0;
+    .sapMSegBBtnFocusable{
+        @extend %sapMsegStationTracker;
+        &:hover:not(.sapMSegBBtnSel) {
+            background-color: $petrol-20;
+        }
+    }
+    .sapMSegBBtnDis {
+        @extend %sapMsegStationTracker;
+    }
+    .sapMSegBBtnSel {
+        background-color: $tiffany-blue;
+        color: white;
+        &:hover {
+            background-color: $teal-blue;
+        }
+    }
+}
+
+%navBack{
+    >div {
+        >span {
+            color: #0D5D76;
+        }
+    }
+    &:hover {
+        background-color: $petrol-20;
+        >div {
+            background-color: transparent;
+        }
+    }
 }
 
 /**********************

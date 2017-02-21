@@ -146,12 +146,13 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		return url;
 	},
 
+
 	//replace the url with the several parameters needed
 	getExternalUrl: function (externalUrlParameters) {
 		var url = this.urlModel.getProperty("getExternalUrlTemplate");
 		if (sessionStorage.loginType !== "local") {
-			url = this.replaceURI(url, "$workorder", externalUrlParameters[0]);
-			url = this.replaceURI(url, "$operation", externalUrlParameters[1]);
+			url = this.replaceURI(url, "p_workorder", externalUrlParameters[0]);
+			url = this.replaceURI(url, "p_operation", externalUrlParameters[1]);
 		}
 
 		return url;
@@ -168,9 +169,9 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	},
 
-/* *********************************************************************** *
- *  URL PARAMETERS                                              		   *
- * *********************************************************************** */
+	/* *********************************************************************** *
+	 *  URL PARAMETERS                                              		   *
+	 * *********************************************************************** */
 
 	//load the parameters needed for the documents request
 	getDoaParameters: function () {

@@ -1,26 +1,30 @@
-
 // Colours
 
 // Primary colours
 
 $navy-blue: rgba(0, 32, 91, 0.94);
+$navy-blue-hover:rgba(222,222,222,0.5);//on background-colored white
+
 $white : rgb(221, 221, 221);
-$bright-ligh-blue : rgba(49, 220, 240, 0.1);
 
 // Secondary Colours
 
-$tiffany-blue : rgb(116, 210, 231);
+$tiffany-blue : rgb(116, 210, 231);//74d2e7
+$teal-blue: #0085ad;//$tiffany-blue hover
+$teal-blue-hover: #0f2d65;//$teal-blue hover
+
 $duck-egg-blue: #d5f5f8;
+$petrol-20: rgba(0, 86, 112, 0.20);//$duck-egg-blue hover
+
 $silver-30: rgba(216, 221, 227, 0.3);
 $silver-15: rgba(187, 188, 188, 0.15);
 $sapui-hover-grey: #3F4F54;
 $sapui-active-grey: #52737F;
+
 $blood-orange: #fe5000;
 $pink:#E08283;
 
-// Secondary Colours
-
-$teal-blue: #0085ad;
+// Secondary Colours 
 
 $dark-lime-green: #84bd00;
 $dark-lime-green-hover: #536f12;
@@ -28,7 +32,6 @@ $dark_lime_osw:#049372;
 
 $cool-grey: #97999b;
 $cool-grey-hover: #767879;
-
 
 $dandelion: #fbec00;
 $dandelion-hover: #ffbf00;
@@ -42,19 +45,16 @@ $cool-black-hover: rgb(0, 0, 0);
 // Font colours
 
 $petrol: rgba(0, 86, 112, 0.94);
-$petrol-20: rgba(0, 86, 112, 0.20);//$duck-egg-blue active
 $black: rgba(44, 42, 41, 0.94);
 $white-two: #ffffff;
-$twilight-blue: #74d2e7;//$duck-egg-blue hover
-
 
 // Adds
-$ligth-grey: #ccc;
-$teal-blue-hover: #0f2d65;
 
+$ligth-grey: #ccc;
 
 //sap blue crystal theme
+
 $sapui-blue: rgb(0, 124, 192);
 $sapui-petrol: #005483;
 $sapui-font-black: #333333;
-$sapui-grey-hover:rgba(196,196,196,0.5);//on background-colored white elements
+$sapui-grey-hover:rgba(196,196,196,0.5);//on background-colored white
