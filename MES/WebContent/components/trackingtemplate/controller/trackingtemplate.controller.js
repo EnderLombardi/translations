@@ -21,7 +21,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         listWONotes.getBinding("items").filter(new sap.ui.model.Filter({
             path: "Production_Context_GBO",
             test: function (oValue) {
-                return !oValue.startsWith("ShopOrderBO");
+                return oValue.startsWith("ShopOrderBO");
             }
         }));
     },
