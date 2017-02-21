@@ -8,17 +8,10 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 	shiftHierarchy : {},
 	shiftNoBreakHierarchy: [],
 	shiftBreakHierarchy: [],
-	showInitial : false,
 //	Define start and end date of the scheduler
 	minDate: undefined,
 	maxDate: undefined,
-	
-	//Default value grouping boxing
-	group : "COMPETENCY" ,
-	box : "OPERATION_ID",
-	// Group use for special case compute
-	specialGroup : "WORKORDER_ID",
-	
+		
 	parseShift : function()  { 
 		
 	// Tree Shift Model	
@@ -125,16 +118,14 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 
 	computeCalendarHierarchy : function() {
 		
-		var oHierachy = airbus.mes.calendar.util.GroupingBoxingManager.operationHierarchy;
+		var oHierachy = airbus.mes.calendar.util.GroupingBoxingManager.operationHierarchy = {};
 		var oFormatter = airbus.mes.calendar.util.Formatter;
 		var sCstSplit = airbus.mes.calendar.util.GroupingBoxingManager.constante;
 		var oModel =  airbus.mes.calendar.oView.getModel("calendarTrackerModel");
 		var aElements2 = [];
 		var aBox = [];
 		var sPoolId = airbus.mes.calendar.util.ShiftManager.shiftIdSelected;
-		
-		// Erase hierarchy
-		oHierachy = {};
+	
 		//===============
 		// check if model full or not
 		//===============	
@@ -159,7 +150,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					// loanedFrom 
 					if ( el.loanedFrom === "true" ) {
 						
-						var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoanedFrom");
+						var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("sizeMin");
 					// loanedTo 	
 					} else {
 						

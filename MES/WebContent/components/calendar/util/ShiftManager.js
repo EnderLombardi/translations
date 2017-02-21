@@ -5,36 +5,20 @@ jQuery.sap.declare("airbus.mes.calendar.util.ShiftManager");
 airbus.mes.calendar.util.ShiftManager = {
     
 	firstTimelineStart : undefined,
-	updateShift : true,
 	
 	dayDisplay : false,
 	taktDisplay : false,
 	shiftDisplay :true,
-	fSwipe: false,
 	//Variables for shift combobox Day/Shit view
-	BoxSelected : 0,
-	ShiftSelected : "ALL",
-	selectFirstShift : false,
-	//Array where is stock Id of marker display on the gantt
-	ShiftMarkerID :[],
 	
 	shiftIdSelected : "ALL",
-	sIndexCombobox : 0,
 	current_shift : undefined,
 	currentShiftStart : undefined,
 	current_Date : undefined,
 	currentFullDate : undefined,
 	currentShiftEnd : undefined,
 	currentShiftIndex : undefined,
-	currentFullDateSwipping : undefined,
-	fDraging : false,
-	GroupDelayed : [],
-	GroupGantt : {},
-	OperationAvlDoublon : {},
-	swiping : false,
-	NumberDelayedBox : undefined,
-	changeShift: true, //Airbus Defect #262 - Shift selection is not kept when changing date
-	
+	currentFullDateSwipping : undefined,	
 	
 	/** Variable to permit apply the round minutes for the axis of gantt chart */
 	step : 0,
@@ -708,81 +692,5 @@ airbus.mes.calendar.util.ShiftManager = {
 
 		}
     },
-	/**
-	 * 
-	 * 
-	 *  
-	 */
-	// Swipe function 
-	timelineSwip : function (side) {
-//		XXX : keep needed later
-//		var oFormatter = airbus.mes.calendar.util.util.Formatter;
-		
-//		var oFormatter = airbus.mes.calendar.util.util.Formatter;
-//		
-//		this.step = -1;
-//		var step;
-//		var dNewDate;
-//
-//		if (side === "right") {
-//			step = calendar.matrix.timeline.x_step;
-//			dNewDate =  Date.parse(calendar._min_date) + step*1000*60;
-//		} else {
-//			step = -calendar.matrix.timeline.x_step;
-//		}
-
-//		var ndate = calendar.date.add(calendar.date.timeline_start(calendar._min_date), step, "minute");
-
-//		if (side === "left" && this.isDateIgnored(ndate)) {
-//			ndate = this.endOfPreviousShift(ndate);
-//		} else if (side === "right" && ndate > oFormatter.jsDateFromDayTimeStr(this.shifts[this.shifts.length-1].EndDate)) {
-//			dhtmlx.message({ id: "lastShiftDHTMLX", text: "Last Shift Reached", expire: 2000 });
-//			return 
-//		}
-//		this.fSwipe = true;
-//		
-//		this.step = -1;
-//		var step;
-//		var dNewDate;
-//
-//		if (side === "right") {
-//			step = calendar.matrix.timeline.x_step;
-//			dNewDate =  Date.parse(calendar._min_date) + step*1000*60;
-//		} else {
-//			step = -calendar.matrix.timeline.x_step;
-//		}
-//
-////		var ndate = calendar.date.add(calendar.date.timeline_start(calendar._min_date), step, "minute");
-//
-////		if (side === "left" && this.isDateIgnored(ndate)) {
-////			ndate = this.endOfPreviousShift(ndate);
-////		} else if (side === "right" && ndate > oFormatter.jsDateFromDayTimeStr(this.shifts[this.shifts.length-1].EndDate)) {
-////			dhtmlx.message({ id: "lastShiftDHTMLX", text: "Last Shift Reached", expire: 2000 });
-////			return 
-////		}
-//		this.fSwipe = true;
-////		
-////		&& this.isDateIgnored(dNewDate)
-//		if ( side === "right"  ) {
-//			
-//			//this.adjustcalendarXStart(new Date(dNewDate));
-//		&& this.isDateIgnored(dNewDate)
-//		if ( side === "right"  ) {
-			
-			//this.adjustcalendarXStart(new Date(dNewDate));
-//			calendar.setCurrentView(new Date(dNewDate));
-//			
-//		} 
-		
 	
-		
-		
-		//ndate = this.adjustcalendarXStart(ndate);
-//		this.currentFullDateSwipping = ndate;
-		
-//		calendar.setCurrentView(ndate);
-
-	},
-	
-
 }

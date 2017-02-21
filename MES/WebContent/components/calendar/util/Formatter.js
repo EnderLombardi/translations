@@ -15,41 +15,6 @@ airbus.mes.calendar.util.Formatter = {
 			return oFormat.format(oDate)
 		},
 
-		minSizeMinutes : 30,
-
-		sizeMin : function(sEndDate, sStartDate) {
-		
-			var oUtil = airbus.mes.calendar.util.Formatter;
-			var oShiftManager = airbus.mes.calendar.util.ShiftManager;
-			var dEndDate = sEndDate;
-			var dStartDate = sStartDate;
-			var dMaxDate  = oShiftManager.shifts[oShiftManager.shifts.length -1].EndDate;
-
-            if (dEndDate - dStartDate < oUtil.minSizeMinutes * 60 * 1000) {
-                if (oShiftManager.closestShift(dStartDate) != -1 && dStartDate > oShiftManager.shifts[0].StartDate) {
-                                      
-                        dStartDate.setMinutes(dStartDate.getMinutes() + oUtil.minSizeMinutes);
-
-	                    while (oShiftManager.isDateIgnored(dStartDate)) {
-
-	                    	 if ( dStartDate < dMaxDate ) {
-	                    		 
-	                    		 dStartDate.setMinutes(dStartDate.getMinutes() + oUtil.minSizeMinutes);
-	                    		 var sDate = Math.max(dEndDate, dStartDate);
-	                             return new Date(sDate);
-	                    	 }
-	
-	                    }
-                    var sDate = Math.max(dEndDate, dStartDate);
-
-                    return new Date(sDate);
-                }
-            }
-		
-			return sEndDate ;
-		
-		},	
-		
 		openFolder :function( bOpen ){
 			
 			if ( bOpen ) {
@@ -153,7 +118,7 @@ airbus.mes.calendar.util.Formatter = {
 
 					
 			},
-			  /***************************************************************************
+			  /***************************************************************************s
 		     * Replace space in string by "_"
 		     * 
 		     * @param {sText} String,string to parse
