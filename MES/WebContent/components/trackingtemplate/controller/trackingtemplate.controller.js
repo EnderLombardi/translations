@@ -21,7 +21,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         listWONotes.getBinding("items").filter(new sap.ui.model.Filter({
             path: "Production_Context_GBO",
             test: function (oValue) {
-                return !oValue.startsWith("ShopOrderBO");
+                return oValue.startsWith("ShopOrderBO");
             }
         }));
     },
@@ -92,10 +92,8 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Hide Comment Box to Add Comments
      */
     printTrackingTemplate: function () {
-        // var b = new Blob([this.getPrintHtml()], { type: 'text/html' }), uri = URL.createObjectURL(b), myPrintWindow;
 
         var ctrlString = "width=500px, height= 600px";
-        // myPrintWindow = window.open(uri, 'PrintWindow', ctrlString);
 
         var wind = window.open('', 'PrintWindow', ctrlString);
         wind.document.write('<html><head><title>' + this.getPrintTitle() + '</title>'
@@ -122,25 +120,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
 getPrintTitle: function () {
     var operationDetail = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]
     return operationDetail.wo_no + '-' + operationDetail.material_description + ' ' + operationDetail.original_start_time + '-' + operationDetail.original_end_time;
-},
-
-/**
- * Get html to print
- */
-getPrintHtml: function () {
-    var html = '<html><head>' + this.getCSS() + '<title>' + this.getPrintTitle() + '</title>'
-        + '<link rel="stylesheet" type="text/css" href="../components/trackingtemplate/styles/trackingtemplatePrint.css">'
-        + '</head><body>';
-    if (this.getView().byId('trackingtemplateView--confirmation_notes_panel').getExpanded()) {
-        html += document.getElementById('trackingtemplateView--confirmation_notes_panel').outerHTML;
-    }
-    if (this.getView().byId('trackingtemplateView--wo_notes_panel').getExpanded()) {
-        html += document.getElementById('trackingtemplateView--wo_notes_panel').outerHTML;
-    }
-    html += '</body></html>';
-
-    return html;
-
 },
 
 /**
