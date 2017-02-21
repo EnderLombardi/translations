@@ -37,7 +37,9 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
             $("select[class='selectBoxStation']").eq(i).remove();
         }
 
-        calendar.updateView();
+        airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
 
     },
 
@@ -69,7 +71,9 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.oView.byId("buttonViewMode").rerender();
         airbus.mes.calendar.oView.byId("buttonViewMode").setSelectedKey("day");
         
-        calendar.updateView();
+        airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
 
     },
     
@@ -113,7 +117,9 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.oView.byId("buttonViewMode").rerender();
         airbus.mes.calendar.oView.byId("buttonViewMode").setSelectedKey("takt");
 
-        calendar.updateView();
+        airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
     },
     
 	 datePick : function() {

@@ -32,7 +32,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 	oModelShift.forEach(function(el) {
 		
 		if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" || airbus.mes.calendar.util.ShiftManager.shiftIdSelected === el.resourcePoolId 
-			|| airbus.mes.calendar.util.ShiftManager.taktDisplay || airbus.mes.calendar.util.ShiftManager.takDisplay ) {
+			|| airbus.mes.calendar.util.ShiftManager.taktDisplay || airbus.mes.calendar.util.ShiftManager.dayDisplay) {
 
 		
 		if ( !oHierachy[el.day] ) {
