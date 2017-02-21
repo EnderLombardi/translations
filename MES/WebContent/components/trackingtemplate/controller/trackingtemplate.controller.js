@@ -21,7 +21,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         listWONotes.getBinding("items").filter(new sap.ui.model.Filter({
             path: "Production_Context_GBO",
             test: function (oValue) {
-                return oValue.startsWith("ShopOrderBO");
+                return !oValue.startsWith("ShopOrderBO");
             }
         }));
     },
@@ -79,13 +79,26 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     },
 
     /**
-     * Submit Disruption Comment
+     * Apply a filter on the wo notes
      * @param {Object} oEvent wich represent the event on press from the CheckBox last note
      */
     showOnlyLastWONote: function (oEvent) {
-        var oViewModel = airbus.mes.trackingtemplate.oView.getModel("TrackingTemplate");
-        oEvent.getSource().getSelected() ? oViewModel.setSizeLimit(1) : oViewModel.setSizeLimit(100);
-        oViewModel.refresh(true);
+        var listWONotes = this.getView().byId("trackingtemplateView--listNotes");
+        var lastWoCheckBox = this.getView().byId("trackingtemplateView--showOnlyLastWONote").getSelected();
+        var aFilters = [];
+
+        //we had the filter only if the checkbox state is true.
+        if (lastWoCheckBox) {
+            aFilters.push(new sap.ui.model.Filter({
+                path: "lastNote",
+                test: function (oValue) {
+                    return oValue;
+                }
+            }));
+        }
+        
+        //we apply the filter here
+        listWONotes.getBinding("items").filter(aFilters);
     },
 
     /**

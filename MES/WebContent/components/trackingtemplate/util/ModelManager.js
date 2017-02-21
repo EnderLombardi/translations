@@ -101,6 +101,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         index = 1;
         len = array.length;
         array[0].lastOperationNote = true;
+        array[0].lastNote = true;
         previousRow = array[0];
 
         //we add the attribute lastOperationNote to each item of the array. This attribute is set to true 
