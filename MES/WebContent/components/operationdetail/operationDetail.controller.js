@@ -142,6 +142,7 @@ sap.ui
 //                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idTrackingTemplate").setVisible(false);
             } else {
                 sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(true);
@@ -152,6 +153,7 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idTrackingTemplate").setVisible(true);
             }
         },
 
@@ -315,9 +317,9 @@ sap.ui
                     $(this.tabSelected).removeClass("operationDetailTabSelected");
                     this.tabSelected = "#operationDetailsView--idTrackingTemplate";
                     $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     airbus.mes.shell.util.navFunctions.tckTemplateLink(this.nav);
                     this.nav.to(airbus.mes.trackingtemplate.oView.getId());
+                    sap.ui.getCore().byId("operationDetailPopup--btnPrintTckTmplt").setVisible(true);
                     break;
 
                 default:
@@ -353,6 +355,9 @@ sap.ui
             //case "reschedulePage--reschedulePage":
             // Hide buttons
             sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
+
+            //case tracking template
+            sap.ui.getCore().byId("operationDetailPopup--btnPrintTckTmplt").setVisible(false);
 
         },
 

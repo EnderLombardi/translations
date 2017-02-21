@@ -1298,6 +1298,13 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         }
         return airbus.mes.stationtracker.informationPopover;
 
-	}
+	},
+
+    /**
+     * Print tracking template
+     */
+    printTrackingTemplate: function () {
+        airbus.mes.trackingtemplate.oView.oController.printTrackingTemplate();
+    },
 
 });
