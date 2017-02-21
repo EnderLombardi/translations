@@ -125,11 +125,11 @@ airbus.mes.linetracker.util.Formatter = {
 	 * 
 	 * @return trend symbol
 	 */
-	stationIconTrendSrc : function(bTrend) {
-		if (bTrend == "true") {
+	stationIconTrendSrc : function(bTrend, status) {
+		if (bTrend == "true" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
 			//this.color="#84bd00";
 			return "sap-icon://up"
-		} else if (bTrend == "false") {
+		} else if (bTrend == "false" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
 			//this.color="#e4002b";
 			return "sap-icon://down"
 		} else {
@@ -144,10 +144,10 @@ airbus.mes.linetracker.util.Formatter = {
 	 * 
 	 * @return trend color
 	 */
-	stationIconTrendColor : function(bTrend) {
-		if (bTrend == "true") {
+	stationIconTrendColor : function(bTrend, status) {
+		if (bTrend == "true" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
 			return "#84bd00"
-		} else if (bTrend == "false") {
+		} else if (bTrend == "false" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
 			return "#e4002b"
 		} else {
 			return "#97999b"
@@ -253,9 +253,11 @@ airbus.mes.linetracker.util.Formatter = {
 	
 		if(status==="COMPLETE"){
 			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(completionTime);
-		}else{
+		}else if(status==="IN_PROGRESS"){
 			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(actualEndTime);
 		}
+		else
+			return;
 	},
 	/**
 	 * @param sDate

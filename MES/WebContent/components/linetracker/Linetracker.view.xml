@@ -13,9 +13,11 @@
 						<Label text="{i18n>lineTrackerTitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
 						<core:Icon src="sap-icon://appointment" class="headerIcons" color="#FFFFFF"></core:Icon>
 						<Label id="linetracker_dateLabel" text="" class="classDateLabel"></Label>
-<!-- 						<core:Icon src="sap-icon://history" class="headerIcons1"	color="#FFFFFF"></core:Icon> -->
-<!-- 						<Label id="linetracker_timeLabel" text=""></Label> -->
 						<ToolbarSpacer />
+						<core:Icon src="sap-icon://info" class="headerIcons1"	color="#FFFFFF"></core:Icon> 
+<!-- 						<Label id="linetracker_timeLabel" text=""></Label> -->
+						
+						<!-- <Button icon="sap-icon://info"></Button> -->
 					</Toolbar>
 				</headerToolbar>
 			</Panel>
@@ -138,9 +140,9 @@
 						<uiTable:template>
 
 							<core:Icon class="trendIconLinetracker"
-								src="{path:'stationDataModel>trend', formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendSrc'}"
+								src="{parts:['stationDataModel>trend', 'stationDataModel>status'], formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendSrc'}"
 								tooltip=" "
-								color="{path:'stationDataModel>trend', formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendColor'}" />
+								color="{parts:['stationDataModel>trend', 'stationDataModel>status'], formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendColor'}" />
 						</uiTable:template>
 					</uiTable:Column>
 
