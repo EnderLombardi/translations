@@ -6,9 +6,7 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 	
 	// Get setting from ME/MII and select the good button between operation and work order
 	onAfterRendering: function () {
-		
 		this.filterJigsTools(this.sSet);
-	
 	},
 	
 	checkSettingJigsTools: function () {
