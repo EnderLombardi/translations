@@ -13,7 +13,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         listConfirmationNotes.getBinding("items").filter(new sap.ui.model.Filter({
             path: "Production_Context_GBO",
             test: function (oValue) {
-                return !oValue.startsWith("ShopOrderBO");
+                return !oValue.toUpperCase().startsWith("SHOPORDERBO");
             }
         }));
 
@@ -21,7 +21,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         listWONotes.getBinding("items").filter(new sap.ui.model.Filter({
             path: "Production_Context_GBO",
             test: function (oValue) {
-                return oValue.startsWith("ShopOrderBO");
+                return oValue.toUpperCase().startsWith("SHOPORDERBO");
             }
         }));
     },
@@ -49,9 +49,9 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         }
         if (showOnlyConfirmedConfirmationNote) {
             aFilters.push(new sap.ui.model.Filter({
-                path: "State",
+                path: "Confirmed",
                 test: function (oValue) {
-                    if (oValue === "CONFIRMED") {
+                    if (oValue === "C") {
                         return true;
                     }
                     return false;

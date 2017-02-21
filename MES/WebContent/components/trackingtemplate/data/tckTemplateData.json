@@ -156,7 +156,8 @@
                         "TXN_ID": "3816401056147-5d9ac71d:15a477ee9a5:-49a5",
                         "User_BO": "UserBO:FNZ1,MESYS",
                         "User_First_Name": "Jean-claude",
-                        "User_Last_Name": "site admin"
+                        "User_Last_Name": "site admin",
+                        "Confirmed": "---"
                     },
                     {
                         "Activity": "EXTERNAL",
@@ -174,7 +175,8 @@
                         "TXN_ID": "3816401056147-5d9ac71d:15a477ee9a5:-49a5",
                         "User_BO": "UserBO:FNZ1,MESYS",
                         "User_First_Name": "Théodore",
-                        "User_Last_Name": "site admin"
+                        "User_Last_Name": "site admin",
+                        "Confirmed": "---"
                     },
                     {
                         "Activity": "EXTERNAL",
@@ -192,7 +194,8 @@
                         "TXN_ID": "3816401056147-5d9ac71d:15a477ee9a5:-49a5",
                         "User_BO": "UserBO:FNZ1,MESYS",
                         "User_First_Name": "François",
-                        "User_Last_Name": "site admin"
+                        "User_Last_Name": "site admin",
+                        "Confirmed": "C"
                     },
                     {
                         "Activity": "EXTERNAL",
@@ -210,7 +213,8 @@
                         "TXN_ID": "3816401056147-5d9ac71d:15a477ee9a5:-49a5",
                         "User_BO": "UserBO:FNZ1,MESYS",
                         "User_First_Name": "Thierry",
-                        "User_Last_Name": "site admin"
+                        "User_Last_Name": "site admin",
+                        "Confirmed": "--"
                     },
                     {
                         "Activity": "EXTERNAL",
@@ -228,7 +232,8 @@
                         "TXN_ID": "3816401056147-5d9ac71d:15a477ee9a5:-49a5",
                         "User_BO": "UserBO:FNZ1,MESYS",
                         "User_First_Name": "Sylvain",
-                        "User_Last_Name": "GOLSE"
+                        "User_Last_Name": "GOLSE",
+                        "Confirmed": "C"
                     },
                     {
                         "Activity": "EXTERNAL",
@@ -246,7 +251,8 @@
                         "TXN_ID": "3816401056147-5d9ac71d:15a477ee9a5:-49a5",
                         "User_BO": "UserBO:FNZ1,MESYS",
                         "User_First_Name": "Renard",
-                        "User_Last_Name": "Bouvart"
+                        "User_Last_Name": "Bouvart",
+                        "Confirmed": "C"
                     }
                 ]
             }
