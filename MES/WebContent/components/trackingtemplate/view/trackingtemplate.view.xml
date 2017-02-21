@@ -10,10 +10,10 @@
 	<Page enableScrolling="true" showHeader="false" class="trackingTemplate">
 		<content>
 			<!-- Confirmation Notes -->
-			<Panel expandable="true" expanded="false" headerText="{i18n>cn_title}" width="auto" class="sapUiResponsiveMargin">
+			<Panel expandable="true" expanded="false" headerText="{i18n>cn_title}" width="auto" class="sapUiResponsiveMargin" id="confirmation_notes_panel">
 				<content>
 					<!-- Header ToolBar -->
-					<OverflowToolbar height="3rem">
+					<OverflowToolbar class="overflowCheckBoxConfirmationNoteBar">
 						<CheckBox id="showOnlyLastConfirmationNote" text="{i18n>cn_toolbar_last}" enabled="true" selected="false" select="filterConfirmationNoteList"/>
 						<CheckBox id="showOnlyConfirmedConfirmationNote" text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false" select="filterConfirmationNoteList"/>
 					</OverflowToolbar>
@@ -26,11 +26,11 @@
 				</content>
 			</Panel>
 			<!-- Work Order Notes -->
-			<Panel expandable="true" expanded="false" headerText="{i18n>won_title}" width="auto" class="sapUiResponsiveMargin">
+			<Panel expandable="true" expanded="false" headerText="{i18n>won_title}" width="auto" class="sapUiResponsiveMargin" id="wo_notes_panel">
 				<content>
 					<!-- Header ToolBar -->
-					<OverflowToolbar class="trackingTemplateButton" height="3rem">
-						<CheckBox id="idCheckBox" text="{i18n>won_toolbar_last}" enabled="true" selected="false" select="showOnlyLastWONote"/>
+					<OverflowToolbar class="trackingTemplateButton">
+						<CheckBox id="showOnlyLastWONote" text="{i18n>won_toolbar_last}" enabled="true" selected="false" select="showOnlyLastWONote"/>
 						<ToolbarSpacer />
 						<Button class="icon-edit" text="{i18n>won_toolbar_edit}" press="showCommentBox" icon="sap-icon://edit" />
 						<Button class="icon-print" text="{i18n>won_toolbar_print}" press="printTrackingTemplate" icon="sap-icon://print"/>

@@ -4195,6 +4195,10 @@ DISRUPTIONTRACKER
 
 #trackingtemplateView { height: 100% !important; overflow: auto !important; }
 
+.trackingTemplate .overflowCheckBoxConfirmationNoteBar { height: 3rem; }
+
+.trackingTemplate .trackingTemplateButton { height: 3rem; }
+
 .trackingTemplate .trackingTemplateButton .sapMBtnInner.sapMBtnText.sapMBtnBack, .trackingTemplate .trackingTemplateButton .sapMBtnInner.sapMBtnText.sapMBtnIconFirst { border: none; background: transparent; color: rgba(0, 86, 112, 0.94); }
 
 .trackingTemplate .trackingTemplateButton .sapMBtnInner.sapMBtnText.sapMBtnIconFirst:hover { background: rgba(196, 196, 196, 0.5); }
