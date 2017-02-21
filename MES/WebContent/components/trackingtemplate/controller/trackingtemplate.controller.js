@@ -35,8 +35,15 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         // var flag = oEvent.getSource().getSelected();
         var listConfirmationNotes = this.getView().byId("trackingtemplateView--confirmationNotes");
         var showOnlyLastConfirmationNote = this.getView().byId("trackingtemplateView--showOnlyLastConfirmationNote").getSelected();
-        var showOnlyConfirmedConfirmationNote = this.getView().byId("trackingtemplateView--showOnlyConfirmedConfirmationNote").getSelected();
+        var showOnlyNotConfirmedConfirmationNote = this.getView().byId("trackingtemplateView--showOnlyNotConfirmedConfirmationNote").getSelected();
         var aFilters = [];
+
+        aFilters.push(new sap.ui.model.Filter({
+            path: "Production_Context_GBO",
+            test: function (oValue) {
+                return !oValue.toUpperCase().startsWith("SHOPORDERBO");
+            }
+        }));
 
         //we had the filter only if the checkbox state is true.
         if (showOnlyLastConfirmationNote) {
@@ -47,14 +54,12 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                 }
             }));
         }
-        if (showOnlyConfirmedConfirmationNote) {
+
+        if (showOnlyNotConfirmedConfirmationNote) {
             aFilters.push(new sap.ui.model.Filter({
                 path: "Confirmed",
                 test: function (oValue) {
-                    if (oValue === "C") {
-                        return true;
-                    }
-                    return false;
+                    return oValue !== "C";
                 }
             }));
         }

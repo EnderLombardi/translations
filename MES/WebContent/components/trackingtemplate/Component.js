@@ -2,6 +2,8 @@
 
 jQuery.sap.registerModulePath("airbus.mes.trackingtemplate", "../components/trackingtemplate");
 jQuery.sap.require("airbus.mes.trackingtemplate.util.ModelManager");
+jQuery.sap.require("airbus.mes.trackingtemplate.util.Formatter");
+
 jQuery.sap.declare("airbus.mes.trackingtemplate.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.trackingtemplate.Component", {
