@@ -33,7 +33,9 @@
 						    change="onChangeFilterOSWUnplanned"
 					        visible="true" enable="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}">						
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
-					</Select>			
+					</Select>
+					
+					<CheckBox text="{StationTrackerI18n>WorklistAutoclosure}" id="FilterAutoClosureOp" selected="true" select="onFilterAutoclosure" class="sapUiTinyMarginBeginEnd" /> 
 				</HBox>
 
 				<List id="myList" 
