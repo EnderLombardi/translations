@@ -48,7 +48,9 @@ STATION TRACKER
 
 #stationTrackerView--stationtracker .customHour, #calendar--calendar .customHour { text-align: left; text-indent: -15px; border-left: none !important; background-color: transparent !important; color: #5e696e; font-size: 14px; line-height: 25px; }
 
-#stationTrackerView--stationtracker .customHour:before, #calendar--calendar .customHour:before { content: ''; display: block; position: absolute; bottom: 0; width: 1px; height: 7px; background-color: #5e696e; }
+#calendar--calendar .customTakt { text-align: left; text-indent: -30px; border-left: none !important; background-color: transparent !important; color: #5e696e; font-size: 14px; line-height: 25px; }
+
+#stationTrackerView--stationtracker .customHour:before, #calendar--calendar .customTakt:before, #calendar--calendar .customHour:before { content: ''; display: block; position: absolute; bottom: 0; width: 1px; height: 7px; background-color: #5e696e; }
 
 #stationTrackerView--stationtracker .dhx_cal_next_button, #stationTrackerView--stationtracker .dhx_cal_prev_button, #calendar--calendar .dhx_cal_next_button, #calendar--calendar .dhx_cal_prev_button { position: absolute; width: auto; color: #52aec8; text-align: center; display: inline-block; font: normal normal normal 30px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: transparent; font-size: 30px; float: none !important; }
 
@@ -2249,10 +2251,7 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*!
-*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
-*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-*/
+/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }

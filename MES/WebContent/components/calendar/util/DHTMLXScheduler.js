@@ -163,10 +163,14 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                         	
                         };
 
-                        /*      Custom Hour display display  */
-                        calendar.templates.timeline_scalex_class = function(date){
-                            return "customHour";
-                        };
+		                        /*      Custom Hour display display  */
+						calendar.templates.timeline_scalex_class = function(date) {
+							if (airbus.mes.calendar.util.ShiftManager.taktDisplay) {
+								return "customTakt";
+							} else {
+								return "customHour";
+							}
+						};
 
                       
 

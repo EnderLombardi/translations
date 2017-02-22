@@ -78,6 +78,12 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     .customHour{
         @extend %stationTrackerViewCustomHour;
     }
+    .customTakt {
+        @extend %stationTrackerViewCustomTakt;        
+    }
+    .customTakt:before {
+        @extend %customHourBefore;
+    }
     .grey{
         background-color: $cool-grey;
         &:hover{

@@ -151,6 +151,15 @@ STATION TRACKER
     font-size: 14px;
     line-height: 25px;
 }
+%stationTrackerViewCustomTakt{
+    text-align: left;
+    text-indent: -30px;
+    border-left: none !important;
+    background-color: transparent !important;
+    color: #5e696e;
+    font-size: 14px;
+    line-height: 25px;
+}
 %customHourBefore{
     content: '';
     display: block;
