@@ -21,45 +21,53 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 * @param {string}
 	 *            text : identifying the tile that has been clicked on
 	 */
-	onPress : function(text) {
+	onPress: function (text) {
 
 		switch (text) {
-		case "StationTracker":
-			//variable for split StationTracker
-			if( airbus.mes.stationtracker && airbus.mes.stationtracker.oView){
-				airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
-			}
-			airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
-			airbus.mes.shell.util.navFunctions.stationTracker();
-			break;
-		case "WorkerOrderTracker":
-			//variable for split worktracker
-			if( airbus.mes.stationtracker && airbus.mes.stationtracker.oView) {
-				airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Work Tracker");
-			}
-			airbus.mes.shell.util.navFunctions.splitMode = "WorkTracker";
-			airbus.mes.shell.util.navFunctions.stationTracker();
-			break;
-		case "ResourcePool":
-			airbus.mes.shell.util.navFunctions.resourcePool();
-			break;
-		case "LineTracker":
-			airbus.mes.shell.util.navFunctions.lineTracker();
-			break;
-		case "DisruptionAndon":
-			airbus.mes.shell.util.navFunctions.disruptionTracker();
-			break;
-		case "TeamCompetencies":
-			airbus.mes.shell.util.navFunctions.polypoly();
-			break;
-		case "TeamAvailability":
-			airbus.mes.shell.util.navFunctions.calendar();
-			break;
-		case "StationHandover":
-			airbus.mes.shell.util.navFunctions.stationHandover();
-			break;
-		default:
-			break;
+			case "StationTracker":
+				//variable for split StationTracker
+				if (airbus.mes.stationtracker && airbus.mes.stationtracker.oView) {
+					// if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
+					// 	$("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
+					// }
+					airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
+				}
+				airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
+				airbus.mes.shell.util.navFunctions.stationTracker();
+				break;
+			case "WorkerOrderTracker":
+				//variable for split worktracker
+
+				if (airbus.mes.stationtracker && airbus.mes.stationtracker.oView) {
+					// if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
+					// 	$("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
+					// }
+					//TO COMPARE WITH DROPDOWN USER LIST
+					airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Work Tracker");
+				}
+				airbus.mes.shell.util.navFunctions.splitMode = "WorkTracker";
+				airbus.mes.shell.util.navFunctions.stationTracker();
+				break;
+			case "ResourcePool":
+				airbus.mes.shell.util.navFunctions.resourcePool();
+				break;
+			case "LineTracker":
+				airbus.mes.shell.util.navFunctions.lineTracker();
+				break;
+			case "DisruptionAndon":
+				airbus.mes.shell.util.navFunctions.disruptionTracker();
+				break;
+			case "TeamCompetencies":
+				airbus.mes.shell.util.navFunctions.polypoly();
+				break;
+			case "TeamAvailability":
+				airbus.mes.shell.util.navFunctions.calendar();
+				break;
+			case "StationHandover":
+				airbus.mes.shell.util.navFunctions.stationHandover();
+				break;
+			default:
+				break;
 		}
 	},
 
@@ -71,7 +79,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 * @param {Event}
 	 *            oEvt : Tile press event
 	 */
-	onPressLine1 : function(oEvt) {
+	onPressLine1: function (oEvt) {
 		var sPath = oEvt.getSource().oBindingContexts["1TileLineHome"].sPath;
 		var text = airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text;
 		this.onPress(text);
@@ -84,7 +92,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 *            sKey : the ID of the text to be fetched
 	 * @returns {string} the text found
 	 */
-	getI18nValue : function(sKey) {
+	getI18nValue: function (sKey) {
 		return this.getView().getModel("i18n").getProperty(sKey);
 	},
 
@@ -97,7 +105,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 */
 	// onBeforeRendering: function() {
 	// },
-	
+
 	/**
 	 * Called when the View has been rendered (so its HTML is part of the document).
 	 * Post-rendering manipulations of the HTML could be done here. This hook is the
@@ -107,7 +115,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 */
 	// onAfterRendering : function() {
 	// },
-	
+
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources and
 	 * finalize activities.

@@ -1013,59 +1013,47 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
     selectUser: function (oEvt) {
 
-        // not used
+        //get the user selected
         var oSelected = oEvt.getSource().getSelectedItem().mProperties;
-        console.log(oSelected.key);
+
         airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 
-        // for specifique users
-        if (oSelected.key != "ALL") {
+        // for ALL users
+        if (oSelected.key === "ALL" || oSelected.key === "No") {
+            if(oSelected.key === "ALL") {
+                airbus.mes.stationtracker.util.AssignmentManager.userSelected = "%";
+            } else {
+                airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
+            }
 
             airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+            airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
+            if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
+                //hide split screen if select user
+                airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+            }
+            airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
+            sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
+            airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(airbus.mes.stationtracker.splitterWorkTracker);
+            //force gantt 100% height
+            // $("#stationTrackerView--splitWorkTra").children().css('height', '100%');
 
-            airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
+            if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
+                $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
+            } 
+
+        } else {
+            airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
+            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
+                airbus.mes.shell.util.navFunctions.splitMode = "WorkTracker";
+                airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Work Tracker");
                 //show split screen if select user
                 airbus.mes.shell.oView.oController.renderWorkTracker();
             }
-
-            // task with no user 
-        } else if (oSelected.key === "---") {
-
-            airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
-            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
-
-            if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
-                //hide split screen if select user
-                airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
-            }
-            sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
-            //force gantt 100% height
-            $("#stationTrackerView--splitWorkTra").children().css('height', '100%');
-
-            if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
-                $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
-            }
-
-            //for all cases
-        } else {
-
-            airbus.mes.stationtracker.util.AssignmentManager.userSelected = "%";
-            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
-
-            if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
-                //hide split screen if select user
-                airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
-            }
-            sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
-            //force gantt 100% height
-            $("#stationTrackerView--splitWorkTra").children().css('height', '100%');
-
-            if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
-                $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
-            }
+            
         }
 
 
