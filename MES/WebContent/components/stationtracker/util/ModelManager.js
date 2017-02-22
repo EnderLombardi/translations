@@ -52,7 +52,7 @@ airbus.mes.stationtracker.util.ModelManager = {
             "dispatchFromAcpngModel", //Model for ACPGN status
             "dispatchFromMesModel", //Model for MES status
         ]
-
+        
         airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
         this.settings = airbus.mes.settings.ModelManager;
 
