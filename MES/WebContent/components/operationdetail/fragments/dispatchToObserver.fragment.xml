@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
     xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
     <Dialog  id="dispatchObserverDialogue" contentHeight="40%" contentWidth="60%"
-        title="Dispatch to Observer">
+        title="{i18n>assignTitle}">
         <content>
 
 		<f:SimpleForm id="dispatch" minWidth="1024"
@@ -11,13 +11,13 @@
           
            <f:content>
 				
-				<RadioButton id="WOlevel" text="Assign Work order to" selected="true" select="onChangeLevelAssign" />
+				<RadioButton id="WOlevel" text="{i18n>assignWO}" selected="true" select="onChangeLevelAssign" />
 				
-				<RadioButton  id="OPElevel" text="Assign operation to" select="onChangeLevelAssign"/>
+				<RadioButton  id="OPElevel" text="{i18n>assignOPE}" select="onChangeLevelAssign"/>
 				
             </f:content>
             <f:content>
-	             <Label text="List of Groups "/>
+	             <Label text="{i18n>groupList}"/>
 	             <Select change="onSelectionObserver" id="observerSelectBox" forceSelection="true"
 	                 items="{dispatchModel>/Rowsets/Rowset/0/Row}">
 	                 <core:Item key="{dispatchModel>USER_GROUP}" text="{dispatchModel>DESCRIPTION}" />
@@ -26,9 +26,9 @@
        </f:SimpleForm>
         </content>
         <buttons>
-            <Button id="ok" text="Ok" icon="sap-icon://activity-individual" press="onDispatchObserver"
+            <Button id="ok" text="{i18n>OK}" icon="sap-icon://activity-individual" press="onDispatchObserver"
                 type="Transparent" />
-            <Button id="cancel" text="Cancel" icon="sap-icon://decline" press="onCancelDispatchObserver" />
+            <Button id="cancel" text="{i18n>cancel}" icon="sap-icon://decline" press="onCancelDispatchObserver" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

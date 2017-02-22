@@ -12,7 +12,7 @@
             <Button id="btnActivate" text="{StationTrackerI18n>activate}" icon="sap-icon://accept" press="activateOperation" visible="false" enabled = "{Profile>/identifiedUser/permissions/WORK_OP_ACTIVATE}" />
             <Button id="btnComplete" text="{StationTrackerI18n>complete}" icon="sap-icon://accept" press="confirmOperation" visible="false" enabled = "{Profile>/identifiedUser/permissions/WORK_OP_TOT_CONF}"/>
 			
-			<Button id="btnAssignToObserver" text="{StationTrackerI18n>AssignObserver}" icon="sap-icon://activity-individual" type="Transparent" press="onAssignObserver" visible="false" />
+			<Button id="btnAssignToObserver" text="{StationTrackerI18n>assignObserver}" icon="sap-icon://activity-individual" type="Transparent" press="onAssignObserver" visible="false" />
            
             <Button id="btnCreateDisruption" text="{StationTrackerI18n>create}" icon="sap-icon://add" type="Transparent" press="onCreateDisruption" visible="false" />
             <Button id="btnUpdateDisruption" text="{StationTrackerI18n>update}" icon="sap-icon://save" type="Transparent" press="onUpdateDisruption" visible="false" />

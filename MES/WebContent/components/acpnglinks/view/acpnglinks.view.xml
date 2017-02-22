@@ -49,7 +49,7 @@
 						<tab:Column id="Note"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/3/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="Note">
-							<Label class="ACPnGtLabel" text="Note" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>Note}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>Note}" class="AllignItem" />
 							</tab:template>
@@ -99,7 +99,7 @@
 						<tab:Column id="FatherLink"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/9/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="FatherLink">
-							<Label class="ACPnGtLabel" text="Father link" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>FatherLink}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>FatherLink}"
 									class="AllignItem" />
