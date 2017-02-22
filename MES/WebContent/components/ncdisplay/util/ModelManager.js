@@ -18,7 +18,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
 	    // Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.ncdisplay.config.url_config");
 
-        airbus.mes.shell.ModelManager.createJsonModel(cre,["ncdisplaydata", "getExternalUrlTemplate"]);
+        airbus.mes.shell.ModelManager.createJsonModel(core,["ncdisplaydata", "getExternalUrlTemplate"]);
         this.loadNcDisplayData();
         airbus.mes.ncdisplay.util.ModelManager.operationData = this.getOperationData();
 

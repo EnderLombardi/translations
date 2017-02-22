@@ -53,7 +53,7 @@
 					width="13.7rem" class="sapUiLargeMarginEnd" /> <Label text="{disruptiontrackerI18n>selectStatus}" 
 					width="13.7rem" class="sapUiLargeMarginEnd" /> <Label text="{disruptiontrackerI18n>resolutionGroup}" 
 					/> </Toolbar> -->
-				<Toolbar>
+				<Toolbar id="toolbar">
 					<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress"
 						type="Transparent" />
 

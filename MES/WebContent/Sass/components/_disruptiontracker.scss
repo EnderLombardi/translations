@@ -158,22 +158,24 @@ td{
     }
 }
 
-#disruptiontrackerView--gotoDisruptionKpi{
-	
-    &.sapMBtn{
-        &:hover{
-            background-color: $petrol-20;
+#disruptiontrackerView--toolbar {
+    #disruptiontrackerView--gotoDisruptionKpi, #disruptiontrackerView--exportbutton{
+        margin: 0;
+        &.sapMBtn{
+            >.sapMBtnHoverable {
+                background: transparent;
+                border:none;
+            }
+            &:hover{
+                background-color: $petrol-20;
+            }
+            span{
+                color: #0D5D76;
+            }
         }
-        span{
-            color: #0D5D76;
-        }
-    }
-    @at-root #disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover>.sapMBtnHoverable, #disruptiontrackerView--gotoDisruptionKpi.sapMBtn>.sapMBtnHoverable {
-        background-color: transparent;
-        background: transparent;
-        border:none;
     }
 }
+
 #disruptiontrackerView--onDisruptionTableSettings{
     &.sapMBtn{
         &:hover{

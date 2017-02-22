@@ -1177,7 +1177,7 @@ STATION TRACKER TOOLBAR
 ************************************/
 
 #stationTrackerView--buttonViewMode {
-    @extend %buttonViewMode;
+    @extend %segmentedButton;
 }
 
 #stationTrackerView--toolbarstationtracker {

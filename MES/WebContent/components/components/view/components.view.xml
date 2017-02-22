@@ -11,8 +11,6 @@
     <Page enableScrolling="false" showHeader="false" height="100%">
     <content>
 
-    <!-- <Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" /> -->
-
     <VBox id="ComponentsCheck" class="ComponentsCheck">
              <RadioButtonGroup columns="2" select="onSelectLevel">
                 <buttons>
@@ -34,73 +32,73 @@
                      editable="true"
                      width="100%">
         <table:columns>
-            <table:Column  width="12rem">
+            <table:Column autoResizable="true" width="auto" >
                 <Label text="{i18nComponentsModel>itemNumber}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>itemNumber}" />
                 </table:template>
             </table:Column>
-            <table:Column  width="12rem">
+            <table:Column  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>operationNumber}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>operationNumber}"/>
                 </table:template>
             </table:Column>
-            <table:Column  width="12rem">
+            <table:Column  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>materialType}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>materialType}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="12rem">
+            <table:Column  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>materialDescription}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>materialDescription}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="12rem">
+            <table:Column  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>storageLocation}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>storageLocation}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="12rem">
+            <table:Column  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>freestockKanbanBulkMaterial}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>freestockKanbanBulkMaterial}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="12rem">
+            <table:Column  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>requiredQty}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>requiredQty}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="12rem">
+            <table:Column  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>withdrawQty}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>withdrawQty}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="12rem">
+            <table:Column  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>shortage}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>shortage}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="12rem">
+            <table:Column  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>unit}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>unit}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="12rem">
+            <table:Column  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>serialNumber}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>serialNumber}"  />
                 </table:template>
             </table:Column>
-            <table:Column id="editableRowCom"  width="12rem">
+            <table:Column id="editableRowCom"  autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>committed}" />
                 <table:template>
                    <HBox>
@@ -117,7 +115,7 @@
                    </HBox>
                 </table:template>
             </table:Column>
-            <table:Column id="editableRowFit" width="12rem">
+            <table:Column id="editableRowFit" autoResizable="true" width="auto">
                 <Label text="{i18nComponentsModel>fitted}" />
                 <table:template>
                     <HBox>

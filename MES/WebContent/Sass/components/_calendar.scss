@@ -411,7 +411,7 @@ div{
 STATION TRACKER TOOLBAR
 ************************************/
 #calendar--buttonViewMode {
-    @extend %buttonViewMode;
+    @extend %segmentedButton;
 }
 #calendar--toolbarcalendar{
     background-color: $duck-egg-blue !important;

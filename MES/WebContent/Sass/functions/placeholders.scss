@@ -257,15 +257,6 @@ STATION TRACKER
     background-color: #F5F5F5;
     overflow: hidden;
 }
-%sapMsegStationTracker{
-    height: 3rem;
-    border: none;
-    border-right: 1px solid #8db9ca;
-    background-color: transparent;
-    color: #0D5D76;
-    text-transform: uppercase;
-    line-height: 3rem;
-}
 %comboBoxStyleStationTracker{
     width: auto;
     max-width: 100%;
@@ -448,7 +439,18 @@ STATION TRACKER
     height: 1000px;
 }
 
-%buttonViewMode{
+//BUTTONS
+%sapMsegStationTracker{
+    height: 3rem;
+    border: none;
+    border-right: 1px solid #8db9ca;
+    background-color: transparent;
+    color: #0D5D76;
+    text-transform: uppercase;
+    line-height: 3rem;
+}
+
+%segmentedButton{
     height: 3rem;
     margin: 0;
     .sapMSegBBtnFocusable{
@@ -469,6 +471,7 @@ STATION TRACKER
     }
 }
 
+//arrow
 %navBack{
     >div {
         >span {
