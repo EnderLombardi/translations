@@ -3,10 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:table="sap.ui.table"
-    controllerName="airbus.mes.components.controller.components"
-    xmlns:f="sap.ui.layout.form"
-    xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+    controllerName="airbus.mes.components.controller.components">
 
     <Page enableScrolling="false" showHeader="false" height="100%">
     <content>

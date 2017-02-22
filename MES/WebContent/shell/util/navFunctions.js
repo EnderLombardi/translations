@@ -26,56 +26,56 @@ airbus.mes.shell.util.navFunctions = {
 
             jQuery.sap.registerModulePath("airbus.mes.stationHandover", "../components/stationHandover");
             sap.ui.getCore().createComponent({ name: "airbus.mes.stationHandover", });
-    		//ReloadModel
-    		airbus.mes.shell.oView.getController().stationHandover();
-          
+            //ReloadModel
+            airbus.mes.shell.oView.getController().stationHandover();
+
         }
         // reDisplay all columns
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[5].setVisible(true);
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[6].setVisible(true);
         airbus.mes.shell.util.navFunctions.jigsAndTools.configME = undefined;
-        
-		if (bDialog) {
-			
-			if ( nav.getPage("stationHandoverView") != null ) {
-				//Permit to not has conflict with stationTRacker overwise scheduler disepear
-				nav.removePage("stationHandoverView");
-				sap.ui.getCore().byId("oswDialog--oswDialog").addContent(airbus.mes.stationHandover.oView);
 
-			} else {
-				
-				sap.ui.getCore().byId("oswDialog--oswDialog").addContent(airbus.mes.stationHandover.oView);
-								
-			}
-			
-			airbus.mes.stationHandover.oView.byId("kpiHeaderToolbar").setVisible(false);
-			airbus.mes.stationHandover.oView.byId("navBack").setVisible(false);
-			airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverDialog");
-			airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverTile");
-				
-		} else {
-			
-			nav.addPage(airbus.mes.stationHandover.oView);
-			nav.to(airbus.mes.stationHandover.oView.getId());
-			airbus.mes.stationHandover.oView.byId("kpiHeaderToolbar").setVisible(true);
-			airbus.mes.stationHandover.oView.byId("navBack").setVisible(true);
-			airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverTile");
-			airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverDialog");
-			var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
-			//Resize the width of column regarding space free
-			aColumns.forEach(function(el, indice) {
-				// Don't do auto resize blocked line it bug
-				if (indice === 1 ) {
+        if (bDialog) {
 
-				} else {
+            if (nav.getPage("stationHandoverView") != null) {
+                //Permit to not has conflict with stationTRacker overwise scheduler disepear
+                nav.removePage("stationHandoverView");
+                sap.ui.getCore().byId("oswDialog--oswDialog").addContent(airbus.mes.stationHandover.oView);
 
-					airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
-		
-				}
+            } else {
 
-			});
+                sap.ui.getCore().byId("oswDialog--oswDialog").addContent(airbus.mes.stationHandover.oView);
 
-		}
+            }
+
+            airbus.mes.stationHandover.oView.byId("kpiHeaderToolbar").setVisible(false);
+            airbus.mes.stationHandover.oView.byId("navBack").setVisible(false);
+            airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverDialog");
+            airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverTile");
+
+        } else {
+
+            nav.addPage(airbus.mes.stationHandover.oView);
+            nav.to(airbus.mes.stationHandover.oView.getId());
+            airbus.mes.stationHandover.oView.byId("kpiHeaderToolbar").setVisible(true);
+            airbus.mes.stationHandover.oView.byId("navBack").setVisible(true);
+            airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverTile");
+            airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverDialog");
+            var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
+            //Resize the width of column regarding space free
+            aColumns.forEach(function (el, indice) {
+                // Don't do auto resize blocked line it bug
+                if (indice === 1) {
+
+                } else {
+
+                    airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
+
+                }
+
+            });
+
+        }
 
     },
 
@@ -302,14 +302,14 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     componentsDetail: function (container) {
-//    	Create component
+        //    	Create component
         if (airbus.mes.components === undefined || airbus.mes.components.oView === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.components", "../components/components");
             sap.ui.getCore().createComponent({ name: "airbus.mes.components" });
         } else { // or load model
-        	airbus.mes.components.loadcomponentsWorkOrderDetail();
-        	airbus.mes.components.loadselectFilterModel();
+            airbus.mes.components.util.ModelManager.loadcomponentsWorkOrderDetail();
+            airbus.mes.components.util.ModelManager.loadselectFilterModel();
         }
         if (container.getPage("componentsView") === null) {
             container.addPage(airbus.mes.components.oView);
@@ -328,13 +328,12 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     ncDisplayLink: function (container) {
-		// Create component
-    	if (airbus.mes.ncdisplay === undefined || airbus.mes.ncdisplay.oView === undefined) {
-
+        // Create component
+        if (airbus.mes.ncdisplay === undefined || airbus.mes.ncdisplay.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.ncdisplay", "../components/ncdisplay");
             sap.ui.getCore().createComponent({ name: "airbus.mes.ncdisplay" });
         } else { // or load data
-        	airbus.mes.ncdisplay.util.ModelManager.loadNcDisplayData();
+            airbus.mes.ncdisplay.util.ModelManager.loadNcDisplayData();
         }
         if (container.getPage("ncdisplayView") === null) {
             container.addPage(airbus.mes.ncdisplay.oView);
@@ -480,15 +479,15 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({ name: "airbus.mes.disruptiondetail", });
             nav.addPage(airbus.mes.disruptiondetail.oView)
         }
-        
+
         // Navigate
         nav.to(airbus.mes.disruptiondetail.oView.getId());
 
         // Set Data in disruption Detail Model with disruption comments
         var oData = oDataset.Rowsets.Rowset[0].Row[0];
         oData.comments = oDataset.Rowsets.Rowset[1].Row;
-		// Load data from back-end services - Call load data function in Edit Mode
-		airbus.mes.disruptions.ModelManager.loadData("Edit",oData);
+        // Load data from back-end services - Call load data function in Edit Mode
+        airbus.mes.disruptions.ModelManager.loadData("Edit", oData);
 
     },
 
