@@ -399,7 +399,7 @@ airbus.mes.calendar.util.ShiftManager = {
 		
 		if ( this.shiftDisplay ) {
 		
-		    calendar.matrix.timeline.x_size = Math.ceil((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
+		    calendar.matrix.timeline.x_size = Math.ceil((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/60);
 	
 		    var date = new Date(this.shifts[c].StartDate).setMinutes(0);
     

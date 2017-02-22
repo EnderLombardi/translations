@@ -26,7 +26,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.oView.byId("calendardateButton").setEnabled(true);
 
         calendar.matrix['timeline'].x_unit = 'minute';
-        calendar.matrix['timeline'].x_step = 30;
+        calendar.matrix['timeline'].x_step = 60;
         calendar.matrix['timeline'].x_date = '%H:%i';
         calendar.templates.timeline_scale_date = function(date) {
             var func = calendar.date.date_to_str(calendar.matrix['timeline'].x_date);

@@ -47,7 +47,7 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                             x_unit:    "minute",
                             x_date:    "%H:%i",
                             //When coming back from setting permit to display the previous mode shift/day
-                            x_step :  airbus.mes.calendar.util.ShiftManager.dayDisplay ? 60 : 30,
+                            x_step :  60,
                             x_size : 18,
                             x_start : 0,
                             //x_length : 18,
