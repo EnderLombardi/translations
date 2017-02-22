@@ -79,9 +79,8 @@ airbus.mes.operationdetail.ModelManager = {
             .replaceURI(geturlDispatchToObserver, "$site", oData.site);
         oViewModel.loadData(geturlDispatchToObserver, null, true);
     },
-
     
-    
+      
 
     /***************************************************************************
      * Get URL for Activate Operation

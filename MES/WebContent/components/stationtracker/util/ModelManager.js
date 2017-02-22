@@ -49,6 +49,8 @@ airbus.mes.stationtracker.util.ModelManager = {
             "spentTimedataModel", // KPI Resolution Staffing
             "taktModel",			// Start and End date for takt  
             "SplitDetailModel", // Model for Split Model
+            "dispatchFromAcpngModel", //Model for ACPGN status
+            "dispatchFromMesModel", //Model for MES status
         ]
 
         airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
@@ -153,6 +155,53 @@ airbus.mes.stationtracker.util.ModelManager = {
             console.log("no affectationModel load");
         }
         airbus.mes.stationtracker.util.AssignmentManager.computeAffectationHierarchy();
+
+    },
+    
+      loadDispatchFromAcpngModel: function () {
+    	
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
+        var opeData = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]; 
+       
+        
+        var oViewModel = sap.ui.getCore().getModel("dispatchFromAcpngModel");
+        var getUrlAcpngStatus = this.urlModel.getProperty("urlDispatchFromAcpng");
+
+        getUrlAcpngStatus = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(getUrlAcpngStatus, "$site", oData.site);
+        
+        getUrlAcpngStatus = airbus.mes.stationtracker.util.ModelManager
+        .replaceURI(getUrlAcpngStatus, "$workorder", opeData.wo_no);
+        
+        getUrlAcpngStatus = airbus.mes.stationtracker.util.ModelManager
+        .replaceURI(getUrlAcpngStatus, "$operation", opeData.operation_id);
+        
+        oViewModel.loadData(getUrlAcpngStatus, null, true);
+     
+
+    },
+
+    loadDispatchFromMesModel: function () {
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
+        var opeData = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]; 
+        
+        var oViewModel = sap.ui.getCore().getModel("dispatchFromMesModel");
+        var getUrlMesStatus = this.urlModel.getProperty("urlDispatchFromMes");
+
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(getUrlMesStatus, "$site", oData.site);
+        
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+        .replaceURI(getUrlMesStatus, "$workorder", opeData.wo_no);
+        
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+        .replaceURI(getUrlMesStatus, "$operation", opeData.operation_id);
+        
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+        .replaceURI(getUrlMesStatus, "$sfcstep", opeData.sfc_step_ref);
+        
+        oViewModel.loadData(getUrlMesStatus, null, true);
+      
 
     },
 
@@ -1041,11 +1090,11 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (airbus.mes.stationtracker.operationDetailPopup === undefined) {
                     airbus.mes.stationtracker.operationDetailPopup = sap.ui.xmlfragment("operationDetailPopup", "airbus.mes.stationtracker.fragment.operationDetailPopup", airbus.mes.stationtracker.oView.getController());
                     airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"), "operationDetailModel");
+                	airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("dispatchFromAcpngModel"), "dispatchFromAcpngModel");
+                    airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("dispatchFromMesModel"), "dispatchFromMesModel");
                     airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
                                     
                 }
-                
-                
                 
                 //spent time calculation
                 var operation = aModel[0].OPERATION_BO.split(",")[1];
@@ -1137,6 +1186,10 @@ airbus.mes.stationtracker.util.ModelManager = {
                 sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
                 sap.ui.getCore().getModel("operationDetailModel").refresh();
 
+          	    airbus.mes.stationtracker.util.ModelManager.loadDispatchFromAcpngModel();
+                airbus.mes.stationtracker.util.ModelManager.loadDispatchFromMesModel();
+                
+                
                 if (airbus.mes.operationdetail === undefined) {
                     jQuery.sap.registerModulePath("airbus.mes.operationdetail",
                         "../components/operationdetail");
@@ -1174,6 +1227,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 
               //Load acpngLinks if no child find for the wo the button is disabled
                 airbus.mes.shell.util.navFunctions.acpnglinksDetail(airbus.mes.operationdetail.oView.getController().nav);
+            
                              
                 
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");

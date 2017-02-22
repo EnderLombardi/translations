@@ -11,13 +11,14 @@
           
            <f:content>
 				
-				<RadioButton groupName="GroupLevel" text="Assign Work order to" selected="true" select="onChangeLevelAssign" />
+				<RadioButton id="WOlevel" text="Assign Work order to" selected="true" select="onChangeLevelAssign" />
 				
-				<RadioButton groupName="GroupLevel" text="Assign operation to" select="onChangeLevelAssign"/>
+				<RadioButton  id="OPElevel" text="Assign operation to" select="onChangeLevelAssign"/>
+				
             </f:content>
             <f:content>
 	             <Label text="List of Groups "/>
-	             <Select change="onSelectionObserver" id="observerSelectBox" forceSelection="false"
+	             <Select change="onSelectionObserver" id="observerSelectBox" forceSelection="true"
 	                 items="{dispatchModel>/Rowsets/Rowset/0/Row}">
 	                 <core:Item key="{dispatchModel>USER_GROUP}" text="{dispatchModel>DESCRIPTION}" />
 	             </Select>   
@@ -25,9 +26,9 @@
        </f:SimpleForm>
         </content>
         <buttons>
-            <Button id="ok" text="Ok" press="onDispatchObserver"
+            <Button id="ok" text="Ok" icon="sap-icon://activity-individual" press="onDispatchObserver"
                 type="Transparent" />
-            <Button id="cancel" text="Cancel" press="onCancelDispatchObserver" />
+            <Button id="cancel" text="Cancel" icon="sap-icon://decline" press="onCancelDispatchObserver" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

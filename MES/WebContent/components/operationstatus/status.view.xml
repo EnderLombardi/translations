@@ -8,12 +8,12 @@
 		<VBox justifyContent="SpaceBetween"  id="Statutprogress">
 			
 			<HBox justifyContent="Left">
-				  <Label id="labelAssignACPnG" text="Assigned to in ACPnG:"/>
-				  <Text  id="assignACPnGstatus" text="test" />
+				  <Label id="labelAssignACPnG" text="Assigned to in ACPnG:" visible="{path :'dispatchFromAcpngModel>/Rowsets/Rowset/0/Row/0/ASSIGNED', formatter : 'airbus.mes.operationdetail.Formatter.displayStatus'}"/>
+				  <Text  id="assignACPnGstatus" text="{dispatchFromAcpngModel>/Rowsets/Rowset/0/Row/0/DESCRIPTION}" visible="{path :'dispatchFromAcpngModel>/Rowsets/Rowset/0/Row/0/ASSIGNED', formatter : 'airbus.mes.operationdetail.Formatter.displayStatus'}"/>
 			</HBox>
 	 	    <HBox justifyContent="Left">
-				  <Label id="labelAssignMES" text="Assigned to in MES: "/>
-				  <Text  id="assignMESstatus" text="test" />
+				  <Label id="labelAssignMES" text="Assigned to in MES: " visible="{path :'dispatchFromMesModel>/Rowsets/Rowset/0/Row/0/ASSIGNED', formatter : 'airbus.mes.operationdetail.Formatter.displayStatus'}"/>
+				  <Text  id="assignMESstatus" text="{dispatchFromMesModel>/Rowsets/Rowset/0/Row/0/DESCRIPTION}" visible="{path :'dispatchFromMesModel>/Rowsets/Rowset/0/Row/0/ASSIGNED', formatter : 'airbus.mes.operationdetail.Formatter.displayStatus'}"/>
 			</HBox>
 			
 			<HBox justifyContent="Center" >

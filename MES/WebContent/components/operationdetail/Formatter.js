@@ -249,6 +249,17 @@ airbus.mes.operationdetail.Formatter = {
         else
             return false;
 
+    },
+    
+
+    displayStatus: function(assigned){
+
+        if(assigned != null && assigned != undefined) 
+            return true;
+        
+        else 
+            return false;
+        
     }
 
 };

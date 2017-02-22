@@ -29,7 +29,6 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         sap.ui.getCore().byId("idStatusView--labelAssignMES").setVisible(false);
         sap.ui.getCore().byId("idStatusView--assignMESstatus").setVisible(false);
         
-        this.loadAssignStatus();
     },
     /**
      * Similar to onAfterRendering, but this hook is invoked
@@ -244,15 +243,16 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     onAssignObserver : function(oEvent) {
         oEvent.reset();
         var oView = airbus.mes.operationstatus.oView;
-    //    var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
-   //     airbus.mes.operationdetail.ModelManager.durationNeededForCalc = oModel[0].duration;
+       
         airbus.mes.operationdetail.ModelManager.loadDispatchModel();
         if (!oView._dipatchDialog) {
-            oView._dipatchDialog = sap.ui.xmlfragment("airbus.mes.operationdetail.fragments.dispatchToObserver", oView.getController());
+        	oView._dipatchDialog = sap.ui.xmlfragment("airbus.mes.operationdetail.fragments.dispatchToObserver", oView.getController());
             oView.addDependent(oView._dipatchDialog);
         }
+        
+        oView._dipatchDialog.open();    
+        oView.getController().onChangeLevelAssign(); 
 
-        oView._dipatchDialog.open();
     },
     
 
@@ -506,54 +506,31 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     onCancelDispatchObserver : function() {
 
         var oView = airbus.mes.operationstatus.oView;
-
-//        sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress_new = sap.ui
-//                .getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress;
         sap.ui.getCore().getModel("operationDetailModel").refresh();
         oView._dipatchDialog.close();
     },
     
     onChangeLevelAssign : function(){
-    	
-    	var oView = airbus.mes.operationstatus.oView._dipatchDialog;
         var oSorter = new sap.ui.model.Sorter("USER_GROUP");
-        
-        var radioBtnGrp = oView().byId("GroupLevel"); 
-        var level = radioBtnGrp.getSelectedItem().getText();
-       /*// standby update of service MII 
-        var oFilter = "WO"; 
-        
-        if (level.includes("operation"))
-        	 oFilter = new sap.ui.model.Filter("OPE",sap.ui.model.FilterOperator.Contains,searchString);
-        
-        var comFil = new sap.ui.model.Filter([oFilter]);
-        
-    	oView().byId("observerSelectBox").getBinding("items").filter(comFil,sap.ui.model.FilterType.Application);
+
+        var filter, binding;
+        var level = "WO";
+     
+        // check level chosen by user
+        if (!sap.ui.getCore().byId("WOlevel").getProperty("selected"))
+        	level = "OPE";
+
+        // filter user group according level (OPE or WO)
+        filter = new sap.ui.model.Filter("LEVEL",sap.ui.model.FilterOperator.Contains , level);
+        binding = sap.ui.getCore().byId("observerSelectBox").getBinding("items");
+        binding.filter(filter,"Application");
+        binding.refresh(true);
+             
+        // sort values according description
+        sap.ui.getCore().byId("observerSelectBox").getBinding("items").sort(oSorter);
     	
-    	*/
-    	oView().byId("observerSelectBox").getBinding("items").sort(oSorter);
     },
     
-    loadAssignStatus : function() {
-    	
-    	var acpngStatus = true;
-    	var mesStatus = true; 
-    	
-    	//only for test
-    	if (acpngStatus) {
-    		 sap.ui.getCore().byId("idStatusView--labelAssignACPnG").setVisible(true);
-             sap.ui.getCore().byId("idStatusView--assignACPnGstatus").setVisible(true);
-    		
-    	}
-    	
-    	if (mesStatus) {
-    		
-    		 sap.ui.getCore().byId("idStatusView--labelAssignMES").setVisible(true);
-             sap.ui.getCore().byId("idStatusView--assignMESstatus").setVisible(true);
-    	}
-    	
-        
-    },
     
 
     /***********************************************************
