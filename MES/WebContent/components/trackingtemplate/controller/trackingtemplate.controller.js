@@ -101,7 +101,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         //we had the filter only if the checkbox state is true.
         if (lastWoCheckBox) {
             aFilters.push(new sap.ui.model.Filter({
-                path: "lastNote",
+                path: "lastOperationNote",
                 test: function (oValue) {
                     return oValue;
                 }
