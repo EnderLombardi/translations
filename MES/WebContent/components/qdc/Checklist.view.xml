@@ -23,7 +23,7 @@
 						<tab:template>
 						<HBox >
 							<HBox justifyContent="Begin" width="100%">
-							<Text text="{QDCModel>name}" class="AllignItem" />
+							<Text text="{QDCModel>name}" class="AllignItem" enabled="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getEnabled'}" />
 							<Label text="" class="adjustWidth"/>
 							</HBox>
 							<HBox justifyContent="End" >

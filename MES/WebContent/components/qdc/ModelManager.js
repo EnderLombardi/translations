@@ -16,7 +16,7 @@ airbus.mes.qdc.ModelManager = {
 			this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.qdc.config.url_config");
 							
 			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
-			this.loadQDCModel();	
+			this.loadQDCModel();
 		},
 		
 		loadQDCModel: function() {
@@ -24,5 +24,14 @@ airbus.mes.qdc.ModelManager = {
 			var oViewModel = sap.ui.getCore().getModel("QDCModel");
 			oViewModel.loadData(this.urlModel.getProperty("QDCModelData"), null, false);
 		
+		},
+		
+		loadQDCData : function(){
+			var rep = jQuery.ajax({
+				async : false,
+				url : this.urlModel.getProperty('QDCDataurl'),
+				type : 'POST',
+			});
+			return JSON.parse(rep.responseText);
 		},
 }
