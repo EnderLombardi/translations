@@ -48,8 +48,10 @@ airbus.mes.trackingtemplate.util.ModelManager = {
      */
     loadTrackingTemplateModel: function () {
         this.refreshTrackingTemplateModel();
+        airbus.mes.trackingtemplate.oView.oController.unBoxAllSelectedBox();
         airbus.mes.trackingtemplate.oView.oController.hideCommentBox();
         airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
+
     },
 
     /**
@@ -109,7 +111,6 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 return -2;
             }
             if (regex.exec(a.Production_Context_GBO) && regex.exec(b.Production_Context_GBO)) {
-                console.log('hello');
                 if (regex.exec(a.Production_Context_GBO)[1] < regex.exec(b.Production_Context_GBO)[1]) {
                     return -1;
                 }
@@ -262,8 +263,5 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         });
 
     },
-
-
-
 
 };

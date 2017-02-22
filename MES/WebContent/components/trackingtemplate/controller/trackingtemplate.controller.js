@@ -261,6 +261,11 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         }
     },
 
+    unBoxAllSelectedBox: function() {
+        this.getView().byId("trackingtemplateView--showOnlyLastWONote").setSelected(false);
+        this.getView().byId("trackingtemplateView--showOnlyLastConfirmationNote").setSelected(false);
+        this.getView().byId("trackingtemplateView--showOnlyNotConfirmedConfirmationNote").setSelected(false);
+    },
 
     /***********************************************************
      * Scan Badge for User Confirmation
