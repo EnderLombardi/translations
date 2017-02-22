@@ -14,28 +14,24 @@
 						<core:Icon src="sap-icon://appointment" class="headerIcons" color="#FFFFFF"></core:Icon>
 						<Label id="linetracker_dateLabel" text="" class="classDateLabel"></Label>
 						<ToolbarSpacer />
-<!-- 						<Label id="linetracker_timeLabel" text=""></Label> -->
-						
-						<!-- <Button icon="sap-icon://info"></Button> -->
 					</Toolbar>
 				</headerToolbar>
 			</Panel>
 			<uiTable:Table id="linetrackerTable" rows="{stationDataModel>/stationData}" selectionMode="None"
 				visibleRowCount="12" enableColumnReordering="false" threshold="20" noData="{i18n>NoStationsToDisplay}" >
 				<uiTable:toolbar>
-					<Toolbar class="toolbar">
+					<Toolbar id="toolbar" class="toolbar">
 						<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
 						<Title class="taktAdherenceLinetrackerTitle" text="{i18n>taktAdherence}"
 							level="H2" />
-						<ToolbarSpacer width="40%" />
-						<Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
-							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
+						<Text text="{i18n>forcastEndOfAssembly}"
+							class="headerColumnText headerTextTableLinetracker" />
 						<ToolbarSpacer width="2%" />
-						<Text text="{i18n>remainingToDo}" width="9.7%"
-							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
+						<Text text="{i18n>remainingToDo}"
+							class="headerColumnText headerTextTableLinetracker penultimateColumnTitle" />
 						<ToolbarSpacer width="2%" />
-						<Text text="{i18n>openDisruptionAndon}" width="9.7%"
-							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
+						<Text text="{i18n>openDisruptionAndon}" 
+							class="headerColumnText headerTextTableLinetracker lastColumnTitle" />
 					</Toolbar>
 				</uiTable:toolbar>
 				<uiTable:columns>

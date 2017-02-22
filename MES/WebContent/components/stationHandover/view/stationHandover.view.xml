@@ -18,9 +18,7 @@
 
 						<m:Select id="selectStationHandover" visible="false" class="comboStationHandover"
 							change="changeShift"
-							items="{ path : 'msnModel>/' , sorter : {
-            path : 'text' , descending : 'false'            
-         } }">
+							items="{ path : 'msnModel>/' , sorter : {path : 'text' , descending : 'false'} }">
 							<core:Item key="{selectMSN>key}" text="{TrackerShift>shiftName}" />
 						</m:Select>
 						<m:Select id="selectMsnHandover" class="comboStationHandover"
