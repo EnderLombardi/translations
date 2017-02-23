@@ -509,6 +509,8 @@ airbus.mes.shell.util.navFunctions = {
 	        // Add event delegate
 	        airbus.mes.disruptionkpi.oView.addEventDelegate({
 	        	onBeforeShow: function(evt){
+	        		// Sequence is important !!!
+	        		airbus.mes.disruptionkpi.ModelManager.oFilters.line= airbus.mes.settings.ModelManager.line;
 	                airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
 	                airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
 	        		airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();

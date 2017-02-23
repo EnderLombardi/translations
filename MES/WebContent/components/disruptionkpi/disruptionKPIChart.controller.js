@@ -23,9 +23,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		 * Initialize Pareto chart for Time Lost Per Couple Category and Reason
 		 */
 		var oParetto = this.getView().byId("idParettoCategoryReason");
-		var sum = 0;
-		var fValue = 0;
-		var oTotal = 0;
+		
 		var FIORI_PERCENTAGE_FORMAT_2 = "__UI5__PercentageMaxFraction2";
 		
 		var chartFormatter = ChartFormatter.getInstance();
@@ -36,48 +34,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 					style : 'precent',
 					maxFractionDigits : 0
 				});
-				//var val = value;
+
 				return percentage.format(value / 100);
 		});
 		
 		
 		sap.viz.api.env.Format.numericFormatter(chartFormatter);
 		
-		var oDataset = new sap.viz.ui5.data.FlattenedDataset({
-			dimensions : [
-							{
-								axis : 1,
-								name : "Category Per Reason",
-								value : "{ParetoChartModel>categoryReason}",
-							},
-							{
-								axis : 2,
-								name : "Number of Disruptions",
-								value : "{ParetoChartModel>totalDisruption}"
-							} ],
-			measures : [
-							{
-								name : "Time Lost",
-								value : {
-									path : "ParetoChartModel>timeLost",
-									formatter : function(ms) {
-										if (ms != '' && ms != undefined) {
-											return Math.round(ms / 60000);
-										}
-										return 0;
-									}
-								}
-								//value : "{ParetoChartModel>timeLost}"
-							},
-							{
-								name : "Percent",
-								value : "{ParetoChartModel>cumulativePercentage}"
-							}
-						],
-			data : "{ParetoChartModel>/data}"
-		});
-		
-		
+		var oDataset = this.getFlattenedDataSet();
+				
 		oParetto.setDataset(oDataset);
 		oParetto.setVizType('dual_stacked_combination')
 				.setVizProperties({
@@ -97,7 +62,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 					},
 					categoryAxis : {
 						label : {
-							hideSubLevels : false,
+							hideSubLevels : false
 						}
 					},
 					valueAxis  : {},
@@ -253,6 +218,45 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		
 	},
 	
+	getFlattenedDataSet: function(){
+		return new sap.viz.ui5.data.FlattenedDataset({
+			dimensions : [
+							{
+								axis : 1,
+								name : "Category Per Reason",
+								value : "{ParetoChartModel>categoryReason}",
+							},
+							{
+								axis : 2,
+								name : "Number of Disruptions",
+								value : "{ParetoChartModel>totalDisruption}"
+							} ],
+			measures : [
+							{
+								name : "Time Lost",
+								value : {
+									path : "ParetoChartModel>timeLost",
+									formatter : function(ms) {
+										var unit  = sap.ui.getCore().byId("disruptionKPIView--timeUnit").getSelectedKey();
+										if (ms != '' && ms != undefined) {
+											if (unit === "Minutes")
+												return Math.round(ms / 60000);
+											else if (unit === "Hours")
+												return Math.round(ms / 3600000);
+										}
+										return 0;
+									}
+								}
+							},
+							{
+								name : "Percent",
+								value : "{ParetoChartModel>cumulativePercentage}"
+							}
+						],
+			data : "{ParetoChartModel>/data}"
+		});
+	},
+	
 	onToggleDisruptions : function(oEvent) {
 		var oVizFrame = this.getView().byId("idParettoCategoryReason");
 		
@@ -281,13 +285,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 				
 				airbus.mes.disruptionkpi.ModelManager.oFilters.line = sLine;
 
-				var aFilters = [];
-				if(sLine != "All")
-					aFilters.push(new sap.ui.model.Filter("line", sap.ui.model.FilterOperator.EQ, sLine));
-
 				oView.byId("stationComboBox").removeAllSelectedItems();
-				oView.byId("stationComboBox").getBinding("items").filter(aFilters);
-				
+
+				airbus.mes.disruptionkpi.ModelManager.removeDuplicateStations();
 				airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
 				
 				break;
@@ -305,6 +305,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 					oView.byId("startDateTime").focus();
 					airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("startDateNoEmpty"));
 					return;
+				} else if (oTime > oView.byId("endDateTime").getDateValue()) {
+					
+					var sMessageError = this.getView().getModel("i18nModel").getProperty("wrongDateRange");
+					airbus.mes.shell.ModelManager.messageShow(sMessageError);
+					return false;
 				}
 				
 	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.startDateTime = oTime;
@@ -319,6 +324,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 					airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("endDateNoEmpty"));
 					oView.byId("endDateTime").focus();
 					return;
+				} else if (oView.byId("startDateTime").getDateValue() > oTime) {
+					
+					var sMessageError = this.getView().getModel("i18nModel").getProperty("wrongDateRange");
+					airbus.mes.shell.ModelManager.messageShow(sMessageError);
+					return false;
 				}
 				
 				airbus.mes.disruptionkpi.ModelManager.oFilters.endDateTime = oTime;
@@ -329,6 +339,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 	 	   	
 	 	   	case "timeUnit":
 	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.timeUnit = oView.byId("timeUnit").getSelectedKey();
+	 	   		// Re-Set Dataset
+	 	   		this.getView().byId("idParettoCategoryReason").setDataset(this.getFlattenedDataSet());
+	 	   		
+	 	   		sap.ui.getCore().byId("disruptionKPIView").getModel("TimeLostperAttribute").refresh(true)
+	 	   		
 	 	   		break;
 	 	   		
 	 	   	default: break;

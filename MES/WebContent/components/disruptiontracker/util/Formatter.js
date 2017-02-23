@@ -198,18 +198,7 @@ airbus.mes.disruptiontracker.Formatter = {
 		if (status)
 			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("status." + status.toLowerCase());
 	},
-	/**
-	 * @param milli
-	 *            seconds
-	 * @output minutes function to conver milliseconds to minutes devide by
-	 *         60000
-	 */
-	msToMinutesConverter : function(ms) {
-		if (ms != '' || ms != undefined) {
-			return Math.round(ms / 60000);
-		}
-		return 0;
-	},
+
 
 //	/**
 //	 * Set Disruption table visible on the basis of Roles

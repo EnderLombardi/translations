@@ -2,7 +2,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 //jQuery.sap.require("airbus.mes.disruptionkpi.util.Formatter");
 jQuery.sap.require("airbus.mes.disruptionkpi.ModelManager");
-jQuery.sap.require("airbus.mes.disruptiontracker.util.Formatter");
+jQuery.sap.require("airbus.mes.disruptionkpi.Formatter");
 
 jQuery.sap.declare("airbus.mes.disruptionkpi.Component");
 
