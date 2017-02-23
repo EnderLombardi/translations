@@ -628,7 +628,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 					// into old filters
 
 					for (i = 0; i < FilterLength; i++) {
-						if (OldFilter[i].sPath.indexOf(Value) == -1) {
+						if (Value.indexOf(OldFilter[i].sPath) == -1) {
 							oFilters.push(OldFilter[i]);
 						}
 						;
@@ -666,7 +666,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 				// Check if aMyFilter is not empty
 				if (oFilters[0] !== undefined) {
 					var oBinding = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items");
-					oBinding.filter(new sap.ui.model.Filter(oFilters, false));
+					oBinding.filter(new sap.ui.model.Filter(oFilters, true));
 
 				} else {
 					var oBinding = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items");
@@ -955,10 +955,10 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 				if (sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").aFilters[0] !== undefined) {
 					var OldFilter = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").aFilters[0].aFilters; 
 					var FilterLength = OldFilter.length;
-					var Value = [ "DISRUPTION", "PAUSED", "PREVIOUSLY_STARTED", "STATE" ]; // Value of Status ==> Do not save into Old Filters
+					var Value = ["DISRUPTION", "PAUSED", "PREVIOUSLY_STARTED", "STATE"]; // Value of Status ==> Do not save into Old Filters
 
 					for (i = 0; i < FilterLength; i++) {
-						if (OldFilter[i].sPath.indexOf(Value) == -1 ) {
+						if (Value.indexOf(OldFilter[i].sPath) == -1 ) {
 							aMyFilter.push(OldFilter[i]); // Get others filters (for example auto closure filters)
 						}
 						;
@@ -1012,7 +1012,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             
             //Check if aMyFilter is not empty
             if (aMyFilter[0] !== undefined) {
-            sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, false));
+            sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));
             } else {
             sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter([]);
             }
