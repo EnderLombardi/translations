@@ -715,7 +715,8 @@ sap.ui
                                                                 sap.ui.getCore().byId("disruptionAckComment").getValue();
 
                                          // Call to Acknowledge Disruption
-                                         airbus.mes.disruptions.ModelManager.ackDisruption(dateTime, msgRef, comment);
+                                         var i18nModel = this.getView().getModel("i18nModel");
+                                         airbus.mes.disruptions.ModelManager.ackDisruption(dateTime, msgRef, comment, i18nModel);
 
                                   },
                                   
