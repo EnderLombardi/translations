@@ -346,7 +346,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
                 $("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
                 $("div[class='dhx_cal_next_button']").tap(function () {
                     scheduler._click.dhx_cal_next_button();
-
+                    if (airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker") {
+                        airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
+                    }
 
                 });
                 $("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
