@@ -8,6 +8,7 @@ if (jQuery.sap.getObject("airbus.mes.disruptions") === undefined) {
 	jQuery.sap.require("airbus.mes.disruptions.func");
 	jQuery.sap.require("airbus.mes.disruptions.AttachmentManager");
 	jQuery.sap.registerModulePath("airbus.mes.disruptions.i18n.i18n", "../components/disruptions/i18n/i18n");
+	jQuery.sap.registerModulePath("airbus.mes.disruptions.fragment", "../components/disruptions/fragment");
 }
 
 

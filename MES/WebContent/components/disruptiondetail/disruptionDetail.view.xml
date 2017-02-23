@@ -24,16 +24,16 @@
                     </Bar>
 
                     <HBox >
-                        <core:Fragment fragmentName="airbus.mes.disruptions.fragment.disruptionSummary"
+                        <core:Fragment fragmentName="airbus.mes.disruptiondetail.fragment.disruptionSummary"
                             type="XML">
                         </core:Fragment>
 
-                        <core:Fragment fragmentName="airbus.mes.disruptions.fragment.disruptionData"
+                        <core:Fragment fragmentName="airbus.mes.disruptiondetail.fragment.disruptionData"
                             type="XML">
                         </core:Fragment>
 
 
-                        <core:Fragment fragmentName="airbus.mes.disruptions.fragment.actionButtons"
+                        <core:Fragment fragmentName="airbus.mes.disruptiondetail.fragment.actionButtons"
                             type="XML">
                         </core:Fragment>
                     </HBox>

@@ -213,8 +213,8 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			}
 
 			oMatInp.setTokens(aMatTokens);
-			if (airbus.mes.disruptions._materialListDialog != undefined) {
-				airbus.mes.disruptions._materialListDialog.close();
+			if (this._materialListDialog != undefined) {
+				this._materialListDialog.close();
 			}
 
 			for ( var j in aJigArray) {
@@ -231,9 +231,9 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			}
 
 			oJiginp.setTokens(aJigTokens);
-			if (airbus.mes.disruptions.jigToolSelectDialog != undefined) {
+			if (this.jigToolSelectDialog != undefined) {
 
-				airbus.mes.disruptions.jigToolSelectDialog.close()
+				this.jigToolSelectDialog.close()
 
 			}
 
@@ -268,7 +268,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("selectResponsibleGrp").setEnabled(false);
 		oView.byId("selectResolver").setEnabled(false); // +V1.5
 		oView.byId("selectOriginator").setEnabled(true);
-		oView.byId("description").setEnabled(true);
+		//oView.byId("description").setEnabled(true);
 		oView.byId("timeLost").setEnabled(true);
 		oView.byId("expectedDate").setEnabled(true);
 		oView.byId("expectedTime").setEnabled(true);
@@ -526,7 +526,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		this.getView().byId("selectreason").setEnabled(true);
 		this.getView().byId("selectResponsibleGrp").setEnabled(true);
 		this.getView().byId("selectOriginator").setEnabled(false);
-		this.getView().byId("description").setEnabled(false);
+		//this.getView().byId("description").setEnabled(false);
 		this.getView().byId("promisedDate").setEnabled(true);
 		this.getView().byId("promisedTime").setEnabled(true);
 		this.getView().byId("expectedDate").setEnabled(true);
@@ -546,7 +546,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		// oView.byId("selectRootCause").setEnabled(true); //-V1.5
 		oView.byId("selectResponsibleGrp").setEnabled(true);
 		oView.byId("selectOriginator").setEnabled(false);
-		oView.byId("description").setEnabled(false);
+		//oView.byId("description").setEnabled(false);
 		oView.byId("promisedDate").setEnabled(true);
 		oView.byId("promisedTime").setEnabled(true);
 		oView.byId("expectedDate").setEnabled(false);
@@ -629,15 +629,19 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * requesting material list to select on create disruption
 	 **************************************************************************/
 	onMaterialValueHelpRequest : function() {
-		if (!airbus.mes.disruptions._materialListDialog) {
+		if (!this._materialListDialog) {
+			
+			var id = sap.ui.getCore().byId("materialListSelectDialog");
+			if(id)
+				id.destroy(); 
 
-			airbus.mes.disruptions._materialListDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.MaterialList", this);
+			this._materialListDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.MaterialList", this);
 
-			this.getView().addDependent(airbus.mes.disruptions._materialListDialog);
+			this.getView().addDependent(this._materialListDialog);
 
 		}
 
-		airbus.mes.disruptions._materialListDialog.open();
+		this._materialListDialog.open();
 	},
 
 	/***************************************************************************
@@ -731,7 +735,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			sap.ui.getCore().byId("createDisruptionView--materials").addToken(oToken);
 		});
 
-		airbus.mes.disruptions._materialListDialog.close();
+		this._materialListDialog.close();
 	},
 
 	/***************************************************************************
@@ -743,7 +747,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	},
 
 	handleCancelMaterialList : function() {
-		airbus.mes.disruptions._materialListDialog.close();
+		this._materialListDialog.close();
 	},
 
 	/***************************************************************************
@@ -751,14 +755,18 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * 
 	 */
 	onJigToolValueHelpRequest : function() {
-		if (!airbus.mes.disruptions.jigToolSelectDialog) {
+		if (!this.jigToolSelectDialog) {
+			
+			var id = sap.ui.getCore().byId("jigToolSelectDialog");
+			if(id)
+				id.destroy(); 
+			
+			this.jigToolSelectDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.Jigtool", this);
 
-			airbus.mes.disruptions.jigToolSelectDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.Jigtool", this);
-
-			this.getView().addDependent(airbus.mes.disruptions.jigToolSelectDialog);
+			this.getView().addDependent(this.jigToolSelectDialog);
 
 		}
-		airbus.mes.disruptions.jigToolSelectDialog.open();
+		this.jigToolSelectDialog.open();
 
 	},
 	/***************************************************************************
@@ -816,7 +824,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * 
 	 */
 	onjigToolValueHelpCancel : function() {
-		airbus.mes.disruptions.jigToolSelectDialog.close();
+		this.jigToolSelectDialog.close();
 
 	},
 
@@ -852,7 +860,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			sap.ui.getCore().byId("createDisruptionView--jigtools").addToken(oToken);
 		});
 
-		airbus.mes.disruptions.jigToolSelectDialog.close();
+		this.jigToolSelectDialog.close();
 	},
 	onJigToolTokenChange : function() {
 		this.onJigToolValueHelpRequest();

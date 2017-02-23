@@ -26,22 +26,19 @@ airbus.mes.disruptions.func = {
 	/***************************************************************************
 	 * Get View object
 	 **************************************************************************/
-	getView: function(){
+	/*getView: function(){
 		if (airbus.mes.disruptions.func.isSupportTeamViaDestop()) {
 			return airbus.mes.disruptiondetail.oView;
 		} else {
 			return airbus.mes.disruptions.oView.createDisruption;
 		}
-	},
+	},*/
 	
 	
 	/***************************************************************************
 	 * Show try again error message
 	 **************************************************************************/
-	tryAgainError: function(){
-		var oView = airbus.mes.disruptions.func.getView();
-		var i18nModel = oView.getModel("i18nModel");
-
+	tryAgainError: function(i18nModel){
 		var sMessageError = i18nModel.getProperty("tryAgain");
 
 		airbus.mes.shell.ModelManager.messageShow(sMessageError);

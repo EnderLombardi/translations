@@ -5,21 +5,12 @@
 			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
 			columnsL="4" columnsM="2" columnsS="1">
 			<f:content>
+			
+			
+            	<Input id="selectFivemCategory" text="" visible="false"/>
+            	<Input id="selectOriginator" text=""  visible="false"/>
 
-				<core:Title text="" />
-				<!-- 5Mclass is removed according to SD-SP1604983-DT-Detail-010 it's 
-					invisible here not removed to avoid conflicts with disruption create page -->
-				<!-- <Label text="{i18nModel>5Mclass}" />
-				<Select id="selectFivemCategory" selectedKey=""
-					forceSelection="false" change="onSelectionChange"
-					items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" visible="false">
-					<items>
-						<core:Item text="{disruptionCustomData>FivemCategory}"
-							key="{disruptionCustomData>FivemCategory}" />
-
-					</items>
-				</Select> -->
-				
+				<core:Title text="" />				
 				<Label text="{i18nModel>OpenDate}" />
 				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
 					value="{path:'DisruptionDetailModel>/OpeningTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
@@ -34,21 +25,6 @@
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
 				</TimePicker>
-
-				<!-- <Label text="{i18nModel>issuer}" />
-				<Select enabled="false">
-					<items>
-						<core:Item text="{DisruptionDetailModel>/OriginatorName}" />
-					</items>
-				</Select>
-				<Label text="{i18nModel>issuerGroup}" />
-				<Select id="selectOriginator" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'},{path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setIssuerGroupEnable'}"
-					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}" selectedKey="">
-					<items>
-						<core:Item text="{disruptionCategoryModel>group_desc}"
-							key="{disruptionCategoryModel>group_name}" />
-					</items>
-				</Select>-->
 
 
 
@@ -128,7 +104,7 @@
 				</Select>
 				<Label text="{i18nModel>Jigtool}" />
 				<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
-					tokenChange="onJigToolTokenChange" enabled="false" />\
+					tokenChange="onJigToolTokenChange" enabled="false" />
 
 			</f:content>
 		</f:SimpleForm>
@@ -193,10 +169,18 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>Resolver}" />
-				<Select id="selectResolver"
-					items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
+				<Select id="selectResolver" visible="false"
 					forceSelection="false" selectedKey="{DisruptionDetailModel>/ResolverID}">
 					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.selectResolverEnable'}"> -->
+					<items>
+						<!-- <core:Item
+							text="{disruptionResolverModel>Name}"
+							key="{disruptionResolverModel>UserID}" /> -->
+					</items>
+				</Select>
+				<Select id="resolverNewID"
+					items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
+					forceSelection="false" selectedKey="{DisruptionDetailModel>/ResolverID}">
 					<items>
 						<core:Item
 							text="{disruptionResolverModel>Name}"
