@@ -345,8 +345,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
 	    	airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(2);
 
-		})
-
 	},
     /***************************************************************************
      * Fire when the user close the popover of prodgroup
