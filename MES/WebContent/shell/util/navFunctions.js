@@ -400,9 +400,7 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 
         // Navigate
-        nav.to(airbus.mes.disruptiontracker.oView.getId(), {id:"42"});
-        //MES V1.5 set busy indicator for loading data
-        airbus.mes.disruptiontracker.oView.setBusy(true);
+        nav.to(airbus.mes.disruptiontracker.oView.getId());
     },
 
     /***************************************************************************

@@ -13,8 +13,9 @@ airbus.mes.disruptiontracker.ModelManager = {
 		
 		var oFilters = airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter;
 		
-		airbus.mes.disruptiontracker.oView.setBusyIndicatorDelay(0);
-		airbus.mes.disruptiontracker.oView.setBusy(true); //Set Busy Indicator
+		//Set Busy Indicator
+		airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusyIndicatorDelay(0);
+		airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusy(true);
 
 		var oViewModel = sap.ui.getCore().getModel("disruptionsTrackerModel");
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.getDisruptionsURL(oFilters);
@@ -33,8 +34,6 @@ airbus.mes.disruptiontracker.ModelManager = {
 	},
 	
 	onDisruptionsLoad: function(){
-
-		airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();
 		
 		// Apply filter on Resolution Group Filter Box
 		var aTemp = [];	
@@ -63,17 +62,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 		var resGroupBox = sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox");
 		resGroupBox.insertItem(resGroupItemAll,0);
 		
-		airbus.mes.disruptiontracker.oView.setBusy(false); //Remove Busy Indicator
+		//Remove Busy Indicator
+		airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusy(false);
 	},
-	
-	fixNoDataRow: function(){
-		var noDataRow = document.getElementById("disruptiontrackerView--disruptionsTable-nodata-text");
-		if(noDataRow != undefined){
-			var colCount = airbus.mes.disruptiontracker.oView.byId("disruptionsTable").getColCount();
-
-			// Set Col Span
-			noDataRow.colSpan = colCount - 1;
-		}
-		
-	}
 }
