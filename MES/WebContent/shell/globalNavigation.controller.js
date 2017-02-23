@@ -453,7 +453,7 @@ sap.ui.controller(
                 oModule.loadAffectation();
                 airbus.mes.stationtracker.util.ShiftManager.init(airbus.mes.stationtracker.util.GroupingBoxingManager.shiftNoBreakHierarchy);
                 airbus.mes.stationtracker.util.AssignmentManager.computeAffectationHierarchy();
-
+                airbus.mes.stationtracker.util.ModelManager.loadRessourcePool();
                 // ** asynchrone call **//
                 airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
 
@@ -497,7 +497,6 @@ sap.ui.controller(
             // ** asynchrone call **//
             oModule.getTakt();
 
-            oModule.loadRessourcePool();
             oModule.loadStationTracker("I");
             oModule.loadStationTracker("U");
             oModule.loadStationTracker("O");
