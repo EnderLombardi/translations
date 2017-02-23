@@ -90,7 +90,7 @@
 									</control:actionIconButton> -->
 									<control:image>
 										<Image width="100%" 
-											error="{ path : 'stationDataModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
+											error="airbus.mes.linetracker.util.Formatter.getErrorFlightImage"
 											src="{ parts : ['stationDataModel>station', 'stationDataModel>msn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }"></Image>
 									</control:image>
 

@@ -98,6 +98,34 @@
 					</ui:template>
 				</ui:Column>
 				
+				<ui:Column id="categoryCol" filterProperty="Category">
+					<Label text="{disruptiontrackerI18n>category}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>Category}" />						
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="reasonCol" filterProperty="Reason">
+					<Label text="{disruptiontrackerI18n>reason}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>Reason}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="originator" filterProperty="OriginatorName">
+					<Label text="{disruptiontrackerI18n>originator}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>OriginatorName}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="openingTime" filterProperty="OpeningTime">
+					<Label text="{disruptiontrackerI18n>openingTime}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>OpeningTime}" />
+					</ui:template>
+				</ui:Column>
+					
 				<ui:Column id="gravityCol" filterProperty="Gravity">
 					<Label text="{disruptiontrackerI18n>gravity}" />
 					<ui:template>
@@ -119,25 +147,12 @@
 							text="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setDisruptionTrackerStatus'}" />
 					</ui:template>
 				</ui:Column>
+
 				
-				<ui:Column id="categoryCol" filterProperty="Category">
-					<Label text="{disruptiontrackerI18n>category}" />
+				<ui:Column id="solutionCol">
+					<Label text="{disruptiontrackerI18n>solution}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>Category}" />						
-					</ui:template>
-				</ui:Column>
-				
-				<ui:Column id="reasonCol" filterProperty="Reason">
-					<Label text="{disruptiontrackerI18n>reason}" />
-					<ui:template>
-						<Text text="{disruptionsTrackerModel>Reason}" />
-					</ui:template>
-				</ui:Column>
-				
-				<ui:Column id="originatorGroupCol">
-					<Label text="{disruptiontrackerI18n>originatorGroup}" />
-					<ui:template>
-						<Text text="{disruptionsTrackerModel>OriginatorGroupDesc}" />
+						<Text text="{path: 'disruptionsTrackerModel>Solution', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}" />
 					</ui:template>
 				</ui:Column>
 				
@@ -145,6 +160,21 @@
 					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="resolver">
+					<Label text="{disruptiontrackerI18n>resolver}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>ResolverName}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="fixByTimeCol">
+					<Label text="{disruptiontrackerI18n>fixByTime}" />
+					<ui:template>
+						<Text
+							text="{path :'disruptionsTrackerModel>RequiredFixBy'}" />
 					</ui:template>
 				</ui:Column>
 				
@@ -156,56 +186,39 @@
 					</ui:template>
 				</ui:Column>
 				
+				<ui:Column id="escalationDate">
+					<Label text="{disruptiontrackerI18n>dateofescalation}" />
+					<ui:template>
+						<Text
+							text="{path: 'disruptionsTrackerModel>EscalationDateTime'}" />
+					</ui:template>
+				</ui:Column>
+
+
 				<ui:Column id="openingTimeCol">
-					<Label text="{disruptiontrackerI18n>openingTime}" />
+					<Label text="{disruptiontrackerI18n>timeToGetFix}" />
 					<ui:template>
 						<Text
 							text="{parts: [ {path: 'disruptionsTrackerModel>OpeningTime'}, {path: 'disruptionsTrackerModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="fixedByTimeCol">
-					<Label text="{disruptiontrackerI18n>fixedByTime}" />
+								
+				<ui:Column id="dateOfanswer">
+					<Label text="{disruptiontrackerI18n>dateofanswer}" />
 					<ui:template>
-						<Text
-							text="{path :'disruptionsTrackerModel>TimeLost', formatter : 'airbus.mes.disruptiontracker.Formatter.setTimeLostValue'}" />
+						<Text text="{disruptionsTrackerModel>DateOfAnswer}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="promisedDateCol" >
-					<Label text="{disruptiontrackerI18n>promisedDate}" />
-					<ui:template>
-						<Text text="{disruptionsTrackerModel>PromisedDateTime}" />
-					</ui:template>
-				</ui:Column>
 				
-				<ui:Column id="timeBeforeNextEscCol">
-					<Label text="{disruptiontrackerI18n>timeBofreNextEsc}" />
+				<ui:Column id="originatorGroupCol">
+					<Label text="{disruptiontrackerI18n>originatorGroup}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
+						<Text text="{disruptionsTrackerModel>OriginatorGroupDesc}" />
 					</ui:template>
 				</ui:Column>
-				
-				<ui:Column id="descriptionCol">
-					<Label text="{disruptiontrackerI18n>description}" />
-					<ui:template>
-						<Text text="{disruptionsTrackerModel>Description}" />
-					</ui:template>
-				</ui:Column>
-				
-				<ui:Column id="solutionCol">
-					<Label text="{disruptiontrackerI18n>solution}" />
-					<ui:template>
-						<Text text="{path: 'disruptionsTrackerModel>Solution', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}" />
-					</ui:template>
-				</ui:Column>
-				
-				<ui:Column id="closureDateCol">
-					<Label text="{disruptiontrackerI18n>closureDate}" />
-					<ui:template>
-						<Text text="{disruptionsTrackerModel>ClosureDate}" />
-					</ui:template>
-				</ui:Column>
+					
 			</ui:columns>
 
 			<!-- <items>
