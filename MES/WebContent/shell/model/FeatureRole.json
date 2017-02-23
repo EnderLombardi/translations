@@ -251,9 +251,9 @@
 		},
 		{
 			"SITE": "FNZ1",
-			"Feature": "WORK_TRACKER_OSW_CAPTURE",
-			"Description": "Work Tracker>OSW>Capture list of non fitted parts",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Feature": "FITTED_COMPONENTS",
+			"Description": "Station Tracker>An operation>Documents>Components> 3 last columns",
+			"Roles": ["eval host('sopra|dmi')&&!feature('role')"]
 		}
 	]
 }

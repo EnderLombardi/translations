@@ -89,51 +89,47 @@
                     <Text text="{componentsWorkOrderDetail>unit}"  />
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto">
+            <table:Column  autoResizable="true" width="auto" visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}" >
                 <Label text="{i18nComponentsModel>serialNumber}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>serialNumber}"  />
                 </table:template>
             </table:Column>
-            <table:Column id="editableRowCom"  autoResizable="true" width="auto">
+            <table:Column id="editableRowCom" autoResizable="true" width="auto" visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}" >
                 <Label text="{i18nComponentsModel>committed}" />
                 <table:template>
                    <HBox>
-                       <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldCommitted" visible="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}"/>
-                       <Input     type="Number"
+                       <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldCommitted"/>
+                       <Input  type="Number"
                                class="stepInputComponent"
                                value="{componentsWorkOrderDetail>committed}"
                                width="{width}"
-                               enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}"
-                               max=""
-                               min=""
+                               enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
                                editable="true"
                                change="committedLiveChange"/>
                    </HBox>
                 </table:template>
             </table:Column>
-            <table:Column id="editableRowFit" autoResizable="true" width="auto">
+            <table:Column id="editableRowFit" autoResizable="true" width="auto" visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}" >
                 <Label text="{i18nComponentsModel>fitted}" />
                 <table:template>
                     <HBox>
-                        <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldFitted" visible="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}" />
-                        <Input        type="Number"
-                                   class="stepInputComponent"
-                                   value="{componentsWorkOrderDetail>fitted}"
-                                   width="{width}"
-                                   enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}"
-                                   max=""
-                                   min=""
-                                   editable="true"
-                                   change="fittedLiveChange"/>
+                        <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldFitted"/>
+                        <Input  type="Number"
+                                class="stepInputComponent"
+                                value="{componentsWorkOrderDetail>fitted}"
+                                width="{width}"
+                                enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
+                                editable="true"
+                                change="fittedLiveChange"/>
                     </HBox>
                 </table:template>
             </table:Column>
         </table:columns>
         </table:Table>
         <HBox id="servicesButtonComponents">
-            <Button id="btnComponentsSave" visible="true" enabled="false" text="{i18nComponentsModel>save}" icon="sap-icon://save" type="Emphasized" press="onbtnComponentsSave" />
-            <Button id="btnComponentsFreeze" visible="true" enabled="false" text="{i18nComponentsModel>freeze}" icon="sap-icon://stop" type="Emphasized" press="onbtnComponentsFreeze" />
+            <Button id="btnComponentsSave" visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}" enabled="false" text="{i18nComponentsModel>save}" icon="sap-icon://save" type="Emphasized" press="onbtnComponentsSave" />
+            <Button id="btnComponentsFreeze" visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}" enabled="false" text="{i18nComponentsModel>freeze}" icon="sap-icon://stop" type="Emphasized" press="onbtnComponentsFreeze" />
         </HBox>
     </content>
 

@@ -12,7 +12,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         oTable.setSelectionMode("None");
         oTable.setVisibleRowCount(oTable.getBinding("rows").oList.length);
-        this.changeButtonColor();
+        if (airbus.mes.shell.RoleManager.profile.identifiedUser.permissions.FITTED_COMPONENTS) {
+            this.changeButtonColor();
+        }
     },
 
     changeButtonColor: function () {
@@ -280,8 +282,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
                 dataIndex.fitted = tableValFitt;
             }
             airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
-            airbus.mes.components.util.Formatter.convertJsontoXml(airbus.mes.components.util.ModelManager.dataSaveJson);
         }
+        airbus.mes.components.util.Formatter.convertJsontoXml(airbus.mes.components.util.ModelManager.dataSaveJson);
 
     },
 

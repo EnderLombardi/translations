@@ -94,7 +94,7 @@
                 "serialNumber": "01",
                 "committed": "6",
                 "fitted": "3",
-                "bomComponentBO ": "bombom"
+                "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo1",
                 "itemNumber": "F224.18449.000",
@@ -110,7 +110,7 @@
                 "serialNumber": "02",
                 "committed": "18",
                 "fitted": "6",
-                "bomComponentBO ": "bombom"
+                "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
                 "itemNumber": "F257.18449.000",
@@ -126,7 +126,7 @@
                 "serialNumber": "01",
                 "committed": "5",
                 "fitted": "10",
-                "bomComponentBO ": "bombom"
+                "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
                 "itemNumber": "M212.18449.400",
@@ -142,7 +142,7 @@
                 "serialNumber": "0101",
                 "committed": "6",
                 "fitted": "7",
-                "bomComponentBO ": "bombom"
+                "bomComponentBO": "bombom"
             }]
         }]
     }
