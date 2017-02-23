@@ -1,0 +1,448 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="airbus.mes.disruptions.CreateDisruption"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<Page enableScrolling="false" showHeader="false" height="100%">
+
+
+		<FlexBox width="100%" height="100%" justifyContent="Center"
+			backgroundDesign="Transparent" direction="Column">
+			<items>
+
+				<Label id="disruptLabel"
+					class="sapUiMediumMarginBeginEnd sapUiMediumMarginTop sapUiSmallMarginBottom"
+					text="{i18nModel>Disruption}"></Label>
+
+				<f:Form id="createDisruptionForm" editable="true"
+					backgroundDesign="Transparent" class="sapUiSmallMargin" visible="true">
+					<f:layout>
+						<f:ResponsiveGridLayout span="L12 M12 S12" />
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+
+								<f:FormElement>
+
+									<Title text=" " titleStyle="H3">
+										<layoutData>
+											<l:GridData span="L12 M12 S12" />
+										</layoutData>
+									</Title>
+
+
+								</f:FormElement>
+
+								<f:FormElement visible="false">
+									<f:label>
+										<Label  text="{i18nModel>Description}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Input id="description" maxLength="40">
+											<layoutData>
+												<l:GridData span="L8 M9 S12" />
+											</layoutData>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+
+
+								<!-- SD-SP1604983-CDP-010 -->
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>CategoryClass}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectFivemCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/2/Row}" 
+											forceSelection="false" change="onSelectionChange" selectedKey="" >
+											<items>
+												<core:Item text="{disruptionCategoryModel>CATEGORY_CLASS}" key="{disruptionCategoryModel>CATEGORY_CLASS}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+																
+
+								<f:FormElement>
+									<f:label>
+										<Label required="true" text="{i18nModel>Category}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
+											change="onSelectionChange" forceSelection="true" selectedKey="DISRUPT_ASSEMBLY">
+											<items>
+												<core:Item text="{disruptionCategoryModel>DESCRIPTION}"
+													key="{disruptionCategoryModel>MESSAGE_TYPE}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+
+										<Label required="true" text="{i18nModel>reason}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectreason"
+											items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"  forceSelection="false">
+											<items>
+												<core:Item text="{disruptionRsnRespGrp>REASON}"
+													key="{disruptionRsnRespGrp>REASON}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label required="true" text="{i18nModel>OriginatorGroup}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectOriginator" selectedKey=""
+											forceSelection="false" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}">
+											<items>
+												<core:Item text="{disruptionCategoryModel>group_desc}"
+													key="{disruptionCategoryModel>group_name}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label required="true" text="{i18nModel>resGroup}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectResponsibleGrp"
+											items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
+											change="onSelectionChange" forceSelection="false">
+											<items>
+												<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
+													key="{disruptionRsnRespGrp>ResponsibleGroup}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>Resolver}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectResolver"
+											items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
+											forceSelection="false">
+											<items>
+												<core:Item
+													text="{disruptionResolverModel>Name}"
+													key="{disruptionResolverModel>UserID}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+
+								<f:FormElement>
+									<f:label>
+										<Label required="true" text="{i18nModel>gravity}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="gravity" selectedKey="1">
+											<items>
+												<core:Item text="{i18nModel>NotBlocked}" key="1" />
+												<core:Item text="{i18nModel>Disturbed}" key="2" />
+												<core:Item text="{i18nModel>Blocked}" key="3" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S6" />
+											</layoutData>
+
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>status}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Input id="status" value="{i18nModel>Pending}" enabled="false">
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>OpenDate}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<DatePicker enabled="false" id="openDate" valueFormat="yyyy-MM-dd"
+											displayFormat="long"
+											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											<layoutData>
+												<l:GridData span="L2 M5 S6" />
+											</layoutData>
+										</DatePicker>
+										<TimePicker enabled="false" id="openTime"
+											displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
+											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+											<layoutData>
+												<l:GridData span="L1 M4 S6" />
+											</layoutData>
+										</TimePicker>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label required="true" text="{i18nModel>Expected}">										
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
+											displayFormat="long"
+											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											<layoutData>
+												<l:GridData span="L2 M5 S6" />
+											</layoutData>
+
+
+										</DatePicker>
+										<TimePicker id="expectedTime" displayFormat="HH:mm:ss"
+											valueFormat="HH:mm:ss"
+											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+											<layoutData>
+												<l:GridData span="L1 M4 S6" />
+											</layoutData>
+										</TimePicker>
+									</f:fields>
+								</f:FormElement>
+
+
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>TimeLost}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Input placeholder="" id="timeLost" type="Number" value="">
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label id="promisedDateLabel" required="true"
+											text="{i18nModel>promisedDateTime}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+
+										<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
+											displayFormat="long"
+											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											<layoutData>
+												<l:GridData span="L2 M5 S6" />
+											</layoutData>
+
+
+										</DatePicker>
+										<TimePicker id="promisedTime" displayFormat="HH:mm:ss"
+											valueFormat="HH:mm:ss"
+											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+											<layoutData>
+												<l:GridData span="L1 M4 S6" />
+											</layoutData>
+										</TimePicker>
+									</f:fields>
+								</f:FormElement>
+
+								<!-- <f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>RootCause}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectRootCause" selectedKey=""
+											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
+											change="onSelectionChange">
+											<items>
+												<core:Item text="{disruptionCustomData>RootCause}"
+													key="{disruptionCustomData>RootCause}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement> -->
+
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>stMaterial}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
+											tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
+											enabled="false">
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</MultiInput>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>Jigtool}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
+											tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange"
+											enabled="false">
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</MultiInput>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text=" ">
+											<layoutData>
+												<l:GridData span="L2 M3 S1" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+
+									<TextArea placeholder="{i18nModel>AddComment}" id="comment"
+										valueLiveUpdate="true" rows="10" value="">
+										<layoutData>
+											<l:GridData span="XL7 L7 M6 S12" />
+										</layoutData>
+									</TextArea>
+
+									<VBox alignItems="Center">
+										<layoutData>
+											<l:GridData span="XL1 L1 M2 S12" />
+										</layoutData>
+										<HBox width="100%" justifyContent="End">
+
+											<u:FileUploader id="idfileUploader" name="{i18nModel>myFileUpload}"
+												uploadUrl="{i18nModel>uploadURL}" tooltip="{i18nModel>attachFile}" icon="sap-icon://attachment"
+												uploadComplete="airbus.mes.disruptions.AttachmentManager.onUploadComplete" class="attachIcon"
+												change="airbus.mes.disruptions.AttachmentManager.onFileSelect" buttonOnly="true"
+												iconOnly="true" style="Transparent" fileType="{path:'AttachmentList>/FileType/0/key', formatter: 'airbus.mes.disruptions.Formatter.setFileType'}"
+												visible="{Profile>/identifiedUser/permissions/WORK_DIS_ATTACH_DOC}">
+
+											</u:FileUploader>
+											<Button type="Transparent" icon="sap-icon://camera"
+												 width="2rem" class="attachIcon" visible="{Profile>/identifiedUser/permissions/WORK_DIS_PICTURE}"/>
+										</HBox>
+
+										<Link id="idAttachmentLink" text="{AttachmentList>/RowCount} {i18nModel>Attachment}"
+											press="airbus.mes.disruptions.AttachmentManager.showAttachedDocsList" wrapping="true" />
+
+									</VBox>
+								</f:FormElement>
+
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+
+			</items>
+		</FlexBox>
+	</Page>
+</core:View>

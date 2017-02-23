@@ -4,14 +4,17 @@ jQuery.sap.declare("airbus.mes.disruptions.ModelManager")
 
 airbus.mes.disruptions.ModelManager = {
 
+	sCurrentViewId:undefined,
 	createEditFlag : false,
     createViewMode : undefined,  // (Values: Create, Edit) To check if create disruption view is called in edit more or creation mode
 	urlModel : undefined,
 	
 
 	init : function(core) {
-
-		this.core = core;
+		
+        if(this.core) return; 
+		
+        this.core = core;
 		core.setModel(new sap.ui.model.json.JSONModel(), "AttachmentList");
 
 		airbus.mes.shell.ModelManager.createJsonModel(core, [ "operationDisruptionsModel", "DisruptionDetailModel", "disruptionCategoryModel",
@@ -30,57 +33,8 @@ airbus.mes.disruptions.ModelManager = {
 		sap.ui.getCore().getModel("disruptionResolverModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onLoadDisruptionResolver);
 
 		// Handle URL Model
+		jQuery.sap.registerModulePath("airbus.mes.disruptions.config.url_config", "../components/disruptions/config/url_config");
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.disruptions.config.url_config");
-
-	},
-
-	/***************************************************************************
-	 * Load Category and custom Data
-	 * @param {string} sMode tells it is edit disruption page or new disruption page
-	 * @param {object} oData data to be set on the MOdel
-	 */
-	loadData : function(sMode, oData) {
-
-		this.createViewMode = sMode;
-
-		// Set Busy Indicator
-		airbus.mes.disruptions.func.setBusy();
-
-		// Get View
-		var oView = airbus.mes.disruptions.func.getView();
-
-		// Reset All fields
-		oView.oController.resetAllFields();
-
-		this.loadDisruptionCategory();
-		this.loadMaterialList();
-		this.loadJigtoolList();
-
-		if (this.createViewMode == "Create") {
-			
-			// Set Empty Data
-			sap.ui.getCore().getModel("DisruptionDetailModel");
-            oView.getModel("DisruptionDetailModel").setData();
-            
-			oView.oController.createDisruptionSettings();
-		} else if (this.createViewMode == "Edit") {
-			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-			
-			// Set Data
-			oModel.setData(oData);
-			oView.getModel("DisruptionDetailModel").setData(oData);
-			oModel.refresh();
-			
-			
-			this.sMsgType = oModel.getProperty("/MessageType");
-			this.sResolverGroup = oModel.getProperty("/ResponsibleGroup");
-
-			this.loadRsnResponsibleGrp(this.sMsgType);
-			this.loadResolverModel(this.sResolverGroup);
-
-			oView.oController.editPreSettings();
-
-		}
 
 	},
 
@@ -112,36 +66,16 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionCategory : function() {
-		var oView = airbus.mes.disruptions.func.getView();
-
-		// Reset in hard the model of the view otherwise its not rebinded...
-		oView.getModel("disruptionCategoryModel").setData(sap.ui.getCore().getModel("disruptionCategoryModel").oData);
-
-		if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit") {
-			oView.oController.editDisruptionSettings();
-		}
+		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
 
 		// Un-Set Busy Indicator
-		airbus.mes.disruptions.func.unSetBusy();
+		oView.setBusy(false);
 	},
 
 	/***************************************************************************
 	 * Load Step2 model for create disruption screen (Reason and Responsible
 	 * Group)
 	 **************************************************************************/
-	loadRsnResponsibleGrp : function(sMsgType) {
-		var oView = airbus.mes.disruptions.func.getView();
-
-		// Set Busy's
-		oView.byId("selectreason").setBusyIndicatorDelay(0);
-		oView.byId("selectreason").setBusy(true);
-		oView.byId("selectResponsibleGrp").setBusyIndicatorDelay(0);
-		oView.byId("selectResponsibleGrp").setBusy(true);
-
-		var url = airbus.mes.disruptions.ModelManager.getRsnResponsibleGrpURL(sMsgType)
-		sap.ui.getCore().getModel("disruptionRsnRespGrp").loadData(url);
-	},
-
 	getRsnResponsibleGrpURL : function(sMsgType) {
 		var urlGetRsnResponsibleGrp = this.urlModel.getProperty("urlGetRsnResponsibleGrp");
 		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.ModelManager.site);
@@ -152,17 +86,11 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionRsnRespGrp : function() {
-		var oView = airbus.mes.disruptions.func.getView();
-
-		// Reset in hard the model of the view otherwise its not rebinded...
-		oView.getModel("disruptionRsnRespGrp").setData(sap.ui.getCore().getModel("disruptionRsnRespGrp").oData);
-
-		oView.oController.afterRsnRespGrpModelLoad();
+		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
 
 		// Un-Set Busy's
 		oView.byId("selectreason").setBusy(false);
 		oView.byId("selectResponsibleGrp").setBusy(false);
-		// oView.byId("selectRootCause").setBusy(false);
 
 	},
 
@@ -170,18 +98,6 @@ airbus.mes.disruptions.ModelManager = {
 	 * Load Step3 model for create disruption screen (Resolver Names for a
 	 * Resolver Group)
 	 **************************************************************************/
-	loadResolverModel : function(sResolverGroup) {
-		var oView = airbus.mes.disruptions.func.getView();
-
-		// Set Busy's
-		oView.byId("selectResolver").setBusyIndicatorDelay(0);
-		oView.byId("selectResolver").setBusy(true);
-
-		var url = airbus.mes.disruptions.ModelManager.getResolverModelURL(sResolverGroup)
-		sap.ui.getCore().getModel("disruptionResolverModel").loadData(url);
-		
-	},
-
 	getResolverModelURL : function(sResolverGroup) {
 		var urlGetRsnResponsibleGrp = this.urlModel.getProperty("urlGetResolver");
 		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.ModelManager.site);
@@ -191,12 +107,7 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionResolver : function() {
-		var oView = airbus.mes.disruptions.func.getView();
-
-		// Reset in hard the model of the view otherwise its not rebinded...
-		oView.getModel("disruptionResolverModel").setData(sap.ui.getCore().getModel("disruptionResolverModel").oData);
-
-		oView.oController.afterResolverModelLoad();
+		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
 
 		// Un-Set Busy's
 		oView.byId("selectResolver").setBusy(false);
@@ -271,9 +182,8 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 	onOperationDisruptionsLoad : function() {
 
-		// Reset in hard the model of the view otherwise its not rebinded...
-		var oView = airbus.mes.disruptions.oView.viewDisruption;
-		oView.getModel("operationDisruptionsModel").setData(sap.ui.getCore().getModel("operationDisruptionsModel").oData);
+		// Reset in hard the model of the view otherwise its not Re-Binded...
+		var oView = airbus.mes.disruptionslist.oView;
 
 		/* Set filter for Comments on all the disruptions */
 		oView.oController.applyFiltersOnComments();
@@ -283,7 +193,7 @@ airbus.mes.disruptions.ModelManager = {
 
 		if (nav.getCurrentPage().sId == "stationTrackerView" && airbus.mes.disruptions.ModelManager.createEditFlag) {
 
-			airbus.mes.disruptions.ModelManager.checkDisruptionStatus(airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel"));
+			airbus.mes.disruptions.ModelManager.checkDisruptionStatus(airbus.mes.disruptionslist.oView.getModel("operationDisruptionsModel"));
 		}
 		airbus.mes.disruptions.ModelManager.createEditFlag = false;
 	},
@@ -343,7 +253,7 @@ airbus.mes.disruptions.ModelManager = {
 	createDisruption : function(messageHandle, messageType, messageBody, payloadData) {
 
 		// Set Busy Indicator
-		airbus.mes.disruptions.func.setBusy();
+		sap.ui.core.BusyIndicator.show(0);
 
 		jQuery.ajax({
 			async : true,
@@ -362,20 +272,19 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.7" : messageHandle,
 				"Param.8" : payloadData[0].payload[8].value, // gravity
 				"Param.9" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc"),
-				"Param.10" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo").split(",")[1], // Operation
-				// number
+				// Operation number
+				"Param.10" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo").split(",")[1],
 				"Param.11" : "DEFAULT"
 
 			},
 			success : function(data, textStatus, jqXHR) {
 				// Un-Set Busy Indicator
-				airbus.mes.disruptions.func.unSetBusy();
+				sap.ui.core.BusyIndicator.hide(0);
 
 				var rowExists = data.Rowsets.Rowset;
 				if (rowExists != undefined) {
 					if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
-						airbus.mes.shell.ModelManager.messageShow(airbus.mes.disruptions.oView.createDisruption.getModel("i18nModel").getProperty(
-							"DisruptCreateSuccess"));
+						airbus.mes.shell.ModelManager.messageShow(airbus.mes.createdisruption.oView.getModel("i18nModel").getProperty("DisruptCreateSuccess"));
 
 						// load disruption Model again for new message
 						airbus.mes.disruptions.ModelManager.createEditFlag = true;
@@ -399,8 +308,7 @@ airbus.mes.disruptions.ModelManager = {
 
 					} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 						if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
-							airbus.mes.shell.ModelManager.messageShow(airbus.mes.disruptions.oView.createDisruption.getModel("i18nModel").getProperty(
-								"DisruptionNotSaved"));
+							airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("DisruptionNotSaved"));
 
 						else
 							airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message)
@@ -409,20 +317,13 @@ airbus.mes.disruptions.ModelManager = {
 					airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
 				}
 
-				airbus.mes.shell.util.navFunctions.disruptionButtons.create.setEnabled(true);
-				airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(true);
-
 			},
 
 			error : function() {
 				// Un-Set Busy Indicator
-				airbus.mes.disruptions.func.unSetBusy();
+				sap.ui.core.BusyIndicator.hide(0);
 
-				airbus.mes.shell.ModelManager
-					.messageShow(airbus.mes.disruptions.oView.createDisruption.getModel("i18nModel").getProperty("DisruptionNotSaved"));
-
-				airbus.mes.shell.util.navFunctions.disruptionButtons.create.setEnabled(true);
-				airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(true);
+				airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("DisruptionNotSaved"));
 
 			}
 
@@ -435,18 +336,6 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 
 	getURLUpdateDisruption : function() {
-
-		var currentPage = nav.getCurrentPage().getId();
-
-		// Remove Busy Indicator
-		if (currentPage == "stationTrackerView")
-			airbus.mes.operationdetail.oView.setBusy(true); // Set Busy
-		// Indicator
-
-		else if (currentPage == "disruptiontrackerView")
-			airbus.mes.disruptiontracker.oView.setBusy(true); // Set Busy
-		// Indicator
-
 		var urlUpdateDisruption = this.urlModel.getProperty("urlUpdateDisruption");
 		return urlUpdateDisruption;
 	},
@@ -454,10 +343,7 @@ airbus.mes.disruptions.ModelManager = {
 	updateDisruption : function(sMessageRef, sReason, sResponsibleGroup, iTimeLost, dFixedByTime, sComment, iGravity, dPromisedDate) {
 
 		// Set Busy Indicator
-		airbus.mes.disruptions.func.setBusy();
-
-		airbus.mes.shell.util.navFunctions.disruptionButtons.update.setEnabled(false);
-		airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(false);
+		sap.ui.core.BusyIndicator.show(0);
 
 		jQuery.ajax({
 			async : true,
@@ -483,16 +369,16 @@ airbus.mes.disruptions.ModelManager = {
 			},
 			success : function(data, textStatus, jqXHR) {
 
-				var currentPage = nav.getCurrentPage().getId();
-
 				// Un-Set Busy Indicator
-				airbus.mes.disruptions.func.unSetBusy();
+				sap.ui.core.BusyIndicator.hide(0);
 
 				// Message handling
 				var rowExists = data.Rowsets.Rowset;
 				if (rowExists != undefined) {
 					if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
 						airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+
+						var currentPage = nav.getCurrentPage().getId();
 
 						if (currentPage == "stationTrackerView") {
 
@@ -523,30 +409,23 @@ airbus.mes.disruptions.ModelManager = {
 
 					} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 						if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
-							airbus.mes.shell.ModelManager.messageShow(airbus.mes.disruptions.oView.createDisruption.getModel("i18nModel").getProperty(
+							airbus.mes.shell.ModelManager.messageShow(airbus.mes.createdisruption.oView.getModel("i18nModel").getProperty(
 								"DisruptionNotUpdated"));
 						else
 							airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message)
 					}
 				} else if (data.Rowsets.FatalError) {
 					airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
-
 				}
-
-				airbus.mes.shell.util.navFunctions.disruptionButtons.update.setEnabled(true);
-				airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(true);
 
 			},
 
 			error : function() {
-				airbus.mes.operationdetail.oView.setBusy(false); // Remove
-				// Busy
-				// Indicator
+				// Un-Set Busy Indicator
+				sap.ui.core.BusyIndicator.hide(0);
+				
 				airbus.mes.shell.ModelManager
-					.messageShow(airbus.mes.disruptions.oView.createDisruption.getModel("i18nModel").getProperty("DisruptionNotSaved"));
-
-				airbus.mes.shell.util.navFunctions.disruptionButtons.update.setEnabled(true);
-				airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(true);
+					.messageShow(airbus.mes.createdisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
 
 			}
 
@@ -611,7 +490,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Escalate Disruption Service
 	 **************************************************************************/
-	escalateDisruption : function(msgRef, sComment) {
+	escalateDisruption : function(msgRef, sComment, sMessageSuccess) {
 
 		jQuery.ajax({
 			url : this.getUrlOnEscalate(),
@@ -636,10 +515,6 @@ airbus.mes.disruptions.ModelManager = {
 
 				} else { // Success
 					airbus.mes.disruptions.__enterCommentDialogue.close();
-					
-					var oView = airbus.mes.disruptions.func.getView();
-					var i18nModel = oView.getModel("i18nModel");
-					var sMessageSuccess = i18nModel.getProperty("successSolved");
 					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
 
 					// load again disruptions data
@@ -713,9 +588,6 @@ airbus.mes.disruptions.ModelManager = {
 						var sMessageSuccess = i18nModel.getProperty("successfulAcknowledge");
 						airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
 
-						// var operationDisruptionsModel =
-						// airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");
-
 						// load again disruptions data
 						if (!airbus.mes.disruptions.func.isSupportTeamViaDestop()) {
 
@@ -737,22 +609,12 @@ airbus.mes.disruptions.ModelManager = {
 								airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 
 						} else {
-							//airbus.mes.shell.util.navFunctions.disruptionTracker();
-							this.bSucess = true
+							airbus.mes.shell.util.navFunctions.disruptionTracker();
 						}
 					}
 
 				}
 			});
-
-		/*if (flagSuccess) {
-
-			// Refresh station tracker
-			airbus.mes.shell.oView.getController().renderStationTracker();
-
-		}*/
-
-		return this.bSucess;
 	},
 
 	/***************************************************************************
@@ -827,7 +689,6 @@ airbus.mes.disruptions.ModelManager = {
 	getUrlToAddComment : function() {
 		var urlToAddComment = this.urlModel.getProperty("urlToAddComment");
 		return urlToAddComment;
-		;
 	},
 
 	/***************************************************************************
@@ -1136,10 +997,11 @@ airbus.mes.disruptions.ModelManager = {
 	 * Get the issuer of the disruption
 	 */
 	getIssuer : function() {
+					// If no user affected to the selected operation
 		var sUser = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO") == "---"
-		// Current logged in user
+		// Then return Current logged in user
 		? (sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"))
-		// Affected User
+		// Else return Affected User
 		: sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1];
 
 		return sUser;

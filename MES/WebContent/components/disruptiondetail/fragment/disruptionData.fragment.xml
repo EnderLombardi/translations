@@ -1,8 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
 	<VBox>
-		<f:SimpleForm id="SimpleFormChange480_12120" editable="false"
-			minWidth="800" layout="ResponsiveGridLayout" title="Operator Data"
+		<f:SimpleForm editable="false" layout="ResponsiveGridLayout" title="{i18nModel>OperatorData}"
 			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
 			columnsL="4" columnsM="2" columnsS="1">
 			<f:content>
@@ -10,7 +9,7 @@
 				<core:Title text="" />
 				<!-- 5Mclass is removed according to SD-SP1604983-DT-Detail-010 it's 
 					invisible here not removed to avoid conflicts with disruption create page -->
-				<Label text="{i18nModel>5Mclass}" />
+				<!-- <Label text="{i18nModel>5Mclass}" />
 				<Select id="selectFivemCategory" selectedKey=""
 					forceSelection="false" change="onSelectionChange"
 					items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" visible="false">
@@ -19,7 +18,8 @@
 							key="{disruptionCustomData>FivemCategory}" />
 
 					</items>
-				</Select>
+				</Select> -->
+				
 				<Label text="{i18nModel>OpenDate}" />
 				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
 					value="{path:'DisruptionDetailModel>/OpeningTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
@@ -35,21 +35,20 @@
 					</layoutData>
 				</TimePicker>
 
-				<Label text="{i18nModel>issuer}" />
+				<!-- <Label text="{i18nModel>issuer}" />
 				<Select enabled="false">
 					<items>
 						<core:Item text="{DisruptionDetailModel>/OriginatorName}" />
 					</items>
 				</Select>
 				<Label text="{i18nModel>issuerGroup}" />
-				<Select id="selectOriginator" selectedKey="" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'},{path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setIssuerGroupEnable'}"
-					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}">
+				<Select id="selectOriginator" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'},{path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setIssuerGroupEnable'}"
+					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}" selectedKey="">
 					<items>
 						<core:Item text="{disruptionCategoryModel>group_desc}"
 							key="{disruptionCategoryModel>group_name}" />
 					</items>
-				</Select>
-
+				</Select>-->
 
 
 
@@ -57,7 +56,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>Category}" />
 				<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-					change="onSelectionChange" forceSelection="false">
+					change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>/MessageType}">
 					<items>
 						<core:Item text="{disruptionCategoryModel>DESCRIPTION}"
 							key="{disruptionCategoryModel>MESSAGE_TYPE}" />
@@ -82,7 +81,8 @@
 				</TimePicker>
 				<Label text="{i18nModel>resGroup}" />
 				<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
-					change="onSelectionChange" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setResponsibleGrpEnable'}">
+					change="onSelectionChange" forceSelection="false"  selectedKey="{DisruptionDetailModel>/ResponsibleGroup}">
+					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setResponsibleGrpEnable'}"> -->
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
 							key="{disruptionRsnRespGrp>ResponsibleGroup}" />
@@ -100,15 +100,15 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>reason}" />
 				<Select id="selectreason" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
-					forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}">
+					forceSelection="false" selectedKey="{DisruptionDetailModel>/Reason}">
+					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}"> -->
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>REASON}" key="{disruptionRsnRespGrp>REASON}" />
 					</items>
 				</Select>
 				<Label text="{i18nModel>stMaterial}" />
 				<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
-					tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
-					enabled="false">
+					tokenChange="onMaterialTokenChange" enabled="false">
 				</MultiInput>
 				<Label text="{i18nModel>TimeLost}" />
 				<Input placeholder="" id="timeLost" type="Number" value=""
@@ -116,13 +116,10 @@
 				</Input>
 
 
-
-
-
-
 				<core:Title text="" />
 				<Label text="{i18nModel>gravity}" />
-				<Select id="gravity" selectedKey="1" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setGravityEnable'}">
+				<Select id="gravity" selectedKey="{DisruptionDetailModel>/Gravity}">
+				<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setGravityEnable'}"> -->
 					<items>
 						<core:Item text="{i18nModel>NotBlocked}" key="1" />
 						<core:Item text="{i18nModel>Disturbed}" key="2" />
@@ -131,10 +128,7 @@
 				</Select>
 				<Label text="{i18nModel>Jigtool}" />
 				<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
-					tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange"
-					enabled="false" />
-
-
+					tokenChange="onJigToolTokenChange" enabled="false" />\
 
 			</f:content>
 		</f:SimpleForm>
@@ -146,18 +140,15 @@
 			<f:content>
 				<core:Title text="" />
 				<Label text="{i18nModel>status}" />
-				<Select enabled="false" id="status">
-					<items>
-						<core:Item text="{i18nModel>Pending}" key="{i18nModel>Pending}" />
-						<core:Item text="{i18nModel>acknowledge}" key="{i18nModel>acknowledge}" />
-						<core:Item text="{i18nModel>Closed}" key="{i18nModel>Closed}" />
-					</items>
-				</Select>
+				<Input id="status" enabled="false"
+					value="{path: 'DisruptionDetailModel>/Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}">
+				</Input>
+				
 				<Label text="{i18nModel>promisedDateTime}" id="promisedDateLabel" />
 				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 					displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
-					enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
+					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+					<!-- enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}"> -->
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
@@ -174,13 +165,9 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>EscalationLevel}" />
-				<Select id="escalationLevel" enabled="false" selectedKey="">
-					<items>
-						<core:Item text="{i18nModel>NotEscalated}" key="1" />
-						<core:Item text="{i18nModel>FirstEscalation}" key="2" />
-						<core:Item text="{i18nModel>FinalEscalation}" key="3" />
-					</items>
-				</Select>
+				<Input id="escalationLevel" enabled="false"
+					text="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
+				</Input>
 
 
 
@@ -208,10 +195,12 @@
 				<Label text="{i18nModel>Resolver}" />
 				<Select id="selectResolver"
 					items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
-					forceSelection="false"
-					enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.selectResolverEnable'}">
+					forceSelection="false" selectedKey="{DisruptionDetailModel>/ResolverID}">
+					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.selectResolverEnable'}"> -->
 					<items>
-						<core:Item text="{disruptionResolverModel>Name}" key="{disruptionResolverModel>UserID}" />
+						<core:Item
+							text="{disruptionResolverModel>Name}"
+							key="{disruptionResolverModel>UserID}" />
 					</items>
 				</Select>
 			</f:content>

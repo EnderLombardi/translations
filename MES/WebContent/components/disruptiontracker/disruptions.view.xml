@@ -75,7 +75,7 @@
 						tooltip="{disruptiontrackerI18n>disruptionFilter}" class="borderbutton" /> -->
 
 					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
-						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"
+						text="{disruptiontrackerI18n>disruptionKPI}" press="airbus.mes.shell.util.navFunctions.disruptionKPI"
 						visible="false" class="borderbutton" />
 				
 				</Toolbar>

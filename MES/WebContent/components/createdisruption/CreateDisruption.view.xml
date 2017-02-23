@@ -1,5 +1,5 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="airbus.mes.disruptions.CreateDisruption"
+	xmlns="sap.m" controllerName="airbus.mes.createdisruption.CreateDisruption"
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 
@@ -62,12 +62,10 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectFivemCategory" selectedKey=""
-											forceSelection="false" change="onSelectionChange"
-											items="{disruptionCategoryModel>/Rowsets/Rowset/2/Row}">
+										<Select id="selectFivemCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/2/Row}" 
+											forceSelection="false" change="onSelectionChange" selectedKey="{DisruptionDetailModel>/CategoryClass}" >
 											<items>
 												<core:Item text="{disruptionCategoryModel>CATEGORY_CLASS}" key="{disruptionCategoryModel>CATEGORY_CLASS}" />
-												
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
@@ -75,34 +73,7 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-
-
-
-								 <f:FormElement visible="false">
-									<f:label>
-										<Label required="true" text="{i18nModel>Issuer}">
-											<layoutData>
-												<l:GridData span="L2 M3 S12" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<ComboBox id="selectIssuer"
-											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }"
-											forceSelection="false">
-											<items>
-												<core:Item key="{ressourcePoolModel>user}"
-													text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}" />
-											</items>
-											<layoutData>
-												<l:GridData span="L3 M9 S12" />
-											</layoutData>
-										</ComboBox>
-									</f:fields>
-								</f:FormElement>
-
-
-								
+																
 
 								<f:FormElement>
 									<f:label>
@@ -113,9 +84,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectCategory"
-											items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-											change="onSelectionChange" forceSelection="false">
+										<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
+											change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>/MessageType}">
 											<items>
 												<core:Item text="{disruptionCategoryModel>DESCRIPTION}"
 													key="{disruptionCategoryModel>MESSAGE_TYPE}" />
@@ -137,8 +107,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectreason"
-											items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"  forceSelection="false">
+										<Select id="selectreason" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
+										  forceSelection="false" selectedKey="{DisruptionDetailModel>/Reason}">
 											<items>
 												<core:Item text="{disruptionRsnRespGrp>REASON}"
 													key="{disruptionRsnRespGrp>REASON}" />
@@ -160,8 +130,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectOriginator" selectedKey=""
-											forceSelection="false" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}">
+										<Select id="selectOriginator" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}"
+											 forceSelection="false" selectedKey="{DisruptionDetailModel>/OriginatorGroup}" >
 											<items>
 												<core:Item text="{disruptionCategoryModel>group_desc}"
 													key="{disruptionCategoryModel>group_name}" />
@@ -182,9 +152,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectResponsibleGrp"
-											items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
-											change="onSelectionChange" forceSelection="false">
+										<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
+											change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>/ResponsibleGroup}">
 											<items>
 												<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
 													key="{disruptionRsnRespGrp>ResponsibleGroup}" />
@@ -208,7 +177,7 @@
 									<f:fields>
 										<Select id="selectResolver"
 											items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
-											forceSelection="false">
+											forceSelection="false" selectedKey="{DisruptionDetailModel>/ResolverID}">
 											<items>
 												<core:Item
 													text="{disruptionResolverModel>Name}"
@@ -232,7 +201,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="gravity" selectedKey="1">
+										<Select id="gravity" selectedKey="{DisruptionDetailModel>/Gravity}">
 											<items>
 												<core:Item text="{i18nModel>NotBlocked}" key="1" />
 												<core:Item text="{i18nModel>Disturbed}" key="2" />
@@ -256,7 +225,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Input id="status" value="{i18nModel>Pending}" enabled="false">
+										<Input id="status" enabled="false"
+											value="{path: 'DisruptionDetailModel>/Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}">
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>
@@ -328,7 +298,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Input placeholder="" id="timeLost" type="Number" value="">
+										<Input placeholder="" id="timeLost" type="Number" value="{path: 'DisruptionDetailModel>/TimeLost', formatter: 'airbus.mes.disruptions.Formatter.timeMillisecondsToConfig'}">
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>
@@ -338,8 +308,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label id="promisedDateLabel" required="true"
-											text="{i18nModel>promisedDateTime}">
+										<Label id="promisedDateLabel"  text="{i18nModel>promisedDateTime}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
@@ -417,9 +386,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
-											tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange"
-											enabled="false">
+										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange"
+											liveChange="onJigToolTokenChange" enabled="false">
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>

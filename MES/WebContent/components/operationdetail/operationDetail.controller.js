@@ -188,11 +188,8 @@ sap.ui
                     this.tabSelected = "#operationDetailsView--idDisruption";
                     $(this.tabSelected).addClass("operationDetailTabSelected");
 
-                    airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
-                        sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
-                        sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
-                        sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-                        sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")  // Cancel Button
+                    airbus.mes.shell.util.navFunctions.viewDisruptionsList(this.nav,
+                        sap.ui.getCore().byId("operationDetailPopup--reportDisruption") // Report Disruption Button
                     );
 
                     /***************************************************
@@ -204,10 +201,7 @@ sap.ui
                         airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO, sSfcStepRef);
                         this.disruptionsFlag = true;
                     }
-
-                    /** Navigate **/
-                    this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
-
+                    
                     break;
                 case "displayOpeAttachments":
                     //tabselection
@@ -371,7 +365,7 @@ sap.ui
 
                 case "ViewDisruptionView":
                     /** Set buttons visibility ****/
-                    airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
+                    airbus.mes.disruptionslist.oView.oController.turnOnOffButtons();
                     break;
 
                 case "createDisruptionView":
@@ -380,7 +374,7 @@ sap.ui
                      *  Set buttons visibility
                      *****************************/
                     // In case of Update of Disruption
-                    if (sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined) {
+                    if (sap.ui.getCore().getModel("DisruptionDetailModel").getData().MessageType != undefined) {
 
                         // set buttons according to update disruption
                         sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(true);

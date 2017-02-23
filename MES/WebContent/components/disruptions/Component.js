@@ -39,7 +39,11 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
             viewName : "airbus.mes.disruptions.CreateDisruption",
             type : "XML",
             height:"100%"
-        })
+        });
+        
+        
+     
+
         
        /*if(sap.ui.Device.system.desktop){
 	       this.oView.disruptionDetail = sap.ui.view({
@@ -61,7 +65,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
       /*  if(sap.ui.Device.system.desktop)
         	this.oView.disruptionDetail.setModel(i18nModel, "i18nModel");*/
 
-        airbus.mes.disruptions.oView = this.oView
+        airbus.mes.disruptions.oView = this.oView;
 
         // Model for Disruptions details
         this.oView.viewDisruption.setModel(sap.ui.getCore().getModel("operationDisruptionsModel"),"operationDisruptionsModel");
@@ -95,7 +99,14 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
         	this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionRsnRespGrp"),"disruptionRsnRespGrp");
         	this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionResolverModel"),"disruptionResolverModel");
         }*/
-        
+/*        
+        if (airbus.mes.disruptiondetail === undefined || airbus.mes.disruptiondetail.oView === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.disruptiondetail", "../components/disruptiondetail");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptiondetail", });
+            this.oView.disruptiondetail = airbus.mes.disruptiondetail.oView;
+            nav.addPage(airbus.mes.disruptions.oView.disruptiondetail);
+        }
+        */
         return this.oView.viewDisruption;
 
     } else {

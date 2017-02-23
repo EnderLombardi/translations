@@ -70,13 +70,13 @@ airbus.mes.disruptions.Formatter = {
 
 		switch (gravity) {
 		case "1":
-			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotBlocked");
+			property = sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("NotBlocked");
 			break;
 		case "2":
-			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Disturbed");
+			property = sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("Disturbed");
 			break;
 		case "3":
-			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Blocked");
+			property = sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("Blocked");
 			break;
 		default:
 			break;
@@ -167,13 +167,13 @@ airbus.mes.disruptions.Formatter = {
 
 	setEscalationText : function(escalationLevel) {
 		if (escalationLevel == 1)
-			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotEscalated");
+			return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("NotEscalated");
 
 		else if (escalationLevel == 2)
-			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("FirstEscalation");
+			return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("FirstEscalation");
 
 		else if (escalationLevel == 3)
-			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("FinalEscalation");
+			return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("FinalEscalation");
 		else
 			return "-----"; 	
 	},
@@ -228,14 +228,14 @@ airbus.mes.disruptions.Formatter = {
 
 			if (status == airbus.mes.disruptions.Formatter.status.rejected) {
 
-				this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("rejected"));
+				this.setText(sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("rejected"));
 				this.setEnabled(false);
 
 				return false;
 
 			} else if (status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.acknowledged) {
 
-				this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("reject"));
+				this.setText(sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("reject"));
 				this.setEnabled(true);
 				return true;
 			}
@@ -328,7 +328,7 @@ airbus.mes.disruptions.Formatter = {
 			action = comment.split("\$\$")[0];
 		}
 
-		return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
+		return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
 	},
 	formatComment : function(comment) {
 		if(!comment){
@@ -354,7 +354,7 @@ airbus.mes.disruptions.Formatter = {
 	/*
 	 * setTimeBeforeNextEsc : function(escalationLevel) { if(escalationLevel ==
 	 * 3)
-	 * this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("escalated")); },
+	 * this.setText(sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("escalated")); },
 	 */
 	setSolutionVisibility : function(solution) {
 		if (solution == "")
@@ -450,6 +450,9 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	timeMillisecondsToConfig : function(time) {
+		
+		if(time == undefined || time == null || time == "")
+			return 0;
 
 		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
@@ -518,7 +521,9 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	setDisruptionStatus : function(status) {
-		return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty(status);
+		if(status == undefined || status == null || status == "")
+			return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("Pending");
+		return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty(status);
 	},
 	isStatusFinal : function(status) {
 		if (status === airbus.mes.disruptions.Formatter.status.closed || status === airbus.mes.disruptions.Formatter.status.solved

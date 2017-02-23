@@ -23,7 +23,7 @@
 				</HBox>
 				<HBox>
 					<Label text="{i18nModel>status}:" class="sapUiSmallMarginBegin"></Label>
-					<Text text="{i18nModel>Closed}" />
+					<Text text="closed" />
 				</HBox>
 				<HBox class=" sapUiSmallMarginTop sapUiTinyMarginBegin">
 				<Image class="ylabelUserImage setImage" width="100%"
