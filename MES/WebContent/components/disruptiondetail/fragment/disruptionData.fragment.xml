@@ -7,24 +7,9 @@
 			<f:content>
 			
 			
-            	<Input id="selectFivemCategory" text="" visible="false"/>
-            	<Input id="selectOriginator" text=""  visible="false"/>
+            	
 
-				<core:Title text="" />				
-				<Label text="{i18nModel>OpenDate}" />
-				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
-					value="{path:'DisruptionDetailModel>/OpeningTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
-					<layoutData>
-						<l:GridData span="L7 M7 S7" />
-					</layoutData>
-				</DatePicker>
-				<TimePicker enabled="false" id="openTime" displayFormat="HH:mm"
-					valueFormat="HH:mm"
-					value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
-					<layoutData>
-						<l:GridData span="L5 M5 S5" />
-					</layoutData>
-				</TimePicker>
+				
 
 
 
@@ -65,14 +50,6 @@
 					</items>
 				</Select>
 
-
-
-
-
-
-
-
-
 				<core:Title text="" />
 				<Label text="{i18nModel>reason}" />
 				<Select id="selectreason" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
@@ -86,10 +63,7 @@
 				<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
 					tokenChange="onMaterialTokenChange" enabled="false">
 				</MultiInput>
-				<Label text="{i18nModel>TimeLost}" />
-				<Input placeholder="" id="timeLost" type="Number" value=""
-					enabled="false">
-				</Input>
+				
 
 
 				<core:Title text="" />
@@ -105,6 +79,28 @@
 				<Label text="{i18nModel>Jigtool}" />
 				<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
 					tokenChange="onJigToolTokenChange" enabled="false" />
+					<Input id="selectFivemCategory" text="" visible="false"/>
+            	<Input id="selectOriginator" text=""  visible="false"/>
+            	
+            	<core:Title text="" />				
+				<Label text="{i18nModel>OpenDate}" />
+				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
+					value="{path:'DisruptionDetailModel>/OpeningTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
+					<layoutData>
+						<l:GridData span="L7 M7 S7" />
+					</layoutData>
+				</DatePicker>
+				<TimePicker enabled="false" id="openTime" displayFormat="HH:mm"
+					valueFormat="HH:mm"
+					value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+					<layoutData>
+						<l:GridData span="L5 M5 S5" />
+					</layoutData>
+				</TimePicker>
+				<Label text="{i18nModel>TimeLost}" />
+				<Input placeholder="" id="timeLost" type="Number" value=""
+					enabled="false">
+				</Input>
 
 			</f:content>
 		</f:SimpleForm>
