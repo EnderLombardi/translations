@@ -337,15 +337,17 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[6].setVisible(false);       
         
         airbus.mes.stationtracker.oswDialog.open();
-
-        //        // delay because addDependent will do a async rerendering and the popover will immediately close without it
-        //        jQuery.sap.delayedCall(0, this, function () {
-        //        	airbus.mes.stationtracker.ImportOswUnplannedPopover;
-        //
-        //        });
-
+     
     },
+    
 
+	    onOswOpen : function() {
+
+	    	airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(2);
+
+		})
+
+	},
     /***************************************************************************
      * Fire when the user close the popover of prodgroup
      * It Reload all the operation filtered by mii regarding prodgroup send

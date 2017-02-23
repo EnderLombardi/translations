@@ -59,10 +59,12 @@ airbus.mes.stationHandover.util.Formatter = {
 
 		switch (oEvt) {
 		case "true":
+			this.removeStyleClass("orange");
 			this.addStyleClass("green");
 			return oEvt;
 			break;
 		case "false":
+			this.removeStyleClass("green");
 			this.addStyleClass("orange");
 			return oEvt;
 			break;

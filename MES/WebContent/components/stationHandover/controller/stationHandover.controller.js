@@ -107,7 +107,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 * trigger when the user select a group and sort parent ascending by the
 	 * value selected
 	 **************************************************************************/
-	sorterMode : function(el) {
+	sorterMode : function(oEvt) {
 
 		var oBinding = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getBinding("rows");
 		var sValue = oEvt.getSource().mProperties.selectedKey;

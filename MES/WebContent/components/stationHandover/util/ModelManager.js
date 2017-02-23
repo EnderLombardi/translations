@@ -28,16 +28,14 @@ airbus.mes.stationHandover.util.ModelManager = {
 		"station" : new sap.ui.model.Filter({
 			path : "ORIGIN_STATION",
 			test : function(oValue) {
-				//						
-				//						if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
-				//							
-				//							return true;
-				//					} else {
-				//						
-				//						return false;
-				//					}
-				//}
-				return true;
+										
+				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
+					
+					return true;
+				} else {
+					
+					return false;
+				}
 			}
 		}),
 		"aType" : [ "0" ],
@@ -134,16 +132,10 @@ airbus.mes.stationHandover.util.ModelManager = {
 				}
 
 			});
-			//			 // Add current station msn site object selected from setting	
-			//			  var oCurrent = oModel.filter(function (el) {
-			//		             
-			//					 return el.msn === oContext.msn && oContext.station === el.station
-			//		         
-			//				 })[0];
-
+			
 			// oCurrent.sDate = Date.parse(new Date(oCurrent.Takt_Start))
 			//aPhStation.push(oCurrent);
-			aPhStation.sort(airbus.mes.shell.util.Formatter.fieldComparator([ 'sDate' ]));
+			aPhStation = aPhStation.sort(airbus.mes.shell.util.Formatter.fieldComparator([ 'sDate' ]));
 			//As a default, the physical station with the biggest planned start date/time should be selected.
 			oModelManager.filter.aStation.push(aPhStation[aPhStation.length - 1].station);
 			oModelStation.setData(aPhStation);
@@ -158,30 +150,30 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 	onOswLoad : function() {
 
-		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
-	//	var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
-		
-		try {
-
-			var aModel = oViewModel.oData.row;
-			airbus.mes.stationHandover.util.ModelManager.copyOfModel = JSON.parse(JSON.stringify(oViewModel.oData));
-			//Create tree of for manage selection of tree
-			aModel.forEach(function(el, indice) {
-				
-				//Save in field selected the value INSERTED to manage the selection/unselection of lines 
-				el.SELECTED = el.INSERTED;
-
-				aModel[indice].row.forEach(function(al, indice1) {
-					
-					al.SELECTED = al.INSERTED;
-				})
-			})
-
-		} catch (e) {
-
-			console.log("Error");
-
-		}
+//		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
+//	//	var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
+//		
+//		try {
+//
+//			var aModel = oViewModel.oData.row;
+//			airbus.mes.stationHandover.util.ModelManager.copyOfModel = JSON.parse(JSON.stringify(oViewModel.oData));
+//			//Create tree of for manage selection of tree
+//			aModel.forEach(function(el, indice) {
+//				
+//				//Save in field selected the value INSERTED to manage the selection/unselection of lines 
+//				el.SELECTED = el.INSERTED;
+//
+//				aModel[indice].row.forEach(function(al, indice1) {
+//					
+//					al.SELECTED = al.INSERTED;
+//				})
+//			})
+//
+//		} catch (e) {
+//
+//			console.log("Error");
+//
+//		}
 	},
 
 	onShiftsLoad : function() {
