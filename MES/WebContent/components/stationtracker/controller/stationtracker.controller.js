@@ -1041,7 +1041,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             }
 
             airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
-            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+            //airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
             airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
                 //hide split screen if select user
