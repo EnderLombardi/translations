@@ -628,7 +628,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 					// into old filters
 
 					for (i = 0; i < FilterLength; i++) {
-						if (OldFilter[i].sPath !== Value[0]) {
+						if (OldFilter[i].sPath.indexOf(Value) == -1) {
 							oFilters.push(OldFilter[i]);
 						}
 						;
@@ -637,14 +637,24 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
 				// Add new filter if the checkbox = true
 				if (sValue !== undefined) {
-					if (sValue == true) {
-						var autoclosureFilter = new sap.ui.model.Filter("OPERATION_ID", sap.ui.model.FilterOperator.EQ, '9995');
+					if (sValue == false) {
+						var autoclosureFilter = new sap.ui.model.Filter("OPERATION_ID", sap.ui.model.FilterOperator.NE, '9995');
 						oFilters.push(autoclosureFilter);
+					} else {
+						if (sap.ui.getCore().byId("ImportOswUnplannedPopover--SelectAllUnpd").getSelected()) {
+							var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1];
+							oList.selectAll();
+						}
 					}
 				} else {
-					if (oEvent.getParameter("selected")) {
-						var autoclosureFilter = new sap.ui.model.Filter("OPERATION_ID", sap.ui.model.FilterOperator.EQ, '9995');
+					if (oEvent.getParameter("selected") ==  false) {
+						var autoclosureFilter = new sap.ui.model.Filter("OPERATION_ID", sap.ui.model.FilterOperator.NE, '9995');
 						oFilters.push(autoclosureFilter);
+					}else {
+						if (sap.ui.getCore().byId("ImportOswUnplannedPopover--SelectAllUnpd").getSelected()) {
+							var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1];
+							oList.selectAll();
+						}
 					}
 				}
 
@@ -939,7 +949,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
     onChangeFilterOSWUnplanned: function (oEvent) {
         var aMyFilter = [];
         
-        /////////////////////////////////////////////////////////////MHO 
         // Get others Filters or Sorters
 				var i;
 				
@@ -949,15 +958,12 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 					var Value = [ "DISRUPTION", "PAUSED", "PREVIOUSLY_STARTED", "STATE" ]; // Value of Status ==> Do not save into Old Filters
 
 					for (i = 0; i < FilterLength; i++) {
-						if (OldFilter[i].sPath !== Value[0] && OldFilter[i].sPath !== Value[1] && OldFilter[i].sPath !== Value[2]
-							&& OldFilter[i].sPath !== Value[3]) {
+						if (OldFilter[i].sPath.indexOf(Value) == -1 ) {
 							aMyFilter.push(OldFilter[i]); // Get others filters (for example auto closure filters)
 						}
 						;
 					}
 				}       
-        
-        ////////////////////////////////////////////////////////////////MHO 
         
         //var sStatus;
 
