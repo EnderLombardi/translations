@@ -169,16 +169,7 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>Resolver}" />
-				<Select id="selectResolver" visible="false"
-					forceSelection="false" selectedKey="{DisruptionDetailModel>/ResolverID}">
-					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.selectResolverEnable'}"> -->
-					<items>
-						<!-- <core:Item
-							text="{disruptionResolverModel>Name}"
-							key="{disruptionResolverModel>UserID}" /> -->
-					</items>
-				</Select>
-				<Select id="resolverNewID"
+				<Select id="selectResolver"
 					items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
 					forceSelection="false" selectedKey="{DisruptionDetailModel>/ResolverID}">
 					<items>
@@ -187,6 +178,15 @@
 							key="{disruptionResolverModel>UserID}" />
 					</items>
 				</Select>
+				<!-- <Select id="resolverNewID"
+					items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
+					forceSelection="false" selectedKey="{DisruptionDetailModel>/ResolverID}">
+					<items>
+						<core:Item
+							text="{disruptionResolverModel>Name}"
+							key="{disruptionResolverModel>UserID}" />
+					</items>
+				</Select> -->
 			</f:content>
 		</f:SimpleForm>
 		
