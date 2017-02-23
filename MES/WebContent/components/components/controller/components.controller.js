@@ -61,7 +61,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 	        default: //if Null
 	            break;
 	    }
-//	    this.filterComponents(sSet);
     },
 
     //get user action on the checkbox field
@@ -85,7 +84,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 		this.sSet = sScope;    
         switch (sScope) {
             case airbus.mes.components.util.ModelManager.operation:
-                sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter(new sap.ui.model.Filter("operationNumber", "EQ", airbus.mes.components.oView.getController().getOwnerComponent().getOperation()));
+                sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter(new sap.ui.model.Filter("operationNumber", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no));
                 break;
             case airbus.mes.components.util.ModelManager.workOrder:
                 sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter();
