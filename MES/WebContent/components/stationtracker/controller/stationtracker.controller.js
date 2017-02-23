@@ -1261,19 +1261,19 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         // special case for polypoly
         switch (airbus.mes.stationtracker.CheckQa) {
             case "UNPLANNED":
-                airbus.mes.stationtracker.CheckQa === "";
+                airbus.mes.stationtracker.CheckQa = "";
                 var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
                 airbus.mes.stationtracker.util.ModelManager.setOSW(oModel.aSFC_Step, "", true, false);
                 this.onCloseDialog(oEvent);
                 break;
             case "OSW":
-                airbus.mes.stationtracker.CheckQa === "";
+                airbus.mes.stationtracker.CheckQa = "";
                 var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
                 airbus.mes.stationtracker.util.ModelManager.setOSW(oModel.aSFC_Step, oModel.sProdGroup, true, true);
                 this.onCloseDialog(oEvent);
                 break;
             case "RESCHEDULING":
-                airbus.mes.stationtracker.CheckQa === "";
+                airbus.mes.stationtracker.CheckQa = "";
                 var oModel = airbus.mes.stationtracker;
                 airbus.mes.stationtracker.util.ModelManager.sendRescheduleRequest(true, oModel.oFinal, oModel.oInitial);
                 airbus.mes.shell.oView.getController().renderStationTracker();
