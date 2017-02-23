@@ -225,7 +225,7 @@ sap.ui
                     if (airbus.mes.stationtracker.ReschedulePopover === undefined) {
 
                         var oModel = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n");
-                        airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("reschedulePage", "airbus.mes.stationtracker.Reschedule", airbus.mes.stationtracker.oView.getController());
+                        airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("reschedulePage", "airbus.mes.stationtracker.fragment.Reschedule", airbus.mes.stationtracker.oView.getController());
                         airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
                         airbus.mes.stationtracker.ReschedulePopover.setModel(oModel, "i18nModel");
                         this.nav.addPage(airbus.mes.stationtracker.ReschedulePopover);
