@@ -1039,7 +1039,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             } else {
                 airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
             }
-
+            airbus.mes.stationtracker.util.ModelManager.loadRessourcePool();
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
             airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
@@ -1058,6 +1058,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
         } else {
             airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
+            airbus.mes.stationtracker.util.ModelManager.loadRessourcePool();
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {

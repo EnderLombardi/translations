@@ -460,6 +460,8 @@ airbus.mes.stationtracker.util.ModelManager = {
             aModel.oData.Rowsets.Rowset[0].Row = aModel.oData.Rowsets.Rowset[0].Row.reduce(function (field, e1) {
 
                 if (e1.user === currentUser) {
+                    //if the currentUser belong to the ressource pool list, we set if as the user to load.
+                    //otherwise, we keep the first user of the ressource pool list. 
                     workTrackerUser = currentUser;
                 }
                 var matches = field.filter(function (e2) { return e1.user === e2.user });
@@ -473,13 +475,16 @@ airbus.mes.stationtracker.util.ModelManager = {
             if (MyModele === "WorkTracker") {
                 //we load the splitModel only if we are in workTracker mode.
                 if (airbus.mes.stationtracker.util.AssignmentManager.userSelected === '%') {
+                    //if the previous user selected was "ALL USERS" we assigne the user to load at workTrackerUser
                     airbus.mes.stationtracker.util.AssignmentManager.userSelected = workTrackerUser;
                 } else {
+                    //if the previous user selected was different 
                     workTrackerUser = airbus.mes.stationtracker.util.AssignmentManager.userSelected;
                 }
                 sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey(workTrackerUser);
                 airbus.mes.stationtracker.util.ModelManager.loadSplitModel(workTrackerUser);
             } else if (airbus.mes.stationtracker.util.AssignmentManager.userSelected !== "No") {
+                //if we are in station stacker mode we reset the user to --> ALL USERS in order to reload the complete station tracker list
                 airbus.mes.stationtracker.util.AssignmentManager.userSelected = '%';
                 sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey("ALL");
             }
