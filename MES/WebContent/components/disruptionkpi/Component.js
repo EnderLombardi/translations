@@ -2,6 +2,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 //jQuery.sap.require("airbus.mes.disruptionkpi.util.Formatter");
 jQuery.sap.require("airbus.mes.disruptionkpi.ModelManager");
+jQuery.sap.require("airbus.mes.disruptiontracker.util.Formatter");
 
 jQuery.sap.declare("airbus.mes.disruptionkpi.Component");
 
@@ -38,7 +39,7 @@ airbus.mes.disruptionkpi.Component.prototype.createContent = function() {
 
         //Model Station Names
         this.oView.setModel(sap.ui.getCore().getModel("plantModel"), "plantModel");
-
+        this.oView.setModel(sap.ui.getCore().getModel("ParetoChartModel"), "ParetoChartModel");
         return this.oView;
     } else {
         return airbus.mes.disruptionkpi.oView;

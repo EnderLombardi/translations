@@ -10,8 +10,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 	 *
 	 * @public
 	 */
-	onInit : function() {	
-
+	onInit : function() {
+		
 		// Set Model (i18nModel) for Frame Titles
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
 	        bundleName : "airbus.mes.disruptionkpi.i18n.i18n"
@@ -36,7 +36,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 					style : 'precent',
 					maxFractionDigits : 0
 				});
-				var val = value;
+				//var val = value;
 				return percentage.format(value / 100);
 		});
 		
@@ -48,43 +48,33 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 							{
 								axis : 1,
 								name : "Category Per Reason",
-								value : "{TimeLostperAttribute>CategoryReason}"
+								value : "{ParetoChartModel>categoryReason}",
 							},
 							{
 								axis : 2,
 								name : "Number of Disruptions",
-								value : "{TimeLostperAttribute>Value}"
+								value : "{ParetoChartModel>totalDisruption}"
 							} ],
 			measures : [
 							{
 								name : "Time Lost",
-								value : "{TimeLostperAttribute>Occurrences}"
+								value : {
+									path : "ParetoChartModel>timeLost",
+									formatter : function(ms) {
+										if (ms != '' && ms != undefined) {
+											return Math.round(ms / 60000);
+										}
+										return 0;
+									}
+								}
+								//value : "{ParetoChartModel>timeLost}"
 							},
 							{
 								name : "Percent",
-								value : {
-									path : "TimeLostperAttribute>Value",
-									formatter : function(fValue) {
-										if (fValue !== null) {
-											if (oTotal === undefined) {
-												var oTotal = 0;
-												var lolength = this.getModel("TimeLostperAttribute").oData.pareto1.length;
-												
-												for (var i = 0; i < lolength; i++) {
-													var val = this.getModel("TimeLostperAttribute").oData.pareto1[i].Value;
-													var oTotal = oTotal + val;
-												}
-											}
-											sum = sum + fValue;
-											var Total = (sum / oTotal) * 100;
-											var oTol = Math.round(Total * 10) / 10;
-											return (oTol);
-										}
-									}
-								}
+								value : "{ParetoChartModel>cumulativePercentage}"
 							}
 						],
-			data : { path : "TimeLostperAttribute>/pareto1"	}
+			data : "{ParetoChartModel>/data}"
 		});
 		
 		
@@ -272,7 +262,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 			oVizFrame.setVizProperties({
 				categoryAxis: {
 					label: {
-						hideSubLevels: !oEvent.getParameter('state')
+						hideSubLevels: !state
 					}
 				},
 			});
@@ -283,10 +273,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		
 		var id = oEvt.getSource().getId().split("--")[1];
 		var oView = this.getView();
-
- 	   	switch(id){
- 	   
-	 	   	case "lineComboBox":
+		
+ 	   	switch(id) {
+ 	   	
+ 	   		case "lineComboBox":
 				var sLine = oView.byId("lineComboBox").getSelectedKey();
 				
 				airbus.mes.disruptionkpi.ModelManager.oFilters.line = sLine;
@@ -298,10 +288,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 				oView.byId("stationComboBox").removeAllSelectedItems();
 				oView.byId("stationComboBox").getBinding("items").filter(aFilters);
 				
+				airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
+				
 				break;
 				
 	 	   	case "stationComboBox":
 	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.station = oView.byId("stationComboBox").getSelectedKeys();
+				
+				airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
+				
 	 	   		break;
 	 	   		
 	 	   	case "startDateTime":
@@ -313,6 +308,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 				}
 				
 	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.startDateTime = oTime;
+				
+				airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
+				
 				break;
 	 	   		
 	 	   	case "endDateTime":
@@ -324,11 +322,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 				}
 				
 				airbus.mes.disruptionkpi.ModelManager.oFilters.endDateTime = oTime;
+				
+				airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
+				
 				break;
 	 	   	
 	 	   	case "timeUnit":
 	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.timeUnit = oView.byId("timeUnit").getSelectedKey();
 	 	   		break;
+	 	   		
+	 	   	default: break;
  	   	}
 	},
 	
@@ -349,11 +352,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 	},
 	
 	onAfterRendering: function(oEvent){
-        airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
 		this.resize();
-        airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
 	}
-	
 
 	});
 });

@@ -3,7 +3,7 @@
 	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:commons="sap.ui.commons">
 
-	<Page showHeader="false" class="disruptionKPI">
+	<Page id="disruptionKPIPage" showHeader="false" class="disruptionKPI">
 		<!-- <Bar id="disruptionKPITitleSubheader" class="pageHeader"> <contentLeft> 
 			<Button id="navBack" icon="sap-icon://arrow-left" text="{i18nModel>back}" press="onNavBack" 
 			type="Transparent" /> </contentLeft> <contentMiddle> <Label id="disruptionKPITitle" 

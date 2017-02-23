@@ -505,13 +505,19 @@ airbus.mes.shell.util.navFunctions = {
         if (airbus.mes.disruptionkpi === undefined || airbus.mes.disruptionkpi.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.disruptionkpi", "../components/disruptionkpi");
             sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionkpi", });
+	     
+	        // Add event delegate
+	        airbus.mes.disruptionkpi.oView.addEventDelegate({
+	        	onBeforeShow: function(evt){
+	                airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
+	                airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
+	        		airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
+	    	   }
+	        });
+
             nav.addPage(airbus.mes.disruptionkpi.oView);
         }
-
-
-        airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
-
-        nav.to(airbus.mes.disruptionkpi.oView.getId());
+        nav.to(airbus.mes.disruptionkpi.oView.getId(),{});
     },
 
 
