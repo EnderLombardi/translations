@@ -30,73 +30,73 @@
                      width="100%">
         <table:columns>
             <table:Column autoResizable="true" width="auto" >
-                <Label text="{i18nComponentsModel>itemNumber}" />
+                <Label textAlign="Center" text="{i18nComponentsModel>itemNumber}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>itemNumber}" />
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto">
-                <Label text="{i18nComponentsModel>operationNumber}" />
+            <table:Column autoResizable="true" width="auto">
+                <Label textAlign="Center" text="{i18nComponentsModel>operationNumber}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>operationNumber}"/>
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto">
-                <Label text="{i18nComponentsModel>materialType}" />
+            <table:Column autoResizable="true" width="auto">
+                <Label textAlign="Center" text="{i18nComponentsModel>materialType}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>materialType}"  />
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto">
-                <Label text="{i18nComponentsModel>materialDescription}" />
+            <table:Column autoResizable="true" width="auto">
+                <Label textAlign="Center" text="{i18nComponentsModel>materialDescription}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>materialDescription}"  />
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto">
-                <Label text="{i18nComponentsModel>storageLocation}" />
+            <table:Column autoResizable="true" width="auto">
+                <Label textAlign="Center" text="{i18nComponentsModel>storageLocation}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>storageLocation}"  />
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto">
-                <Label text="{i18nComponentsModel>freestockKanbanBulkMaterial}" />
+            <table:Column autoResizable="true" width="auto">
+                <Label textAlign="Center" text="{i18nComponentsModel>freestockKanbanBulkMaterial}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>freestockKanbanBulkMaterial}"  />
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto">
-                <Label text="{i18nComponentsModel>requiredQty}" />
+            <table:Column autoResizable="true" width="auto">
+                <Label textAlign="Center" text="{i18nComponentsModel>requiredQty}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>requiredQty}"  />
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto">
-                <Label text="{i18nComponentsModel>withdrawQty}" />
+            <table:Column autoResizable="true" width="auto">
+                <Label textAlign="Center" text="{i18nComponentsModel>withdrawQty}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>withdrawQty}"  />
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto">
-                <Label text="{i18nComponentsModel>shortage}" />
+            <table:Column autoResizable="true" width="auto">
+                <Label textAlign="Center" text="{i18nComponentsModel>shortage}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>shortage}"  />
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto">
-                <Label text="{i18nComponentsModel>unit}" />
+            <table:Column autoResizable="true" width="auto">
+                <Label textAlign="Center" text="{i18nComponentsModel>unit}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>unit}"  />
                 </table:template>
             </table:Column>
-            <table:Column  autoResizable="true" width="auto" visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}" >
-                <Label text="{i18nComponentsModel>serialNumber}" />
+            <table:Column autoResizable="true" width="auto" visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}" >
+                <Label textAlign="Center" text="{i18nComponentsModel>serialNumber}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>serialNumber}"  />
                 </table:template>
             </table:Column>
             <table:Column id="editableRowCom" autoResizable="true" width="auto" visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}" >
-                <Label text="{i18nComponentsModel>committed}" />
+                <Label textAlign="Center" text="{i18nComponentsModel>committed}" />
                 <table:template>
                    <HBox>
                        <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldCommitted"/>
@@ -111,7 +111,7 @@
                 </table:template>
             </table:Column>
             <table:Column id="editableRowFit" autoResizable="true" width="auto" visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}" >
-                <Label text="{i18nComponentsModel>fitted}" />
+                <Label textAlign="Center" text="{i18nComponentsModel>fitted}" />
                 <table:template>
                     <HBox>
                         <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldFitted"/>
