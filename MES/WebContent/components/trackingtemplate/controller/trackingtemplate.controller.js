@@ -142,8 +142,12 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Get print title
      */
     getPrintTitle: function () {
-        var operationDetail = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]
-        return operationDetail.wo_no + '-' + operationDetail.material_description + ' ' + operationDetail.original_start_time + '-' + operationDetail.original_end_time;
+        var operationDetail = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
+        var title = operationDetail.wo_no + '-' + operationDetail.material_description + ' ';
+        title += operationDetail.original_start_time || '';
+        title += ' ';
+        title += operationDetail.original_start_time || '';
+        return title;
     },
 
     /**
@@ -222,6 +226,9 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                     airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageError);
                 },
                 success: function (result, status, xhr) {
+                    if(result.Rowsets.Rowset) {
+                        sMessageSuccess = result.Rowsets.Rowset[0].Row[0].Message_ID +'\n'+ result.Rowsets.Rowset[0].Row[0].Parameter_1;
+                    }
                     airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
                     airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
                     airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
@@ -261,7 +268,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         }
     },
 
-    unBoxAllSelectedBox: function() {
+    unBoxAllSelectedBox: function () {
         this.getView().byId("trackingtemplateView--showOnlyLastWONote").setSelected(false);
         this.getView().byId("trackingtemplateView--showOnlyLastConfirmationNote").setSelected(false);
         this.getView().byId("trackingtemplateView--showOnlyNotConfirmedConfirmationNote").setSelected(false);

@@ -99,7 +99,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
      * we order the array by grouping the items by operation (beginning string of Production_Context_GBO)
      * we place ShopOrderBo at the top of the array
     */
-    sortByOperation: function (array,regex) {
+    sortByOperation: function (array, regex) {
         array.sort(function (a, b) {
             if (a.Production_Context_GBO === b.Production_Context_GBO) {
                 return 0;
@@ -134,7 +134,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         this.sortByCreatedDateTime(array);
         //we order the array by grouping the items by operation (beginning string of Production_Context_GBO)
         //we place ShopOrderBo at the top of the array
-        this.sortByOperation(array,regex);
+        this.sortByOperation(array, regex);
 
         index = 1;
         len = array.length;
@@ -150,6 +150,8 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             array[index]["User_First_Name"] = array[index]["User_First_Name"].substring(0, 1);
             if (!previousRow.Production_Context_GBO.toUpperCase().startsWith("SHOPORDERBO")) {
                 previousRow.lastOperationNote = true;
+                var operationNumber = regex.exec(previousRow.Production_Context_GBO)[1];
+                previousRow.operationNumber = operationNumber || '';
                 break;
             }
             previousRow = array[index];
@@ -159,6 +161,8 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         for (; index < len; index += 1) {
             //we update the user first name to show only the first letter. 
             array[index]["User_First_Name"] = array[index]["User_First_Name"].substring(0, 1);
+            var operationNumber = regex.exec(array[index].Production_Context_GBO)[1];
+            array[index].operationNumber = operationNumber || '';
             if (regex.exec(previousRow.Production_Context_GBO)[1] !== regex.exec(array[index].Production_Context_GBO)[1]) {
                 array[index].lastOperationNote = true;
             } else {

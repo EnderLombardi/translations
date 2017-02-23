@@ -20,7 +20,7 @@
 					<!-- List Comment -->
 					<List id="confirmationNotes" items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" includeItemInSelection="true" class="customListItem">
 						<items>
-							<StandardListItem title="{TrackingTemplate>Context_GBO} : {TrackingTemplate>Comments} - {TrackingTemplate>User_First_Name}.{TrackingTemplate>User_Last_Name}" info="{path: 'TrackingTemplate>Created_Date_Time' , formatter: 'airbus.mes.trackingtemplate.util.Formatter.dateFormat'}"/>
+							<StandardListItem title="OP {TrackingTemplate>operationNumber} - {TrackingTemplate>User_First_Name}.{TrackingTemplate>User_Last_Name}" description="{TrackingTemplate>Comments}" info="{path: 'TrackingTemplate>Created_Date_Time'}"/>
 						</items>
 					</List>
 				</content>
@@ -54,7 +54,7 @@
 					<!-- List Comment -->
 					<List id="listNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row', sorter: {path: 'Created_Date_Time', descending : true}}" class="customListItem">
 						<items>
-							<StandardListItem title="{TrackingTemplate>Context_GBO} : {TrackingTemplate>Comments} - {TrackingTemplate>User_First_Name}.{TrackingTemplate>User_Last_Name}" info="{path: 'TrackingTemplate>Created_Date_Time' , formatter: 'airbus.mes.trackingtemplate.util.Formatter.dateFormat'}"/>
+							<StandardListItem title="{TrackingTemplate>User_First_Name}.{TrackingTemplate>User_Last_Name}" description="{TrackingTemplate>Comments}" info="{path: 'TrackingTemplate>Created_Date_Time'}"/>
 						</items>
 					</List>
 				</content>
