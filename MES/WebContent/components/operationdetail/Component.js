@@ -13,7 +13,17 @@ if (jQuery.sap.getObject("airbus.mes.jigtools.Component") === undefined) {
 		workOrder : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no,
 	    operation : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no,
 	    sSet      : airbus.mes.shell.util.navFunctions.jigsAndTools.configME
-});
+	});
+}
+
+if (jQuery.sap.getObject("airbus.mes.components.Component") === undefined) {
+	jQuery.sap.registerModulePath("airbus.mes.components", "../components/components");
+	sap.ui.getCore().createComponent({            
+	    name: "airbus.mes.components",
+		site : airbus.mes.settings.ModelManager.site,
+		sfc : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc,
+		operation : sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no,
+	    sSet      : airbus.mes.shell.util.navFunctions.components.configME });      
 }
 
 

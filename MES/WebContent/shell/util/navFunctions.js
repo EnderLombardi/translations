@@ -316,10 +316,18 @@ airbus.mes.shell.util.navFunctions = {
         if (airbus.mes.components === undefined || airbus.mes.components.oView === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.components", "../components/components");
-            sap.ui.getCore().createComponent({ name: "airbus.mes.components" });
-        } else { // or load model
+            sap.ui.getCore().createComponent({            
+	            name: "airbus.mes.components",
+	    		site : airbus.mes.settings.ModelManager.site,
+	    		sfc : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc,
+	    	    sSet      : airbus.mes.shell.util.navFunctions.components.configME });      
+	     } else { // or load model
+	        airbus.mes.components.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
+	        airbus.mes.components.oView.getController().getOwnerComponent().setSfc(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc);
+	        airbus.mes.components.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no);	        
             airbus.mes.components.util.ModelManager.loadcomponentsWorkOrderDetail();
             airbus.mes.components.util.ModelManager.loadselectFilterModel();
+            airbus.mes.components.oView.getController().checkSettingComponents();
         }
         if (container.getPage("componentsView") === null) {
             container.addPage(airbus.mes.components.oView);

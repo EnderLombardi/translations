@@ -15,6 +15,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         if (airbus.mes.shell.RoleManager.profile.identifiedUser.permissions.FITTED_COMPONENTS) {
             this.changeButtonColor();
         }
+    	// Get setting from ME/MII and select the good button between operation and work order
+    	this.filterComponents(this.sSet);        
     },
 
     changeButtonColor: function () {
@@ -49,7 +51,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 				
 		}
 		
-	    switch (sSet) {
+	    switch (this.sSet) {
 	        case "O"://operation
 	            this.getView().byId("operationButton").setSelected(true);
 	            break;
@@ -59,7 +61,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 	        default: //if Null
 	            break;
 	    }
-	    this.filterComponents(sSet);
+//	    this.filterComponents(sSet);
     },
 
     //get user action on the checkbox field
@@ -80,9 +82,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     //table filter
     filterComponents: function (sScope) {
+		this.sSet = sScope;    
         switch (sScope) {
             case airbus.mes.components.util.ModelManager.operation:
-                sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter(new sap.ui.model.Filter("operationNumber", "EQ", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no));
+                sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter(new sap.ui.model.Filter("operationNumber", "EQ", airbus.mes.components.oView.getController().getOwnerComponent().getOperation()));
                 break;
             case airbus.mes.components.util.ModelManager.workOrder:
                 sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter();
