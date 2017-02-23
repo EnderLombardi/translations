@@ -4,6 +4,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     oFilterSearch: undefined,
     oFilterFilter: undefined,
+    oFilterRB: undefined,
     sSet : undefined,
     
     onAfterRendering: function () {
@@ -84,14 +85,17 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 		this.sSet = sScope;    
         switch (sScope) {
             case airbus.mes.components.util.ModelManager.operation:
-                sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter(new sap.ui.model.Filter("operationNumber", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no));
+            	this.oFilterRB = new sap.ui.model.Filter("operationNumber", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no);
                 break;
             case airbus.mes.components.util.ModelManager.workOrder:
-                sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter();
+            	this.oFilterRB = undefined;
                 break;
             default:
                 break;
         }
+        //Apply all filter
+        this.applyFilters();
+    
     },
 
     onFilterComponent: function (oEvent) {
@@ -162,10 +166,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
                 //Use translation between we have access only to translation and not to key
                 switch (element.getTitle()) {
                     case airbus.mes.components.util.Formatter.translateFilter("BulkMaterial"):
-                        aFilters.push(that.addFilter("freestockKanbanBulkMaterial", "B"));
+                        aFilters.push(that.addFilter("FKBm", "B"));
                         break;
                     case airbus.mes.components.util.Formatter.translateFilter("Kanban"):
-                        aFilters.push(that.addFilter("freestockKanbanBulkMaterial", "K"));
+                        aFilters.push(that.addFilter("FKBm", "K"));
                         break;
                     case airbus.mes.components.util.Formatter.translateFilter("Available"):
                         aFilters.push(new sap.ui.model.Filter("shortage", sap.ui.model.FilterOperator.EQ, "0"));
@@ -194,27 +198,33 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     applyFilters: function () {
         var oFilter;
+        var aFilter = [];
 
         // update list binding
         var list = this.getView().byId("ComponentsList");
         var binding = list.getBinding("rows");
 
         //AND Filter
-        if (this.oFilterSearch === undefined && this.oFilterFilter === undefined) {
-            //No filter
-            binding.filter();
-        } else if (this.oFilterFilter === undefined) {
-            //If filter from Filter popover is empty, apply only filter from LiveSearch
-            oFilter = new sap.ui.model.Filter([this.oFilterSearch], true);
-            binding.filter(oFilter);
-        } else if (this.oFilterSearch === undefined) {
-            //If filter from Filter popover is empty, apply only filter from LiveSearch
-            oFilter = new sap.ui.model.Filter([this.oFilterFilter], true);
-            binding.filter(oFilter);
+        if (this.oFilterSearch !== undefined) {
+        	aFilter.push(this.oFilterSearch);
+        } 
+
+        if (this.oFilterFilter !== undefined) {
+        	aFilter.push(this.oFilterFilter);
+        }         
+        
+        if (this.oFilterRB !== undefined) {
+        	aFilter.push(this.oFilterRB);
+        }       
+        
+        if(aFilter.length > 0) {
+	        oFilter = new sap.ui.model.Filter(aFilter, true);
+	        binding.filter(oFilter);
         } else {
-            oFilter = new sap.ui.model.Filter([this.oFilterSearch, this.oFilterFilter], true);
-            binding.filter(oFilter);
+            //No filter
+            binding.filter();        	
         }
+
     },
 
     synchronizeFieldCommitted: function (oEvent) {
