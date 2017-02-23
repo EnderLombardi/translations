@@ -4,256 +4,256 @@
 			"SITE": "FNZ1",
 			"Feature": "HOMESCREEN",
 			"Description": "Homescreen>Click screen to open",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "DISRUPTION_DISRUPTION_LIST",
 			"Description": "Disruption list>Filter and display disruption list per criteria",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "DISRUPTION_DIS_DETAIL_CONSULT",
 			"Description": "Disruption_Detail>Consult disruption detailed information",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "DISRUPTION_DIS_DETAIL_EDIT",
 			"Description": "Disruption_Detail>Edit a disruption",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "DISRUPTION_DIS_DETAIL_UPDATE",
 			"Description": "Disruption_Detail>Update disruption status (ACK, in progress, solution solved)",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "DISRUPTION_DIS_DETAIL_EDIT",
 			"Description": "Disruption_Detail>Edit a disruption",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "DISRUPTION_DIS_DETAIL_ESCALATE",
 			"Description": "Disruption_Detail>Escalate a disruption",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_GANTT_BOXING",
 			"Description": "Station Tracker>Gantt>Boxing",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_GANTT_GROUPING",
 			"Description": "Station Tracker>Gantt>Grouping",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_GANTT_CRITICAL",
 			"Description": "Station Tracker>Gantt>Critical path view",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_MISSING",
 			"Description": "Station Tracker>Drill Down>Missing Part Info",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_OSW",
 			"Description": "Station Tracker>Drill Down>OSW info",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_DISRUPTION",
 			"Description": "Station Tracker>Drill Down>Disruption info",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_KPI_DISRUPTIONS",
 			"Description": "Disruption Overview",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_KPI_TAKT",
 			"Description": "Takt Adherence",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_OP_ACTIVATE",
 			"Description": "Work Tracker>Operation>Activate an OP",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_OP_PAUSE",
 			"Description": "Work Tracker>Operation>Pause an OP",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_OP_PAR_CONF",
 			"Description": "Work Tracker>Operation>Partial confirm an OP",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_OP_TOT_CONF",
 			"Description": "Work Tracker>Operation>Total confirm an OP",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_DIS_CREATE",
 			"Description": "Work Tracker>Disruption>Create",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_DIS_PICTURE",
 			"Description": "Work Tracker>Disruption>Take and import picture",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_DIS_ANNOTATE_DOC",
 			"Description": "Work Tracker>Disruption>Annotate document",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_DIS_ATTACH_DOC",
 			"Description": "Work Tracker>Disruption>Attach document",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_DIS_ESCALATE",
 			"Description": "Work Tracker>Disruption>ESCALATE",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_DIS_TIME_LOST",
 			"Description": "Work Tracker>Disruption>Enter time lost",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_DIS_CLOSE",
 			"Description": "Work Tracker>Disruption>close",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "PROFILE_PREF_LANG",
 			"Description": "My_Profile>Preference>langage",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "PROFILE_PREF_HOME",
 			"Description": "My_Profile>Preference>homepage",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "MES_ADMIN_SETTING",
 			"Description": "MES Administration>Site Settings",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "LINE_DIS_LINE_STAT",
 			"Description": "Line Tracker>Display Line Status",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "LINE_START_ASSEMBLY",
 			"Description": "Line Tracker>Start of Assembly",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "LINE_END_ASSEMBLY",
 			"Description": "Line Tracker>End of Assembly",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "LINE_LOAD_MSN",
 			"Description": "Line Tracker>Load Next MSN",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "LINE_EMPTY_STAT",
 			"Description": "Line Tracker>Empty Station",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_GANTT_RESCHEDULE",
 			"Description": "Station Tracker>Gantt View>Reschedule an OP inside a line balance",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_GANTT_CREATE",
 			"Description": "Station Tracker>Gantt View>Create a new line balance in the Gantt",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_GANTT_MOVE",
 			"Description": "Station Tracker>Gantt View>Move an OP from a line to a different one",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_OSW_OPEN",
 			"Description": "Station Tracker>OSW>Open list of OSW/Unplanned activities",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_OSW_FILTER",
 			"Description": "Station Tracker>OSW>Filter list per criteria",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_OSW_SELECT",
 			"Description": "Station Tracker>OSW>Select and Insert an OP on a line balance",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "PM_RESOURCE_MANAGE",
 			"Description": "PM>Resource Pool>Manage link between resource pool and users, shifts and WC",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "PM_POLY_ASSESS",
 			"Description": "PM>POLY>Assess Personnel",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_RESCHEDULE",
 			"Description": "Station Tracker>Drill>Reschedule Dates",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_OSW",
 			"Description": "Station Tracker>Drill Down>OSW info",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_DISRUPTION",
 			"Description": "Station Tracker>Drill Down>Disruption info",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "DISPLAY_OPERATION_ATTACHMENTS",
 			"Description": "Station Tracker>An operation>Documents",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		},
 		{
 			"SITE": "FNZ1",
 			"Feature": "WORK_TRACKER_DOC_VISUALIZE",
 			"Description": "Work Tracker> Document Viewer> Visualize WO/OP documents",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		},
 		{
 			"SITE": "FNZ1",
 			"Feature": "WORK_TRACKER_OP_PROG_STAT",
 			"Description": "Work Tracker>Operation Progress>Statistical confirmation (GE only)",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		},
 		{
 			"SITE": "FNZ1",
 			"Feature": "WORK_TRACKER_OSW_NOTE",
 			"Description": "Work Tracker>OSW>Enter notes at WO level",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		},
 		{
 			"SITE": "FNZ1",
-			"Feature": "FITTED_COMPONENTS",
-			"Description": "Station Tracker>An operation>Documents>Components> 3 last columns",
-			"Roles": ["eval host('sopra|dmi')&&!feature('role')"]
+			"Feature": "WORK_TRACKER_OSW_CAPTURE",
+			"Description": "Work Tracker>OSW>Capture list of non fitted parts",
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}
 	]
 }

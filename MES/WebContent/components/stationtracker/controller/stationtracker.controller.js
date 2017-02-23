@@ -339,18 +339,32 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         airbus.mes.stationtracker.oswDialog.open();
      
     },
-    
+    /***************************************************************************
+     * Fire on after open the pop-up of OSW
+     *
+     ****************************************************************************/
+	onOswOpen : function() {
+		var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
+		// Resize the width of column regarding space free
+		aColumns.forEach(function(el, indice) {
+			// Don't do auto resize blocked line it bug
+			if (indice === 1 || indice === 5 || indice === 6) {
 
-	    onOswOpen : function() {
+			} else {
 
-	    	airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(2);
+				airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
+
+			}
+
+		});
+		airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(2);
 
 	},
     /***************************************************************************
-     * Fire when the user close the popover of prodgroup
-     * It Reload all the operation filtered by mii regarding prodgroup send
-     *
-     ****************************************************************************/
+	 * Fire when the user close the popover of prodgroup It Reload all the
+	 * operation filtered by mii regarding prodgroup send
+	 * 
+	 **************************************************************************/
     onProdGroupSelFinish: function () {
 
         // show loading on gantt

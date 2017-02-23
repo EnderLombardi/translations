@@ -64,5 +64,13 @@ airbus.mes.shell.AutoRefreshConfig = {
 			return airbus.mes.shell.oView.getController().renderCalendarTracker();
 		}
 
+	},
+	stationHandoverView : {
+		"timer" : 180,
+		"useraction" : false,
+		"area" : function() {
+			return airbus.mes.shell.oView.getController().stationHandover();
+		}
+
 	}
 }

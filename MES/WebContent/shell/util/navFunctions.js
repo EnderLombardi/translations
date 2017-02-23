@@ -46,7 +46,7 @@ airbus.mes.shell.util.navFunctions = {
             airbus.mes.stationHandover.oView.byId("navBack").setVisible(false);
             airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverDialog");
             airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverTile");
-
+           
         } else {
 
             nav.addPage(airbus.mes.stationHandover.oView);

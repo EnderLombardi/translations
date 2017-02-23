@@ -251,8 +251,14 @@ sap.ui.controller(
                     this.renderCalendarTracker();
                     //refresh
                     airbus.mes.shell.AutoRefreshManager.clearInterval();
+                    airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
 
-                    // airbus.mes.shell.AutoRefreshManager.setInterval("renderCalendarTracker");
+                    break;
+                case "stationHandoverView":
+                    this.stationHandover();
+                    //refresh
+                    airbus.mes.shell.AutoRefreshManager.clearInterval();
+                    airbus.mes.shell.AutoRefreshManager.setInterval("stationHandoverView");
 
                     break;
 
@@ -360,9 +366,8 @@ sap.ui.controller(
                 case "stationHandoverView":
                     this.stationHandover(false);
 
-                    //TO DOrefresh
-                    //                          airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
-                    //                          airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+                    airbus.mes.shell.AutoRefreshManager.setInterval("stationHandoverView");
+                    airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
                     airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                     airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
