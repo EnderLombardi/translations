@@ -4,7 +4,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     oFilterSearch: undefined,
     oFilterFilter: undefined,
-
+    sSet : undefined,
+    
     onAfterRendering: function () {
         this.oFilterSearch = undefined;
         this.oFilterFilter = undefined;
@@ -31,32 +32,32 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     },
 
     checkSettingComponents: function () {
-
-        // confirm if we have already check the ME settings
-        if (airbus.mes.shell.util.navFunctions.components.configME === undefined) {
-
-            //will be the configuration received in AppConfManager
-            //var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");
-            var sSet = "P";
-
-            //Add value to global variable
-            airbus.mes.shell.util.navFunctions.components.configME = sSet;
-        } else {
-            // set the global variable
-            var sSet = airbus.mes.shell.util.navFunctions.components.configME;
-        }
-
-        switch (sSet) {
-            case "O"://operation
-                this.getView().byId("operationButton").setSelected(true);
-                break;
-            case "P"://work order
-                this.getView().byId("workOrderButton").setSelected(true);
-                break;
-            default: //if Null
-                break;
-        }
-        this.filterComponents(sSet);
+		// confirm if we have already check the ME settings
+		if (this.sSet === undefined){
+				
+			//will be the configuration received in AppConfManager
+//				Application manager configuration is setting to physical station level, we concatenate the ID VIEW_ATTACHED_TOOL with the physical station
+			var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_BOM_" + airbus.mes.settings.ModelManager.station);
+			
+			if(sSet === null) {
+				this.sSet = 'O';
+			} else {
+				this.sSet = sSet;
+			}
+				
+		}
+		
+	    switch (sSet) {
+	        case "O"://operation
+	            this.getView().byId("operationButton").setSelected(true);
+	            break;
+	        case "P"://work order
+	            this.getView().byId("workOrderButton").setSelected(true);
+	            break;
+	        default: //if Null
+	            break;
+	    }
+	    this.filterComponents(sSet);
     },
 
     //get user action on the checkbox field
