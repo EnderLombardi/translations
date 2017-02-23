@@ -120,6 +120,8 @@ airbus.mes.stationtracker.util.ModelManager = {
                             .renderStationTracker();
                         airbus.mes.stationtracker.oPopoverPolypoly.close();
                     }
+                    //we reload the work tracker
+                    airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
                 },
             });
     },
@@ -949,6 +951,8 @@ airbus.mes.stationtracker.util.ModelManager = {
                     airbus.mes.stationtracker.dialogProdGroup.close();
                     airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
                 }
+                //we reload the work tracker
+                airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
             },
 
         });
@@ -1472,9 +1476,8 @@ airbus.mes.stationtracker.util.ModelManager = {
             shiftSelected = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftName;
         }
 
-        startDate = sap.ui.getCore().byId("stationTrackerView--dateButton");
+        startDate = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.StartDate;
         if (startDate) {
-            startDate = new Date(startDate.getText());
             tzoffset = (startDate).getTimezoneOffset() * 60000; //offset in milliseconds
             localISOTime = (new Date(startDate - tzoffset)).toISOString().slice(0, -5);
         }
