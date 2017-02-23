@@ -629,17 +629,18 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * requesting material list to select on create disruption
 	 **************************************************************************/
 	onMaterialValueHelpRequest : function() {
-		if (!this._materialListDialog) {
 			
-			var id = sap.ui.getCore().byId("materialListSelectDialog");
-			if(id)
-				id.destroy(); 
+		if(this._materialListDialog)
+			this.getView().removeDependent(this.jigToolSelectDialog);
+		
+		var id = sap.ui.getCore().byId("materialListSelectDialog");
+		if(id)
+			id.destroy();
 
-			this._materialListDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.MaterialList", this);
+		this._materialListDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.MaterialList", this);
 
-			this.getView().addDependent(this._materialListDialog);
+		this.getView().addDependent(this._materialListDialog);
 
-		}
 
 		this._materialListDialog.open();
 	},
@@ -755,17 +756,18 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * 
 	 */
 	onJigToolValueHelpRequest : function() {
-		if (!this.jigToolSelectDialog) {
 			
-			var id = sap.ui.getCore().byId("jigToolSelectDialog");
-			if(id)
-				id.destroy(); 
+		if(this._materialListDialog)
+			this.getView().removeDependent(this.jigToolSelectDialog);
 			
-			this.jigToolSelectDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.Jigtool", this);
+		var id = sap.ui.getCore().byId("jigToolSelectDialog");
+		if(id)
+			id.destroy(); 
+			
+		this.jigToolSelectDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.Jigtool", this);
 
-			this.getView().addDependent(this.jigToolSelectDialog);
+		this.getView().addDependent(this.jigToolSelectDialog);
 
-		}
 		this.jigToolSelectDialog.open();
 
 	},
