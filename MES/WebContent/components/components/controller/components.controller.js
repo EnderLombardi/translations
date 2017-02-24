@@ -21,6 +21,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
         // Get setting from ME/MII and select the good button between operation and work order
         this.filterComponents(this.sSet);
+        
+//    	Init value of SearchField
+    	sap.ui.getCore().byId("componentsView--idSearchComponent").setValue("");    	        
     },
 
     changeButtonColor: function () {
