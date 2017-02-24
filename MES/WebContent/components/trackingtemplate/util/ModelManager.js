@@ -131,11 +131,14 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         var index, len, previousRow, regex;
         // regex in order to catch the operation number
         regex = /-([^,]*)/;
-        //we order the array by Created_Date_Time
-        this.sortByCreatedDateTime(array);
-        //we order the array by grouping the items by operation (beginning string of Production_Context_GBO)
-        //we place ShopOrderBo at the top of the array
-        this.sortByOperation(array, regex);
+        // //we order the array by Created_Date_Time
+        // this.sortByCreatedDateTime(array);
+        // //we order the array by grouping the items by operation (beginning string of Production_Context_GBO)
+        // //we place ShopOrderBo at the top of the array
+        // this.sortByOperation(array, regex);
+        
+        array = array.sort(airbus.mes.shell.util.Formatter.fieldComparator([ 'OperationBO', '-Created_Date_Time' ]));
+
 
         index = 1;
         len = array.length;
@@ -211,7 +214,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             trackingTemplateUrl, "$site", site);
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
             trackingTemplateUrl, "$workOrder", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no);
-        console.log(trackingTemplateUrl.toString());
+        // console.log(trackingTemplateUrl.toString());
         return trackingTemplateUrl;
     },
     /***************************************************************************
@@ -222,7 +225,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         var reasonCodeUrl = this.urlModel.getProperty(model);
         reasonCodeUrl = airbus.mes.shell.ModelManager.replaceURI(
             reasonCodeUrl, "$site", airbus.mes.settings.ModelManager.site);
-        console.log(reasonCodeUrl);
+        // console.log(reasonCodeUrl);
         return reasonCodeUrl;
     },
 
