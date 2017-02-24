@@ -18,7 +18,7 @@
 						<CheckBox id="showOnlyNotConfirmedConfirmationNote" text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false" select="filterConfirmationNoteList"/>
 					</OverflowToolbar>
 					<!-- List Comment -->
-					<List id="confirmationNotes" items="{TrackingTemplate>/Rowsets/Rowset/0/Row}" includeItemInSelection="true" class="customListItem">
+					<List id="confirmationNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row', sorter: {path: 'Created_Date_Time', descending : true}}" class="customListItem">
 						<items>
 							<StandardListItem title="OP {TrackingTemplate>operationNumber} - {TrackingTemplate>User_First_Name}.{TrackingTemplate>User_Last_Name}" description="{TrackingTemplate>Comments}" info="{path: 'TrackingTemplate>Created_Date_Time'}"/>
 						</items>

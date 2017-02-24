@@ -6,7 +6,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     * depending on the Production_Context_GBO name
     */
     initNotesList: function () {
-        console.log(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]);
         var listConfirmationNotes = this.getView().byId("trackingtemplateView--confirmationNotes");
         var listWONotes = this.getView().byId("trackingtemplateView--listNotes");
 
@@ -147,7 +146,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         var title = operationDetail.wo_no + '-' + operationDetail.material_description + ' ';
         title += operationDetail.original_start_time || '';
         title += ' ';
-        title += operationDetail.original_start_time || '';
+        title += operationDetail.original_end_time || '';
         return title;
     },
 
@@ -155,6 +154,16 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Submit a comment 
      */
     submitComment: function () {
+
+        // var attachmentFilesCollection = this.getView().byId('UploadCollection');
+        // var collection = attachmentFilesCollection.getItems();
+        // var size = collection.length;
+        // var i = 0;
+        // for (; i < size; i += 1) {
+        //     console.log(collection[i].getAttributes());
+        //     console.log(collection[i].getFileName());
+        // }
+
         var sMessageError = this.getView().getModel("i18n")
             .getProperty("ErrorDuringConfirmation");
         if (airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").getSelectedKey()) {

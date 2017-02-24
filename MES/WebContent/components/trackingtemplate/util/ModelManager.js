@@ -110,11 +110,12 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             if (a.Production_Context_GBO.toUpperCase().startsWith("SHOPORDERBO")) {
                 return -2;
             }
-            if (regex.exec(a.Production_Context_GBO) && regex.exec(b.Production_Context_GBO)) {
-                if (regex.exec(a.Production_Context_GBO)[1] < regex.exec(b.Production_Context_GBO)[1]) {
+
+            if (regex.exec(a.OperationBO) && regex.exec(b.OperationBO)) {
+                if (regex.exec(a.OperationBO)[1] < regex.exec(b.OperationBO)[1]) {
                     return -1;
                 }
-                if (regex.exec(a.Production_Context_GBO)[1] > regex.exec(b.Production_Context_GBO)[1]) {
+                if (regex.exec(a.OperationBO)[1] > regex.exec(b.OperationBO)[1]) {
 
                     return 1;
                 }
@@ -150,7 +151,8 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             array[index]["User_First_Name"] = array[index]["User_First_Name"].substring(0, 1);
             if (!previousRow.Production_Context_GBO.toUpperCase().startsWith("SHOPORDERBO")) {
                 previousRow.lastOperationNote = true;
-                var operationNumber = regex.exec(previousRow.Production_Context_GBO)[1];
+                var arrayOperationNumber = regex.exec(previousRow.OperationBO)[1].split('-'); //return smth like : "1-0-0010" we split to get the last number array of length 3 here
+                var operationNumber = arrayOperationNumber[arrayOperationNumber.length - 1]; //get the last number
                 previousRow.operationNumber = operationNumber || '';
                 break;
             }
@@ -161,9 +163,10 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         for (; index < len; index += 1) {
             //we update the user first name to show only the first letter. 
             array[index]["User_First_Name"] = array[index]["User_First_Name"].substring(0, 1);
-            var operationNumber = regex.exec(array[index].Production_Context_GBO)[1];
+            var arrayOperationNumber = regex.exec(array[index].OperationBO)[1].split('-'); //return smth like : "1-0-0010" we split to get the last number array of length 3 here
+            var operationNumber = arrayOperationNumber[arrayOperationNumber.length - 1]; //get the last number
             array[index].operationNumber = operationNumber || '';
-            if (regex.exec(previousRow.Production_Context_GBO)[1] !== regex.exec(array[index].Production_Context_GBO)[1]) {
+            if (regex.exec(previousRow.OperationBO)[1] !== regex.exec(array[index].OperationBO)[1]) {
                 array[index].lastOperationNote = true;
             } else {
                 array[index].lastOperationNote = false;
