@@ -276,19 +276,123 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 	 *            oEvt object of control
 	 */
 	onRefuseDisruption : function() {
+		var sComment;
 		var i18nModel = this.getView().getModel("i18nModel");
-
+		var oView = this.getView();
 		if (this.getView().byId("comment").getValue() == "") {
 			sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
 			return;
 		} else {
-			this.sComment = airbus.mes.disruptions.Formatter.actions.refuse + this.getView().byId("comment").getValue();
+			sComment = airbus.mes.disruptions.Formatter.actions.refuse + this.getView().byId("comment").getValue();
 		}
 
 		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
-		var sMessage = i18nModel.getProperty("successRefused");
 		// Call Disruption Service
-		airbus.mes.disruptions.ModelManager.refuseDisruption(this.sComment, sMessageRef, sMessage, i18nModel);
-	}
+		 
+		jQuery.ajax({
+			url :airbus.mes.disruptions.ModelManager.getUrlToRefuseDisruption(),
+			data : {
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : sMessageRef,
+				"Param.3" : sComment,
+				"Param.4" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+			},
+			error : function(xhr, status, error) {
+				airbus.mes.disruptions.func.tryAgainError(i18nModel);
+
+			},
+			success : function(result, status, xhr) {
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
+					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+
+				} else { // Success
+					
+					var sMessageSuccess = i18nModel.getProperty("successRefused");
+					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+					
+					oView.getModel("DisruptionDetailModel").setProperty("/Status", airbus.mes.disruptions.Formatter.status.pending);
+
+					var currDate = new Date();
+					var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+					var oUserDetailModel = sap.ui.getCore().getModel("userDetailModel")
+					var oComment = {
+						"Action" : i18nModel.getProperty("refuse"),
+						"Comments" : sComment,
+						"Counter" : "",
+						"Date" : commentDate,
+						"MessageRef" : sMessageRef,
+						"UserFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
+							.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
+					};
+					oView.getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);					
+					oView.getModel("DisruptionDetailModel").refresh();
+					sap.ui.getCore().byId("disruptionDetailView--comment").setValue();				
+				}
+
+			}
+		});
+	},
+	 onCloseDisruption : function(oEvt) {
+		 	var sComment;
+			var i18nModel = this.getView().getModel("i18nModel");
+			var oView = this.getView();
+			sComment = airbus.mes.disruptions.Formatter.actions.refuse + this.getView().byId("comment").getValue();
+			var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
+			var timeLostValue = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/TimeLost");
+			  // Call Close Disruption Service
+            jQuery.ajax({
+                   url : airbus.mes.disruptions.ModelManager.getUrlToCloseDisruption(),
+                   data : {
+                          "Param.1" : airbus.mes.settings.ModelManager.site,
+                          "Param.2" : sap.ui.getCore().getModel(
+                                        "userSettingModel").getProperty(
+                                        "/Rowsets/Rowset/0/Row/0/user"),
+                          "Param.3" : sMessageRef,
+                          "Param.4" : sComment,
+                          "Param.5" : timeLostValue
+                   },
+                   error : function(xhr, status, error) {
+                   	airbus.mes.operationdetail.oView.setBusy(false);
+          				airbus.mes.disruptions.func.tryAgainError();
+
+                   },
+                   success : function(result, status, xhr) {
+
+                          
+                          
+                          if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined &&
+                                 result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+                       	   
+                                 airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+
+                          } else {
+                                 var message = i18nModel.getProperty("successClosed");
+                                 airbus.mes.shell.ModelManager.messageShow(message);
+                                 
+                                 oView.getModel("DisruptionDetailModel").setProperty("/Status", airbus.mes.disruptions.Formatter.status.closed);
+
+             					var currDate = new Date();
+             					var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+             					var oUserDetailModel = sap.ui.getCore().getModel("userDetailModel")
+             					var oComment = {
+             						"Action" : i18nModel.getProperty("close"),
+             						"Comments" : sComment,
+             						"Counter" : "",
+             						"Date" : commentDate,
+             						"MessageRef" : sMessageRef,
+             						"UserFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
+             							.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
+             					};
+             					oView.getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);					
+             					oView.getModel("DisruptionDetailModel").refresh();
+             					sap.ui.getCore().byId("disruptionDetailView--comment").setValue();	
+                                 
+      
+                          }
+
+                   }
+            });
+	 }
+	 
 	
 });
