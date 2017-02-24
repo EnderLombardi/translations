@@ -33,7 +33,7 @@ airbus.mes.components.Component.prototype.createContent = function() {
 			id : "componentsView",
 			viewName : "airbus.mes.components.view.components",
 			type : "XML",
-			height:"auto"
+			height:"100%"
 		})
 		airbus.mes.components.oView = this.oView;
 
