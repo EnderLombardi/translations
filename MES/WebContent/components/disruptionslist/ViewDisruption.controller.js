@@ -213,7 +213,8 @@ sap.ui
                                          var oTimeLost = sap.ui.getCore().byId(
                                                        "closeDisruption-timeLost");
                                          var timeLostValue = airbus.mes.disruptions.Formatter.timeToMilliseconds(oTimeLost.getValue());
-                                         
+
+                                         var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
 
                                          // Call Close Disruption Service
                                          jQuery.ajax({
@@ -229,7 +230,7 @@ sap.ui
                                                 },
                                                 error : function(xhr, status, error) {
                                                 	airbus.mes.operationdetail.oView.setBusy(false);
-                                       				airbus.mes.disruptions.func.tryAgainError();
+                                       				airbus.mes.disruptions.func.tryAgainError(i18nModel);
 
                                                 },
                                                 success : function(result, status, xhr) {
@@ -242,7 +243,7 @@ sap.ui
                                                               airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
 
                                                        } else {
-                                                              var message = airbus.mes.disruptionslist.oView.getModel("i18nModel").getProperty("successClosed");
+                                                    	   	  var message = i18nModel.getProperty("successClosed");
                                                               airbus.mes.shell.ModelManager.messageShow(message);
                                                               
                                                               var operationDisruptionsModel =  airbus.mes.disruptionslist.oView.getModel("operationDisruptionsModel");
@@ -383,6 +384,8 @@ sap.ui
                                          var msgRef = sap.ui.getCore().byId(
                                                        "disruptionCommentMsgRef").getText();
 
+                                         var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
+                                         
                                          // Call Revoke Disruption Service
                                          jQuery.ajax({
                                                 url : airbus.mes.disruptions.ModelManager.getUrlDeleteDisruption(),
@@ -394,7 +397,7 @@ sap.ui
                                                 },
                                                 error : function(xhr, status, error) {
                                                 	airbus.mes.disruptionslist.oView.setBusy(false);
-                                       				airbus.mes.disruptions.func.tryAgainError();
+                                       				airbus.mes.disruptions.func.tryAgainError(i18nModel);
                                                 },
                                                 success : function(result, status, xhr) {
 
@@ -407,7 +410,6 @@ sap.ui
 
                                                        } else { // Success
 
-                                                              var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
                                                               var sMessageSuccess = i18nModel.getProperty("successDelete");
                                                               airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
 
@@ -496,7 +498,8 @@ sap.ui
                                                    "disruptionCommentStatus").getText();
 
                                      // Call Reject disruption Service
-                                     airbus.mes.disruptions.ModelManager.rejectDisruption(comment, msgRef, sStatus);
+                                     var i18nModel = this.getview().getModel("i18nModel");
+                                     airbus.mes.disruptions.ModelManager.rejectDisruption(comment, msgRef, sStatus, i18nModel);
                                   },
                                   
                                   /***********************************************************
@@ -539,12 +542,12 @@ sap.ui
                                   * Confirming Refuse Disruption
                                   */
                                   onConfirmRefuse : function(oEvent) {
+                             	  	 	 var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
 
                                          var comment = airbus.mes.disruptions.Formatter.actions.refuse +
                                                                 sap.ui.getCore().byId("disruptionCommentBox").getValue();
                                          
                                          if(comment == "") {
-                                        	 var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
                                         	 sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
                                         	 return;
                                          }
@@ -556,7 +559,7 @@ sap.ui
                                          var msgRef = sap.ui.getCore().byId("disruptionCommentMsgRef").getText();
 
                                          // Call Refuse solution Service
-                                         airbus.mes.disruptions.ModelManager.refuseDisruption(comment, msgRef);
+                                         airbus.mes.disruptions.ModelManager.refuseDisruption(comment, msgRef, i18nModel);
 
                                   },
 
@@ -609,10 +612,8 @@ sap.ui
                                                        "operationDisruptionsModel").getObject(
                                                        "MessageRef");
 
-                                      var i18nModel = airbus.mes.disruptionslist.oView
-                                                       .getModel("i18nModel");
-
                                       // Call Add comment Service
+                                      var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
                                       airbus.mes.disruptions.ModelManager.addComment(sComment, msgRef, i18nModel);
 
                                       this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/disruptionNewComment", "");
@@ -764,10 +765,9 @@ sap.ui
                                       var comment = airbus.mes.disruptions.Formatter.actions.solve +
                                                             sap.ui.getCore().byId("disruptionCommentBox").getValue();
 
-                                      //var i18nModel = sap.ui.getCore().byId("ViewDisruptionView").getModel("i18nModel");
-
                                       // Call to Mark Solved Disruption
-                                      airbus.mes.disruptions.ModelManager.markSolvedDisruption(msgRef, comment);
+                                      var i18nModel = this.getView().getModel("i18nModel");
+                                      airbus.mes.disruptions.ModelManager.markSolvedDisruption(msgRef, comment, i18nModel);
 
                                       /*   if (isSuccess) {
                                                 var sPath = sap.ui.getCore().byId(
@@ -799,16 +799,15 @@ sap.ui
                                   */
                                   onEscalateDisruptionComment : function (oEvt) {
                                 	  
-                                	  var title = airbus.mes.disruptionslist.oView
-                                      .getModel("i18nModel").getProperty("escalateDisruption");
+                                	  var title = airbus.mes.disruptionslist.oView.getModel("i18nModel").getProperty("escalateDisruption");
                             	       
                                        var msgRef = oEvt.getSource().getBindingContext(
-                                      "operationDisruptionsModel").getObject("MessageRef");
+                                       			"operationDisruptionsModel").getObject("MessageRef");
                     
                                        var sStatus = oEvt.getSource().getBindingContext(
-                                          "operationDisruptionsModel").getObject("Status");
+                                       			"operationDisruptionsModel").getObject("Status");
 
-                                    this.onOpenDisruptionComment(title, msgRef, '', this.onEscalateDisruption, sStatus);
+                                       this.onOpenDisruptionComment(title, msgRef, '', this.onEscalateDisruption, sStatus);
                                 	  
                                   },
                                   
@@ -818,8 +817,10 @@ sap.ui
 
                                       var comment = airbus.mes.disruptions.Formatter.actions.escalation +
                                                             sap.ui.getCore().byId("disruptionCommentBox").getValue();
+                                      
                                       // Call Escalate Service
-                                      airbus.mes.disruptions.ModelManager.escalateDisruption(msgRef, comment);
+                                      var i18nModel = this.getView().getModel("i18nModel");
+                                      airbus.mes.disruptions.ModelManager.escalateDisruption(msgRef, comment, i18nModel);
 
                                   },
 
