@@ -38,7 +38,7 @@
 
 #componentsView--otbSubheader{
     width: 40%;
-    margin: 10px auto 10px auto;
+    margin: 0px auto 10px auto;
     padding: 0;
     text-align: center;
     border : none;
@@ -59,6 +59,11 @@
 }
 #componentsView--ComponentsList{
     height: calc(100% - 10rem - 30px);
+    #componentsView--ComponentsList-sapUiTableCnt {
+        .sapUiTableColHdrCnt {
+            background-color: $teal-blue;
+        }
+    }
     .sapUiTableColCell{
         text-align: center !important;
     }
@@ -75,9 +80,8 @@
     }
 }
 #componentsView--ComponentsList-sapUiTableColHdrScr{
-    height: 43px;
     border: solid 1px #97999b;
-    background-color: #0085ad;
+    background-color: $teal-blue;
     .sapUiTableCol{
         height: 43px;
         .sapMLabel{

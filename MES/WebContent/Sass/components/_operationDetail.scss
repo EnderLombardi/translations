@@ -324,7 +324,6 @@ overflow: visible;
     .sapMPageBusyCoversAll{
         background: #f5f5f5 !important;
         &>section{
-            overflow: auto !important;
 			height:100%;
         }
     }
@@ -448,7 +447,7 @@ height: 3rem;
 }
 
 #operationDetailsView--operDetailNavContainer {
-height: calc(100% - 4.375rem - 3rem - 1rem) !important;
+height: calc(100% - 4.375rem - 3rem - 2rem) !important;
 }
 
 #operationDetailsView--opDetailSegmentButtons{
