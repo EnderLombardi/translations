@@ -12,11 +12,10 @@ ul {
 .sapMSLIDiv {
   display: flex;
   width: 100%;
-  height: 3rem;
+  min-height: 3rem;
   border-bottom: 1px solid #e5e5e5;
   align-items: center;
   justify-content: center;
-
 }
 
 .sapMSLITitleOnly {
@@ -73,4 +72,27 @@ h1 {
   color:#666666;
   border-bottom: 1px solid #cccccc;
   padding: 10px;
+}
+
+.sapMSLITitle {
+  font-weight: bold;
+}
+
+.sapMSLIDiv {
+  display: flex;
+}
+
+.sapMSLIDiv .sapMSLIDescriptionDiv {
+  padding : 10px;
+  display:flex;
+}
+
+.sapMSLIDiv .sapMSLIDescriptionDiv .sapMSLIDescription {
+  -webkit-flex: 2 0 0;
+  flex: 2 0 0;
+}
+
+.sapMSLIDiv .sapMSLIDescriptionDiv .sapMSLIInfo .sapMSLIInfoNone {
+  -webkit-flex: 1 0 0;
+  flex: 1 0 0;
 }
