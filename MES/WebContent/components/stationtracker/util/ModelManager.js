@@ -440,6 +440,8 @@ airbus.mes.stationtracker.util.ModelManager = {
 
         var aModel = sap.ui.getCore().getModel("ressourcePoolModel");
         var MyModele = airbus.mes.shell.util.navFunctions.splitMode;
+        var previousUserSelected = airbus.mes.stationtracker.util.AssignmentManager.userSelected;
+        var previousUserSelectedDeleted = true;
 
         if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
@@ -458,7 +460,9 @@ airbus.mes.stationtracker.util.ModelManager = {
             var currentUser = sap.ui.getCore().getModel("Profile").getData().connectedUser.uniquename;
 
             aModel.oData.Rowsets.Rowset[0].Row = aModel.oData.Rowsets.Rowset[0].Row.reduce(function (field, e1) {
-
+                if (previousUserSelected === e1.user) {
+                    previousUserSelectedDeleted = false;
+                }
                 if (e1.user === currentUser) {
                     //if the currentUser belong to the ressource pool list, we set if as the user to load.
                     //otherwise, we keep the first user of the ressource pool list. 
@@ -477,8 +481,21 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (airbus.mes.stationtracker.util.AssignmentManager.userSelected === '%') {
                     //if the previous user selected was "ALL USERS" we assigne the user to load at workTrackerUser
                     airbus.mes.stationtracker.util.AssignmentManager.userSelected = workTrackerUser;
+                } else if (previousUserSelectedDeleted) {
+                    airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
+                    airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
+                    airbus.mes.stationtracker.util.AssignmentManager.userSelected = '%';
+                    sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey("ALL");
+                    airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+                    sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
+                    airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(airbus.mes.stationtracker.splitterWorkTracker);
+                    if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
+                        $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
+                    }
+                    airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+                    return;
                 } else {
-                    //if the previous user selected was different 
+                    //if the previous user selected was different and is still in the ressourcePoolList
                     workTrackerUser = airbus.mes.stationtracker.util.AssignmentManager.userSelected;
                 }
                 sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey(workTrackerUser);

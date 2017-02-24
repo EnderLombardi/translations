@@ -1045,8 +1045,8 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             } else {
                 airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
             }
-            airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
-             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
+            if (airbus.mes.shell.util.navFunctions.splitMode == "WorkTracker") {
+                airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
                 //hide split screen if select user
                 airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
             }
