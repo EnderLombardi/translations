@@ -28,7 +28,7 @@ airbus.mes.components.util.Formatter = {
                 withdrawQty : [el.withdrawQty],
                 workOrder : [el.workOrder],
             },})
-        })
+        });
         var sXml = sXmlStart + sXmlByRow + sXmlEnd;
         airbus.mes.components.util.ModelManager.jsonConvertedToXml = sXml;
     }

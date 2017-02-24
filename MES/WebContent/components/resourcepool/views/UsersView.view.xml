@@ -40,7 +40,7 @@
 										<ui:HorizontalLayout>
 											<Image class="ylabelUserImage"
 												visible="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.shell.UserImageManager.displayImage' }"
-												error = "{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
+												error = "airbus.mes.shell.UserImageManager.getErrorUserImage"
 												src="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.shell.UserImageManager.selectImageToDisplay' }"
 												></Image>
 

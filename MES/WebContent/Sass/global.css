@@ -32,7 +32,6 @@ STATION TRACKER
 *********************/
 .trackerBox .fa { position: relative; z-index: 1; line-height: 24px; color: #ffffff; overflow: hidden; }
 
-/*%oswIcon{ position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; color: $petrol; overflow: hidden; }*/
 .trackerBox .trackerText, .trackerBox .trackerTextBlock { padding-left: 10px; position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; }
 
 .sapMPIText1, .sapMPIText2 { float: left; font-family: Arial, Helvetica, sans-serif; line-height: normal !important; text-overflow: clip; display: inline-block; overflow: hidden; height: 100%; line-height: 1.2em; color: #ffffff; font-size: 100%; word-break: break-all; }
@@ -49,7 +48,9 @@ STATION TRACKER
 
 #stationTrackerView--stationtracker .customHour, #calendar--calendar .customHour { text-align: left; text-indent: -15px; border-left: none !important; background-color: transparent !important; color: #5e696e; font-size: 14px; line-height: 25px; }
 
-#stationTrackerView--stationtracker .customHour:before, #calendar--calendar .customHour:before { content: ''; display: block; position: absolute; bottom: 0; width: 1px; height: 7px; background-color: #5e696e; }
+#calendar--calendar .customTakt { text-align: left; text-indent: -30px; border-left: none !important; background-color: transparent !important; color: #5e696e; font-size: 14px; line-height: 25px; }
+
+#stationTrackerView--stationtracker .customHour:before, #calendar--calendar .customTakt:before, #calendar--calendar .customHour:before { content: ''; display: block; position: absolute; bottom: 0; width: 1px; height: 7px; background-color: #5e696e; }
 
 #stationTrackerView--stationtracker .dhx_cal_next_button, #stationTrackerView--stationtracker .dhx_cal_prev_button, #calendar--calendar .dhx_cal_next_button, #calendar--calendar .dhx_cal_prev_button { position: absolute; width: auto; color: #52aec8; text-align: center; display: inline-block; font: normal normal normal 30px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: transparent; font-size: 30px; float: none !important; }
 
@@ -70,8 +71,6 @@ STATION TRACKER
 .ylabelUser { max-width: 75px; white-space: nowrap; position: relative; display: inline-block; overflow: hidden; text-overflow: ellipsis; line-height: 25px; font-size: 18px; font-weight: bold; font-style: normal; font-stretch: normal; color: rgba(0, 86, 112, 0.94); }
 
 #stationTrackerView--stationtracker .tracker-item-initial, #calendar--calendar .tracker-item-initial { color: #BBBCBC; padding-left: 10px; width: 100%; height: 100%; position: absolute; z-index: 1; left: 0px; right: 0; top: 0; bottom: 0; box-sizing: border-box; text-overflow: ellipsis; border: solid 2px #BBBCBC; background-color: #F5F5F5; overflow: hidden; }
-
-#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #calendar--buttonViewMode .sapMSegBBtnFocusable, #calendar--buttonViewMode .sapMSegBBtnDis { height: 3rem; border: none; border-right: 1px solid #8db9ca; background-color: transparent; color: #0D5D76; text-transform: uppercase; line-height: 3rem; }
 
 #stationTrackerView--toolbarstationtracker .comboBoxStyle, #calendar--toolbarcalendar .comboBoxStyle { width: auto; max-width: 100%; background-color: transparent; margin: 0 !important; border-right: 1px solid #8db9ca; height: 3rem; }
 
@@ -100,6 +99,22 @@ STATION TRACKER
 .Save_reschedule { color: #747473; border: 1px solid #CECECE; background: 0 0; text-decoration: none; height: 30px; line-height: 30px; text-align: center; width: auto; font-size: 12px; font-weight: 700; font-family: arial; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 
 .classNotConfirmedOperation { position: absolute; width: 5px; background: #ee373d; left: -10px; top: -500px; height: 1000px; }
+
+#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #calendar--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #calendar--buttonViewMode .sapMSegBBtnDis { height: 3rem; border: none; border-right: 1px solid #8db9ca; background-color: transparent; color: #0D5D76; text-transform: uppercase; line-height: 3rem; }
+
+#stationTrackerView--buttonViewMode, #calendar--buttonViewMode { height: 3rem; margin: 0; }
+
+#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable:hover:not(.sapMSegBBtnSel), #calendar--buttonViewMode .sapMSegBBtnFocusable:hover:not(.sapMSegBBtnSel) { background-color: rgba(0, 86, 112, 0.2); }
+
+#stationTrackerView--buttonViewMode .sapMSegBBtnSel, #calendar--buttonViewMode .sapMSegBBtnSel { background-color: #74d2e7; color: white; }
+
+#stationTrackerView--buttonViewMode .sapMSegBBtnSel:hover, #calendar--buttonViewMode .sapMSegBBtnSel:hover { background-color: #0085ad; }
+
+#resourcePool--navBack > div > span, #polypoly--navBack > div > span, #idLinetracker #idLinetracker--navBack > div > span, #stationHandoverView--navBack > div > span, #disruptiontrackerView--navBack > div > span { color: #0D5D76; }
+
+#resourcePool--navBack:hover, #polypoly--navBack:hover, #idLinetracker #idLinetracker--navBack:hover, #stationHandoverView--navBack:hover, #disruptiontrackerView--navBack:hover { background-color: rgba(0, 86, 112, 0.2); }
+
+#resourcePool--navBack:hover > div, #polypoly--navBack:hover > div, #idLinetracker #idLinetracker--navBack:hover > div, #stationHandoverView--navBack:hover > div, #disruptiontrackerView--navBack:hover > div { background-color: transparent; }
 
 /**********************
 SETTINGS
@@ -142,8 +157,7 @@ TOOLBAR
 
 .sapMPIText2 { margin: 20px 0 0 8px; position: absolute; }
 
-/*#stationTrackerView--StationtrackerTitle-inner{ color: #74d2e7; text-shadow: none; padding: 0px 30px; font-size: 0.875rem }*/
-#stationTrackerView--dateButton { border-left: 1px solid #8db9ca; }
+#stationTrackerView--dateButton { border-left: 1px solid #8db9ca; margin: 0; }
 
 /********************
 WORK LIST POP OVER
@@ -301,9 +315,13 @@ KPI HEADER
 
 #stationTrackerView--selectShift.sapMSltDisabled .sapMSltLabel, #stationTrackerView--selectShift.sapMSltDisabled .sapMSltArrow { opacity: 0.5; }
 
-#stationTrackerView--selectShift-label, #stationTrackerView--selectShift-arrow, #stationTrackerView--selectUser-label, #stationTrackerView--selectUser-arrow { top: 0; bottom: 0; line-height: 3rem; }
+#stationTrackerView--selectUser:hover > label { background-color: rgba(222, 222, 222, 0.5); }
 
-#stationTrackerView--ProductionButton-inner:hover, #stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner, #stationTrackerView--DisruptionButton-inner:hover, #stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner { background-color: transparent; }
+#stationTrackerView--selectUser #stationTrackerView--selectUser-label, #stationTrackerView--selectUser #stationTrackerView--selectUser-arrow { height: calc(100% - 8px); top: 4px; line-height: 2.6rem; border-radius: 0.125rem; }
+
+#stationTrackerView--selectShift-label, #stationTrackerView--selectShift-arrow { top: 0; bottom: 0; line-height: 3rem; }
+
+#stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner, #stationTrackerView--selectUser:hover, #stationTrackerView--DisruptionButton-inner:hover, #stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner { background-color: rgba(222, 222, 222, 0.5); }
 
 #stationTrackerView--hideKPI > div { width: 125px; }
 
@@ -368,7 +386,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.shiftCss, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.offtime { display: none; }
 
-#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.dhx_matrix_now_time { min-height: 70px; border-left-color: purple; opacity: 1; }
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.dhx_matrix_now_time { min-height: 24px; border-left-color: purple; opacity: 1; }
 
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_matrix_cell, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.shiftCss { border-right: none; border-bottom: none; background-color: #ECEEEF !important; }
 
@@ -550,7 +568,7 @@ SHIFT STAFFING
 
 #stationTrackerView--shifStaffingHeader-dmc-bar-delta .sapSuiteDMCBarDeltaInt { background: #fe5000; }
 
-#stationTrackerView--shifStaffingHeader-dmc-bar-delta .sapSuiteDMCBarDeltaStripe { background-color: #74D2E7 !important; }
+#stationTrackerView--shifStaffingHeader-dmc-bar-delta .sapSuiteDMCBarDeltaStripe { background-color: #74d2e7 !important; }
 
 #stationTrackerView--shifStaffingHeader { width: 100%; }
 
@@ -567,17 +585,13 @@ SHIFT STAFFING
 /***********************************
 STATION TRACKER TOOLBAR
 ************************************/
-#stationTrackerView--buttonViewMode { height: 3rem; margin: 0; }
-
-#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable.sapMSegBBtnSel { background-color: #74D2E7; color: white; }
-
 #stationTrackerView--toolbarstationtracker { background-color: #d5f5f8 !important; }
 
 #stationTrackerView--toolbarstationtracker label { color: #0D5D76; padding: 0 0 0 0.625rem; }
 
 #stationTrackerView--toolbarstationtracker .comboBoxStyle label, #stationTrackerView--toolbarstationtracker .comboBoxStyle .sapMSltArrow { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; }
 
-#stationTrackerView--toolbarstationtracker .comboBoxStyle.sapMSltPressed .sapMSltArrow { background-color: #74D2E7; }
+#stationTrackerView--toolbarstationtracker .comboBoxStyle.sapMSltPressed .sapMSltArrow { background-color: #74d2e7; }
 
 #stationTrackerView--toolbarstationtracker .sapMBtnIconLeft, #stationTrackerView--toolbarstationtracker .sapMBtnContent { color: #0D5D76; }
 
@@ -588,6 +602,8 @@ STATION TRACKER TOOLBAR
 #stationTrackerView--toolbarstationtracker .sapMSlt { border: none; }
 
 #stationTrackerView--toolbarstationtracker .circle { color: #fe5000; margin-left: 1rem; padding: 5px; border: 1px solid #fe5000; -webkit-border-radius: 90px; }
+
+#stationTrackerView--toolbarstationtracker #stationTrackerView--selectGroup:hover:not(.sapMSltPressed), #stationTrackerView--toolbarstationtracker #stationTrackerView--selectBox:hover:not(.sapMSltPressed) { background-color: rgba(0, 86, 112, 0.2); }
 
 .sapMPopoverScroll .sapMSelectListItemBaseSelected { background-color: #d5f5f8 !important; }
 
@@ -1037,7 +1053,9 @@ BOX RESOLUTION EFFICIENCY
 
 .topPageHeader { color: white !important; background: #0f2d65 !important; border: 0; }
 
-.topPageHeader > img#globalNavView--logo { margin-right: 0; padding: 0 20px; }
+.topPageHeader > img#globalNavView--logo { margin-right: 0; padding: 0.5rem 20px; border-radius: 0.125rem; }
+
+.topPageHeader > img#globalNavView--logo:hover { background-color: rgba(222, 222, 222, 0.5); }
 
 .topPageHeader > label.pageTitle { margin-left: 20px; }
 
@@ -1143,13 +1161,9 @@ html.sap-desktop .sapMBar-CTX:not(.sapMBtnDisabled) > .sapMBtnInner.sapMBtnActiv
 
 html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon { color: #ffffff; }
 
-.customComboBox button { border: 1px solid #ccc; border-left: 0; }
+.customComboBox button { border-left: 0; }
 
-.customComboBox:hover > * { border: 1px solid #74d2e7 !important; }
-
-.customComboBox:hover > button { border-left: 0 !important; }
-
-#globalNavView--SelectLanguage-arrow { background: #0f2d65 !important; }
+#globalNavView--SelectLanguage-arrow { background: #0f2d65; }
 
 #badgeMngMyProfile-header { box-shadow: 0 0 5px #333 !important; background-color: #fff !important; z-index: 1; }
 
@@ -1185,8 +1199,6 @@ RESSOURCEPOOL
 .myForm { width: 40em !important; }
 
 @media screen and (max-width: 500px) { .myForm { width: 15em !important; } }
-
-#resourcePool--navBack .sapMBtnIcon, #resourcePool--navBack .sapMBtnContent { color: white; }
 
 #idUsersView .fixHboxItemDisplay .sapMFlexItem { width: 100%; word-break: break-all; word-break: break-word; }
 
@@ -1304,7 +1316,7 @@ RESSOURCEPOOL
 
 #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnMixed.sapMSegBBtnSel > span { color: #ffffff; }
 
-#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel { background-color: #74D2E7; color: white; }
+#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel { background-color: #74d2e7; color: white; }
 
 #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader ul { height: 3rem; margin: 0; }
 
@@ -1326,23 +1338,23 @@ RESSOURCEPOOL
 
 #resourcePool .sapMTB-Transparent-CTX.sapMTB { padding: 0; border: 0; position: relative; z-index: 1; }
 
-#resourcePool .sapMSFF { border-radius: 3em; border: 2px solid #74D2E7; color: #74D2E7; overflow: hidden; }
+#resourcePool .sapMSFF { border-radius: 3em; border: 2px solid #74d2e7; color: #74d2e7; overflow: hidden; }
 
-#resourcePool .sapMSFF input, #resourcePool .sapMSFF .sapMSFB.sapMSFS { color: #74D2E7; }
+#resourcePool .sapMSFF input, #resourcePool .sapMSFF .sapMSFB.sapMSFS { color: #74d2e7; }
 
-#resourcePool .sapMBarChild.sapMCb .sapMCbBg:not(:hover) { border: solid 0.125rem #74D2E7; }
+#resourcePool .sapMBarChild.sapMCb .sapMCbBg:not(:hover) { border: solid 0.125rem #74d2e7; }
 
 #resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > *, #resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > :first-child, #resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > :last-child { margin: 0 0 0 1px; border: 0; }
 
 #resourcePool .sapMTB-Info-CTX.sapMTB { border: none !important; padding: 0; margin-top: -1px; position: relative; z-index: 2; background: #ffffff; height: auto; }
 
-::-webkit-input-placeholder { color: #74D2E7; }
+::-webkit-input-placeholder { color: #74d2e7; }
 
-:-moz-placeholder { color: #74D2E7; opacity: 1; }
+:-moz-placeholder { color: #74d2e7; opacity: 1; }
 
-::-moz-placeholder { color: #74D2E7; opacity: 1; }
+::-moz-placeholder { color: #74d2e7; opacity: 1; }
 
-:-ms-input-placeholder { color: #74D2E7; }
+:-ms-input-placeholder { color: #74d2e7; }
 
 .deleteConfirmation { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
 
@@ -1377,13 +1389,9 @@ POLYPOLY
 
 #polypoly--polypolyimg { border-left: 1px solid #8db9ca; }
 
-#polypoly--navBack, #polypoly--navBack-inner, #polypoly--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #polypoly--navBack .sapMBtnTransparent > .sapMBtnIcon { color: #0D5D76 !important; border-right: 1px solid #8db9ca; }
-
 #polypoly .noRows.sapUiTableColRowHdr, #polypoly .sapUiTableColHdr .sapUiTableCol, #polypoly .sapUiTableColHdr .sapUiTableTr > td { border-right: 0px solid #dddddd; }
 
 #polypoly--oTablePolypoly-tableCCnt > .sapUiTableRowHdrScr { display: none; }
-
-#polypoly--oTablePolypoly-tableCCnt .sapUiTableCCnt .sapUiTableCtrlScr, .sapUiTableColHdrCnt .sapUiTableColHdrScr, [id^="polypoly"] { margin: 0; }
 
 #polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] .sapUiTableCol, #polypoly--oTablePolypoly-tableCCnt .sapUiTableTr > td, #polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] .sapUiTableTr > td, #polypoly--oTablePolypoly-tableCCnt #polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt, #polypoly--oTablePolypoly-tableCCnt #polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt .sapUiTableColHdrCnt { border: none; outline: 1px dotted transparent; }
 
@@ -1666,7 +1674,7 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 .ClassOperationDetailPopUp .sapMPageBusyCoversAll { background: #f5f5f5 !important; }
 
-.ClassOperationDetailPopUp .sapMPageBusyCoversAll > section { overflow: auto !important; }
+.ClassOperationDetailPopUp .sapMPageBusyCoversAll > section { overflow: auto !important; height: 100%; }
 
 #mes .sapMDialog:not(.theme-disabled) header { box-shadow: 0 0 5px #333; overflow: visible; background-color: #d4f1f7; color: #434343; }
 
@@ -1703,7 +1711,9 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 #idStatusView--Statutprogress { width: 95% !important; margin: 50px auto; padding: 0; }
 
-#idStatusView--progressLabel.progressLabel { margin-left: 20px; }
+#idStatusView--Statutprogress #idStatusView--operationStatus { height: 100%; }
+
+#idStatusView--Statutprogress #idStatusView--progressLabel.progressLabel { margin-left: 20px; }
 
 #idCheckListView--Checklist.Checklist { width: 95% !important; margin: 50px auto !important; padding: 0; }
 
@@ -1715,15 +1725,21 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 #operationDetailsView--operDetailNavContainer { height: calc(100% - 4.375rem - 3rem - 1rem) !important; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH { height: 100%; box-shadow: none; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH { box-shadow: none; height: 3.1rem; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH > span { top: 0; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > span { height: 3.1rem; top: 0; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH > div { height: 100%; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer { height: 3.1rem; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH > div > div { margin-top: 0; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div { margin-top: 0; }
 
-#ViewDisruptionView > .sapMPage > section { overflow: sroll !important; height: 100%; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > :not(.sapMITBDisabled) { margin: 0; padding: 0 1rem; border-radius: 0.125rem; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > :not(.sapMITBDisabled):hover { background-color: rgba(196, 196, 196, 0.5); }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > .sapMITBDisabled { cursor: default; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > .sapMITBDisabled > * { cursor: default; }
 
 #ViewDisruptionView--disrptlist { width: 95% !important; margin: 50px auto !important; padding: 0; }
 
@@ -1872,9 +1888,15 @@ Linetracker View (Main Table)
 
 #idLinetracker .classLineTrackerTable .lineTrackerContent { margin-top: 12rem; }
 
-#idLinetracker .classLineTrackerTable .toolbar { background-color: #D5F1F8 !important; border: none !important; padding: 0; /*  height: auto !important;*/ }
+#idLinetracker .classLineTrackerTable .toolbar { background-color: #D5F1F8 !important; border: none !important; padding: 0; }
 
-#idLinetracker .classLineTrackerTable table tr th, #idLinetracker td { text-align: center !important; vertical-align: middle !important; border-left: 1px solid rgba(50, 131, 154, 0.33); border-bottom: 1px solid rgba(0, 0, 0, 0.18); }
+#idLinetracker .classLineTrackerTable .toolbar > span { position: absolute; width: calc(11% - 1.76px); margin: 0 0.5%; padding: 5px 0; }
+
+#idLinetracker .classLineTrackerTable .toolbar > span:first-of-type { right: calc(17px + 24%); }
+
+#idLinetracker .classLineTrackerTable .toolbar > span.penultimateColumnTitle { right: calc(17px + 12%); }
+
+#idLinetracker .classLineTrackerTable .toolbar > span.lastColumnTitle { right: 17px; }
 
 #idLinetracker .classLineTrackerTable table tr th div { border: none !important; }
 
@@ -1928,7 +1950,7 @@ Linetracker View (Main Table)
 
 #idLinetracker #idLinetracker--linetrackerTablePercentage { font-weight: 600; }
 
-#idLinetracker .headerTextTableLinetracker { color: #1A6980; font-weight: 600; font-size: 1.1em; font-stretch: condensed; }
+#idLinetracker .headerTextTableLinetracker { color: #1A6980; font-weight: 600; font-size: 1.1em; font-stretch: condensed; text-shadow: none; }
 
 #idLinetracker .sapUiTableCnt { border-top: transparent; }
 
@@ -1938,11 +1960,15 @@ Linetracker View (Main Table)
 
 #idLinetracker span.dateTableLinetracker { color: #5F7381; font-stretch: semi-condensed; font-size: 1em; }
 
-#idLinetracker span.fontTableLinetracker { font-size: 1.4em; color: #5F7381; }
+#idLinetracker span.fontTableLinetracker { font-size: 1.1em; color: #5F7381; }
 
-#idLinetracker .taktAdherenceLinetrackerTitle { height: 3rem; border: none; border-right: 1px solid #8db9ca; border-left: 1px solid #8db9ca; background-color: transparent; color: #0D5D76; text-transform: uppercase; line-height: 3rem; font-size: 0.75em; text-shadow: none; width: 163px !important; padding: 0 25px !important; }
+#idLinetracker .taktAdherenceLinetrackerTitle { color: #0D5D76; text-transform: uppercase; font-size: 0.75em; }
 
-#idLinetracker #idLinetracker--linetrackerTable div:nth-child(2) div + div + div.sapUiTableCol { background-color: #D5F1F8; border-left: 1px solid #dddddd; }
+#idLinetracker #idLinetracker--linetrackerTable div:nth-child(2) div + div + div.sapUiTableCol { background-color: #D5F1F8; }
+
+#idLinetracker #idLinetracker--linetrackerTable-sapUiTableColHdrScr div > .sapUiMediumMarginBegin { margin-left: 0 !important; }
+
+#idLinetracker #idLinetracker--linetrackerTable-sapUiTableColHdrScr div > .sapMTB { border: none; }
 
 .stationBtns.sapMBtn > .sapMBtnInner { text-align: center !important; }
 
@@ -1961,9 +1987,9 @@ header#sapContentPopUpLinetracker-intHeader + div#sapContentPopUpLinetracker-con
 /**************************
 Custom Progress Bar
 *************************/
-.progress { height: 36px; overflow: hidden; }
+.progress { height: 30px; overflow: hidden; }
 
-.progress i { float: right; margin-top: 0.7rem; margin-right: 0.4rem; }
+.progress i { float: right; margin-top: 0.5rem; margin-right: 0.4rem; }
 
 .progress-bar-success { background-color: #84BD00 !important; }
 
@@ -2119,7 +2145,7 @@ SHIFT STAFFING
 
 #idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaInt { background: #fe5000; }
 
-#idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaStripe { background-color: #74D2E7; }
+#idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaStripe { background-color: #74d2e7; }
 
 /*******************************
 BOX RESOLUTION EFFICIENCY
@@ -2143,7 +2169,7 @@ SHIFT STAFFING for Station KPI
 
 #idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaInt { background: #fe5000; }
 
-#idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaStripe { background-color: #74D2E7; }
+#idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaStripe { background-color: #74d2e7; }
 
 /************************
 Station header KPI Styles
@@ -3543,13 +3569,13 @@ Physical Station Popover
 /********************
 Tcalendar--kpiHeaderToolbar
 *********************/
-#calendar--calendardateButton-inner { padding: 0px 30px; }
-
 #calendar--kpiHeaderToolbar > label { color: #74d2e7; text-shadow: none; padding: 0px 30px; }
 
-#calendar--kpiHeaderToolbar #calendar--calendardateButton { border-left: solid 1px #74d2e7; }
+#calendar--kpiHeaderToolbar #calendar--calendardateButton { margin-left: 5px; }
 
-#calendar--kpiHeaderToolbar #calendar--dateLabel { border-right: solid 1px #74d2e7; padding: 18px 35px 17px 20px; color: white; margin-left: -50px; }
+#calendar--kpiHeaderToolbar #calendar--dateLabel { padding: 18px 35px 17px 0px; color: white; border-right: 1px solid #74d2e7; }
+
+#calendar--teamAvaibility { height: 100%; line-height: 3rem; border-radius: 0.125rem; border-right: 1px solid #74d2e7; margin-right: 0 !important; }
 
 /********************
 TABLE
@@ -3704,15 +3730,11 @@ div#iconTabBar--header { background-color: #E0F2F4; }
 /***********************************
 STATION TRACKER TOOLBAR
 ************************************/
-#calendar--buttonViewMode { height: 3rem; margin: 0; }
-
-#calendar--buttonViewMode .sapMSegBBtnFocusable.sapMSegBBtnSel { background-color: #74D2E7; color: white; }
-
 #calendar--toolbarcalendar { background-color: #d5f5f8 !important; }
 
 #calendar--toolbarcalendar .comboBoxStyle label, #calendar--toolbarcalendar .comboBoxStyle .sapMSltArrow { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; }
 
-#calendar--toolbarcalendar .comboBoxStyle.sapMSltPressed .sapMSltArrow { background-color: #74D2E7; }
+#calendar--toolbarcalendar .comboBoxStyle.sapMSltPressed .sapMSltArrow { background-color: #74d2e7; }
 
 #calendar--toolbarcalendar .initialFont { font-style: initial; }
 
@@ -3726,7 +3748,9 @@ STATION TRACKER TOOLBAR
 
 #calendar--toolbarcalendar > label { color: #767879; text-shadow: none; font-style: italic; }
 
-#calendar--toolbarcalendar #__label5 { margin-left: 25px; }
+#calendar--toolbarcalendar > ul > li:hover:not(.sapMSegBBtnSel) { background-color: rgba(0, 86, 112, 0.2); }
+
+#calendar--toolbarcalendar #calendar--calendarRessource-label:hover:not(.sapMSltPressed) { background-color: rgba(0, 86, 112, 0.2); }
 
 .sapMPopoverScroll .sapMSelectListItemBaseSelected { background-color: #d5f5f8 !important; }
 
@@ -3823,23 +3847,27 @@ DATE PICKER
 
 #acpnglinksView--ACPnGLinks { width: 95% !important; margin: 50px auto; padding: 0; border: solid 1px #97999b; }
 
-#acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt { height: 46px !important; }
+#acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt { height: 46px !important; background-color: #0085ad; }
 
-#acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt .sapUiTableColHdrScr { border: solid 1px #97999b; background-color: #0085ad; }
+#acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt .sapUiTableColHdrScr { border: solid 1px #97999b; }
 
 #acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt .sapUiTableColHdrScr .sapUiTableCol { border-right: 1px solid white; }
 
 .ACPnGtLabel { color: white; padding-top: 8px; padding-left: inherit; }
 
-#acpnglinksView--ACPnGTreeTable-table > tbody tr:nth-child(even) { background: #fff; }
+#acpnglinksView--ACPnGTreeTable > .sapUiTableMTbr { background-color: #0085ad; }
 
-#acpnglinksView--ACPnGTreeTable-table > tbody tr:nth-child(odd) { background: #fcfcfc; }
+#acpnglinksView--ACPnGTreeTable > .sapUiTableMTbr > div * { color: white; text-shadow: none; }
 
-#acpnglinksView--ACPnGTreeTable-table > tbody tr:hover { background-color: #efefef; }
+#acpnglinksView--ACPnGTreeTable > .sapUiTableMTbr > div button:hover > div { color: #0085ad; background-color: #0f2d65; }
 
 #acpnglinksView--ACPnGTreeTable-table > tbody > tr { height: 46px; }
 
 #acpnglinksView--ACPnGTreeTable-table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; border-top: 1px solid #e5e5e5; }
+
+#acpnglinksView--ACPnGTreeTable-sapUiTableColHdrScr > .sapUiTableColHdr { height: 100%; }
+
+#acpnglinksView--ACPnGTreeTable-sapUiTableColHdrScr > .sapUiTableColHdr > div { height: 100%; }
 
 .listButtons { padding: 10px; }
 
@@ -3850,6 +3878,16 @@ DATE PICKER
 .listButtons > div:first-child span { margin-top: 1px; margin-left: 2px; }
 
 .listButtons > div:nth-child(2) span { margin-top: 1px; margin-right: 2px; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-sap-ui-level="0"] { background-color: #fbefcc; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-sap-ui-level="1"] { background-color: #cfe0e8; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-sap-ui-level="2"] { background-color: #b7d7e8; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-sap-ui-level="3"] { background-color: #87bdd8; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-sap-ui-level="4"] { background-color: #daebe8; }
 
 #idCheckListView--TabChecklist { width: 95% !important; margin: 50px auto; padding: 0; }
 
@@ -3905,7 +3943,7 @@ DATE PICKER
 
 #componentsView--ComponentsCheck.jigToolListlabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; }
 
-#componentsView--ComponentsList { height: 450px !important; }
+#componentsView--ComponentsList { height: calc(100% - 10rem - 30px); }
 
 #componentsView--ComponentsList .sapUiTableColCell { text-align: center !important; }
 
@@ -3919,11 +3957,15 @@ DATE PICKER
 
 #componentsView--ComponentsList-sapUiTableColHdrScr .sapUiTableCol { height: 43px; }
 
-#componentsView--ComponentsList-sapUiTableColHdrScr .sapUiTableCol .sapMLabel { color: white; vertical-align: middle; }
+#componentsView--ComponentsList-sapUiTableColHdrScr .sapUiTableCol .sapMLabel { color: white; vertical-align: middle; white-space: normal; }
 
 #componentsView--servicesButtonComponents { float: right; margin-right: 43px; }
 
 #componentsView--servicesButtonComponents #componentsView--btnComponentsSave { right: 5px; }
+
+#componentsView--idFilterComponent-inner { background-color: #0085ad; border-radius: 0.125rem; color: #ffffff; }
+
+#componentsView--idFilterComponent-inner:hover { background-color: #0f2d65; }
 
 #spliterWorkTracker--splitWorTra.splitWorTra { width: 100% !important; margin: 20px auto; overflow: auto; padding: 20px; }
 
@@ -3949,17 +3991,17 @@ DATE PICKER
 
 #stationHandoverView--kpiHeaderToolbar #stationHandoverView--selectMsnHandover-arrow, #stationHandoverView--kpiHeaderToolbar #stationHandoverView--selectStationHandover-arrow { padding-top: 8px; }
 
+#stationHandoverView--kpiHeaderToolbar #stationHandoverView--headerText { height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; padding-right: 1rem; }
+
 #oswDialog--oswDialog-scrollCont { padding: 0px; }
 
 .stationHandoverTile { background-color: #D5F1F8 !important; }
 
 .stationHandoverDialog { background-color: #D5F1F8; border-top: 1px solid #8db9ca; margin-top: 0.6rem; }
 
-#stationHandoverView--navBack, #stationHandoverView--navBack-inner, #stationHandoverView--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #stationHandoverView--navBack .sapMBtnTransparent > .sapMBtnIcon { color: #0D5D76 !important; }
+#stationHandoverView--searchHandover { padding: 4px 10px 4px 0; border-right: 1px solid #8db9ca; }
 
-#stationHandoverView--searchHandover { border-left: 1px solid #8db9ca; padding: 4px 10px; border-right: 1px solid #8db9ca; }
-
-#stationHandoverView--searchHandover .sapMSFF { border-radius: 1em; border: 2px solid #74D2E7; color: #74d2e7; overflow: hidden; }
+#stationHandoverView--searchHandover .sapMSFF { border-radius: 1em; border: 2px solid #74d2e7; color: #74d2e7; overflow: hidden; }
 
 #stationHandoverView--searchHandover .sapMSFB.sapMSFS { color: #74d2e7; }
 
@@ -3995,7 +4037,7 @@ DATE PICKER
 
 #stationHandoverView--headerstationhandover .sapMSltArrow { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; }
 
-#stationHandoverView--headerstationhandover.sapMSltPressed .sapMSltArrow { background-color: #74D2E7; }
+#stationHandoverView--headerstationhandover.sapMSltPressed .sapMSltArrow { background-color: #74d2e7; }
 
 #stationHandoverView--headerstationhandover .sapMSlt { border: none; height: 3rem; background-color: #d5f5f8 !important; }
 
@@ -4009,7 +4051,7 @@ DATE PICKER
 
 #stationHandoverView--insertHandOver-inner { background: none; border: none; color: #0D5D76; }
 
-#stationHandoverView--insertHandOver-inner > span { color: #0D5D76; }
+#stationHandoverView--insertHandOver-inner > span { color: #0D5D76; padding-left: 15px; }
 
 #insertOsw--insertOSW .center { margin-left: auto; margin-right: auto; display: block; }
 
@@ -4053,11 +4095,11 @@ DISRUPTIONTRACKER
 
 .disruptions .sapMPanelContent:not(.sapMPanelBGTransparent) { border-bottom: 0 !important; background-color: #e9fbfd; padding: 0; }
 
-.disruptions .sapMComboBoxTextField, .disruptions .sapMSFF { padding: 0px 12px; margin: 0; border-left: 1px solid #74D2E7; }
+.disruptions .sapMComboBoxTextField, .disruptions .sapMSFF { padding: 0px 12px; margin: 0; border-left: 1px solid #74d2e7; }
 
-.disruptions .sapMSFF { border-radius: 3em; border: 2px solid #74D2E7; color: #74D2E7; overflow: hidden; }
+.disruptions .sapMSFF { border-radius: 3em; border: 2px solid #74d2e7; color: #74d2e7; overflow: hidden; }
 
-.disruptions .sapMSFF .sapMSFB.sapMSFS { color: #74D2E7; }
+.disruptions .sapMSFF .sapMSFB.sapMSFS { color: #74d2e7; }
 
 .disruptions .disruptionsTable { width: auto !important; margin: 0.7rem 0.7rem 0 0.7rem; }
 
@@ -4075,9 +4117,7 @@ DISRUPTIONTRACKER
 
 #disruptiontrackerView--headerText-inner { color: #74d2e7; text-shadow: none; padding: 0px 30px; font-size: 0.875rem !important; line-height: 27px; }
 
-#disruptiontrackerView--navBack, #disruptiontrackerView--navBack-inner, #disruptiontrackerView--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #disruptiontrackerView--navBack .sapMBtnTransparent > .sapMBtnIcon { color: #0D5D76 !important; }
-
-#disruptiontrackerView--disruptionSearchField .sapMSFF { border-radius: 1em; border: 2px solid #74D2E7; color: #74d2e7; overflow: hidden; }
+#disruptiontrackerView--disruptionSearchField .sapMSFF { border-radius: 1em; border: 2px solid #74d2e7; color: #74d2e7; overflow: hidden; }
 
 #disruptiontrackerView--disruptionSearchField .sapMSFB.sapMSFS { color: #74d2e7; }
 
@@ -4087,11 +4127,13 @@ DISRUPTIONTRACKER
 
 #disruptiontrackerView--exportbutton-inner > span { color: #0D5D76; }
 
-#disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover { background-color: rgba(0, 86, 112, 0.2); }
+#disruptiontrackerView--toolbar #disruptiontrackerView--gotoDisruptionKpi, #disruptiontrackerView--toolbar #disruptiontrackerView--exportbutton { margin: 0; }
 
-#disruptiontrackerView--gotoDisruptionKpi.sapMBtn span { color: #0D5D76; }
+#disruptiontrackerView--toolbar #disruptiontrackerView--gotoDisruptionKpi.sapMBtn > .sapMBtnHoverable, #disruptiontrackerView--toolbar #disruptiontrackerView--exportbutton.sapMBtn > .sapMBtnHoverable { background: transparent; border: none; }
 
-#disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover > .sapMBtnHoverable, #disruptiontrackerView--gotoDisruptionKpi.sapMBtn > .sapMBtnHoverable { background-color: transparent; background: transparent; border: none; }
+#disruptiontrackerView--toolbar #disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover, #disruptiontrackerView--toolbar #disruptiontrackerView--exportbutton.sapMBtn:hover { background-color: rgba(0, 86, 112, 0.2); }
+
+#disruptiontrackerView--toolbar #disruptiontrackerView--gotoDisruptionKpi.sapMBtn span, #disruptiontrackerView--toolbar #disruptiontrackerView--exportbutton.sapMBtn span { color: #0D5D76; }
 
 #disruptiontrackerView--onDisruptionTableSettings.sapMBtn:hover { background-color: rgba(0, 86, 112, 0.2); }
 
@@ -4190,6 +4232,12 @@ DISRUPTIONTRACKER
 #disruptionDetailView .msgColor { background: transparent !important; color: #0f86ae !important; }
 
 #trackingtemplateView { height: 100% !important; overflow: auto !important; }
+
+.trackingTemplate .sapMSLITitle { font-weight: bold; }
+
+.trackingTemplate .overflowCheckBoxConfirmationNoteBar { height: 3rem; }
+
+.trackingTemplate .trackingTemplateButton { height: 3rem; }
 
 .trackingTemplate .trackingTemplateButton .sapMBtnInner.sapMBtnText.sapMBtnBack, .trackingTemplate .trackingTemplateButton .sapMBtnInner.sapMBtnText.sapMBtnIconFirst { border: none; background: transparent; color: rgba(0, 86, 112, 0.94); }
 
@@ -4293,7 +4341,9 @@ html { -ms-content-zooming: none; /* Disables zooming */ touch-action: none; /* 
 
 #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover { background-color: rgba(0, 86, 112, 0.2); }
 
-#mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover > div.sapMBtnActive { color: #ffffff; background-color: #74D2E7; }
+#mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover > div:hover { background-color: transparent; }
+
+#mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover > div.sapMBtnActive { color: #ffffff; background-color: #74d2e7; }
 
 #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) span:hover { background-color: transparent; }
 
@@ -4301,7 +4351,7 @@ html { -ms-content-zooming: none; /* Disables zooming */ touch-action: none; /* 
 
 #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) > div > span { line-height: 3rem; max-height: 3rem; }
 
-#mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] { background-color: #74D2E7; }
+#mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] { background-color: #74d2e7; }
 
 #mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"]:hover { background-color: #49a4bc; }
 
@@ -4341,17 +4391,21 @@ html { -ms-content-zooming: none; /* Disables zooming */ touch-action: none; /* 
 
 #globalNavView--SelectLanguage span, #globalNavView--SelectLanguage label, #globalNavView #globalNavView--informationButton-inner #globalNavView--informationButton-img, #globalNavView #globalNavView--homeButton-inner #globalNavView--homeButton-img { color: #74d2e7; }
 
-#globalNavView--SelectLanguage { background: #0f2d65 !important; border: 0; margin-left: 0 !important; margin-right: 0 !important; }
+#globalNavView--SelectLanguage { background: #0f2d65; border: 0; margin: 0 !important; height: 2.5rem; padding: 0.25rem 0 0.25rem 0; }
 
 #globalNavView--SelectLanguage > label { padding-right: 2rem; }
 
-#globalNavView--SelectLanguage > span#globalNavView--SelectLanguage-arrow { width: 1.8rem; }
+#globalNavView--SelectLanguage > span#globalNavView--SelectLanguage-arrow { width: 1.8rem; padding: 0.25rem 0 0.25rem 0; }
 
 #globalNavView--SelectLanguage > select { padding-right: 2rem; }
 
+#globalNavView--SelectLanguage:hover:not(.sapMSltPressed) { background-color: rgba(222, 222, 222, 0.5); border-radius: 0.125rem; }
+
+#globalNavView--SelectLanguage:hover:not(.sapMSltPressed) > span { background-color: transparent; }
+
 #globalNavView--settingsButton { background-color: #74d2e7; margin-right: 0; padding: 0.250rem; color: #ffffff; }
 
-#globalNavView--settingsButton.sapMBtn:hover { background-color: rgba(255, 255, 255, 0.2); }
+#globalNavView--settingsButton.sapMBtn:hover { background-color: #0085ad; }
 
 #globalNavView--settingsButton.sapMBtn:hover > .sapMBtnHoverable { background-color: transparent; border-color: transparent; outline: 1px dotted transparent; }
 

@@ -49,6 +49,8 @@ airbus.mes.stationtracker.util.ModelManager = {
             "spentTimedataModel", // KPI Resolution Staffing
             "taktModel",			// Start and End date for takt  
             "SplitDetailModel", // Model for Split Model
+            "dispatchFromAcpngModel", //Model for ACPGN status
+            "dispatchFromMesModel", //Model for MES status
         ]
 
         airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
@@ -68,7 +70,6 @@ airbus.mes.stationtracker.util.ModelManager = {
 
         // Load Data
         this.loadFilterUnplanned();
-        this.loadSplitModel();
 
     },
 
@@ -119,6 +120,8 @@ airbus.mes.stationtracker.util.ModelManager = {
                             .renderStationTracker();
                         airbus.mes.stationtracker.oPopoverPolypoly.close();
                     }
+                    //we reload the work tracker
+                    airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
                 },
             });
     },
@@ -153,6 +156,53 @@ airbus.mes.stationtracker.util.ModelManager = {
             console.log("no affectationModel load");
         }
         airbus.mes.stationtracker.util.AssignmentManager.computeAffectationHierarchy();
+
+    },
+
+    loadDispatchFromAcpngModel: function () {
+
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
+        var opeData = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
+
+
+        var oViewModel = sap.ui.getCore().getModel("dispatchFromAcpngModel");
+        var getUrlAcpngStatus = this.urlModel.getProperty("urlDispatchFromAcpng");
+
+        getUrlAcpngStatus = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(getUrlAcpngStatus, "$site", oData.site);
+
+        getUrlAcpngStatus = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(getUrlAcpngStatus, "$workorder", opeData.wo_no);
+
+        getUrlAcpngStatus = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(getUrlAcpngStatus, "$operation", opeData.operation_id);
+
+        oViewModel.loadData(getUrlAcpngStatus, null, true);
+
+
+    },
+
+    loadDispatchFromMesModel: function () {
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
+        var opeData = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
+
+        var oViewModel = sap.ui.getCore().getModel("dispatchFromMesModel");
+        var getUrlMesStatus = this.urlModel.getProperty("urlDispatchFromMes");
+
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(getUrlMesStatus, "$site", oData.site);
+
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(getUrlMesStatus, "$workorder", opeData.wo_no);
+
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(getUrlMesStatus, "$operation", opeData.operation_id);
+
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(getUrlMesStatus, "$sfcstep", opeData.sfc_step_ref);
+
+        oViewModel.loadData(getUrlMesStatus, null, true);
+
 
     },
 
@@ -383,14 +433,17 @@ airbus.mes.stationtracker.util.ModelManager = {
             .replaceURI(geturlressourcepool, "$station", oData.station);
         geturlressourcepool = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlressourcepool, "$msn", oData.msn);
-        oViewModel.loadData(geturlressourcepool, null, true);
+        oViewModel.loadData(geturlressourcepool, null, false);
 
     },
     onRessourcePoolLoad: function () {
 
         var aModel = sap.ui.getCore().getModel("ressourcePoolModel");
+        var MyModele = airbus.mes.shell.util.navFunctions.splitMode;
 
         if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {
+
+            var workTrackerUser = aModel.oData.Rowsets.Rowset[0].Row[0].user;
 
             aModel.oData.Rowsets.Rowset[0].Row.unshift({
                 "firstName": "No Users",
@@ -402,7 +455,15 @@ airbus.mes.stationtracker.util.ModelManager = {
                 "user": "ALL",
             });
 
+            var currentUser = sap.ui.getCore().getModel("Profile").getData().connectedUser.uniquename;
+
             aModel.oData.Rowsets.Rowset[0].Row = aModel.oData.Rowsets.Rowset[0].Row.reduce(function (field, e1) {
+
+                if (e1.user === currentUser) {
+                    //if the currentUser belong to the ressource pool list, we set if as the user to load.
+                    //otherwise, we keep the first user of the ressource pool list. 
+                    workTrackerUser = currentUser;
+                }
                 var matches = field.filter(function (e2) { return e1.user === e2.user });
                 if (matches.length === 0) {
                     field.push(e1);
@@ -410,6 +471,23 @@ airbus.mes.stationtracker.util.ModelManager = {
             }, []);
 
             sap.ui.getCore().getModel("ressourcePoolModel").refresh(true);
+
+            if (MyModele === "WorkTracker") {
+                //we load the splitModel only if we are in workTracker mode.
+                if (airbus.mes.stationtracker.util.AssignmentManager.userSelected === '%') {
+                    //if the previous user selected was "ALL USERS" we assigne the user to load at workTrackerUser
+                    airbus.mes.stationtracker.util.AssignmentManager.userSelected = workTrackerUser;
+                } else {
+                    //if the previous user selected was different 
+                    workTrackerUser = airbus.mes.stationtracker.util.AssignmentManager.userSelected;
+                }
+                sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey(workTrackerUser);
+                airbus.mes.stationtracker.util.ModelManager.loadSplitModel(workTrackerUser);
+            } else if (airbus.mes.stationtracker.util.AssignmentManager.userSelected !== "No") {
+                //if we are in station stacker mode we reset the user to --> ALL USERS in order to reload the complete station tracker list
+                airbus.mes.stationtracker.util.AssignmentManager.userSelected = '%';
+                sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey("ALL");
+            }
 
         } else {
             console.log("NO user in ressource pool");
@@ -647,11 +725,11 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
-                if (data.realHoursConfirmed.length == undefined){
-                	data.realHoursConfirmed = [data.realHoursConfirmed];
+                if (data.realHoursConfirmed.length == undefined) {
+                    data.realHoursConfirmed = [data.realHoursConfirmed];
                 }
-                if (data.plannedHoursToBeConfirmed.length == undefined){
-                	data.plannedHoursToBeConfirmed = [data.plannedHoursToBeConfirmed];
+                if (data.plannedHoursToBeConfirmed.length == undefined) {
+                    data.plannedHoursToBeConfirmed = [data.plannedHoursToBeConfirmed];
                 }
                 oViewModel.setData(data);
                 airbus.mes.stationtracker.oView.byId("chartId").setBusy(false);
@@ -879,6 +957,8 @@ airbus.mes.stationtracker.util.ModelManager = {
                     airbus.mes.stationtracker.dialogProdGroup.close();
                     airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
                 }
+                //we reload the work tracker
+                airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
             },
 
         });
@@ -1041,7 +1121,10 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (airbus.mes.stationtracker.operationDetailPopup === undefined) {
                     airbus.mes.stationtracker.operationDetailPopup = sap.ui.xmlfragment("operationDetailPopup", "airbus.mes.stationtracker.fragment.operationDetailPopup", airbus.mes.stationtracker.oView.getController());
                     airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"), "operationDetailModel");
+                    airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("dispatchFromAcpngModel"), "dispatchFromAcpngModel");
+                    airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("dispatchFromMesModel"), "dispatchFromMesModel");
                     airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
+
                 }
 
                 //spent time calculation
@@ -1134,6 +1217,10 @@ airbus.mes.stationtracker.util.ModelManager = {
                 sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
                 sap.ui.getCore().getModel("operationDetailModel").refresh();
 
+                airbus.mes.stationtracker.util.ModelManager.loadDispatchFromAcpngModel();
+                airbus.mes.stationtracker.util.ModelManager.loadDispatchFromMesModel();
+
+
                 if (airbus.mes.operationdetail === undefined) {
                     jQuery.sap.registerModulePath("airbus.mes.operationdetail",
                         "../components/operationdetail");
@@ -1169,8 +1256,11 @@ airbus.mes.stationtracker.util.ModelManager = {
                 airbus.mes.stationtracker.operationDetailPopup.open();
                 airbus.mes.operationdetail.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId + "-scrollCont");
 
+                //Load acpngLinks if no child find for the wo the button is disabled
+                airbus.mes.shell.util.navFunctions.acpnglinksDetail(airbus.mes.operationdetail.oView.getController().nav);
 
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
+
             }, 0);
         }, 0);
     },
@@ -1380,21 +1470,20 @@ airbus.mes.stationtracker.util.ModelManager = {
         return spentTime;
     },
 
-    loadSplitModel: function () {
+    loadSplitModel: function (userToLoad) {
         var splitModelURL, oViewModel, shiftSelected, userSelected, startDate, tzoffset, localISOTime;
 
         oViewModel = sap.ui.getCore().getModel("SplitDetailModel");
 
-        userSelected = airbus.mes.stationtracker.util.AssignmentManager.userSelected;
+        userSelected = userToLoad || airbus.mes.stationtracker.util.AssignmentManager.userSelected;
 
         shiftSelected = null;
         if (airbus.mes.stationtracker.util.ShiftManager.ShiftSelected && airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftName) {
             shiftSelected = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftName;
         }
 
-        startDate = null;
-        if (airbus.mes.stationtracker && airbus.mes.stationtracker.oView && airbus.mes.stationtracker.oView.oCalendar) {
-            startDate = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
+        startDate = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.StartDate;
+        if (startDate) {
             tzoffset = (startDate).getTimezoneOffset() * 60000; //offset in milliseconds
             localISOTime = (new Date(startDate - tzoffset)).toISOString().slice(0, -5);
         }

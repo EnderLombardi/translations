@@ -2,8 +2,19 @@
   height: 100% !important;
   overflow: auto !important;
 }
+
 .trackingTemplate {
+
+  .sapMSLITitle {
+    font-weight: bold;
+  }
+  .overflowCheckBoxConfirmationNoteBar {
+    height: 3rem;
+  }
+
   .trackingTemplateButton {
+    height: 3rem;
+
     .sapMBtnInner.sapMBtnText.sapMBtnBack,
     .sapMBtnInner.sapMBtnText.sapMBtnIconFirst {
       border: none;
@@ -12,7 +23,7 @@
     }
 
     .sapMBtnInner.sapMBtnText.sapMBtnIconFirst:hover {
-      background: $sapui-grey-hover
+      background: $sapui-grey-hover;
     }
 
     .sapUiIcon:before {
@@ -21,12 +32,13 @@
   }
 
   .sapMPanelBGTranslucent .sapMPanelContent {
-    margin:0;
+    margin: 0;
   }
-  
+
   .sapMInputBase.sapMTextArea {
     width: 100%;
   }
+
   .sapUiFupGroup {
     .sapUiIcon:before {
       color: $petrol;
@@ -36,11 +48,13 @@
   .reasonCodeContainer {
     .sapMPanelContent {
       display: inline-flex;
-      padding : 0 1rem;
+      padding: 0 1rem;
     }
+
     .sapMPanelContent:not(.sapMPanelBGTransparent) {
       border: 0;
     }
+
     label {
       margin: auto;
       padding-right: 10px;

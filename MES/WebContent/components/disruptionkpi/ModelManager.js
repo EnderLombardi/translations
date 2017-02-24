@@ -4,9 +4,8 @@ airbus.mes.disruptionkpi.ModelManager = {
 	urlModel : undefined,
 	
 	oFilters:{
-		line: airbus.mes.settings.ModelManager.line,
-		station: airbus.mes.settings.ModelManager.station,
-		station: airbus.mes.settings.ModelManager.station,
+		line: "",
+		station: "",
 		startDateTime: "",
 		endDateTime: "",
 		timeUnit: "Minutes"
@@ -16,14 +15,21 @@ airbus.mes.disruptionkpi.ModelManager = {
 
 	init : function(core) {
 
-		 airbus.mes.shell.ModelManager.createJsonModel(core,["TimeLostperAttribute"]);
+		 airbus.mes.shell.ModelManager.createJsonModel(core,["TimeLostperAttribute","ParetoChartModel"]);
 		
 	    // Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.disruptionkpi.config.url_config");
+		
 	},
 	
 	
 	setPreSelectionCriteria: function(){
+		
+		
+		this.oFilters.station= airbus.mes.settings.ModelManager.station;
+		this.setTaktStartTime();//Get start date time of current TAKT
+		sap.ui.getCore().byId("disruptionKPIView--endDateTime").setDateValue(new Date());
+		this.oFilters.endDateTime= sap.ui.getCore().byId("disruptionKPIView--endDateTime").getDateValue();
 		
 		// Line
 		sap.ui.getCore().byId("disruptionKPIView--lineComboBox").setSelectedKey(this.oFilters.line);
@@ -32,83 +38,128 @@ airbus.mes.disruptionkpi.ModelManager = {
 		sap.ui.getCore().byId("disruptionKPIView--stationComboBox").removeAllSelectedItems()
 		sap.ui.getCore().byId("disruptionKPIView--stationComboBox").addSelectedKeys(this.oFilters.station);
 		
-		// Period of Time
-		if(this.oFilters.startDateTime ==""){
-			sap.ui.getCore().byId("disruptionKPIView--startDateTime").setDateValue();
-			sap.ui.getCore().byId("disruptionKPIView--endDateTime").setDateValue(new Date());
-			this.oFilters.startDateTime = sap.ui.getCore().byId("disruptionKPIView--startDateTime").getDateValue();
-			this.oFilters.endDateTime   = sap.ui.getCore().byId("disruptionKPIView--endDateTime").getDateValue();
-		}else{
-			sap.ui.getCore().byId("disruptionKPIView--startDateTime").setDateValue(this.oFilters.startDateTime);
-			sap.ui.getCore().byId("disruptionKPIView--endDateTime").setDateValue(this.oFilters.endDateTime);
-		}
-
 		// Time Unit
 		sap.ui.getCore().byId("disruptionKPIView--timeUnit").setSelectedKey(this.oFilters.timeUnit);
 	},
 	
+	
+	setTaktStartTime: function() {
+
+		sap.ui.getCore().byId("disruptionKPIView--startDateTime").setBusy(true); //Set Busy Indicator
+		
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("getTaktStartTime"),
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"site": airbus.mes.settings.ModelManager.site,
+				"station": airbus.mes.settings.ModelManager.station,
+				"msn": airbus.mes.settings.ModelManager.msn
+				
+			}),
+
+			success : function(data) {
+				var dateTime = new Date(data.startTime);
+				airbus.mes.disruptionkpi.ModelManager.oFilters.startDateTime = dateTime;
+				airbus.mes.disruptionkpi.oView.byId("startDateTime").setDateValue(dateTime);
+				sap.ui.getCore().byId("disruptionKPIView--startDateTime").setBusy(false); //Set Busy Indicator
+			},
+
+			error : function(error, jQXHR) {
+				console.log(error);
+				sap.ui.getCore().byId("disruptionKPIView--startDateTime").setBusy(false); //Set Busy Indicator
+
+			}
+		});
+		
+	},
+	
+	
 	loadDisruptionKPIModel : function() {
-		airbus.mes.disruptionkpi.oView.setBusy(true); //Set Busy Indicator
+		sap.ui.getCore().byId("disruptionKPIView--idParettoCategoryReason").setBusy(true); //Set Busy Indicator
+		sap.ui.getCore().byId("disruptionKPIView--vizFrame3").setBusy(true); //Set Busy Indicator
+		sap.ui.getCore().byId("disruptionKPIView--vizFrame4").setBusy(true); //Set Busy Indicator
+		
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperAttribute");
-		var station="";
-		var msn="";
-		var status="";
-		var resolutionGroup="";
-		if(sap.ui.getCore().byId("disruptiontrackerView--stationComboBox") && sap.ui.getCore().byId("disruptiontrackerView--stationComboBox").getSelectedItem()){
-			station = sap.ui.getCore().byId("disruptiontrackerView--stationComboBox").getSelectedItem().getKey();
-		}
-		if(sap.ui.getCore().byId("disruptiontrackerView--msnComboBox") && sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getSelectedItem()){
-			msn = sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getSelectedItem().getKey();
-		}
-		if(sap.ui.getCore().byId("disruptiontrackerView--statusComboBox") && sap.ui.getCore().byId("disruptiontrackerView--statusComboBox").getSelectedItem()){
-			status = sap.ui.getCore().byId("disruptiontrackerView--statusComboBox").getSelectedItem().getKey();
-		}
-		if(sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox") && sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox").getSelectedItem()){
-			resolutionGroup = sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox").getSelectedItem().getKey();
-		}
+		
+		var oParetoModel = sap.ui.getCore().getModel("ParetoChartModel");
+				
+		var line="";
+		var aStations=[];
+		var startTime="";
+		var untilTime="";
+		
+		line = sap.ui.getCore().byId("disruptionKPIView--lineComboBox").getSelectedItem().getKey();
+		
+		aStations = sap.ui.getCore().byId("disruptionKPIView--stationComboBox").getSelectedKeys();
+		
+		startTime = sap.ui.getCore().byId("disruptionKPIView--startDateTime").getValue();
+		
+		untilTime = sap.ui.getCore().byId("disruptionKPIView--endDateTime").getValue();
+		
 		jQuery.ajax({
 			type : 'post',
 			url : this.urlModel.getProperty("getDisruptionKPIURL"),
 			contentType : 'application/json',
 			data : JSON.stringify({
+				"line" : line,
 				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : station,
-				"msn" : msn,
-				"resolutionGroup" : resolutionGroup,
-				"status" : status
+				"stations" : aStations,
 				
 			}),
 
 			success : function(data) {
-				if(typeof data == "string"){
-					data = JSON.parse(data);
-				}
 				/*to avoid array inconsistency.. as the service dosent return an array [] when only one value pair has to be returned*/
 				if(!data.msn[0]){
 					data.msn = [data.msn];
 				}
-				if(!data.category[0]){
-					data.category = [data.category];
-				}
 				if(!data.operation[0]){
 					data.operation = [data.operation];
 				}
-				if(!data.reason[0]){
-					data.reason = [data.reason];
-				}
 				oViewModel.setData(data);
-				airbus.mes.disruptionkpi.oView.setBusy(false);
+				sap.ui.getCore().byId("disruptionKPIView--vizFrame3").setBusy(false); //Remove Busy Indicator
+				sap.ui.getCore().byId("disruptionKPIView--vizFrame4").setBusy(false); //Remove Busy Indicator
 			},
 
 			error : function(error, jQXHR) {
 				console.log(error);
-				airbus.mes.disruptionkpi.oView.setBusy(false);
+				sap.ui.getCore().byId("disruptionKPIView--vizFrame3").setBusy(false); //Remove Busy Indicator
+				sap.ui.getCore().byId("disruptionKPIView--vizFrame4").setBusy(false); //Remove Busy Indicator
 				/*airbus.mes.stationtracker.oView.byId("boxSLBEfficiecy").setBusy(false);
 				airbus.mes.stationtracker.oView.byId("boxLabourEfficiency").setBusy(false);*/
 
 			}
 		});
+		
 		oViewModel.refresh();
+		
+				
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("getParetoKPIURL"),
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"site": airbus.mes.settings.ModelManager.site,
+				"line": line == "All"? "" : line,
+				"stations": aStations,
+				"startTime": startTime, //"2016-04-04T12:03:03",
+				"untilTime": untilTime //"2016-04-04T12:03:03"
+				
+			}),
+
+			success : function(data) {
+				oParetoModel.setData(data);
+				sap.ui.getCore().byId("disruptionKPIView--idParettoCategoryReason").setBusy(false); //Set Busy Indicator
+			},
+
+			error : function(error, jQXHR) {
+				console.log(error);
+				sap.ui.getCore().byId("disruptionKPIView--idParettoCategoryReason").setBusy(false); //Set Busy Indicator
+
+			}
+		});
+		
+		oParetoModel.refresh();
 	},
 
 	
@@ -147,14 +198,18 @@ airbus.mes.disruptionkpi.ModelManager = {
 	    lineBox.insertItem(lineItemAll, 0);
 	    
 	    
-
-	    /*********** Filter for Station **************/
+	    // Remove filters for Station Multi Combo box
+	    this.removeDuplicateStations();   
+	},
+	
+	
+	removeDuplicateStations: function(){
+		/*********** Filter for Station **************/
 	    var aFilters = [];
 	    
 	    if(airbus.mes.disruptionkpi.ModelManager.oFilters.line != "All")
 	    	aFilters.push(new sap.ui.model.Filter("line", "EQ", airbus.mes.disruptionkpi.ModelManager.oFilters.line)); // Filter on selected Line
         
-	    var aFilters = [];
         var aTemp = [];
         var duplicatesFilter = new sap.ui.model.Filter({
             path: "station",

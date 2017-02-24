@@ -8,17 +8,10 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 	shiftHierarchy : {},
 	shiftNoBreakHierarchy: [],
 	shiftBreakHierarchy: [],
-	showInitial : false,
 //	Define start and end date of the scheduler
 	minDate: undefined,
 	maxDate: undefined,
-	
-	//Default value grouping boxing
-	group : "COMPETENCY" ,
-	box : "OPERATION_ID",
-	// Group use for special case compute
-	specialGroup : "WORKORDER_ID",
-	
+		
 	parseShift : function()  { 
 		
 	// Tree Shift Model	
@@ -38,8 +31,8 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 	
 	oModelShift.forEach(function(el) {
 		
-		if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" || airbus.mes.calendar.util.ShiftManager.shiftIdSelected === el.poolId 
-			|| airbus.mes.calendar.util.ShiftManager.taktDisplay || airbus.mes.calendar.util.ShiftManager.takDisplay ) {
+		if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" || airbus.mes.calendar.util.ShiftManager.shiftIdSelected === el.resourcePoolId 
+			|| airbus.mes.calendar.util.ShiftManager.taktDisplay || airbus.mes.calendar.util.ShiftManager.dayDisplay) {
 
 		
 		if ( !oHierachy[el.day] ) {
@@ -125,16 +118,14 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 
 	computeCalendarHierarchy : function() {
 		
-		var oHierachy = airbus.mes.calendar.util.GroupingBoxingManager.operationHierarchy;
+		var oHierachy = airbus.mes.calendar.util.GroupingBoxingManager.operationHierarchy = {};
 		var oFormatter = airbus.mes.calendar.util.Formatter;
 		var sCstSplit = airbus.mes.calendar.util.GroupingBoxingManager.constante;
 		var oModel =  airbus.mes.calendar.oView.getModel("calendarTrackerModel");
 		var aElements2 = [];
 		var aBox = [];
 		var sPoolId = airbus.mes.calendar.util.ShiftManager.shiftIdSelected;
-		
-		// Erase hierarchy
-		oHierachy = {};
+	
 		//===============
 		// check if model full or not
 		//===============	
@@ -151,7 +142,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 			// Filtering on ressource POOL
 			if ( el.resourcePoolId === sPoolId || sPoolId === "ALL" ) {
 				// Home based
-				if ( el.loanedFrom === "null" && el.loanedTo === "null" ) {
+				if ( el.loanedFrom === "false" && el.loanedTo === "false" ) {
 					
 					var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("HomeBased");
 					

@@ -3,7 +3,7 @@
 	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:commons="sap.ui.commons">
 
-	<Page showHeader="false" class="disruptionKPI">
+	<Page id="disruptionKPIPage" showHeader="false" class="disruptionKPI">
 		<!-- <Bar id="disruptionKPITitleSubheader" class="pageHeader"> <contentLeft> 
 			<Button id="navBack" icon="sap-icon://arrow-left" text="{i18nModel>back}" press="onNavBack" 
 			type="Transparent" /> </contentLeft> <contentMiddle> <Label id="disruptionKPITitle" 
@@ -44,13 +44,14 @@
 					<Button id="navBack" icon="sap-icon://arrow-left" press="onNavBack" type="Transparent" />
 					
 					<Text text="{i18nModel>PeriodOfTime}:" class="subHeaderthemeColor sapUiTinyMarginBegin" />
-					<DateTimePicker id="startDateTime" placeholder="{i18nModel>EnterStartDateTime}" change="onChangeSelection"/>
+					<DateTimePicker id="startDateTime" placeholder="{i18nModel>EnterStartDateTime}" change="onChangeSelection" displayFormat="medium"
+							valueFormat="yyyy-MM-ddThh:mm:ss" />
 					<Text text="{i18nModel>To}" class="subHeaderthemeColor sapUiTinyMarginBegin" />
 					<DateTimePicker id="endDateTime" placeholder="{i18nModel>EnterEndDateTime}" change="onChangeSelection"/>
 					
 					<ToolbarSpacer />
 					
-					<Label text='{i18nModel>ToggleDiruptions}' design="Bold"></Label>
+					<Label text='{i18nModel>ToggleDisruptions}' design="Bold"></Label>
 					<Switch customTextOn="{i18nModel>On}" customTextOff="{i18nModel>Off}" change='onToggleDisruptions' state="true" />
 					
 				</content>
@@ -75,7 +76,7 @@
 								</viz.data:dimensions>
 								<viz.data:measures>
 									<viz.data:MeasureDefinition name="{i18nModel>TimeLost}"
-										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
+										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToUnitConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
@@ -102,7 +103,7 @@
 								</viz.data:dimensions>
 								<viz.data:measures>
 									<viz.data:MeasureDefinition name="{i18nModel>TimeLost}"
-										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
+										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToUnitConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
@@ -130,7 +131,7 @@
 								</viz.data:dimensions>
 								<viz.data:measures>
 									<viz.data:MeasureDefinition name="{i18nModel>TimeLost}"
-										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
+										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptionkpi.Formatter.msToUnitConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
@@ -157,7 +158,7 @@
 								</viz.data:dimensions>
 								<viz.data:measures>
 									<viz.data:MeasureDefinition name="{i18nModel>TimeLost}"
-										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
+										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptionkpi.Formatter.msToUnitConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>

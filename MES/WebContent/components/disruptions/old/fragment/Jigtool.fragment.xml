@@ -1,0 +1,65 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+
+	<Dialog id="jigToolSelectDialog" title="{i18nModel>Select_Jig_Tool}"
+		verticalScrolling="true" horizontalScrolling="false">
+		<content>
+			<f:SimpleForm backgroundDesign="Solid" class="formBackgroundColor"
+				layout="ResponsiveGridLayout">
+				<f:content>
+					<l:Grid defaultSpan="L12 M12 S12">
+						<l:content>
+							<Input id="customJigTool" placeholder="{i18nModel>AddNewJig_Tool}">
+								<layoutData>
+									<l:GridData span="L7 M7 S12" />
+								</layoutData>
+							</Input>
+
+							<Input id="jigToolQty" value="1">
+								<layoutData>
+									<l:GridData span="L3 M3 S12" />
+								</layoutData>
+							</Input>
+							<Button icon="sap-icon://add" press="addNewJigToolToList">
+								<layoutData>
+									<l:GridData span="L2 M2 S12" />
+								</layoutData>
+							</Button>
+						</l:content>
+					</l:Grid>
+				</f:content>
+			</f:SimpleForm>
+
+			<List id="jigToolList" mode="MultiSelect" items="{JigtoolListModel>/JigtoolList}">
+				<items>
+					<CustomListItem class="customListItemPadding">
+						<l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 M12 S12">
+							<l:content>
+								<HBox justifyContent="SpaceBetween" alignContent="SpaceBetween"
+									alignItems="Center">
+									<items>
+										<Title textAlign="Center" level="H3"
+											text="{JigtoolListModel>JigTool}">
+											<layoutData>
+												<l:GridData span="L6 M6 S12" />
+											</layoutData>
+										</Title>
+										<VBox width="20%">
+											<Label text="{i18nModel>Quantity}" />
+											<Input type="Number" width="80%" value="1" class="inputQty" />
+										</VBox>
+									</items>
+								</HBox>
+							</l:content>
+						</l:Grid>
+					</CustomListItem>
+				</items>
+			</List>
+		</content>
+		<buttons>
+			<Button text="{i18nModel>ok}" press="onjigToolValueHelpOk" />
+			<Button text="{i18nModel>cancel}" press="onjigToolValueHelpCancel" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

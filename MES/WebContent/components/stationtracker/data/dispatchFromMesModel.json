@@ -1,0 +1,48 @@
+{
+  "Rowsets": {
+    "DateCreated": "2016-10-26T08:11:57",
+    "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+    "StartDate": "2016-10-26T07:11:57+0200",
+    "EndDate": "2016-10-26T08:11:57+0200",
+    "CachedTime": "",
+    "Rowset": [
+      {
+        "Columns": {
+          "Column": [
+            {
+              "Name": "ASSIGNED",
+              "SourceColumn": "ASSIGNED",
+              "Description": "ASSIGNED",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "USER_GROUP",
+              "SourceColumn": "USER_GROUP",
+              "Description": "USER_GROUP",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "DESCRIPTION",
+              "SourceColumn": "DESCRIPTION",
+              "Description": "DESCRIPTION",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            }
+          ]
+        },
+        "Row": [
+          {
+            "ASSIGNED": "false",
+            "USER_GROUP": "user_group1",
+            "DESCRIPTION": "desc1"
+          }
+        ]
+      }
+    ]
+  }
+}

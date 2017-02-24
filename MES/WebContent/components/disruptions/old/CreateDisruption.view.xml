@@ -62,12 +62,10 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectFivemCategory" selectedKey=""
-											forceSelection="false" change="onSelectionChange"
-											items="{disruptionCategoryModel>/Rowsets/Rowset/2/Row}">
+										<Select id="selectFivemCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/2/Row}" 
+											forceSelection="false" change="onSelectionChange" selectedKey="" >
 											<items>
 												<core:Item text="{disruptionCategoryModel>CATEGORY_CLASS}" key="{disruptionCategoryModel>CATEGORY_CLASS}" />
-												
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
@@ -75,34 +73,7 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-
-
-
-								 <f:FormElement visible="false">
-									<f:label>
-										<Label required="true" text="{i18nModel>Issuer}">
-											<layoutData>
-												<l:GridData span="L2 M3 S12" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<ComboBox id="selectIssuer"
-											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }"
-											forceSelection="false">
-											<items>
-												<core:Item key="{ressourcePoolModel>user}"
-													text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}" />
-											</items>
-											<layoutData>
-												<l:GridData span="L3 M9 S12" />
-											</layoutData>
-										</ComboBox>
-									</f:fields>
-								</f:FormElement>
-
-
-								
+																
 
 								<f:FormElement>
 									<f:label>
@@ -113,9 +84,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectCategory"
-											items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-											change="onSelectionChange" forceSelection="false">
+										<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
+											change="onSelectionChange" forceSelection="true" selectedKey="DISRUPT_ASSEMBLY">
 											<items>
 												<core:Item text="{disruptionCategoryModel>DESCRIPTION}"
 													key="{disruptionCategoryModel>MESSAGE_TYPE}" />

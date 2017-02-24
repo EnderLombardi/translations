@@ -25,7 +25,7 @@ airbus.mes.qdc.Component.prototype.createContent = function() {
             id : "idCheckListView",
             viewName : "airbus.mes.qdc.Checklist",
             type : "XML",
-            height:"auto"
+            height:"100%"
         })
         airbus.mes.qdc.oView = this.oView;
 

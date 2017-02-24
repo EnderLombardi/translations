@@ -94,18 +94,10 @@ TOOLBAR
     position: absolute;
 }
 
-
-/*#stationTrackerView--StationtrackerTitle-inner{
-	    color: #74d2e7;
-    text-shadow: none;
-    padding: 0px 30px;
-    font-size: 0.875rem
-    }*/
-
 #stationTrackerView--dateButton {
     border-left: 1px solid #8db9ca;
+    margin: 0;
 }
-
 
 /********************
 WORK LIST POP OVER
@@ -424,13 +416,13 @@ KPI HEADER
 
 #stationTrackerView--kpi_header-CollapsedImg {
     right: 0;
-    color: #74d2e7;
+    color: $tiffany-blue;
     display: none;
 }
 
 #stationTrackerView--ProductionButton,
 #stationTrackerView--DisruptionButton {
-    border-right: solid 1px #74d2e7;
+    border-right: solid 1px $tiffany-blue;
     margin-right: 0;
 }
 
@@ -439,7 +431,7 @@ KPI HEADER
 }
 
 #stationTrackerView--DatePicker {
-    border-right: solid 1px #74d2e7;
+    border-right: solid 1px $tiffany-blue;
     margin-right: 0;
     .sapMInputValHelp {
         right: auto;
@@ -452,7 +444,7 @@ KPI HEADER
 }
 
 #stationTrackerView--selectShift {
-    border-left: solid 1px #74d2e7 !important;
+    border-left: solid 1px $tiffany-blue !important;
     opacity: 1;
     @extend %stationTrackerViewShiftAndUser;
     &.sapMSltDisabled {
@@ -465,22 +457,31 @@ KPI HEADER
 
 #stationTrackerView--selectUser {
     @extend %stationTrackerViewShiftAndUser;
+    &:hover {
+        >label {
+            background-color: $navy-blue-hover;
+        }
+    }
+    #stationTrackerView--selectUser-label, #stationTrackerView--selectUser-arrow {
+        height: calc(100% - 8px);
+        top: 4px;
+        line-height: 2.6rem;
+        border-radius: 0.125rem;
+    }
 }
 
 #stationTrackerView--selectShift-label,
-#stationTrackerView--selectShift-arrow,
-#stationTrackerView--selectUser-label,
-#stationTrackerView--selectUser-arrow {
+#stationTrackerView--selectShift-arrow,{
     top: 0;
     bottom: 0;
     line-height: 3rem;
 }
 
-#stationTrackerView--ProductionButton-inner:hover,
 #stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner,
+#stationTrackerView--selectUser:hover,
 #stationTrackerView--DisruptionButton-inner:hover,
 #stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner {
-    background-color: transparent;
+    background-color: $navy-blue-hover;
 }
 
 #stationTrackerView--hideKPI {
@@ -493,7 +494,7 @@ KPI HEADER
 #stationTrackerView--TeamButton-content,
 #stationTrackerView--hideKPI-img,
 #stationTrackerView--hideKPI-content {
-    color: #74d2e7 !important;
+    color: $tiffany-blue !important;
 }
 
 
@@ -653,7 +654,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
                 display: none;
             }
             &.dhx_matrix_now_time {
-                min-height: 70px;
+                min-height: 24px;//width of ylabelfolder (line parent), dhtmlx fix, defect 2581
                 border-left-color: purple;
                 opacity: 1;
             }
@@ -780,7 +781,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         &:hover {
             background-color: $cool-grey-hover;
             color: black;
-            border: 2px solid $twilight-blue;
+            border: 2px solid $tiffany-blue;
         }
     }
     .customTable table tr th,
@@ -1030,7 +1031,7 @@ TASK ADHERENCE
         vertical-align: baseline;
     }
     .KPITaktChartBlueText {
-        color: #74d2e7;
+        color: $tiffany-blue;
     }
     .KPITaktChartRightText {
         text-align: right ! important;
@@ -1146,7 +1147,7 @@ SHIFT STAFFING
         background: $blood-orange;
     }
     .sapSuiteDMCBarDeltaStripe {
-        background-color: #74D2E7 !important;
+        background-color: $tiffany-blue !important;
     }
 }
 
@@ -1176,18 +1177,7 @@ STATION TRACKER TOOLBAR
 ************************************/
 
 #stationTrackerView--buttonViewMode {
-    height: 3rem;
-    margin: 0;
-    .sapMSegBBtnFocusable,
-    .sapMSegBBtnDis {
-        @extend %sapMsegStationTracker;
-    }
-    .sapMSegBBtnFocusable {
-        &.sapMSegBBtnSel {
-            background-color: #74D2E7;
-            color: white;
-        }
-    }
+    @extend %segmentedButton;
 }
 
 #stationTrackerView--toolbarstationtracker {
@@ -1209,7 +1199,7 @@ STATION TRACKER TOOLBAR
         }
         &.sapMSltPressed {
             .sapMSltArrow {
-                background-color: #74D2E7;
+                background-color: $tiffany-blue;
             }
         }
     }
@@ -1234,6 +1224,11 @@ STATION TRACKER TOOLBAR
         padding: 5px;
         border: 1px solid $blood-orange;
         -webkit-border-radius: 90px;
+    } 
+    #stationTrackerView--selectGroup, #stationTrackerView--selectBox {
+        &:hover:not(.sapMSltPressed) {
+            background-color: $petrol-20;
+        }
     }
 }
 
@@ -1324,7 +1319,7 @@ DATE PICKER
             }
         }
         .sapMBtn {
-            background-color: $twilight-blue;
+            background-color: $tiffany-blue;
             &:hover>.sapMBtnHoverable,
             &>.sapMBtnHoverable {
                 background-color: transparent;
@@ -1379,7 +1374,7 @@ PRODUCTION GROUP POPOVER
             padding: 0.5rem 0 0.5rem 0;
         }
         .sapMTB-Info-CTX.sapMTB {
-            background: $twilight-blue;
+            background: $tiffany-blue;
             border-bottom: 1px solid $white-two;
         }
         .sapMLIB.sapMLIBSelected {
@@ -1389,7 +1384,7 @@ PRODUCTION GROUP POPOVER
             color: $navy-blue;
         }
         .sapMCbBg {
-            border: solid 0.125rem $twilight-blue;
+            border: solid 0.125rem $tiffany-blue;
             &:hover {
                 border-color: $navy-blue;
             }

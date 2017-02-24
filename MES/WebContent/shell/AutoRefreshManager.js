@@ -67,6 +67,8 @@ airbus.mes.shell.AutoRefreshManager =  {
 	             	break;
 	             case "idLinetracker" :
 	            	 refreshConfigKey = "REFRESH_LINE_TRACKER";
+	             case "stationHandoverView" :
+	            	 refreshConfigKey = "REFRESH_STATION_HANDOVER_"+airbus.mes.settings.ModelManager.station;
 	             default:
             	 
              }

@@ -287,6 +287,26 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         //reset name pop up
         sap.ui.getCore().byId("ImportOswUnplannedPopover--filterStatus").setSelectedKey("StatusAll");
 
+        //reset selectAll checkbox
+        sap.ui.getCore().byId("ImportOswUnplannedPopover--SelectAllUnpd").setSelected();
+        
+        
+        //set filter autoclosure operation 
+        sap.ui.getCore().byId("ImportOswUnplannedPopover--FilterAutoClosureOp").setSelected("true");
+        //Create oEvent corresponding to autoclosure filter process
+        var oEventAutoClosure = new sap.ui.base.Event();
+        var sValueAutoClosure =  sap.ui.getCore().byId("ImportOswUnplannedPopover--FilterAutoClosureOp").getSelected();
+        this.onFilterAutoclosure(oEventAutoClosure, sValueAutoClosure);
+        
+        
+        // Manage Grouping Selection 
+        if (sap.ui.getCore().byId("ImportOswUnplannedPopover--selectGroupingOSW").getSelectedKey() !== ""){ // if one grouping is selected
+        	var sValueGrouping = sap.ui.getCore().byId("ImportOswUnplannedPopover--selectGroupingOSW").getSelectedKey();
+        	var oEventGrouping = new sap.ui.base.Event();
+        	this.changeGroupUnplannedOsw(oEventGrouping, sValueGrouping)
+        }
+        
+        
         // delay because addDependent will do a async rerendering and the popover will immediately close without it
         jQuery.sap.delayedCall(0, this, function () {
             airbus.mes.stationtracker.ImportOswUnplannedPopover.open();
@@ -314,23 +334,37 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
         //Hide column not used in that mode SD-PPC-ST-1840
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[5].setVisible(false);
-        airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[6].setVisible(false);
-
+        airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[6].setVisible(false);       
+        
         airbus.mes.stationtracker.oswDialog.open();
-
-        //        // delay because addDependent will do a async rerendering and the popover will immediately close without it
-        //        jQuery.sap.delayedCall(0, this, function () {
-        //        	airbus.mes.stationtracker.ImportOswUnplannedPopover;
-        //
-        //        });
-
+     
     },
-
     /***************************************************************************
-     * Fire when the user close the popover of prodgroup
-     * It Reload all the operation filtered by mii regarding prodgroup send
+     * Fire on after open the pop-up of OSW
      *
      ****************************************************************************/
+	onOswOpen : function() {
+		var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
+		// Resize the width of column regarding space free
+		aColumns.forEach(function(el, indice) {
+			// Don't do auto resize blocked line it bug
+			if (indice === 1 || indice === 5 || indice === 6) {
+
+			} else {
+
+				airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
+
+			}
+
+		});
+		airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(2);
+
+	},
+    /***************************************************************************
+	 * Fire when the user close the popover of prodgroup It Reload all the
+	 * operation filtered by mii regarding prodgroup send
+	 * 
+	 **************************************************************************/
     onProdGroupSelFinish: function () {
 
         // show loading on gantt
@@ -396,7 +430,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
     },
 
     onNavBack: function (oEvent) {
-        var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
         var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
         oOperationPopover.setContentHeight("395px");
         oOperationPopover.setContentWidth("770px");
@@ -574,11 +607,79 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
     },
 
+    
+    
+			    
     /***************************************************************************
-     * Fire when selected shift value in combobox it redisplay marker of shift
-     * in the gantt
-     *
-     ****************************************************************************/
+	 * Filter autoclosure operation of OSW
+	 * 
+	 **************************************************************************/
+			onFilterAutoclosure : function(oEvent, sValue) {
+
+				var oFilters = [];
+
+				// Get others Filters or Sorters
+				var i;
+				if (sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").aFilters[0] !== undefined) {
+					var OldFilter = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").aFilters[0].aFilters;
+					var FilterLength = OldFilter.length;
+					var Value = [ "OPERATION_ID" ]; // Path Value of autoclosure
+					// filter ==> Do not save
+					// into old filters
+
+					for (i = 0; i < FilterLength; i++) {
+						if (Value.indexOf(OldFilter[i].sPath) == -1) {
+							oFilters.push(OldFilter[i]);
+						}
+						;
+					}
+				}
+
+				// Add new filter if the checkbox = true
+				if (sValue !== undefined) {
+					if (sValue == false) {
+						var autoclosureFilter = new sap.ui.model.Filter("OPERATION_ID", sap.ui.model.FilterOperator.NE, '9995');
+						oFilters.push(autoclosureFilter);
+					} else {
+						if (sap.ui.getCore().byId("ImportOswUnplannedPopover--SelectAllUnpd").getSelected()) {
+							var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1];
+							oList.selectAll();
+						}
+					}
+				} else {
+					if (oEvent.getParameter("selected") ==  false) {
+						var autoclosureFilter = new sap.ui.model.Filter("OPERATION_ID", sap.ui.model.FilterOperator.NE, '9995');
+						oFilters.push(autoclosureFilter);
+					}else {
+						if (sap.ui.getCore().byId("ImportOswUnplannedPopover--SelectAllUnpd").getSelected()) {
+							var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1];
+							oList.selectAll();
+						}
+					}
+				}
+
+				// Desactivate the filter if the checkbox = false (filter = [old
+				// filters])
+				// If the checkbox = true, we have implemented the new filter
+				// into oFilters
+
+				// Check if aMyFilter is not empty
+				if (oFilters[0] !== undefined) {
+					var oBinding = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items");
+					oBinding.filter(new sap.ui.model.Filter(oFilters, true));
+
+				} else {
+					var oBinding = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items");
+					oBinding.filter([]);
+				}
+
+			},
+    
+    /***************************************************************************
+	 * Fire when selected shift value in combobox it redisplay marker of shift
+	 * in the gantt
+	 * 
+	 **************************************************************************/
     changeShift: function () {
 
         var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
@@ -658,6 +759,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      * button
      ****************************************************************************/
     changeGroupUnplannedOsw: function (oEvent, sValue) {
+    	   	    	
         var sFilter = "";
 
         if (sValue === undefined) {
@@ -666,19 +768,36 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             sFilter = sValue;
         }
 
-        sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").bindAggregation('items', {
-            path: "WorkListModel>/",
-            template: sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
-            sorter: [new sap.ui.model.Sorter({
-                // Change this value dynamic
-                path: sFilter, //oEvt.getSource().getSelectedKey();
-                descending: false,
-                group: true,
-            }), new sap.ui.model.Sorter({
-                path: 'index',
-                descending: false
-            })]
-        });
+//        sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").bindAggregation('items', {
+//            path: "WorkListModel>/",
+//            template: sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
+//            sorter: [new sap.ui.model.Sorter({
+//                // Change this value dynamic
+//                path: sFilter, //oEvt.getSource().getSelectedKey();
+//                descending: false,
+//                group: true,
+//            }), new sap.ui.model.Sorter({
+//                path: 'index',
+//                descending: false
+//            })],
+//        filters: OldFilter
+//        });
+        
+        
+        var oSorter = [];
+        var GroupingSort = new sap.ui.model.Sorter({
+         // Change this value dynamic
+          path: sFilter, 
+          descending: false,
+          group: true,
+      });
+        oSorter.push(GroupingSort);
+        oSorter.push(new sap.ui.model.Sorter({
+            path: 'index',
+            descending: false}));
+        
+        sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").sort(oSorter);       
+        
     },
 
     /**
@@ -829,13 +948,32 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      */
     onChangeFilterOSWUnplanned: function (oEvent) {
         var aMyFilter = [];
+        
+        // Get others Filters or Sorters
+				var i;
+				
+				if (sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").aFilters[0] !== undefined) {
+					var OldFilter = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").aFilters[0].aFilters; 
+					var FilterLength = OldFilter.length;
+					var Value = ["DISRUPTION", "PAUSED", "PREVIOUSLY_STARTED", "STATE"]; // Value of Status ==> Do not save into Old Filters
+
+					for (i = 0; i < FilterLength; i++) {
+						if (Value.indexOf(OldFilter[i].sPath) == -1 ) {
+							aMyFilter.push(OldFilter[i]); // Get others filters (for example auto closure filters)
+						}
+						;
+					}
+				}       
+        
         //var sStatus;
 
         // Check the current value of the filter status
-        if (oEvent.getSource().getSelectedKey() === "StatusAll") {
-            // if status ALL, we have to remove all filter
-            sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter();
-        } else {
+				
+				// StatusAll is managed in switch case 
+//        if (oEvent.getSource().getSelectedKey() === "StatusAll") {
+//            // if status ALL, we have to remove all filter
+//            sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter();
+//        } else {
             // we apply the a filter this filter is apply directly on mii service
             switch (oEvent.getSource().getSelectedKey()) {
                 case "StatusBlocked":
@@ -871,8 +1009,14 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
                     break;
                 default:
             }
-            sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, false));
-        }
+            
+            //Check if aMyFilter is not empty
+            if (aMyFilter[0] !== undefined) {
+            sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));
+            } else {
+            sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter([]);
+            }
+//        }
 
     },
 
@@ -889,59 +1033,47 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
     selectUser: function (oEvt) {
 
-        // not used
+        //get the user selected
         var oSelected = oEvt.getSource().getSelectedItem().mProperties;
-        console.log(oSelected.key);
+
         airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 
-        // for specifique users
-        if (oSelected.key != "ALL") {
+        // for ALL users
+        if (oSelected.key === "ALL" || oSelected.key === "No") {
+            if(oSelected.key === "ALL") {
+                airbus.mes.stationtracker.util.AssignmentManager.userSelected = "%";
+            } else {
+                airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
+            }
+            airbus.mes.stationtracker.util.ModelManager.loadRessourcePool();
+            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+            airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
+            if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
+                //hide split screen if select user
+                airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+            }
+            airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
+            sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
+            airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(airbus.mes.stationtracker.splitterWorkTracker);
+            //force gantt 100% height
+            // $("#stationTrackerView--splitWorkTra").children().css('height', '100%');
 
+            if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
+                $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
+            } 
+
+        } else {
             airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
+            airbus.mes.stationtracker.util.ModelManager.loadRessourcePool();
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 
-            airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
-
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
+                airbus.mes.shell.util.navFunctions.splitMode = "WorkTracker";
+                airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Work Tracker");
                 //show split screen if select user
                 airbus.mes.shell.oView.oController.renderWorkTracker();
             }
-
-            // task with no user 
-        } else if (oSelected.key === "---") {
-
-            airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
-            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
-
-            if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
-                //hide split screen if select user
-                airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
-            }
-            sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
-            //force gantt 100% height
-            $("#stationTrackerView--splitWorkTra").children().css('height', '100%');
-
-            if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
-                $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
-            }
-
-            //for all cases
-        } else {
-
-            airbus.mes.stationtracker.util.AssignmentManager.userSelected = "%";
-            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
-
-            if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
-                //hide split screen if select user
-                airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
-            }
-            sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
-            //force gantt 100% height
-            $("#stationTrackerView--splitWorkTra").children().css('height', '100%');
-
-            if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
-                $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
-            }
+            
         }
 
 
@@ -1009,6 +1141,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         });
         // Call the operation list popup
         airbus.mes.stationtracker.util.ModelManager.openOperationDetailPopup(aModel);
+     
     },
 
 
@@ -1135,19 +1268,19 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         // special case for polypoly
         switch (airbus.mes.stationtracker.CheckQa) {
             case "UNPLANNED":
-                airbus.mes.stationtracker.CheckQa === "";
+                airbus.mes.stationtracker.CheckQa = "";
                 var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
                 airbus.mes.stationtracker.util.ModelManager.setOSW(oModel.aSFC_Step, "", true, false);
                 this.onCloseDialog(oEvent);
                 break;
             case "OSW":
-                airbus.mes.stationtracker.CheckQa === "";
+                airbus.mes.stationtracker.CheckQa = "";
                 var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
                 airbus.mes.stationtracker.util.ModelManager.setOSW(oModel.aSFC_Step, oModel.sProdGroup, true, true);
                 this.onCloseDialog(oEvent);
                 break;
             case "RESCHEDULING":
-                airbus.mes.stationtracker.CheckQa === "";
+                airbus.mes.stationtracker.CheckQa = "";
                 var oModel = airbus.mes.stationtracker;
                 airbus.mes.stationtracker.util.ModelManager.sendRescheduleRequest(true, oModel.oFinal, oModel.oInitial);
                 airbus.mes.shell.oView.getController().renderStationTracker();
@@ -1275,5 +1408,35 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 			}
 		});
 	},
+	 /**
+     * Go the the calendar view
+     */
+	onCalendarOpen: function(oEvt) {
+		
+
+		airbus.mes.shell.util.navFunctions.calendar();
+		
+	},
+	onInformation : function(oGlobalNavController){
+        if (airbus.mes.stationtracker.informationPopover === undefined) {
+            var oView = airbus.mes.stationtracker.oView;
+            airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment(
+                "informationPopover",
+                "airbus.mes.stationtracker.fragment.informationPopover",
+                oGlobalNavController
+            );
+            airbus.mes.stationtracker.informationPopover.addStyleClass("alignTextLeft");
+            oView.addDependent(airbus.mes.stationtracker.informationPopover);
+        }
+        return airbus.mes.stationtracker.informationPopover;
+
+	},
+
+    /**
+     * Print tracking template
+     */
+    printTrackingTemplate: function () {
+        airbus.mes.trackingtemplate.oView.oController.printTrackingTemplate();
+    },
 
 });

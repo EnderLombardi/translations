@@ -7,9 +7,18 @@ jQuery.sap.require("airbus.mes.components.util.Formatter");
 
 sap.ui.core.UIComponent.extend("airbus.mes.components.Component", {
 	metadata : {
-		properties : { },
+		properties : { 
+			site : undefined,
+			sfc : undefined,
+			operation : undefined,
+		},
 	}
 });
+
+airbus.mes.components.Component.prototype.init = function () {
+    // call the init function of the parent
+	sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
+};
 
 airbus.mes.components.Component.prototype.createContent = function() {
 
@@ -19,9 +28,6 @@ airbus.mes.components.Component.prototype.createContent = function() {
 
 	if (airbus.mes.components.oView === undefined) {
 		
-        // Initialize ModelManager and load needed file
-        airbus.mes.components.util.ModelManager.init(sap.ui.getCore());
-        
 		// View on XML
 		this.oView = sap.ui.view({
 			id : "componentsView",
@@ -31,6 +37,9 @@ airbus.mes.components.Component.prototype.createContent = function() {
 		})
 		airbus.mes.components.oView = this.oView;
 
+        // Initialize ModelManager and load needed file
+        airbus.mes.components.util.ModelManager.init(sap.ui.getCore());
+		
 		var i18nModel = new sap.ui.model.resource.ResourceModel({ bundleName : "airbus.mes.components.i18n.i18n" });
 		this.oView.setModel(i18nModel, "i18nComponentsModel");		
 		

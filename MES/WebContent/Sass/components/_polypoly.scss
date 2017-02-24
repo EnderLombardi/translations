@@ -3,31 +3,30 @@ POLYPOLY
 *******************/
 
 #polypoly--polypolyHeaderToolbar{
-	>label{
-color: #74d2e7;
-		    text-shadow: none;
-		    font-style: italic;
-		    padding: 15px 30px;
-		    border-right:  solid 1px #74d2e7;
-		    }
+	>label {
+        color: $tiffany-blue;
+        text-shadow: none;
+        font-style: italic;
+        padding: 15px 30px;
+        border-right:  solid 1px $tiffany-blue;
+	}
 }
 
 #polypolyPage{
-#polypolytitle.headerText{
-					  	border-right: solid 1px #74d2e7 !important;
-			   			padding: 16px 30px 16px 10px;
-}}
+    #polypolytitle.headerText{
+        border-right: solid 1px $tiffany-blue !important;
+        padding: 16px 30px 16px 10px;
+    }
+}
 
 #polypoly--polypolyimg{
 	 border-left: 1px solid #8db9ca;
 }
 
-#polypoly--navBack, #polypoly--navBack-inner, #polypoly--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #polypoly--navBack .sapMBtnTransparent > .sapMBtnIcon {
-    color: #0D5D76 !important ;
-     border-right: 1px solid #8db9ca;
-   }
+#polypoly--navBack {
+    @extend %navBack;
+}
   
-
 // Default Focus
 #polypoly .noRows.sapUiTableColRowHdr{
     @at-root &, #polypoly .sapUiTableColHdr .sapUiTableTr>td{
@@ -37,62 +36,53 @@ color: #74d2e7;
     }
 }
 #polypoly--oTablePolypoly-tableCCnt{
->.sapUiTableRowHdrScr{
+    >.sapUiTableRowHdrScr{
         display: none;
-        }
-
-.sapUiTableCCnt .sapUiTableCtrlScr{
-    @at-root &, [id^="polypoly"]{
-        @at-root &, .sapUiTableColHdrCnt .sapUiTableColHdrScr{
-            margin: 0;
-        }
     }
-}
-[id^="polypoly--oTablePolypoly-table"] .sapUiTableCol,
-.sapUiTableTr>td,
-[id^="polypoly--oTablePolypoly-table"] .sapUiTableTr>td,
-#polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt,
-#polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt .sapUiTableColHdrCnt{
-    border: none;
-    outline:1px dotted transparent;
-}
-[id^="polypoly--oTablePolypoly-table"] tr,
-.sapUiTableCnt .sapUiTableColHdrCnt{
-    @include polypolyTable();
-    @at-root [id^="polypoly--oTablePolypoly-table-fixed"]{
-        tr{
-            &:nth-child(1){
-                background-color: #f5f5f5;
+    [id^="polypoly--oTablePolypoly-table"] .sapUiTableCol,
+    .sapUiTableTr>td,
+    [id^="polypoly--oTablePolypoly-table"] .sapUiTableTr>td,
+    #polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt,
+    #polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt .sapUiTableColHdrCnt{
+        border: none;
+        outline:1px dotted transparent;
+    }
+    [id^="polypoly--oTablePolypoly-table"] tr,
+    .sapUiTableCnt .sapUiTableColHdrCnt {
+        @include polypolyTable();
+        @at-root [id^="polypoly--oTablePolypoly-table-fixed"]{
+            tr{
+                &:nth-child(1){
+                    background-color: #f5f5f5;
+                }
+            }
+        }
+        @at-root [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) {
+            @at-root &, [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(3){
+                background-color: #e9fbfd;
             }
         }
     }
-    @at-root [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2){
-        @at-root &, [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(3){
-            background-color: #e9fbfd;
-        }
+    .sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader)>td:last-child,
+    .sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3){
+        border-right: 2px solid $white-two;
     }
-}
-.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader)>td:last-child,
-.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3){
-    border-right: 2px solid $white-two;
-}
-
-.sapUiTable{
-    .sapUiTableCtrl{
-        [id^="polypoly--oTablePolypoly-rows"]{
-            &.sapUiTableRowHvr{
-                &>td{
-                    background: transparent;
+    .sapUiTable{
+        .sapUiTableCtrl{
+            [id^="polypoly--oTablePolypoly-rows"]{
+                &.sapUiTableRowHvr{
+                    &>td{
+                        background: transparent;
+                    }
                 }
             }
         }
     }
-}
-.sapMFlexItem{
-    &>[id^="__select"]{
-        border: 2px solid #ebeff4;
+    .sapMFlexItem{
+        &>[id^="__select"]{
+            border: 2px solid #ebeff4;
+        }
     }
-}
 }
 .sapUiTableColHdrScr{
     .sapUiTableColHdr{

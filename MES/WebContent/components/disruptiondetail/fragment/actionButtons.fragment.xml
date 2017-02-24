@@ -49,9 +49,9 @@
 				class="btnRadius" enabled="{Profile>/identifiedUser/permissions/WORK_DIS_CLOSE}" />
 
 
-			<!-- <Button text="{i18nModel>edit}" type="Emphasized" press="onEditDisruption" 
+			<Button text="{i18nModel>update}" type="Emphasized" press="onUpdateDisruption" 
 				width="100%" class="btnRadius" enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_EDIT}"> 
-				<layoutData> <l:GridData span="L12 M12 S12" /> </layoutData> </Button> -->
+				</Button> 
 		</f:content>
 	</f:SimpleForm>
 </core:FragmentDefinition> 

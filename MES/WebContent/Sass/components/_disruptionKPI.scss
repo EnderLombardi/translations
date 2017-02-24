@@ -25,7 +25,7 @@
 
 // CSS for filter boxes in header bar
 #disruptionKPIView--lineComboBox{
-	border-left: solid 1px $twilight-blue !important;
+	border-left: solid 1px $tiffany-blue !important;
 }
 #disruptionKPIView--lineComboBox,
 #disruptionKPIView--timeUnit{
@@ -38,7 +38,7 @@
     margin: 0;
     line-height: 3rem;
     border: 0px;
-	border-right: solid 1px $twilight-blue !important;
+	border-right: solid 1px $tiffany-blue !important;
 	margin: 0px !important;
 	
 	.sapMMultiComboBoxBorder{
@@ -92,7 +92,7 @@
     
     // CSS for Date Time Range Selection
 	#disruptionKPIView--startDateTime, #disruptionKPIView--endDateTime{
-		width: 220px !important;
+		width: 230px !important;
 			
 		input{
 			pointer-events:none; // Very import to avoid user to add value manually using keyboard

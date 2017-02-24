@@ -16,15 +16,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)) {
 			airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
 		}
-		/*
-		 * jQuery.sap.require("airbus.mes.disruptiontracker.util.personalisationService");
-		 * jQuery.sap.require("sap.m.TablePersoController") this._oTPC = new
-		 * sap.m.TablePersoController({ table:
-		 * this.getView().byId("disruptionsTable"), componentName:
-		 * "disruptiontrackerTable", persoService:
-		 * airbus.mes.disruptiontracker.util.personalisationService,
-		 * }).activate();
-		 */
 	},
 
 	/**
@@ -183,16 +174,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		}
 
 		oBinding.filter(aFilters);
-		airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();// Remove
-		// last
-		// column
 
 	},
 
 	/***************************************************************************
 	 * Open fragment for table setting options
 	 */
-	onDisruptionTableSettings : function(oEvent) {
+	/*onDisruptionTableSettings : function(oEvent) {
 		if (!this.tableSettingsDialogue) {
 			this.tableSettingsDialogue = sap.ui.xmlfragment("airbus.mes.disruptiontracker.tableSettings", this);
 			this.getView().addDependent(this.tableSettingsDialogue);
@@ -241,24 +229,15 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		sap.ui.getCore().byId("reasonFilter").addItem(reasonItemAll);
 
-	},
+	},*/
 
 	/***************************************************************************
 	 * Call Disruption KPI charts
 	 */
-	onPressDisruptionKPI : function(oEvent) {
+	/*onPressDisruptionKPI : function(oEvent) {
 		airbus.mes.shell.util.navFunctions.disruptionKPI();
-		/*
-		 * var sStation = this.getView().byId("stationComboBox")
-		 * .getSelectedKey(); // sap.ui.core.BusyIndicator.show(0);
-		 * airbus.mes.shell.util.navFunctions .disruptionKPI(sStation);
-		 */
-		// airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel(sStation);
 	},
-
-	onNavBack : function(oEvent) {
-		nav.back();
-	},
+	*/
 
 	/***************************************************************************
 	 * Open Operation Detail PopUp on table item click
@@ -271,10 +250,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if(sSelectionMode === "None"){
 			return;
 		}
-		if (oEvt.getSource().getSelectedIndices().length > 1) {
-			airbus.mes.shell.ModelManager.messageShow(this.getView().getModel("disruptiontrackerI18n").getProperty("selectOneRowOnly"));
-			return;
-		}
+		
+		//Remove clear all selections
+		this.getView().byId("disruptionsTable").clearSelection();
+
 		// set data of the selected row to Data Model
 		// binding context changed as table used is sap.ui.table
 		var sPath = oEvt.getParameters().rowBindingContext.getPath();

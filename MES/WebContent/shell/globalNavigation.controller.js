@@ -251,8 +251,14 @@ sap.ui.controller(
                     this.renderCalendarTracker();
                     //refresh
                     airbus.mes.shell.AutoRefreshManager.clearInterval();
+                    airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
 
-                    // airbus.mes.shell.AutoRefreshManager.setInterval("renderCalendarTracker");
+                    break;
+                case "stationHandoverView":
+                    this.stationHandover();
+                    //refresh
+                    airbus.mes.shell.AutoRefreshManager.clearInterval();
+                    airbus.mes.shell.AutoRefreshManager.setInterval("stationHandoverView");
 
                     break;
 
@@ -324,6 +330,7 @@ sap.ui.controller(
                     airbus.mes.resourcepool.util.ModelManager.askResourcePool();
                     airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                     airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
+                    airbus.mes.shell.oView.byId("informationButton").setVisible(true);
                     break;
                 case "idMainView":
                     airbus.mes.shell.oView.byId("homeButton").setVisible(true);
@@ -348,7 +355,7 @@ sap.ui.controller(
                     this.renderCalendarTracker();
 
                     //refresh
-                    // airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
+                    airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
                     airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
                     airbus.mes.shell.oView.byId("homeButton").setVisible(true);
@@ -359,9 +366,8 @@ sap.ui.controller(
                 case "stationHandoverView":
                     this.stationHandover(false);
 
-                    //TO DOrefresh
-                    //                          airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
-                    //                          airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+                    airbus.mes.shell.AutoRefreshManager.setInterval("stationHandoverView");
+                    airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
                     airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                     airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
@@ -399,7 +405,6 @@ sap.ui.controller(
 
             airbus.mes.calendar.util.ShiftManager.updateShift = false;
             var oModule = airbus.mes.calendar.util.ModelManager;
-            airbus.mes.shell.oView.getController().setInformationVisibility(true);
 
             // ** synchrone call **//
             oModule.loadRessourcePool();
@@ -448,7 +453,7 @@ sap.ui.controller(
                 oModule.loadAffectation();
                 airbus.mes.stationtracker.util.ShiftManager.init(airbus.mes.stationtracker.util.GroupingBoxingManager.shiftNoBreakHierarchy);
                 airbus.mes.stationtracker.util.AssignmentManager.computeAffectationHierarchy();
-
+                airbus.mes.stationtracker.util.ModelManager.loadRessourcePool();
                 // ** asynchrone call **//
                 airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
 
@@ -492,7 +497,6 @@ sap.ui.controller(
             // ** asynchrone call **//
             oModule.getTakt();
 
-            oModule.loadRessourcePool();
             oModule.loadStationTracker("I");
             oModule.loadStationTracker("U");
             oModule.loadStationTracker("O");
@@ -512,9 +516,21 @@ sap.ui.controller(
         },
 
         onInformation: function (oEvent) {
+        	var that=this;
             airbus.mes.shell.oView.addStyleClass("viewOpacity");
-
-            if (airbus.mes.stationtracker.informationPopover === undefined) {
+            var oPopover = nav.getCurrentPage().getController().onInformation(that);
+            // delay because addDependent will do a async
+            // re-rendering and the popover will immediately close
+            // without it
+            var oButton = oEvent.getSource();
+            jQuery.sap.delayedCall(0, this, function () {
+            	try{
+            	oPopover.openBy(oButton);
+            	}catch(E){
+            		oPopover.open();
+            	}
+            });
+/*            if (airbus.mes.stationtracker.informationPopover === undefined) {
                 var oView = airbus.mes.stationtracker.oView;
                 airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment(
                     "informationPopover",
@@ -532,10 +548,14 @@ sap.ui.controller(
             jQuery.sap.delayedCall(0, this, function () {
                 airbus.mes.stationtracker.informationPopover.openBy(oButton);
             });
-        },
+*/        },
 
         onCloseInformation: function () {
             airbus.mes.shell.oView.removeStyleClass("viewOpacity");
+        },
+        onCloseInformationDialog: function (oEvt) {
+        	oEvt.getSource().getParent().close();
+        	airbus.mes.shell.oView.getController().onCloseInformation();
         },
 
         /***********************************************************
@@ -819,7 +839,7 @@ sap.ui.controller(
                     airbus.mes.linetracker.oView.byId("selectLine").setValue(airbus.mes.linetracker.util.ModelManager.customLineBO.split(",")[1]);
                 }
                 airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
-                if (!sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO")) {
+                if (!sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO") || sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO")==='---') {
                     sap.ui.getCore().byId("idLinetracker--selectLine").onsapshow();
                     sap.ui.getCore().byId("idLinetracker--selectLine").setValue();
                 }

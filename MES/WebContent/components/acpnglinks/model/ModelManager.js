@@ -18,6 +18,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 		
 		// Get main model of this component, 
 		airbus.mes.shell.ModelManager.createJsonModel(core,["acpnglinksWorkOrderDetail"]);
+		
 		this.loadacpnglinksWorkOrderDetail();
 	},
 
@@ -27,9 +28,18 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	 */
 	loadacpnglinksWorkOrderDetail : function() {
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
-		oModel.loadData(this.getacpnglinksWorkOrderDetail(), null, false);
-		var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row);
-		oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
+		try {
+			
+			oModel.loadData(this.getacpnglinksWorkOrderDetail(), null, false);
+			var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row);
+			oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
+			oModel.refresh();	
+						
+		} catch(e) {
+			
+			console.log("acpngBUg");
+		};
+		
 	},
 	
 	/**
@@ -74,6 +84,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 					Zoning : nodeIn.Zoning,
 					MaterialDescription : nodeIn.MaterialDescription,
 					ATA : nodeIn.ATA,
+					Level : 0,
 					Father_Type : nodeIn.Father_Type,
 					Father_ID : nodeIn.Father_ID,
 					children : []
@@ -95,9 +106,31 @@ airbus.mes.acpnglinks.model.ModelManager = {
 				nodeMap[nodeOut.Reference] = nodeOut;
 			}
 		}
+		this.setTreeLevel(nodes,1);
 		return nodes;
-	}
+	},
 	
+	/**
+	 * Determine levels in a tree recursive
+	 */
+	setTreeLevel : function(nodes,i) {
+		i++;
+		var nodelength = 0;
+		nodelength = nodes.length
+		if (nodes.length === undefined){
+			nodes.Level = i-1;
+			for (var k = 0; k < nodes.children.length; k++){
+				this.setTreeLevel(nodes.children[k],i);
+			}
+		}else{
+			for (var j = 0; j < nodelength; j++){
+				nodes[j].Level = i-1;	
+				for (var k = 0; k < nodes[j].children.length; k++){
+					this.setTreeLevel(nodes[j].children[k],i);
+				}
+			}
+		}
+	}
 };
 
 

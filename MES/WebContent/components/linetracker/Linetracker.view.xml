@@ -13,28 +13,29 @@
 						<Label text="{i18n>lineTrackerTitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
 						<core:Icon src="sap-icon://appointment" class="headerIcons" color="#FFFFFF"></core:Icon>
 						<Label id="linetracker_dateLabel" text="" class="classDateLabel"></Label>
-<!-- 						<core:Icon src="sap-icon://history" class="headerIcons1"	color="#FFFFFF"></core:Icon> -->
-<!-- 						<Label id="linetracker_timeLabel" text=""></Label> -->
 						<ToolbarSpacer />
+
+<!-- 						<Label id="linetracker_timeLabel" text=""></Label> -->
+						
+						<!-- <Button icon="sap-icon://info"></Button> -->
 					</Toolbar>
 				</headerToolbar>
 			</Panel>
 			<uiTable:Table id="linetrackerTable" rows="{stationDataModel>/stationData}" selectionMode="None"
 				visibleRowCount="12" enableColumnReordering="false" threshold="20" noData="{i18n>NoStationsToDisplay}" >
 				<uiTable:toolbar>
-					<Toolbar class="toolbar">
+					<Toolbar id="toolbar" class="toolbar">
 						<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
 						<Title class="taktAdherenceLinetrackerTitle" text="{i18n>taktAdherence}"
 							level="H2" />
-						<ToolbarSpacer width="54%" />
-						<Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
-							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
+						<Text text="{i18n>forcastEndOfAssembly}"
+							class="headerColumnText headerTextTableLinetracker" />
 						<ToolbarSpacer width="2%" />
-						<Text text="{i18n>remainingToDo}" width="9.7%"
-							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
+						<Text text="{i18n>remainingToDo}"
+							class="headerColumnText headerTextTableLinetracker penultimateColumnTitle" />
 						<ToolbarSpacer width="2%" />
-						<Text text="{i18n>openDisruptionAndon}" width="9.7%"
-							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
+						<Text text="{i18n>openDisruptionAndon}" 
+							class="headerColumnText headerTextTableLinetracker lastColumnTitle" />
 					</Toolbar>
 				</uiTable:toolbar>
 				<uiTable:columns>
@@ -92,9 +93,15 @@
 											src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }" />
 									</control:actionIconButton> -->
 									<control:image>
+									<!-- src="{stationDataModel>imageUrl}" -->
 										<Image width="100%" 
-											error="{ path : 'stationDataModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
-											src="{ parts : ['stationDataModel>station', 'stationDataModel>msn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }"></Image>
+									          
+									        src="{ parts : ['stationDataModel>station', 'stationDataModel>msn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo'}"
+											error="airbus.mes.linetracker.util.Formatter.getErrorFlightImage"
+											 ></Image>
+											 <!-- 											src="{ parts : ['stationDataModel>station', 'stationDataModel>msn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo'}"
+											error="airbus.mes.linetracker.util.Formatter.getErrorFlightImage"
+ -->
 									</control:image>
 
 									<control:detailIconButton>
@@ -110,8 +117,7 @@
 					</uiTable:Column>
 
 					<uiTable:Column width="44%" resizable="false">
-						<FlexBox height="2.5rem" alignItems="Center"
-							justifyContent="SpaceAround">
+						<FlexBox height="2rem" alignItems="Center" margin-top="12px" justifyContent="SpaceAround">
 							<Text text="10%" />
 							<Text text="20%" />
 							<Text text="30%" />
@@ -139,9 +145,9 @@
 						<uiTable:template>
 
 							<core:Icon class="trendIconLinetracker"
-								src="{path:'stationDataModel>trend', formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendSrc'}"
+								src="{parts:['stationDataModel>trend', 'stationDataModel>status'], formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendSrc'}"
 								tooltip=" "
-								color="{path:'stationDataModel>trend', formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendColor'}" />
+								color="{parts:['stationDataModel>trend', 'stationDataModel>status'], formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendColor'}" />
 						</uiTable:template>
 					</uiTable:Column>
 

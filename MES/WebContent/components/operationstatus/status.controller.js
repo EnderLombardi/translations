@@ -16,11 +16,19 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         sap.ui.getCore().byId("operationDetailPopup--btnConfirm").detachPress(this.confirmOperation);
         sap.ui.getCore().byId("operationDetailPopup--btnActivate").detachPress(this.activateOperation);
         sap.ui.getCore().byId("operationDetailPopup--btnComplete").detachPress(this.confirmOperation);
+        sap.ui.getCore().byId("operationDetailPopup--btnAssignToObserver").detachPress(this.onAssignObserver);
 
         sap.ui.getCore().byId("operationDetailPopup--btnPause").attachPress(this.pauseOperation);
         sap.ui.getCore().byId("operationDetailPopup--btnConfirm").attachPress(this.confirmOperation);
         sap.ui.getCore().byId("operationDetailPopup--btnActivate").attachPress(this.activateOperation);
         sap.ui.getCore().byId("operationDetailPopup--btnComplete").attachPress(this.completeOperation);
+        sap.ui.getCore().byId("operationDetailPopup--btnAssignToObserver").attachPress(this.onAssignObserver);
+        
+        sap.ui.getCore().byId("idStatusView--labelAssignACPnG").setVisible(false);
+        sap.ui.getCore().byId("idStatusView--assignACPnGstatus").setVisible(false);
+        sap.ui.getCore().byId("idStatusView--labelAssignMES").setVisible(false);
+        sap.ui.getCore().byId("idStatusView--assignMESstatus").setVisible(false);
+        
     },
     /**
      * Similar to onAfterRendering, but this hook is invoked
@@ -230,6 +238,25 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         sap.ui.getCore().byId("userNameForConfirmation").setValue("");
         sap.ui.getCore().byId("passwordForConfirmation").setValue("");
     },
+    
+    
+    onAssignObserver : function(oEvent) {
+        oEvent.reset();
+        var oView = airbus.mes.operationstatus.oView;
+       
+        airbus.mes.operationdetail.ModelManager.loadDispatchModel();
+        if (!oView._dipatchDialog) {
+        	oView._dipatchDialog = sap.ui.xmlfragment("airbus.mes.operationdetail.fragments.dispatchToObserver", oView.getController());
+            oView.addDependent(oView._dipatchDialog);
+        }
+        
+        oView._dipatchDialog.open();    
+        oView.getController().onChangeLevelAssign(); 
+
+    },
+    
+
+   
 
     /***********************************************************
      * on click of go to Disruption button when status of
@@ -469,6 +496,42 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             }
         }, 1);
     },
+    
+    
+    
+    /***********************************************************
+     * Dispatch To Observer Fragment Methods
+     **********************************************************/
+    
+    onCancelDispatchObserver : function() {
+
+        var oView = airbus.mes.operationstatus.oView;
+        sap.ui.getCore().getModel("operationDetailModel").refresh();
+        oView._dipatchDialog.close();
+    },
+    
+    onChangeLevelAssign : function(){
+        var oSorter = new sap.ui.model.Sorter("USER_GROUP");
+
+        var filter, binding;
+        var level = "WO";
+     
+        // check level chosen by user
+        if (!sap.ui.getCore().byId("WOlevel").getProperty("selected"))
+        	level = "OPE";
+
+        // filter user group according level (OPE or WO)
+        filter = new sap.ui.model.Filter("LEVEL",sap.ui.model.FilterOperator.Contains , level);
+        binding = sap.ui.getCore().byId("observerSelectBox").getBinding("items");
+        binding.filter(filter,"Application");
+        binding.refresh(true);
+             
+        // sort values according description
+        sap.ui.getCore().byId("observerSelectBox").getBinding("items").sort(oSorter);
+    	
+    },
+    
+    
 
     /***********************************************************
      * ReasonCode Fragment Methods
@@ -528,17 +591,18 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
      * set Buttons on the screen according to status
      *
      **********************************************************/
-    setProgressScreenBtn : function(actionBtnStatus, activateBtnStatus, confirmBtnStatus) {
+    setProgressScreenBtn : function(actionBtnStatus, activateBtnStatus, confirmBtnStatus, assignObserver) {
         sap.ui.getCore().byId("operationDetailPopup--btnPause").setVisible(actionBtnStatus);
         sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(actionBtnStatus);
         sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(activateBtnStatus);
         sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(confirmBtnStatus);
+        sap.ui.getCore().byId("operationDetailPopup--btnAssignToObserver").setVisible(assignObserver);
     },
 
     setOperationActionButtons : function() {
 
          // Not started ever
-        if (airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/previously_start") == "true" ||
+        if (airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/previously_start") === "true" ||
             sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() ) {
 
             // Get status
@@ -549,28 +613,28 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             case airbus.mes.operationdetail.Formatter.status.notStarted:
             case airbus.mes.operationdetail.Formatter.status.paused:
 
-                this.setProgressScreenBtn(false, true, false);
+                this.setProgressScreenBtn(false, true, false, true);
                 break;
 
             case airbus.mes.operationdetail.Formatter.status.active:
 
-                this.setProgressScreenBtn(true, false, true);
+                this.setProgressScreenBtn(true, false, true, true);
                 break;
 
             case airbus.mes.operationdetail.Formatter.status.blocked:
 
-                this.setProgressScreenBtn(false, false, true);
+                this.setProgressScreenBtn(false, false, true, true);
                 break;
 
             case airbus.mes.operationdetail.Formatter.status.completed:
-                this.setProgressScreenBtn(false, false, false);
+                this.setProgressScreenBtn(false, false, false, true);
                 break;
             }
 
             return;
 
         } else {
-            this.setProgressScreenBtn(false, false, false);
+            this.setProgressScreenBtn(false, false, false, true);
             return;
         }
 

@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+    <Dialog
+        id="disruptionAckCommentDialogue">
+        <content>
+            <HBox justifyContent="Center">
+                <VBox>
+                    <HBox alignItems="Center" width="100%">
+                        <Label text="{i18nModel>promised_Date}"></Label>
+                        <DatePicker id="disruptionAckDate" valueFormat="yyyy-MM-dd"
+                            placeholder="yyyy-mm-dd" displayFormat="yyyy-MM-dd" class="sapUiSmallMarginBegin"
+                            width="100%" />
+                    </HBox>
+                    <HBox alignItems="Center" width="100%">
+                        <Label text="{i18nModel>promised_Time}"></Label>
+                        <TimePicker id="disruptionAckTime" valueFormat="HH:mm:ss"
+                            displayFormat="HH:mm:ss" placeholder="HH:mm:ss" class="sapUiSmallMarginBegin"
+                            width="100%" />
+                    </HBox>
+                    <TextArea id="disruptionAckComment" placeholder="{i18nModel>AddComment}"
+                        rows="10" cols="50" />
+                </VBox>
+            </HBox>
+            <core:InvisibleText id="disruptionAckSpathMsgRef"
+                text="" />
+            <core:InvisibleText id="disruptionAckSpath" text="" />
+
+        </content>
+
+        <buttons>
+            <Button text="{i18nModel>ok}" id="disruptionAckCommentOK"
+                press="onAcceptAckDisruptionComment" type="Transparent" />
+            <Button text="{i18nModel>cancel}" press="onCloseAckDisruptionComment" />
+        </buttons>
+
+    </Dialog>
+</core:FragmentDefinition>

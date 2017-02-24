@@ -9,19 +9,25 @@
         line-height: 3rem;
         text-transform: capitalize;
         margin-right: 0px !important;
-        border-right: solid 1px #74d2e7 !important;
+        border-right: solid 1px $tiffany-blue !important;
         background: #0f2d65 !important;
         border: 0;
-        border-left: solid 1px #74d2e7 !important;
+        border-left: solid 1px $tiffany-blue !important;
         opacity: 1;
     }
     .sapMSltLabel {
         line-height: 3rem;
-        color: #74d2e7;
+        color: $tiffany-blue;
     }
     #stationHandoverView--selectMsnHandover-arrow,
     #stationHandoverView--selectStationHandover-arrow {
         padding-top: 8px;
+    }
+    #stationHandoverView--headerText {
+        height: 3rem;
+        line-height: 3rem;
+        border-right: 1px solid #8db9ca;
+        padding-right: 1rem;
     }
 }
 
@@ -39,28 +45,21 @@
     margin-top: 0.6rem;
 }
 
-#stationHandoverView--navBack,
-#stationHandoverView--navBack-inner,
-#stationHandoverView--navBack-inner .sapMBtnTransparent > .sapMBtnIcon,
-#stationHandoverView--navBack .sapMBtnTransparent > .sapMBtnIcon {
-    color: #0D5D76 !important;
+#stationHandoverView--navBack,{
+    @extend %navBack;
 }
 
 #stationHandoverView--searchHandover {
-    border-left: 1px solid #8db9ca;
-    padding: 4px 10px;
+    padding: 4px 10px 4px 0;
     border-right: 1px solid #8db9ca;
-}
-
-#stationHandoverView--searchHandover {
     .sapMSFF {
         border-radius: 1em;
-        border: 2px solid #74D2E7;
-        color: $twilight-blue;
+        border: 2px solid $tiffany-blue;
+        color: $tiffany-blue;
         overflow: hidden;
     }
     .sapMSFB.sapMSFS {
-        color: $twilight-blue;
+        color: $tiffany-blue;
     }
 }
 
@@ -146,7 +145,7 @@
     }
     &.sapMSltPressed {
         .sapMSltArrow {
-            background-color: #74D2E7;
+            background-color: $tiffany-blue;
         }
     }
     .sapMSlt {
@@ -178,6 +177,7 @@
     color: #0D5D76;
     >span {
         color: #0D5D76;
+        padding-left: 15px;
     }
 }
 

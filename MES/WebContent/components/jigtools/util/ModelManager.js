@@ -6,7 +6,7 @@ airbus.mes.jigtools.util.ModelManager = {
 	urlModel : undefined,
 	
 	// variable for filter
-	productionOrder : "P",
+	workOrder : "P",
 	operation : "O",
 
 //	variable for operation
@@ -45,6 +45,9 @@ airbus.mes.jigtools.util.ModelManager = {
             success : function(data) {
                 if(typeof data == "string"){
                     data = JSON.parse(data);
+                }
+                if(!data.toolInfoList[0]){
+                    data.toolInfoList = [data.toolInfoList];
                 }
                 oViewModel.setData(data);
                 oViewModel.refresh();

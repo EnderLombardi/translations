@@ -18,7 +18,7 @@
 										<Label 					text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/siteDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd unshrinkable" />
 										<Label 					text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/lineDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
 							       	<ToolbarSpacer />	                   
-									<Button id="refreshTime"  		type="Transparent"									icon="sap-icon://refresh" press="refreshbtn" text="" visible="false" enabled="false" ></Button>
+									<Button id="refreshTime"  		type="Transparent"									icon="sap-icon://refresh" press="refreshbtn" text="" visible="false" enabled="true" ></Button>
 									<Button id="localDELog" press="onRemoveCookie" text="{ShellI18n>Cookie}" type="Transparent"></Button>                      
 		                         	<Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd" enabled="{Profile>/identifiedUser/permissions/PROFILE_PREF_LANG}" change="onChangeLanguage"> 
 			                           	<core:Item text="English" key="en"/>

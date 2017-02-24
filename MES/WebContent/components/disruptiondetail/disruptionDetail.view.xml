@@ -1,6 +1,6 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
-	controllerName="airbus.mes.disruptions.disruptionDetail" xmlns:html="http://www.w3.org/1999/xhtml">
+	controllerName="airbus.mes.disruptiondetail.disruptionDetail" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page enableScrolling="true" class="GenricBgColor" height="100%"
 	width="100%" showHeader="false">
 	<subHeader>
@@ -24,16 +24,16 @@
                     </Bar>
 
                     <HBox >
-                        <core:Fragment fragmentName="airbus.mes.disruptions.fragment.disruptionSummary"
+                        <core:Fragment fragmentName="airbus.mes.disruptiondetail.fragment.disruptionSummary"
                             type="XML">
                         </core:Fragment>
 
-                        <core:Fragment fragmentName="airbus.mes.disruptions.fragment.disruptionData"
+                        <core:Fragment fragmentName="airbus.mes.disruptiondetail.fragment.disruptionData"
                             type="XML">
                         </core:Fragment>
 
 
-                        <core:Fragment fragmentName="airbus.mes.disruptions.fragment.actionButtons"
+                        <core:Fragment fragmentName="airbus.mes.disruptiondetail.fragment.actionButtons"
                             type="XML">
                         </core:Fragment>
                     </HBox>

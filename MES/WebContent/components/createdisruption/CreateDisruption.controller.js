@@ -1,8 +1,8 @@
 "use strict";
 //require the base first
-jQuery.sap.require("airbus.mes.disruptions.disruptions");
+jQuery.sap.require("airbus.mes.disruptions.createDisruptions");
 
-airbus.mes.disruptions.disruptions.extend("airbus.mes.disruptions.disruptionDetail", {
+airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.CreateDisruption", {
 
 	/**
 	 * Called when a controller is instantiated and its View controls (if
@@ -27,16 +27,7 @@ airbus.mes.disruptions.disruptions.extend("airbus.mes.disruptions.disruptionDeta
 	//
 	// },
 	onInit : function() {
-
-		/*
-		 * this.getView().byId("selectreason").setSelectedKey();
-		 * this.getView().byId("selectResponsibleGrp").setSelectedKey();
-		 * this.getView().byId("selectOriginator").setSelectedKey(); if
-		 * (!sap.ui.Device.system.desktop) { this.setEnabledSelectBox(true,
-		 * false, false, false); }
-		 */
 		this.getView().byId("timeLost").setPlaceholder(airbus.mes.disruptions.Formatter.getConfigTimeFullUnit());
 	},
 
-	
 });

@@ -7,11 +7,11 @@
 
 	
 	
-	<Page id="idChecklistPage" showHeader="false" height="100%" enableScrolling="true">
+	<Page id="idChecklistPage" showHeader="false" height="100%" enableScrolling="false">
 		<content>
 		
 		<VBox id="TabChecklist" class="TabChecklist">
-			<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" class="TabChecklistTable" expandFirstLevel="true">
+			<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" class="TabChecklistTable" selectionMode="None" expandFirstLevel="true">
 				<!-- <tab:toolbar>
 					<Toolbar>
 						<Title text="{i18n>CheckListAndRecords}" />
@@ -23,7 +23,7 @@
 						<tab:template>
 						<HBox >
 							<HBox justifyContent="Begin" width="100%">
-							<Text text="{QDCModel>name}" class="AllignItem" />
+							<Text text="{QDCModel>name}" class="AllignItem" enabled="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getEnabled'}" />
 							<Label text="" class="adjustWidth"/>
 							</HBox>
 							<HBox justifyContent="End" >
@@ -47,7 +47,7 @@
 				<Button text="{i18n>QDC}" width="100%" class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"></Button>
 				</HBox>
 				<HBox justifyContent="End" >
-				<Button text="Confirm" class="ConfirmChecklist"></Button>
+				<Button text="{i18n>confirm}" class="ConfirmChecklist"></Button>
 				</HBox>
 			</HBox>
 			

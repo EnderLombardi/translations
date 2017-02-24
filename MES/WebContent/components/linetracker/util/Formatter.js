@@ -4,54 +4,12 @@ jQuery.sap.declare("airbus.mes.linetracker.util.Formatter");
 airbus.mes.linetracker.util.Formatter = {
 
 	/**
-	 * BR: SD-PPC-LT-110 To select Airline logo
-	 * 
-	 * @param {string}
-	 *            :msn
-	 * @Returns Image Url
-	 */
-	/*
-	 * selectImageToDisplay : function(msn){ var src =
-	 * airbus.mes.linetracker.util.Formatter.getAirlineImage(this.sId, msn);
-	 * return src; },
-	 */
-	/**
-	 * BR: SD-PPC-LT-110 To display Airline Logo
-	 * 
-	 * @Returns {boolean}: true
-	 */
-
-	/**
-	 * BR: SD-PPC-LT-110 To display Airline Logo
-	 * 
-	 * @param msn
-	 * @returns image url
-	 */
-	/*
-	 * getAirlineImage:function(msn){ // var urlFlightImage =
-	 * airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo"); //
-	 * var urlFlightImage =
-	 * sap.ui.getCore().getModel("airlineLogoModel").oData["Rowsets"].Rowset[0].Row[0].airline_logo_url;
-	 * var urlFlightImage =
-	 * airbus.mes.linetracker.util.Formatter.loadFlightLogo(msn); //
-	 * urlFlightImage = urlFlightImage.replace("$username",
-	 * username.toUpperCase()); // urlFlightImage =
-	 * urlFlightImage.replace("$TF", "V"); // urlFlightImage =
-	 * urlFlightImage.replace("$Application_ID", "000000000030"); //
-	 * urlFlightImage = urlFlightImage.replace("$msn", "00002");
-	 * //if(sap.ui.getCore().byId(imageId))
-	 * //sap.ui.getCore().byId(imageId).onerror =
-	 * airbus.mes.linetracker.util.Formatter.getErrorFlightImage; //
-	 * console.log(urlFlightImage); return urlFlightImage; },
-	 */
-
-	/**
 	 * BR: SD-PPC-LT-110 Get Error Airline Logo Default Logo url will be sent
 	 * 
 	 * @return ImageUrl
 	 */
-	getErrorFlightImage : function() {
-		return airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage');
+	getErrorFlightImage : function(oEvt) {
+		oEvt.oSource.setSrc(airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage'));
 
 	},
 	/**
@@ -60,13 +18,9 @@ airbus.mes.linetracker.util.Formatter = {
 	// TODO $TF, $Application_ID and $msn values to be changed
 	loadFlightLogo : function(station, msn) {
 		var that = this;
-		/*if(msn==="NA"){
-			sap.ui.getCore().byId("loadNextMSN").setText("No MSN Load");
-			sap.ui.getCore().byId("nextMsnImage").setVisible(false);
-			return;
-		}*/
-		// msn= msn.split("_")[0];//to remove the hand from msn
-		// var oViewModel = sap.ui.getCore().getModel("airlineLogoModel");
+		
+		this.setSrc(airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage'));
+
 		var url = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
 		var oResult = airbus.mes.linetracker.util.ModelManager.getProgramForMsnStation(station, msn);
 		var sProgram;
@@ -92,29 +46,11 @@ airbus.mes.linetracker.util.Formatter = {
 				try {
 					if (data.Rowsets.Rowset[0].Row[0].airline_logo_url && data.Rowsets.Rowset[0].Row[0].airline_logo_url.length != 0) {
 						var url = data.Rowsets.Rowset[0].Row[0].airline_logo_url;
-						jQuery.ajax({
-							async : true,
-							type : 'get',
-							url : data.Rowsets.Rowset[0].Row[0].airline_logo_url,
-							success : function(data) {
-								that.setSrc(url);
-							},
-							error : function() {
-								that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage())
-							}
-						});
 						that.setSrc(data.Rowsets.Rowset[0].Row[0].airline_logo_url);
-					} else {
-						that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage());
-					}// return
-					// data.Rowsets.Rowset[0].Row[0].airline_logo_url;
+					} 
 				} catch (oException) {
-					that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage());
+					that.setSrc(airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage'));
 				}
-			},
-
-			error : function(error, jQXHR) {
-				that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage());
 			}
 		});
 	},
@@ -125,11 +61,11 @@ airbus.mes.linetracker.util.Formatter = {
 	 * 
 	 * @return trend symbol
 	 */
-	stationIconTrendSrc : function(bTrend) {
-		if (bTrend == "true") {
+	stationIconTrendSrc : function(bTrend, status) {
+		if (bTrend == "true" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
 			//this.color="#84bd00";
 			return "sap-icon://up"
-		} else if (bTrend == "false") {
+		} else if (bTrend == "false" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
 			//this.color="#e4002b";
 			return "sap-icon://down"
 		} else {
@@ -144,10 +80,10 @@ airbus.mes.linetracker.util.Formatter = {
 	 * 
 	 * @return trend color
 	 */
-	stationIconTrendColor : function(bTrend) {
-		if (bTrend == "true") {
+	stationIconTrendColor : function(bTrend, status) {
+		if (bTrend == "true" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
 			return "#84bd00"
-		} else if (bTrend == "false") {
+		} else if (bTrend == "false" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
 			return "#e4002b"
 		} else {
 			return "#97999b"
@@ -253,9 +189,11 @@ airbus.mes.linetracker.util.Formatter = {
 	
 		if(status==="COMPLETE"){
 			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(completionTime);
-		}else{
+		}else if(status==="IN_PROGRESS"){
 			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(actualEndTime);
 		}
+		else
+			return;
 	},
 	/**
 	 * @param sDate

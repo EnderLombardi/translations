@@ -541,10 +541,12 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     if(airbus.mes.stationtracker !== undefined) {
                         airbus.mes.stationtracker.util.ModelManager.settings = airbus.mes.settings.ModelManager;
                     }
-
-
-                    }
-                }
+                    //Update filter of lineCalendar if we change the setting
+                    if ( airbus.mes.calendar !== undefined) {
+                    	airbus.mes.calendar.util.ShiftManager.shiftIdSelected = "ALL";
+                      }
+                 }
+              } 
             },
             /**
              * Fire when the user press confirm move to correct view.

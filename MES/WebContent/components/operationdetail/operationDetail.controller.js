@@ -141,7 +141,8 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(false);
 //                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
-                sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idTrackingTemplate").setVisible(false);
             } else {
                 sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(true);
@@ -152,6 +153,7 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idTrackingTemplate").setVisible(true);
             }
         },
 
@@ -186,11 +188,8 @@ sap.ui
                     this.tabSelected = "#operationDetailsView--idDisruption";
                     $(this.tabSelected).addClass("operationDetailTabSelected");
 
-                    airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
-                        sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
-                        sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
-                        sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-                        sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")  // Cancel Button
+                    airbus.mes.shell.util.navFunctions.viewDisruptionsList(this.nav,
+                        sap.ui.getCore().byId("operationDetailPopup--reportDisruption") // Report Disruption Button
                     );
 
                     /***************************************************
@@ -202,10 +201,7 @@ sap.ui
                         airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO, sSfcStepRef);
                         this.disruptionsFlag = true;
                     }
-
-                    /** Navigate **/
-                    this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
-
+                    
                     break;
                 case "displayOpeAttachments":
                     //tabselection
@@ -229,7 +225,7 @@ sap.ui
                     if (airbus.mes.stationtracker.ReschedulePopover === undefined) {
 
                         var oModel = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n");
-                        airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("reschedulePage", "airbus.mes.stationtracker.Reschedule", airbus.mes.stationtracker.oView.getController());
+                        airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("reschedulePage", "airbus.mes.stationtracker.fragment.Reschedule", airbus.mes.stationtracker.oView.getController());
                         airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
                         airbus.mes.stationtracker.ReschedulePopover.setModel(oModel, "i18nModel");
                         this.nav.addPage(airbus.mes.stationtracker.ReschedulePopover);
@@ -296,7 +292,7 @@ sap.ui
                     this.tabSelected = "#operationDetailsView--idACPnGLinks";
                     $(this.tabSelected).addClass("operationDetailTabSelected");
 
-                    airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
+                    //airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
                     this.nav.to(airbus.mes.acpnglinks.oView.getId());
                     airbus.mes.acpnglinks.oView.rerender();
                     break;
@@ -315,9 +311,9 @@ sap.ui
                     $(this.tabSelected).removeClass("operationDetailTabSelected");
                     this.tabSelected = "#operationDetailsView--idTrackingTemplate";
                     $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     airbus.mes.shell.util.navFunctions.tckTemplateLink(this.nav);
                     this.nav.to(airbus.mes.trackingtemplate.oView.getId());
+                    sap.ui.getCore().byId("operationDetailPopup--btnPrintTckTmplt").setVisible(true);
                     break;
 
                 default:
@@ -338,6 +334,7 @@ sap.ui
             sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(false);
+            sap.ui.getCore().byId("operationDetailPopup--btnAssignToObserver").setVisible(false);
 
             //Case "ViewDisruptionView":
             // Hide buttons
@@ -354,6 +351,9 @@ sap.ui
             // Hide buttons
             sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
 
+            //case tracking template
+            sap.ui.getCore().byId("operationDetailPopup--btnPrintTckTmplt").setVisible(false);
+
         },
 
         renderViews: function (oEvent) {
@@ -365,7 +365,7 @@ sap.ui
 
                 case "ViewDisruptionView":
                     /** Set buttons visibility ****/
-                    airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
+                    airbus.mes.disruptionslist.oView.oController.turnOnOffButtons();
                     break;
 
                 case "createDisruptionView":
@@ -374,7 +374,7 @@ sap.ui
                      *  Set buttons visibility
                      *****************************/
                     // In case of Update of Disruption
-                    if (sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined) {
+                    if (sap.ui.getCore().getModel("DisruptionDetailModel").getData().MessageType != undefined) {
 
                         // set buttons according to update disruption
                         sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(true);
@@ -394,7 +394,7 @@ sap.ui
                     airbus.mes.jigtools.oView.oController.checkSettingJigsTools();
                     break;
                 case "ncdisplayView":
-                    airbus.mes.ncdisplay.oView.oController.defaultSelectNcDisplay();
+                    airbus.mes.ncdisplay.oView.oController.checkSettingNCDisplay();
                     break;
                 case "componentsView":
                     airbus.mes.components.oView.oController.checkSettingComponents();

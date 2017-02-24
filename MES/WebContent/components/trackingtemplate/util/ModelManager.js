@@ -33,6 +33,9 @@ airbus.mes.trackingtemplate.util.ModelManager = {
 
     },
 
+    /**
+     * Refresh all the data of tracking template
+     */
     refreshTrackingTemplateModel: function () {
         var oViewModel = sap.ui.getCore().getModel("TrackingTemplate");
         var reasonCodeModel = sap.ui.getCore().getModel("reasonCodeModel");
@@ -40,12 +43,20 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         this.loadReasonCodeData(reasonCodeModel, "getReasonCodes");
     },
 
+    /**
+     * whenever user click on tab or send a note, it's call loadTrackingTemplateModel to refresh page and data
+     */
     loadTrackingTemplateModel: function () {
         this.refreshTrackingTemplateModel();
+        airbus.mes.trackingtemplate.oView.oController.unBoxAllSelectedBox();
         airbus.mes.trackingtemplate.oView.oController.hideCommentBox();
         airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
+
     },
 
+    /**
+     * Call the service to update data
+     */
     loadTrackingTemplateData: function (oViewModel, model) {
 
         jQuery.ajax({
@@ -57,7 +68,13 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
+
+                if (data.Rowsets.Rowset[0] && data.Rowsets.Rowset[0].Row) {
+                    data.Rowsets.Rowset[0].Row = airbus.mes.trackingtemplate.util.ModelManager.sortArrayByOperationAndDate(data.Rowsets.Rowset[0].Row);
+                }
+
                 oViewModel.setData(data);
+                airbus.mes.trackingtemplate.oView.oController.initNotesList();
             },
 
             error: function (error, jQXHR) {
@@ -65,6 +82,98 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             }
         });
     },
+
+    /**
+     * sort array by created date time
+     */
+    sortByCreatedDateTime: function (array) {
+        array.sort(function (a, b) {
+            if (a.Created_Date_Time < b.Created_Date_Time) {
+                return 1;
+            }
+            return 0;
+        });
+    },
+
+    /**
+     * we order the array by grouping the items by operation (beginning string of Production_Context_GBO)
+     * we place ShopOrderBo at the top of the array
+    */
+    sortByOperation: function (array, regex) {
+        array.sort(function (a, b) {
+            if (a.Production_Context_GBO === b.Production_Context_GBO) {
+                return 0;
+            };
+            if (b.Production_Context_GBO.toUpperCase().startsWith("SHOPORDERBO")) {
+                return 2;
+            }
+            if (a.Production_Context_GBO.toUpperCase().startsWith("SHOPORDERBO")) {
+                return -2;
+            }
+            if (regex.exec(a.Production_Context_GBO) && regex.exec(b.Production_Context_GBO)) {
+                if (regex.exec(a.Production_Context_GBO)[1] < regex.exec(b.Production_Context_GBO)[1]) {
+                    return -1;
+                }
+                if (regex.exec(a.Production_Context_GBO)[1] > regex.exec(b.Production_Context_GBO)[1]) {
+
+                    return 1;
+                }
+            }
+            return 0;
+        });
+    },
+    /**
+     * sort Array by operation adn date
+     */
+    sortArrayByOperationAndDate: function (array) {
+
+        var index, len, previousRow, regex;
+        // regex in order to catch the operation number
+        regex = /-([^,]*)/;
+        //we order the array by Created_Date_Time
+        this.sortByCreatedDateTime(array);
+        //we order the array by grouping the items by operation (beginning string of Production_Context_GBO)
+        //we place ShopOrderBo at the top of the array
+        this.sortByOperation(array, regex);
+
+        index = 1;
+        len = array.length;
+        //we update the user first name to show only the first letter.
+        array[0]["User_First_Name"] = array[0]["User_First_Name"].substring(0, 1);
+        array[0].lastOperationNote = true;
+        previousRow = array[0];
+
+        //We sort the array in order to have ShopOrderBo at the top
+        //we need to reach to the first element which is not a ShopOrderBO
+        for (; index < len; index += 1) {
+            //we update the user first name to show only the first letter. 
+            array[index]["User_First_Name"] = array[index]["User_First_Name"].substring(0, 1);
+            if (!previousRow.Production_Context_GBO.toUpperCase().startsWith("SHOPORDERBO")) {
+                previousRow.lastOperationNote = true;
+                var operationNumber = regex.exec(previousRow.Production_Context_GBO)[1];
+                previousRow.operationNumber = operationNumber || '';
+                break;
+            }
+            previousRow = array[index];
+        }
+        //we add the attribute lastOperationNote to each item of the array. This attribute is set to true 
+        //for each most recent confirmation note of a group of operation(Production_Context_GBO)
+        for (; index < len; index += 1) {
+            //we update the user first name to show only the first letter. 
+            array[index]["User_First_Name"] = array[index]["User_First_Name"].substring(0, 1);
+            var operationNumber = regex.exec(array[index].Production_Context_GBO)[1];
+            array[index].operationNumber = operationNumber || '';
+            if (regex.exec(previousRow.Production_Context_GBO)[1] !== regex.exec(array[index].Production_Context_GBO)[1]) {
+                array[index].lastOperationNote = true;
+            } else {
+                array[index].lastOperationNote = false;
+            }
+            previousRow = array[index];
+        }
+        return array;
+
+    },
+
 
     loadReasonCodeData: function (oViewModel, model) {
 
@@ -93,7 +202,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         var trackingTemplateUrl = this.urlModel.getProperty(model);
         var site = airbus.mes.settings.ModelManager.site;
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
-            trackingTemplateUrl, "$site", airbus.mes.settings.ModelManager.site);
+            trackingTemplateUrl, "$site", site);
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
             trackingTemplateUrl, "$workOrder", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no);
         console.log(trackingTemplateUrl.toString());
@@ -135,9 +244,9 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         return totalPartialConfirmationUrl;
     },
 
-/***************************************************************************
- * Show Message Toast
- **************************************************************************/
+    /***************************************************************************
+     * Show Message Toast
+     **************************************************************************/
     messageShow: function (text, duration) {
         if (typeof duration == "undefined")
             duration = 3000;
@@ -158,8 +267,5 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         });
 
     },
-
-
-
 
 };

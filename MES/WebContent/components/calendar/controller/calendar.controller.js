@@ -23,9 +23,10 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.util.ShiftManager.shiftDisplay = true;
         airbus.mes.calendar.util.ShiftManager.dayDisplay = false;
         airbus.mes.calendar.util.ShiftManager.taktDisplay = false;
+        airbus.mes.calendar.oView.byId("calendardateButton").setEnabled(true);
 
         calendar.matrix['timeline'].x_unit = 'minute';
-        calendar.matrix['timeline'].x_step = 30;
+        calendar.matrix['timeline'].x_step = 60;
         calendar.matrix['timeline'].x_date = '%H:%i';
         calendar.templates.timeline_scale_date = function(date) {
             var func = calendar.date.date_to_str(calendar.matrix['timeline'].x_date);
@@ -36,7 +37,9 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
             $("select[class='selectBoxStation']").eq(i).remove();
         }
 
-        calendar.updateView();
+        airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
 
     },
 
@@ -50,6 +53,8 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.util.ShiftManager.shiftDisplay = false;
         airbus.mes.calendar.util.ShiftManager.dayDisplay = true;
         airbus.mes.calendar.util.ShiftManager.taktDisplay = false;
+        airbus.mes.calendar.oView.byId("calendardateButton").setEnabled(true);
+
 
 
         calendar.matrix['timeline'].x_unit = 'minute';
@@ -66,23 +71,14 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.oView.byId("buttonViewMode").rerender();
         airbus.mes.calendar.oView.byId("buttonViewMode").setSelectedKey("day");
         
-     //   if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" ) {
-        	
-            calendar.updateView();
-        	
-//        } else  {
-//        	
-//        	airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
-//	    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
-//	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
-//        	
-//        }
-        
-        
+        airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
+
     },
     
     /***************************************************************************
-     * Display the calendar in view mode "Takt" all shift of the day are represented
+     * Display the calendar in view mode "Takt" all shift of the takt are represented
      * and the step of calendar is set to 60min if takt < one day and step is
      * one day if takt is over one day
      *
@@ -92,6 +88,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.util.ShiftManager.shiftDisplay = false;
         airbus.mes.calendar.util.ShiftManager.dayDisplay = false;
         airbus.mes.calendar.util.ShiftManager.taktDisplay = true;
+        airbus.mes.calendar.oView.byId("calendardateButton").setEnabled(false);
         
         var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart)
        
@@ -119,20 +116,10 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         // Need this to update selected view and dont brake the behaviour of overflowtoolbar not needed if use Toolbar
         airbus.mes.calendar.oView.byId("buttonViewMode").rerender();
         airbus.mes.calendar.oView.byId("buttonViewMode").setSelectedKey("takt");
-       
-//        if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" ) {
-        	
-            calendar.updateView();
-        	
-//        } else  {
-        	
-//        	airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
-//	    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
-//	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
-        	
-//       }
-        
 
+        airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
     },
     
 	 datePick : function() {
@@ -155,8 +142,6 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	     * Update the scheduler view When selected a new Date in the Date picker check also
 	     * if the date selected is not in the shift hierarchy it display no shift exist
 	     * 
-	     * @returns {Obejct} Message Toast
-	     *
 	     ****************************************************************************/
 	    dateSelected : function(){
 //	        Check if current selected date corresponds to range of shift date
@@ -228,7 +213,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	    	var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern : "dd MMM yyyy",calendarType : sap.ui.core.CalendarType.Gregorian
 	     });
 	     var oText = airbus.mes.calendar.oView.byId("dateLabel");
-	     oText.setText(oFormatddMMyyy.format(oDate));	
+	     oText.setText(oFormatddMMyyy.format(oDate));
 			}
 		}, 
 	    /***************************************************************************

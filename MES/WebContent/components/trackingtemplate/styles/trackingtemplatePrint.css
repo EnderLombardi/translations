@@ -1,0 +1,76 @@
+body,
+html {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.sapMSLIDiv {
+  display: flex;
+  width: 100%;
+  height: 3rem;
+  border-bottom: 1px solid #e5e5e5;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.sapMSLITitleOnly {
+  -webkit-flex: 1 0 0;
+  flex: 1 0 0;
+}
+
+.sapMSLIDescriptionDiv {
+  -webkit-flex: 2 0 0;
+  flex: 2 0 0;
+}
+
+.sapMSLIInfo .sapMSLIInfoNone {
+  -webkit-flex: 1 0 0;
+  flex: 1 0 0;
+}
+
+.sapMBtn {
+  display: none;
+}
+
+h1 {
+  font-weight: normal;
+
+}
+
+#trackingtemplateView--showOnlyNotConfirmedConfirmationNote {
+  padding: 10px;
+  display: inline-flex;
+}
+#trackingtemplateView--showOnlyLastConfirmationNote {
+  padding: 10px;
+  display: inline-flex;
+}
+
+#trackingtemplateView--showOnlyLastWONote-CbBg {
+  display: inline-block;
+}
+
+#trackingtemplateView--showOnlyLastWONote {
+  align-items: center;
+  display: flex;
+  color:#666666;
+  border-bottom: 1px solid #cccccc;
+  padding:10px;
+}
+
+#trackingtemplateView--commentBox {
+  display: none;
+}
+
+.overflowCheckBoxConfirmationNoteBar {
+  display: inline-flex;
+  color:#666666;
+  border-bottom: 1px solid #cccccc;
+  padding: 10px;
+}

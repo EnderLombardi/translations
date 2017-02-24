@@ -18,9 +18,7 @@
 
 						<m:Select id="selectStationHandover" visible="false" class="comboStationHandover"
 							change="changeShift"
-							items="{ path : 'msnModel>/' , sorter : {
-            path : 'text' , descending : 'false'            
-         } }">
+							items="{ path : 'msnModel>/' , sorter : {path : 'text' , descending : 'false'} }">
 							<core:Item key="{selectMSN>key}" text="{TrackerShift>shiftName}" />
 						</m:Select>
 						<m:Select id="selectMsnHandover" class="comboStationHandover"
@@ -105,13 +103,13 @@
 							<m:Label text="{path:'oswModel>FROZEN_LIST' , formatter:'airbus.mes.stationHandover.util.Formatter.colorTracking'}" />
 						</template>
 					</Column>
-					<Column autoResizable="true" width="5rem">
+					<Column autoResizable="true" width="7rem">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>RemainingTime}" />
 						<template>
 							<m:Label text="{oswModel>REMAINING_TIME}" />
 						</template>
 					</Column>
-					<Column autoResizable="true" width="5rem">
+					<Column autoResizable="true" width="7rem">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Confirmation}" />
 						<template>
 							<m:Label text="{oswModel>CONFIRMATION}" />

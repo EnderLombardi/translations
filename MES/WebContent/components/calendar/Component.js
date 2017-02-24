@@ -11,7 +11,6 @@ jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_timeline");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_treetimeline");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_units");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_drag_between");
-jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_tooltip");
 
 jQuery.sap.declare("airbus.mes.calendar.Component");
 

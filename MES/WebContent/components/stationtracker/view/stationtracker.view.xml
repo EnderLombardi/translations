@@ -21,9 +21,7 @@
 										<Label text="" 	id="StationtrackerTitle" class="headerText sapUiSmallMarginBeginEnd" />
 										<Button id="dateButton" icon="sap-icon://appointment" type="Transparent" tooltip="{StationTrackerI18n>Calendar}"
 											press="datePick" class="classDateButton" text="03 Feb 2017"/>
-<!-- 										<Label id="dateLabel" text="" class="classDateLabel" /> -->
-										<Select id="selectShift"
-											class="sapUiTinyMarginBeginEnd" change="changeShift"
+										<Select id="selectShift" change="changeShift"
 											items="{ path : 'stationTrackerShift>/' }" enabled="false">
 											<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
 										</Select>
@@ -31,7 +29,6 @@
 											text="{StationTrackerI18n>ProductionGroup} : {StationTrackerI18n>StatusAll}"
 											type="Transparent" class="ClassProductionButton whiteColor whiteButton" press="onProductionGroupPress"/>
 										<Select id="selectUser" change="selectUser"
-											class="sapUiTinyMarginBeginEnd" 
 											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }" text="test">
 											<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}" />
 										</Select>
@@ -206,34 +203,34 @@
 												<VBox width="35%" class="openDisruptionDetail" justifyContent="SpaceAround">
 													<Label text="{StationTrackerI18n>DisruptionDetails}"
 														class="kpiName" design="Bold" />
-													<Label text="{StationTrackerI18n>DisruptionsNC}"/>
-													<Label text="{StationTrackerI18n>missingParts}"/>
-													<Label text="{StationTrackerI18n>DisruptionsTools}"/>
-													<Label text="{StationTrackerI18n>DisruptionFTE}"/>
+													<Label text="{KPIdisruption>/labelType1}"/>
+													<Label text="{KPIdisruption>/labelType2}"/>
+													<Label text="{KPIdisruption>/labelType3}"/>
+													<Label text="{KPIdisruption>/labelType4}"/>
 													<Label text="{StationTrackerI18n>DisruptionOther}"/>
 												</VBox>
 												<VBox alignItems="Center" width="22%" justifyContent="SpaceAround" class="openDisruptionValues kpiName">
 													<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
-													<Label text="{KPIdisruption>/disruptionNCUI}"
+													<Label text="{KPIdisruption>/disruptionType1UI}"
 														class=" whiteText" />
-													<Label text="{KPIdisruption>/disruptionMissingPartsUI}"
+													<Label text="{KPIdisruption>/disruptionType2UI}"
 														class=" whiteText" />
-													<Label text="{KPIdisruption>/disruptionMissingJTUI}"
+													<Label text="{KPIdisruption>/disruptionType3UI}"
 														class=" whiteText" />
-													<Label text="{KPIdisruption>/disruptionMissingFTEUI}"
+													<Label text="{KPIdisruption>/disruptionType4UI}"
 														class=" whiteText" />
 													<Label text="{KPIdisruption>/disruptionOtherUI}"
 														class=" whiteText" />
 												</VBox>
 												<VBox alignItems="Center" width="18%" justifyContent="SpaceAround" class="openDisruptionAndon kpiName">
 													<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
-													<Label text="{KPIdisruption>/andonNCUI}"
+													<Label text="{KPIdisruption>/andonType1UI}"
 														class=" redText kpiErrorValue" />
-													<Label text="{KPIdisruption>/andonMissingPartsUI}"
+													<Label text="{KPIdisruption>/andonType2UI}"
 														class=" redText kpiErrorValue" />
-													<Label text="{KPIdisruption>/andonMissingJTUI}"
+													<Label text="{KPIdisruption>/andonType3UI}"
 														class=" redText kpiErrorValue" />
-													<Label text="{KPIdisruption>/andonMissingFTEUI}"
+													<Label text="{KPIdisruption>/andonType4UI}"
 														class="redText kpiErrorValue" />
 													<Label text="{KPIdisruption>/andonOtherUI}"
 														class="redText kpiErrorValu" />

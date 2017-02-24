@@ -15,7 +15,7 @@ airbus.mes.components.util.ModelManager = {
     jsonConvertedToXml: undefined,
 
     // variable for filter
-    productionOrder : "P",
+    workOrder : "P",
     operation : "O",
 
     badgeReader:undefined,
@@ -43,7 +43,9 @@ airbus.mes.components.util.ModelManager = {
     //get
     getcomponentsWorkOrderDetail : function() {
         var url = this.urlModel.getProperty("componentsWorkOrderDetail");
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$sfc", airbus.mes.components.oView.getController().getOwnerComponent().getSfc());
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$operation", "");        
         return url;
     },
     loadselectFilterModel : function() {

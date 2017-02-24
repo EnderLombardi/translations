@@ -58,7 +58,7 @@
            margin: 25px 0 25px 2.5% !important;
 }
 #componentsView--ComponentsList{
-    height: 450px !important;
+    height: calc(100% - 10rem - 30px);
     .sapUiTableColCell{
         text-align: center !important;
     }
@@ -66,7 +66,7 @@
         left: 4px;
         span{
             &::before{
-                color: #000000;
+                color: #000000; 
             }
         }
         .sapMInputBaseInner{
@@ -83,6 +83,7 @@
         .sapMLabel{
             color: white;
             vertical-align: middle;
+            white-space: normal;
         }
     }
 }
@@ -91,5 +92,14 @@
     margin-right: 43px;
     #componentsView--btnComponentsSave{
         right: 5px;
+    }
+}
+
+#componentsView--idFilterComponent-inner {
+    background-color: $teal-blue;
+    border-radius: 0.125rem;
+    color: $white-two;
+    &:hover {
+        background-color: $teal-blue-hover;
     }
 }

@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+	<Dialog id="disruptionCloseDialogue" >
+		<content>
+			<f:SimpleForm id="closeDisruption" backgroundDesign="Transparent"
+				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+				labelSpanL="1" labelSpanM="2" labelSpanS="2" columnsL="1" columnsM="1"
+				class="sapUiMediumMarginTop">
+				<f:content>
+					<Label text="{i18nModel>TimeLost}">
+					<layoutData>
+						<l:GridData span="L2 M2 S12" />
+					</layoutData>
+					</Label>
+					<Input id="closeDisruption-timeLost" type="Number" enabled="{Profile>/identifiedUser/permissions/WORK_DIS_TIME_LOST}" >
+					<layoutData>
+						<l:GridData span="L2 M6 S8" />
+					</layoutData>
+					</Input>
+					<Text id="closeDisruption-timeLostUnit" text="" class="classFormHint">
+					<layoutData>
+						<l:GridData span="L2 M2 S4" />
+					</layoutData>
+					</Text>
+					<Label text="{i18nModel>comment}">
+					<layoutData>
+						<l:GridData span="L2 M2 S12" linebreak="true" />
+					</layoutData>
+					</Label>
+					<TextArea id="closeDisruptionComments">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+					</TextArea>
+					<core:InvisibleText id="closeDisruption-msgRef"/>
+					<core:InvisibleText id="closeDisruption-sPath"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+
+		<buttons>
+			<Button text="{i18nModel>ok}" press="onAcceptCloseDisruption"
+				type="Accept"  enabled="{Profile>/identifiedUser/permissions/WORK_DIS_TIME_LOST}"  />
+			<Button text="{i18nModel>cancel}" press="cancelClosingDisruption" />
+		</buttons>
+
+	</Dialog>
+</core:FragmentDefinition>

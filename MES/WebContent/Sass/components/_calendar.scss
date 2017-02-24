@@ -2,25 +2,29 @@
 /********************
 Tcalendar--kpiHeaderToolbar
 *********************/
-#calendar--calendardateButton-inner{
-padding: 0px 30px;	
-}
 
 #calendar--kpiHeaderToolbar{
     >label {
-            color: #74d2e7;
+            color: $tiffany-blue;
 		    text-shadow: none;
 		    padding: 0px 30px;
     }
     #calendar--calendardateButton {
-        border-left:  solid 1px #74d2e7;
+        margin-left: 5px;
     }
     #calendar--dateLabel {
-        border-right:  solid 1px #74d2e7;
-        padding: 18px 35px 17px 20px;
+        padding: 18px 35px 17px 0px;
 	    color: white;
-	    margin-left: -50px;  
+        border-right: 1px solid #74d2e7;
     }         
+}
+
+#calendar--teamAvaibility {
+    height: 100%;
+    line-height: 3rem;
+    border-radius: 0.125rem;
+    border-right: 1px solid $tiffany-blue;
+    margin-right: 0!important;
 }
 
 /********************
@@ -48,7 +52,7 @@ TABLE
 }
 
 #calendar--DatePicker{
-    border-right: solid 1px #74d2e7;
+    border-right: solid 1px $tiffany-blue;
     margin-right: 0;
     .sapMInputValHelp{
         right: auto;
@@ -73,6 +77,12 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     @extend %stationTrackerView;
     .customHour{
         @extend %stationTrackerViewCustomHour;
+    }
+    .customTakt {
+        @extend %stationTrackerViewCustomTakt;        
+    }
+    .customTakt:before {
+        @extend %customHourBefore;
     }
     .grey{
         background-color: $cool-grey;
@@ -358,7 +368,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         &:hover{
             background-color: $cool-grey-hover;
             color: black;
-            border: 2px solid $twilight-blue;
+            border: 2px solid $tiffany-blue;
         }
     }
     .customTable table tr th, td{
@@ -407,18 +417,7 @@ div{
 STATION TRACKER TOOLBAR
 ************************************/
 #calendar--buttonViewMode {
-    height: 3rem;
-    margin: 0;
-    .sapMSegBBtnFocusable,
-    .sapMSegBBtnDis{
-        @extend %sapMsegStationTracker;
-    }
-    .sapMSegBBtnFocusable{
-        &.sapMSegBBtnSel{
-            background-color: #74D2E7;
-            color: white;
-        }
-    }
+    @extend %segmentedButton;
 }
 #calendar--toolbarcalendar{
     background-color: $duck-egg-blue !important;
@@ -433,38 +432,43 @@ STATION TRACKER TOOLBAR
         }
         &.sapMSltPressed{
             .sapMSltArrow{
-                background-color: #74D2E7;
+                background-color: $tiffany-blue;
             }
         }
     }
     .initialFont{
         font-style: initial;       
     }
-    
     .sapMBtnIconLeft,
     .sapMBtnContent{
         color: #0D5D76;
     }
     #calendar--calendarAbsence{
-            color:$cool-grey-hover;        
+        color:$cool-grey-hover;        
     }
-     
     #calendar--calendarDiversion{
-            color:$teal-blue;        
+        color:$teal-blue;        
     }
     #calendar--calendarLoaned{
-            color:$dandelion;        
+        color:$dandelion;        
     }
     >label {
         color: $cool-grey-hover;
         text-shadow: none;
         font-style: italic;
     }
-   #__label5{
-   	margin-left: 25px;
-   }
-   
-        
+    >ul {
+        >li {
+            &:hover:not(.sapMSegBBtnSel) {
+                background-color: $petrol-20;
+            }
+        }
+    }     
+    #calendar--calendarRessource-label {
+        &:hover:not(.sapMSltPressed) {
+            background-color: $petrol-20;
+        }
+    }
 }
 .sapMPopoverScroll{
     .sapMSelectListItemBaseSelected{
@@ -499,7 +503,7 @@ DATE PICKER
             }
         }
         .sapMBtn {
-            background-color: $twilight-blue;
+            background-color: $tiffany-blue;
             &:hover>.sapMBtnHoverable,
             &>.sapMBtnHoverable {
                 background-color: transparent;
@@ -547,7 +551,7 @@ DATE PICKER
         }
         &:hover {
             >div:not(.sapMToggleBtnPressed) {
-                background-color: rgba(222,222,222,0.5);
+                background-color: $navy-blue-hover;
             }
         }
     }
