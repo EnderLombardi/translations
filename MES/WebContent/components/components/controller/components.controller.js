@@ -5,8 +5,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     oFilterSearch: undefined,
     oFilterFilter: undefined,
     oFilterRB: undefined,
-    sSet : undefined,
-    
+    sSet: undefined,
+
     onAfterRendering: function () {
         this.oFilterSearch = undefined;
         this.oFilterFilter = undefined;
@@ -16,8 +16,11 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         if (airbus.mes.shell.RoleManager.profile.identifiedUser.permissions.FITTED_COMPONENTS) {
             this.changeButtonColor();
         }
-    	// Get setting from ME/MII and select the good button between operation and work order
-    	this.filterComponents(this.sSet);        
+        if (sap.ui.getCore().byId("selectFilter--selectFilterComponents")) {//clear filters list if filter already exists
+            sap.ui.getCore().byId("selectFilter--selectFilterComponents").removeSelections(true);
+        }
+        // Get setting from ME/MII and select the good button between operation and work order
+        this.filterComponents(this.sSet);
     },
 
     changeButtonColor: function () {
@@ -37,31 +40,31 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     },
 
     checkSettingComponents: function () {
-		// confirm if we have already check the ME settings
-		if (this.sSet === undefined){
-				
-			//will be the configuration received in AppConfManager
-//				Application manager configuration is setting to physical station level, we concatenate the ID VIEW_ATTACHED_TOOL with the physical station
-			var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_BOM_" + airbus.mes.settings.ModelManager.station);
-			
-			if(sSet === null) {
-				this.sSet = 'O';
-			} else {
-				this.sSet = sSet;
-			}
-				
-		}
-		
-	    switch (this.sSet) {
-	        case "O"://operation
-	            this.getView().byId("operationButton").setSelected(true);
-	            break;
-	        case "P"://work order
-	            this.getView().byId("workOrderButton").setSelected(true);
-	            break;
-	        default: //if Null
-	            break;
-	    }
+        // confirm if we have already check the ME settings
+        if (this.sSet === undefined) {
+
+            //will be the configuration received in AppConfManager
+            //				Application manager configuration is setting to physical station level, we concatenate the ID VIEW_ATTACHED_TOOL with the physical station
+            var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_BOM_" + airbus.mes.settings.ModelManager.station);
+
+            if (sSet === null) {
+                this.sSet = 'O';
+            } else {
+                this.sSet = sSet;
+            }
+
+        }
+
+        switch (this.sSet) {
+            case "O"://operation
+                this.getView().byId("operationButton").setSelected(true);
+                break;
+            case "P"://work order
+                this.getView().byId("workOrderButton").setSelected(true);
+                break;
+            default: //if Null
+                break;
+        }
     },
 
     //get user action on the checkbox field
@@ -82,20 +85,20 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     //table filter
     filterComponents: function (sScope) {
-		this.sSet = sScope;    
+        this.sSet = sScope;
         switch (sScope) {
             case airbus.mes.components.util.ModelManager.operation:
-            	this.oFilterRB = new sap.ui.model.Filter("operationNumber", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no);
+                this.oFilterRB = new sap.ui.model.Filter("operationNumber", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no);
                 break;
             case airbus.mes.components.util.ModelManager.workOrder:
-            	this.oFilterRB = undefined;
+                this.oFilterRB = undefined;
                 break;
             default:
                 break;
         }
         //Apply all filter
         this.applyFilters();
-    
+
     },
 
     onFilterComponent: function (oEvent) {
@@ -206,23 +209,23 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
         //AND Filter
         if (this.oFilterSearch !== undefined) {
-        	aFilter.push(this.oFilterSearch);
-        } 
+            aFilter.push(this.oFilterSearch);
+        }
 
         if (this.oFilterFilter !== undefined) {
-        	aFilter.push(this.oFilterFilter);
-        }         
-        
+            aFilter.push(this.oFilterFilter);
+        }
+
         if (this.oFilterRB !== undefined) {
-        	aFilter.push(this.oFilterRB);
-        }       
-        
-        if(aFilter.length > 0) {
-	        oFilter = new sap.ui.model.Filter(aFilter, true);
-	        binding.filter(oFilter);
+            aFilter.push(this.oFilterRB);
+        }
+
+        if (aFilter.length > 0) {
+            oFilter = new sap.ui.model.Filter(aFilter, true);
+            binding.filter(oFilter);
         } else {
             //No filter
-            binding.filter();        	
+            binding.filter();
         }
 
     },
