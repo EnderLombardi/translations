@@ -1,6 +1,9 @@
 "use strict";
 jQuery.sap.require("sap.ui.core.Component");
-
+jQuery.sap.require("airbus.mes.disruptions.ModelManager");
+jQuery.sap.require("airbus.mes.disruptions.Formatter");
+jQuery.sap.require("airbus.mes.disruptions.func");
+jQuery.sap.require("airbus.mes.disruptions.AttachmentManager");
 jQuery.sap.declare("airbus.mes.disruptions.Component");
 
 sap.ui.core.Component.extend("airbus.mes.disruptions.Component", {
