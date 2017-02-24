@@ -3,6 +3,10 @@ jQuery.sap.require("sap.ui.core.UIComponent");
 
 if (jQuery.sap.getObject("airbus.mes.disruptions") === undefined) {
 	jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
+	sap.ui.getCore().createComponent({
+		name : "airbus.mes.disruptions" 
+	});
+	
 	jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 	jQuery.sap.require("airbus.mes.disruptions.Formatter");
 	jQuery.sap.require("airbus.mes.disruptions.func");
