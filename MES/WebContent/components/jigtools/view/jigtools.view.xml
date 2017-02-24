@@ -8,12 +8,13 @@
 	xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
 
-	<Page enableScrolling="false" showHeader="false">
+	<Page enableScrolling="false" showHeader="false"  class="sapUiSizeCozy">
 		<content>
 			<table:Table id="jigToolList" 
 		 			class="ComponentsList"
 					selectionMode="None"
-					rows="{path: 'jigToolsWorkOrderDetail>/toolInfoList/'}">
+					rows="{path: 'jigToolsWorkOrderDetail>/toolInfoList/'}"
+					visibleRowCountMode="Auto">
 					<table:extension>
 						<VBox id="jigToolcheck" class="jigToolListcheck">
 					 			<RadioButtonGroup columns="2" select="onSelectLevel">
@@ -24,6 +25,7 @@
 								</RadioButtonGroup>
 						</VBox>					
 					</table:extension>
+
 					<table:columns>
 						<table:Column>
 							<Label textAlign="Center" text="{i18nJigstoolsModel>materialNumber}" />

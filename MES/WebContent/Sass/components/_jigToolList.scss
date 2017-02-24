@@ -1,46 +1,97 @@
-//id jigToolList
-//class jigToolListtable
-
-#jigtoolsView--jigToolList.jigToolListtable{
-	width:95% !important;
-	margin: 0 auto;
-	padding:0 ;
-	>table {
-		border: solid 1px $cool-grey;
-		>thead {
-			>tr {
-				>th {
-					background-color : $teal-blue;
-					border-right:1px solid white;
-					>span{
-						color: white;
-					}
-				}
-			}
-		}
-		>tbody {
-				tr:nth-child(even) {background: #fff}
-				tr:nth-child(odd) {background: #fcfcfc}
-				tr:hover{background-color: #efefef }
-				>tr{
-					>td{
-						text-align:left !important;
-						border-left:1px solid $cool-grey-hover;
-					}
-				}
-		}   
-	}
+#jigtoolsView--jigToolList {
+    width:95% !important;
+    margin: 0 auto;
+    padding:0 ;
+    // >table {
+    //     border: solid 1px $cool-grey;
+    //     >thead {
+    //         >tr {
+    //             >th {
+    //                 background-color : $teal-blue;
+    //                 border-right:1px solid white;
+    //                 >span{
+    //                     color: white;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     >tbody {
+    //             tr:nth-child(even) {background: #fff}
+    //             tr:nth-child(odd) {background: #fcfcfc}
+    //             tr:hover{background-color: #efefef }
+    //             >tr{
+    //                 >td{
+    //                     text-align:left !important;
+    //                     border-left:1px solid $cool-grey-hover;
+    //                 }
+    //             }
+    //     }
+    // }
 }
-	
-#jigtoolsView--jigToolcheck.jigToolListcheck{
-	width: 50%;
+
+
+
+#jigtoolsView--jigToolcheck{
+    width: 50%;
     margin: 20px auto 10px auto;
     padding: 0;
     text-align: center;
 }
 
-#jigtoolsView--jigToollabel.jigToolListlabel{
-        font-weight: bold;
-    	padding: 0;
-   		margin: 25px 0 25px 2.5% !important;
+// #jigtoolsView--otbSubheader{
+//     width: 40%;
+//     margin: 0px auto 10px auto;
+//     padding: 0;
+//     text-align: center;
+//     border : none;
+//     >button:first-child {
+//         width: 20% !important;
+//     }
+//     >div {
+//         width: 75% !important;
+//         max-width: none !important;
+//         min-width: 0 !important;
+//     }
+// }
+
+// #jigtoolsView--jigToolcheck.jigToolListlabel{
+// 	font-weight: bold;
+// 	padding: 0;
+// 	margin: 25px 0 25px 2.5% !important;
+// }
+
+// #jigtoolsView--jigToolList{
+//     height: calc(100% - 10rem - 30px);
+//     #jigtoolsView--jigToolList-sapUiTableCnt {
+//         .sapUiTableColHdrCnt {
+//             background-color: $teal-blue;
+//         }
+//     }
+//     .sapUiTableColCell{
+//         text-align: center !important;
+//     }
+//     .stepInputComponent{
+//         left: 4px;
+//         span{
+//             &:before{
+//                 color: #000000; 
+//             }
+//         }
+//         .sapMInputBaseInner{
+//             text-align: center !important;
+//         }
+//     }
+// }
+
+#jigtoolsView--jigToolList-sapUiTableColHdrScr{
+    border: solid 1px #97999b;
+    background-color: $teal-blue;
+    // .sapUiTableCol{
+    //     height: 43px;
+    //     .sapMLabel{
+    //         color: white;
+    //         vertical-align: middle;
+    //         white-space: normal;
+    //     }
+    // }
 }
