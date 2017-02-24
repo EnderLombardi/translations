@@ -68,13 +68,13 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 		this.sSet = sScope;
 		switch (sScope) {
 			case airbus.mes.jigtools.util.ModelManager.operation:
-				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("items").filter(new sap.ui.model.Filter("routerStep", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].routerStepBo));
+				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("rows").filter(new sap.ui.model.Filter("routerStep", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].routerStepBo));
 				break;
 			case airbus.mes.jigtools.util.ModelManager.workOrder:
-				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("items").filter();
+				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("rows").filter();
 				break;
 			default:
-				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("items").filter(new sap.ui.model.Filter("routerStep", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].routerStepBo));
+				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("rows").filter(new sap.ui.model.Filter("routerStep", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].routerStepBo));
 				break;
 		}
 	}

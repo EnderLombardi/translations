@@ -2,6 +2,7 @@
 	xmlns:core="sap.ui.core" 
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" 
+	xmlns:table="sap.ui.table" 
 	controllerName="airbus.mes.jigtools.controller.jigtools"
 	xmlns:f="sap.ui.layout.form" 
 	xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
@@ -9,51 +10,54 @@
 
 	<Page enableScrolling="false" showHeader="false">
 		<content>
-			
-			<VBox id="jigToolcheck" class="jigToolListcheck">
-		 			<RadioButtonGroup columns="2" select="onSelectLevel">
-						<buttons>
-							<RadioButton id="operationButton" text="{i18nJigstoolsModel>JigToolOperation}"/>
-							<RadioButton id="workOrderButton" text="{i18nJigstoolsModel>JigToolWorkOrder}"/>
-						</buttons>
-					</RadioButtonGroup>
-			</VBox>
-		
-			<Table 	id="jigToolList" 
-		 			class="jigToolListtable"
-					items="{path: 'jigToolsWorkOrderDetail>/toolInfoList/'}">
-					
-					<columns>
-						<Column>
-							<Text text="{i18nJigstoolsModel>materialNumber}" />
-						</Column>
-						<Column>
-							<Text text="{i18nJigstoolsModel>warehouse}" />
-						</Column>
-						<Column>
-							<Text text="{i18nJigstoolsModel>category}" />
-						</Column>
-						<Column>
-							<Text text="{i18nJigstoolsModel>description}" />
-						</Column>
-						<Column>
-							<Text text="{i18nJigstoolsModel>quantity}" />
-						</Column>
-					</columns>
-		
-					<items>
-						<ColumnListItem>
-							<cells>
+			<table:Table id="jigToolList" 
+		 			class="ComponentsList"
+					selectionMode="None"
+					rows="{path: 'jigToolsWorkOrderDetail>/toolInfoList/'}">
+					<table:extension>
+						<VBox id="jigToolcheck" class="jigToolListcheck">
+					 			<RadioButtonGroup columns="2" select="onSelectLevel">
+									<buttons>
+										<RadioButton id="operationButton" text="{i18nJigstoolsModel>JigToolOperation}"/>
+										<RadioButton id="workOrderButton" text="{i18nJigstoolsModel>JigToolWorkOrder}"/>
+									</buttons>
+								</RadioButtonGroup>
+						</VBox>					
+					</table:extension>
+					<table:columns>
+						<table:Column>
+							<Label textAlign="Center" text="{i18nJigstoolsModel>materialNumber}" />
+							<table:template>
 								<Text text="{jigToolsWorkOrderDetail>materialNumber}" />
+							</table:template>
+						</table:Column>
+						<table:Column>
+							<Label textAlign="Center" text="{i18nJigstoolsModel>warehouse}" />
+							<table:template>
 								<Text text="{jigToolsWorkOrderDetail>warehouse} - {jigToolsWorkOrderDetail>warehouseDescription}" />
+							</table:template>							
+						</table:Column>
+						<table:Column>
+							<Label textAlign="Center" text="{i18nJigstoolsModel>category}" />
+							<table:template>
 								<Text text="{jigToolsWorkOrderDetail>prodResCat}" />
+							</table:template>						
+						</table:Column>
+						<table:Column>
+							<Label textAlign="Center" text="{i18nJigstoolsModel>description}" />
+							<table:template>
 								<Text text="{jigToolsWorkOrderDetail>toolDescription}" />
+							</table:template>								
+						</table:Column>
+						<table:Column>
+							<Label textAlign="Center" text="{i18nJigstoolsModel>quantity}" />
+							<table:template>
 								<Text text="{jigToolsWorkOrderDetail>quantity}" />
-							</cells>
-						</ColumnListItem>
-					</items>
+							</table:template>							
+						</table:Column>
+					</table:columns>
 		
-			</Table>
+			</table:Table>
 	
 		</content>
 
