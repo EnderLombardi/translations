@@ -178,7 +178,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         oView.getController().operationStatus = "C";
         oView.getController().Mode = "EarnedStandards";
 
-        //airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
+        airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
         if (!oView._reasonCodeDialog) {
             oView._reasonCodeDialog = sap.ui.xmlfragment("airbus.mes.operationdetail.fragments.reasonCode", oView.getController());
             oView.addDependent(oView._reasonCodeDialog);
