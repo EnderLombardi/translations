@@ -5,12 +5,8 @@ jQuery.sap.require("airbus.mes.disruptiontracker.ModelManager");
 
 if (jQuery.sap.getObject("airbus.mes.disruptions") === undefined) {
 	jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
-	jQuery.sap.require("airbus.mes.disruptions.ModelManager");
-	jQuery.sap.require("airbus.mes.disruptions.Formatter");
-	jQuery.sap.require("airbus.mes.disruptions.func");
-	jQuery.sap.require("airbus.mes.disruptions.AttachmentManager");
-}
-
+	sap.ui.getCore().createComponent({ name: "airbus.mes.disruptions" });
+	}
 
 jQuery.sap.declare("airbus.mes.disruptiontracker.Component");
 

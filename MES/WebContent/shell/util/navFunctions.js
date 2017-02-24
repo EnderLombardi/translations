@@ -203,7 +203,8 @@ airbus.mes.shell.util.navFunctions = {
     viewDisruptionsList: function (container, reportDisruptButton) {
 
         if (airbus.mes.disruptionslist === undefined || airbus.mes.disruptionslist.oView === undefined) {
-            jQuery.sap.registerModulePath("airbus.mes.disruptionslist", "../components/disruptionslist");
+        	      	
+        	jQuery.sap.registerModulePath("airbus.mes.disruptionslist", "../components/disruptionslist");
             sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionslist" });
 
             container.addPage(airbus.mes.disruptionslist.oView);

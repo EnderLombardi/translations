@@ -24,17 +24,23 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	/**
 	 * Check existing children in data
 	 */
-	checkExistingChildentData: function () {
+	checkExistingChildentData : function() {
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
-		var aData = oModel.getData().Rowsets.Rowset[0].Row;
-		var i = 0, nLength = aData.length, bFound = false;
-		while (i < nLength && bFound == false) {
-			if (aData[i].children.length > 0) {
-				bFound = true;
+		try {
+			var aData = oModel.getData().Rowsets.Rowset[0].Row;
+			var i = 0, nLength = aData.length, bFound = false;
+			while (i < nLength && bFound == false) {
+				if (aData[i].children.length > 0) {
+					bFound = true;
+				}
+				i++;
 			}
-			i++;
-		};
-		return bFound;
+			;
+			return bFound;
+		} catch (e) {
+			console.log(e);
+			return false;
+		}
 	},
 
 
@@ -54,7 +60,8 @@ airbus.mes.acpnglinks.model.ModelManager = {
 			}),
 
 			success: function (data) {
-
+				
+				try {
 				//DMI
 				// Rest response with only one list, need same schema
 				var jsonFormat = {
@@ -218,7 +225,11 @@ airbus.mes.acpnglinks.model.ModelManager = {
 				jsonFormat.Rowsets.Rowset[0].Row = data.elementList
 				oModel.setData(jsonFormat);
 				oModel.refresh();
-
+				} catch(e) {
+					
+					console.log(e);
+					return;
+				}
 				//Local
 				//oModel.setData(data);
 				//oModel.refresh();
@@ -229,8 +240,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 			}
 		});
 
-		var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row);
-		oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
+	
 	},
 
 	/**

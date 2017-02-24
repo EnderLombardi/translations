@@ -2,11 +2,9 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 
 if (jQuery.sap.getObject("airbus.mes.disruptions") === undefined) {
-	jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
-    sap.ui.getCore().createComponent({ name: "airbus.mes.disruptions" });
-	JQuery.sap.registerModulePath("airbus.mes.disruptions.i18n.i18n", "../components/disruptions/i18n/i18n");
-};
-
+jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
+sap.ui.getCore().createComponent({ name: "airbus.mes.disruptions" });
+}
 
 jQuery.sap.declare("airbus.mes.disruptionslist.Component");
 

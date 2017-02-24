@@ -1,5 +1,6 @@
 "use strict";
 jQuery.sap.require("sap.ui.core.Component");
+jQuery.sap.registerModulePath("airbus.mes.disruptions.i18n.i18n", "../components/disruptions/i18n/i18n");
 jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 jQuery.sap.require("airbus.mes.disruptions.Formatter");
 jQuery.sap.require("airbus.mes.disruptions.func");
