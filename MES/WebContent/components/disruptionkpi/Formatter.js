@@ -15,9 +15,9 @@ airbus.mes.disruptionkpi.Formatter = {
 		var unit  = sap.ui.getCore().byId("disruptionKPIView--timeUnit").getSelectedKey();
 		if (ms != '' && ms != undefined) {
 			if (unit === "Minutes")
-				return Math.round(ms / 60000);
+				return (ms / 60000);
 			else if (unit === "Hours")
-				return Math.round(ms / 3600000);
+				return (ms / 3600000);
 		}
 		return 0;
 	},

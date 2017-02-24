@@ -47,7 +47,7 @@
 					<DateTimePicker id="startDateTime" placeholder="{i18nModel>EnterStartDateTime}" change="onChangeSelection" displayFormat="medium"
 							valueFormat="yyyy-MM-ddThh:mm:ss" />
 					<Text text="{i18nModel>To}" class="subHeaderthemeColor sapUiTinyMarginBegin" />
-					<DateTimePicker id="endDateTime" placeholder="{i18nModel>EnterEndDateTime}" change="onChangeSelection"/>
+					<DateTimePicker id="endDateTime" placeholder="{i18nModel>EnterEndDateTime}" change="onChangeSelection" displayFormat="medium" valueFormat="yyyy-MM-ddThh:mm:ss"/>
 					
 					<ToolbarSpacer />
 					

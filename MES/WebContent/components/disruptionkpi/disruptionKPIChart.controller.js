@@ -240,9 +240,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 										var unit  = sap.ui.getCore().byId("disruptionKPIView--timeUnit").getSelectedKey();
 										if (ms != '' && ms != undefined) {
 											if (unit === "Minutes")
-												return Math.round(ms / 60000);
+												return ms / 60000.0;
 											else if (unit === "Hours")
-												return Math.round(ms / 3600000);
+												return ms / 3600000.0;
 										}
 										return 0;
 									}

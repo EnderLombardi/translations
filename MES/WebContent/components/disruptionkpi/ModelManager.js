@@ -25,9 +25,8 @@ airbus.mes.disruptionkpi.ModelManager = {
 	
 	setPreSelectionCriteria: function(){
 		
-		
 		this.oFilters.station= airbus.mes.settings.ModelManager.station;
-		this.setTaktStartTime();//Get start date time of current TAKT
+		this.oFilters.startDateTime= "";
 		sap.ui.getCore().byId("disruptionKPIView--endDateTime").setDateValue(new Date());
 		this.oFilters.endDateTime= sap.ui.getCore().byId("disruptionKPIView--endDateTime").getDateValue();
 		
@@ -48,6 +47,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 		sap.ui.getCore().byId("disruptionKPIView--startDateTime").setBusy(true); //Set Busy Indicator
 		
 		jQuery.ajax({
+			async: false, // Data for charts is filtered on date selection in service hence start time is needed first
 			type : 'post',
 			url : this.urlModel.getProperty("getTaktStartTime"),
 			contentType : 'application/json',
@@ -76,8 +76,12 @@ airbus.mes.disruptionkpi.ModelManager = {
 	
 	
 	loadDisruptionKPIModel : function() {
+		
+		sap.ui.getCore().byId("disruptionKPIView--idParettoCategoryReason").setBusyIndicatorDelay(0);
 		sap.ui.getCore().byId("disruptionKPIView--idParettoCategoryReason").setBusy(true); //Set Busy Indicator
+		sap.ui.getCore().byId("disruptionKPIView--vizFrame3").setBusyIndicatorDelay(0);
 		sap.ui.getCore().byId("disruptionKPIView--vizFrame3").setBusy(true); //Set Busy Indicator
+		sap.ui.getCore().byId("disruptionKPIView--vizFrame4").setBusyIndicatorDelay(0);
 		sap.ui.getCore().byId("disruptionKPIView--vizFrame4").setBusy(true); //Set Busy Indicator
 		
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperAttribute");
@@ -102,13 +106,26 @@ airbus.mes.disruptionkpi.ModelManager = {
 			url : this.urlModel.getProperty("getDisruptionKPIURL"),
 			contentType : 'application/json',
 			data : JSON.stringify({
-				"line" : line,
+				"line" : line == "All"? "" : line,
 				"site" : airbus.mes.settings.ModelManager.site,
 				"stations" : aStations,
+				"startTime": startTime, //"2016-04-04T12:03:03",
+				"untilTime": untilTime //"2016-04-04T12:03:03"
 				
 			}),
 
 			success : function(data) {
+				if(!data.operation) {
+					data.operation = [{"name":airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("noData"), "value":"0"}];
+
+					//airbus.mes.shell.ModelManager.messageShow(airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("noDataFound"));
+				};
+				if(!data.msn) {
+					data.msn = [{"name":airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("noData"), "value":"0"}];
+					
+					//airbus.mes.shell.ModelManager.messageShow(airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("noDataFound"));
+				}
+				
 				/*to avoid array inconsistency.. as the service dosent return an array [] when only one value pair has to be returned*/
 				if(!data.msn[0]){
 					data.msn = [data.msn];
@@ -125,8 +142,6 @@ airbus.mes.disruptionkpi.ModelManager = {
 				console.log(error);
 				sap.ui.getCore().byId("disruptionKPIView--vizFrame3").setBusy(false); //Remove Busy Indicator
 				sap.ui.getCore().byId("disruptionKPIView--vizFrame4").setBusy(false); //Remove Busy Indicator
-				/*airbus.mes.stationtracker.oView.byId("boxSLBEfficiecy").setBusy(false);
-				airbus.mes.stationtracker.oView.byId("boxLabourEfficiency").setBusy(false);*/
 
 			}
 		});
@@ -147,9 +162,27 @@ airbus.mes.disruptionkpi.ModelManager = {
 				
 			}),
 
-			success : function(data) {
-				oParetoModel.setData(data);
+			success : function(chartData) {
+				
+				if(!chartData.data) {
+					chartData = { "data":[] };
+					var json = {"categoryReason":"","timeLost":"0","totalDisruption":airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("noData"),"cumulativePercentage":"0"};
+					
+					chartData.data.push(json);
+					chartData.data.push(json);
+
+					//airbus.mes.shell.ModelManager.messageShow(airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("noDataFound"));
+				};
+				
+				/*to avoid array inconsistency.. as the service dosent return an array [] when only one value pair has to be returned*/
+				if(!chartData.data[0]){
+					chartData.data = [chartData.data];
+				}
+
+				oParetoModel.setData(chartData);
+				
 				sap.ui.getCore().byId("disruptionKPIView--idParettoCategoryReason").setBusy(false); //Set Busy Indicator
+				
 			},
 
 			error : function(error, jQXHR) {
