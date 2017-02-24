@@ -8,10 +8,9 @@
 	xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
 
-	<Page enableScrolling="false" showHeader="false"  class="sapUiSizeCozy">
+	<Page enableScrolling="false" showHeader="false" height="100%" class="sapUiSizeCozy">
 		<content>
 			<table:Table id="jigToolList" 
-		 			class="ComponentsList"
 					selectionMode="None"
 					rows="{path: 'jigToolsWorkOrderDetail>/toolInfoList/'}"
 					visibleRowCountMode="Auto">

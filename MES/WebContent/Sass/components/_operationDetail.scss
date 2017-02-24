@@ -324,6 +324,7 @@ overflow: visible;
     .sapMPageBusyCoversAll{
         background: #f5f5f5 !important;
         &>section{
+            overflow: auto !important;
 			height:100%;
         }
     }
@@ -424,30 +425,30 @@ opacity:1 !important;
 
 //CheckList and Records
 #idCheckListView--Checklist.Checklist{
-width:95% !important;
-margin: 50px auto !important;
-padding:0;
+    width:95% !important;
+    margin: 50px auto !important;
+    padding:0;
 }
 
 .ConfirmChecklist{
-margin-top:20px;
-width:100px;
+    margin-top:20px;
+    width:100px;
 }
 
 #operationDetailsView--operationDetailPanel {
->header {
-    >div{
-        height: 4.375rem !important;
+    >header {
+        >div{
+            height: 4.375rem !important;
+        }
     }
-}
 }
 
 #operationDetailsView--opDetailNavToolbar {
-height: 3rem;
+    height: 3rem;
 }
 
 #operationDetailsView--operDetailNavContainer {
-height: calc(100% - 4.375rem - 3rem - 2rem) !important;
+    height: calc(100% - 4.375rem - 3rem - 2rem) !important;
 }
 
 #operationDetailsView--opDetailSegmentButtons{

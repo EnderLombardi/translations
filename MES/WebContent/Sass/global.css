@@ -1674,7 +1674,7 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 .ClassOperationDetailPopUp .sapMPageBusyCoversAll { background: #f5f5f5 !important; }
 
-.ClassOperationDetailPopUp .sapMPageBusyCoversAll > section { height: 100%; }
+.ClassOperationDetailPopUp .sapMPageBusyCoversAll > section { overflow: auto !important; height: 100%; }
 
 #mes .sapMDialog:not(.theme-disabled) header { box-shadow: 0 0 5px #333; overflow: visible; background-color: #d4f1f7; color: #434343; }
 
@@ -3549,11 +3549,53 @@ Physical Station Popover
 
 .fa-percent:before { content: "\f295"; }
 
+#jigtoolsView--jigToolList-sapUiTableCnt .sapUiTableColHdrCnt { height: 3rem !important; }
+
 #jigtoolsView--jigToolList { width: 95% !important; margin: 0 auto; padding: 0; }
+
+#jigtoolsView--jigToolList > table { border: solid 1px #97999b; }
+
+#jigtoolsView--jigToolList > table > thead > tr > th { background-color: #0085ad; border-right: 1px solid white; }
+
+#jigtoolsView--jigToolList > table > thead > tr > th > span { color: white; }
+
+#jigtoolsView--jigToolList > table > tbody tr:nth-child(even) { background: #fff; }
+
+#jigtoolsView--jigToolList > table > tbody tr:nth-child(odd) { background: #fcfcfc; }
+
+#jigtoolsView--jigToolList > table > tbody tr:hover { background-color: #efefef; }
+
+#jigtoolsView--jigToolList > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; }
 
 #jigtoolsView--jigToolcheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
 
+#jigtoolsView--otbSubheader { width: 40%; margin: 0px auto 10px auto; padding: 0; text-align: center; border: none; }
+
+#jigtoolsView--otbSubheader > button:first-child { width: 20% !important; }
+
+#jigtoolsView--otbSubheader > div { width: 75% !important; max-width: none !important; min-width: 0 !important; }
+
+#jigtoolsView--jigToolcheck.jigToolListlabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; }
+
+#jigtoolsView--jigToolList { height: calc(100% - 10rem - 30px); }
+
+#jigtoolsView--jigToolList #jigtoolsView--jigToolList-sapUiTableCnt .sapUiTableColHdrCnt { background-color: #0085ad; }
+
+#jigtoolsView--jigToolList .sapUiTableColCell { text-align: center !important; }
+
+#jigtoolsView--jigToolList .stepInputComponent { left: 4px; }
+
+#jigtoolsView--jigToolList .stepInputComponent span:before { color: #000000; }
+
+#jigtoolsView--jigToolList .stepInputComponent .sapMInputBaseInner { text-align: center !important; }
+
 #jigtoolsView--jigToolList-sapUiTableColHdrScr { border: solid 1px #97999b; background-color: #0085ad; }
+
+#jigtoolsView--jigToolList-sapUiTableColHdrScr .sapMLabel { color: white; vertical-align: middle; white-space: normal; }
+
+#jigtoolsView--jigToolList-sapUiTableColHdrScr > div { height: 100%; }
+
+#jigtoolsView--jigToolList-sapUiTableColHdrScr > div > div { height: 100%; }
 
 /********************
 Tcalendar--kpiHeaderToolbar
