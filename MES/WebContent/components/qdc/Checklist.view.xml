@@ -11,7 +11,7 @@
 		<content>
 		
 		<VBox id="TabChecklist" class="TabChecklist">
-			<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" class="TabChecklistTable" selectionMode="None" expandFirstLevel="true">
+			<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" class="TabChecklistTable" selectionMode="None" visibleRowCount="4" expandFirstLevel="true">
 				<!-- <tab:toolbar>
 					<Toolbar>
 						<Title text="{i18n>CheckListAndRecords}" />
@@ -23,7 +23,7 @@
 						<tab:template>
 						<HBox >
 							<HBox justifyContent="Begin" width="100%">
-							<Text text="{QDCModel>name}" class="AllignItem" enabled="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getEnabled'}" />
+							<Text text="{QDCModel>name}" class="AllignItem" visible="{path:'QDCModel>name', formatter:'airbus.mes.qdc.util.Formatter.getEnabled'}" />
 							<Label text="" class="adjustWidth"/>
 							</HBox>
 							<HBox justifyContent="End" >
@@ -42,9 +42,9 @@
 			</tab:TreeTable>
 			<HBox >
 				<HBox justifyContent="Begin" width="100%">
-				<Button text="{i18n>MEA}" width="100%" class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"></Button>
-				<Button text="{i18n>MAA}" width="100%" class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"></Button>
-				<Button text="{i18n>QDC}" width="100%" class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"></Button>
+				<Button id="idButtonMEA" text="{i18n>MEA}"  class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false" press="onClick"></Button>
+				<Button id="idButtonMAA" text="{i18n>MAA}"  class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false" press="onClick"></Button>
+				<Button id="idButtonQDC" text="{i18n>QDC}"  class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false" press="onClick"></Button>
 				</HBox>
 				<HBox justifyContent="End" >
 				<Button text="{i18n>confirm}" class="ConfirmChecklist"></Button>

@@ -17,6 +17,7 @@ airbus.mes.qdc.ModelManager = {
 							
 			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
 			this.loadQDCModel();
+			this.loadQDCData();
 		},
 		
 		loadQDCModel: function() {
@@ -31,7 +32,17 @@ airbus.mes.qdc.ModelManager = {
 				async : false,
 				url : this.urlModel.getProperty('QDCDataurl'),
 				type : 'POST',
+				data : JSON.stringify({
+					"Site" : "FNZ1",
+					"st_langu" : airbus.mes.shell.RoleManager.profile.connectedUser.Language,
+					"st_Application_Id" : "MES",
+					"st_work_order" : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no,
+					"st_work_order_oper" : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_id
+					
+				}),
 			});
-			return JSON.parse(rep.responseText);
+			var oModel = new sap.ui.model.json.JSONModel();
+			oModel.setData(JSON.parse(rep.responseText))
+			sap.ui.getCore().setModel(oModel,"GetQDCDataModel")
 		},
 }
