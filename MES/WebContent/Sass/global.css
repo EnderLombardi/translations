@@ -3549,53 +3549,55 @@ Physical Station Popover
 
 .fa-percent:before { content: "\f295"; }
 
-#jigtoolsView--jigToolList-sapUiTableCnt .sapUiTableColHdrCnt { height: 3rem !important; }
+#jigtoolsView { height: calc(100% - 10px) !important; }
 
-#jigtoolsView--jigToolList { width: 95% !important; margin: 0 auto; padding: 0; }
+#jigtoolsView #jigtoolsView--jigToolList-sapUiTableCnt .sapUiTableColHdrCnt { height: 3rem !important; }
 
-#jigtoolsView--jigToolList > table { border: solid 1px #97999b; }
+#jigtoolsView #jigtoolsView--jigToolList { width: 95% !important; margin: 0 auto; padding: 0; }
 
-#jigtoolsView--jigToolList > table > thead > tr > th { background-color: #0085ad; border-right: 1px solid white; }
+#jigtoolsView #jigtoolsView--jigToolList > table { border: solid 1px #97999b; }
 
-#jigtoolsView--jigToolList > table > thead > tr > th > span { color: white; }
+#jigtoolsView #jigtoolsView--jigToolList > table > thead > tr > th { background-color: #0085ad; border-right: 1px solid white; }
 
-#jigtoolsView--jigToolList > table > tbody tr:nth-child(even) { background: #fff; }
+#jigtoolsView #jigtoolsView--jigToolList > table > thead > tr > th > span { color: white; }
 
-#jigtoolsView--jigToolList > table > tbody tr:nth-child(odd) { background: #fcfcfc; }
+#jigtoolsView #jigtoolsView--jigToolList > table > tbody tr:nth-child(even) { background: #fff; }
 
-#jigtoolsView--jigToolList > table > tbody tr:hover { background-color: #efefef; }
+#jigtoolsView #jigtoolsView--jigToolList > table > tbody tr:nth-child(odd) { background: #fcfcfc; }
 
-#jigtoolsView--jigToolList > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; }
+#jigtoolsView #jigtoolsView--jigToolList > table > tbody tr:hover { background-color: #efefef; }
 
-#jigtoolsView--jigToolcheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
+#jigtoolsView #jigtoolsView--jigToolList > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; }
 
-#jigtoolsView--otbSubheader { width: 40%; margin: 0px auto 10px auto; padding: 0; text-align: center; border: none; }
+#jigtoolsView #jigtoolsView--jigToolcheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
 
-#jigtoolsView--otbSubheader > button:first-child { width: 20% !important; }
+#jigtoolsView #jigtoolsView--otbSubheader { width: 40%; margin: 0px auto 10px auto; padding: 0; text-align: center; border: none; }
 
-#jigtoolsView--otbSubheader > div { width: 75% !important; max-width: none !important; min-width: 0 !important; }
+#jigtoolsView #jigtoolsView--otbSubheader > button:first-child { width: 20% !important; }
 
-#jigtoolsView--jigToolcheck.jigToolListlabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; }
+#jigtoolsView #jigtoolsView--otbSubheader > div { width: 75% !important; max-width: none !important; min-width: 0 !important; }
 
-#jigtoolsView--jigToolList { height: calc(100% - 10rem - 30px); }
+#jigtoolsView #jigtoolsView--jigToolcheck.jigToolListlabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; }
 
-#jigtoolsView--jigToolList #jigtoolsView--jigToolList-sapUiTableCnt .sapUiTableColHdrCnt { background-color: #0085ad; }
+#jigtoolsView #jigtoolsView--jigToolList { height: calc(100% - 10rem - 30px); }
 
-#jigtoolsView--jigToolList .sapUiTableColCell { text-align: center !important; }
+#jigtoolsView #jigtoolsView--jigToolList #jigtoolsView--jigToolList-sapUiTableCnt .sapUiTableColHdrCnt { background-color: #0085ad; }
 
-#jigtoolsView--jigToolList .stepInputComponent { left: 4px; }
+#jigtoolsView #jigtoolsView--jigToolList .sapUiTableColCell { text-align: center !important; }
 
-#jigtoolsView--jigToolList .stepInputComponent span:before { color: #000000; }
+#jigtoolsView #jigtoolsView--jigToolList .stepInputComponent { left: 4px; }
 
-#jigtoolsView--jigToolList .stepInputComponent .sapMInputBaseInner { text-align: center !important; }
+#jigtoolsView #jigtoolsView--jigToolList .stepInputComponent span:before { color: #000000; }
 
-#jigtoolsView--jigToolList-sapUiTableColHdrScr { border: solid 1px #97999b; background-color: #0085ad; }
+#jigtoolsView #jigtoolsView--jigToolList .stepInputComponent .sapMInputBaseInner { text-align: center !important; }
 
-#jigtoolsView--jigToolList-sapUiTableColHdrScr .sapMLabel { color: white; vertical-align: middle; white-space: normal; }
+#jigtoolsView #jigtoolsView--jigToolList-sapUiTableColHdrScr { border: solid 1px #97999b; background-color: #0085ad; }
 
-#jigtoolsView--jigToolList-sapUiTableColHdrScr > div { height: 100%; }
+#jigtoolsView #jigtoolsView--jigToolList-sapUiTableColHdrScr .sapMLabel { color: white; vertical-align: middle; white-space: normal; }
 
-#jigtoolsView--jigToolList-sapUiTableColHdrScr > div > div { height: 100%; }
+#jigtoolsView #jigtoolsView--jigToolList-sapUiTableColHdrScr > div { height: 100%; }
+
+#jigtoolsView #jigtoolsView--jigToolList-sapUiTableColHdrScr > div > div { height: 100%; }
 
 /********************
 Tcalendar--kpiHeaderToolbar
