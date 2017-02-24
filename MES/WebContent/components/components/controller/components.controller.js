@@ -32,7 +32,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         for (var i = 0; i < count; i++) {
             oTable.getRows()[i];
             var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[i];
-            if (dataIndex.withdrawQty === dataIndex.requiredQty) {
+            if (dataIndex.withdrawQty === dataIndex.reqQty) {
                 oTable.getRows()[i].getCells()[11].getItems()[0].setType("Accept");
                 oTable.getRows()[i].getCells()[12].getItems()[0].setType("Accept");
             } else {
@@ -116,8 +116,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             aFilters.push(this.addFilter("materialDescription", sQuery));
             aFilters.push(this.addFilter("materialType", sQuery));
             aFilters.push(this.addFilter("storageLocation", sQuery));
-            aFilters.push(this.addFilter("freestockKanbanBulkMaterial", sQuery));
-            aFilters.push(this.addFilter("requiredQty", sQuery));
+            aFilters.push(this.addFilter("FKBm", sQuery));
+            aFilters.push(this.addFilter("reqQty", sQuery));
             aFilters.push(this.addFilter("withdrawQty", sQuery));
             aFilters.push(this.addFilter("shortage", sQuery));
             aFilters.push(this.addFilter("unit", sQuery));
@@ -255,7 +255,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var inputVal = oEvent.getSource().getValue();
         var dataJson = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row;
         var index = oEvent.getSource().oParent.oParent.getIndex();
-        var compareWith = dataJson[index].requiredQty;
+        var compareWith = dataJson[index].reqQty;
         var intIndex = parseInt(inputVal, 10);
         var intcompareWith = parseInt(compareWith, 10);
         if (intIndex >= 0 && intIndex <= intcompareWith) {
@@ -271,7 +271,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var inputVal = oEvent.getSource().getValue();
         var dataJson = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row;
         var index = oEvent.getSource().oParent.oParent.getIndex();
-        var compareWith = dataJson[index].requiredQty;
+        var compareWith = dataJson[index].reqQty;
         var intIndex = parseInt(inputVal, 10);
         var intcompareWith = parseInt(compareWith, 10);
         if (intIndex >= 0 && intIndex <= intcompareWith) {

@@ -20,7 +20,7 @@ airbus.mes.components.util.Formatter = {
                 materialDescription : [el.materialDescription],
                 materialType : [el.materialType],
                 operationNumber : [el.operationNumber],
-                requiredQty : [el.requiredQty],
+                reqQty : [el.reqQty],
                 serialNumber : [el.serialNumber],
                 shortage : [el.shortage],
                 storageLocation : [el.storageLocation],
