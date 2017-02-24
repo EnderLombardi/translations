@@ -6,6 +6,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     * depending on the Production_Context_GBO name
     */
     initNotesList: function () {
+        console.log(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]);
         var listConfirmationNotes = this.getView().byId("trackingtemplateView--confirmationNotes");
         var listWONotes = this.getView().byId("trackingtemplateView--listNotes");
 
@@ -113,7 +114,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     },
 
     /**
-     * Hide Comment Box to Add Comments
+     * It prints the WO or/and the confirmation note list
      */
     printTrackingTemplate: function () {
 
@@ -179,10 +180,16 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         }
     },
 
+    /**
+     * Cancel confirmation dialog
+     */
     onCancelConfirmation: function () {
         this._oUserConfirmationDialog.close();
     },
 
+    /**
+     * Confirm the request
+     */
     onOKConfirmation: function () {
         // var attachmentFilesCollection = this.getView().byId('UploadCollection');
         // var collection = attachmentFilesCollection.getItems();
@@ -237,10 +244,10 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         this._oUserConfirmationDialog.close();
     },
 
-    replaceSendNotesURLWithParams: function () {
-        url = this.urlModel.getProperty("sendNotes");
-    },
 
+    /**
+     * Remove the comment, reason code and value set in confirmation dialog
+     */
     cleanAfterAddingNotes: function () {
         //if the view is ready yet, dont try to reset value
         if (airbus.mes.trackingtemplate.oView.byId('commentArea')) {
@@ -268,7 +275,10 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         }
     },
 
-    unBoxAllSelectedBox: function () {
+    /**
+     * unchecked all checked boxes
+     */
+    uncheckedAllSelectedBox: function () {
         this.getView().byId("trackingtemplateView--showOnlyLastWONote").setSelected(false);
         this.getView().byId("trackingtemplateView--showOnlyLastConfirmationNote").setSelected(false);
         this.getView().byId("trackingtemplateView--showOnlyNotConfirmedConfirmationNote").setSelected(false);
@@ -374,7 +384,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         }
 
         // Open a web socket connection
-        //if(!airbus.mes.operationdetail.ModelManager.badgeReader){
+        //if(!airbus.mes.trackingtemplate.ModelManager.badgeReader){
         airbus.mes.shell.ModelManager.connectBadgeReader(callBackFn, response, error);
         //}
 

@@ -48,7 +48,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
      */
     loadTrackingTemplateModel: function () {
         this.refreshTrackingTemplateModel();
-        airbus.mes.trackingtemplate.oView.oController.unBoxAllSelectedBox();
+        airbus.mes.trackingtemplate.oView.oController.uncheckedAllSelectedBox();
         airbus.mes.trackingtemplate.oView.oController.hideCommentBox();
         airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
 
@@ -123,7 +123,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         });
     },
     /**
-     * sort Array by operation adn date
+     * sort Array by operation and date
      */
     sortArrayByOperationAndDate: function (array) {
 
@@ -175,6 +175,9 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     },
 
 
+    /**
+     * load reason code
+    */
     loadReasonCodeData: function (oViewModel, model) {
 
         jQuery.ajax({
