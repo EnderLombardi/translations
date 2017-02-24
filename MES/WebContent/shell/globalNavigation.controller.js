@@ -381,7 +381,7 @@ sap.ui.controller(
 		 * Render stationHandover reload all model
 		 * 
 		 */
-			stationHandover : function() {
+			renderStationHandover : function() {
 	
 				var oManager = airbus.mes.stationHandover.util.ModelManager;
 	

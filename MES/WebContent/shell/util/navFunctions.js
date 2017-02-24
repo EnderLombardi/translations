@@ -20,10 +20,11 @@ airbus.mes.shell.util.navFunctions = {
 
             jQuery.sap.registerModulePath("airbus.mes.stationHandover", "../components/stationHandover");
             sap.ui.getCore().createComponent({ name: "airbus.mes.stationHandover", });
-            //ReloadModel
-            airbus.mes.shell.oView.getController().stationHandover();
 
         }
+
+        //ReloadModel
+        airbus.mes.shell.oView.getController().renderStationHandover();
         // reDisplay all columns
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[5].setVisible(true);
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[6].setVisible(true);

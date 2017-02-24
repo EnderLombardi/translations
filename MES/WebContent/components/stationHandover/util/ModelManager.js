@@ -6,8 +6,6 @@ airbus.mes.stationHandover.util.ModelManager = {
 	aSelected : [],
 	queryParams : jQuery.sap.getUriParameters(),
 	i18nModel : undefined,
-	selectAll : false,
-	copyOfModel : {},
 	filter : {
 		"search" : undefined,
 		"type" : new sap.ui.model.Filter({
@@ -150,30 +148,29 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 	onOswLoad : function() {
 
-//		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
-//	//	var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
-//		
-//		try {
-//
-//			var aModel = oViewModel.oData.row;
-//			airbus.mes.stationHandover.util.ModelManager.copyOfModel = JSON.parse(JSON.stringify(oViewModel.oData));
-//			//Create tree of for manage selection of tree
-//			aModel.forEach(function(el, indice) {
-//				
-//				//Save in field selected the value INSERTED to manage the selection/unselection of lines 
-//				el.SELECTED = el.INSERTED;
-//
-//				aModel[indice].row.forEach(function(al, indice1) {
-//					
-//					al.SELECTED = al.INSERTED;
-//				})
-//			})
-//
-//		} catch (e) {
-//
-//			console.log("Error");
-//
-//		}
+		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
+		
+		try {
+
+			var aModel = oViewModel.oData.row;
+			airbus.mes.stationHandover.util.ModelManager.copyOfModel = JSON.parse(JSON.stringify(oViewModel.oData));
+			//Create tree of for manage selection of tree
+			aModel.forEach(function(el, indice) {
+				
+				//Save in field selected the value INSERTED to manage the selection/unselection of lines 
+				el.SELECTED = el.INSERTED;
+
+				aModel[indice].row.forEach(function(al, indice1) {
+					
+					al.SELECTED = al.INSERTED;
+				})
+			})
+
+		} catch (e) {
+
+			console.log("Error");
+
+		}
 	},
 
 	onShiftsLoad : function() {

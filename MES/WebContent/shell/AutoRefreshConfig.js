@@ -69,7 +69,7 @@ airbus.mes.shell.AutoRefreshConfig = {
 		"timer" : 180,
 		"useraction" : false,
 		"area" : function() {
-			return airbus.mes.shell.oView.getController().stationHandover();
+			return airbus.mes.shell.oView.getController().renderStationHandover();
 		}
 
 	}
