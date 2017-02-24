@@ -47,7 +47,7 @@ airbus.mes.shell.util.navFunctions = {
             airbus.mes.stationHandover.oView.byId("navBack").setVisible(false);
             airbus.mes.stationHandover.oView.byId("headerstationhandover").addStyleClass("stationHandoverDialog");
             airbus.mes.stationHandover.oView.byId("headerstationhandover").removeStyleClass("stationHandoverTile");
-           
+
         } else {
 
             nav.addPage(airbus.mes.stationHandover.oView);
@@ -204,11 +204,11 @@ airbus.mes.shell.util.navFunctions = {
 
         if (airbus.mes.disruptionslist === undefined || airbus.mes.disruptionslist.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.disruptionslist", "../components/disruptionslist");
-            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionslist"});
-            
+            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionslist" });
+
             container.addPage(airbus.mes.disruptionslist.oView);
         }
-        
+
         container.to(airbus.mes.disruptionslist.oView.getId());
 
         // Set click event on report disruption button
@@ -223,19 +223,19 @@ airbus.mes.shell.util.navFunctions = {
 
         if (airbus.mes.createdisruption === undefined || airbus.mes.createdisruption.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.createdisruption", "../components/createdisruption");
-            sap.ui.getCore().createComponent({ name: "airbus.mes.createdisruption"});           
+            sap.ui.getCore().createComponent({ name: "airbus.mes.createdisruption" });
 
             // Add event delegate
             airbus.mes.createdisruption.oView.addEventDelegate({
-            	onBeforeShow: function(evt){
-            		airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode, evt.data.oData);
-        	   }
+                onBeforeShow: function (evt) {
+                    airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode, evt.data.oData);
+                }
             });
-            
+
             // Add Page to navigation container
             container.addPage(airbus.mes.createdisruption.oView);
         }
-        
+
         container.to(airbus.mes.createdisruption.oView.getId(), oParams);
 
         // Set click event on create, update and cancel disruption button
@@ -254,7 +254,7 @@ airbus.mes.shell.util.navFunctions = {
             cancelButton.attachPress(airbus.mes.createdisruption.oView.oController.onCancelCreateDisruption);
         }
     },
-    
+
     disruptionAttachment: function (container, disruptionDesc) {
         if (airbus.mes.disruptionattachments === undefined || airbus.mes.disruptionattachments.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.disruptionattachments", "../components/disruptionattachments");
@@ -317,15 +317,16 @@ airbus.mes.shell.util.navFunctions = {
         if (airbus.mes.components === undefined || airbus.mes.components.oView === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.components", "../components/components");
-            sap.ui.getCore().createComponent({            
-	            name: "airbus.mes.components",
-	    		site : airbus.mes.settings.ModelManager.site,
-	    		sfc : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc,
-	    	    sSet      : airbus.mes.shell.util.navFunctions.components.configME });      
-	     } else { // or load model
-	        airbus.mes.components.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
-	        airbus.mes.components.oView.getController().getOwnerComponent().setSfc(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc);
-	        airbus.mes.components.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no);	        
+            sap.ui.getCore().createComponent({
+                name: "airbus.mes.components",
+                site: airbus.mes.settings.ModelManager.site,
+                sfc: sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc,
+                sSet: airbus.mes.shell.util.navFunctions.components.configME
+            });
+        } else { // or load model
+            airbus.mes.components.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
+            airbus.mes.components.oView.getController().getOwnerComponent().setSfc(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc);
+            airbus.mes.components.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no);
             airbus.mes.components.util.ModelManager.loadcomponentsWorkOrderDetail();
             airbus.mes.components.util.ModelManager.loadselectFilterModel();
             airbus.mes.components.oView.getController().checkSettingComponents();
@@ -340,6 +341,7 @@ airbus.mes.shell.util.navFunctions = {
 
             jQuery.sap.registerModulePath("airbus.mes.acpnglinks", "../components/acpnglinks");
             sap.ui.getCore().createComponent({ name: "airbus.mes.acpnglinks" });
+            airbus.mes.acpnglinks.model.ModelManager.loadacpnglinksWorkOrderDetail();
         }
         if (container.getPage("acpnglinksView") === null) {
             container.addPage(airbus.mes.acpnglinks.oView);
@@ -473,32 +475,32 @@ airbus.mes.shell.util.navFunctions = {
         msnBox.setSelectedKey("");
     },
 
-    
+
 
     // Screen to be called from disruption tracker on Laptop/Desktop by support team only -  V1.5
     disruptionsDetailScreen: function (oDataset) {
 
-    	if (airbus.mes.disruptiondetail === undefined || airbus.mes.disruptiondetail.oView === undefined) {
-           jQuery.sap.registerModulePath("airbus.mes.disruptiondetail", "../components/disruptiondetail");
-           sap.ui.getCore().createComponent({ name: "airbus.mes.disruptiondetail", });
-           
+        if (airbus.mes.disruptiondetail === undefined || airbus.mes.disruptiondetail.oView === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.disruptiondetail", "../components/disruptiondetail");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptiondetail", });
 
-           nav.addPage(airbus.mes.disruptiondetail.oView);
-           
-           // Add event delegate to pass the data and load the services
-           airbus.mes.disruptiondetail.oView.addEventDelegate({
-        	   onBeforeShow: function(evt) {
-        		   airbus.mes.disruptiondetail.oView.oController.loadData(evt.data.mode, evt.data.oData);
-        	   }
-           });
-    	}
+
+            nav.addPage(airbus.mes.disruptiondetail.oView);
+
+            // Add event delegate to pass the data and load the services
+            airbus.mes.disruptiondetail.oView.addEventDelegate({
+                onBeforeShow: function (evt) {
+                    airbus.mes.disruptiondetail.oView.oController.loadData(evt.data.mode, evt.data.oData);
+                }
+            });
+        }
 
         // Get Data in disruption Detail Model with disruption comments
         var oData = oDataset.Rowsets.Rowset[0].Row[0];
         oData.comments = oDataset.Rowsets.Rowset[1].Row;
-     
+
         // Navigate
-        nav.to(airbus.mes.disruptiondetail.oView.getId(), {mode: "Edit", oData: oData});
+        nav.to(airbus.mes.disruptiondetail.oView.getId(), { mode: "Edit", oData: oData });
 
     },
 
@@ -520,9 +522,10 @@ airbus.mes.shell.util.navFunctions = {
 	    	   }
 	        });
 
+
             nav.addPage(airbus.mes.disruptionkpi.oView);
         }
-        nav.to(airbus.mes.disruptionkpi.oView.getId(),{});
+        nav.to(airbus.mes.disruptionkpi.oView.getId(), {});
     },
 
 

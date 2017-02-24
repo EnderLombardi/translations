@@ -1275,6 +1275,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 
                 //Load acpngLinks if no child find for the wo the button is disabled
                 airbus.mes.shell.util.navFunctions.acpnglinksDetail(airbus.mes.operationdetail.oView.getController().nav);
+                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setEnabled(airbus.mes.acpnglinks.model.ModelManager.checkExistingChildentData());
 
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
 
