@@ -15,7 +15,7 @@
 				</HBox>
 				<HBox>
 					<Label text="{i18nModel>workcenter}:" class="sapUiSmallMarginBegin" />
-					<Text text="V90Q3E31" width="100%" >
+					<Text text="{ path:'DisruptionDetailModel>/WorkCenter', formatter:'airbus.mes.disruptions.Formatter.workCenterText' }" width="100%" >
 					</Text>
 					<layoutData>
 					<l:GridData span="L6 M8 S8" />
@@ -23,7 +23,7 @@
 				</HBox>
 				<HBox>
 					<Label text="{i18nModel>status}:" class="sapUiSmallMarginBegin"></Label>
-					<Text text="{i18nModel>Closed}" />
+					<Text text="{path: 'DisruptionDetailModel>/Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}" />
 				</HBox>
 				<HBox class=" sapUiSmallMarginTop sapUiTinyMarginBegin">
 				<Image class="ylabelUserImage setImage" width="100%"

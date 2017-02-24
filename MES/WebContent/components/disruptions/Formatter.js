@@ -645,11 +645,18 @@ airbus.mes.disruptions.Formatter = {
 		else
 			return false;
 	},
-	setUpdateButtonVisibility:function(sstatus){
-		if(sstatus == airbus.mes.disruptions.Formatter.status.solved || sStatus == airbus.mes.disruptions.Formatter.status.deleted){
+	setUpdateButtonVisibility:function(sStatus){
+		if(sStatus == airbus.mes.disruptions.Formatter.status.solved || sStatus == airbus.mes.disruptions.Formatter.status.deleted || sStatus == airbus.mes.disruptions.Formatter.status.closed ){
 			return false;
 		}else
 			return true;
+	},
+	workCenterText:function(workCenter){
+		var sText ;
+		if(workCenter){
+		sText = workCenter.split(",").pop();
+		}
+		return sText;
 	}
 	
 	

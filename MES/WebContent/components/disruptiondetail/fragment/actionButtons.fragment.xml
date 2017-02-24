@@ -50,7 +50,8 @@
 
 
 			<Button text="{i18nModel>update}" type="Emphasized" press="onUpdateDisruption" 
-				width="100%" class="btnRadius" enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_EDIT}"> 
+				width="100%" class="btnRadius" enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_EDIT}"
+				visible="{path: 'DisruptionDetailModel>/Status', formatter: 'airbus.mes.disruptions.Formatter.setUpdateButtonVisibility'}"> 
 				</Button> 
 		</f:content>
 	</f:SimpleForm>

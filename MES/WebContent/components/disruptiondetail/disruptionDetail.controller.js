@@ -168,7 +168,6 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 							.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
 					};
 					oView.getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);
-					oView.getModel("DisruptionDetailModel").setProperty("/Status", airbus.mes.disruptions.Formatter.status.acknowledged);
 					oView.getModel("DisruptionDetailModel").setProperty("/PromisedDateTime", dateTime);
 					//oView.getModel("DisruptionDetailModel").setProperty("/ResolverName",oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/last_name") + " "	+ oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name"));
 					oView.getModel("DisruptionDetailModel").refresh();
@@ -210,16 +209,65 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 	 */
 	onMarkSolvedDisruption : function(oEvt) {
 		var i18nModel = this.getView().getModel("i18nModel");
+		var oView = this.getView();
+		var sComment;
 		if (this.getView().byId("comment").getValue() == "") {
-			sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
+			sap.m.MessageToast.show(i18nModel.getProperty("plsEnterSolution"));
 			return;
 		} else {
-			this.sComment = airbus.mes.disruptions.Formatter.actions.solve + this.getView().byId("comment").getValue();
+			sComment = airbus.mes.disruptions.Formatter.actions.solve + this.getView().byId("comment").getValue();
 		}
 		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
 		// Call to Mark Solved Disruption
-		airbus.mes.disruptions.ModelManager.markSolvedDisruption(sMessageRef, this.sComment, i18nModel);
+		
+		jQuery.ajax({
+			url : airbus.mes.disruptions.ModelManager.getUrlToMarkSolvedDisruption(),
+			data : {
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.3" : sMessageRef,
+				"Param.4" : sComment
+			},
+			error : function(xhr, status, error) {
 
+				airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("tryAgain"));
+			},
+			success : function(result, status, xhr) {
+				
+				
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
+					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+
+				} else { // Success					
+					var sMessageSuccess = i18nModel.getProperty("successSolved");
+					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+					// load again disruptions data
+					oView.getModel("DisruptionDetailModel").setProperty("/Status", airbus.mes.disruptions.Formatter.status.solved);
+
+					var currDate = new Date();
+					var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+					var oUserDetailModel = sap.ui.getCore().getModel("userDetailModel")
+					var oComment = {
+						"Action" : i18nModel.getProperty("solve"),
+						"Comments" : sComment,
+						"Counter" : "",
+						"Date" : commentDate,
+						"MessageRef" : sMessageRef,
+						"UserFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
+							.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
+					};
+					oView.getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);
+					
+					
+					//oView.getModel("DisruptionDetailModel").setProperty("/ResolverName",oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/last_name") + " "	+ oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name"));
+					oView.getModel("DisruptionDetailModel").refresh();
+					sap.ui.getCore().byId("disruptionDetailView--comment").setValue();
+					//sap.ui.getCore().byId("disruptionDetailView--selectResolver").setSelectedKey(sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"));
+
+					
+				}
+			}
+		});
 	},
 	/***************************************************************************
 	 * Refuse the Disruption MESV1.5
