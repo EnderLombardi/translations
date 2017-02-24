@@ -421,7 +421,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         airbus.mes.stationtracker.util.ModelManager.filterUnplanned = oViewModel;
 
     },
-    loadRessourcePool: function () {
+    loadRessourcePool: function (syncCall) {
 
         var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         var oViewModel = sap.ui.getCore().getModel("ressourcePoolModel");
@@ -433,7 +433,7 @@ airbus.mes.stationtracker.util.ModelManager = {
             .replaceURI(geturlressourcepool, "$station", oData.station);
         geturlressourcepool = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlressourcepool, "$msn", oData.msn);
-        oViewModel.loadData(geturlressourcepool, null, false);
+        oViewModel.loadData(geturlressourcepool, null, syncCall);
 
     },
     onRessourcePoolLoad: function () {

@@ -1056,9 +1056,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
             airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
             
-            //force gantt 100% height
-            // $("#stationTrackerView--splitWorkTra").children().css('height', '100%');
-
             if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
                 $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
             } 
