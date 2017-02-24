@@ -54,7 +54,7 @@
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_MISSING",
 			"Description": "Station Tracker>Drill Down>Missing Part Info",
-			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_OSW",
