@@ -4207,11 +4207,11 @@ DISRUPTIONTRACKER
 
 .trackingTemplate .reasonCodeContainer .sapMPanelContent:not(.sapMPanelBGTransparent) { border: 0; }
 
-.trackingTemplate .reasonCodeContainer label { margin: auto; margin-right: 10px; }
+.trackingTemplate .reasonCodeContainer label { margin: auto; padding-right: 10px; }
 
 #missingPartsView--mpPage > section#missingPartsView--mpPage-cont { height: 100%; }
 
-#missingPartsView--MPTable { width: 95% !important; margin: 0 auto; padding: 0; }
+#missingPartsView--MPTable { width: 100% !important; height: inherit !important; margin: 0 auto; padding: 0; }
 
 #missingPartsView--MPTable .sapUiTableCnt { height: calc(100% - 10px); border-bottom: 1px solid #767879; }
 

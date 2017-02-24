@@ -29,10 +29,19 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
   
 	},
 
-    onCloseMPPopup: function() {
+    /**
+	 * Called to close dialog
+	 * 
+	 */
+	onCloseMPPopup: function() {
         airbus.mes.missingParts.oView.getContent()[0].close();
     },
 
+	/**
+	 * Called to manage filters of the toolbar
+	 * 
+	 * @param {any} oEvent 
+	 */
 	onSearch: function(oEvent) {
 		var oFilters = [];
 		var oSorter = null;

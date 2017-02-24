@@ -10,56 +10,64 @@
                 "Columns": {
                     "Column": [
                         {
-                            "Name": "WorkOrder",
-                            "SourceColumn": "WorkOrder",
+                            "Name": "workOrder",
+                            "SourceColumn": "workOrder",
                             "Description": "",
                             "SQLDataType": 1,
                             "MinRange": 1,
                             "MaxRange": 1
                         },
                         {
-                            "Name": "Operation",
-                            "SourceColumn": "Operation",
+                            "Name": "operation",
+                            "SourceColumn": "operation",
                             "Description": "",
                             "SQLDataType": 1,
                             "MinRange": 1,
                             "MaxRange": 1
                         },
                         {
-                            "Name": "PartNumber",
-                            "SourceColumn": "PartNumber",
+                            "Name": "sfcStepBO",
+                            "SourceColumn": "sfcStepBO",
                             "Description": "",
                             "SQLDataType": 1,
                             "MinRange": 1,
                             "MaxRange": 1
                         },
                         {
-                            "Name": "PartDescript",
-                            "SourceColumn": "PartDescript",
+                            "Name": "partNumber",
+                            "SourceColumn": "partNumber",
                             "Description": "",
                             "SQLDataType": 1,
                             "MinRange": 1,
                             "MaxRange": 1
                         },
                         {
-                            "Name": "Quantity",
-                            "SourceColumn": "Quantity",
+                            "Name": "partDescription",
+                            "SourceColumn": "partDescription",
                             "Description": "",
                             "SQLDataType": 1,
                             "MinRange": 1,
                             "MaxRange": 1
                         },
                         {
-                            "Name": "CriticalPart",
-                            "SourceColumn": "CriticalPart",
+                            "Name": "quantity",
+                            "SourceColumn": "quantity",
                             "Description": "",
                             "SQLDataType": 1,
                             "MinRange": 1,
                             "MaxRange": 1
                         },
                         {
-                            "Name": "ExpectStDate",
-                            "SourceColumn": "ExpectStDate",
+                            "Name": "criticalPart",
+                            "SourceColumn": "criticalPart",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "expectedDeliveryDate",
+                            "SourceColumn": "expectedDeliveryDate",
                             "Description": "",
                             "SQLDataType": 1,
                             "MinRange": 1,
@@ -69,112 +77,112 @@
                 },
                 "Row": [
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "10",
-                        "PartNumber": "A",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-05-18 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "10",
+                        "partNumber": "A",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-05-18 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "20",
-                        "PartNumber": "B",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-04-03 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "20",
+                        "partNumber": "B",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-04-03 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "30",
-                        "PartNumber": "C",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-11-11 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "30",
+                        "partNumber": "C",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-11-11 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "40",
-                        "PartNumber": "D",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-11-17 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "40",
+                        "partNumber": "D",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-11-17 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "50",
-                        "PartNumber": "A",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-01-10 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "50",
+                        "partNumber": "A",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-01-10 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "10",
-                        "PartNumber": "A",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-11-17 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "10",
+                        "partNumber": "A",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-11-17 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "10",
-                        "PartNumber": "A",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-05-18 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "10",
+                        "partNumber": "A",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-05-18 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "20",
-                        "PartNumber": "B",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-04-03 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "20",
+                        "partNumber": "B",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-04-03 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "30",
-                        "PartNumber": "C",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-11-11 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "30",
+                        "partNumber": "C",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-11-11 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "40",
-                        "PartNumber": "D",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-11-17 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "40",
+                        "partNumber": "D",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-11-17 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "50",
-                        "PartNumber": "A",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-01-10 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "50",
+                        "partNumber": "A",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-01-10 15:00:00"
                     },
                     {
-                        "WorkOrder": "123456",
-                        "Operation": "10",
-                        "PartNumber": "A",
-                        "PartDescript": "Rail",
-                        "Quantity": "2",
-                        "CriticalPart": "yes",
-                        "ExpectStDate": "2016-11-17 15:00:00"
+                        "workOrder": "123456",
+                        "operation": "10",
+                        "partNumber": "A",
+                        "partDescription": "Rail",
+                        "quantity": "2",
+                        "criticalPart": "yes",
+                        "expectedDeliveryDate": "2016-11-17 15:00:00"
                     }
                 ]
             }

@@ -13,7 +13,8 @@
 ///////////////////////////
 
 #missingPartsView--MPTable{
-	width:95% !important;
+	width:100% !important;
+	height: inherit !important;
 	margin: 0 auto;
 	padding:0;
 	.sapUiTableCnt{

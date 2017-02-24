@@ -26,5 +26,41 @@ airbus.mes.settings.GlobalFunction = {
 		nav.to(airbus.mes.component.settings.oView.getId());	
 		
 	},
-	
+
+     /**
+     * Return Rowsets from REST Webservice Data flow
+     * 
+     * @param {any} RestData 
+     * @returns Rowsets
+     */
+    getRowsetsFromREST: function(RestData){
+        var rowsets = {
+            "DateCreated" : "",
+            "Version" : "",
+            "StartDate" : "",
+            "EndDate" : "",
+            "CachedTime" : "",
+            "Rowset" : [],
+        };
+        
+        if( Array.isArray(RestData) && (RestData.length > 0) ) {
+            var attributs = Object.keys(RestData[0]);
+            rowsets.Rowset.push({"Columns" : { "Column" : [] },
+                                 "Row" : []});
+            attributs.forEach(function(att){
+                rowsets.Rowset[0].Columns.Column.push({
+                    "Name" : att,
+                    "SourceColumn" : att,
+                    "Description" : "",
+                    "SQLDataType" : "1",
+                    "MinRange" : "1",
+                    "MaxRange" : "1",
+                });
+            });
+            RestData.forEach(function(row){
+                rowsets.Rowset[0].Row.push(row);
+            });
+        }
+        return { "Rowsets" : rowsets};
+    }
 }
