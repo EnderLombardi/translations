@@ -602,20 +602,7 @@ airbus.mes.disruptions.Formatter = {
 	
 	
 	promisedDateEnable : function(responsibleFlag, status){
-		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
-			return false;
-		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && responsibleFlag == "X"
-			&& status == airbus.mes.disruptions.Formatter.status.pending)
-			return true;
-		else
-			return false;
-	},
-	promisedTimeEnable : function(responsibleFlag, status){
-		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
-			return false;
-
-		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && responsibleFlag == "X"
-			&& status == airbus.mes.disruptions.Formatter.status.pending)
+		if (responsibleFlag == "X"  && status == airbus.mes.disruptions.Formatter.status.pending)
 			return true;
 		else
 			return false;

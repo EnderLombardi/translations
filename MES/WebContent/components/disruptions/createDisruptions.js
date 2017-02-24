@@ -527,8 +527,8 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		this.getView().byId("selectResponsibleGrp").setEnabled(true);
 		this.getView().byId("selectOriginator").setEnabled(false);
 		//this.getView().byId("description").setEnabled(false);
-		this.getView().byId("promisedDate").setEnabled(true);
-		this.getView().byId("promisedTime").setEnabled(true);
+		//this.getView().byId("promisedDate").setEnabled(true);
+		//this.getView().byId("promisedTime").setEnabled(true);
 		this.getView().byId("expectedDate").setEnabled(true);
 		this.getView().byId("expectedTime").setEnabled(true);
 		this.getView().byId("gravity").setEnabled(true);
@@ -547,8 +547,8 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("selectResponsibleGrp").setEnabled(true);
 		oView.byId("selectOriginator").setEnabled(false);
 		//oView.byId("description").setEnabled(false);
-		oView.byId("promisedDate").setEnabled(true);
-		oView.byId("promisedTime").setEnabled(true);
+		//oView.byId("promisedDate").setEnabled(true);
+		//oView.byId("promisedTime").setEnabled(true);
 		oView.byId("expectedDate").setEnabled(false);
 		oView.byId("expectedTime").setEnabled(false);
 		oView.byId("gravity").setEnabled(false);
@@ -568,8 +568,8 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("selectResponsibleGrp").setEnabled(true);
 		oView.byId("selectOriginator").setEnabled(false);
 		oView.byId("description").setEnabled(false);
-		oView.byId("promisedDate").setEnabled(false);
-		oView.byId("promisedTime").setEnabled(false);
+		//oView.byId("promisedDate").setEnabled(false);
+		//oView.byId("promisedTime").setEnabled(false);
 		oView.byId("expectedDate").setEnabled(true);
 		oView.byId("expectedTime").setEnabled(true);
 		oView.byId("gravity").setEnabled(true);

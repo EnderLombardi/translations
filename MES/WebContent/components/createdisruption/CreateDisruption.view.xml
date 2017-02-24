@@ -301,16 +301,17 @@
 
 										<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+											enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
 											<layoutData>
 												<l:GridData span="L2 M5 S6" />
 											</layoutData>
 
 
 										</DatePicker>
-										<TimePicker id="promisedTime" displayFormat="HH:mm:ss"
-											valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+										<TimePicker id="promisedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
+											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+											enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
 											<layoutData>
 												<l:GridData span="L1 M4 S6" />
 											</layoutData>

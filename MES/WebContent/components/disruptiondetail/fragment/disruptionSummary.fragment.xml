@@ -55,7 +55,7 @@
 
 				<core:Icon src="sap-icon://pending" color="#009de0" size="2.5rem" class="sapUiTinyMarginBegin">
 				</core:Icon>
-				<Text text="{i18nModel>TimeLost}:{DisruptionDetailModel>/TimeLost}" class="sapUiSmallMarginBegin sapUiSmallMarginTop" />
+				<Text text="{i18nModel>TimeLost}:{path: 'DisruptionDetailModel>/TimeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}" class="sapUiSmallMarginBegin sapUiSmallMarginTop" />
 				<layoutData>
 					<l:GridData span="L6 M8 S8" />
 				</layoutData>

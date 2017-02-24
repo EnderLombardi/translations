@@ -174,9 +174,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		}
 
 		oBinding.filter(aFilters);
-		airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();// Remove
-		// last
-		// column
 
 	},
 

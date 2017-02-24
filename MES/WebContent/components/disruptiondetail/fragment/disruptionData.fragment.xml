@@ -98,7 +98,7 @@
 					</layoutData>
 				</TimePicker>
 				<Label text="{i18nModel>TimeLost}" />
-				<Input placeholder="" id="timeLost" type="Number" value=""
+				<Input placeholder="" id="timeLost"  value="{path: 'DisruptionDetailModel>/TimeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}"
 					enabled="false">
 				</Input>
 
@@ -119,8 +119,8 @@
 				<Label text="{i18nModel>promisedDateTime}" id="promisedDateLabel" />
 				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 					displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
-					<!-- enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}"> -->
+					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
@@ -128,7 +128,7 @@
 				<TimePicker id="promisedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm:ss"
 					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
-					enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedTimeEnable'}">
+					enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -239,25 +239,6 @@
 							<l:GridData span="L12 M12 S12" />
 						</layoutData>
 					</TextArea>
-
-					<!-- <Panel id="commentBox" visible="false"> -->
-
-					<!-- <VBox> -->
-					<!-- <TextArea id="commentArea" placeholder="{i18nModel>addComment}" -->
-					<!-- width="100%" /> -->
-
-					<!-- <HBox> -->
-					<!-- <Button text="{i18nModel>submitComment}" type="Accept" -->
-					<!-- press="submitComment" class="sapUiSmallMarginEnd buttonAccept" -->
-					<!-- width="12rem" /> -->
-
-					<!-- <Button text="{i18nModel>cancel}" type="Reject" press="hideCommentBox" -->
-					<!-- class="sapUiSmallMarginEnd buttonReject" width="12rem" /> -->
-					<!-- </HBox> -->
-
-					<!-- </VBox> -->
-
-					<!-- </Panel> -->
 
 				</VBox>
 			</f:content>
