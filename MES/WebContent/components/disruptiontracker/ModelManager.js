@@ -1,5 +1,5 @@
 "use strict";
-jQuery.sap.declare("airbus.mes.disruptiontracker.ModelManager")
+jQuery.sap.declare("airbus.mes.disruptiontracker.ModelManager");
 airbus.mes.disruptiontracker.ModelManager = {
 	oDisruptionFilter: {},
 

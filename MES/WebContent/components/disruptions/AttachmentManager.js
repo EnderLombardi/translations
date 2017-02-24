@@ -1,6 +1,6 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.disruptions.AttachmentManager")
+jQuery.sap.declare("airbus.mes.disruptions.AttachmentManager");
 
 airbus.mes.disruptions.AttachmentManager = {
 
