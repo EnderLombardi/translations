@@ -497,6 +497,7 @@ sap.ui.controller(
             // ** asynchrone call **//
             oModule.getTakt();
 
+            oModule.loadRessourcePool();
             oModule.loadStationTracker("I");
             oModule.loadStationTracker("U");
             oModule.loadStationTracker("O");

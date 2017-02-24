@@ -1045,16 +1045,17 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             } else {
                 airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
             }
-            airbus.mes.stationtracker.util.ModelManager.loadRessourcePool();
-            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
-            airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
-            if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
+            airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
+             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
                 //hide split screen if select user
                 airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
             }
-            airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
             sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
             airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(airbus.mes.stationtracker.splitterWorkTracker);
+            
+            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+            airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
+            
             //force gantt 100% height
             // $("#stationTrackerView--splitWorkTra").children().css('height', '100%');
 
@@ -1064,15 +1065,18 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
         } else {
             airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
-            airbus.mes.stationtracker.util.ModelManager.loadRessourcePool();
-            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
-
+    
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
-                airbus.mes.shell.util.navFunctions.splitMode = "WorkTracker";
+                 airbus.mes.shell.util.navFunctions.splitMode = "WorkTracker";
+                airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
                 airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Work Tracker");
                 //show split screen if select user
                 airbus.mes.shell.oView.oController.renderWorkTracker();
+            } else {
+                airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
             }
+
+            
             
         }
 
