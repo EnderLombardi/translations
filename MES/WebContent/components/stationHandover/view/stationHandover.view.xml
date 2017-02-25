@@ -98,7 +98,7 @@
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver"
-							text="{stationHandoverI18n>FrozenListOFittedHandover}" />
+							text="{stationHandoverI18n>FrozenListOFitted}" />
 						<template>
 							<m:Label text="{path:'oswModel>FROZEN_LIST' , formatter:'airbus.mes.stationHandover.util.Formatter.colorTracking'}" />
 						</template>
