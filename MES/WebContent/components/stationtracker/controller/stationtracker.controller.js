@@ -1032,6 +1032,13 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         return this.getView().getModel("StationTrackerI18n").getProperty(sKey);
     },
 
+
+    /**
+     * This function is called each time we change the user selected.
+     * We change the splitModel depending of the user selected.
+     * The work tracker split fragment is displayed if a user is selected.
+     * If ALL Users or No Users is selected we remove the work tracker fragment.
+     */
     selectUser: function (oEvt) {
 
         //get the user selected
