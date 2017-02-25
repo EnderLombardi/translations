@@ -28,7 +28,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     changeButtonColor: function () {
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
-        var count = oTable.getBinding("rows").oList.length;
+        var count = oTable.getRows(); // oTable.getBinding("rows").oList.length;
         for (var i = 0; i < count; i++) {
             oTable.getRows()[i];
             var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[i];

@@ -4,7 +4,7 @@
 			"SITE": "FNZ1",
 			"Feature": "HOMESCREEN",
 			"Description": "Homescreen>Click screen to open",
-			"Roles": ["eval host('local|sopra|dmi|imi|qmi|imi|qmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "DISRUPTION_DISRUPTION_LIST",
@@ -54,7 +54,7 @@
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_MISSING",
 			"Description": "Station Tracker>Drill Down>Missing Part Info",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_OSW",
@@ -230,7 +230,7 @@
 			"SITE": "FNZ1",
 			"Feature": "WORK_TRACKER_DOC_VISUALIZE",
 			"Description": "Work Tracker> Document Viewer> Visualize WO/OP documents",
-			"Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		},
 		{
 			"SITE": "FNZ1",
@@ -248,19 +248,19 @@
 			"SITE": "FNZ1",
             "Feature": "FITTED_COMPONENTS",
             "Description": "Station Tracker>An operation>Documents>Components> 3 last columns",
-            "Roles": ["eval host('sopra|dmi')&&!feature('role')"]
+            "Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		},
 		{
 			"SITE": "FNZ1",
             "Feature": "WORK_TRACKER_CHECKLIST",
             "Description": "Station Tracker>An operation>Documents>Components> 3 last columns",
-            "Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+            "Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		},
 		{
 			"SITE": "FNZ1",
             "Feature": "WORK_TRACKER_NC_DISPLAY",
             "Description": "Station Tracker>An operation>Documents>Components> 3 last columns",
-            "Roles": ["eval host('local|sopra|dmi')&&!feature('role')"]
+            "Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}
 	]
 }
