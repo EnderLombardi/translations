@@ -125,6 +125,7 @@ gulp.task('copy', ['clean'], function () {
 		'./components/homepage/css/margin.css',
 		'./Sass/global.css',
 		'./Sass/*.png',
+		'./Sass/*.svg',
 		'./components/homepage/data/1TileLineHome.json',
 		'./components/homepage/images/**',
 		'./components/calendar/model/**',
