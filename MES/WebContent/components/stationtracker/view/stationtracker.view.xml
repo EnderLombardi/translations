@@ -39,7 +39,7 @@
 											class="iconbuttonTeam"
 											icon="sap-icon://group" press="onTeamPress" />
 										<Button id="hideKPI" type="Transparent" enabled="true" icon="sap-icon://hide"
-											text="{StationTrackerI18n>HideKPIS}" press="hideKPI"/>
+											text="{StationTrackerI18n>HideKPIS}" press="toggleKPI"/>
 									</Toolbar>
 				
 								</headerToolbar>

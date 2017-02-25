@@ -436,6 +436,16 @@ airbus.mes.stationtracker.util.ModelManager = {
         oViewModel.loadData(geturlressourcepool, null, syncCall);
 
     },
+
+    /**
+     * This function is called each time we load the ressourcePoolModel.
+     * The goal is to filter the list of user in the ressourcePoolModel.
+     * In this function, the following things are done : 
+     *  - The viewModel is feed with 2 more values : All Users and No Users
+     *  - The list of  ressourcePoolModel is filter in order not to have the same user twice in the list.
+     *  - The workTracker view is reload by calling the loadSplitModel function if we are in worktracker Mode.
+     *  - The ‘show KPIs’ button is grayed out in the case of operator filter applied (workTracker Mode).
+     */
     onRessourcePoolLoad: function () {
 
         var aModel = sap.ui.getCore().getModel("ressourcePoolModel");
@@ -481,6 +491,9 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (airbus.mes.stationtracker.util.AssignmentManager.userSelected === '%') {
                     //if the previous user selected was "ALL USERS" we assigne the user to load at workTrackerUser
                     airbus.mes.stationtracker.util.AssignmentManager.userSelected = workTrackerUser;
+                    airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
+                    airbus.mes.stationtracker.oView.oController.hideKPI();
+
                 } else if (previousUserSelectedDeleted) {
                     airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
                     airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
@@ -497,12 +510,16 @@ airbus.mes.stationtracker.util.ModelManager = {
                 } else {
                     //if the previous user selected was different and is still in the ressourcePoolList
                     workTrackerUser = airbus.mes.stationtracker.util.AssignmentManager.userSelected;
+                    airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
+                    airbus.mes.stationtracker.oView.oController.hideKPI();
                 }
                 sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey(workTrackerUser);
                 airbus.mes.stationtracker.util.ModelManager.loadSplitModel(workTrackerUser);
             } else if (airbus.mes.stationtracker.util.AssignmentManager.userSelected !== "No") {
                 //if we are in station stacker mode we reset the user to --> ALL USERS in order to reload the complete station tracker list
                 airbus.mes.stationtracker.util.AssignmentManager.userSelected = '%';
+                airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(true);
+                airbus.mes.stationtracker.oView.oController.showKPI();
                 sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey("ALL");
             }
 
@@ -1488,6 +1505,17 @@ airbus.mes.stationtracker.util.ModelManager = {
         return spentTime;
     },
 
+    /**
+     * This function aim to retrieve data for the work tracker split view.
+     * It call the url to retrieve the last operation of a specific user and the data are saved in the
+     * ViewModel named SplitDetailModel
+     * 
+     * This function is called when we are in WorkTracker mode and :
+     *      - when we change the selected user 
+     *      - when we change the selected day    
+     *      - when a user is unassigned from an operation
+     *      - when a user is assigned to an operation
+     */
     loadSplitModel: function (userToLoad) {
         var splitModelURL, oViewModel, shiftSelected, userSelected, startDate, tzoffset, localISOTime;
 
