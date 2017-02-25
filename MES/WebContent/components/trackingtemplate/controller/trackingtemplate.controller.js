@@ -164,8 +164,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         //     console.log(collection[i].getFileName());
         // }
 
-        var sMessageError = this.getView().getModel("i18n")
-            .getProperty("ErrorDuringConfirmation");
         if (airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").getSelectedKey()) {
             if (this.getView().byId('commentArea').getValue()) {
                 if (!this._oUserConfirmationDialog) {
@@ -242,8 +240,10 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                     airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageError);
                 },
                 success: function (result, status, xhr) {
-                    if(result.Rowsets.Rowset) {
+                    if(result.Rowsets.Rowset &&  result.Rowsets.Rowset[0].Row) {
                         sMessageSuccess = result.Rowsets.Rowset[0].Row[0].Message_ID +'\n'+ result.Rowsets.Rowset[0].Row[0].Parameter_1;
+                    } else {
+                        sMessageSuccess = sMessageError;
                     }
                     airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
                     airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
