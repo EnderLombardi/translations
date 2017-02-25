@@ -43,11 +43,17 @@ airbus.mes.jigtools.util.ModelManager = {
             }),
 
             success : function(data) {
-                if(typeof data == "string"){
+                if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
-                if(!data.toolInfoList[0]){
-                    data.toolInfoList = [data.toolInfoList];
+                if (typeof data != "object" || data === null) {
+                	/* In case the tool list is empty, we receive "null" */
+                	data = { toolInfoList : [] };
+                }
+                data.toolInfoList = data.toolInfoList || [];
+                if (!Array.isArray(data.toolInfoList)) {
+                	/* In case the tool list contain one element, we receive an object */
+                    data.toolInfoList = [ data.toolInfoList ];
                 }
                 oViewModel.setData(data);
                 oViewModel.refresh();
