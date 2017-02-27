@@ -1,11 +1,27 @@
 #jigtoolsView {
-	height: calc(100% - 10px) !important;
-	#jigtoolsView--jigToolList-sapUiTableCnt {
-		.sapUiTableColHdrCnt {
-			height: 3rem !important;
-		}
-	}
+    height: 100% !important;
+    >div {
+        height: 100%;
+        >section {
+            height: 100%;
+            >div {
+                position: absolute;
+                top: 0;
+                bottom: 2.5%;
+                left: 2.5%;
+                right: 2.5%;
+                #jigtoolsView--jigToolList-sapUiTableCnt {
+                    .sapUiTableColHdrCnt {
+                        height: 3rem !important;
+                    }
+                }
+            }
+        }
+    }
+}
 
+
+#jigtoolsView {
 	#jigtoolsView--jigToolList {
 		width:95% !important;
 		margin: 0 auto;
@@ -67,7 +83,6 @@
 	}
 
 	#jigtoolsView--jigToolList{
-		height: calc(100% - 10rem - 30px);
 		#jigtoolsView--jigToolList-sapUiTableCnt {
 			.sapUiTableColHdrCnt {
 				background-color: $teal-blue;
