@@ -181,7 +181,7 @@ sap.ui
 
                                          
                                          //give the id of add comment button to hide it if operation closed
-                                         this._closeDialog.mProperties.disruptionId = this.getView().sId + "--addComment-"+ this.getView().sId + "--disrptlist-"+ listnum;
+                                     //    this._closeDialog.mProperties.disruptionId = this.getView().sId + "--addComment-"+ this.getView().sId + "--disrptlist-"+ listnum;
 
                                          this._closeDialog.open();
                                   },
