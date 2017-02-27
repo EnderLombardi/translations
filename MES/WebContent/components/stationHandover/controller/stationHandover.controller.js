@@ -282,6 +282,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 * @param {Object} oEvt wich represent the sapui5 event obejct"
 	 **************************************************************************/
 	selectAll : function(oEvt) {
+		var that = this;
 		var bValue = oEvt.getSource().mProperties.selected;
 		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		var aRows = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getRows();

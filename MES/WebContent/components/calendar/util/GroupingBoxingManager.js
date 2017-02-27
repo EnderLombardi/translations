@@ -218,12 +218,28 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					};
 					
 					aBox.push(oBox)
+					
+				//	if ( el.start_date - el.end_date )
 				
 				});
 		
 			});
 	
 		});
+		//===============
+		//Compute total line group and line creation	
+		//===============	
+		aElements2.push({				
+				"key": "Total",
+				"label" : airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("total"),
+				"children":[{
+					"lastName" : "",					
+					"ng" : "",
+					"key": "Total"
+				}]
+		})
+		
+		
 		
 		calendar.matrix['timeline'].y_unit_original = aElements2;
 		calendar.callEvent("onOptionsLoad", []);

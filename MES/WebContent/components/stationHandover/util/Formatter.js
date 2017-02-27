@@ -4,10 +4,6 @@ jQuery.sap.declare("airbus.mes.stationHandover.util.Formatter");
 
 airbus.mes.stationHandover.util.Formatter = {
 
-	isBlocked : function(oEvt) {
-
-	},
-
 	translate : function(oEvt) {
 
 		return airbus.mes.stationHandover.oView.getModel("stationHandoverI18n").getProperty(oEvt);
@@ -16,26 +12,10 @@ airbus.mes.stationHandover.util.Formatter = {
 
 	isInsert : function(oEvt) {
 
-		//var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
-
 		if (oEvt != null) {
-			
+
 			return String(oEvt.SELECTED) == "true";
-						
-//
-//			var sPath = this.oPropagatedProperties.oBindingContexts.oswModel.sPath;
-//			var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").getProperty(sPath);
-//
-//			if (oModel.MATERIAL_DESCRIPTION != undefined) {
-//
-//				return aValueSelected[oModel.WOID].open;
-//
-//			} else {
-//
-//				return aValueSelected[oModel.WOID][oModel.WOID + "##||##" + oModel.REFERENCE].open;
-//
-//			}
-//
+
 		}
 	},
 
@@ -54,23 +34,4 @@ airbus.mes.stationHandover.util.Formatter = {
 		}
 
 	},
-
-	colorTracking : function(oEvt) {
-
-		switch (oEvt) {
-		case "true":
-			this.removeStyleClass("orange");
-			this.addStyleClass("green");
-			return oEvt;
-			break;
-		case "false":
-			this.removeStyleClass("green");
-			this.addStyleClass("orange");
-			return oEvt;
-			break;
-		default:
-			return;
-		}
-	}
-
 };

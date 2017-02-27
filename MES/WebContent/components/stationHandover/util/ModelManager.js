@@ -173,12 +173,6 @@ airbus.mes.stationHandover.util.ModelManager = {
 		}
 	},
 
-	onShiftsLoad : function() {
-
-		var GroupingBoxingManager = airbus.mes.stationHandover.util.GroupingBoxingManager;
-		GroupingBoxingManager.parseShift();
-	},
-
 	loadType : function() {
 
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("typeModel");
