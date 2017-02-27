@@ -828,6 +828,9 @@ sap.ui
                                   * Close other panels when one panel is expanded
                                   */
                                   handleDisruptionPanelExpand : function(oEvent) {
+                                	  if (!oEvent.oSource.getExpanded())
+                                          return;
+                                	  
                                 	  if(this.sExpandedPanelPath){
                                 		  this.getView().getModel("operationDisruptionsModel")
                                 		  	.setProperty(this.sExpandedPanelPath+"/expanded", "false");
@@ -837,8 +840,7 @@ sap.ui
                                       this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/expanded", "true");
                                       this.getView().getModel("operationDisruptionsModel").refresh();
                                       this.sExpandedPanelPath = sPath;
-                                        /* if (!oevent.oSource.getExpanded())
-                                                return;
+                                        /* 
                                          
                                          this.expandedDisruptionPanel = oevent.getSource().getId();
                                          

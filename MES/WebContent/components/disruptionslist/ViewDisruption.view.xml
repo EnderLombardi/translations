@@ -13,7 +13,7 @@
 				<CustomListItem>
 
 					<!-- <Panel expandable="true" expanded="false" class="disruptionExpandablePanel" expand="handleDisruptionPanelExpand"> -->
-					<Panel class="disruptionExpandablePanel" expandable="true" expanded="{=${operationDisruptionsModel>expanded} === 'true'}" expand="handleDisruptionPanelExpand">
+					<Panel class="disruptionExpandablePanel" expandable="true" expanded="{=${operationDisruptionsModel>expanded} === 'true'}" >
 						<headerToolbar>
 							<Toolbar>
 								<!-- <core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>EscalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" /> -->
