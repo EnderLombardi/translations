@@ -137,7 +137,7 @@ airbus.mes.operationdetail.Formatter = {
     // and verification on the input type.
     liveChangeIm : function(event){
         var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
-        var sMinValue = airbus.mes.operationdetail.Formatter.convertProgressBarToImField(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/progress"));
+        var sMinValue = parseFloat(airbus.mes.operationdetail.Formatter.convertProgressBarToImField(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/progress")));
 
         if(sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange != undefined){
             if(sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange.length >= 1)
@@ -162,7 +162,7 @@ airbus.mes.operationdetail.Formatter = {
 
                 // dynamic conversion based on the IM input
                 //var dynamicCoversion = airbus.mes.operationdetail.Formatter.convertImFieldToProgressBar(sap.ui.getCore().byId("imTextArea").getValue()) + "%";
-
+                value = parseFloat(value);
                 //if the value the user input is higher than the durantion we reset it
                 if(value >= duration){
                     sap.ui.getCore().byId("imTextArea").setValue(duration);
@@ -175,11 +175,11 @@ airbus.mes.operationdetail.Formatter = {
                         $("#progressTextDynamic").text("Progress: " + $("#progressSlider-progress").width());
                     }
                 }
-                if ( value <= sMinValue ) {
+                if ( value < sMinValue ) {
                 	sap.ui.getCore().byId("imTextArea").setValueState("Error");
                 	sap.ui.getCore().byId("progressSlider").setValue(0);
                 }
-                if ( value > sMinValue && value < duration) {
+                if ( value >= sMinValue && value < duration) {
                 	sap.ui.getCore().byId("imTextArea").setValueState("None");
                 	sap.ui.getCore().byId("progressSlider").setValue(value*100/duration);         	
                 }
