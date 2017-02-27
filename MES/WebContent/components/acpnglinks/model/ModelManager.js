@@ -223,7 +223,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 					};
 					//console.log(airbus.mes.settings.GlobalFunction.getRowsetsFromREST(data.elementList)) 
 					jsonFormat.Rowsets.Rowset[0].Row = data.elementList
-					console.log(jsonFormat)
+					//console.log(jsonFormat)
 					oModel.setData(jsonFormat);
 					oModel.refresh();
 

@@ -4,18 +4,12 @@
 	xmlns:tab="sap.ui.table" xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<Page showHeader="false" height="100%" enableScrolling="false">
 		<content>
+			<Button id="modifyColumnsButton" text="{i18nAcpngLinksModel>ModifyColumns}" press="onColumnsChange" />
 			<VBox id="ACPnGLinks" class="ACPnGLinkslist">
 				<tab:TreeTable id="ACPnGTreeTable" class="ACPnGTreeTable"
 					rows="{path : 'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/'}"
 					cellClick="OnSelectionChange" visibleRowCountMode="Fixed" height="100%"
 					enableColumnReordering="false" columnMove="updateColumn">
-					<tab:toolbar>
-						<Toolbar>
-							<Title id="title" text="{i18nAcpngLinksModel>ACPnGLinks}" />
-							<ToolbarSpacer />
-							<Button text="{i18nAcpngLinksModel>ModifyColumns}" press="onColumnsChange" />
-						</Toolbar>
-					</tab:toolbar>
 					<tab:columns>
 						<tab:Column id="Type"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/0/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
