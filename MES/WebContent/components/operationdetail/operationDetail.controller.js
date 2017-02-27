@@ -83,7 +83,7 @@ sap.ui
                 $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
             }
             /****** hide buttons *********/
-            sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
+           // sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(false);
@@ -133,7 +133,7 @@ sap.ui
             var state = sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState();
             if (!state) {
                 sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(false);
-                sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(false);
+                //sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idtouchngo").setVisible(false);

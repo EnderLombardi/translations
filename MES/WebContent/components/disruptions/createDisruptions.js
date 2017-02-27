@@ -184,7 +184,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 			// Set Status and Description
 			//oView.byId("status").setValue(oModel.getProperty("/Status"));
-			// oView.byId("description").setValue(oModel.getProperty("/Description")); -V1.5
 
 			// Empty Comment
 			oView.byId("comment").setValue();
@@ -268,7 +267,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("selectResponsibleGrp").setEnabled(false);
 		oView.byId("selectResolver").setEnabled(false); // +V1.5
 		oView.byId("selectOriginator").setEnabled(true);
-		//oView.byId("description").setEnabled(true);
 		oView.byId("timeLost").setEnabled(true);
 		oView.byId("expectedDate").setEnabled(true);
 		oView.byId("expectedTime").setEnabled(true);
@@ -377,10 +375,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 				}, {
 					"attribute" : "SFC_STEP_BO",
 					"value" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
-				}, /*
-					 * { "attribute" : "DESCRIPTION", "value" :
-					 * oView.byId("description").getValue() },
-					 */{
+				}, {
 					"attribute" : "REASON",
 					"value" : oView.byId("selectreason").getSelectedKey()
 				}, {
@@ -433,9 +428,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		}
 		aModelData.push(oJson);
 
-		// var sDescription = oView.byId("description").getValue(); -V1.5
-		// message subject is passed as description because
-
 		airbus.mes.disruptions.ModelManager.createDisruption(sHandle, sCategory, sComment, aModelData);
 	},
 
@@ -443,11 +435,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * Validate inputs while creating/updating disruption
 	 */
 	validateDisruptionInput : function(oView) {
-		/*
-		 * if (oView.byId("description").getValue() == "") {
-		 * airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryDescription"));
-		 * return false; } else
-		 */
 		if (oView.byId("selectCategory").getSelectedKey() == "") {
 			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryCategory"));
 			return false;
@@ -526,7 +513,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		this.getView().byId("selectreason").setEnabled(true);
 		this.getView().byId("selectResponsibleGrp").setEnabled(true);
 		this.getView().byId("selectOriginator").setEnabled(false);
-		//this.getView().byId("description").setEnabled(false);
 		//this.getView().byId("promisedDate").setEnabled(true);
 		//this.getView().byId("promisedTime").setEnabled(true);
 		this.getView().byId("expectedDate").setEnabled(true);
@@ -546,7 +532,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		// oView.byId("selectRootCause").setEnabled(true); //-V1.5
 		oView.byId("selectResponsibleGrp").setEnabled(true);
 		oView.byId("selectOriginator").setEnabled(false);
-		//oView.byId("description").setEnabled(false);
 		//oView.byId("promisedDate").setEnabled(true);
 		//oView.byId("promisedTime").setEnabled(true);
 		oView.byId("expectedDate").setEnabled(false);
@@ -567,7 +552,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		// oView.byId("selectRootCause").setEnabled(true); //-V1.5
 		oView.byId("selectResponsibleGrp").setEnabled(true);
 		oView.byId("selectOriginator").setEnabled(false);
-		oView.byId("description").setEnabled(false);
 		//oView.byId("promisedDate").setEnabled(false);
 		//oView.byId("promisedTime").setEnabled(false);
 		oView.byId("expectedDate").setEnabled(true);
