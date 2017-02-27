@@ -267,7 +267,7 @@
 			"SITE": "FNZ1",
             "Feature": "WORK_TRACKER_CHECKLIST",
             "Description": "Station Tracker>An operation>Documents>Components> 3 last columns",
-            "Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
+            "Roles": ["eval host('local|sopra')&&!feature('role')"]
 		},
 		{
 			"SITE": "FNZ1",
