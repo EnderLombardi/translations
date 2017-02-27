@@ -10,7 +10,7 @@
 	<Page enableScrolling="true" showHeader="false" class="trackingTemplate">
 		<content>
 			<!-- Confirmation Notes -->
-			<Panel expandable="true" expanded="false" headerText="{i18n>cn_title}" width="auto" class="sapUiResponsiveMargin" id="confirmation_notes_panel">
+			<Panel expandable="true" expanded="true" headerText="{i18n>cn_title}" width="auto" class="sapUiResponsiveMargin" id="confirmation_notes_panel">
 				<content>
 					<!-- Header ToolBar -->
 					<OverflowToolbar class="overflowCheckBoxConfirmationNoteBar">
@@ -26,7 +26,7 @@
 				</content>
 			</Panel>
 			<!-- Work Order Notes -->
-			<Panel expandable="true" expanded="false" headerText="{i18n>won_title}" width="auto" class="sapUiResponsiveMargin" id="wo_notes_panel">
+			<Panel expandable="true" expanded="true" headerText="{i18n>won_title}" width="auto" class="sapUiResponsiveMargin" id="wo_notes_panel">
 				<content>
 					<!-- Header ToolBar -->
 					<OverflowToolbar class="trackingTemplateButton">
