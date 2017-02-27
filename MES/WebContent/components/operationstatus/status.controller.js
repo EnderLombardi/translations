@@ -46,12 +46,16 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         sap.ui.getCore().byId("progressSlider").stepUp(1);
         var progress = sap.ui.getCore().byId("progressSlider").getValue();
         sap.ui.getCore().byId("imTextArea").setValue(airbus.mes.operationdetail.Formatter.convertProgressBarToImField(progress));
+    	sap.ui.getCore().byId("imTextArea").setValueState("None");
+
     },
 
     reduceProgress : function() {
         sap.ui.getCore().byId("progressSlider").stepDown(1);
         var progress = sap.ui.getCore().byId("progressSlider").getValue();
         sap.ui.getCore().byId("imTextArea").setValue(airbus.mes.operationdetail.Formatter.convertProgressBarToImField(progress));
+    	sap.ui.getCore().byId("imTextArea").setValueState("None");
+
     },
     /***********************************************************
      *
