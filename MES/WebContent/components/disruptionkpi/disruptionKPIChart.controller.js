@@ -98,6 +98,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		oParetto.addFeed(feedCategoryAxis);
 		
 		
+		var oPopover = new sap.viz.ui5.controls.Popover({});
+		oPopover.connect(oParetto.getVizUid());
+		
 		
 		/*// Title For Category
 		var vizframe1 = this.getView().byId("vizFrame");

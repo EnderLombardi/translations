@@ -39,81 +39,6 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	/***************************************************************************
-	 * Set the Models for Category of Disruption Creation
-	 **************************************************************************/
-	loadDisruptionCategory : function() {
-		var url = airbus.mes.disruptions.ModelManager.getDisruptionCategoryURL();
-		sap.ui.getCore().getModel("disruptionCategoryModel").loadData(url);
-	},
-	getDisruptionCategoryURL : function() {
-		var urlCustomCategory = this.urlModel.getProperty("urlGetCategory");
-		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$site", airbus.mes.settings.ModelManager.site);
-		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$station", airbus.mes.settings.ModelManager.station);
-
-		// Get user to which operation is affected else current logged in user
-		// In Edit Mode originator field will contain Issuer
-		var sIssuer = "";
-		if (this.createViewMode == "Create") {
-			sIssuer = this.getIssuer();
-			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
-		} else {
-			sIssuer = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/OriginatorID");
-			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
-		}
-
-		return urlCustomCategory;
-
-	},
-
-	onLoadDisruptionCategory : function() {
-		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
-
-		// Un-Set Busy Indicator
-		oView.setBusy(false);
-	},
-
-	/***************************************************************************
-	 * Load Step2 model for create disruption screen (Reason and Responsible
-	 * Group)
-	 **************************************************************************/
-	getRsnResponsibleGrpURL : function(sMsgType) {
-		var urlGetRsnResponsibleGrp = this.urlModel.getProperty("urlGetRsnResponsibleGrp");
-		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.ModelManager.site);
-		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$station", airbus.mes.settings.ModelManager.station);
-		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$messageType", sMsgType);
-		return urlGetRsnResponsibleGrp;
-
-	},
-
-	onLoadDisruptionRsnRespGrp : function() {
-		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
-
-		// Un-Set Busy's
-		oView.byId("selectreason").setBusy(false);
-		oView.byId("selectResponsibleGrp").setBusy(false);
-
-	},
-
-	/***************************************************************************
-	 * Load Step3 model for create disruption screen (Resolver Names for a
-	 * Resolver Group)
-	 **************************************************************************/
-	getResolverModelURL : function(sResolverGroup) {
-		var urlGetRsnResponsibleGrp = this.urlModel.getProperty("urlGetResolver");
-		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.ModelManager.site);
-		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$group", sResolverGroup);
-		return urlGetRsnResponsibleGrp;
-
-	},
-
-	onLoadDisruptionResolver : function() {
-		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
-
-		// Un-Set Busy's
-		oView.byId("selectResolver").setBusy(false);
-	},
-
-	/***************************************************************************
 	 * Generic Function to get URL for to get Disruptions with filters or no
 	 * filters
 	 */
@@ -196,6 +121,81 @@ airbus.mes.disruptions.ModelManager = {
 			airbus.mes.disruptions.ModelManager.checkDisruptionStatus(airbus.mes.disruptionslist.oView.getModel("operationDisruptionsModel"));
 		}
 		airbus.mes.disruptions.ModelManager.createEditFlag = false;
+	},
+
+	/***************************************************************************
+	 * Set the Models for Category of Disruption Creation
+	 **************************************************************************/
+	loadDisruptionCategory : function() {
+		var url = airbus.mes.disruptions.ModelManager.getDisruptionCategoryURL();
+		sap.ui.getCore().getModel("disruptionCategoryModel").loadData(url);
+	},
+	getDisruptionCategoryURL : function() {
+		var urlCustomCategory = this.urlModel.getProperty("urlGetCategory");
+		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$site", airbus.mes.settings.ModelManager.site);
+		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$station", airbus.mes.settings.ModelManager.station);
+
+		// Get user to which operation is affected else current logged in user
+		// In Edit Mode originator field will contain Issuer
+		var sIssuer = "";
+		if (this.createViewMode == "Create") {
+			sIssuer = this.getIssuer();
+			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
+		} else {
+			sIssuer = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/OriginatorID");
+			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
+		}
+
+		return urlCustomCategory;
+
+	},
+
+	onLoadDisruptionCategory : function() {
+		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
+
+		// Un-Set Busy Indicator
+		oView.setBusy(false);
+	},
+
+	/***************************************************************************
+	 * Load Step2 model for create disruption screen (Reason and Responsible
+	 * Group)
+	 **************************************************************************/
+	getRsnResponsibleGrpURL : function(sMsgType) {
+		var urlGetRsnResponsibleGrp = this.urlModel.getProperty("urlGetRsnResponsibleGrp");
+		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.ModelManager.site);
+		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$station", airbus.mes.settings.ModelManager.station);
+		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$messageType", sMsgType);
+		return urlGetRsnResponsibleGrp;
+
+	},
+
+	onLoadDisruptionRsnRespGrp : function() {
+		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
+
+		// Un-Set Busy's
+		oView.byId("selectreason").setBusy(false);
+		oView.byId("selectResponsibleGrp").setBusy(false);
+
+	},
+
+	/***************************************************************************
+	 * Load Step3 model for create disruption screen (Resolver Names for a
+	 * Resolver Group)
+	 **************************************************************************/
+	getResolverModelURL : function(sResolverGroup) {
+		var urlGetRsnResponsibleGrp = this.urlModel.getProperty("urlGetResolver");
+		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.ModelManager.site);
+		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$group", sResolverGroup);
+		return urlGetRsnResponsibleGrp;
+
+	},
+
+	onLoadDisruptionResolver : function() {
+		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
+
+		// Un-Set Busy's
+		oView.byId("selectResolver").setBusy(false);
 	},
 
 	/***************************************************************************

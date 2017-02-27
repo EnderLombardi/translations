@@ -477,14 +477,14 @@ sap.ui
                                   * Confirming Reject Disruption
                                   */
                                   onConfirmRejection : function(oEvent) {
+                                     var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
+                                      
                                      var comment = airbus.mes.disruptions.Formatter.actions.reject +
                                                             sap.ui.getCore().byId("disruptionCommentBox").getValue();
                                      
                                      // Comment is mandatory while rejection
                                      if(comment == "") {
-                                         var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
-
-                                    	 sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
+                                         sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
                                     	 return;
                                      }
                                    	  
@@ -498,7 +498,6 @@ sap.ui
                                                    "disruptionCommentStatus").getText();
 
                                      // Call Reject disruption Service
-                                     var i18nModel = this.getview().getModel("i18nModel");
                                      airbus.mes.disruptions.ModelManager.rejectDisruption(comment, msgRef, sStatus, i18nModel);
                                   },
                                   
@@ -716,7 +715,7 @@ sap.ui
                                                                 sap.ui.getCore().byId("disruptionAckComment").getValue();
 
                                          // Call to Acknowledge Disruption
-                                         var i18nModel = this.getView().getModel("i18nModel");
+                                         var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
                                          airbus.mes.disruptions.ModelManager.ackDisruption(dateTime, msgRef, comment, i18nModel);
 
                                   },
@@ -819,7 +818,7 @@ sap.ui
                                                             sap.ui.getCore().byId("disruptionCommentBox").getValue();
                                       
                                       // Call Escalate Service
-                                      var i18nModel = this.getView().getModel("i18nModel");
+                                      var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
                                       airbus.mes.disruptions.ModelManager.escalateDisruption(msgRef, comment, i18nModel);
 
                                   },
