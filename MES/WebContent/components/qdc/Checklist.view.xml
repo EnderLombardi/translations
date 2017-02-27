@@ -1,58 +1,63 @@
-<core:View 
-	xmlns="sap.m" 
-	xmlns:core="sap.ui.core"
-	xmlns:html="http://www.w3.org/1999/xhtml" 
-	xmlns:tab="sap.ui.table"
-	controllerName="airbus.mes.qdc.Checklist" >
+<core:View xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tab="sap.ui.table"
+	controllerName="airbus.mes.qdc.Checklist">
 
-	
-	
-	<Page id="idChecklistPage" showHeader="false" height="100%" enableScrolling="false">
+
+
+	<Page id="idChecklistPage" showHeader="false" height="100%"
+		enableScrolling="false">
 		<content>
-		
-		<VBox id="TabChecklist" class="TabChecklist">
-			<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" class="TabChecklistTable" selectionMode="None" visibleRowCount="4" expandFirstLevel="true">
-				<!-- <tab:toolbar>
-					<Toolbar>
-						<Title text="{i18n>CheckListAndRecords}" />
-					</Toolbar>
-				</tab:toolbar> -->
-				<tab:columns>
-					<tab:Column>
-						<Label class="TabChecklistLabel" text="{i18n>PointofAttention}" />
-						<tab:template>
-						<HBox >
-							<HBox justifyContent="Begin" width="100%">
-							<Text text="{QDCModel>name}" class="AllignItem" visible="{path:'QDCModel>name', formatter:'airbus.mes.qdc.util.Formatter.getEnabled'}" />
-							<Label text="" class="adjustWidth"/>
-							</HBox>
-							<HBox justifyContent="End" >
-							<core:Icon color="orange" src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}"></core:Icon>					
-							</HBox>
-							</HBox>
-						</tab:template>
-					</tab:Column>
-					<tab:Column>
-						<Label class="TabChecklistLabel" text="{i18n>record}" />
-						<tab:template>
-							<Label text="{QDCModel>description}" class="AllignItem" />
-						</tab:template>
-					</tab:Column>
-				</tab:columns>
-			</tab:TreeTable>
-			<HBox >
-				<HBox justifyContent="Begin" width="100%">
-				<Button id="idButtonMEA" text="{i18n>MEA}"  class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false" press="onClick"></Button>
-				<Button id="idButtonMAA" text="{i18n>MAA}"  class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false" press="onClick"></Button>
-				<Button id="idButtonQDC" text="{i18n>QDC}"  class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false" press="onClick"></Button>
+
+			<VBox id="TabChecklist" class="TabChecklist">
+				<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable"
+					class="TabChecklistTable" selectionMode="None" visibleRowCount="4"
+					expandFirstLevel="true">
+					<!-- <tab:toolbar> <Toolbar> <Title text="{i18n>CheckListAndRecords}" 
+						/> </Toolbar> </tab:toolbar> -->
+					<tab:columns>
+						<tab:Column>
+							<Label class="TabChecklistLabel" text="{i18n>PointofAttention}" />
+							<tab:template>
+								<HBox>
+									<HBox justifyContent="Begin" width="100%">
+										<Text text="{QDCModel>name}" class="AllignItem"
+											visible="{path:'QDCModel>name', formatter:'airbus.mes.qdc.util.Formatter.getEnabled'}" />
+										<Label text="" class="adjustWidth" />
+									</HBox>
+									<HBox justifyContent="End">
+										<core:Icon color="orange"
+											src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}"></core:Icon>
+									</HBox>
+								</HBox>
+							</tab:template>
+						</tab:Column>
+						<tab:Column>
+							<Label class="TabChecklistLabel" text="{i18n>record}" />
+							<tab:template>
+								<Label text="{QDCModel>description}" class="AllignItem" />
+							</tab:template>
+						</tab:Column>
+					</tab:columns>
+				</tab:TreeTable>
+				<HBox>
+					<HBox justifyContent="Begin" width="100%">
+						<Button id="idButtonMEA" text="{i18n>MEA}"
+							class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"
+							press="onClick"></Button>
+						<Button id="idButtonMAA" text="{i18n>MAA}"
+							class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"
+							press="onClick"></Button>
+						<Button id="idButtonQDC" text="{i18n>QDC}"
+							class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"
+							press="onClick"></Button>
+					</HBox>
+					<HBox justifyContent="End">
+						<Button text="{i18n>confirm}" class="ConfirmChecklist"></Button>
+					</HBox>
 				</HBox>
-				<HBox justifyContent="End" >
-				<Button text="{i18n>confirm}" class="ConfirmChecklist"></Button>
-				</HBox>
-			</HBox>
-			
-			
-		</VBox>
+
+
+			</VBox>
 
 		</content>
 	</Page>
