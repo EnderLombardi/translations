@@ -44,8 +44,8 @@
 					</Panel>
 					<VBox class="shiftButtons" justifyContent="Center" alignItems="Center">
 						<items>
-							<Button icon="sap-icon://navigation-right-arrow" press="assignWorkCenter"  tooltip="{i18nModel>Assign}" enable="{Profile>/identifiedUser/permissions/PM_RESOURCE_MANAGE}"/>
-							<Button icon="sap-icon://navigation-left-arrow" press="unassignWorkCenter"  tooltip="{i18nModel>Remove}" enable="{Profile>/identifiedUser/permissions/PM_RESOURCE_MANAGE}"/>
+							<Button icon="sap-icon://navigation-right-arrow" press="assignWorkCenter"  tooltip="{i18nModel>Assign}" enabled="{Profile>/identifiedUser/permissions/PM_RESOURCE_MANAGE}"/>
+							<Button icon="sap-icon://navigation-left-arrow" press="unassignWorkCenter"  tooltip="{i18nModel>Remove}" enabled="{Profile>/identifiedUser/permissions/PM_RESOURCE_MANAGE}"/>
 						</items>
 					</VBox>
 					<Panel class="panelBorder" expanded="true" expandable="false" id="assignedWCPanel"

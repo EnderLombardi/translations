@@ -373,8 +373,12 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
                                                              parts : [ "type" ],
                                                              formatter : function(
                                                                      type) {
+                                                            	 if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_WORKER_BC_ASSIGN === true || sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_WORKER_BC_UNASSIGN === true ){
                                                                  return type == "UA_A"
                                                                      || type == "UA_P"
+                                                            	 }else {
+                                                            		 return false;
+                                                            	 }
                                                              }
                                                          },
                                                          press : function(oEvt) {

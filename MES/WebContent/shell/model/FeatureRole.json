@@ -205,7 +205,14 @@
 			"Feature": "PM_RESOURCE_MANAGE",
 			"Description": "PM>Resource Pool>Manage link between resource pool and users, shifts and WC",
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
-		}, {
+		}, 
+		{
+			"SITE": "FNZ1",
+			"Feature": "PM_POLY_NEED",
+			"Description": "PM>POLY>Define Need (Competence, Level, Quantity)",
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
+		},
+		{
 			"SITE": "FNZ1",
 			"Feature": "PM_POLY_ASSESS",
 			"Description": "PM>POLY>Assess Personnel",
@@ -246,6 +253,12 @@
 		},
 		{
 			"SITE": "FNZ1",
+			"Feature": "WORK_TRACKER_OSW_CAPTURE",
+			"Description": "Work Tracker>OSW>Capture list of non fitted parts",
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
+		},
+		{
+			"SITE": "FNZ1",
             "Feature": "FITTED_COMPONENTS",
             "Description": "Station Tracker>An operation>Documents>Components> 3 last columns",
             "Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
@@ -261,6 +274,19 @@
             "Feature": "WORK_TRACKER_NC_DISPLAY",
             "Description": "Station Tracker>An operation>Documents>Components> 3 last columns",
             "Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
+		},
+		{
+			"SITE": "FNZ1",
+            "Feature": "STATION_WORKER_BC_ASSIGN",
+            "Description": "Station Tracker>Worker Assignment>BC Assignment",
+            "Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
+		},
+		{
+			"SITE": "FNZ1",
+            "Feature": "STATION_WORKER_BC_UNASSIGN",
+            "Description": "Station Tracker>Worker Assignment>BC Unassignment",
+            "Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}
+		
 	]
 }

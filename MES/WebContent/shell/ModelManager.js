@@ -117,7 +117,7 @@ airbus.mes.shell.ModelManager = {
 	            type : 'POST',
 	            contentType : 'application/json',
 				data : JSON.stringify({
-					"site" : "FNZ1",
+					"site" : "*",
 					"lang" : "en"
 				}),
 	        });

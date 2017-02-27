@@ -848,17 +848,40 @@ sap.ui.controller(
         },
 
         onLogOutPress: function () {
+        	
+           if(!this.logoutDialog){
+        	   this.logoutDialog = sap.ui.xmlfragment("airbus.mes.shell.Logout", this);
+               this.getView().addDependent(this.logoutDialog);
+           }
+            this.logoutDialog.open();
+
+        },
+        onPressLoginUser: function(){         
+          jQuery.ajax({
+              url: airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout"),
+              type: 'POST',
+              async: false,
+              complete: function () {
+                  location.href = window.location.origin + "/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled";
+              }
+
+          })
+        },
+        
+        onPressAutoLogin: function(){
             jQuery.ajax({
-                url: airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout"),
+                url: airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled"),
                 type: 'POST',
                 async: false,
                 complete: function () {
-                    Cookies.remove("login");
-                    sessionStorage.loginType = "";
-                    location.href = window.location.origin + window.location.pathname;
+                    location.href = window.location.origin + "/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled";
                 }
 
-            })
+            })	
+        },
+        
+        onPressCancel: function(){
+        	this.logoutDialog.close();
         }
     });
 

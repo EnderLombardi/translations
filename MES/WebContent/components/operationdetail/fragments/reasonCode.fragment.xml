@@ -56,11 +56,11 @@
                 <f:content>
                     <Label text="{i18n>reasonCode}" />
                     <Select change="onSelectionReason" id="reasonCodeSelectBox" forceSelection="false"
-                        items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
+                        items="{reasonCodeModel>/Rowsets/Rowset/0/Row}" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_NOTE}">
                         <core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
                     </Select>
                     <Label text="{i18n>comment}" />
-                    <TextArea id="reasonCodeComments" />
+                    <TextArea id="reasonCodeComments" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_NOTE}"/>
                 </f:content>
             </f:SimpleForm>
             <HBox>
