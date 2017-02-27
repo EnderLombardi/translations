@@ -24,7 +24,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	/**
 	 * Check existing children in data
 	 */
-	checkExistingChildentData : function() {
+	checkExistingChildentData: function () {
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
 		try {
 			var aData = oModel.getData().Rowsets.Rowset[0].Row;
@@ -60,179 +60,182 @@ airbus.mes.acpnglinks.model.ModelManager = {
 			}),
 
 			success: function (data) {
-				
+
 				try {
-				//DMI
-				// Rest response with only one list, need same schema
-				var jsonFormat = {
-					"Rowsets": {
-						"Rowset": [{
-							"Columns": {
-								"Column": [
-									{
-										"Name": "Type",
-										"SourceColumn": "Type",
-										"Description": "Type",
-										"Visible": "true",
-										"Sort": 0
-									},
-									{
-										"Name": "reference",
-										"SourceColumn": "reference",
-										"Description": "reference",
-										"Visible": "true",
-										"Sort": 1
-									},
-									{
-										"Name": "reviewEnd",
-										"SourceColumn": "reviewEnd",
-										"Description": "ACPnG review end date",
-										"Visible": "true",
-										"Sort": 2
-									},
-									{
-										"Name": "note",
-										"SourceColumn": "note",
-										"Description": "note",
-										"Visible": "true",
-										"Sort": 3
-									},
-									{
-										"Name": "familyTarget",
-										"SourceColumn": "familyTarget",
-										"Description": "Family target",
-										"Visible": "true",
-										"Sort": 4
-									},
-									{
-										"Name": "confirmedTime",
-										"SourceColumn": "confirmedTime",
-										"Description": "Confirmed time",
-										"Visible": "false",
-										"Sort": 5
-									},
-									{
-										"Name": "stv",
-										"SourceColumn": "stv",
-										"Description": "stv",
-										"Visible": "false",
-										"Sort": 6
-									},
-									{
-										"Name": "acpWorkstation",
-										"SourceColumn": "acpWorkstation",
-										"Description": "ACP workstation",
-										"Visible": "false",
-										"Sort": 7
-									},
-									{
-										"Name": "ca",
-										"SourceColumn": "ca",
-										"Description": "ca",
-										"Visible": "false",
-										"Sort": 8
-									},
-									{
-										"Name": "fatherLink",
-										"SourceColumn": "fatherLink",
-										"Description": "Father link",
-										"Visible": "false",
-										"Sort": 9
-									},
-									{
-										"Name": "blockingReason",
-										"SourceColumn": "blockingReason",
-										"Description": "Blocking Reason",
-										"Visible": "false",
-										"Sort": 10
-									},
-									{
-										"Name": "userStatus",
-										"SourceColumn": "userStatus",
-										"Description": "",
-										"Visible": "false",
-										"Sort": 11
-									},
-									{
-										"Name": "executionStation",
-										"SourceColumn": "executionStation",
-										"Description": "",
-										"Visible": "false",
-										"Sort": 12
-									},
-									{
-										"Name": "originWorkstation",
-										"SourceColumn": "originWorkstation",
-										"Description": "",
-										"Visible": "false",
-										"Sort": 13
-									},
-									{
-										"Name": "tdl",
-										"SourceColumn": "tdl",
-										"Description": "",
-										"Visible": "false",
-										"Sort": 14
-									},
-									{
-										"Name": "upperFamily",
-										"SourceColumn": "upperFamily",
-										"Description": "",
-										"Visible": "false",
-										"Sort": 15
-									},
-									{
-										"Name": "zoning",
-										"SourceColumn": "zoning",
-										"Description": "",
-										"Visible": "false",
-										"Sort": 16
-									},
-									{
-										"Name": "materialDescription",
-										"SourceColumn": "materialDescription",
-										"Description": "",
-										"Visible": "false",
-										"Sort": 17
-									},
-									{
-										"Name": "ata",
-										"SourceColumn": "ata",
-										"Description": "",
-										"Visible": "false",
-										"Sort": 18
-									},
-									{
-										"Name": "fatherType",
-										"SourceColumn": "fatherType",
-										"Description": "",
-										"Visible": "never",
-										"Sort": 19
-									},
-									{
-										"Name": "predId",
-										"SourceColumn": "predId",
-										"Description": "",
-										"Visible": "never",
-										"Sort": 20
-									}
-								]
-							}, "Row": []
-						}]
-					}
-				};
-				//console.log(airbus.mes.settings.GlobalFunction.getRowsetsFromREST(data.elementList)) 
-				jsonFormat.Rowsets.Rowset[0].Row = data.elementList
-				oModel.setData(jsonFormat);
-				oModel.refresh();
-				} catch(e) {
-					
+					//DMI
+					// Rest response with only one list, need same schema
+					var jsonFormat = {
+						"Rowsets": {
+							"Rowset": [{
+								"Columns": {
+									"Column": [
+										{
+											"Name": "Type",
+											"SourceColumn": "Type",
+											"Description": "Type",
+											"Visible": "true",
+											"Sort": 0
+										},
+										{
+											"Name": "reference",
+											"SourceColumn": "reference",
+											"Description": "reference",
+											"Visible": "true",
+											"Sort": 1
+										},
+										{
+											"Name": "reviewEnd",
+											"SourceColumn": "reviewEnd",
+											"Description": "ACPnG review end date",
+											"Visible": "true",
+											"Sort": 2
+										},
+										{
+											"Name": "note",
+											"SourceColumn": "note",
+											"Description": "note",
+											"Visible": "true",
+											"Sort": 3
+										},
+										{
+											"Name": "familyTarget",
+											"SourceColumn": "familyTarget",
+											"Description": "Family target",
+											"Visible": "true",
+											"Sort": 4
+										},
+										{
+											"Name": "confirmedTime",
+											"SourceColumn": "confirmedTime",
+											"Description": "Confirmed time",
+											"Visible": "false",
+											"Sort": 5
+										},
+										{
+											"Name": "stv",
+											"SourceColumn": "stv",
+											"Description": "stv",
+											"Visible": "false",
+											"Sort": 6
+										},
+										{
+											"Name": "acpWorkstation",
+											"SourceColumn": "acpWorkstation",
+											"Description": "ACP workstation",
+											"Visible": "false",
+											"Sort": 7
+										},
+										{
+											"Name": "ca",
+											"SourceColumn": "ca",
+											"Description": "ca",
+											"Visible": "false",
+											"Sort": 8
+										},
+										{
+											"Name": "fatherLink",
+											"SourceColumn": "fatherLink",
+											"Description": "Father link",
+											"Visible": "false",
+											"Sort": 9
+										},
+										{
+											"Name": "blockingReason",
+											"SourceColumn": "blockingReason",
+											"Description": "Blocking Reason",
+											"Visible": "false",
+											"Sort": 10
+										},
+										{
+											"Name": "userStatus",
+											"SourceColumn": "userStatus",
+											"Description": "",
+											"Visible": "false",
+											"Sort": 11
+										},
+										{
+											"Name": "executionStation",
+											"SourceColumn": "executionStation",
+											"Description": "",
+											"Visible": "false",
+											"Sort": 12
+										},
+										{
+											"Name": "originWorkstation",
+											"SourceColumn": "originWorkstation",
+											"Description": "",
+											"Visible": "false",
+											"Sort": 13
+										},
+										{
+											"Name": "tdl",
+											"SourceColumn": "tdl",
+											"Description": "",
+											"Visible": "false",
+											"Sort": 14
+										},
+										{
+											"Name": "upperFamily",
+											"SourceColumn": "upperFamily",
+											"Description": "",
+											"Visible": "false",
+											"Sort": 15
+										},
+										{
+											"Name": "zoning",
+											"SourceColumn": "zoning",
+											"Description": "",
+											"Visible": "false",
+											"Sort": 16
+										},
+										{
+											"Name": "materialDescription",
+											"SourceColumn": "materialDescription",
+											"Description": "",
+											"Visible": "false",
+											"Sort": 17
+										},
+										{
+											"Name": "ata",
+											"SourceColumn": "ata",
+											"Description": "",
+											"Visible": "false",
+											"Sort": 18
+										},
+										{
+											"Name": "fatherType",
+											"SourceColumn": "fatherType",
+											"Description": "",
+											"Visible": "never",
+											"Sort": 19
+										},
+										{
+											"Name": "predId",
+											"SourceColumn": "predId",
+											"Description": "",
+											"Visible": "never",
+											"Sort": 20
+										}
+									]
+								}, "Row": []
+							}]
+						}
+					};
+					//console.log(airbus.mes.settings.GlobalFunction.getRowsetsFromREST(data.elementList)) 
+					jsonFormat.Rowsets.Rowset[0].Row = data.elementList
+					console.log(jsonFormat)
+					oModel.setData(jsonFormat);
+					oModel.refresh();
+
+					//Local
+					//oModel.setData(data);
+					//oModel.refresh();
+
+				} catch (e) {
+
 					console.log(e);
 					return;
 				}
-				//Local
-				//oModel.setData(data);
-				//oModel.refresh();
 
 			},
 			error: function (error, jQXHR) {
@@ -240,7 +243,12 @@ airbus.mes.acpnglinks.model.ModelManager = {
 			}
 		});
 
-	
+		// If is temporary until airbus side create service to get data.
+		if (oModel.getData().Rowsets.Rowset[0].Row != undefined){
+			var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row);
+			oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
+		}
+
 	},
 
 	/**
