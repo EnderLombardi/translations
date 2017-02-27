@@ -2253,7 +2253,10 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
+/*!
+*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
+*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+*/
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -3542,32 +3545,6 @@ Physical Station Popover
 
 .fa-percent:before { content: "\f295"; }
 
-#jigtoolsView { height: 100% !important; }
-
-#jigtoolsView > div { height: 100%; }
-
-#jigtoolsView > div > section { height: 100%; }
-
-#jigtoolsView > div > section > div { position: absolute; top: 0; bottom: 2.5%; left: 2.5%; right: 2.5%; }
-
-#jigtoolsView > div > section > div #jigtoolsView--jigToolList-sapUiTableCnt .sapUiTableColHdrCnt { height: 3rem !important; }
-
-#jigtoolsView #jigtoolsView--jigToolList { width: 95% !important; margin: 0 auto; padding: 0; }
-
-#jigtoolsView #jigtoolsView--jigToolList > table { border: solid 1px #97999b; }
-
-#jigtoolsView #jigtoolsView--jigToolList > table > thead > tr > th { background-color: #0085ad; border-right: 1px solid white; }
-
-#jigtoolsView #jigtoolsView--jigToolList > table > thead > tr > th > span { color: white; }
-
-#jigtoolsView #jigtoolsView--jigToolList > table > tbody tr:nth-child(even) { background: #fff; }
-
-#jigtoolsView #jigtoolsView--jigToolList > table > tbody tr:nth-child(odd) { background: #fcfcfc; }
-
-#jigtoolsView #jigtoolsView--jigToolList > table > tbody tr:hover { background-color: #efefef; }
-
-#jigtoolsView #jigtoolsView--jigToolList > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; }
-
 #jigtoolsView #jigtoolsView--jigToolcheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
 
 #jigtoolsView #jigtoolsView--otbSubheader { width: 40%; margin: 0px auto 10px auto; padding: 0; text-align: center; border: none; }
@@ -3575,26 +3552,6 @@ Physical Station Popover
 #jigtoolsView #jigtoolsView--otbSubheader > button:first-child { width: 20% !important; }
 
 #jigtoolsView #jigtoolsView--otbSubheader > div { width: 75% !important; max-width: none !important; min-width: 0 !important; }
-
-#jigtoolsView #jigtoolsView--jigToolcheck.jigToolListlabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; }
-
-#jigtoolsView #jigtoolsView--jigToolList #jigtoolsView--jigToolList-sapUiTableCnt .sapUiTableColHdrCnt { background-color: #0085ad; }
-
-#jigtoolsView #jigtoolsView--jigToolList .sapUiTableColCell { text-align: center !important; }
-
-#jigtoolsView #jigtoolsView--jigToolList .stepInputComponent { left: 4px; }
-
-#jigtoolsView #jigtoolsView--jigToolList .stepInputComponent span:before { color: #000000; }
-
-#jigtoolsView #jigtoolsView--jigToolList .stepInputComponent .sapMInputBaseInner { text-align: center !important; }
-
-#jigtoolsView #jigtoolsView--jigToolList-sapUiTableColHdrScr { border: solid 1px #97999b; background-color: #0085ad; }
-
-#jigtoolsView #jigtoolsView--jigToolList-sapUiTableColHdrScr .sapMLabel { color: white; vertical-align: middle; white-space: normal; }
-
-#jigtoolsView #jigtoolsView--jigToolList-sapUiTableColHdrScr > div { height: 100%; }
-
-#jigtoolsView #jigtoolsView--jigToolList-sapUiTableColHdrScr > div > div { height: 100%; }
 
 /********************
 Tcalendar--kpiHeaderToolbar
@@ -3949,32 +3906,6 @@ DATE PICKER
 
 .LinkColour:hover span { cursor: pointer; }
 
-#componentsView { height: 100% !important; }
-
-#componentsView > div { height: 100%; }
-
-#componentsView > div > section { height: 100%; }
-
-#componentsView > div > section > div { position: absolute; top: 0; bottom: 2.5%; left: 2.5%; right: 2.5%; }
-
-#componentsView > div > section > div #componentsView--ComponentsList-sapUiTableCnt .sapUiTableColHdrCnt { height: 3rem !important; }
-
-#componentsView--ComponentsList.ComponentsList { width: 95% !important; margin: 0 auto; padding: 0; }
-
-#componentsView--ComponentsList.ComponentsList > table { border: solid 1px #97999b; }
-
-#componentsView--ComponentsList.ComponentsList > table > thead > tr > th { background-color: #0085ad; border-right: 1px solid white; }
-
-#componentsView--ComponentsList.ComponentsList > table > thead > tr > th > span { color: white; }
-
-#componentsView--ComponentsList.ComponentsList > table > tbody tr:nth-child(even) { background: #fff; }
-
-#componentsView--ComponentsList.ComponentsList > table > tbody tr:nth-child(odd) { background: #fcfcfc; }
-
-#componentsView--ComponentsList.ComponentsList > table > tbody tr:hover { background-color: #efefef; }
-
-#componentsView--ComponentsList.ComponentsList > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; }
-
 #componentsView--ComponentsCheck.ComponentsCheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
 
 #componentsView--otbSubheader { width: 40%; margin: 0px auto 10px auto; padding: 0; text-align: center; border: none; }
@@ -3983,21 +3914,11 @@ DATE PICKER
 
 #componentsView--otbSubheader > div { width: 75% !important; max-width: none !important; min-width: 0 !important; }
 
-#componentsView--ComponentsCheck.jigToolListlabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; }
-
-#componentsView--ComponentsList #componentsView--ComponentsList-sapUiTableCnt .sapUiTableColHdrCnt { background-color: #0085ad; }
-
-#componentsView--ComponentsList .sapUiTableColCell { text-align: center !important; }
-
 #componentsView--ComponentsList .stepInputComponent { left: 4px; }
 
 #componentsView--ComponentsList .stepInputComponent span::before { color: #000000; }
 
 #componentsView--ComponentsList .stepInputComponent .sapMInputBaseInner { text-align: center !important; }
-
-#componentsView--ComponentsList-sapUiTableColHdrScr { border: solid 1px #97999b; background-color: #0085ad; }
-
-#componentsView--ComponentsList-sapUiTableColHdrScr .sapUiTableCol .sapMLabel { color: white; white-space: normal; display: flex; justify-content: center; align-items: center; line-height: inherit; }
 
 #componentsView--servicesButtonComponents { float: right; margin-right: 43px; }
 
@@ -4330,6 +4251,30 @@ DISRUPTIONTRACKER
 #missingPartsView--mpPage-title-inner { color: black; }
 
 #missingPartsView--searchField-F { border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; width: 280px; }
+
+.mesOperationDetailView { height: 100%; }
+
+.mesOperationDetailView > section { height: 100%; }
+
+.mesOperationDetailView > section > div { position: absolute; top: 0; bottom: 2.5%; left: 2.5%; right: 2.5%; width: 95% !important; }
+
+.mesTable > .sapUiTableCnt { border: solid 1px #97999b; }
+
+.mesTable > .sapUiTableCnt > .sapUiTableColHdrCnt { height: 3rem !important; background-color: #0085ad; }
+
+.mesTable > .sapUiTableCnt > .sapUiTableColHdrCnt > .sapUiTableColHdrScr { border: solid 1px #97999b; background-color: #0085ad; }
+
+.mesTable > .sapUiTableCnt > .sapUiTableColHdrCnt > .sapUiTableColHdrScr > .sapUiTableColHdr > .sapUiTableCol > .sapUiTableColCell { text-align: center !important; }
+
+.mesTable > .sapUiTableCnt > .sapUiTableColHdrCnt > .sapUiTableColHdrScr .sapMLabel { color: white; white-space: normal; display: flex; justify-content: center; align-items: center; line-height: inherit; }
+
+.mesTable > .sapUiTableCnt > .sapUiTableCCnt > .sapUiTableCtrlScr > .sapUiTableCtrlCnt > table > tbody tr:nth-child(even) { background: #fff; }
+
+.mesTable > .sapUiTableCnt > .sapUiTableCCnt > .sapUiTableCtrlScr > .sapUiTableCtrlCnt > table > tbody tr:nth-child(odd) { background: #fcfcfc; }
+
+.mesTable > .sapUiTableCnt > .sapUiTableCCnt > .sapUiTableCtrlScr > .sapUiTableCtrlCnt > table > tbody tr:hover { background-color: #efefef; }
+
+.mesTable > .sapUiTableCnt > .sapUiTableCCnt > .sapUiTableCtrlScr > .sapUiTableCtrlCnt > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #97999b; }
 
 /*************
 GENERALE RULES

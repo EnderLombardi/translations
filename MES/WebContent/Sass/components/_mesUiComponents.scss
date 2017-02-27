@@ -1,0 +1,62 @@
+.mesOperationDetailView {
+    height: 100%;
+    >section {
+        height: 100%;
+        >div {
+            position: absolute;
+            top: 0;
+            bottom: 2.5%;
+            left: 2.5%;
+            right: 2.5%;
+            width: 95% !important;
+        }
+    }
+}
+
+.mesTable {
+    >.sapUiTableCnt {//container
+        border: solid 1px $cool-grey;
+        >.sapUiTableColHdrCnt {//header
+            height: 3rem !important;
+            background-color: $teal-blue;
+            >.sapUiTableColHdrScr {
+                border: solid 1px #97999b;
+                background-color: $teal-blue;
+                >.sapUiTableColHdr {
+                    >.sapUiTableCol {
+                        >.sapUiTableColCell {
+                            text-align: center !important;
+                        }
+                    }
+                }
+                .sapMLabel{
+                    color: white;
+                    white-space: normal;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    line-height: inherit;
+                }
+            }
+        }
+        >.sapUiTableCCnt {//rows
+            >.sapUiTableCtrlScr {
+                >.sapUiTableCtrlCnt {
+                    >table {
+                        >tbody {
+                            tr:nth-child(even) {background: #fff}
+                            tr:nth-child(odd) {background: #fcfcfc}
+                            tr:hover{background-color: #efefef }
+                            >tr {
+                    			>td {
+                    				text-align:left !important;
+                    				border-left:1px solid $cool-grey;
+                    			}
+                    		}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

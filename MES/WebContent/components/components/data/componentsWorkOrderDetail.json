@@ -81,7 +81,7 @@
             },
             "Row": [{
                 "workOrder": "wo1",
-                "itemNumber": "F212.18449.000",
+                "sequence": "F212.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -97,7 +97,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo1",
-                "itemNumber": "F224.18449.000",
+                "sequence": "F224.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -113,7 +113,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "F257.18449.000",
+                "sequence": "F257.18449.000",
                 "operationNumber": "50002775-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -129,7 +129,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -145,7 +145,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -161,7 +161,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo6",
-                "itemNumber": "P241.18449.000",
+                "sequence": "P241.18449.000",
                 "operationNumber": "50002775-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -177,7 +177,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo7",
-                "itemNumber": "F101.18449.000",
+                "sequence": "F101.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -193,7 +193,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo8",
-                "itemNumber": "I245.18449.000",
+                "sequence": "I245.18449.000",
                 "operationNumber": "50002775-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -209,7 +209,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo9",
-                "itemNumber": "D245.18449.000",
+                "sequence": "D245.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -225,7 +225,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo10",
-                "itemNumber": "T245.18449.000",
+                "sequence": "T245.18449.000",
                 "operationNumber": "50002775-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -241,7 +241,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo11",
-                "itemNumber": "D101.18449.000",
+                "sequence": "D101.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -257,7 +257,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -273,7 +273,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -289,7 +289,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -305,7 +305,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -321,7 +321,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -337,7 +337,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -353,7 +353,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -369,7 +369,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -385,7 +385,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -401,7 +401,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -417,7 +417,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -433,7 +433,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -449,7 +449,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -465,7 +465,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -481,7 +481,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -497,7 +497,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -513,7 +513,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -529,7 +529,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -545,7 +545,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -561,7 +561,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -577,7 +577,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -593,7 +593,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -609,7 +609,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -625,7 +625,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -641,7 +641,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -657,7 +657,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -673,7 +673,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -689,7 +689,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -705,7 +705,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -721,7 +721,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -737,7 +737,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -753,7 +753,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -769,7 +769,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -785,7 +785,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -801,7 +801,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -817,7 +817,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -833,7 +833,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -849,7 +849,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -865,7 +865,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -881,7 +881,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -897,7 +897,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -913,7 +913,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -929,7 +929,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -945,7 +945,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -961,7 +961,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -977,7 +977,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -993,7 +993,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -1009,7 +1009,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -1025,7 +1025,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -1041,7 +1041,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -1057,7 +1057,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -1073,7 +1073,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -1089,7 +1089,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo2",
-                "itemNumber": "M212.18449.400",
+                "sequence": "M212.18449.400",
                 "operationNumber": "87451575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",
@@ -1105,7 +1105,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo5",
-                "itemNumber": "B104.18449.000",
+                "sequence": "B104.18449.000",
                 "operationNumber": "50001575-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "TRD test",
@@ -1121,7 +1121,7 @@
                 "bomComponentBO": "bombom"
             }, {
                 "workOrder": "wo10",
-                "itemNumber": "T985.18449.000",
+                "sequence": "T985.18449.000",
                 "operationNumber": "50002775-1-0-0010",
                 "materialType": "PURCHASED",
                 "materialDescription": "WPC test",

@@ -1,56 +1,3 @@
-#componentsView {
-    height: 100% !important;
-    >div {
-        height: 100%;
-        >section {
-            height: 100%;
-            >div {
-                position: absolute;
-                top: 0;
-                bottom: 2.5%;
-                left: 2.5%;
-                right: 2.5%;
-                #componentsView--ComponentsList-sapUiTableCnt {
-                    .sapUiTableColHdrCnt {
-                        height: 3rem !important;
-                    }
-                }
-            }
-        }
-    }
-}
-
-#componentsView--ComponentsList.ComponentsList {
-    width:95% !important;
-    margin: 0 auto;
-    padding:0 ;
-    >table {
-        border: solid 1px $cool-grey;
-        >thead {
-            >tr {
-                >th {
-                    background-color : $teal-blue;
-                    border-right:1px solid white;
-                    >span{
-                        color: white;
-                    }
-                }
-            }
-        }
-        >tbody {
-                tr:nth-child(even) {background: #fff}
-                tr:nth-child(odd) {background: #fcfcfc}
-                tr:hover{background-color: #efefef }
-                >tr{
-                    >td{
-                        text-align:left !important;
-                        border-left:1px solid $cool-grey-hover;
-                    }
-                }
-        }
-    }
-}
-
 #componentsView--ComponentsCheck.ComponentsCheck{
     width: 50%;
     margin: 20px auto 10px auto;
@@ -74,20 +21,7 @@
     }
 }
 
-#componentsView--ComponentsCheck.jigToolListlabel{
-        font-weight: bold;
-        padding: 0;
-        margin: 25px 0 25px 2.5% !important;
-}
 #componentsView--ComponentsList{
-    #componentsView--ComponentsList-sapUiTableCnt {
-        .sapUiTableColHdrCnt {
-            background-color: $teal-blue;
-        }
-    }
-    .sapUiTableColCell{
-        text-align: center !important;
-    }
     .stepInputComponent{
         left: 4px;
         span{
@@ -100,20 +34,7 @@
         }
     }
 }
-#componentsView--ComponentsList-sapUiTableColHdrScr{
-    border: solid 1px #97999b;
-    background-color: $teal-blue;
-    .sapUiTableCol{
-        .sapMLabel{
-            color: white;
-            white-space: normal;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            line-height: inherit;
-        }
-    }
-}
+
 #componentsView--servicesButtonComponents{
     float: right;
     margin-right: 43px;

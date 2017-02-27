@@ -32,7 +32,7 @@ airbus.mes.jigtools.Component.prototype.createContent = function() {
 			id : "jigtoolsView",
 			viewName : "airbus.mes.jigtools.view.jigtools",
 			type : "XML",
-			height:"auto"
+			height:"100%"
 		})
 		airbus.mes.jigtools.oView = this.oView;
 

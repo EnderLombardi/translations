@@ -1,19 +1,16 @@
 <mvc:View 
-	xmlns:core="sap.ui.core" 
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" 
 	xmlns:table="sap.ui.table" 
-	controllerName="airbus.mes.jigtools.controller.jigtools"
-	xmlns:f="sap.ui.layout.form" 
-	xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+	controllerName="airbus.mes.jigtools.controller.jigtools">
 
-	<Page enableScrolling="false" showHeader="false" height="100%" class="sapUiSizeCozy">
+	<Page enableScrolling="false" showHeader="false" class="sapUiSizeCozy mesOperationDetailView">
 		<content>
 			<table:Table id="jigToolList" 
 					selectionMode="None"
 					rows="{path: 'jigToolsWorkOrderDetail>/toolInfoList/'}"
-					visibleRowCountMode="Auto">
+					visibleRowCountMode="Auto"
+					class="mesTable">
 					<table:extension>
 						<VBox id="jigToolcheck" class="jigToolListcheck">
 					 			<RadioButtonGroup columns="2" select="onSelectLevel">
