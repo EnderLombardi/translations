@@ -766,7 +766,7 @@ sap.ui
                                                             sap.ui.getCore().byId("disruptionCommentBox").getValue();
 
                                       // Call to Mark Solved Disruption
-                                      var i18nModel = this.getView().getModel("i18nModel");
+                                      var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
                                       airbus.mes.disruptions.ModelManager.markSolvedDisruption(msgRef, comment, i18nModel);
 
                                       /*   if (isSuccess) {
