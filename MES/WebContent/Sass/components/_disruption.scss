@@ -15,8 +15,7 @@
 	.disrptlistdesc{
 		font-size:1rem !important;
 		text-transform: capitalize;
-		color: #fff;
-    	text-shadow: none;
+		
 	}
     &>.sapMPanelContent{
         padding: 0 1rem;
@@ -26,10 +25,9 @@
 //Disruption title bar buttons
 .disruptionTitleBarButtons{
     &>.sapMBtnReject{
-        //@include  disruptionBackground(#cc1919);
-        @include  disruptionBackground(#fff);
+         @include  disruptionBackground(#cc1919);
         &>.sapMBtnIcon{
-            color: #fff !important
+            color: #cc1919 !important
             ;
         }
     }
@@ -38,17 +36,15 @@
         background: $petrol-20 !important;
     }
     &>.sapMBtnEmphasized{
-        //@include  disruptionBackground(#008bc7);
-        @include  disruptionBackground(#fff);
+        @include  disruptionBackground(#008bc7); 
         &>.sapMBtnIcon{
-            color: #fff !important;
+            color: #008bc7 !important;
         }
     }
     &>.sapMBtnAccept{
-        //@include  disruptionBackground(#005f28);
-        @include  disruptionBackground(#fff);
+        @include  disruptionBackground(#005f28);
         &>.sapMBtnIcon{
-            color: #fff !important;
+            color: #005f28 !important;
         }
     }
 }
@@ -94,16 +90,15 @@ section{
     } 
 
 .disruptionDetail{
-	.disruptionExpandablePanel > div[role=toolbar]{
-		background-color:#fe5000 !important;
-	}
+	
     .disruptionExpandablePanel{
-        .sapMPanelBGTranslucent{
+    .sapMPanelBGTranslucent{
             background-color: #F5F5F5 !important;
             .sapMPanelContent{
                 margin-left: 0 !important;
             }
         }
+        
     }
     .detailLabels{
         overflow: visible !important;

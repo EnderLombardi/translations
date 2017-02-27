@@ -178,9 +178,11 @@ airbus.mes.disruptions.Formatter = {
 			return "-----"; 	
 	},
 
-	setEditButtonVisibility : function(originatorFlag, responsibleFlag, status) {
-
-		if (originatorFlag != "X" && responsibleFlag != "X")
+	setEditButtonVisibility : function(originatorFlag, responsibleFlag, status, expanded) {
+		if(expanded != "true")
+			return false;
+			
+		else if (originatorFlag != "X" && responsibleFlag != "X")
 			return false;
 
 		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)
@@ -192,15 +194,16 @@ airbus.mes.disruptions.Formatter = {
 		else if ((status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
 			&& responsibleFlag == "X" && originatorFlag != "X")
 			return false;
-
+		 
+			
 		return true;
 	},
 
-	setDeleteButtonVisibility : function(originatorFlag, status) {
+	setDeleteButtonVisibility : function(originatorFlag, status, expanded) {
 
 		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
-		} else if (originatorFlag == 'X') {
+		} else if (originatorFlag == 'X' && expanded =="true") {
 			return true;
 		}
 
@@ -657,7 +660,18 @@ airbus.mes.disruptions.Formatter = {
 		sText = workCenter.split(",").pop();
 		}
 		return sText;
+	},
+	/**
+	 * MES v1.5 
+	 * when status is pending it should be dispalyed in Red Colour
+	 * @param {string} sStatus take status as an input
+	 * @return {string} returns status
+	 */
+	statusColour : function(sStatus) {
+		if (sStatus == airbus.mes.disruptions.Formatter.status.pending) {
+			this.getParent().addStyleClass("statusPendingColor");
+			return sStatus;
+		} else
+			return sStatus;
 	}
-	
-	
 };

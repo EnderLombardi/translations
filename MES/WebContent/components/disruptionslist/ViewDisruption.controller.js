@@ -7,7 +7,7 @@ sap.ui
                            "airbus.mes.disruptionslist.ViewDisruption",
                            {
                                   commentPopUpOkEvt : undefined,
-                                  /*expandedDisruptionPanel : undefined,*/
+                                  sExpandedPanelPath:undefined,
 
                                   /**
                                   * Called when a controller is instantiated and its View
@@ -827,9 +827,17 @@ sap.ui
                                   /***********************************************************
                                   * Close other panels when one panel is expanded
                                   */
-                                  /*handleDisruptionPanelExpand : function(oevent) {
-                                         
-                                         if (!oevent.oSource.getExpanded())
+                                  handleDisruptionPanelExpand : function(oEvent) {
+                                	  if(this.sExpandedPanelPath){
+                                		  this.getView().getModel("operationDisruptionsModel")
+                                		  	.setProperty(this.sExpandedPanelPath+"/expanded", "false");
+                                	  }
+                                		  
+                                	  var sPath = oEvent.getSource().getBindingContext("operationDisruptionsModel").sPath;
+                                      this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/expanded", "true");
+                                      this.getView().getModel("operationDisruptionsModel").refresh();
+                                      this.sExpandedPanelPath = sPath;
+                                        /* if (!oevent.oSource.getExpanded())
                                                 return;
                                          
                                          this.expandedDisruptionPanel = oevent.getSource().getId();
@@ -844,8 +852,8 @@ sap.ui
                                                                                          .getId())
                                                                                   currentPanel.setExpanded(false)
                                                                      });
-
-                                  },*/
+*/
+                                  },
                                   
 
                                   onReportDisruption : function(oEvent) {
