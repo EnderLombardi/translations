@@ -12,10 +12,8 @@
 }
 
 #ViewDisruptionView--disrptlist{
-	.disrptlistdesc{
-		font-size:1rem !important;
-		text-transform: capitalize;
-		
+	.disrptlistdesc div span{
+		font-size:1rem !important;		
 	}
     &>.sapMPanelContent{
         padding: 0 1rem;
