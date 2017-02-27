@@ -241,7 +241,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                 },
                 success: function (result, status, xhr) {
                     if(result.Rowsets.Rowset &&  result.Rowsets.Rowset[0].Row) {
-                        sMessageSuccess = result.Rowsets.Rowset[0].Row[0].Message_ID +'\n'+ result.Rowsets.Rowset[0].Row[0].Parameter_1;
+                        sMessageSuccess = result.Rowsets.Rowset[0].Row[0].Message;
                     } else {
                         sMessageSuccess = sMessageError;
                     }
