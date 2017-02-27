@@ -17,27 +17,27 @@
 						<headerToolbar>
 							<Toolbar class="disrptlistdesc" >
 								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>EscalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
-								<Title text="DIS-{operationDisruptionsModel>DisruptionNumber} - {path: 'operationDisruptionsModel>Category'} {operationDisruptionsModel>Reason}" />
+								<Label text="DIS-{operationDisruptionsModel>DisruptionNumber} - {path: 'operationDisruptionsModel>Category'} {operationDisruptionsModel>Reason}" design="Bold" />
 								
 								<ToolbarSpacer />
-								<Title class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>Status'} " />
+								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>Status'}" design="Bold" />
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>opensince}: " />
-								<Text text=" {path:'operationDisruptionsModel>OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" design="Bold"/>
+								<Label text=" {path:'operationDisruptionsModel>OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" design="Bold"/>
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>level}{operationDisruptionsModel>EscalationLevel}" class="disrptlistdesc" design="Bold"/>
 								
 								<ToolbarSpacer />
-								<Text text="{operationDisruptionsModel>ResponsibleGroupDesc}" design="Bold" />
+								<Label text="{operationDisruptionsModel>ResponsibleGroupDesc}" design="Bold" />
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>solutionin}: " />
-								<Text text="{path:'operationDisruptionsModel>RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}"  design="Bold" />
+								<Label text="{path:'operationDisruptionsModel>RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}"  design="Bold" />
 								
 								<ToolbarSpacer />
-								<Text
+								<Label
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>ClosureDate}"
 									visible="{path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"
 									class="disrptlistdesc" />

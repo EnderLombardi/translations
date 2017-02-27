@@ -669,7 +669,7 @@ airbus.mes.disruptions.Formatter = {
 	 */
 	statusColour : function(sStatus) {
 		if (sStatus == airbus.mes.disruptions.Formatter.status.pending) {
-			this.getParent().addStyleClass("statusPendingColor");
+			this.addStyleClass("statusPendingColor");
 			return sStatus;
 		} else
 			return sStatus;
