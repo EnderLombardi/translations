@@ -17,7 +17,7 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    leftOswIcon2: '<i class="fa fa-refresh oswIcon green"><b style="padding-left:1px max-width:80px">',
 		    leftOswIcon3: '<i class="fa fa-refresh oswIcon pink"><b style="padding-left:1px max-width:80px">',
 		    
-		    leftOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon"><b style="padding-left:1px">',
+		    leftOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon yellow petrol"><b style="padding-left:1px">',
 		    leftOswIcon_TealBlueWhite: '<i class="fa fa-refresh oswIcon teal-blue white">',
 		
 
