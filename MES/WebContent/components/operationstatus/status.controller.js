@@ -200,7 +200,9 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         airbus.mes.operationdetail.Formatter.liveChangeProgressBar();
 //        $("#confirmTimeWorked-CB").attr("checked")
         oView._reasonCodeDialog.open();
-    	sap.ui.getCore().byId("imTextArea").setValueState("None");
+		// Reset value
+		sap.ui.getCore().byId("imTextArea").setValueState("None");
+		sap.ui.getCore().byId("progressSlider").setValue(0);
     },
     completeOperation : function(oEvent) {
 
