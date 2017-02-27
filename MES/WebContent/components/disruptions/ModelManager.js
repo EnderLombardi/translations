@@ -989,12 +989,12 @@ airbus.mes.disruptions.ModelManager = {
 	 * Get the issuer of the disruption
 	 */
 	getIssuer : function() {
-					// If no user affected to the selected operation
-		var sUser = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO") == "---"
-		// Then return Current logged in user
-		? (sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"))
-		// Else return Affected User
-		: sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1];
+			// Check if generic User, "Generic users are starting with SH*."
+			var sUser =	((sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")).substring(0,2) == "SH")?
+		    //then send operator of operation as issuer
+			(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1]):
+			//Else Current logged in user for a real user as Issuer
+			(sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"));  
 
 		return sUser;
 	},
