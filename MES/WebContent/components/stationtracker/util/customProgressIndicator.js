@@ -158,7 +158,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 						r.addClass('sapMPIBar');
 										
 						// condition design for worklist pop up
-						if ( rmastatus != "---" ){	//rma
+						if ( rmastatus === "1" ){	//rma
 							sLeftIcon = boxDisplayManager.leftTriangleIcon;
 						}
 						if (osw[0] === "3" ){ //OSW
@@ -216,7 +216,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 							r.addStyle('color','rgba(0, 86, 112, 0.94)');
 							sRightIcon = boxDisplayManager.rightStop_Petrol;
 							
-							if ( rmastatus === "1" || rmastatus != "---" ){	//rma
+							if ( rmastatus === "1" ){	//rma
 								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 							}
 							if (osw[0] === "3" ){ //OSW
@@ -247,7 +247,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 							r.addStyle('background', 'repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px)');
 							sRightIcon = boxDisplayManager.rightPlay_Petrol;
 							
-							if ( rmastatus === "1" || rmastatus != "---" ){	//rma
+							if ( rmastatus === "1" ){	//rma
 								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 							}
 							if (osw[0] === "3" ){ //OSW

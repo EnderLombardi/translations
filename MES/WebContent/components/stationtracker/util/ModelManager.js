@@ -375,25 +375,44 @@ airbus.mes.stationtracker.util.ModelManager = {
 
     },
 
-    onUnPlannedLoad: function () {
+	    onUnPlannedLoad : function() {
 
-        airbus.mes.stationtracker.oView.byId("unplannedButton").setBusy(false);
-        var aModel = sap.ui.getCore().getModel("unPlannedModel");
+		airbus.mes.stationtracker.oView.byId("unplannedButton").setBusy(false);
+		var aModel = sap.ui.getCore().getModel("unPlannedModel");
 
-        if (!aModel.getProperty("/Rowsets/Rowset/0/Row")) {
+		if (!aModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
-            aModel = [];
-            console.log("no Unplanned operation load");
+			aModel = [];
+			console.log("no Unplanned operation load");
 
-        } else {
+		} else {
+			aModel = aModel.getProperty("/Rowsets/Rowset/0/Row");
 
-            aModel = aModel.getProperty("/Rowsets/Rowset/0/Row")
-        }
+			try {
+				aModel.forEach(function(el) {
 
-        // Compute status for Unplanned and OSW Model
-        airbus.mes.stationtracker.util.ModelManager.computeStatus(aModel);
+					if (el.RMA_STATUS_COLOR != "---") {
 
-    },
+						el.RMA_STATUS_COLOR = "1";
+
+					} else {
+
+						el.RMA_STATUS_COLOR = "0";
+					}
+
+				})
+
+			} catch (e) {
+				console.log("formating unplanned does not work");
+				console.log(e);
+			}
+
+		}
+
+		// Compute status for Unplanned and OSW Model
+		airbus.mes.stationtracker.util.ModelManager.computeStatus(aModel);
+
+	},
 
     onOWSLoad: function () {
 
