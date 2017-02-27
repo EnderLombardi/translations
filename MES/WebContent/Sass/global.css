@@ -4254,6 +4254,10 @@ DISRUPTIONTRACKER
 
 .mesTable > .sapUiTableCnt > .sapUiTableColHdrCnt > .sapUiTableColHdrScr { border: solid 1px #97999b; background-color: #0085ad; }
 
+.mesTable > .sapUiTableCnt > .sapUiTableColHdrCnt > .sapUiTableColHdrScr > .sapUiTableColHdr { height: 3rem !important; }
+
+.mesTable > .sapUiTableCnt > .sapUiTableColHdrCnt > .sapUiTableColHdrScr > .sapUiTableColHdr > .sapUiTableCol { height: 3rem !important; }
+
 .mesTable > .sapUiTableCnt > .sapUiTableColHdrCnt > .sapUiTableColHdrScr > .sapUiTableColHdr > .sapUiTableCol > .sapUiTableColCell { text-align: center !important; }
 
 .mesTable > .sapUiTableCnt > .sapUiTableColHdrCnt > .sapUiTableColHdrScr .sapMLabel { color: white; white-space: normal; display: flex; justify-content: center; align-items: center; line-height: inherit; }

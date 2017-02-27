@@ -23,7 +23,9 @@
                 border: solid 1px #97999b;
                 background-color: $teal-blue;
                 >.sapUiTableColHdr {
+                    height: 3rem !important;
                     >.sapUiTableCol {
+                        height: 3rem !important;
                         >.sapUiTableColCell {
                             text-align: center !important;
                         }
