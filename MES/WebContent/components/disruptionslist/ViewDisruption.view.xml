@@ -53,6 +53,7 @@
 								<Button text="{i18nModel>editButton}" type="Emphasized"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ,{path: 'operationDisruptionsModel>expanded'}], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
 									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" class="disruptionTitleBarButtons"/>
+								<Button press="handleDisruptionPanelExpand" design="Transparent" icon="sap-icon://arrow-down" class="disruptionTitleBarButtons"/>
 
 							</Toolbar>
 						</headerToolbar>
