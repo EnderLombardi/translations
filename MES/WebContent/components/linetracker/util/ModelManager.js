@@ -277,7 +277,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		var url = airbus.mes.linetracker.util.ModelManager.getMsnUrl(station, msn);
 		var sPath = "/data/"+i+"/imageUrl"
 		var imageUrl;
-		var defImg= airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage');
+		var defImg = airbus.mes.shell.ModelManager.getResourceUrl('airbus.logo.jpg');
 		jQuery.ajax({
 			async : true,
 			type : 'get',
@@ -312,15 +312,15 @@ airbus.mes.linetracker.util.ModelManager = {
 			},
 
 			error : function(error, jQXHR) {
-				imageUrl = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage');
+				imageUrl = airbus.mes.shell.ModelManager.getResourceUrl('airbus.logo.jpg');
 			}
 		});
 		return imageUrl;
 	},
 	loadDefaultFlightLogoInStationDataModel: function(data){
 		for(var i=0; i<data.stationData.length;i++){
-			data.stationData[i].imageUrl = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage');	
-			data.stationData[i].nextMsnImageUrl = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage');
+			data.stationData[i].imageUrl = airbus.mes.shell.ModelManager.getResourceUrl('airbus.logo.jpg');	
+			data.stationData[i].nextMsnImageUrl = airbus.mes.shell.ModelManager.getResourceUrl('airbus.logo.jpg');
 		}
 		return data;
 	}

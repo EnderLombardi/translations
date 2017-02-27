@@ -9,9 +9,9 @@ airbus.mes.linetracker.util.Formatter = {
 	 * @return ImageUrl
 	 */
 	getErrorFlightImage : function(oEvt) {
-		oEvt.oSource.setSrc(airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage'));
-
+		oEvt.oSource.setSrc(airbus.mes.shell.ModelManager.getResourceUrl('airbus.logo.jpg'));
 	},
+	
 	/**
 	 * BR: SD-PPC-LT-110 Load Airline Logo Model
 	 */
@@ -19,7 +19,7 @@ airbus.mes.linetracker.util.Formatter = {
 	loadFlightLogo : function(station, msn) {
 		var that = this;
 		
-		this.setSrc(airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage'));
+		this.setSrc(airbus.mes.shell.ModelManager.getResourceUrl('airbus.logo.jpg'));
 
 		var url = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
 		var oResult = airbus.mes.linetracker.util.ModelManager.getProgramForMsnStation(station, msn);
@@ -46,10 +46,10 @@ airbus.mes.linetracker.util.Formatter = {
 				try {
 					if (data.Rowsets.Rowset[0].Row[0].airline_logo_url && data.Rowsets.Rowset[0].Row[0].airline_logo_url.length != 0) {
 						var url = data.Rowsets.Rowset[0].Row[0].airline_logo_url;
-						that.setSrc(data.Rowsets.Rowset[0].Row[0].airline_logo_url);
+						that.setSrc(url);
 					} 
 				} catch (oException) {
-					that.setSrc(airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlGetAirbusFlightImage'));
+					that.setSrc(airbus.mes.shell.ModelManager.getResourceUrl('airbus.logo.jpg'));
 				}
 			}
 		});
@@ -181,20 +181,21 @@ airbus.mes.linetracker.util.Formatter = {
 		}
 
 	},
+	
 	/**
 	 * @param completionTime,actualEndTime
 	 * output show completion date if available , else show actual takt end date
 	 */
 	forcastEndDate : function(completionTime,actualEndTime, status){
-	
-		if(status==="COMPLETE"){
+		if (status === "COMPLETE") {
 			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(completionTime);
-		}else if(status==="IN_PROGRESS"){
+		} else if (status === "IN_PROGRESS") {
 			return airbus.mes.linetracker.util.Formatter.dateToStringFormat(actualEndTime);
-		}
-		else
+		} else { 
 			return;
+		}
 	},
+	
 	/**
 	 * @param sDate
 	 * output formatted date
