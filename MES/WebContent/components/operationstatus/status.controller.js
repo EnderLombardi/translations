@@ -196,6 +196,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         airbus.mes.operationdetail.Formatter.liveChangeProgressBar();
 //        $("#confirmTimeWorked-CB").attr("checked")
         oView._reasonCodeDialog.open();
+    	sap.ui.getCore().byId("imTextArea").setValueState("None");
     },
     completeOperation : function(oEvent) {
 
@@ -538,7 +539,17 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
      **********************************************************/
     onSubmitReasonCode : function(oEvent) {
         var oView = airbus.mes.operationstatus.oView;
+        
+        if ( sap.ui.getCore().byId("reasonCodeSelectBox").getSelectedKey() === "" ||  sap.ui.getCore().byId("imTextArea").getValueState() === "Error" ) {
+        	
+        	jQuery.sap.require("sap.m.MessageBox");
 
+			sap.m.MessageBox.warning(airbus.mes.operationstatus.oView.getModel("i18n").getProperty("errorSelection"), {
+
+			});
+			return;
+        	
+        }
         // store reason Code text
         oView.getController().reasonCodeText = sap.ui.getCore().byId("reasonCodeSelectBox").getSelectedKey() + "-"
                 + sap.ui.getCore().byId("reasonCodeComments").getValue()

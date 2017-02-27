@@ -137,6 +137,8 @@ airbus.mes.operationdetail.Formatter = {
     // and verification on the input type.
     liveChangeIm : function(event){
         var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
+        var sMinValue = airbus.mes.operationdetail.Formatter.convertProgressBarToImField(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/progress"));
+
         if(sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange != undefined){
             if(sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange.length >= 1)
             sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange.length = null;
@@ -159,28 +161,30 @@ airbus.mes.operationdetail.Formatter = {
                 var convertedDuration = airbus.mes.operationdetail.Formatter.convertImFieldToProgressBar(duration) + "%";
 
                 // dynamic conversion based on the IM input
-                var dynamicCoversion = airbus.mes.operationdetail.Formatter.convertImFieldToProgressBar(sap.ui.getCore().byId("imTextArea").getValue()) + "%";
+                //var dynamicCoversion = airbus.mes.operationdetail.Formatter.convertImFieldToProgressBar(sap.ui.getCore().byId("imTextArea").getValue()) + "%";
 
                 //if the value the user input is higher than the durantion we reset it
-                if(sap.ui.getCore().byId("imTextArea").getValue() >= duration){
+                if(value >= duration){
                     sap.ui.getCore().byId("imTextArea").setValue(duration);
-                    $("#progressSlider-progress").width(convertedDuration);
-                    $("#progressSlider-handle").css('left', convertedDuration);
-                    if(duration != "0" || duration != 0){
+                	sap.ui.getCore().byId("imTextArea").setValueState("None");
+                	sap.ui.getCore().byId("progressSlider").setValue(100);
+
+                	if(duration != "0" || duration != 0){
                         $("#progressTextDynamic").text("Progress: " + convertedDuration);
                     }else{
                         $("#progressTextDynamic").text("Progress: " + $("#progressSlider-progress").width());
                     }
-                }else{
-                    $("#progressSlider-progress").width(dynamicCoversion);
-                    $("#progressSlider-handle").css('left', dynamicCoversion);
-                    if(duration != "0" || duration != 0){
-                        $("#progressTextDynamic").text("Progress: " + dynamicCoversion);
-                    }else{
-                        $("#progressTextDynamic").text("Progress: " + $("#progressSlider-progress").width());
-                    }
                 }
-            });
+                if ( value <= sMinValue ) {
+                	sap.ui.getCore().byId("imTextArea").setValueState("Error");
+                	sap.ui.getCore().byId("progressSlider").setValue(0);
+                }
+                if ( value > sMinValue && value < duration) {
+                	sap.ui.getCore().byId("imTextArea").setValueState("None");
+                	sap.ui.getCore().byId("progressSlider").setValue(value*100/duration);         	
+                }
+                
+              });
         }else{
             sap.ui.getCore().byId("imTextArea").attachLiveChange(function() {
                 var value = sap.ui.getCore().byId("imTextArea").getValue();
@@ -198,13 +202,10 @@ airbus.mes.operationdetail.Formatter = {
         var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
         if(duration != "0" || duration != 0){
             sap.ui.getCore().byId("progressSlider").attachLiveChange(function(){
-            var inner = $("#progressSlider-inner").width();
+            	var value  = airbus.mes.operationdetail.Formatter.convertProgressBarToImField(this.getValue());
+            	sap.ui.getCore().byId("imTextArea").setValue(value);
+            	sap.ui.getCore().byId("imTextArea").setValueState("None");
 
-                var convert = (($("#progressSlider-progress").width() * 100) / inner).toFixed(0);
-
-                var value  = airbus.mes.operationdetail.Formatter.convertProgressBarToImField(convert);
-
-                sap.ui.getCore().byId("imTextArea").setValue(value);
             });
         }else{
             sap.ui.getCore().byId("progressSlider").attachLiveChange(function(){
