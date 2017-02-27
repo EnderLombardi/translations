@@ -184,7 +184,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="gravity" selectedKey="{DisruptionDetailModel>/Gravity}">
+										<Select id="gravity" selectedKey="3">
 											<items>
 												<core:Item text="{i18nModel>NotBlocked}" key="1" />
 												<core:Item text="{i18nModel>Disturbed}" key="2" />
