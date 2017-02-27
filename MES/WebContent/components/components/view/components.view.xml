@@ -10,7 +10,7 @@
 				width="100%" visibleRowCountMode="Auto">
 
 				<table:extension>
-					<VBox id="ComponentsCheck" class="ComponentsCheck">
+					<VBox id="ComponentsCheck" class="ComponentsCheck mesRadioButtonsCheck">
 						<RadioButtonGroup columns="2" select="onSelectLevel">
 							<buttons>
 								<RadioButton id="operationButton"

@@ -3545,14 +3545,6 @@ Physical Station Popover
 
 .fa-percent:before { content: "\f295"; }
 
-#jigtoolsView #jigtoolsView--jigToolcheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
-
-#jigtoolsView #jigtoolsView--otbSubheader { width: 40%; margin: 0px auto 10px auto; padding: 0; text-align: center; border: none; }
-
-#jigtoolsView #jigtoolsView--otbSubheader > button:first-child { width: 20% !important; }
-
-#jigtoolsView #jigtoolsView--otbSubheader > div { width: 75% !important; max-width: none !important; min-width: 0 !important; }
-
 /********************
 Tcalendar--kpiHeaderToolbar
 *********************/
@@ -3905,8 +3897,6 @@ DATE PICKER
 .LinkColour:hover { background-color: rgba(196, 196, 196, 0.5) !important; cursor: pointer; }
 
 .LinkColour:hover span { cursor: pointer; }
-
-#componentsView--ComponentsCheck.ComponentsCheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
 
 #componentsView--otbSubheader { width: 40%; margin: 0px auto 10px auto; padding: 0; text-align: center; border: none; }
 
@@ -4275,6 +4265,8 @@ DISRUPTIONTRACKER
 .mesTable > .sapUiTableCnt > .sapUiTableCCnt > .sapUiTableCtrlScr > .sapUiTableCtrlCnt > table > tbody tr:hover { background-color: #efefef; }
 
 .mesTable > .sapUiTableCnt > .sapUiTableCCnt > .sapUiTableCtrlScr > .sapUiTableCtrlCnt > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #97999b; }
+
+.mesRadioButtonsCheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
 
 /*************
 GENERALE RULES

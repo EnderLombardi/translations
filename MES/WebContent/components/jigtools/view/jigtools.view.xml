@@ -12,7 +12,7 @@
 					visibleRowCountMode="Auto"
 					class="mesTable">
 					<table:extension>
-						<VBox id="jigToolcheck" class="jigToolListcheck">
+						<VBox id="jigToolcheck" class="jigToolListcheck mesRadioButtonsCheck">
 					 			<RadioButtonGroup columns="2" select="onSelectLevel">
 									<buttons>
 										<RadioButton id="operationButton" text="{i18nJigstoolsModel>JigToolOperation}"/>
