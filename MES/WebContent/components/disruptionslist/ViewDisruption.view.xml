@@ -19,7 +19,20 @@
 								<!-- <core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>EscalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" /> -->
 								<Title class="disrptlistdesc sapUiMediumMarginEnd" text="{i18nModel>Disruption} {operationDisruptionsModel>DisruptionNumber} -- {path: 'operationDisruptionsModel>Category'} {operationDisruptionsModel>Reason}" />
 								<Title class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>Status'} " />
-
+								
+								<Label text="{i18nModel>opensince} :" design="Bold" />
+								<Text text=" {path:'operationDisruptionsModel>OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" class="disrptlistdesc" />
+								<ToolbarSpacer />
+								
+								<Label text="{i18nModel>level}{operationDisruptionsModel>EscalationLevel}" class="disrptlistdesc" design="Bold"/>
+								<ToolbarSpacer />
+									
+								<Label text="{i18nModel>resGroup} :" design="Bold" />
+								<Text text="{operationDisruptionsModel>ResponsibleGroupDesc}" class="disrptlistdesc" />
+								<ToolbarSpacer />
+									
+								<Label text="{i18nModel>solutionin} : " design="Bold"/>
+								<Text text="{path:'operationDisruptionsModel>RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}" class="disrptlistdesc" />
 								<ToolbarSpacer />
 								
 								<Text
