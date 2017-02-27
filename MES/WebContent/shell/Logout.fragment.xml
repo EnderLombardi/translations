@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+	<Dialog title="{ShellI18n>logout}" contentHeight="auto" contentWidth="20%"	id="idlogoutDialog">
+		<content>	
+		<VBox>
+		<HBox>
+		<Button id="idLoginUser" text="{ShellI18n>LoginAsUser}" press="onPressLoginUser" class="sapUiLargeMarginBeginEnd"></Button>
+		<Button id="idAutoLogin" text="{ShellI18n>AutoLogin}" press="onPressAutoLogin"></Button>
+		</HBox></VBox>
+		</content>
+		<endButton>
+			<Button id="idCancelBttn" text="{ShellI18n>cancel}" press="onPressCancel" icon="sap-icon://decline"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
