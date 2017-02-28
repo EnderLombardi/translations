@@ -159,8 +159,13 @@ airbus.mes.operationdetail.ModelManager = {
             totalPartialConfirmationUrl, "$percentConfirm", percentConfirm);
         totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
             totalPartialConfirmationUrl, "$sfcStepRef", sfcStepRef);
+        if(confirmationType === 'X') {
         totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "$resonCodeText", '');
+        } else {
+            totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
             totalPartialConfirmationUrl, "$resonCodeText", reasonCodeText);
+        }
         totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
             totalPartialConfirmationUrl, "$Mode", Mode);
         totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(

@@ -389,6 +389,7 @@ sap.ui
 									});
 
 							this._oUserConfirmationDialog.close();
+							this.reasonCodeText="";
 
 							this.refreshOperationData(percent);
 

@@ -96,3 +96,7 @@ h1 {
   -webkit-flex: 1 0 0;
   flex: 1 0 0;
 }
+
+.sapMSLITitleOnly {
+  font-weight: bold;
+}

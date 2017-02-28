@@ -4275,15 +4275,10 @@ DISRUPTIONTRACKER
 
 .mesTable > .sapUiTableCnt > .sapUiTableCCnt > .sapUiTableCtrlScr > .sapUiTableCtrlCnt > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #97999b; }
 
-<<<<<<< Upstream, based on origin/MESv1.5
 .mesRadioButtonsCheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
 
 /*************
 GENERALE RULES
-=======
-/*************
-GENERALE RULES
->>>>>>> 001caca [calendar] add total feature
 **************/
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 

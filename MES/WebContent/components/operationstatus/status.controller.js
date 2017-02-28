@@ -15,7 +15,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         sap.ui.getCore().byId("operationDetailPopup--btnPause").detachPress(this.pauseOperation);
         sap.ui.getCore().byId("operationDetailPopup--btnConfirm").detachPress(this.confirmOperation);
         sap.ui.getCore().byId("operationDetailPopup--btnActivate").detachPress(this.activateOperation);
-        sap.ui.getCore().byId("operationDetailPopup--btnComplete").detachPress(this.confirmOperation);
+        sap.ui.getCore().byId("operationDetailPopup--btnComplete").detachPress(this.completeOperation);
         sap.ui.getCore().byId("operationDetailPopup--btnAssignToObserver").detachPress(this.onAssignObserver);
 
         sap.ui.getCore().byId("operationDetailPopup--btnPause").attachPress(this.pauseOperation);
