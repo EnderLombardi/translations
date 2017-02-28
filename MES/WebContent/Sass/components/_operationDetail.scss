@@ -405,6 +405,11 @@
     }
 }
 /* tab - Statut - */
+
+#idStatusView {
+    height: 100%!important;
+}
+
 #idStatusView--StatutLabel.StatutLabel{
     font-weight: bold;
     padding: 0;
