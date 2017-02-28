@@ -16,6 +16,11 @@
 }
 
 #componentsView--ComponentsList{
+    .sapMStepInput {
+        >div {
+            padding: 0.250rem 0;
+        }
+    }
     .stepInputComponent{
         left: 4px;
         span{

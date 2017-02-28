@@ -1115,9 +1115,9 @@ BOX RESOLUTION EFFICIENCY
 
 .sapMIBar-CTX .sapMTitle { color: white; }
 
-.sapUiFormTitle { background-color: #d5f5f8; }
+#globalNavView--navCont .sapUiFormTitle { background-color: #d5f5f8; }
 
-.sapUiFormTitle .sapUiFormTitle { color: white; }
+#globalNavView--navCont .sapUiFormTitle .sapUiFormTitle { color: white; }
 
 .sapMPageHeader::before { border-top: 0rem solid #92C0E4; }
 
@@ -2253,7 +2253,10 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
+/*!
+*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
+*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+*/
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -3900,6 +3903,8 @@ DATE PICKER
 #componentsView--otbSubheader > button:first-child { width: 20% !important; }
 
 #componentsView--otbSubheader > div { width: 75% !important; max-width: none !important; min-width: 0 !important; }
+
+#componentsView--ComponentsList .sapMStepInput > div { padding: 0.250rem 0; }
 
 #componentsView--ComponentsList .stepInputComponent { left: 4px; }
 

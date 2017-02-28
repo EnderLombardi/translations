@@ -183,10 +183,12 @@
         color: white;
     }
 }
-.sapUiFormTitle{
-    background-color: $duck-egg-blue;
+#globalNavView--navCont {
     .sapUiFormTitle{
-        color: white;
+        background-color: $duck-egg-blue;
+        .sapUiFormTitle{
+            color: white;
+        }
     }
 }
 .sapMPageHeader{
