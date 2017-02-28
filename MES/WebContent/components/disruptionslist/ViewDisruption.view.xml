@@ -58,307 +58,62 @@
 							</Toolbar>
 						</headerToolbar>
 
-						<f:Form class="formoperationDisruptionsModel" editable="true">
-							<f:layout>
-								<f:ResponsiveGridLayout span="L12 M12 S12" />
-							</f:layout>
-							<f:formContainers>
-								<f:FormContainer ariaLabelledBy="Title2">
-									<f:formElements>
-									
-<!-- 									MES V1.5 [Beg] -->
-									    <f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>CategoryClass}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
+						<!-- <f:Form class="formoperationDisruptionsModel" editable="true"> -->
+						<f:SimpleForm id="SimpleFormDisplay"
+										maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3"
+										columnsM="3" columnsS="3">
+									<f:content>
+								<core:Title text="" />		
+<!-- 									MES V1.5 [Beg] -->							    
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>CategoryClass}" />
 												<Text text="{=${operationDisruptionsModel>CategoryClass} === '' ? '-' : ${operationDisruptionsModel>CategoryClass}}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-<!-- 									MES V1.5 [End] -->
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>Category}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
+												</Text>								
+<!-- 									MES V1.5 [End] -->									
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Category}"/>
 												<Text text="{path: 'operationDisruptionsModel>Category'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
 												</Text>
-											</f:fields>
-										</f:FormElement>
-													
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>reason}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>reason}" />
 												<Text text="{operationDisruptionsModel>Reason}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
 												</Text>
-											</f:fields>
-										</f:FormElement>
-										
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>gravity}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Jigtool}" />
+												<Text text="{path: 'operationDisruptionsModel>JigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
+												</Text>
+												
+												
+								<core:Title text="" />				
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>gravity}" />
 												<Text id="gravityText"
 													text="{path: 'operationDisruptionsModel>Gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
 												</Text>
-											</f:fields>
-										</f:FormElement>
-										
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>OpenDate}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-												<Text text="{operationDisruptionsModel>OpeningTime}">
-
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>resGroup}" />
+												<Text text="{operationDisruptionsModel>ResponsibleGroupDesc}">	
 												</Text>
-											</f:fields>
-										</f:FormElement>
-										
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>OriginatorGroup}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>OriginatorGroupDesc}">
-
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-									
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>resGroup}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>ResponsibleGroupDesc}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-										
-		<!-- 						MES V1.5 [BEG] -->								
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>Resolver}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{=${operationDisruptionsModel>ResolverName} === '' || ${operationDisruptionsModel>ResolverName} === ' ' ? '-' : ${operationDisruptionsModel>ResolverName}}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-<!-- 									MES V1.5 [End] -->
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>TimeLost}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>TimeLost}" />
 												<Text text="{path: 'operationDisruptionsModel>TimeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
 												</Text>
-											</f:fields>
-										</f:FormElement>
-										
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>Expected}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-												<Text text="{operationDisruptionsModel>RequiredFixBy}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>promisedDateTime}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text
-													text="{=${operationDisruptionsModel>PromisedDateTime} === '' ? '-' : ${operationDisruptionsModel>PromisedDateTime}}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-										
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>timeBeforeNextEsc}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-												<Text text="{parts: [ {path: 'operationDisruptionsModel>EscalationLevel'}, {path: 'operationDisruptionsModel>TimeBeforeNextEscalation'}], formatter: 'airbus.mes.disruptions.Formatter.formatTimeBeforeEsc'}" >
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-										<!-- <f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>RootCause}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>RootCause}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement> -->
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>escalation}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>escalation}" />
 												<Text id="escalationText"
 													text="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
 												</Text>
-											</f:fields>
-										</f:FormElement>
-										
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>Jigtool}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-												<Text text="{path: 'operationDisruptionsModel>JigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
+												
+												
+												
+								<core:Title text="" />					
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OpenDate}" />
+												<Text text="{operationDisruptionsModel>OpeningTime}">
 												</Text>
-											</f:fields>
-										</f:FormElement>
-										
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>stMaterial}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-												<Text text="{path: 'operationDisruptionsModel>Materials', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Expected}" />		
+												<Text text="{operationDisruptionsModel>RequiredFixBy}">	
 												</Text>
-											</f:fields>
-										</f:FormElement>
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>promisedDateTime}" />
+												<Text text="{=${operationDisruptionsModel>PromisedDateTime} === '' ? '-' : ${operationDisruptionsModel>PromisedDateTime}}">
+												</Text>
+												
+												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OriginatorGroup}"/>										
+												<Text text="{operationDisruptionsModel>OriginatorGroupDesc}">
+												</Text>
 										
-										<f:FormElement visible="{path: 'operationDisruptionsModel>ClosureDate', formatter: 'airbus.mes.disruptions.Formatter.setOpeningTimeVisibility'}">
+									<!-- 	<f:FormElement visible="{path: 'operationDisruptionsModel>ClosureDate', formatter: 'airbus.mes.disruptions.Formatter.setOpeningTimeVisibility'}">
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>openingTime}">
 													<layoutData>
@@ -373,12 +128,10 @@
 													</layoutData>
 												</Text>
 											</f:fields>
-										</f:FormElement>
+										</f:FormElement> -->
+						</f:content>
+				</f:SimpleForm>
 
-									</f:formElements>
-								</f:FormContainer>
-							</f:formContainers>
-						</f:Form>
 
 						<!-- <Text text="{i18nModel>status} : {path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}"
 							class="sapUiMediumMarginBegin statusText" /> -->
