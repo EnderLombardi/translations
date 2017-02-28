@@ -1,4 +1,5 @@
 "use strict";
+
 jQuery.sap.declare("airbus.mes.operationdetail.ModelManager")
 
 airbus.mes.operationdetail.ModelManager = {
@@ -22,7 +23,7 @@ airbus.mes.operationdetail.ModelManager = {
         this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.operationdetail.config.url_config");
 
         airbus.mes.shell.ModelManager.createJsonModel(core, ["reasonCodeModel", "dispatchModel"]);
-        airbus.mes.operationstatus.util.ModelManager.getShopOrderOperation();
+        
     },
 
     /***************************************************************************
