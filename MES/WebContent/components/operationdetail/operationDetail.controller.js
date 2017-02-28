@@ -286,6 +286,10 @@ sap.ui
 
                     /** Navigate **/
                     this.nav.to(airbus.mes.components.oView.getId());
+
+                    sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(true);
+                    sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(true);
+                    sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(true);
                     break;
                 case "ACPnGLinks":
                     //tabselection
@@ -354,6 +358,11 @@ sap.ui
 
             //case tracking template
             sap.ui.getCore().byId("operationDetailPopup--btnPrintTckTmplt").setVisible(false);
+
+            //case components
+            sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(false);
+            sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(false);
+            sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(false);
 
         },
 

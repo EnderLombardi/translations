@@ -207,7 +207,6 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     completeOperation : function(oEvent) {
 
         var oView = airbus.mes.operationstatus.oView;
-        var dataConfirm = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
         airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = "";
         // Click on Complete
         oView.getController().operationStatus = "X";
@@ -261,9 +260,9 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         oView.getController().onChangeLevelAssign(); 
 
     },
-    
-
    
+
+
 
     /***********************************************************
      * on click of go to Disruption button when status of
