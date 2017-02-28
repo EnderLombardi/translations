@@ -61,12 +61,7 @@
 			</OverflowToolbar>
 
 			<custom:DHTMLXScheduler id="calendar"></custom:DHTMLXScheduler>
-
-
-
-
-			<Text text="{testModel>/Rowsets/Rowset/0/Row/0/avlLine}"></Text>
-
+			
 		</content>
 	</Page>
 </core:View>

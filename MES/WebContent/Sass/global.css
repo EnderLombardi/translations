@@ -3698,7 +3698,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 
 #calendar--calendar .customTable table tr th, #calendar--calendar td { border-left: none !important; }
 
-#calendar--calendar .trackerBox { width: 100%; height: inherit; color: #ffffff; position: absolute; z-index: 0; line-height: 23px; left: 0px; overflow: hidden; text-overflow: ellipsis; text-align: center; }
+#calendar--calendar .trackerBox { width: 100%; height: 37px; color: #ffffff; z-index: 0; text-align: center; align-items: center; justify-content: center; display: flex; }
 
 #calendar--calendar .greyTotal { background-color: #52737F; }
 
@@ -4288,8 +4288,13 @@ DISRUPTIONTRACKER
 
 .mesRadioButtonsCheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
 
+<<<<<<< Upstream, based on origin/MESv1.5
 /*************
 GENERALE RULES
+=======
+/*************
+GENERALE RULES
+>>>>>>> 0f8a96e [CALENDAR] total calculation
 **************/
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 

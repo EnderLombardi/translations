@@ -6,7 +6,7 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler", {
 
 		oRm.write("<div ");
 		oRm.writeControlData(oControl);
-		oRm.write(" class='dhx_cal_container'  style='width:100%; height:100%;'>");
+		oRm.write(" class='dhx_cal_container'  style='width:100%; height:calc(100% - 6.6rem);'>");
 		oRm.write("    <div class='dhx_cal_navline'style=''>");
 		oRm.write("        <div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%;'></div>");
 		oRm.write("    </div>");
@@ -159,6 +159,7 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler", {
 				// absence pending
 				return "black";
 			}
+			return "";
 		};
 		
 		calendar.templates.event_bar_text = function (start, end, event) {

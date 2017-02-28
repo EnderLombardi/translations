@@ -9,7 +9,7 @@ airbus.mes.calendar.util.BoxDisplayManager = {
 	//---------------------
 	totalConstructor : function(oEvent) {
 		
-		return '<div class="trackerBox greyTotal"><span>' + oEvent.value + '</span></div>';
+		return '<div class="trackerBox greyTotal">' + oEvent.value + '</div>';
 	},
 
     //---------------------
