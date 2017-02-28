@@ -26,7 +26,7 @@
 						<tab:Column id="Reference"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/1/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="Reference">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>Reference}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>reference}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>Reference}" class="AllignItem" />
 							</tab:template>
@@ -34,7 +34,7 @@
 						<tab:Column id="ReviewEnd"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/2/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="ReviewEnd">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>ReviewEnd}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>reviewEnd}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>ReviewEnd}"
 									class="AllignItem" />
@@ -43,7 +43,7 @@
 						<tab:Column id="Note"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/3/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="Note">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>Note}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>note}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>Note}" class="AllignItem" />
 							</tab:template>
@@ -51,7 +51,7 @@
 						<tab:Column id="FamilyTarget"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/4/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="FamilyTarget">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>FamilyTarget}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>familyTarget}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>FamilyTarget}"
 									class="AllignItem" />
@@ -60,7 +60,7 @@
 						<tab:Column id="ConfirmedTime"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/5/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="ConfirmedTime">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>ConfirmedTimed}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>confirmedTime}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>ConfirmedTime}"
 									class="AllignItem" />
@@ -68,7 +68,7 @@
 						</tab:Column>
 						<tab:Column id="STV"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/6/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>STV}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>stv}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>STV}" class="AllignItem" />
 							</tab:template>
@@ -76,7 +76,7 @@
 						<tab:Column id="c"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/7/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="ACPWorkstation">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>ACPWorkstation}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>acpWorkstation}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>ACPWorkstation}"
 									class="AllignItem" />
@@ -85,7 +85,7 @@
 						<tab:Column id="CA"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/8/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="CA">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>CA}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>ca}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>CA}" class="AllignItem" />
 							</tab:template>
@@ -93,7 +93,7 @@
 						<tab:Column id="FatherLink"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/9/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="FatherLink">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>FatherLink}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>fatherLink}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>FatherLink}"
 									class="AllignItem" />
@@ -102,7 +102,7 @@
 						<tab:Column id="BlockingReason"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/10/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="BlockingReason">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>BlockingReason}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>blockingReason}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>BlockingReason}"
 									class="AllignItem" />
@@ -111,7 +111,7 @@
 						<tab:Column id="UserStatus"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/11/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="UserStatus">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>UserStatus}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>userStatus}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>UserStatus}"
 									class="AllignItem" />
@@ -120,7 +120,7 @@
 						<tab:Column id="ExecutionStation"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/12/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="ExecutionStation">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>ExecutionStation}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>executionStation}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>ExecutionStation}"
 									class="AllignItem" />
@@ -129,7 +129,7 @@
 						<tab:Column id="OriginWorkstation"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/13/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="OriginWorkstation">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>OriginWorkstation}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>originWorkstation}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>OriginWorkstation}"
 									class="AllignItem" />
@@ -138,7 +138,7 @@
 						<tab:Column id="TDL"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/14/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="TDL">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>TDL}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>tdl}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>TDL}" class="AllignItem" />
 							</tab:template>
@@ -146,7 +146,7 @@
 						<tab:Column id="UpperFamily"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/15/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="UpperFamily">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>UpperFamily}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>upperFamily}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>UpperFamily}"
 									class="AllignItem" />
@@ -155,7 +155,7 @@
 						<tab:Column id="Zoning"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/16/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="Zoning">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>Zoning}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>zoning}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>Zoning}" class="AllignItem" />
 							</tab:template>
@@ -165,14 +165,14 @@
 							sortProperty="MaterialDescription">
 							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>MaterialDescription}" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>MaterialDescription}"
+								<Label text="{acpnglinksWorkOrderDetail>materialDescription}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 						<tab:Column id="ATA"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/18/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="ATA">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>ATA}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>ata}" />
 							<tab:template>
 								<Label text="{acpnglinksWorkOrderDetail>ATA}" class="AllignItem" />
 							</tab:template>
