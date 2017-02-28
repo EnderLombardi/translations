@@ -128,6 +128,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		var sPoolId = airbus.mes.calendar.util.ShiftManager.shiftIdSelected;
 		var oTotal = airbus.mes.calendar.util.GroupingBoxingManager.totalHierarchy = {};		
 		var aShifts = airbus.mes.calendar.util.ShiftManager.shifts;
+		var fTotalUser = 0;
 		//Day or shift mode step is on day
 		if ( airbus.mes.calendar.util.ShiftManager.shiftDisplay || airbus.mes.calendar.util.ShiftManager.dayDisplay) {
 			
@@ -222,6 +223,11 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					"avlLine" : line,
 					"key": airbus.mes.calendar.util.Formatter.idName(line)
 				};
+				
+				if ( group != airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoadedTo") ) {
+					
+					fTotalUser++;
+				}
 				
 				aElements2[index1].children.push(oLine);
 				//===============
@@ -326,7 +332,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					if ( oTotal[dStart] === undefined ) {
 						aBox.push({
 							"total" : true,
-							"value" : "0",
+							"value" : fTotalUser,
 							"section_id" : "total1",
 							"start_date" : new Date(dStart),
 							"end_date" : new Date(dStart+fStep),
@@ -344,7 +350,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 				
 				aBox.push({
 					"total" : true,
-					"value" : oTotal[i],
+					"value" : fTotalUser - oTotal[i],
 					"section_id" : "total1",
 					"start_date" : new Date(parseFloat(i)),
 					"end_date" : new Date(parseFloat(i) + fStep),
