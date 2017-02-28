@@ -267,8 +267,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 								if ( fStartDate2 - fStartDate != 0) {
 									
 									fGap = fStartDate2 - fStartDate + fStep;
-									//fDurationMs -= fGap;
-									fStartDate2 += fGap;
+									fStartDate += fGap;
 									fStartCopy += fGap; 
 								}
 								//Check if the startDate + the step is less than the end Date => that mean between my start date and end date i have one step of one hour begining/day at 0min0sec
