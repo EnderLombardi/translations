@@ -995,7 +995,11 @@ airbus.mes.disruptions.ModelManager = {
 			(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1]):
 			//Else Current logged in user for a real user as Issuer
 			(sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"));  
-
+       
+	 // If generic user and no operator assigned, prompt for username
+		if	(sUser==undefined) 
+			sUser=airbus.mes.shell.oView.getController().goToMyProfile();
+		else
 		return sUser;
 	},
 
