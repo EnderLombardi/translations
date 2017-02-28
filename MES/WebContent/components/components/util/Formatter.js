@@ -8,30 +8,53 @@ airbus.mes.components.util.Formatter = {
         return  airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty(sName);
     },
 
-    convertJsontoXml: function(json){
-        var sXmlStart = '<?xml version="1.0" encoding="iso-8859-1"?><Rowsets><Rowset>';
+    convertJsontoXmlPapi: function(json){
+        var sXmlStart = '<?xml version="1.0" encoding="UTF-8"?><Rowsets><Rowset>'
+                      + '<Columns>'
+                      + '<Column SourceColumn="BOMComponentBO" SQLDataType="12" Name="BOMComponentBO" MinRange="0" MaxRange="100" Description="BOMComponentBO"/>'
+                      + '<Column SourceColumn="Site" SQLDataType="12" Name="Site" MinRange="0" MaxRange="100" Description="Site"/>'
+                      + '<Column SourceColumn="Checked_Components" SQLDataType="12" Name="Checked_Components" MinRange="0" MaxRange="100" Description="Checked_Components"/>'
+                      + '<Column SourceColumn="Fitted_Components" SQLDataType="12" Name="Fitted_Components" MinRange="0" MaxRange="100" Description="Fitted_Components"/>'
+                      + '</Columns>';
         var sXmlEnd =     '</Rowset></Rowsets>';
         var sXmlByRow = "";
         json.forEach(function(el){
             sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({Row : {
-                committed : [el.committed],
-                fitted : [el.fitted],
-                itemNumber : [el.itemNumber],
-                materialDescription : [el.materialDescription],
-                materialType : [el.materialType],
-                operationNumber : [el.operationNumber],
-                reqQty : [el.reqQty],
-                serialNumber : [el.serialNumber],
-                shortage : [el.shortage],
-                storageLocation : [el.storageLocation],
-                unit : [el.unit],
-                withdrawQty : [el.withdrawQty],
-                workOrder : [el.workOrder],
+            	BOMComponentBO : [el.BOMComponentBO],
+            	Site : [airbus.mes.settings.site],
+            	Checked_Components : [el.Checked_Components],
+            	Fitted_Components : [el.Fitted_Components],
             },})
         });
         var sXml = sXmlStart + sXmlByRow + sXmlEnd;
-        airbus.mes.components.util.ModelManager.jsonConvertedToXml = sXml;
-    }
+        airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi = sXml;
+    },
+                            
+    convertJsontoXmlJCO: function(json){
+        var sXmlStart = '<?xml version="1.0" encoding="UTF-8"?>'
+                      + '<Z_MES_SAVE_COMPONENT_>'
+                      + '<INPUT>'
+                      + '<IT_COMPONENTS>';
+        var sXmlEnd = '</IT_COMPONENTS>'
+			        + '<IV_APPLICATION_ID>MES</IV_APPLICATION_ID>'
+			        + '<IV_BADGE_ID/>'
+			        + "<IV_LANGUAGE>'E'</IV_LANGUAGE>"
+			        + '<IV_PASSWORD>Sopra0007</IV_PASSWORD>'
+			        + '<IV_UNAME>NG1FCF2</IV_UNAME>'
+			        + '</INPUT>'
+			        + '</Z_MES_SAVE_COMPONENT_>';
+
+        var sXmlByRow = "";
+        json.forEach(function(el){
+            sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({Row : {
+            	BOMComponentBO : [el.BOMComponentBO],
+            	Site : [airbus.mes.settings.site],
+            	Checked_Components : [el.Checked_Components],
+            	Fitted_Components : [el.Fitted_Components],
+            },})
+        });
+        var sXml = sXmlStart + sXmlByRow + sXmlEnd;
+        airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO = sXml;
+    },
 
 };
-
