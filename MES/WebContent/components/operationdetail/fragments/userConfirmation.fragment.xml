@@ -47,10 +47,10 @@
             </HBox>
         </content>
         <beginButton>
-            <Button text="{i18n>cancel}" press="onCancelConfirmation" />
+            <Button text="{i18n>cancel}" press="onCancelConfirmation" icon="sap-icon://decline"/>
         </beginButton>
         <endButton>
-            <Button type="Transparent" text="{i18n>OK}" press="onOKConfirmation" />
+            <Button type="Transparent" text="{i18n>OK}" press="onOKConfirmation" icon="sap-icon://accept"/>
         </endButton>
     </Dialog>
 </core:FragmentDefinition>

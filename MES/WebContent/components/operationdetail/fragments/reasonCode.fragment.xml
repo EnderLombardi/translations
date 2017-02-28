@@ -68,9 +68,9 @@
             </HBox>
         </content>
         <buttons>
-            <Button id="submit" text="{i18n>submit}" press="onSubmitReasonCode"
+            <Button id="submit" text="{i18n>submit}" press="onSubmitReasonCode" icon="sap-icon://accept"
                 type="Transparent" />
-            <Button id="cancel" text="{i18n>cancel}" press="onCancelReasonCode" />
+            <Button id="cancel" text="{i18n>cancel}" press="onCancelReasonCode" icon="sap-icon://decline" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

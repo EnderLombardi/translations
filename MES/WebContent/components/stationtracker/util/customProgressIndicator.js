@@ -141,6 +141,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 		var sLeftIcon3 = "";
 		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 		
+		var dispatch = true; //only for test waiting MII service
+		
+		
 		r.write('<div');
 				r.writeControlData(c);
 				r.addClass('sapMPI');
@@ -294,6 +297,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 					
 				}
 				
+				if (dispatch) {
+					
+					sLeftIcon = boxDisplayManager.left
+					
+				}
 				//------------------------------------------------------------
 
 				r.write('>');

@@ -26,9 +26,9 @@
        </f:SimpleForm>
         </content>
         <buttons>
-            <Button id="ok" text="{i18n>OK}" icon="sap-icon://activity-individual" press="onDispatchObserver"
+            <Button id="submitDispatch" text="{i18n>OK}" icon="sap-icon://activity-individual" press="onDispatchObserver"
                 type="Transparent" />
-            <Button id="cancel" text="{i18n>cancel}" icon="sap-icon://decline" press="onCancelDispatchObserver" />
+            <Button id="cancelDispatch" text="{i18n>cancel}" icon="sap-icon://decline" press="onCancelDispatchObserver" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

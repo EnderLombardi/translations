@@ -136,6 +136,7 @@ WORK LIST POP OVER
                 }
             }
         }
+
     }
     .sapMPIText3 {
         position: absolute;
@@ -235,6 +236,11 @@ BOX MANAGEMENT
             padding-left: 6px;
             float: left;
         }
+        &.stopIcon {
+            padding-left: 6px;
+            float: left;
+            color: $orange;
+        }
         &.oswIcon {
             position: relative;
             z-index: 1;
@@ -258,6 +264,7 @@ BOX MANAGEMENT
                 color: $cherry-red;
             }
         }
+       
     }
     .dandelion-back {
         background-color: $dandelion;

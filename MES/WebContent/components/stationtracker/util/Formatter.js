@@ -244,7 +244,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		// global name
 		var sOSW = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Osw");
 		var sUNPD = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Unplanned");
-
+			
 		var html = "";
 		var sDivForLeftDisplay = '<div  class="trackerBox">';
 		var sDivForLeftDisplayInitial = '<div class="tracker-item-initial" >';
@@ -257,6 +257,11 @@ airbus.mes.stationtracker.util.Formatter = {
 		var trackerTextClass = "";
 		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 		var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress, oBox.totalDuration);
+		
+		
+		var dispatch = true; //only for test waiting MII service
+		
+		
 		// Text to display different case regarding box selected
 		switch (airbus.mes.stationtracker.util.GroupingBoxingManager.box) {
 
@@ -391,6 +396,11 @@ airbus.mes.stationtracker.util.Formatter = {
 				break;
 			default:
 		}
+		
+		/*if (dispatch) {
+
+			sLeftIcon = boxDisplayManager.leftStopIcon;
+		} */
 
 		//
 		var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon);

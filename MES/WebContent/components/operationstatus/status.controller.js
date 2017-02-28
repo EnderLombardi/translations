@@ -247,8 +247,8 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     },
     
     
-    onAssignObserver : function(oEvent) {
-        oEvent.reset();
+    onAssignObserver : function() {
+   
         var oView = airbus.mes.operationstatus.oView;
        
         airbus.mes.operationdetail.ModelManager.loadDispatchModel();
@@ -513,8 +513,38 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     onCancelDispatchObserver : function() {
 
         var oView = airbus.mes.operationstatus.oView;
-        sap.ui.getCore().getModel("operationDetailModel").refresh();
-        oView._dipatchDialog.close();
+               
+        if (oView._dipatchDialog) {
+            oView._dipatchDialog.close();
+        }
+      
+    },
+
+    onDispatchObserver : function() {
+    //	var sMessageError = i18nModel.getProperty("tryAgain");
+    	var sMessageError = "Dispatch error";
+    	var sMessageSuccess = "Dispatch success";
+    	var userGroup = sap.ui.getCore().byId("observerSelectBox").getSelectedKey();
+        var level = "WO";
+        
+        // check level chosen by user
+        if (!sap.ui.getCore().byId("WOlevel").getProperty("selected"))
+        	level = "OPE";
+    	
+    	
+        jQuery.ajax({
+            url : airbus.mes.operationdetail.ModelManager.getUrlDispatch(userGroup, level),
+            async : false,
+            error : function(xhr, status, error) {
+            	airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);
+            	
+            },
+            success : function(result, status, xhr) {
+            	airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
+
+            }
+        });
+    	
     },
     
     onChangeLevelAssign : function(){
@@ -651,7 +681,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             return;
 
         } else {
-            this.setProgressScreenBtn(false, false, false, true);
+            this.setProgressScreenBtn(false, false, true, true);
             return;
         }
 
