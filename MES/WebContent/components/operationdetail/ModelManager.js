@@ -1,4 +1,5 @@
 "use strict";
+
 jQuery.sap.declare("airbus.mes.operationdetail.ModelManager")
 
 airbus.mes.operationdetail.ModelManager = {
@@ -80,6 +81,28 @@ airbus.mes.operationdetail.ModelManager = {
         oViewModel.loadData(geturlDispatchToObserver, null, true);
     },
     
+    getUrlDispatch: function(userGroup, level) {
+    	 
+    	var opeData = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]; 
+    	var urlDispatch = this.urlModel.getProperty("urlSendDispatchToObserver");
+    	 
+    	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
+    		 urlDispatch, "$site", airbus.mes.settings.ModelManager.site);
+    	 
+    	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
+    		 urlDispatch, "$userGroup", userGroup);
+    	 
+    	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
+    		 urlDispatch, "$level", level);
+    	 
+    	 urlDispatch = airbus.mes.stationtracker.util.ModelManager
+         .replaceURI(urlDispatch, "$workorder", opeData.wo_no);
+         
+    	 urlDispatch = airbus.mes.stationtracker.util.ModelManager
+         .replaceURI(urlDispatch, "$operation", opeData.operation_id);
+    	 
+         return urlDispatch;
+    },   
       
 
     /***************************************************************************

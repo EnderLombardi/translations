@@ -467,7 +467,7 @@ airbus.mes.calendar.util.ShiftManager = {
 		    calendar.matrix.timeline.x_size += Math.ceil((new Date(fEndDate) - new Date(fStartDate))/1000/60/60);
 		   // calendar.matrix.timeline.x_size += Math.ceil(fTotalMS/1000/60/60);
 
-			return new Date (new Date ( fStartDate ).setMinutes(0));
+			return new Date (new Date ( fStartDate ).setMinutes(0 ,0));
 		    
 			}
 		
@@ -485,12 +485,12 @@ airbus.mes.calendar.util.ShiftManager = {
 	        if ( Math.abs(sTime) > 86400000 ) {
 		        // Takt is over one day step is done by day
 	        	calendar.matrix.timeline.x_size += Math.ceil((dEndDate - dStartDate)/1000/60/60/24);
-				return new Date (new Date ( dStartDate ).setHours(0));
+				return new Date (new Date ( dStartDate ).setHours(0,0,0));
 	        	
 	        } else  {
 		        // Takt is over one day step is done by hour
 	        	calendar.matrix.timeline.x_size += Math.ceil((dEndDate - dStartDate)/1000/60/60);
-				return dStartDate;
+	        	return new Date (new Date ( dStartDate ).setMinutes(0 ,0));
 	        	
 	        }
 			

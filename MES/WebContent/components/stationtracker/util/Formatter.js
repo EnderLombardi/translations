@@ -244,7 +244,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		// global name
 		var sOSW = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Osw");
 		var sUNPD = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Unplanned");
-
+			
 		var html = "";
 		var sDivForLeftDisplay = '<div  class="trackerBox">';
 		var sDivForLeftDisplayInitial = '<div class="tracker-item-initial" >';
@@ -257,6 +257,11 @@ airbus.mes.stationtracker.util.Formatter = {
 		var trackerTextClass = "";
 		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 		var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress, oBox.totalDuration);
+		
+		
+		var dispatch = false; //only for test waiting MII service
+		var dispatchWhite = false;
+		
 		// Text to display different case regarding box selected
 		switch (airbus.mes.stationtracker.util.GroupingBoxingManager.box) {
 
@@ -323,6 +328,8 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sUNPD);
 				}
+				
+
 				break;
 
 			// Opened Blocking and disruption
@@ -339,6 +346,8 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
+				
+
 				break;
 
 			// Opened Blocking disruption
@@ -355,6 +364,12 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
+				
+				if (dispatch) {
+					
+					dispatchWhite = true;
+				}
+				
 				break;
 
 			// Solved Blocking
@@ -372,6 +387,8 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
+				
+
 				break;
 
 			// Solved Blocking and escalated = andon solved
@@ -382,6 +399,12 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
+				
+				if (dispatch) {
+					
+					dispatchWhite = true;
+				}
+				
 //				if (oBox.OSW === 3) { //OSW
 //					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
 //				}
@@ -391,6 +414,16 @@ airbus.mes.stationtracker.util.Formatter = {
 				break;
 			default:
 		}
+		
+		if (dispatch) {
+			if (dispatchWhite){
+				sLeftIcon = boxDisplayManager.leftStopIcon_White;
+			}
+			else {
+				sLeftIcon = boxDisplayManager.leftStopIcon;
+			}
+		}
+		
 
 		//
 		var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon);
@@ -538,7 +571,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 
 				if (oSection.rescheduled) {
-					//XX TODO POSTION OF THIS.
+					
 					html = sNotConfirmedOpLS + '<div>';
 
 					if (airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")) { // Check if user image to be displayed  or not

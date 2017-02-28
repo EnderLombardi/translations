@@ -1,6 +1,6 @@
 {
   "name": "mes",
-  "version": "1.5.1-62",
+  "version": "1.5.1-65",
   "description": "MES - AOS",
   "main": "WebContent/shell/index.html",
   "scripts": {
@@ -37,5 +37,8 @@
     "request": "^2.79.0",
     "run-sequence": "1.2.2",
     "through2": "^2.0.3"
+  },
+  "dependencies": {
+    "gulp-install": "^0.6.0"
   }
 }

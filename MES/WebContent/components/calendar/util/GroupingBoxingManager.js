@@ -267,8 +267,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 								if ( fStartDate2 - fStartDate != 0) {
 									
 									fGap = fStartDate2 - fStartDate + fStep;
-									//fDurationMs -= fGap;
-									fStartDate2 += fGap;
+									fStartDate += fGap;
 									fStartCopy += fGap; 
 								}
 								//Check if the startDate + the step is less than the end Date => that mean between my start date and end date i have one step of one hour begining/day at 0min0sec
@@ -298,13 +297,13 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		// If no box that mean no plan absence dont display the line with box of total
 		if (aBox.length != 0 ) {
 			aElements2.push({				
-					"key": "Total",
+					"key": airbus.mes.calendar.util.Formatter.idName("total"),
 					"label" : airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("total"),
 					"children":[{
 						"lastName" : "",					
-						"ng" : "",
-						"key": "Total"
-					}]
+						"group" : airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("total"),
+						"key": "total1",
+					}],
 			});
 			//===============
 			//Compute aBox creation of box for Total line
@@ -328,7 +327,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 						aBox.push({
 							"total" : true,
 							"value" : "0",
-							"section_id" : "Total",
+							"section_id" : "total1",
 							"start_date" : new Date(dStart),
 							"end_date" : new Date(dStart+fStep),
 						})					
@@ -346,7 +345,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 				aBox.push({
 					"total" : true,
 					"value" : oTotal[i],
-					"section_id" : "Total",
+					"section_id" : "total1",
 					"start_date" : new Date(parseFloat(i)),
 					"end_date" : new Date(parseFloat(i) + fStep),
 				})

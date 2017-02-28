@@ -405,6 +405,11 @@
     }
 }
 /* tab - Statut - */
+
+#idStatusView {
+    height: 100%!important;
+}
+
 #idStatusView--StatutLabel.StatutLabel{
     font-weight: bold;
     padding: 0;
@@ -424,6 +429,16 @@
     }
 }
 
+
+#idStatusView--StatusCheck{
+    width: 50%;
+    margin: 20px auto 10px auto;
+    padding: 0;
+    text-align: center;
+    .sapMRbGCol{
+        display: inline-flex;
+    }
+}
 //CheckList and Records
 #idCheckListView--Checklist.Checklist{
     width:95% !important;

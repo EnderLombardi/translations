@@ -376,15 +376,14 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     }
      .trackerBox {
         width: 100%;
-        height: inherit;
+        height: 37px;
         color: $white-two;
-        position: absolute;
         z-index: 0;
-        line-height: 23px;
-        left: 0px;
-        overflow: hidden;
-        text-overflow: ellipsis;
         text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+         
     }
     .greyTotal {
         background-color: $sapui-active-grey;

@@ -1,0 +1,267 @@
+{
+  "Rowsets": {
+    "DateCreated": "2017-02-28T13:58:18",
+    "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+    "StartDate": "2017-02-28T12:58:18+0100",
+    "EndDate": "2017-02-28T13:58:18+0100",
+    "CachedTime": "",
+    "Rowset": [
+      {
+        "Columns": {
+          "Column": [
+            {
+              "Name": "SITE",
+              "SourceColumn": "SITE",
+              "Description": "SITE",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "WORKORDER_ID",
+              "SourceColumn": "WORKORDER_ID",
+              "Description": "WORKORDER_ID",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "SFC",
+              "SourceColumn": "SFC",
+              "Description": "SFC",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "SHOP_ORDER_BO",
+              "SourceColumn": "SHOP_ORDER_BO",
+              "Description": "SHOP_ORDER_BO",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "OPERATION_BO",
+              "SourceColumn": "OPERATION_BO",
+              "Description": "OPERATION_BO",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "PREVIOUSLY_STARTED",
+              "SourceColumn": "PREVIOUSLY_STARTED",
+              "Description": "PREVIOUSLY_STARTED",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "OPERATION_ID",
+              "SourceColumn": "OPERATION_ID",
+              "Description": "OPERATION_ID",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "WORKORDER_DESCRIPTION",
+              "SourceColumn": "WORKORDER_DESCRIPTION",
+              "Description": "WORKORDER_DESCRIPTION",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "SFC_STEP_REF",
+              "SourceColumn": "SFC_STEP_REF",
+              "Description": "SFC_STEP_REF",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "STEP_ID",
+              "SourceColumn": "STEP_ID",
+              "Description": "STEP_ID",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "STATE",
+              "SourceColumn": "STATE",
+              "Description": "STATE",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "OPERATION_DESCRIPTION",
+              "SourceColumn": "OPERATION_DESCRIPTION",
+              "Description": "OPERATION_DESCRIPTION",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "PP_STATION",
+              "SourceColumn": "PP_STATION",
+              "Description": "PP_STATION",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "EXECUTION_STATION",
+              "SourceColumn": "EXECUTION_STATION",
+              "Description": "EXECUTION_STATION",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "EXECUTION_STATION_SOURCE",
+              "SourceColumn": "EXECUTION_STATION_SOURCE",
+              "Description": "EXECUTION_STATION_SOURCE",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "PAUSED",
+              "SourceColumn": "PAUSED",
+              "Description": "PAUSED",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "DURATION",
+              "SourceColumn": "DURATION",
+              "Description": "DURATION",
+              "SQLDataType": 3,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "PROGRESS",
+              "SourceColumn": "PROGRESS",
+              "Description": "PROGRESS",
+              "SQLDataType": 3,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "NUMBER_OF_EMPLOYEES",
+              "SourceColumn": "NUMBER_OF_EMPLOYEES",
+              "Description": "NUMBER_OF_EMPLOYEES",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            },
+            {
+              "Name": "WORK_CENTER",
+              "SourceColumn": "WORK_CENTER",
+              "Description": "WORK_CENTER",
+              "SQLDataType": -9,
+              "MinRange": 1,
+              "MaxRange": 1
+            }
+          ]
+        },
+        "Row": [
+          {
+            "SITE": "FNZ1",
+            "WORKORDER_ID": "11016431",
+            "SFC": "11016431-0261",
+            "SHOP_ORDER_BO": "ShopOrderBO:FNZ1,11016431",
+            "OPERATION_BO": "OperationBO:FNZ1,50001575-1-0-0010,#",
+            "PREVIOUSLY_STARTED": "true",
+            "OPERATION_ID": "0010",
+            "WORKORDER_DESCRIPTION": "MTG.TUY.SS PL.CAB2",
+            "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,11016431-0261,RouterBO:FNZ1,11016431-F212.18470.000,U,A,1,20",
+            "STEP_ID": "20",
+            "STATE": "C",
+            "OPERATION_DESCRIPTION": "Operation 0010",
+            "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+            "EXECUTION_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+            "EXECUTION_STATION_SOURCE": "2_AVL",
+            "PAUSED": "---",
+            "DURATION": 720000,
+            "PROGRESS": 720000,
+            "NUMBER_OF_EMPLOYEES": "0.00",
+            "WORK_CENTER": "Marquage"
+          },
+          {
+            "SITE": "FNZ1",
+            "WORKORDER_ID": "11016431",
+            "SFC": "11016431-0261",
+            "SHOP_ORDER_BO": "ShopOrderBO:FNZ1,11016431",
+            "OPERATION_BO": "OperationBO:FNZ1,50001575-1-0-0020,#",
+            "PREVIOUSLY_STARTED": "true",
+            "OPERATION_ID": "0020",
+            "WORKORDER_DESCRIPTION": "MTG.TUY.SS PL.CAB2",
+            "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,11016431-0261,RouterBO:FNZ1,11016431-F212.18470.000,U,A,1,30",
+            "STEP_ID": "30",
+            "STATE": "C",
+            "OPERATION_DESCRIPTION": "Operation 0020",
+            "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+            "EXECUTION_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+            "EXECUTION_STATION_SOURCE": "2_AVL",
+            "PAUSED": "---",
+            "DURATION": 5400000,
+            "PROGRESS": 5400000,
+            "NUMBER_OF_EMPLOYEES": "0.00",
+            "WORK_CENTER": "Marquage"
+          },
+          {
+            "SITE": "FNZ1",
+            "WORKORDER_ID": "11016431",
+            "SFC": "11016431-0261",
+            "SHOP_ORDER_BO": "ShopOrderBO:FNZ1,11016431",
+            "OPERATION_BO": "OperationBO:FNZ1,50001575-1-0-0030,#",
+            "PREVIOUSLY_STARTED": "true",
+            "OPERATION_ID": "0030",
+            "WORKORDER_DESCRIPTION": "MTG.TUY.SS PL.CAB2",
+            "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,11016431-0261,RouterBO:FNZ1,11016431-F212.18470.000,U,A,1,40",
+            "STEP_ID": "40",
+            "STATE": "S",
+            "OPERATION_DESCRIPTION": "Operation 0030",
+            "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+            "EXECUTION_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+            "EXECUTION_STATION_SOURCE": "2_AVL",
+            "PAUSED": "false",
+            "DURATION": 7380000,
+            "PROGRESS": 7380000,
+            "NUMBER_OF_EMPLOYEES": "0.00",
+            "WORK_CENTER": "Marquage"
+          },
+          {
+            "SITE": "FNZ1",
+            "WORKORDER_ID": "11016431",
+            "SFC": "11016431-0261",
+            "SHOP_ORDER_BO": "ShopOrderBO:FNZ1,11016431",
+            "OPERATION_BO": "OperationBO:FNZ1,50001575-1-0-0040,#",
+            "PREVIOUSLY_STARTED": "true",
+            "OPERATION_ID": "0040",
+            "WORKORDER_DESCRIPTION": "MTG.TUY.SS PL.CAB2",
+            "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,11016431-0261,RouterBO:FNZ1,11016431-F212.18470.000,U,A,1,50",
+            "STEP_ID": "50",
+            "STATE": "C",
+            "OPERATION_DESCRIPTION": "Operation 0040",
+            "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+            "EXECUTION_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+            "EXECUTION_STATION_SOURCE": "2_AVL",
+            "PAUSED": "---",
+            "DURATION": 7380000,
+            "PROGRESS": 7380000,
+            "NUMBER_OF_EMPLOYEES": "0.00",
+            "WORK_CENTER": "Marquage"
+          }
+        ]
+      }
+    ]
+  }
+}

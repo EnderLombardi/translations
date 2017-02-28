@@ -141,6 +141,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 		var sLeftIcon3 = "";
 		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 		
+		var dispatch = false; //only for test waiting MII service
+		var dispatchWhite = false;
+		
+		
 		r.write('<div');
 				r.writeControlData(c);
 				r.addClass('sapMPI');
@@ -208,6 +212,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 				 //{ if it's not unplanned it's osw because this code is only used for osw and unplanned pop-up
 				//	sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
 				//}
+				
 											
 				switch ( DisruptionStatus ) {		
 					case "D1" :
@@ -226,6 +231,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
 							//}
+							
+						
 					break;
 					case "D2" :
 					// Opened Blocking disruption ( Status === "D2") sStatus = "5";
@@ -241,6 +248,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 							if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
 								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
+							
+							if (dispatch) {
+
+								dispatchWhite = true;
+							} 
 					break;
 					case "D3" :
 					//Solved Blocking and Escalated disruption ( Status === "D3") sStatus = "6";
@@ -256,6 +268,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 							if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
 								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
+							
+					
 					break;
 					case "D4" :
 					//Solved Blocking disruption ( Status === "D4") sStatus = "7";
@@ -271,6 +285,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 							if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
 								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
+							
+							if (dispatch) {
+
+								dispatchWhite = true;
+							} 
 					break;
 					default:		
 				}
@@ -294,6 +313,17 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 					
 				}
 				
+				
+				if (dispatch) {
+					if (dispatchWhite){
+						sLeftIcon = boxDisplayManager.leftStopIcon_White;
+					}
+					else {
+						sLeftIcon = boxDisplayManager.leftStopIcon;
+					}
+				}
+				
+
 				//------------------------------------------------------------
 
 				r.write('>');

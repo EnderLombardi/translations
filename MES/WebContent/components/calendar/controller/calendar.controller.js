@@ -55,8 +55,6 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.util.ShiftManager.taktDisplay = false;
         airbus.mes.calendar.oView.byId("calendardateButton").setEnabled(true);
 
-
-
         calendar.matrix['timeline'].x_unit = 'minute';
         calendar.matrix['timeline'].x_step = 60;
         calendar.matrix['timeline'].x_date = '%H:%i';
@@ -171,7 +169,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	            // Search in the shift hierarshy the first date of first shift of the current date
 	            var sDate = sYear.toString() + sMounth.toString()  + sDay.toString();
 	            if(airbus.mes.calendar.util.GroupingBoxingManager.shiftHierarchy[sDate] === undefined){
-	                sap.m.MessageToast.show(airbus.mes.calendar.oView.getModel("StationTrackerI18n").getProperty("noShiftExist"));            	
+	                sap.m.MessageToast.show(airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("noShiftExist"));            	
 	            	return;
 	            }
 	    

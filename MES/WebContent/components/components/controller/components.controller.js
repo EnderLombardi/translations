@@ -6,7 +6,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     oFilterFilter: undefined,
     oFilterRB: undefined,
     sSet: undefined,
-
+    committedFittedView: false,
+    
     onAfterRendering: function () {
         this.oFilterSearch = undefined;
         this.oFilterFilter = undefined;
@@ -239,7 +240,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[index];
         oEvent.getSource().oParent.getItems()[1].setValue(dataIndex.withdrawQty);
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
-        sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
+        //sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     },
 
     synchronizeFieldFitted: function (oEvent) {
@@ -248,7 +249,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[index];
         oEvent.getSource().oParent.getItems()[1].setValue(dataIndex.withdrawQty);
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
-        sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
+        //sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     },
 
     committedLiveChange: function (oEvent) {
@@ -264,7 +265,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             oEvent.getSource().setValue(0);
         }
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
-        sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
+        //sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     },
 
     fittedLiveChange: function (oEvent) {
@@ -280,7 +281,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             oEvent.getSource().setValue(0);
         }
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
-        sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
+        //sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     },
 
     onbtnComponentsSave: function (oEvent) {
@@ -313,6 +314,32 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             oEvent.getSource().setText(unfreeze);
         } else {
             oEvent.getSource().setText(freeze);
+        }
+    },
+
+    onbtnCommittedFitted: function (oEvent) {
+        this.committedFittedView = !this.committedFittedView;
+
+        var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
+        var columns = oTable.getColumns();
+
+        this.changeColVisibility(columns, this.committedFittedView);
+    },
+
+    changeColVisibility: function (columns, committedFittedView) {
+        var colVisibilityArray;
+        if (!committedFittedView) {
+            colVisibilityArray = airbus.mes.components.util.ModelManager.colVisibilityComponents;
+        } else {
+            colVisibilityArray = airbus.mes.components.util.ModelManager.colVisibilityCommittedFitted;
+        }
+
+        for (var i = 0; i < columns.length; i++) {
+            if (colVisibilityArray.indexOf(columns[i].sId) !== -1 ) {
+                columns[i].setVisible(true);
+            } else {
+                columns[i].setVisible(false);
+            }
         }
     }
 });

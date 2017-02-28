@@ -98,7 +98,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
 
         // Refresh User Operation Model and Operation Detail
         if (flagSuccess == true) {
-            oView.getController().setProgressScreenBtn(true, false, true);
+            oView.getController().setProgressScreenBtn(true, false, true, true);
 
             // Refresh User Operation Model and Operation Detail
             airbus.mes.shell.oView.getController().renderStationTracker();
@@ -154,7 +154,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         });
 
         if (flagSuccess == true) {
-            oView.getController().setProgressScreenBtn(false, true, false);
+            oView.getController().setProgressScreenBtn(false, true, false, true);
 
             // Refresh User Operation Model and Operation Detail
             airbus.mes.shell.oView.getController().renderStationTracker();
@@ -207,7 +207,6 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     completeOperation : function(oEvent) {
 
         var oView = airbus.mes.operationstatus.oView;
-        var dataConfirm = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
         airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = "";
         // Click on Complete
         oView.getController().operationStatus = "X";
@@ -247,8 +246,8 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     },
     
     
-    onAssignObserver : function(oEvent) {
-        oEvent.reset();
+    onAssignObserver : function() {
+   
         var oView = airbus.mes.operationstatus.oView;
        
         airbus.mes.operationdetail.ModelManager.loadDispatchModel();
@@ -261,9 +260,9 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         oView.getController().onChangeLevelAssign(); 
 
     },
-    
-
    
+
+
 
     /***********************************************************
      * on click of go to Disruption button when status of
@@ -493,7 +492,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
                     if (oView.getController().operationStatus == "X") {
                         sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status",
                                 "COMPLETED");
-                        oView.getController().setProgressScreenBtn(false, false, false);
+                        oView.getController().setProgressScreenBtn(false, false, false, false);
                     }
 
                     sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/progress",
@@ -513,8 +512,38 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     onCancelDispatchObserver : function() {
 
         var oView = airbus.mes.operationstatus.oView;
-        sap.ui.getCore().getModel("operationDetailModel").refresh();
-        oView._dipatchDialog.close();
+               
+        if (oView._dipatchDialog) {
+            oView._dipatchDialog.close();
+        }
+      
+    },
+
+    onDispatchObserver : function() {
+    //	var sMessageError = i18nModel.getProperty("tryAgain");
+    	var sMessageError = "Dispatch error";
+    	var sMessageSuccess = "Dispatch success";
+    	var userGroup = sap.ui.getCore().byId("observerSelectBox").getSelectedKey();
+        var level = "WO";
+        
+        // check level chosen by user
+        if (!sap.ui.getCore().byId("WOlevel").getProperty("selected"))
+        	level = "OPE";
+    	
+    	
+        jQuery.ajax({
+            url : airbus.mes.operationdetail.ModelManager.getUrlDispatch(userGroup, level),
+            async : false,
+            error : function(xhr, status, error) {
+            	airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);
+            	
+            },
+            success : function(result, status, xhr) {
+            	airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
+
+            }
+        });
+    	
     },
     
     onChangeLevelAssign : function(){
@@ -644,14 +673,14 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
                 break;
 
             case airbus.mes.operationdetail.Formatter.status.completed:
-                this.setProgressScreenBtn(false, false, false, true);
+                this.setProgressScreenBtn(false, false, false, false);
                 break;
             }
 
             return;
 
         } else {
-            this.setProgressScreenBtn(false, false, false, true);
+            this.setProgressScreenBtn(false, false, false, false);
             return;
         }
 

@@ -418,6 +418,10 @@ sap.ui.controller(
             var jqToolbar = $(airbus.mes.calendar.oView.byId('toolbarcalendar').getDomRef());
             var jqStationTracker = $(airbus.mes.calendar.oView.byId('calendar').getDomRef());
             jqStationTracker.css('top', jqToolbar.offset().top);
+            // **Calculation of takt mode step in one hours or day**
+            if ( airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
+                airbus.mes.calendar.oView.getController().onTaktPress();
+            }
 
         },
 

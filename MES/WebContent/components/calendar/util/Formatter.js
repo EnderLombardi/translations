@@ -98,7 +98,7 @@ airbus.mes.calendar.util.Formatter = {
 							+ '</div></div>';
 					return html;
 				}
-				if ( oSection.key != "Total") {
+				if ( oSection.key != "total1") {
 					//Creation of Div of picture display
 					if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
 						

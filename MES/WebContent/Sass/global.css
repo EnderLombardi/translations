@@ -542,6 +542,7 @@ TOOLBAR
 
 /********************
 WORK LIST POP OVER
+<<<<<<< HEAD
 *********************/
 .classWorklistPopover .fa {
   position: relative;
@@ -589,11 +590,41 @@ WORK LIST POP OVER
   margin: -1rem -1rem 1rem -1rem;
   padding: 1rem; }
 
+=======
+*********************/
+.classWorklistPopover .fa { position: relative; z-index: 1; line-height: 20px; height: 20px; color: #ffffff; overflow: hidden; padding-right: 6px; }
+
+.classWorklistPopover .fa.rightIcon { float: right; }
+
+.classWorklistPopover .fa.rightIcon.petrol { color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .fa.dandelion { color: #fbec00; padding-right: 6px; }
+
+.classWorklistPopover .fa.oswIcon2 { padding-right: 6px; }
+
+.classWorklistPopover .fa.oswIcon2 b { font-family: arial; }
+
+.classWorklistPopover .fa.fa-exclamation-triangle.triangleIcon.petrol { color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .fa.fa-ban.stopIcon { color: #e4002b; }
+
+.classWorklistPopover .fa.fa-ban.stopIcon.white-two { color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 { position: absolute; display: block; right: 0px; height: 20px; margin-right: 6px; top: 50%; margin-top: calc(-20px/2); width: auto; }
+
+.classWorklistPopover header.sapMIBar.sapMHeader-CTX { background: #d4f1f7; box-shadow: 0 0 5px #333; z-index: 1000; }
+
+.classWorklistPopover header.sapMIBar.sapMHeader-CTX label { color: #434343; font-size: 1rem; }
+
+#mes .sapMDialog:not(.theme-disabled) .classWorklistPopoverHeader { box-shadow: 0 0 5px #333; overflow: visible; background-color: #d4f1f7; color: #434343; margin: -1rem -1rem 1rem -1rem; padding: 1rem; }
+
+>>>>>>> branch 'MESv1.5' of https://bundleerp.git.ptx.fr.sopra/g/mes
 /********************
 SCHEDULAR TASK STYLE
 *********************/
 /********************
 BOX MANAGEMENT
+<<<<<<< HEAD
 *********************/
 .trackerBox {
   width: 100%;
@@ -789,6 +820,113 @@ BOX MANAGEMENT
   background-position: 14px 0;
   background-size: 56px 56px; }
 
+=======
+*********************/
+.trackerBox { width: 100%; height: inherit; position: absolute; z-index: 0; line-height: 23px; left: 0px; overflow: hidden; text-overflow: ellipsis; }
+
+.trackerBox .trackerText { max-width: calc(100% - 20px); white-space: nowrap; color: white; overflow: hidden; }
+
+.trackerBox .trackerTextBlock { white-space: nowrap; color: rgba(0, 86, 112, 0.94); }
+
+.trackerBox .colorProgress { height: inherit; position: absolute; z-index: 0; left: 0px; overflow: hidden; }
+
+.trackerBox .openBlockedEscalated { height: inherit; width: 100%; background-color: #e4002b; }
+
+.trackerBox .openBlocked { height: inherit; width: 100%; background-color: #fbec00; }
+
+.trackerBox .fa { height: 24px; }
+
+.trackerBox .fa.rightIcon { padding-right: 6px; float: right; }
+
+.trackerBox .fa.rightIcon.petrol { color: rgba(0, 86, 112, 0.94); }
+
+.trackerBox .fa.triangleIcon { padding-left: 6px; float: left; }
+
+.trackerBox .fa.stopIcon { padding-left: 6px; float: left; color: #e4002b; }
+
+.trackerBox .fa.stopIcon.white-two { color: #ffffff; }
+
+.trackerBox .fa.oswIcon { position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; overflow: hidden; line-height: 14px; height: auto; float: left; margin-left: 6px; margin-bottom: 10px; min-width: 45px; }
+
+.trackerBox .fa.oswIcon b { font-family: arial; }
+
+.trackerBox .fa.oswIcon.cherry-red { color: #e4002b; }
+
+.trackerBox .dandelion-back { background-color: #fbec00; }
+
+.trackerBox .teal-blue { color: #0085ad; }
+
+.trackerBox .petrol { color: rgba(0, 86, 112, 0.94); }
+
+.trackerBox .petrol-back { background-color: rgba(0, 86, 112, 0.94); }
+
+.trackerBox .cherry-red-back { background-color: #e4002b; }
+
+.trackerBox .dark-lime-green-back { background-color: #84bd00; }
+
+.trackerBox .teal-blue-back { background-color: #0085ad; }
+
+.trackerBox .dandelion { color: #fbec00; }
+
+.trackerBox .yellow { background-color: #fbec00; color: rgba(0, 86, 112, 0.94); }
+
+.trackerBox .green { background-color: #049372; color: #ffffff; }
+
+.trackerBox .blue { background-color: #0085ad; color: #ffffff; }
+
+.trackerBox .pink { background-color: #E08283; color: #ffffff; }
+
+.trackerBox:hover .dark-lime-green-back { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #536f12 !important; }
+
+.trackerBox:hover .teal-blue-back { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #0f2d65 !important; }
+
+.trackerBox:hover .cherry-red-back { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #9e001e !important; }
+
+.trackerBox:hover .openBlockedEscalated { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #9e001e !important; }
+
+.trackerBox:hover .openBlocked { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #ffbf00 !important; }
+
+.trackerBox:hover .solvedBlocked { background: repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px); background-size: 56px 56px; -webkit-animation: slide 20s infinite linear forwards; -moz-animation: slide 20s infinite linear forwards; animation: slide 20s infinite linear forwards; -webkit-transition: background 0.2s ease-in-out; -moz-transition: background 0.2s ease-in-out; transition: background 0.2s ease-in-out; }
+
+@-webkit-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@-moz-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@-o-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+.trackerBox:hover .solvedBlockedExcalated { background: repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px); background-size: 56px 56px; -webkit-animation: slide 20s infinite linear forwards; -moz-animation: slide 20s infinite linear forwards; animation: slide 20s infinite linear forwards; }
+
+@-webkit-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@-moz-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@-o-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+.grey2 { background-color: #dddddd; }
+
+.grey { background-color: #97999b; }
+
+.grey:hover { background-color: #767879; color: black; }
+
+.trackerTextBlack { color: #000; }
+
+.solvedBlockedExcalated { height: inherit; width: 100%; background: repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px); background-position: 14px 0; background-size: 56px 56px; }
+
+.solvedBlocked { height: inherit; width: 100%; background: repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px); background-position: 14px 0; background-size: 56px 56px; }
+
+>>>>>>> branch 'MESv1.5' of https://bundleerp.git.ptx.fr.sopra/g/mes
 /***********************
 KPI HEADER
 ************************/
@@ -2121,6 +2259,7 @@ KPI Header Content
 
 /*******************************
 BOX RESOLUTION EFFICIENCY
+<<<<<<< HEAD
 ********************************/
 #stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem {
   padding-bottom: 2px; }
@@ -3545,6 +3684,843 @@ label#createDisruptionView--disruptLabel {
   color: #000 !important;
   font-size: 1rem !important; }
 
+=======
+********************************/
+#stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem { padding-bottom: 2px; }
+
+#stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartItemHeader { margin: 0; }
+
+#stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartBar { margin: 0; height: 0.95rem; }
+
+#stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartBar > div { max-height: 0.75rem; min-height: 0.375rem; width: 100%; height: 15.75%; }
+
+#stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem { padding-bottom: 2px; }
+
+#stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartItemHeader { margin: 0; }
+
+#stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartItemValue { margin-left: 0; margin-right: 0; }
+
+#stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartBar { margin-left: 0; margin-right: 0; }
+
+#stationTrackerView--boxResolutionEfficiency .boxResolutionEfficiencyGoodValue { color: #84bd00; }
+
+#stationTrackerView--boxResolutionEfficiency .boxResolutionEfficiencyBadValue { color: #fe5000; }
+
+#stationTrackerView--boxSLBEfficiecy_chart-chart-item-3, #stationTrackerView--boxResolutionEfficiecy_chart-chart-item-3 { opacity: 0; }
+
+.kpiBoxes > .sapMFlexItem:not(.taktAdherenceBox):before, .openDisruptionTotal > .sapMFlexItem:nth-child(2):before, .openDisruptionTotal .sapMFlexItem:nth-child(4):before, .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:before, .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div:before { content: "" !important; font-size: 0 !important; vertical-align: middle !important; display: inline-block !important; width: 0px !important; height: 100% !important; }
+
+.GenricBgColor { background-color: #EBEEF2; }
+
+.subHeader { background-color: white !important; }
+
+.whiteButton .sapMBtnIcon { color: white; }
+
+.topPageHeader { color: white !important; background: #0f2d65 !important; border: 0; }
+
+.topPageHeader > img#globalNavView--logo { margin-right: 0; padding: 0.5rem 20px; border-radius: 0.125rem; }
+
+.topPageHeader > img#globalNavView--logo:hover { background-color: rgba(222, 222, 222, 0.5); }
+
+.topPageHeader > label.pageTitle { margin-left: 20px; }
+
+.pageHeader { color: white !important; background: #0f2d65 !important; border: 0; }
+
+.classSettingPage .pageHeader span { font-size: 1.2rem; color: white; }
+
+.sapMPage .classSettingPage > .sapMPageHeader + .sapMPageSubHeader + section { margin-top: 0.55rem; }
+
+.sapMPage > .sapMPageHeader + .sapMPageSubHeader + section { background-color: white; }
+
+#globalNavView > .sapMPage > .sapMPageHeader > label.unshrinkable { flex-shrink: 0; }
+
+#globalNavView > .sapMPage > .sapMPageHeader > label.unshrinkable #__label0 { padding: 0 0 0 20px; }
+
+.pageTitle { font-family: "Arial", Sans-serif !important; font-size: 17px; font-weight: normal; font-style: normal; font-stretch: normal; color: #ffffff !important; }
+
+.classListProgram { border: 1px solid #e5e5e5; border-bottom: 0; margin-top: 0.8rem !important; margin-left: 0.8rem !important; }
+
+.classListProgram .sapMLIBContent .sapMHBox .sapMFlexItem:nth-child(2):before { content: ' '; display: inline-block; vertical-align: middle; height: 100%; }
+
+.classListProgram .sapMLIBContent div > div:nth-child(2) { text-align: center; }
+
+.classListProgram .sapMLIBContent div > div:nth-child(2) img { display: inline-block; vertical-align: middle; }
+
+.classListProgramRadioBtn .sapMRbB { display: inline-block; vertical-align: middle; height: 100%; }
+
+.classListProgramRadioBtn .sapMRbB .sapMRbBOut { border: 2px solid #74d2e7; }
+
+.classListProgramRadioBtn label { display: inline-block; vertical-align: middle; }
+
+.classOtherSetting { border: 1px solid #e5e5e5; margin-top: 0.8rem !important; }
+
+.classOtherSetting .sapUiFormTitle, .classListProgram .sapMListHdr, .classSelectListBox .sapMListHdr { text-shadow: none; }
+
+.classOtherSetting .sapUiFormTitle, .classListProgram .sapMListHdr { border-bottom: 1px solid #e5e5e5; }
+
+.classOtherSetting label { color: rgba(0, 86, 112, 0.94); }
+
+.classOtherSetting .sapUiFormM .sapUiFormResGridCont { padding: 0.6rem !important; }
+
+.classSelectListBox { margin-top: 0.8rem; border: 1px solid #e5e5e5; border-right: none; }
+
+.classSelectListBox .sapMListHdr { border: none; }
+
+.classSelectList { max-width: 100%; margin: 0 !important; border: none; }
+
+.classSelectList > li { border-bottom: 1px solid #e5e5e5; }
+
+.classSelectList > li:last-child { border-bottom: none; }
+
+.pageWelcome { font-family: "Arial", Sans-serif !important; font-size: 17px; font-weight: normal; font-style: normal; font-stretch: normal; color: #ffffff !important; }
+
+.sapMListHdr { background-color: #d5f5f8; }
+
+.sap-desktop .sapMIBar .sapMHeader-CTX { background: rgba(0, 32, 91, 0.94); }
+
+.sapMIBar-CTX .sapMTitle { color: white; }
+
+#globalNavView--navCont .sapUiFormTitle { background-color: #d5f5f8; }
+
+#globalNavView--navCont .sapUiFormTitle .sapUiFormTitle { color: white; }
+
+.sapMPageHeader::before { border-top: 0rem solid #92C0E4; }
+
+.sapMIBar .sapMSubHeader-CTX { background-color: #d5f5f8; }
+
+#globalNavView .sapMIBar-CTX .sapMBtnTransparent { color: #ffffff; }
+
+[id^="settingsView--nav"] { color: rgba(0, 86, 112, 0.94); font-weight: bold; }
+
+[id^="settingsView--currMSN"] { font-weight: bold; }
+
+[id^="settingsView--headText"] { color: rgba(0, 86, 112, 0.94); }
+
+[id^="settingsView--headText"] > .sapUiForm .sapUiFormTitle { color: rgba(0, 86, 112, 0.94); }
+
+[id^="settingsView--nav"] > .sapMBtnIcon { color: rgba(0, 86, 112, 0.94) !important; }
+
+/***************************
+POP-UP CONFIRM DELETE DIALOG
+****************************/
+#messageDialog--errorMessageDialog { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#messageDialog--errorMessageDialog-header-BarPH { background: #d4f1f7; }
+
+#messageDialog--errorMessageDialog-title { color: #434343; }
+
+#messageDialog--errorMessageDialog-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#messageDialog--errorMessageDialog-header { box-shadow: 0 0 5px #333; overflow: visible; }
+
+#messageDialog--errorMessageDialog-footer { background-color: #0f2d65; }
+
+/*******************************
+END POP-UP CONFIRM DELETE DIALOG
+********************************/
+html.sap-desktop .sapMBtn:focus > .sapMBtnInner.sapMFocusable { background-color: none; outline: 1px dotted transparent; border-color: transparent; }
+
+html.sap-desktop .pageHeader .sapMBarMiddle .sapMBarChild { text-shadow: none; }
+
+html.sap-desktop .sapMBar-CTX:not(.sapMBtnDisabled) > .sapMBtnInner.sapMBtnActive { background-color: #74d2e7; }
+
+html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon { color: #ffffff; }
+
+.customComboBox button { border-left: 0; }
+
+#globalNavView--SelectLanguage-arrow { background: #0f2d65; }
+
+#badgeMngMyProfile-header { box-shadow: 0 0 5px #333 !important; background-color: #fff !important; z-index: 1; }
+
+#badgeMngMyProfile-title { color: #333333; }
+
+#badgeMngMyProfile-cont { background: #f5f5f5 !important; }
+
+#settingsView--settingsSubHeader { background-color: #d5f5f8; }
+
+#settingsView--settingsSubHeader > div > button > .sapMBtnActive { background-color: #74d2e7; -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
+
+#settingsView--settingsSubHeader > div > button:hover > div:not(.sapMBtnActive) { background-color: rgba(0, 86, 112, 0.2); -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
+
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn { padding: 12px 0 12px 12px; height: 3rem; }
+
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn > div { padding: 0; padding-right: 5px; }
+
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn > label { margin-left: 0; padding-left: .8125rem; text-align: left; padding-right: .8125rem; }
+
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn:not(.sapMRbDis):hover > * { background-color: #f0f0f0; -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
+
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn.sapMRbBTouched > * { background-color: #007cc0 !important; }
+
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn.sapMRbBTouched > label { color: #ffffff; }
+
+/********************
+RESSOURCEPOOL
+*********************/
+#resourcePool--resourcePoolName.resourcePoolName { color: white; padding: 20px; border-left: 1px solid #8db9ca; }
+
+.resourcePoolSubheader { background-color: #d5f5f8; border: none; }
+
+.myForm { width: 40em !important; }
+
+@media screen and (max-width: 500px) { .myForm { width: 15em !important; } }
+
+#idUsersView .fixHboxItemDisplay .sapMFlexItem { width: 100%; word-break: break-all; word-break: break-word; }
+
+#idUsersView .fixHboxItemDisplay .sapMFlexItem span { display: inline-block; }
+
+#idUsersView .fixHboxItemDisplay #idUsersView--searchAvailableUsers-search:hover { background-color: transparent; }
+
+#idUsersView .fixHboxItemDisplay #idUsersView--searchAvailableUsers-search.sapMSFBA { background-color: transparent !important; }
+
+#idUsersView .fixHboxItemDisplay #idUsersView--searchAssignedUsers-search:hover { background-color: transparent; }
+
+#idUsersView .fixHboxItemDisplay #idUsersView--searchAssignedUsers-search.sapMSFBA { background-color: transparent !important; }
+
+#idUsersView .ylabelUserImage { width: 2rem; height: 2rem; line-height: 30px; vertical-align: middle; font-size: 16px; text-align: center; color: #0D5D76; background-color: #D5F1F8; border-radius: 999px; margin-right: 0.8125rem; }
+
+#idUsersView .fixDsiplayRpImg { width: 100%; }
+
+#idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper { vertical-align: middle; }
+
+#idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(1) { width: auto; margin: 1%; }
+
+#idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(2) { width: 90%; }
+
+#idWorkCenterView .fixHboxItemDisplay .sapMFlexItem { width: 100%; word-break: break-all; word-break: break-word; }
+
+#idWorkCenterView .fixHboxItemDisplay .sapMFlexItem span { display: inline-block; }
+
+#idWorkCenterView .fixHboxItemDisplay #idWorkCenterView--searchAvailableWC-search:hover { background-color: transparent; }
+
+#idWorkCenterView .fixHboxItemDisplay #idWorkCenterView--searchAvailableWC-search.sapMSFBA { background-color: transparent b !important; }
+
+#idWorkCenterView .fixHboxItemDisplay #idWorkCenterView--searchAssignedWC-search:hover { background-color: transparent; }
+
+#idWorkCenterView .fixHboxItemDisplay #idWorkCenterView--searchAssignedWC-search.sapMSFBA { background-color: transparent !important; }
+
+.colorSelect { background-color: green; }
+
+.panelBorder { border-style: groove; *border-style: 1px solid #c0c0c0 !important; }
+
+.shiftButtons { width: auto !important; margin: 2%; }
+
+.shiftButtons > div > button:hover > div { background-color: #3F4F54 !important; }
+
+.shiftButtons > div > button:hover > div > span { color: #ffffff; }
+
+.shiftButtons > div:first-child span { margin-top: 1px; margin-left: 2px; }
+
+.shiftButtons > div:nth-child(2) span { margin-top: 1px; margin-right: 2px; }
+
+.messageStrip span { display: inline !important; line-height: normal !important; padding: 0px !important; }
+
+.panelHeaderCustomStyle { font-size: 1.125rem !important; line-height: inherit !important; }
+
+.iconMiddle .sapMBtnIcon { width: 100% !important; }
+
+.yellowColor { background-color: antiquewhite !important; }
+
+.loanColor { background-color: #dcd9d9 !important; }
+
+.Error { color: red; }
+
+.fontWeight700 { font-weight: 700; }
+
+.padding8 { padding: 8px; }
+
+.helpDialogue { height: 100%; background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+.helpDialogue .sapMDialogTitle { color: #434343; }
+
+.floatRight { margin: .5rem 1rem 0px 0; float: right !important; color: #666666; white-space: nowrap; vertical-align: middle; text-overflow: ellipsis; overflow: hidden; margin-left: 60px; max-width: 80px; }
+
+.customlistTitle { font-size: 1rem; margin-top: .5rem; margin-top: 18px; width: 160px; text-overflow: ellipsis; overflow: hidden; width: 160px; }
+
+.listItemDescrption { margin-top: .5rem; margin-bottom: .5rem; color: #666666; }
+
+.blueBorderChange { border-color: #009DE0; border-style: solid; border-bottom-width: 1px; border-top-width: 1px; border-left-width: 1px; border-right-width: 1px; }
+
+#searchResourcePool--searchRessourcePoolDialog { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#searchResourcePool--searchRessourcePoolDialog-header-BarPH { background: #d4f1f7; }
+
+#searchResourcePool--searchRessourcePoolDialog-title { color: #434343; }
+
+#searchResourcePool--searchRessourcePoolDialog-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#searchResourcePool--searchRessourcePoolDialog-header { box-shadow: 0 0 5px #333; overflow: visible; }
+
+#searchResourcePool--searchRessourcePoolDialog-footer { background-color: #0f2d65; }
+
+[id^="searchResourcePool--searchRessourcePoolDialog"] .sapMFlexItem { padding: 0 5px; }
+
+[id^="searchResourcePool--searchRessourcePoolDialog"] .sapMBtnDisabled { opacity: 1; }
+
+[id^="searchResourcePool--searchRessourcePoolDialog"] .sapUiRFL.sapUiRLContainer > div:first-child { display: none; }
+
+#valueHelp--selectDialog-dialog { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#valueHelp--selectDialog-dialog-header-BarPH { background: #d4f1f7; }
+
+#valueHelp--selectDialog-dialog-title { color: #434343; }
+
+#valueHelp--selectDialog-dialog-header { box-shadow: 0 0 5px #333; overflow: visible; }
+
+#valueHelp--selectDialog-dialog-footer { background-color: #0f2d65; }
+
+[id^="valueHelp--selectDialog-dialog"] .sapMFlexItem { padding: 0 5px; }
+
+[id^="valueHelp--selectDialog-dialog"] .sapMBtnDisabled { opacity: 1; }
+
+#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li { height: 3rem; line-height: 3rem; display: inline-block; font-size: 1.075rem; vertical-align: top; border: none; color: #0D5D76; border-left: 1px solid #8db9ca; background-color: transparent; }
+
+#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li:hover { background-color: rgba(0, 86, 112, 0.2); }
+
+#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li > span { display: inline-block; vertical-align: top; padding: 0.250rem 0.25rem 0.250rem 0; color: #0D5D76; }
+
+#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnMixed.sapMSegBBtnSel > span { color: #ffffff; }
+
+#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel { background-color: #74d2e7; color: white; }
+
+#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader ul { height: 3rem; margin: 0; }
+
+#resourcePool .sapMIBar.sapMHeader-CTX { margin: 0; background-color: #d5f5f8; text-align: left; }
+
+#resourcePool .sapMIBar.sapMHeader-CTX span { float: left; color: #0D5D76; text-shadow: none; }
+
+#resourcePool section[role^="form"] { border: 1px solid #e5e5e5; }
+
+#resourcePool .sapMNavItem { left: 15px; Top: 15px; right: 15px; }
+
+#resourcePool .sapMPanelContent { padding: 0; }
+
+#resourcePool .sapMFlexItem .sapMBtnInner { border-radius: 50%; border: none; background: #bfbfbf; text-shadow: 0 0; }
+
+#resourcePool .sapMFlexItem button[title^="navigation-right-arrow"] .sapMBtnInner span { left: 3px; position: absolute; top: 1px; right: 0; bottom: 0; }
+
+#resourcePool .sapMFlexItem button[title^="navigation-left-arrow"] .sapMBtnInner span { left: 0; position: absolute; top: 1px; right: 3px; bottom: 0; }
+
+#resourcePool .sapMTB-Transparent-CTX.sapMTB { padding: 0; border: 0; position: relative; z-index: 1; }
+
+#resourcePool .sapMSFF { border-radius: 3em; border: 2px solid #74d2e7; color: #74d2e7; overflow: hidden; }
+
+#resourcePool .sapMSFF input, #resourcePool .sapMSFF .sapMSFB.sapMSFS { color: #74d2e7; }
+
+#resourcePool .sapMBarChild.sapMCb .sapMCbBg:not(:hover) { border: solid 0.125rem #74d2e7; }
+
+#resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > *, #resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > :first-child, #resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > :last-child { margin: 0 0 0 1px; border: 0; }
+
+#resourcePool .sapMTB-Info-CTX.sapMTB { border: none !important; padding: 0; margin-top: -1px; position: relative; z-index: 2; background: #ffffff; height: auto; }
+
+::-webkit-input-placeholder { color: #74d2e7; }
+
+:-moz-placeholder { color: #74d2e7; opacity: 1; }
+
+::-moz-placeholder { color: #74d2e7; opacity: 1; }
+
+:-ms-input-placeholder { color: #74d2e7; }
+
+.deleteConfirmation { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+.deleteConfirmation.sapMMessageDialog.sapMPopup-CTX > header.sapMDialogTitle { background: #d4f1f7; box-shadow: 0 0 5px #333; overflow: visible; }
+
+.deleteConfirmation .sapMDialogTitle { color: #434343; }
+
+.sap-desktop .deleteConfirmation .sapMIBar.sapMFooter-CTX { background-color: #0f2d65; }
+
+.sap-desktop .helpDialogue .sapMIBar.sapMHeader-CTX { background: #d4f1f7; box-shadow: 0 0 5px #333; overflow: visible; }
+
+.sap-desktop .helpDialogue .sapMIBar.sapMFooter-CTX { background-color: #0f2d65; }
+
+.sap-desktop #resourcePool .resourcePoolSubheader button:hover > .sapMBtnTransparent { background-color: rgba(0, 86, 112, 0.2); }
+
+.sap-desktop #resourcePool .resourcePoolSubheader button > .sapMBtnTransparent { border-radius: 0; border: 0; height: 3rem; padding: 0 0.25rem; }
+
+.sap-desktop #resourcePool .resourcePoolSubheader button > .sapMBtnTransparent > .sapMBtnIcon { color: #0D5D76; line-height: 3rem; max-height: 3rem; display: block; }
+
+.sap-desktop #resourcePool button { padding: 0; margin: 0 0.25rem !important; }
+
+#searchResourcePool--searchForm--Layout .sapMBtnReject { background-color: #cc1919; }
+
+#searchResourcePool--searchForm--Layout .sapMBtnReject:hover:not(.sapMBtnActive) { background-color: #b51616; }
+
+/******************
+POLYPOLY
+*******************/
+#polypoly--polypolyHeaderToolbar > label { color: #74d2e7; text-shadow: none; font-style: italic; padding: 15px 30px; border-right: solid 1px #74d2e7; }
+
+#polypolyPage #polypolytitle.headerText { border-right: solid 1px #74d2e7 !important; padding: 16px 30px 16px 10px; }
+
+#polypoly--polypolyimg { border-left: 1px solid #8db9ca; }
+
+#polypoly .noRows.sapUiTableColRowHdr, #polypoly .sapUiTableColHdr .sapUiTableCol, #polypoly .sapUiTableColHdr .sapUiTableTr > td { border-right: 0px solid #dddddd; }
+
+#polypoly--oTablePolypoly-tableCCnt > .sapUiTableRowHdrScr { display: none; }
+
+#polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] .sapUiTableCol, #polypoly--oTablePolypoly-tableCCnt .sapUiTableTr > td, #polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] .sapUiTableTr > td, #polypoly--oTablePolypoly-tableCCnt #polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt, #polypoly--oTablePolypoly-tableCCnt #polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt .sapUiTableColHdrCnt { border: none; outline: 1px dotted transparent; }
+
+#polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] tr, #polypoly--oTablePolypoly-tableCCnt .sapUiTableCnt .sapUiTableColHdrCnt { background-color: #ffffff; -webkit-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; -moz-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; -o-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; -ms-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] tr:nth-child(1) { background-color: #f5f5f5; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2), [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(3) { background-color: #e9fbfd; }
+
+#polypoly--oTablePolypoly-tableCCnt .sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader) > td:last-child, #polypoly--oTablePolypoly-tableCCnt .sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3) { border-right: 2px solid #ffffff; }
+
+#polypoly--oTablePolypoly-tableCCnt .sapUiTable .sapUiTableCtrl [id^="polypoly--oTablePolypoly-rows"].sapUiTableRowHvr > td { background: transparent; }
+
+#polypoly--oTablePolypoly-tableCCnt .sapMFlexItem > [id^="__select"] { border: 2px solid #ebeff4; }
+
+.sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel { color: #468497; font-size: 0.975rem; padding-top: 4px; border-top: 1px solid #d4f1f7; }
+
+.sapUiTableColHdrScr .sapUiTableColHdr:nth-child(3) .sapMLabel { color: #468497; font-size: 0.7rem; }
+
+.sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableCol:hover, .sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableColRowHdr:hover { background-color: transparent; }
+
+div[id^="polypoly--oTablePolypoly"] { padding: 0; }
+
+#polypoly--toolbarPolypoly.sapMTB { border: none; }
+
+#polypoly .sapUiTableRSel .sapUiTableCtrlScrFixed { margin-left: 0px !important; }
+
+#polypoly--oTablePolypoly-sapUiTableRowHdrScr .sapUiTableCCnt .sapUiTableRowHdrScr { z-index: -1; }
+
+[id^="polypoly--oTablePolypoly-table"] td { position: relative; padding-top: 0; padding-bottom: 0; }
+
+[id^="polypoly--oTablePolypoly-table"] td div.sapUiTableCell { top: 0; right: 0; left: 0; Bottom: 0; padding: 0; }
+
+[id^="polypoly--oTablePolypoly-table"] div[data-category^="LABEL"] { height: 30px; }
+
+[id^="polypoly--oTablePolypoly-table"] div.sapMFlexBox { vertical-align: middle; justify-content: center; }
+
+[id^="polypoly--oTablePolypoly-table"] div[id^="__button"].sapMBtnTransparent.sapMBtnActive { background-color: transparent; outline: 1px dotted transparent; border-color: transparent; }
+
+[id^="polypoly--oTablePolypoly-table"] div[data-category^="NEED"], [id^="polypoly--oTablePolypoly-table"] div[data-category^="ASIS"], [id^="polypoly--oTablePolypoly-table"] div[data-category^="GAP"], [id^="polypoly--oTablePolypoly-table"] div[data-category^="UA_P"] { height: 52px; }
+
+div[id^="polypoly--oTablePolypoly"] .sapUiTableColRowHdr { display: none; }
+
+#polypoly .sapUiTableCHdr .sapUiTableColHdrCnt { background: #fff; }
+
+#polypoly .sapUiTableRSel .sapUiTableColHdrFixed { margin: 0; visibility: hidden; }
+
+#polypoly .sapUiTableCol:hover, #polypoly .sapUiTableColRowHdr:hover { background-color: rgba(255, 255, 255, 0); }
+
+#polypoly .sapUiTableColCell { padding: 5px 0.5rem; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader) > td:last-child { border-right: 3px solid #ffffff; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] td { position: relative; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox { padding-left: 10px; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMImg { border-radius: 50%; vertical-align: middle; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMFlexItem:nth-child(2) { padding-left: 0; width: 100%; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMFlexItem:nth-child(2) span { font-weight: bold; font-size: 0.775rem; width: 100%; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] div.sapMFlexBox { align-items: center; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] div[data-category^="LABEL"] { background-color: #D4F1F7; height: 30px; }
+
+[id^="polypoly--oTablePolypoly-table-fixed"] div[data-category^="UA_P"] { border-bottom: 1px solid #d4f1f7; }
+
+#polypoly--oTablePolypoly { background-color: #ffffff; }
+
+#polypoly--oTablePolypoly.sapUiTableRSel .sapUiTableTr > td.sapUiTableTdFirst > .sapUiTableCell { padding: 0; }
+
+[id^="polypoly--oTablePolypoly-table-fixrow"] div[data-category^="LABEL"] { background-color: #f5f5f5; }
+
+#polypoly--oTablePolypoly-table div[data-category^="LABEL"] { background-color: #f5f5f5; }
+
+[id^="__column"] .sapUiTableColRsz { margin-left: -3px; }
+
+#polypoly--AddPolypoly { margin-right: 0.3125rem; }
+
+button[id^="polypoly"] .sapMBtnContent, button[id^="polypoly"] .sapMBtnText > .sapMBtnIcon { color: #0D5D76; font-size: 1.6vh; }
+
+.button[id^="polypoly"].sapMBtn:hover { background-color: rgba(0, 86, 112, 0.2); }
+
+.button[id^="polypoly"].sapMBtn:hover > .sapMBtnHoverable { background-color: transparent; border-color: transparent; outline: 1px dotted transparent; }
+
+button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, html.sap-desktop button[id^="polypoly"].sapMBtn:focus > div[id^="polypoly"].sapMBtnHoverable.sapMFocusable { background-color: transparent; border-color: transparent; outline: 1px dotted transparent; }
+
+[id^="polypoly--oTablePolypoly-table"] .sapMFlexItem { padding: 0 5px; }
+
+[id^="polypoly--oTablePolypoly-table"] .sapMBtnDisabled { opacity: 1; }
+
+[id^="polypoly--oTablePolypoly-table"] div.sapMBtnInner.sapMBtnAccept { background-image: none; background-color: #84bd00; color: #ffffff; text-shadow: none; border-radius: 0; border: none; }
+
+[id^="polypoly--oTablePolypoly-table"] div.sapMBtnInner.sapMBtnReject { background-image: none; background-color: #e4002b; color: #ffffff; text-shadow: none; border-radius: 0; border: none; }
+
+.classPolypolyPage .sapUiTableMTbr .sapMTB { background: #d4f1f7; padding: 0; }
+
+.classPolypolyPage .sapUiIcon { color: #8fd4e2; outline: 1px dotted transparent; }
+
+.classPolypolyPage form { border: 1px solid transparent; }
+
+.classPolypolyPage > #polypolyPage-cont { top: 3.6rem; }
+
+.sap-desktop .classPolypolyPage .sapMBtnTransparent > .sapMBtnIcon { color: #ffffff; }
+
+.classPolypolyPage form.sapMSFF:hover, .classPolypolyPage form.sapMSFF:focus { border-color: #0D5D76; }
+
+.classPolypolyPage .sapMTB-Transparent-CTX .sapMLabel, .classPolypolyPage .sapMBtnInner { text-shadow: none; }
+
+#columnPopupDialog { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#columnPopupDialog .sapMSlt > .sapMSltLabel { line-height: 1.8rem; border: none; height: 2.5rem; }
+
+#columnPopupDialog .sapMCb { width: 100%; }
+
+#columnPopupDialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel { border: none; color: #468497; font-size: 0.7rem; }
+
+#columnPopupDialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel { color: #468497; font-size: 0.975rem; padding-top: 4px; }
+
+#columnPopupDialog-header { background: #d4f1f7; box-shadow: 0 0 5px #333; }
+
+#columnPopupDialog-title { color: #434343; }
+
+#columnPopupDialog-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#columnPopupDialog-footer { background-color: #0f2d65; }
+
+/* Pop-up QA */
+#oQADialog, #infoUpdate12 { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#oQADialog .sapMSlt > .sapMSltLabel { line-height: 2.5rem; border: none; height: 2.5rem; }
+
+#oQADialog .sapMCb { width: 100%; }
+
+#oQADialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel { border: none; color: #468497; font-size: 0.7rem; }
+
+#oQADialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel { color: #468497; font-size: 0.975rem; padding-top: 4px; }
+
+#oQADialog #oTableQA-table tr:nth-child(even) { background-color: #f9fafc; }
+
+#oQADialog #oTableQA-table tr:last-child td { border-bottom: 1px solid #e5e5e5; }
+
+#oQADialog #oTableQA-table td { border-bottom: 1px solid #e5e5e5; }
+
+#oQADialog .sapUiTableHSb { padding-left: 0 !important; }
+
+#oQADialog .sapUiTableColHdrCnt > div:nth-child(1), #oQADialog .sapUiTableCCnt > div:nth-child(1) { display: none; }
+
+#oQADialog-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#oQADialog-footer { background-color: #0f2d65; }
+
+#confirmDeleteDialog { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#confirmDeleteDialog-header-BarPH { background: #d4f1f7; }
+
+#confirmDeleteDialog-title { color: #434343; }
+
+#confirmDeleteDialog-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#confirmDeleteDialog-header { box-shadow: 0 0 5px #333; overflow: visible; }
+
+#confirmDeleteDialog-footer { background-color: #0f2d65; }
+
+#polypoly #polypoly--oTablePolypoly-selall { width: 0; }
+
+.operationDetailHeadPanel { overflow: visible; z-index: 1001; }
+
+.operationDetailHeadPanel .sapMPageBusyCoversAll > section .sapMIBar.sapMTB { margin: 0 !important; height: auto !important; }
+
+.operationDetailHeadPanel .ExecutionModeText { font-style: italic; color: #0085ad; margin-right: 10px; }
+
+.operationDetailHeadPanel .sapMPanelExpandableIcon { display: none; }
+
+.operationDetailHeadPanel .mainText { font-size: 1.2rem !important; color: rgba(0, 86, 112, 0.94) !important; font-weight: 700 !important; }
+
+.operationDetailHeadPanel .sapMPanelBGTranslucent, .operationDetailHeadPanel .operationDetailForm .sapUiRLContainer { background: transparent !important; border-bottom: 0px !important; }
+
+.operationDetailHeadPanel .switchExecutionButton .sapMSwtHandle { width: 0.8rem; height: 0.8rem; left: 3rem; }
+
+.operationDetailHeadPanel .switchExecutionButton .sapMSwt { height: 1rem !important; background: rgba(0, 86, 112, 0.94); border-color: rgba(0, 86, 112, 0.94); }
+
+.operationDetailHeadPanel .switchExecutionButton .sapMSwtOff:not(.sapMSwtAcceptReject) { background: #ffffff; border-color: #bfbfbf; }
+
+.operationDetailHeadPanel .ExecutionModeText, .operationDetailHeadPanel .switchExecutionButton { padding: 0; }
+
+.operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child { margin-right: 0; }
+
+.operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child div:nth-child(2) .subText { font-size: 1rem !important; line-height: 3rem; }
+
+.operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child div:nth-child(2), .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child div:nth-child(2) div:nth-child(2) { align-items: center; }
+
+.operationDetailHeadPanel .sapMPanelWrappingDivTb { margin: -1rem -1rem 0 -1rem; padding: 1rem 1rem 0 1rem; background: #fff; border-bottom: none; }
+
+.operationDetailHeadPanel .sapMBtn.closeButton span { color: rgba(0, 86, 112, 0.94); }
+
+.operationDetailHeadPanel .sapMBtn.expandButton span { color: rgba(0, 86, 112, 0.94); }
+
+.operationDetailHeadPanel + .opDetailNavToolbar { background: #fff; box-shadow: 0px 5px 5px -5px #434343; border-top: 2px solid #ccc; z-index: 1000; position: relative; border: 0; height: auto; }
+
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn { position: relative; color: #333333; }
+
+.operationDetailHeadPanel + .opDetailNavToolbar .operationDetailTabSelected > .sapMITBText { color: rgba(0, 86, 112, 0.94) !important; background: transparent; font-weight: bold; margin: 1rem 0 0 0; height: calc(100% - 1rem); }
+
+.operationDetailHeadPanel + .opDetailNavToolbar .operationDetailTabSelected > .sapMITBText:after { content: ""; height: 4px; position: absolute; bottom: 0; left: 0; right: 0; background: #fe5000; }
+
+html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocusable:hover { background: rgba(0, 86, 112, 0.2); color: rgba(0, 86, 112, 0.94); }
+
+#reasonCode { margin-top: 0px !important; }
+
+#reasonCode #imTextArea { margin-bottom: 2rem; }
+
+#confirmationCheckList { position: absolute; top: 25%; display: inline-block; width: 35%; border-right: 1px rgba(15, 45, 100, 0.15) solid; }
+
+#confirmationCheckList .sapMBtnTransparent > .sapMBtnIcon { color: black; }
+
+#confirmationCheckList div#QAWA-inner:hover { background-color: transparent; cursor: default; }
+
+#confirmationCheckList div#inspectionStatus-inner:hover { background-color: transparent; cursor: default; }
+
+#confirmationCheckList div#noMissingsParts-inner:hover { background-color: transparent; cursor: default; }
+
+#confirmationCheckList div#noOpenNC-inner:hover { background-color: transparent; cursor: default; }
+
+#confirmationCheckList div#serialNumberRecorded-inner:hover { background-color: transparent; cursor: default; }
+
+#confirmationCheckList button#QAWA:hover { background-color: transparent; cursor: default; }
+
+#confirmationCheckList button#inspectionStatus:hover { background-color: transparent; cursor: default; }
+
+#confirmationCheckList button#noMissingsParts:hover { background-color: transparent; cursor: default; }
+
+#confirmationCheckList button#noOpenNC:hover { background-color: transparent; cursor: default; }
+
+#confirmationCheckList button#serialNumberRecorded:hover { background-color: transparent; cursor: default; }
+
+#confirmationCheckList .sapMBtn:hover > .sapMBtnTransparent.sapMBtnHoverable { background-color: transparent; }
+
+#confirmationCheckList :not(.sapMBtnDisabled) > .sapMBtnInner.sapMBtnActive { color: #00679e; }
+
+#ViewDisruptionView header.sapMPanelWrappingDivTb .sapMPanelExpandableIcon:focus::after { outline: none; border: none; }
+
+#ViewDisruptionView header.sapMPanelWrappingDivTb .sapUiIcon:focus { outline: none; }
+
+.opDetailNavToolbar { background: #fff; box-shadow: 0px 5px 15px -5px #0f2d65; }
+
+.opDetailNavToolbar ul.opDetailNav { margin-left: 0; }
+
+.opDetailNavToolbar ul.opDetailNav li { border: 0px !important; }
+
+.operationNavBar .countText { background: #007cc0 !important; color: #ffffff !important; }
+
+.operationNavBar .sapMITBSelected > .sapMITBContentArrow { border-bottom-color: #e4002b !important; }
+
+.progressBtnColor .sapMBtnIcon { color: #0085ad !important; }
+
+.operationDetailFooter { position: fixed; bottom: 0px; background: #607381 !important; }
+
+.operationDetailFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon { color: #ffffff !important; }
+
+.switchExecutionButton .sapMSwtHandle { width: 1rem; height: 1rem; left: 2.9rem; }
+
+.switchExecutionButton .sapMSwtOff > .sapMSwtInner { left: -2.8rem; }
+
+#partialConfirmDialogue { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#partial { height: 55%; }
+
+#partial-cont { height: 100%; }
+
+#partialConfirmDialogue-header-BarPH { background: #d4f1f7; }
+
+#partialConfirmDialogue-title { color: #434343; }
+
+#partialConfirmDialogue-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#partialConfirmDialogue-header { box-shadow: 0 0 5px #333; overflow: visible; }
+
+.ClassOperationDetailPopUp .sapMPageBusyCoversAll { background: #f5f5f5 !important; }
+
+.ClassOperationDetailPopUp .sapMPageBusyCoversAll > section { overflow: auto !important; height: 100%; }
+
+#mes .sapMDialog:not(.theme-disabled) header { box-shadow: 0 0 5px #333; overflow: visible; background-color: #d4f1f7; color: #434343; }
+
+#mes .sapMDialog.ClassOperationDetailPopUp { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#mes .sapMDialog.ClassOperationDetailPopUp footer { background-color: #0f2d65; }
+
+.proressSliderGrid .sapUiRespGridSpanL8:nth-child(2) { overflow: visible !important; }
+
+.sliderDisplayStyle { height: 4rem !important; }
+
+.sliderDisplayStyle .sapMSliderHandle { height: 2.8rem !important; top: -0.93125rem !important; width: 1.75rem !important; margin-left: -1rem !important; }
+
+.sliderDisplayStyle .sapMSliderInner, .sliderDisplayStyle .sapMSliderProgress { height: 1.1875rem !important; }
+
+.ML-05 { margin-left: 0.5rem !important; height: auto !important; }
+
+.progressSlider { display: block !important; }
+
+.progressSlider .comfirmedProgressSlider { float: left !important; }
+
+.progressSlider .dynProgressSlider { margin-left: -2.1rem !important; }
+
+.sliderInprogressColor .sapMSliderProgress { background-color: lime !important; }
+
+.sliderCompletedColor { opacity: 1 !important; }
+
+.sliderCompletedColor .sapMSliderProgress { background-color: #007cc0 !important; }
+
+.sliderBlockedColor .sapMSliderProgress { background-color: darkorange !important; }
+
+/* tab - Statut - */
+#idStatusView { height: 100% !important; }
+
+#idStatusView--StatutLabel.StatutLabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; display: none; }
+
+#idStatusView--Statutprogress { width: 95% !important; margin: 50px auto; padding: 0; }
+
+#idStatusView--Statutprogress #idStatusView--operationStatus { height: 100%; }
+
+#idStatusView--Statutprogress #idStatusView--progressLabel.progressLabel { margin-left: 20px; }
+
+#idStatusView--StatusCheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
+
+#idStatusView--StatusCheck .sapMRbGCol { display: inline-flex; }
+
+#idCheckListView--Checklist.Checklist { width: 95% !important; margin: 50px auto !important; padding: 0; }
+
+.ConfirmChecklist { margin-top: 20px; width: 100px; }
+
+#operationDetailsView--operationDetailPanel > header > div { height: 4.375rem !important; }
+
+#operationDetailsView--opDetailNavToolbar { height: 3rem; }
+
+#operationDetailsView--operDetailNavContainer { height: calc(100% - 4.375rem - 3rem - 1rem) !important; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH { box-shadow: none; height: 3.1rem; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > span { height: 3.1rem; top: 0; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer { height: 3.1rem; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div { margin-top: 0; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > :not(.sapMITBDisabled) { margin: 0; padding: 0 1rem; border-radius: 0.125rem; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > :not(.sapMITBDisabled):hover { background-color: rgba(196, 196, 196, 0.5); }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > .sapMITBDisabled { cursor: default; }
+
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > .sapMITBDisabled > * { cursor: default; }
+
+#ViewDisruptionView--disrptlist { width: 95% !important; margin: 50px auto !important; padding: 0; }
+
+.classFormHint { font-size: 80% !important; font-style: italic !important; }
+
+#ViewDisruptionView--disrptlist > .sapMPanelContent { padding: 0 1rem; }
+
+.disruptionTitleBarButtons > .sapMBtnReject { background-color: transparent !important; color: #cc1919 !important; border-color: transparent !important; text-shadow: none !important; }
+
+.disruptionTitleBarButtons > .sapMBtnReject > .sapMBtnIcon { color: #cc1919 !important; }
+
+.disruptionTitleBarButtons:hover { background: rgba(0, 86, 112, 0.2) !important; }
+
+.disruptionTitleBarButtons > .sapMBtnEmphasized { background-color: transparent !important; color: #008bc7 !important; border-color: transparent !important; text-shadow: none !important; }
+
+.disruptionTitleBarButtons > .sapMBtnEmphasized > .sapMBtnIcon { color: #008bc7 !important; }
+
+.disruptionTitleBarButtons > .sapMBtnAccept { background-color: transparent !important; color: #005f28 !important; border-color: transparent !important; text-shadow: none !important; }
+
+.disruptionTitleBarButtons > .sapMBtnAccept > .sapMBtnIcon { color: #005f28 !important; }
+
+.transparentBlueButton { background: transparent !important; }
+
+.transparentBlueButton .sapMBtnInner { border: 0px !important; }
+
+.transparentBlueButton span { color: #0f86ae !important; }
+
+.transparentBlueButton :not(.sapMBtnDisabled) > .sapMBtnInner.sapMBtnActive { background: transparent !important; color: #0f86ae !important; }
+
+section #ViewDisruptionView .sapMLIBFocusable:focus { outline: none; }
+
+.disruptionBottomBar { border-bottom: none !important; margin: 0.5rem !important; }
+
+.disruptionBottomBar > .sapMBtn > .sapMBtnText { border-radius: 1.5rem; }
+
+#ViewDisruptionView--disruptLabel.sapUiSmallMargin { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; }
+
+.disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent { background-color: #F5F5F5 !important; }
+
+.disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent .sapMPanelContent { margin-left: 0 !important; }
+
+.disruptionDetail .detailLabels { overflow: visible !important; }
+
+.disruptionDetail .formoperationDisruptionsModel > div > div { background-color: transparent !important; }
+
+.disruptionDetail .formoperationDisruptionsModel.sapUiFormEdit .sapMText { min-height: 2rem !important; }
+
+.disruptionDetail .statusText { font-weight: 700 !important; font-style: italic !important; color: #0f86ae !important; }
+
+.disruptionDetail .msgHeaderText { font-weight: 700 !important; text-transform: capitalize !important; }
+
+.disruptionDetail .msgColor { background: #F5F5F5 !important; color: #0f86ae !important; padding-bottom: 0.5rem; }
+
+#disruptionAckCommentDialogue { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#disruptionAckCommentDialogue-header-BarPH { background: #d4f1f7; }
+
+#disruptionAckCommentDialogue-title { color: #434343; }
+
+#disruptionAckCommentDialogue-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#disruptionAckCommentDialogue-header { box-shadow: 0 0 5px #333; overflow: visible; }
+
+#disruptionCommentDialogue { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#disruptionCommentDialogue-header-BarPH { background: #d4f1f7; }
+
+#disruptionCommentDialogue-title { color: #434343; }
+
+#disruptionCommentDialogue-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#disruptionCommentDialogue-header { box-shadow: 0 0 5px #333; overflow: visible; }
+
+#disruptionCloseDialogue { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#disruptionCloseDialogue-header-BarPH { background: #d4f1f7; }
+
+#disruptionCloseDialogue-title { color: #434343; }
+
+#disruptionCloseDialogue-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#disruptionCloseDialogue-header { box-shadow: 0 0 5px #333; overflow: visible; }
+
+.viewDisruptionFooter { position: fixed; bottom: 0px; background: #607381 !important; }
+
+.viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon { color: #fff !important; }
+
+.createDisruptionFooter { position: fixed; bottom: 0px; background: #607381 !important; }
+
+.createDisruptionFooter .sapMBtnContent, .createDisruptionFooter .sapMBtnIcon { color: #fff !important; }
+
+.inputQty .sapMInputBaseInner { line-height: 1.9rem !important; height: 1.9rem !important; }
+
+.formBackgroundColor { background: #d4f1f7 !important; }
+
+label#createDisruptionView--disruptLabel { font-size: 1.2rem !important; font-weight: bold !important; }
+
+#materialListSelectDialog { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+#materialListSelectDialog-header-BarPH { background: #d4f1f7; }
+
+#materialListSelectDialog-title { color: #434343; }
+
+#materialListSelectDialog-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#materialListSelectDialog-header { box-shadow: 0 0 5px #333; overflow: visible; }
+
+.attachIcon span { color: #000 !important; font-size: 1rem !important; }
+
+>>>>>>> branch 'MESv1.5' of https://bundleerp.git.ptx.fr.sopra/g/mes
 /******************
 LINETRACKER
 *******************/
@@ -6395,6 +7371,7 @@ TABLE
 
 /******************************************
 STATIONTRACKERVIEW ID AND DHX AND CONTENT
+<<<<<<< HEAD
 ******************************************/
 #calendar .dhx_matrix_scell div {
   overflow: visible; }
@@ -6622,6 +7599,147 @@ div#iconTabBar--header {
 .ganttBar {
   height: 2rem !important; }
 
+=======
+******************************************/
+#calendar .dhx_matrix_scell div { overflow: visible; }
+
+#calendar--calendar { top: 0px !important; }
+
+#calendar--calendar .grey { background-color: #97999b; }
+
+#calendar--calendar .grey:hover { background-color: #767879; color: black; }
+
+#calendar--calendar .black { background-color: rgba(45, 41, 39, 0.94); }
+
+#calendar--calendar .black:hover { background-color: black; color: black; }
+
+#calendar--calendar .offtime { background-image: url("../components/stationtracker/css/img/fat_lines.png"); }
+
+#calendar--calendar .dhx_cal_data { overflow-y: scroll; bottom: 0; height: auto !important; border-top: solid 1px #979797; }
+
+#calendar--calendar .dhx_cal_header { border: none; width: 100% !important; }
+
+#calendar--calendar .dhx_cal_next_button { right: 0px; }
+
+#calendar--calendar .dhx_cal_prev_button { right: 30px; }
+
+#calendar--calendar .dhx_cal_next_button:before { content: "\f105"; }
+
+#calendar--calendar .dhx_cal_prev_button:before { content: "\f104"; }
+
+#calendar--calendar .dhx_matrix_scell.folder { background-color: #d5f5f8; border-bottom: solid 1px #EAFCFE; }
+
+#calendar--calendar .dhx_matrix_scell.item { border-bottom: solid 1px #d5f5f8; color: #0D5D76; background-color: #EAFBFD; }
+
+#calendar--calendar .dhx_matrix_scell.item.initial { cursor: default; }
+
+#calendar--calendar .dhx_matrix_cell { background-color: #F3F5F6; border-bottom: 1px solid #dddddd; border-right: 1px solid #dddddd; }
+
+#calendar--calendar .dhx_matrix_cell div, #calendar--calendar .dhx_matrix_scell div { text-align: left; white-space: nowrap; margin-top: 2px; }
+
+#calendar--calendar .dhx_cal_event { border: none; overflow: visible; }
+
+#calendar--calendar .dhx_cal_event.late div { border-color: Red; border-width: 2px; min-width: 40px !important; }
+
+#calendar--calendar .dhx_cal_event.min-width div { min-width: 40px !important; }
+
+#calendar--calendar .dhx_cal_event.lateI div { border-color: red; border-width: 2px; background-color: #969696; }
+
+#calendar--calendar .dhx_cal_event_line { border: none; overflow: visible; }
+
+#calendar--calendar .dhx_cal_event_line.late { border-color: Red; border-width: 2px; min-width: 40px !important; }
+
+#calendar--calendar .dhx_cal_event_line.min-width { min-width: 40px !important; }
+
+#calendar--calendar .dhx_cal_event_line.lateI { border-color: red; border-width: 2px; background-color: #969696; }
+
+#calendar--calendar .dhx_cal_event_line .dhx_event_resize { background-image: none; }
+
+#calendar--calendar .dhx_scell_name { float: none; text-align: left; position: relative; }
+
+#calendar--calendar .dhx_row_folder .dhx_matrix_scell.folder { background-color: white; }
+
+#calendar--calendar .dhx_row_folder .dhx_marked_timespan.begin_shifht { background-color: blue; }
+
+#calendar--calendar .dhx_row_folder .dhx_marked_timespan.end_shifht { background-color: #0f2d65; margin-left: -5px; }
+
+#calendar--calendar .dhx_row_folder .dhx_marked_timespan.taktMarker { background-color: green; }
+
+#calendar--calendar .dhx_row_folder .dhx_marked_timespan.shiftCss, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.offtime { display: none; }
+
+#calendar--calendar .dhx_row_folder .dhx_marked_timespan.dhx_matrix_now_time { min-height: 30px; border-left-color: purple; opacity: 1; }
+
+#calendar--calendar .dhx_row_folder .dhx_matrix_cell, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.shiftCss { border-right: none; border-bottom: none; background-color: #ECEEEF !important; }
+
+#calendar--calendar .dhx_row_folder .folderAxisColor { background-color: #ECEEEF !important; }
+
+#calendar--calendar .dhx_row_item .dhx_marked_timespan.begin_shifht { background-color: blue; }
+
+#calendar--calendar .dhx_row_item .dhx_marked_timespan.end_shifht { background-color: #0f2d65; margin-left: -5px; }
+
+#calendar--calendar .dhx_row_item .dhx_marked_timespan.taktMarker { background-color: green; }
+
+#calendar--calendar .dhx_row_item .dhx_scell_name { white-space: nowrap; padding: 0px; }
+
+#calendar--calendar .dhx_data_table.folder td { border-bottom: 2px solid #dddddd; background-color: #ECEEEF; }
+
+#calendar--calendar .dhx_data_table .dhx_matrix_cell { background-color: white; }
+
+#calendar--calendar .dhx_data_table { overflow: visible; }
+
+#calendar--calendar .dhx_matrix_line { overflow: visible; }
+
+#calendar--calendar .yText { width: 100px; float: left; height: 40px; }
+
+#calendar--calendar .avlLine { overflow: hidden; text-overflow: ellipsis; max-width: 120px; white-space: nowrap; white-space: nowrap; color: #0D5D76; vertical-align: middle; text-overflow: ellipsis; display: inline-block; overflow: hidden; }
+
+#calendar--calendar .ylabel { white-space: nowrap; color: #0D5D76; vertical-align: middle; text-overflow: ellipsis; display: inline-block; overflow: hidden; max-width: 80px; height: 15px; }
+
+#calendar--calendar .ylabelEditIcon { float: left; }
+
+#calendar--calendar .ylabelUserImage { background-color: #d5f5f8; border-radius: 999px; float: left; margin-right: 10px; }
+
+#calendar--calendar .ylabelUser { margin-left: 0px; max-width: 130px; }
+
+#calendar--calendar .yMoreLabel { position: absolute; right: 2px; color: #8db9ca; top: 2px; }
+
+#calendar--calendar .yMoreLabel .fa-pencil { width: 30px; text-align: center; }
+
+#calendar--calendar .ylabelAvlLineSection { display: inline-block; overflow: hidden; text-overflow: ellipsis; max-width: 75px; margin-left: 10px; }
+
+#calendar--calendar .tracker-item-initial .fa-exclamation-triangle { color: #BBBCBC !important; }
+
+#calendar--calendar .shiftCss { background-color: #DDDDDD; opacity: 0.8; }
+
+#calendar--calendar .operationCP { background-color: #97999b; border: 2px solid #0D2C63; }
+
+#calendar--calendar .operationCP:hover { background-color: #767879; color: black; border: 2px solid #74d2e7; }
+
+#calendar--calendar .customTable table tr th, #calendar--calendar td { border-left: none !important; }
+
+#calendar--calendar .trackerBox { width: 100%; height: 37px; color: #ffffff; z-index: 0; text-align: center; align-items: center; justify-content: center; display: flex; }
+
+#calendar--calendar .greyTotal { background-color: #52737F; }
+
+#calendar--calendar .greyTotal:hover { background-color: #3F4F54; }
+
+.dhx_event_resize_start { background-image: none; }
+
+.dhx_event_resize_end { background-image: none; }
+
+div#iconTabBar--header { background-color: #E0F2F4; }
+
+.dhx_cal_event_line .trackerBoxtooltiptext { min-width: 300px; }
+
+.dhx_cal_event_line:hover .trackerBoxtooltiptext { display: inline; position: absolute; margin-top: -30px; margin-left: -210px; z-index: 99; }
+
+.dhx_cal_event_line:hover div { background: none; }
+
+.dhx_cal_event_line div:not(.trackerBox) { overflow: visible; }
+
+.ganttBar { height: 2rem !important; }
+
+>>>>>>> branch 'MESv1.5' of https://bundleerp.git.ptx.fr.sopra/g/mes
 /***********************************
 STATION TRACKER TOOLBAR
 ************************************/
