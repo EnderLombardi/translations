@@ -1240,6 +1240,7 @@ airbus.mes.stationtracker.util.ModelManager = {
                                 "operation_desc": aModel[0].OPERATION_DESCRIPTION,
                                 "material_description": aModel[0].WORKORDER_DESCRIPTION,
                                 "operation_revision": aModel[0].SFC_STEP_REF.split(",")[5],
+                                "shopOrderBo" : aModel[0].SHOP_ORDER_BO,
                                 "wo_no": aModel[0].SHOP_ORDER_BO.split(",")[1],
                                 "workcenter": aModel[0].WORK_CENTER,
                                 "status": sStatus,

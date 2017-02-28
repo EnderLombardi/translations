@@ -37,10 +37,8 @@ airbus.mes.ncdisplay.util.ModelManager = {
 			async : 'true',
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
-				"sfcStepBO" : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].sfc_step_ref,
-				"lang" : sap.ui.getCore().getConfiguration().getLanguage(),
-				"ShopOrder" : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no,
-				"erpSystem" : airbus.mes.operationstatus.oView.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system,				
+				"phStation" : airbus.mes.settings.ModelManager.station, 
+				"shopOrderBO" : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].shopOrderBo,
 			}),
 
 			success : function(data) {
