@@ -397,10 +397,12 @@ airbus.mes.stationtracker.util.Formatter = {
 			default:
 		}
 		
-		/*if (dispatch) {
+		
+		// if dispatch is assigned, stop icon has priority over warning icon (triangle)
+		if (dispatch) {
 
 			sLeftIcon = boxDisplayManager.leftStopIcon;
-		} */
+		} 
 
 		//
 		var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon);

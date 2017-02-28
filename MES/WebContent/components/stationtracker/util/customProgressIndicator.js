@@ -297,11 +297,12 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 					
 				}
 				
+				// if dispatch is assigned, stop icon has priority over warning icon (triangle)
 				if (dispatch) {
-					
-					sLeftIcon = boxDisplayManager.left
-					
-				}
+
+					sLeftIcon = boxDisplayManager.leftStopIcon;
+				} 
+
 				//------------------------------------------------------------
 
 				r.write('>');

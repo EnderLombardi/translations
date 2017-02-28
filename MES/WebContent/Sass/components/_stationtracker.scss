@@ -136,6 +136,13 @@ WORK LIST POP OVER
                 }
             }
         }
+        
+      &.fa-ban {
+            &.stopIcon {
+              color: $white-two;
+            }
+        }
+        
 
     }
     .sapMPIText3 {
@@ -236,10 +243,10 @@ BOX MANAGEMENT
             padding-left: 6px;
             float: left;
         }
-        &.stopIcon {
+        &.stopIcon { 
             padding-left: 6px;
             float: left;
-            color: $orange;
+            color: $white-two;
         }
         &.oswIcon {
             position: relative;
