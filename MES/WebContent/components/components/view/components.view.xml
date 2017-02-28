@@ -110,6 +110,7 @@
 									press="synchronizeFieldCommitted" />
 								<StepInput type="Number" class="stepInputComponent"
 									value="{componentsWorkOrderDetail>committed}" width="{width}"
+									min="0"
 									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
 									editable="true" change="committedLiveChange" />
 							</HBox>
@@ -123,6 +124,7 @@
 								<Button icon="sap-icon://synchronize" type="Default"
 									press="synchronizeFieldFitted" />
 								<StepInput type="Number" class="stepInputComponent"
+									min="0"
 									value="{componentsWorkOrderDetail>fitted}" width="{width}"
 									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
 									editable="true" change="fittedLiveChange" />

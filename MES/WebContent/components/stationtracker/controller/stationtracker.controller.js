@@ -1470,8 +1470,8 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         airbus.mes.trackingtemplate.oView.oController.printTrackingTemplate();
     },
 
-    onCommittedFitted: function () {
-        airbus.mes.components.oView.oController.onbtnCommittedFitted();
+    onCommittedFitted: function (oEvent) {
+        airbus.mes.components.oView.oController.onbtnCommittedFitted(oEvent);
     },
 
     onSave: function () {

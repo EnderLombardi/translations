@@ -14,9 +14,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         oTable.setSelectionMode("None");
         oTable.setVisibleRowCount(oTable.getBinding("rows").oList.length);
-        if (airbus.mes.shell.RoleManager.profile.identifiedUser.permissions.FITTED_COMPONENTS) {
-            this.changeButtonColor();
-        }
         if (sap.ui.getCore().byId("selectFilter--selectFilterComponents")) {//clear filters list if filter already exists
             sap.ui.getCore().byId("selectFilter--selectFilterComponents").removeSelections(true);
         }
@@ -29,16 +26,16 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     changeButtonColor: function () {
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
-        var count = oTable.getRows(); // oTable.getBinding("rows").oList.length;
+        var count = oTable.getBinding("rows").oList.length;
         for (var i = 0; i < count; i++) {
             oTable.getRows()[i];
             var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[i];
             if (dataIndex.withdrawQty === dataIndex.reqQty) {
-                oTable.getRows()[i].getCells()[11].getItems()[0].setType("Accept");
-                oTable.getRows()[i].getCells()[12].getItems()[0].setType("Accept");
+                oTable.getRows()[i].getCells()[5].getItems()[0].setType("Accept");
+                oTable.getRows()[i].getCells()[6].getItems()[0].setType("Accept");
             } else {
-                oTable.getRows()[i].getCells()[11].getItems()[0].setType("Default");
-                oTable.getRows()[i].getCells()[12].getItems()[0].setType("Default");
+                oTable.getRows()[i].getCells()[5].getItems()[0].setType("Default");
+                oTable.getRows()[i].getCells()[6].getItems()[0].setType("Default");
             }
         }
     },
@@ -56,7 +53,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             } else {
                 this.sSet = sSet;
             }
-
         }
 
         switch (this.sSet) {
@@ -264,6 +260,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         } else {
             oEvent.getSource().setValue(0);
         }
+
+            //changebuttoncolor not possible while we keep this sapui version
+        //this.changeButtonColor();
+
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
         //sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     },
@@ -280,6 +280,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         } else {
             oEvent.getSource().setValue(0);
         }
+
+        //changebuttoncolor not possible while we keep this sapui version
+        //this.changeButtonColor();
+
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
         //sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     },
@@ -318,11 +322,20 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     },
 
     onbtnCommittedFitted: function (oEvent) {
+        var committedFitted = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("CommittedFitted");
+        var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");
+
         this.committedFittedView = !this.committedFittedView;
+
+        //change button text
+        if (this.committedFittedView) {
+            oEvent.getSource().setText(committedFitted);
+        } else {
+            oEvent.getSource().setText(components);
+        }
 
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         var columns = oTable.getColumns();
-
         this.changeColVisibility(columns, this.committedFittedView);
     },
 
@@ -341,5 +354,13 @@ sap.ui.controller("airbus.mes.components.controller.components", {
                 columns[i].setVisible(false);
             }
         }
+
+        //changebuttoncolor not possible while we keep this sapui version
+        // setTimeout(function() {
+        //     if (airbus.mes.components.oView.oController.committedFittedView) {
+        //     airbus.mes.components.oView.oController.changeButtonColor();
+        //     }
+        // }, 0);
+
     }
 });
