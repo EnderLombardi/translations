@@ -33,7 +33,7 @@
 					</OverflowToolbar>
 				</table:extension>
 				<table:columns>
-					<table:Column id="bomItemNbCol" autoResizable="true" visible="airbus.mes.components.oView.oController.committedFittedView">
+					<table:Column id="bomItemNbCol" autoResizable="true">
 						<Label textAlign="Center" text="{i18nComponentsModel>itemNumber}" />
 						<table:template>
 							<Text text="{componentsWorkOrderDetail>sequence}" />
@@ -95,14 +95,14 @@
 						</table:template>
 					</table:Column>
 					<table:Column id="serialNumberCol" autoResizable="true"
-						visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}">
+						visible="false">
 						<Label textAlign="Center" text="{i18nComponentsModel>serialNumber}" />
 						<table:template>
 							<Text text="{componentsWorkOrderDetail>serialNumber}" />
 						</table:template>
 					</table:Column>
 					<table:Column id="editableRowCom" autoResizable="true" width="15%"
-						 visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}">
+						 visible="false">
 						<Label textAlign="Center" text="{i18nComponentsModel>committed}" />
 						<table:template>
 							<HBox>
@@ -116,7 +116,7 @@
 						</table:template>
 					</table:Column>
 					<table:Column id="editableRowFit" autoResizable="true" width="15%"
-						 visible="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}">
+						 visible="false">
 						<Label textAlign="Center" text="{i18nComponentsModel>fitted}" />
 						<table:template>
 							<HBox>

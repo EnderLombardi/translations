@@ -6,7 +6,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     oFilterFilter: undefined,
     oFilterRB: undefined,
     sSet: undefined,
-    committedFittedView: true,
+    committedFittedView: false,
     
     onAfterRendering: function () {
         this.oFilterSearch = undefined;
@@ -328,7 +328,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     changeColVisibility: function (columns, committedFittedView) {
         var colVisibilityArray;
-        if (committedFittedView) {
+        if (!committedFittedView) {
             colVisibilityArray = airbus.mes.components.util.ModelManager.colVisibilityComponents;
         } else {
             colVisibilityArray = airbus.mes.components.util.ModelManager.colVisibilityCommittedFitted;
