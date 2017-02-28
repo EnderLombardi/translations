@@ -1,4 +1,6 @@
 "use strict";
+
+jQuery.sap.require("airbus.mes.operationstatus.util.ModelManager");
 jQuery.sap.declare("airbus.mes.operationstatus.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.operationstatus.Component", {
@@ -15,7 +17,7 @@ airbus.mes.operationstatus.Component.prototype.createContent = function() {
         // View on XML
         this.oView = sap.ui.view({
             id : "idStatusView",
-            viewName : "airbus.mes.operationstatus.status",
+            viewName : "airbus.mes.operationstatus.view.status",
             type : "XML",
             height:"auto"
         })
@@ -26,6 +28,9 @@ airbus.mes.operationstatus.Component.prototype.createContent = function() {
          });
 
         this.oView.setModel(i18nModel, "i18n");
+
+        // Initialize ModelManager and load needed file
+        airbus.mes.operationstatus.util.ModelManager.init(sap.ui.getCore());
 
         return this.oView;
     } else {
