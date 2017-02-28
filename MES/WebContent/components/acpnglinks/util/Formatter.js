@@ -36,7 +36,14 @@ airbus.mes.acpnglinks.util.Formatter = {
 
 	levelFormat : function(sValue) {
 		var result = sValue % 5;
+		var oRow;
 		if (sValue != undefined) {
+			try{
+			oRow = this.getParent().getParent();
+			oRow.data("level", result.toString() , true);
+			}catch(e){
+			//do nothing	
+			}
 			return result.toString();
 		} else {
 			return "0";

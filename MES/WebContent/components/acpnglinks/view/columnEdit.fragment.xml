@@ -12,7 +12,7 @@
 					</headerToolbar>
 					<content height="100%">
 							<List id="listAvailableColumns" mode="SingleSelectMaster"
-								items="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column' , sorter : {path : 'acpnglinksWorkOrderDetail>Sort' , ascending : 'true'} }">
+								items="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column' , sorter : {path : 'Sort' , ascending : 'true'} }">
 								<CustomListItem
 									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
 									<HBox width="100%">
@@ -43,7 +43,7 @@
 					<content>
 						<HBox height="100%" >
 							<List id="listAllocatedcolumns"
-								items="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column' , sorter : {path : 'acpnglinksWorkOrderDetail>Sort' , ascending : 'true'} }"
+								items="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column' , sorter : {path : 'Sort' , ascending : 'true'} }"
 								mode="SingleSelectMaster">
 								<CustomListItem
 									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}">

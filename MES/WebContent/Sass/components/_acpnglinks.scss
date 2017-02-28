@@ -92,30 +92,42 @@
     }
 }
 
+
 [id^="acpnglinksView--ACPnGTreeTable-table"]{
 	>tbody{
-	 	>tr{
-			&[data-sap-ui-level="0"]{
+	 	>tr
+	 	{
+ 		
+			&[data-level="1"]{
 				background-color: #fbefcc;
 			}
-			&[data-sap-ui-level="1"]{
+			&[data-level="2"]{
 				background-color: #cfe0e8;
 			}
-			&[data-sap-ui-level="2"]{
+			&[data-level="3"]{
 				background-color: #b7d7e8;
 			}
-			&[data-sap-ui-level="3"]{
+			&[data-level="4"]{
 				background-color: #87bdd8;
 			}
-			&[data-sap-ui-level="4"]{
+			&[data-level="5"]{
 				background-color: #daebe8;
 			}
 	}
   }
 }
 
+
 #acpnglinksView--modifyColumnsButton{
 	position: absolute;
-	right: 50px;
+	right: 30px;
 }
  
+#acpnglinksView--modifyColumnsButton-inner{
+    background-color: #0085ad;
+    border-radius: 0.125rem;
+    color: $white-two;
+    &:hover {
+        background-color: $teal-blue-hover;
+    }
+}
