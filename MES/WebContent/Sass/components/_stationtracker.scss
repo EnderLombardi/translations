@@ -139,11 +139,13 @@ WORK LIST POP OVER
         
       &.fa-ban {
             &.stopIcon {
-              color: $white-two;
+              color: $cherry-red;
+              &.white-two {
+                    color: $white-two;
+                }
             }
         }
-        
-
+              
     }
     .sapMPIText3 {
         position: absolute;
@@ -246,7 +248,11 @@ BOX MANAGEMENT
         &.stopIcon { 
             padding-left: 6px;
             float: left;
-            color: $white-two;
+            color: $cherry-red;
+            &.white-two {
+              color: $white-two;
+            }
+   
         }
         &.oswIcon {
             position: relative;

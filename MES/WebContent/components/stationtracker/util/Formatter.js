@@ -259,8 +259,8 @@ airbus.mes.stationtracker.util.Formatter = {
 		var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress, oBox.totalDuration);
 		
 		
-		var dispatch = true; //only for test waiting MII service
-		
+		var dispatch = false; //only for test waiting MII service
+		var dispatchWhite = false;
 		
 		// Text to display different case regarding box selected
 		switch (airbus.mes.stationtracker.util.GroupingBoxingManager.box) {
@@ -328,6 +328,8 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sUNPD);
 				}
+				
+
 				break;
 
 			// Opened Blocking and disruption
@@ -344,6 +346,8 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
+				
+
 				break;
 
 			// Opened Blocking disruption
@@ -360,6 +364,12 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
+				
+				if (dispatch) {
+					
+					dispatchWhite = true;
+				}
+				
 				break;
 
 			// Solved Blocking
@@ -377,6 +387,8 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
+				
+
 				break;
 
 			// Solved Blocking and escalated = andon solved
@@ -387,6 +399,12 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
+				
+				if (dispatch) {
+					
+					dispatchWhite = true;
+				}
+				
 //				if (oBox.OSW === 3) { //OSW
 //					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
 //				}
@@ -397,12 +415,15 @@ airbus.mes.stationtracker.util.Formatter = {
 			default:
 		}
 		
-		
-		// if dispatch is assigned, stop icon has priority over warning icon (triangle)
 		if (dispatch) {
-
-			sLeftIcon = boxDisplayManager.leftStopIcon;
-		} 
+			if (dispatchWhite){
+				sLeftIcon = boxDisplayManager.leftStopIcon_White;
+			}
+			else {
+				sLeftIcon = boxDisplayManager.leftStopIcon;
+			}
+		}
+		
 
 		//
 		var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon);
@@ -550,7 +571,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 
 				if (oSection.rescheduled) {
-					//XX TODO POSTION OF THIS.
+					
 					html = sNotConfirmedOpLS + '<div>';
 
 					if (airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")) { // Check if user image to be displayed  or not
