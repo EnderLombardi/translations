@@ -326,7 +326,7 @@ airbus.mes.shell.util.navFunctions = {
             });
         } else { // or load model
             airbus.mes.components.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
-            airbus.mes.components.oView.getController().getOwnerComponent().setSfc(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc);
+            airbus.mes.components.oView.getController().getOwnerComponent().setWorkOrder(sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
             airbus.mes.components.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no);
             airbus.mes.components.util.ModelManager.loadcomponentsWorkOrderDetail();
             airbus.mes.components.util.ModelManager.loadselectFilterModel();

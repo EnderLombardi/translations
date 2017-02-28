@@ -43,10 +43,8 @@ airbus.mes.components.util.ModelManager = {
     //get
     getcomponentsWorkOrderDetail : function() {
         var url = this.urlModel.getProperty("componentsWorkOrderDetail");
-        // url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
-        //url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", airbus.mes.jigtools.oView.getController().getOwnerComponent().getWorkOrder());
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", airbus.mes.components.oView.getController().getOwnerComponent().getWorkOrder());
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$operation", "");        
         return url;
     },

@@ -9,7 +9,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.components.Component", {
 	metadata : {
 		properties : { 
 			site : undefined,
-			sfc : undefined,
+			workOrder : undefined,
 			operation : undefined,
 		},
 	}

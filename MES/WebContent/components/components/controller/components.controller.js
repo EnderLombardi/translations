@@ -91,7 +91,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         this.sSet = sScope;
         switch (sScope) {
             case airbus.mes.components.util.ModelManager.operation:
-                this.oFilterRB = new sap.ui.model.Filter("operationNumber", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no);
+                this.oFilterRB = new sap.ui.model.Filter("operationNumber", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_id);
                 break;
             case airbus.mes.components.util.ModelManager.workOrder:
                 this.oFilterRB = undefined;
