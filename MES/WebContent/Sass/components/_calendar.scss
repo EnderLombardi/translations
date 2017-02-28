@@ -374,6 +374,24 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     .customTable table tr th, td{
         border-left: none !important;
     }
+     .trackerBox {
+        width: 100%;
+        height: inherit;
+        color: $white-two;
+        position: absolute;
+        z-index: 0;
+        line-height: 23px;
+        left: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+    }
+    .greyTotal {
+        background-color: $sapui-active-grey;
+        &:hover{
+         background-color:$sapui-hover-grey;     
+    }
+    }
 }
 .dhx_event_resize_start{
     background-image: none;

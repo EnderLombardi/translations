@@ -45,7 +45,8 @@
     margin-top: 0.6rem;
 }
 
-#stationHandoverView--navBack,{
+#stationHandoverView--navBack,
+{
     @extend %navBack;
 }
 
@@ -76,7 +77,6 @@
             }
         }
     }
-   
     #stationHandoverView--TreeTableBasic-table {
         .blue {
             background-color: aquamarine;
@@ -100,9 +100,6 @@
         .orange {
             color: $dandelion-hover;
         }
-        
-        
-        
     }
 }
 

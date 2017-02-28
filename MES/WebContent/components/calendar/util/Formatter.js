@@ -88,11 +88,7 @@ airbus.mes.calendar.util.Formatter = {
 			----------------------------------------------------------------------------*/
 			YdisplayRules : function ( oSection ) {
 				var html = "";
-				var oHierarchyDelay;
-				var fProgress;
-				var fDuration;
-				var sSpanWarn;
-									
+			
 				//** folder row **/
 				if (oSection.children != undefined) {
 
@@ -102,21 +98,23 @@ airbus.mes.calendar.util.Formatter = {
 							+ '</div></div>';
 					return html;
 				}
-				//Creation of Div of picture display
-				if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
-					
-					var imgId = oSection.avlLine + oSection.ng;
-					
-					html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oSection.ng) + ' class="ylabelUserImage"/>'		// To display User Image
-				}						
-				//Creation Span of name display
-					html +=  '<span class="ylabelUser" title=' + airbus.mes.calendar.util.Formatter.spaceInsecable(oSection.firstName + " " + oSection.lastName) + '>'
-                    + oSection.firstName + " " + oSection.lastName + '</span>';
+				if ( oSection.key != "Total") {
+					//Creation of Div of picture display
+					if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
+						
+						var imgId = oSection.avlLine + oSection.ng;
+						
+						html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oSection.ng) + ' class="ylabelUserImage"/>'		// To display User Image
+					}						
+					//Creation Span of name display
+						html +=  '<span class="ylabelUser" title=' + airbus.mes.calendar.util.Formatter.spaceInsecable(oSection.firstName + " " + oSection.lastName) + '>'
+	                    + oSection.firstName + " " + oSection.lastName + '</span>';
+	
+					return html + '</div>';
+				
+				}				
 
-			
-				return html + '</div>';
-
-					
+				return "<div></div>";					
 			},
 			  /***************************************************************************s
 		     * Replace space in string by "_"

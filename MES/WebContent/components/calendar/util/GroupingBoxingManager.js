@@ -6,6 +6,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 	constante :  "*@#&~^",
 	operationHierarchy : {},
 	shiftHierarchy : {},
+	total : {},
 	shiftNoBreakHierarchy: [],
 	shiftBreakHierarchy: [],
 //	Define start and end date of the scheduler
@@ -125,7 +126,27 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		var aElements2 = [];
 		var aBox = [];
 		var sPoolId = airbus.mes.calendar.util.ShiftManager.shiftIdSelected;
-	
+		var oTotal = airbus.mes.calendar.util.GroupingBoxingManager.totalHierarchy = {};		
+		var aShifts = airbus.mes.calendar.util.ShiftManager.shifts;
+		//Day or shift mode step is on day
+		if ( airbus.mes.calendar.util.ShiftManager.shiftDisplay || airbus.mes.calendar.util.ShiftManager.dayDisplay) {
+			
+			var fStep = 3600000;
+			
+		} else {
+			 var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart)
+		        // Takt is over one day
+		        if ( Math.abs(sTime) > 86400000 ) {
+			        // Takt is over one day step is done by day
+					var fStep = 86400000;
+
+		        } else  {
+			        // Takt is over one day step is done by hour
+					var fStep = 3600000;
+
+		        }
+			
+		}
 		//===============
 		// check if model full or not
 		//===============	
@@ -217,10 +238,54 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 						"end_date" : new Date(oFormatter.jsDateFromDayTimeStr(el.endDateTime)),
 					};
 					
-					aBox.push(oBox)
-					
-				//	if ( el.start_date - el.end_date )
-				
+					aBox.push(oBox);
+					//===============
+					//Compute object wich represent the all the total box to create loaned to does not need to be use	
+					//===============	
+					if ( el.loanedTo != "true" ) {
+						if (  Math.abs(oBox.start_date -  oBox.end_date) >= fStep ) {
+						       
+							var fPrecision = 0;
+							var fGap = 0;
+							// Check if we are in day mode or not if we are day the scale is on a day otherwise on the hours
+							if ( fStep === 86400000 ) {
+								//we will check on the begining of the day
+								var fStartDate2 = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).setHours(0, 0, 0).valueOf();
+								
+							} else {
+								// we will chekc on the begining of the hours
+								var fStartDate2 = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).setMinutes(0, 0).valueOf();
+
+							}
+							var fStartDate = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).valueOf();
+							var fStartCopy = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).valueOf();
+							var fEndDate = new Date(oFormatter.jsDateFromDayTimeStr(el.endDateTime)).valueOf();
+													
+							while( fStartCopy <= fEndDate ) {
+								//That mean the start date is not starting at 0min 0sec,workers partially available dunring time frame is considered as not
+								// available
+								if ( fStartDate2 - fStartDate != 0) {
+									
+									fGap = fStartDate2 - fStartDate + fStep;
+									//fDurationMs -= fGap;
+									fStartDate2 += fGap;
+									fStartCopy += fGap; 
+								}
+								//Check if the startDate + the step is less than the end Date => that mean between my start date and end date i have one step of one hour begining/day at 0min0sec
+								if (fStartCopy + fStep <= fEndDate ) {
+									
+									var fId = fStartCopy;
+									if (oTotal[fId] === undefined) {
+										oTotal[fId] = 0;									
+									}
+									oTotal[fId] += 1;
+									fStartCopy += fStep;
+								} else {
+									fStartCopy += fStep;
+								}	
+							}
+						}
+					}			
 				});
 		
 			});
@@ -228,19 +293,66 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		});
 		//===============
 		//Compute total line group and line creation	
-		//===============	
-		aElements2.push({				
-				"key": "Total",
-				"label" : airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("total"),
-				"children":[{
-					"lastName" : "",					
-					"ng" : "",
-					"key": "Total"
-				}]
-		})
+		//===============
 		
-		
-		
+		// If no box that mean no plan absence dont display the line with box of total
+		if (aBox.length != 0 ) {
+			aElements2.push({				
+					"key": "Total",
+					"label" : airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("total"),
+					"children":[{
+						"lastName" : "",					
+						"ng" : "",
+						"key": "Total"
+					}]
+			});
+			//===============
+			//Compute aBox creation of box for Total line
+			//===============
+			
+			// We will parse the frame of the start of the shift and the end and compute all box where are not present a worker and display 0
+			// we can increase the perf in parssing only the real shift date
+			if ( fStep === 86400000 ) {
+				//we will check on the begining of the day
+				var dStart = aShifts[0].StartDate.setHours(0, 0, 0).valueOf();
+				
+			} else {
+				// we will chekc on the begining of the hours
+				var dStart = aShifts[0].StartDate.setMinutes(0, 0).valueOf();
+	
+			}
+				var dEnd = aShifts[aShifts.length-1].EndDate.setMinutes(0, 0).valueOf();
+				
+				while( dStart < dEnd ) {
+					if ( oTotal[dStart] === undefined ) {
+						aBox.push({
+							"total" : true,
+							"value" : "0",
+							"section_id" : "Total",
+							"start_date" : new Date(dStart),
+							"end_date" : new Date(dStart+fStep),
+						})					
+						dStart += fStep;
+						
+					} else {
+						
+						dStart += fStep;
+			
+					}
+				}
+				// Add in the aBox the box corresponding to the worker absence
+			for (var i in oTotal) {
+				
+				aBox.push({
+					"total" : true,
+					"value" : oTotal[i],
+					"section_id" : "Total",
+					"start_date" : new Date(parseFloat(i)),
+					"end_date" : new Date(parseFloat(i) + fStep),
+				})
+				
+			}
+		}
 		calendar.matrix['timeline'].y_unit_original = aElements2;
 		calendar.callEvent("onOptionsLoad", []);
 		var ShiftManager = airbus.mes.calendar.util.ShiftManager;

@@ -2,6 +2,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.calendar.util.Formatter");
 jQuery.sap.require("airbus.mes.calendar.util.GroupingBoxingManager");
+jQuery.sap.require("airbus.mes.calendar.util.BoxDisplayManager");
 jQuery.sap.require("airbus.mes.calendar.util.ShiftManager");
 jQuery.sap.require("airbus.mes.calendar.util.ModelManager");
 
