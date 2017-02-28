@@ -7,7 +7,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     oFilterRB: undefined,
     sSet: undefined,
     committedFittedView: false,
-    
+
+    //is called after view is rendered.
     onAfterRendering: function () {
         this.oFilterSearch = undefined;
         this.oFilterFilter = undefined;
@@ -19,11 +20,12 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
         // Get setting from ME/MII and select the good button between operation and work order
         this.filterComponents(this.sSet);
-        
-//    	Init value of SearchField
-    	sap.ui.getCore().byId("componentsView--idSearchComponent").setValue("");    	        
+
+        //    	Init value of SearchField
+        sap.ui.getCore().byId("componentsView--idSearchComponent").setValue("");
     },
 
+    //changes the colour of synchronize button (green if it’s the same value than the required quantity
     changeButtonColor: function () {
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         var count = oTable.getBinding("rows").oList.length;
@@ -40,6 +42,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
     },
 
+    //checks operation or work order mode
     checkSettingComponents: function () {
         // confirm if we have already check the ME settings
         if (this.sSet === undefined) {
@@ -69,7 +72,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     //get user action on the checkbox field
     onSelectLevel: function (oEvent) {
-
         var sId = oEvent.mParameters.selectedIndex;
         switch (sId) {
             case 0://operation button
@@ -83,7 +85,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
     },
 
-    //table filter
+    //filters on sSet
     filterComponents: function (sScope) {
         this.sSet = sScope;
         switch (sScope) {
@@ -98,11 +100,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
         //Apply all filter
         this.applyFilters();
-
     },
 
+    //filters on search in the searchbar
     onFilterComponent: function (oEvent) {
-
         // add filter for search
         var sQuery = oEvent.getSource().getValue();
         if (sQuery && sQuery.length > 0) {
@@ -135,10 +136,12 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         this.applyFilters();
     },
 
+    //adds a filter in the filter list.
     addFilter: function (sName, sQuery) {
         return new sap.ui.model.Filter(sName, sap.ui.model.FilterOperator.Contains, sQuery);
     },
 
+    //apply the filter on the model data
     onSelectFilter: function (oEvent) {
         if (airbus.mes.components.selectFilter === undefined) {
             var oView = airbus.mes.components.oView;
@@ -156,6 +159,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         });
     },
 
+    //prepare to apply the filters after a small delay (due to async rendering)
     onSelectFilterFinish: function () {
         var that = this;
         var aFilters = [];
@@ -183,12 +187,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
                     default:
                         break;
                 }
-            }
-
-            )
+            })
             //OR Filter
             var oCurrentFilter = new sap.ui.model.Filter(aFilters, false);
-
             this.oFilterFilter = oCurrentFilter;
         } else {
             //No filter or filter remove
@@ -199,6 +200,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         this.applyFilters();
     },
 
+    //apply the filter (for real after the several functions)
     applyFilters: function () {
         var oFilter;
         var aFilter = [];
@@ -261,7 +263,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             oEvent.getSource().setValue(0);
         }
 
-            //changebuttoncolor not possible while we keep this sapui version
+        //changebuttoncolor not possible while we keep this sapui version
         //this.changeButtonColor();
 
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
@@ -288,6 +290,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         //sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     },
 
+    //is called when the save button is clicked. It handles the datan converts it in xml and send them to backend.
     onbtnComponentsSave: function (oEvent) {
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         var count = oTable.getBinding("rows").oList.length;
@@ -310,6 +313,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     },
 
+    //is called when the save button is clicked.
     onbtnComponentsFreeze: function (oEvent) {
         var buttonText = oEvent.getSource().getText();
         var freeze = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("freeze");
@@ -321,6 +325,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
     },
 
+    //is called when the save button is clicked.
     onbtnCommittedFitted: function (oEvent) {
         var committedFitted = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("CommittedFitted");
         var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");
@@ -339,6 +344,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         this.changeColVisibility(columns, this.committedFittedView);
     },
 
+    //changes the visibility of the several columns
     changeColVisibility: function (columns, committedFittedView) {
         var colVisibilityArray;
         if (!committedFittedView) {
@@ -348,7 +354,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
 
         for (var i = 0; i < columns.length; i++) {
-            if (colVisibilityArray.indexOf(columns[i].sId) !== -1 ) {
+            if (colVisibilityArray.indexOf(columns[i].sId) !== -1) {
                 columns[i].setVisible(true);
             } else {
                 columns[i].setVisible(false);
