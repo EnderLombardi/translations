@@ -30,7 +30,7 @@ airbus.mes.qdc.ModelManager = {
 			url : this.urlModel.getProperty('QDCDataurl'),
 			type : 'POST',
 			data : JSON.stringify({
-				"Site" : "FNZ1",
+				"Site" : sap.ui.getCore().getModel("userSettingModel").oData.Rowsets.Rowset[0].Row[0].site,
 				"st_langu" : airbus.mes.shell.RoleManager.profile.connectedUser.Language,
 				"st_Application_Id" : "MES",
 				"st_work_order" : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no,

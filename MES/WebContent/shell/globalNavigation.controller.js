@@ -848,8 +848,7 @@ sap.ui.controller(
         },
 
         onLogOutPress: function () {
-        	
-           if(!this.logoutDialog){
+        	if(!this.logoutDialog){
         	   this.logoutDialog = sap.ui.xmlfragment("airbus.mes.shell.Logout", this);
                this.getView().addDependent(this.logoutDialog);
            }

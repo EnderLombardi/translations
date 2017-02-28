@@ -12,8 +12,6 @@
 				<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable"
 					class="TabChecklistTable" selectionMode="None" visibleRowCount="4"
 					expandFirstLevel="true">
-					<!-- <tab:toolbar> <Toolbar> <Title text="{i18n>CheckListAndRecords}" 
-						/> </Toolbar> </tab:toolbar> -->
 					<tab:columns>
 						<tab:Column>
 							<Label class="TabChecklistLabel" text="{i18n>PointofAttention}" />
@@ -26,7 +24,8 @@
 									</HBox>
 									<HBox justifyContent="End">
 										<core:Icon color="orange"
-											src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}"></core:Icon>
+											src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}" 
+											visible="{path:'QDCModel>name', formatter:'airbus.mes.qdc.util.Formatter.getExclamationVisible'}"></core:Icon>
 									</HBox>
 								</HBox>
 							</tab:template>
@@ -34,7 +33,7 @@
 						<tab:Column>
 							<Label class="TabChecklistLabel" text="{i18n>record}" />
 							<tab:template>
-								<Label text="{QDCModel>description}" class="AllignItem" />
+								<Label text="{path:'GetQDCDataModel>TOT_COUNT', formatter:'airbus.mes.qdc.util.Formatter.getDescription'}"  visible="{path:'QDCModel>name', formatter:'airbus.mes.qdc.util.Formatter.getEnabled'}" class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 					</tab:columns>

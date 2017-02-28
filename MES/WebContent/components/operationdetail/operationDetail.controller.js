@@ -99,6 +99,7 @@ sap.ui
          */
         switchMode: function (oEvent) {
             var oSwitchButton = oEvent.getSource();
+            airbus.mes.qdc.util.Formatter.getButtonsEnabled();
             if (oSwitchButton.getState() == true) {
                 this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("Execution"));
 
@@ -132,7 +133,7 @@ sap.ui
         setToolbarVisible: function () {
             var state = sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState();
             if (!state) {
-                sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(false);
+//                sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(false);
                 //sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(false);
