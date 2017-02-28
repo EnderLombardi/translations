@@ -102,6 +102,11 @@
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
+			"Feature": "STATION_DRILL_ESCALATE",
+			"Description": "Work Tracker>Disruption>Escalate",
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
 			"Feature": "WORK_DIS_PICTURE",
 			"Description": "Work Tracker>Disruption>Take and import picture",
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
