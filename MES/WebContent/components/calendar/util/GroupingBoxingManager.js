@@ -251,42 +251,35 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					if ( el.loanedTo != "true" ) {
 						if (  Math.abs(oBox.start_date -  oBox.end_date) >= fStep ) {
 						       
-							var fPrecision = 0;
-							var fGap = 0;
 							// Check if we are in day mode or not if we are day the scale is on a day otherwise on the hours
 							if ( fStep === 86400000 ) {
 								//we will check on the begining of the day
-								var fStartDate2 = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).setHours(0, 0, 0).valueOf();
+								//workers partially available dunring time frame is considered as not that why we reset the startdate at the begining of the day		
+								var fStartDate = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).setHours(0, 0, 0);
+								//workers partially available dunring time frame is considered as not that why we set the enDdate at the end of the current days 	
+								var fEndDate = new Date(oFormatter.jsDateFromDayTimeStr(el.endDateTime)-1000).setHours(24,0,0) 
 								
 							} else {
 								// we will chekc on the begining of the hours
-								var fStartDate2 = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).setMinutes(0, 0).valueOf();
+								//workers partially available dunring time frame is considered as not that why we reset the startdate at the begining of the hours	
+								var fStartDate = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).setMinutes(0,0,0);
+								//workers partially available dunring time frame is considered as not that why we set the enDdate at the end of the current hours 	
+								var fEndDate = new Date(oFormatter.jsDateFromDayTimeStr(el.endDateTime)-1000).setMinutes(60,0,0);
 
 							}
-							var fStartDate = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).valueOf();
-							var fStartCopy = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).valueOf();
-							var fEndDate = new Date(oFormatter.jsDateFromDayTimeStr(el.endDateTime)).valueOf();
-													
-							while( fStartCopy <= fEndDate ) {
-								//That mean the start date is not starting at 0min 0sec,workers partially available dunring time frame is considered as not
-								// available
-								if ( fStartDate2 - fStartDate != 0) {
-									
-									fGap = fStartDate2 - fStartDate + fStep;
-									fStartDate += fGap;
-									fStartCopy += fGap; 
-								}
+							
+							while( fStartDate < fEndDate ) {
 								//Check if the startDate + the step is less than the end Date => that mean between my start date and end date i have one step of one hour begining/day at 0min0sec
-								if (fStartCopy + fStep <= fEndDate ) {
+								if (fStartDate + fStep <= fEndDate ) {
 									
-									var fId = fStartCopy;
+									var fId = fStartDate;
 									if (oTotal[fId] === undefined) {
 										oTotal[fId] = 0;									
 									}
 									oTotal[fId] += 1;
-									fStartCopy += fStep;
+									fStartDate += fStep;
 								} else {
-									fStartCopy += fStep;
+									fStartDate += fStep;
 								}	
 							}
 						}

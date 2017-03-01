@@ -121,8 +121,8 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		// Calculate Promised Date Time
 		var time = this.getView().byId("promisedTime").getValue();
 
-		if (time == "")
-			time = "00:00:00";
+//		if (time == "")
+//			time = "00:00:00";
 
 		var dateTime = date + " " + time;
 

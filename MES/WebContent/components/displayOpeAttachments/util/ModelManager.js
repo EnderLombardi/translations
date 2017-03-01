@@ -43,7 +43,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		//format data from getExternalUrlTemplate
 		if (vmExternalUrlTemplate.oData.Rowsets && vmExternalUrlTemplate.oData.Rowsets.Rowset && vmExternalUrlTemplate.oData.Rowsets.Rowset[0].Row) {
 			vmExternalUrlTemplate.oData.externalUrl = vmExternalUrlTemplate.oData.Rowsets.Rowset[0].Row[0].str_output;
-			this.getExternalUrl(externalUrlParameters);
+			vmExternalUrlTemplate.oData.externalUrl = this.getExternalUrl(vmExternalUrlTemplate.oData.externalUrl, externalUrlParameters);
 		}
 
 		//format data from getOpeAttachments and getDocumentTypes
@@ -114,14 +114,17 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 			url = this.replaceURI(url, "$Site", doaParameters[0]);
 			url = this.replaceURI(url, "$ErpId", doaParameters[1]);
 			url = this.replaceURI(url, "$ShopOrderBO", doaParameters[2]);
+			url = this.replaceURI(url, "$sfc", doaParameters[3]);
 
 			//operation or work order
 			if (set === "O") {
-				url = this.replaceURI(url, "$RouterBO", doaParameters[3]);
-				url = this.replaceURI(url, "$RouterStepBO", doaParameters[4]);
+//				url = this.replaceURI(url, "$RouterBO", doaParameters[3]);
+//				url = this.replaceURI(url, "$RouterStepBO", doaParameters[4]);
+				url = this.replaceURI(url, "$operationBO", doaParameters[4]);
 			} else if (set === "P") {
-				url = this.replaceURI(url, "$RouterBO", "");
-				url = this.replaceURI(url, "$RouterStepBO", "");
+//				url = this.replaceURI(url, "$RouterBO", "");
+//				url = this.replaceURI(url, "$RouterStepBO", "");
+				url = this.replaceURI(url, "$operationBO", "");
 			}
 		} else {//LOCAL
 			//operation or work order
@@ -148,8 +151,9 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 
 
 	//replace the url with the several parameters needed
-	getExternalUrl: function (externalUrlParameters) {
-		var url = this.urlModel.getProperty("getExternalUrlTemplate");
+	getExternalUrl: function (externalUrl, externalUrlParameters) {
+//		var url = this.urlModel.getProperty("getExternalUrlTemplate");
+		var url = externalUrl;
 		if (sessionStorage.loginType !== "local") {
 			url = this.replaceURI(url, "p_workorder", externalUrlParameters[0]);
 			url = this.replaceURI(url, "p_operation", externalUrlParameters[1]);
@@ -175,21 +179,29 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 
 	//load the parameters needed for the documents request
 	getDoaParameters: function () {
-		var doaParameters = [], site, erpId, shopOrderBO, routerBO, routerStepBO;
+//		var doaParameters = [], site, erpId, shopOrderBO, routerBO, routerStepBO;
+		var doaParameters = [], site, erpId, shopOrderBO, sfc, operationBO;
+
 
 		site = airbus.mes.settings.ModelManager.site;
 		erpId = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM;
 		shopOrderBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ShopOrderBO;
-		routerStepBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.RouterStepBO;
-		routerBO = routerStepBO.split(":")[1] + ":" + routerStepBO.split(":")[2];//delete the first part ("RouterStepBO:")
-		routerBO = routerBO.replace(/,[^,]+$/, "");//delete all after the last comma
+		
+//		routerStepBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.RouterStepBO;
+//		routerBO = routerStepBO.split(":")[1] + ":" + routerStepBO.split(":")[2];//delete the first part ("RouterStepBO:")
+//		routerBO = routerBO.replace(/,[^,]+$/, "");//delete all after the last comma
+		
+		sfc = airbus.mes.stationtracker.util.ModelManager.stationInProgress.SFC;
+		operationBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.OPERATION_BO;
 
 		//fill the parameters array
 		doaParameters.push(site);
 		doaParameters.push(erpId);
 		doaParameters.push(shopOrderBO);
-		doaParameters.push(routerBO);
-		doaParameters.push(routerStepBO);
+//		doaParameters.push(routerBO);
+//		doaParameters.push(routerStepBO);
+		doaParameters.push(sfc);
+		doaParameters.push(operationBO);
 
 		return doaParameters;
 	},

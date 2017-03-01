@@ -1,6 +1,7 @@
 "use strict";
 sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
 
+    attachDocument: [],
     /**
     * Apply a filter on the confirmation Notes List and the WO Notes List
     * depending on the Production_Context_GBO name
@@ -155,15 +156,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      */
     submitComment: function () {
 
-        // var attachmentFilesCollection = this.getView().byId('UploadCollection');
-        // var collection = attachmentFilesCollection.getItems();
-        // var size = collection.length;
-        // var i = 0;
-        // for (; i < size; i += 1) {
-        //     console.log(collection[i].getAttributes());
-        //     console.log(collection[i].getFileName());
-        // }
-
         if (airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").getSelectedKey()) {
             if (this.getView().byId('commentArea').getValue()) {
                 if (!this._oUserConfirmationDialog) {
@@ -198,67 +190,38 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Confirm the request
      */
     onOKConfirmation: function () {
-        // var attachmentFilesCollection = this.getView().byId('UploadCollection');
-        // var collection = attachmentFilesCollection.getItems();
-        // var size = collection.length;
-        // var i = 0;
-        // for (; i < size; i += 1) {
-        //     console.log(collection[i].getAttributes());
-        //     console.log(collection[i].getFileName());
-        // }
         var uID = sap.ui.getCore().byId("UIDTckTmpltForConfirmation").getValue();
         var pin = sap.ui.getCore().byId("pinTckTmpltForConfirmation").getValue();
 
-        //work order number Param.1 SHopOrderNumber
-        var shopOrderNum = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
-        //ERPSystem Param.2 ERPSYstem
-        var erpSystem = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system || ''
-        //Param.3 BadgeID
-        var badgeId = sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation").getValue();
-        //Param.4 Desciption
-        var textArea = this.getView().byId('commentArea');
-        //Param.5 ReasonCode
-        var reasonCode = this.getView().byId("reasonCodeSelectBox").getSelectedKey() || '';
-        //Param.6 password
-        var password = sap.ui.getCore().byId('passwordTckTmpltForConfirmation').getValue();
-        //Param.7 logon
-        var login = sap.ui.getCore().byId('userNameTckTmpltForConfirmation').getValue();
+        airbus.mes.trackingtemplate.util.ModelManager.sendWONotes(
+            //work order number Param.1 SHopOrderNumber
+            sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no,
+            //ERPSystem Param.2 ERPSYstem 
+            sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system || '',
+            //Param.3 BadgeID
+            sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation").getValue(),
+            //Param.4 Description
+            this.getView().byId('commentArea').getValue(),
+            //Param.5 ReasonCode
+            this.getView().byId("reasonCodeSelectBox").getSelectedKey() || '',
+            //Param.6 password
+            sap.ui.getCore().byId('passwordTckTmpltForConfirmation').getValue(),
+            //Param.7 logon
+            sap.ui.getCore().byId('userNameTckTmpltForConfirmation').getValue()
+        );
+        this.submitAttachedDocument();
 
-        var sMessageSuccess = this.getView().getModel("i18n")
-            .getProperty("SuccessfulConfirmation");
-        var sMessageError = this.getView().getModel("i18n")
-            .getProperty("ErrorDuringConfirmation");
-
-        jQuery
-            .ajax({
-                url: airbus.mes.trackingtemplate.util.ModelManager
-                    .getSendNotesUrl(
-                    shopOrderNum, erpSystem, badgeId, textArea.getValue(), reasonCode, password, login
-                    ),
-                async: false,
-                error: function (xhr, status, error) {
-                    airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageError);
-                },
-                success: function (result, status, xhr) {
-                    if(result.Rowsets.Rowset &&  result.Rowsets.Rowset[0].Row) {
-                        sMessageSuccess = result.Rowsets.Rowset[0].Row[0].Message;
-                    } else {
-                        sMessageSuccess = sMessageError;
-                    }
-                    airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
-                    airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
-                    airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
-                }
-            });
         this._oUserConfirmationDialog.close();
     },
 
 
     /**
      * Remove the comment, reason code and value set in confirmation dialog
+     * TODO : need a better method to clean value. 
+     * TODO : Clean attach document
      */
     cleanAfterAddingNotes: function () {
-        //if the view is ready yet, dont try to reset value
+        //if the view is ready yet, dont try to reset value 
         if (airbus.mes.trackingtemplate.oView.byId('commentArea')) {
             //Param.4 Desciption
             airbus.mes.trackingtemplate.oView.byId('commentArea').setValue();
@@ -282,6 +245,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         if (sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation")) {
             sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation").setValue();
         }
+        this.attachDocument.length = 0;
     },
 
     /**
@@ -402,5 +366,34 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         sap.ui.getCore().byId("msgstrpTckTmpltConfirm").setVisible(true);
     },
 
+    onChangeUploadCollection: function (oEvent) {
+        // var oUploadCollection = oEvent.getSource();
+        var files = oEvent.getParameters().files;
+        var file = files[0];
+        var reader = new FileReader();
+        var filesListBase64 = this.attachDocument;
+        reader.onload = function (readerEvt) {
+            var binaryString = readerEvt.target.result;
+            // var base64 = btoa(binaryString);
+            var oBase64 = {};
+            oBase64.fileName = file.name;
+            oBase64.type = file.type;
+            oBase64.fileBase64 = btoa(binaryString);
+            filesListBase64.push(oBase64);
+        }
+        reader.readAsBinaryString(files[0]);
+    },
+
+    submitAttachedDocument: function () {
+        var i = 0;
+        var attachDocumentLength = this.attachDocument.length;
+        for (; i < attachDocumentLength; i += 1) {
+            airbus.mes.trackingtemplate.util.ModelManager.attachDocument(
+                airbus.mes.settings.ModelManager.site,
+                '1234',
+                this.attachDocument[0].fileName, this.attachDocument[0].fileBase64,
+                'S00DB44');
+        }
+    }
 
 });

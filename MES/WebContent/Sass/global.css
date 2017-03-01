@@ -1717,6 +1717,10 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 /* tab - Statut - */
 #idStatusView { height: 100% !important; width: 95% !important; margin: 0 auto !important; }
 
+#idStatusView .sapMLIB { padding: 0; }
+
+#idStatusView .sapMPIText1 { width: 100% !important; }
+
 #idStatusView--StatutLabel.StatutLabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; display: none; }
 
 #idStatusView--Statutprogress { width: 95% !important; margin: 50px auto; padding: 0; }
@@ -3944,6 +3948,10 @@ DATE PICKER
 #componentsView--idFilterComponent-inner { background-color: #0085ad; border-radius: 0.125rem; color: #ffffff; }
 
 #componentsView--idFilterComponent-inner:hover { background-color: #0f2d65; }
+
+.committedFittedButton[data-equal="1"] > div { background: #4CBB17; text-shadow: none; }
+
+.committedFittedButton[data-equal="0"] > div { background: webkit-gradient(linear, left top, left bottom, color-stop(0, #f7f7f7), color-stop(1, #f2f2f2)); }
 
 #spliterWorkTracker--splitWorTra.splitWorTra { width: 100% !important; margin: 20px auto; overflow: auto; padding: 20px; }
 

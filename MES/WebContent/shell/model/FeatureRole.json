@@ -17,11 +17,6 @@
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
-			"Feature": "DISRUPTION_DIS_DETAIL_EDIT",
-			"Description": "Disruption_Detail>Edit a disruption",
-			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
-		}, {
-			"SITE": "FNZ1",
 			"Feature": "DISRUPTION_DIS_DETAIL_UPDATE",
 			"Description": "Disruption_Detail>Update disruption status (ACK, in progress, solution solved)",
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
@@ -59,11 +54,6 @@
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_OSW",
 			"Description": "Station Tracker>Drill Down>OSW info",
-			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
-		}, {
-			"SITE": "FNZ1",
-			"Feature": "STATION_DRILL_DISRUPTION",
-			"Description": "Station Tracker>Drill Down>Disruption info",
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
@@ -226,11 +216,6 @@
 			"SITE": "FNZ1",
 			"Feature": "STATION_DRILL_RESCHEDULE",
 			"Description": "Station Tracker>Drill>Reschedule Dates",
-			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
-		}, {
-			"SITE": "FNZ1",
-			"Feature": "STATION_DRILL_OSW",
-			"Description": "Station Tracker>Drill Down>OSW info",
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",

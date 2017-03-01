@@ -196,6 +196,13 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({ name: "airbus.mes.qdc" });
             oNavContainer.addPage(airbus.mes.qdc.oView);
         }
+        
+        //Load data
+        airbus.mes.qdc.ModelManager.loadQDCModel();
+        airbus.mes.qdc.ModelManager.loadQDCData();
+        airbus.mes.qdc.ModelManager.loadQACheckModel();
+
+        // Navigate
         oNavContainer.to(airbus.mes.qdc.oView.getId());
     },
 

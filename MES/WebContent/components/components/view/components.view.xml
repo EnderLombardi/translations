@@ -7,7 +7,7 @@
 
 			<table:Table id="ComponentsList" class="ComponentsList mesTable"
 				rows="{componentsWorkOrderDetail>/Rowsets/Rowset/0/Row/}" editable="true"
-				width="100%" visibleRowCountMode="Auto">
+				width="100%" visibleRowCountMode="Auto" selectionMode="None">
 
 				<table:extension>
 					<VBox id="ComponentsCheck" class="ComponentsCheck mesRadioButtonsCheck">
@@ -49,6 +49,12 @@
 						<Label textAlign="Center" text="{i18nComponentsModel>materialType}" />
 						<table:template>
 							<Text text="{componentsWorkOrderDetail>materialType}" />
+						</table:template>
+					</table:Column>
+					<table:Column id="materialCol" autoResizable="true" visible="false">
+						<Label textAlign="Center" text="{i18nComponentsModel>material}" />
+						<table:template>
+							<Text text="{componentsWorkOrderDetail>itemNumber}" />
 						</table:template>
 					</table:Column>
 					<table:Column id="materialDescriptionCol" autoResizable="true">
@@ -107,9 +113,16 @@
 						<table:template>
 							<HBox>
 								<Button icon="sap-icon://synchronize" type="Default"
-									press="synchronizeFieldCommitted" />
-								<StepInput type="Number" class="stepInputComponent"
-									value="{componentsWorkOrderDetail>committed}" width="{width}"
+									press="synchronizeFieldCommitted" class="committedFittedButton">
+									<customData>
+										<core:CustomData key="equal" 
+										value="{parts :[{path : 'componentsWorkOrderDetail>Checked_Components'}, 
+										{path : 'componentsWorkOrderDetail>reqQty'}], 
+										formatter:'airbus.mes.components.util.Formatter.checkedComponentsComparator'}" writeToDom="true" />
+									</customData>						
+								</Button>
+								<Input id="stepInputCommitted" type="Number" class="stepInputComponent"
+									value="{componentsWorkOrderDetail>Checked_Components}" width="{width}"
 									min="0"
 									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
 									editable="true" change="committedLiveChange" />
@@ -122,10 +135,17 @@
 						<table:template>
 							<HBox>
 								<Button icon="sap-icon://synchronize" type="Default"
-									press="synchronizeFieldFitted" />
-								<StepInput type="Number" class="stepInputComponent"
+									press="synchronizeFieldFitted" class="committedFittedButton">
+									<customData>
+										<core:CustomData key="equal" 
+										value="{parts :[{path : 'componentsWorkOrderDetail>Fitted_Components'}, 
+										{path : 'componentsWorkOrderDetail>reqQty'}], 
+										formatter:'airbus.mes.components.util.Formatter.checkedComponentsComparator'}" writeToDom="true" />
+									</customData>						
+								</Button>
+								<Input id="stepInputFitted" type="Number" class="stepInputComponent"
 									min="0"
-									value="{componentsWorkOrderDetail>fitted}" width="{width}"
+									value="{componentsWorkOrderDetail>Fitted_Components}" width="{width}"
 									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
 									editable="true" change="fittedLiveChange" />
 							</HBox>

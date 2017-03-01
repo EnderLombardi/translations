@@ -45,7 +45,7 @@
 											</items>
 										</Select>
 										
-										<Label text="{i18nModel>materiall}" />
+										<Label text="{i18nModel>stMaterial}"  />
 									<Input value="" />
 										
 									
@@ -92,57 +92,6 @@
 											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 										</TimePicker>
 										
-										<VBox visible="false">
-										<Label text="{i18nModel>Resolver}" />	
-										<Select id="selectResolver"
-											items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
-											forceSelection="false" selectedKey="{DisruptionDetailModel>/ResolverID}">
-											<items>
-												<core:Item
-													text="{disruptionResolverModel>Name}"
-													key="{disruptionResolverModel>UserID}" />
-											</items>
-											</Select>
-								
-										
-									
-										<Label text="{i18nModel>status}" />
-										<Input id="status" enabled="false"
-											value="{path: 'DisruptionDetailModel>/Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}">
-										</Input>										
-									
-										<Label id="promisedDateLabel"  text="{i18nModel>promisedDateTime}" />
-										<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
-											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
-											enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
-										</DatePicker>
-										<TimePicker id="promisedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
-											enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">	
-										</TimePicker>
-										
-										<Label text="{i18nModel>Jigtool}" />
-										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange"
-											liveChange="onJigToolTokenChange" enabled="false">
-										</MultiInput>
-										<Select id="selectRootCause" selectedKey=""
-											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
-											change="onSelectionChange">
-											<items>
-												<core:Item text="{disruptionCustomData>RootCause}"
-													key="{disruptionCustomData>RootCause}" />
-											</items>
-											</Select>
-										<Label  text="{i18nModel>OriginatorGroup}" />									
-										<Select id="selectOriginator" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}"
-											 forceSelection="false" selectedKey="{DisruptionDetailModel>/OriginatorGroup}" >
-											<items>
-												<core:Item text="{disruptionCategoryModel>group_desc}"
-													key="{disruptionCategoryModel>group_name}" />
-											</items>
-										</Select>
-										</VBox>
 										
 									</f:content>
 						</f:SimpleForm>
@@ -178,7 +127,7 @@
 									<Input value="" />
 									<Label text="{i18nModel>plan}" />
 									<Input value="" />
-									<Label text="{i18nModel>stMaterial}"/>									
+									<Label text="{i18nModel>materiall}"/>									
 										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
 											tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
 											enabled="false">		

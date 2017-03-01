@@ -18,7 +18,7 @@ airbus.mes.components.util.ModelManager = {
         "componentsView--materialTypeCol", "componentsView--materialDescriptionCol",
         "componentsView--storageLocationCol", "componentsView--fkbmCol", "componentsView--reqQtyCol", "componentsView--withdrawQtyCol",
         "componentsView--shortageCol", "componentsView--unitCol", "componentsView--serialNumberCol"],
-    colVisibilityCommittedFitted: ["componentsView--bomItemNbCol", "componentsView--materialTypeCol",
+    colVisibilityCommittedFitted: ["componentsView--bomItemNbCol", "componentsView--materialTypeCol", "componentsView--materialCol",
         "componentsView--materialDescriptionCol", "componentsView--reqQtyCol", "componentsView--withdrawQtyCol",
         "componentsView--editableRowCom", "componentsView--editableRowFit"],
 

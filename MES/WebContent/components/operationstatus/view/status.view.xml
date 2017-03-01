@@ -49,7 +49,7 @@
 									<items>
 										<custom:util.customProgressIndicator
 											width="auto" state="sap.ui.core.ValueState.Success" click="operationWorkListClick"
-											unplanned="{StatusWorkTracker>ISUNPLANNED}" disruption="{StatusWorkTracker>DISRUPTION}"
+											disruption="{StatusWorkTracker>DISRUPTION}"
 											paused="{StatusWorkTracker>PAUSED}" progress="{StatusWorkTracker>PROGRESS}"
 											rmastatus="{StatusWorkTracker>RMA_STATUS_COLOR}" osw="{StatusWorkTracker>EXECUTION_STATION_SOURCE}"
 											status="{StatusWorkTracker>STATE}" prevstarted="{StatusWorkTracker>PREVIOUSLY_STARTED}"

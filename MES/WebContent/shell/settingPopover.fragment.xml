@@ -11,7 +11,7 @@
 					enabled="{ path : 'ShellI18n>', formatter : 'airbus.mes.shell.util.Formatter.checkToEnableProfile' }">
 				</Button>
 				<Button id="idLogout" width="100%" type="Transparent" text="{ShellI18n>logout}"
-					icon="sap-icon://log" press="onLogOutPress" class="blackButton"/>
+					icon="sap-icon://log" press="onLogOutPress" class="blackButton" visible="{ path : 'ShellI18n>', formatter : 'airbus.mes.shell.util.Formatter.onCheckLogout' }"/>
 			</items>
 		</VBox>
 	</Popover>

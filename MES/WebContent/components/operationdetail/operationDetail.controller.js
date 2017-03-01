@@ -289,8 +289,6 @@ sap.ui
                     this.nav.to(airbus.mes.components.oView.getId());
 
                     sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(true);
-                    sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(true);
-                    sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(true);
                     break;
                 case "ACPnGLinks":
                     //tabselection
