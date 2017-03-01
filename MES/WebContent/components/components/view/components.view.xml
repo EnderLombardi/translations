@@ -121,7 +121,7 @@
 										formatter:'airbus.mes.components.util.Formatter.checkedComponentsComparator'}" writeToDom="true" />
 									</customData>						
 								</Button>
-								<Input id="stepInputCommitted" type="Number" class="stepInputComponent"
+								<StepInput id="stepInputCommitted" type="Number" class="stepInputComponent"
 									value="{componentsWorkOrderDetail>Checked_Components}" width="{width}"
 									min="0"
 									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
@@ -143,7 +143,7 @@
 										formatter:'airbus.mes.components.util.Formatter.checkedComponentsComparator'}" writeToDom="true" />
 									</customData>						
 								</Button>
-								<Input id="stepInputFitted" type="Number" class="stepInputComponent"
+								<StepInput id="stepInputFitted" type="Number" class="stepInputComponent"
 									min="0"
 									value="{componentsWorkOrderDetail>Fitted_Components}" width="{width}"
 									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
