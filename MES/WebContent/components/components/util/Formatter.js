@@ -73,7 +73,7 @@ airbus.mes.components.util.Formatter = {
     	} else {
     		return completedColor;
     	}
-    }
+    },
 
     fittedComponentsComparator : function(Fitted_Components, reqQty) {
          if (parseInt(Fitted_Components, 10) === parseInt(reqQty, 10)) {
