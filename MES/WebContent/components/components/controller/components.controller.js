@@ -10,12 +10,22 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     //is called after view is rendered.
     onAfterRendering: function () {
-        this.committedFittedView = false;
         this.oFilterSearch = undefined;
         this.oFilterFilter = undefined;
-        if (sap.ui.getCore().byId("selectFilter--selectFilterComponents")) {//clear filters list if filter already exists
+
+        //reset the columns on compnents
+        if (this.committedFittedView) {
+            var columns = sap.ui.getCore().byId("componentsView--ComponentsList").getColumns();
+            this.committedFittedView = false;
+
+            this.changeColVisibility(columns, this.committedFittedView);
+        }
+
+        //clear filters list if filter already exists
+        if (sap.ui.getCore().byId("selectFilter--selectFilterComponents")) {
             sap.ui.getCore().byId("selectFilter--selectFilterComponents").removeSelections(true);
         }
+        
         // Get setting from ME/MII and select the good button between operation and work order
         this.filterComponents(this.sSet);
 
