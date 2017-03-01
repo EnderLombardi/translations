@@ -130,7 +130,12 @@ airbus.mes.operationdetail.ModelManager = {
             .replaceURI(urlConfirmationCheckList, "$Sfc", data.sfc);
         urlConfirmationCheckList = airbus.mes.shell.ModelManager
             .replaceURI(urlConfirmationCheckList, "$SfcStepRef", data.sfc_step_ref);
+        urlConfirmationCheckList = airbus.mes.shell.ModelManager
+        .replaceURI(urlConfirmationCheckList, "$WorkOrder", data.wo_no);
+        urlConfirmationCheckList = airbus.mes.shell.ModelManager
+        .replaceURI(urlConfirmationCheckList, "$OperationID", data.operation_id);
         return urlConfirmationCheckList;
+ 
     },
     getDataConfirmationCheckList : function(data){
         var getData;
