@@ -15,6 +15,12 @@
     &>.sapMPanelContent{
         padding: 0 1rem;
     }
+    .sapMPanelExpandableIcon{
+    	display: none;
+	}
+	.disrptListToolbar[role=toolbar]{
+		margin-left: 1rem !important;
+	}
 }
 
 //Disruption title bar buttons

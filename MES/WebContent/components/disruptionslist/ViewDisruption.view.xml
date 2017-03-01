@@ -15,7 +15,7 @@
 					<!-- <Panel expandable="true" expanded="false" class="disruptionExpandablePanel" expand="handleDisruptionPanelExpand"> -->
 					<Panel class="disruptionExpandablePanel" expandable="true" expanded="{=${operationDisruptionsModel>expanded} === 'true'}" >
 						<headerToolbar>
-							<Toolbar class="disrptlistdesc" >
+							<Toolbar class="disrptListToolbar" >
 								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>EscalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
 								<Label text="DIS-{operationDisruptionsModel>DisruptionNumber} - {path: 'operationDisruptionsModel>Category'} {operationDisruptionsModel>Reason}" design="Bold" />
 								
