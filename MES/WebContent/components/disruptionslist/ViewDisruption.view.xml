@@ -58,9 +58,9 @@
 								<Button text="{i18nModel>editButton}" type="Emphasized"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ,{path: 'operationDisruptionsModel>expanded'}], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
 									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" class="disruptionTitleBarButtons"/>
-								<Button press="handleDisruptionPanelExpand"   design="Transparent" icon="sap-icon://slim-arrow-downn" 
+								<Button press="handleDisruptionPanelExpand"   design="Transparent" icon="sap-icon://slim-arrow-down" 
 									visible="{=${operationDisruptionsModel>expanded} !== 'true'}" />
-								<Button press="handleDisruptionPanelCompress" design="Transparent" icon="sap-icon://slim-arrow-up"
+								<Button press="handleDisruptionPanelCollapse" design="Transparent" icon="sap-icon://slim-arrow-up"
 									visible="{=${operationDisruptionsModel>expanded} === 'true'}" />
 
 							</Toolbar>

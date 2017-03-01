@@ -829,36 +829,22 @@ sap.ui
                                   handleDisruptionPanelExpand : function(oEvent) {
                                 	  var oPanel = oEvent.oSource.getParent().getParent();
                                 	  if(oPanel.getExpanded()){
-					                      this.getView().getModel("operationDisruptionsModel").setProperty(this.sExpandedPanelPath + "/expanded", "false");
                                 		  return;
                                 	  }
                                 	  
-                                	  if(this.sExpandedPanelPath){
-                                		  this.getView().getModel("operationDisruptionsModel")
-                                		  	.setProperty(this.sExpandedPanelPath+"/expanded", "false");
-                                	  }
+                                	  // Close prevoiusly expanded panel
+                                	  if(this.sExpandedPanelPath != undefined)
+                                		  this.getView().getModel("operationDisruptionsModel").setProperty(this.sExpandedPanelPath + "/expanded", "false");
                                 		  
                                 	  var sPath = oEvent.getSource().getBindingContext("operationDisruptionsModel").sPath;
                                       this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/expanded", "true");
                                       this.getView().getModel("operationDisruptionsModel").refresh();
                                       this.sExpandedPanelPath = sPath;
-                                        /* 
-                                         
-                                         this.expandedDisruptionPanel = oevent.getSource().getId();
-                                         
-                                         var disruptions = this.getView().byId("disrptlist");
-                                         $(disruptions.getItems())
-                                                       .each(
-                                                                     function() {
-                                                                           var currentPanel = this
-                                                                                         .getContent()[0];
-                                                                           if (oevent.getSource().getId() != currentPanel
-                                                                                         .getId())
-                                                                                  currentPanel.setExpanded(false)
-                                                                     });
-*/
                                   },
-                                  
+                                  handleDisruptionPanelCollapse: function(){
+                                	  this.getView().getModel("operationDisruptionsModel").setProperty(this.sExpandedPanelPath+"/expanded", "false");
+                                	  this.sExpandedPanelPath = undefined;
+                                  },
 
                                   onReportDisruption : function(oEvent) {
                                          
