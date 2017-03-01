@@ -24,7 +24,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	/**
 	 * Check existing children in data
 	 */
-	checkExistingChildentData: function () {
+	checkExistingChildrentData: function () {
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
 		try {
 			var aData = oModel.getData().Rowsets.Rowset[0].Row;
