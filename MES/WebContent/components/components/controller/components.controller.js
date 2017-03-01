@@ -253,23 +253,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     },
 
     //is called when the save button is clicked. It handles the datan converts it in xml and send them to backend.
-//    onbtnComponentsSave: function (oEvent) {
-//    	
-////    	Open popup to confirm current user
-//    	if (jQuery.sap.getObject("airbus.mes.userConfirmation.Component") === undefined) {
-//    		jQuery.sap.registerModulePath("airbus.mes.userConfirmation", "../components/userConfirmation");
-//    		sap.ui.getCore().createComponent({            
-//    		    name: "airbus.mes.userConfirmation"
-//    		});      
-//    		airbus.mes.userConfirmation.oView.byId("OKForConfirmation").attachPress(airbus.mes.components.oView.getController().onSave());
-//    		
-//    		
-//    	} else {
-//    		airbus.mes.userConfirmation.oView.byId("partialTckTmplt").open();
-//    	}  	
-//    	
-//    },
-    
     onbtnComponentsSave: function() {
    	
         var count = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row.length;
@@ -299,8 +282,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$ERPSystem", airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system);
 	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlPAPI", airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi);
 	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlJCO", airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO);
-
-    
         
 //      call service
         jQuery.ajax({
