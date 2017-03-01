@@ -18,7 +18,7 @@ airbus.mes.operationstatus.util.ModelManager = {
         this.getShopOrderOperation();
     },
 
-    getShopOrderOperation: function() {
+    getShopOrderOperation: function () {
         var oViewModel = sap.ui.getCore().getModel("StatusWorkTracker");
 
         jQuery.ajax({
@@ -30,6 +30,16 @@ airbus.mes.operationstatus.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
+                if (data.Rowsets.Rowset && data.Rowsets.Rowset[0].Row) {
+                    data.Rowsets.Rowset[0].Row.forEach(function (el) {
+                        if (el.RMA_STATUS_COLOR != "---") {
+                            el.RMA_STATUS_COLOR = "1";
+                        } else {
+                            el.RMA_STATUS_COLOR = "0";
+                        }
+                    })
+                }
+
 
                 oViewModel.setData(data);
             },
@@ -40,9 +50,9 @@ airbus.mes.operationstatus.util.ModelManager = {
         });
     },
 
-     /***************************************************************************
-     * Get URL for Operation Status
-     **************************************************************************/
+    /***************************************************************************
+    * Get URL for Operation Status
+    **************************************************************************/
     getOperationstatusUrl: function (model) {
         var operationstatusUrl = this.urlModel.getProperty(model);
         var site = airbus.mes.settings.ModelManager.site;
@@ -56,6 +66,6 @@ airbus.mes.operationstatus.util.ModelManager = {
         return operationstatusUrl;
     },
 
-   
+
 
 };
