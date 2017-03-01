@@ -271,11 +271,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 //    },
     
     onbtnComponentsSave: function() {
-//    	Retrieve user/password
-//    	var user = airbus.mes.userConfirmation.oView.getController().getOwnerComponent().getUser();
-//    	var password = airbus.mes.userConfirmation.oView.getController().getOwnerComponent().getPassword();
-
-    	
+   	
         var count = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row.length;
         if (airbus.mes.components.util.ModelManager.dataSaveJson != []) {
             airbus.mes.components.util.ModelManager.dataSaveJson = [];
@@ -315,20 +311,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             
             success : function(data) {
             	  console.log("sucess");
-//                if (typeof data == "string") {
-//                    data = JSON.parse(data);
-//                }
-//                if (typeof data != "object" || data === null) {
-//                	/* In case the tool list is empty, we receive "null" */
-//                	data = { toolInfoList : [] };
-//                }
-//                data.toolInfoList = data.toolInfoList || [];
-//                if (!Array.isArray(data.toolInfoList)) {
-//                	/* In case the tool list contain one element, we receive an object */
-//                    data.toolInfoList = [ data.toolInfoList ];
-//                }
-//                oViewModel.setData(data);
-//                oViewModel.refresh();
             },
 
             error : function(error, jQXHR) {
