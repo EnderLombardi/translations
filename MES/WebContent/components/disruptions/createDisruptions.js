@@ -400,9 +400,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"attribute" : "RESPONSIBLE_GROUP",
 					"value" : oView.byId("selectResponsibleGrp").getSelectedKey()
 				}, {
-					"attribute" : "ORIGINATOR_GROUP",
-					"value" : oView.byId("selectOriginator").getSelectedKey()
-				}, {
 					"attribute" : "WORK_CENTER_BO",
 					"value" : "WorkCenterBO:" + airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station
 				}, {
@@ -418,9 +415,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"attribute" : "FIVEM_CATEGORY", // V1.5
 					"value" : oView.byId("selectFivemCategory").getSelectedKey()
 				}, {
-					"attribute" : "RESOLVER", // V1.5
-					"value" : oView.byId("selectResolver").getSelectedKey()
-				}, {
 					"attribute" : "LINE",
 					"value" : airbus.mes.settings.ModelManager.line
 				}, ]
@@ -435,7 +429,10 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * Validate inputs while creating/updating disruption
 	 */
 	validateDisruptionInput : function(oView) {
-		if (oView.byId("selectCategory").getSelectedKey() == "") {
+		if (oView.byId("selectFivemCategory").getSelectedKey() == "") {
+			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("Compulsary5M"));
+			return false;
+		} else if (oView.byId("selectCategory").getSelectedKey() == "") {
 			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryCategory"));
 			return false;
 		} else if (oView.byId("selectreason").getSelectedKey() == "") {
@@ -443,9 +440,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			return false;
 		} else if (oView.byId("selectResponsibleGrp").getSelectedKey() == "") {
 			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryResponsible"));
-			return false;
-		} else if (oView.byId("selectOriginator").getSelectedKey() == "") {
-			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryOriginator"));
 			return false;
 		} else if (oView.byId("expectedDate").getValue() == "" || oView.byId("expectedTime").getValue() == "") {
 			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryExpectedDateTime"));

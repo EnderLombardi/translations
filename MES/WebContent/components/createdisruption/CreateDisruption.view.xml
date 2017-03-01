@@ -44,11 +44,10 @@
 													key="{disruptionRsnRespGrp>REASON}" />
 											</items>
 										</Select>
-										<Label text="{i18nModel>stMaterial}"/>									
-										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
-											tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
-											enabled="false">		
-										</MultiInput>
+										
+										<Label text="{i18nModel>materiall}" />
+									<Input value="" />
+										
 									
 									<core:Title text="" />
 									<Label required="true" text="{i18nModel>gravity}" />			
@@ -179,16 +178,22 @@
 									<Input value="" />
 									<Label text="{i18nModel>plan}" />
 									<Input value="" />
-									<Label text="{i18nModel>materiall}" />
-									<Input value="" />
+									<Label text="{i18nModel>stMaterial}"/>									
+										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
+											tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
+											enabled="false">		
+										</MultiInput>
+									
 									
 									<core:Title text="" />
 									<Label text="{i18nModel>ribs}" />
 									<Input value="" />
 									<Label text="{i18nModel>view}" />
 									<Input value="" />
-									<Label text="{i18nModel>tools}" />
-									<Input value="" />
+									<Label text="{i18nModel>Jigtool}" />
+										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange"
+											liveChange="onJigToolTokenChange" enabled="false">
+										</MultiInput>
 									
 									<core:Title text="" />
 									<Label text="{i18nModel>stringer}" />
