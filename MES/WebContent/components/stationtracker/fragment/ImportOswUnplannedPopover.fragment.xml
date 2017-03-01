@@ -15,7 +15,7 @@
 				<HBox>
 					<CheckBox id="SelectAllUnpd" selected="false" select="onUnplannedSelectAll" class="sapUiTinyMarginBeginEnd" /> 
 						<MultiComboBox id="filterPhStation" items="{WorkListModel>/}" placeholder="{StationTrackerI18n>PhStation}"
-						selectionFinish="filterPhStation" visible="false" class="sapUiSizeCompact" width="20rem" enable="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}">
+						selectionFinish="filterPhStation" visible="false" class="sapUiSizeCompact" width="20rem" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}">
 						<core:Item key="{WorkListModel>WORK_CENTER}" text="{WorkListModel>DESCRIPTION}"/> 
 					</MultiComboBox>
 											
@@ -23,7 +23,7 @@
 							class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
 						    change="changeGroupUnplannedOsw"
-						    visible="true" enable="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}">
+						    visible="true" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}">
 						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
 					</Select>
 					
@@ -31,7 +31,7 @@
 							class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
 						    change="onChangeFilterOSWUnplanned"
-					        visible="true" enable="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}">						
+					        visible="true" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}">						
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
 					</Select>
 					
@@ -81,7 +81,7 @@
 		<buttons>
 			<Button text="{StationTrackerI18n>WorklistButtonImport}" type="Transparent" icon="sap-icon://forward"
 				class="sapUiTinyMarginBeginEnd pageHeaderDialog" press="onUnplannedImport"
-				visible="true" enable="{Profile>/identifiedUser/permissions/STATION_OSW_SELECT}">
+				visible="true" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_SELECT}">
 			</Button>
 			<Button text="{StationTrackerI18n>Close}" type="Transparent" icon="sap-icon://decline"
 				class="sapUiTinyMarginBeginEnd" press="onCloseImportOswUnplannedPopoverDialog">
