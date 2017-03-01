@@ -29,7 +29,7 @@ $kpi-box-header-height: 195px;
     }
     .kpiValue {
        /* font-size: 1.6vw; */
-        font-size: 1.2rem; 
+        font-size: 1vw; 
         width: 100%;
         text-align: center !important;
     }
@@ -42,12 +42,12 @@ $kpi-box-header-height: 195px;
         text-align: center !important;
         color: $white-two;
         width: 100%;
-        font-size: 1.2rem;
+        font-size: 1vw;
     }
     .sapSuiteCmpChartItemTitle, .sapSuiteCmpChartItemValue, .sapSuiteCpMCChartItemTitle, .sapSuiteCpMCChartItemValue,
     label {
         color: $white-two;
-        font-size: 0.9rem;
+        font-size: 0.78vw;
     }
 }
 
@@ -102,7 +102,7 @@ $kpi-box-extrawork-percent-height:42px;
         .sapMLabel {
             vertical-align: sub !important;
             max-height: $kpi-box-extrawork-text-height;
-            font-size: 1.1rem;
+            font-size: 0.9vw;
         }
     }
     .sapMFlexItem:nth-child(3), .sapMFlexItem:nth-child(5) {
@@ -156,7 +156,7 @@ $kpi-box-disruptions-total-numbers-height-bis: 44px;
         .sapMLabel {
             vertical-align: middle !important;
             max-height: $kpi-box-disruptions-total-title-height;
-            font-size: 1.1rem;
+            font-size: 0.9vw;
         }
     }
     .sapMFlexItem:nth-child(2), .sapMFlexItem:nth-child(4) {
@@ -201,7 +201,7 @@ $kpi-box-disruptions-total-numbers-height-bis: 44px;
           height: $kpi-box-disruptions-total-title-height;
         .sapMLabel {
             max-height: $kpi-box-disruptions-total-title-height;
-            font-size: 1.1rem;
+            font-size: 0.9vw;
         }
     }
 }

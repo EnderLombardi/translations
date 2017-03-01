@@ -1034,14 +1034,14 @@ TASK ADHERENCE
         }
         .taktKpiName {
             &.takt_kpi_trend {
-                font-size: 1.2rem;
+                font-size: 1vw;
             }
         }
     }
     .taktKpiName {
         height: 25px;
         text-align: right !important;
-        font-size:1rem;
+        font-size: 0.85vw;
         vertical-align: middle;
         display: baseline;
     }
@@ -1175,7 +1175,7 @@ SHIFT STAFFING
     width: 100%;
     .sapSuiteDMCTitle,
     .sapSuiteDMCLbls {
-        font-size: 1rem;
+        font-size: 0.8vw;
     }
     .sapSuiteDMCCnt {
         right: 2rem;
@@ -2043,7 +2043,7 @@ OTHER
 
 .disruptionTextSize {
     .sapSuiteCmpChartItemTitle {
-        font-size: 1rem !important;
+        font-size: 0.8vw !important;
         padding-right: 2vw;
         padding-bottom: 0.25vw;
     }
