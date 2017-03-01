@@ -50,10 +50,7 @@
 									visible="{path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"
 									class="disrptlistdesc" />
 								
-								<Button text="{i18nModel>close}" type="Accept"
-									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
-									design="Transparent" icon="sap-icon://accept" press="onCloseDisruption" class="disruptionTitleBarButtons" enabled="{Profile>/identifiedUser/permissions/WORK_DIS_CLOSE}"/>
-
+								
 								<Button text="{i18nModel>delete}" type="Reject"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>expanded'}], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
 									design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" class="disruptionTitleBarButtons"/>
@@ -260,6 +257,11 @@
   						  	<Button text="{i18nModel>refuse}" type="Reject"
 								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRefuseButtonVisibility'}"
 								press="onRefuseDisruption" design="Transparent"/>
+								
+							<Button text="{i18nModel>close}" type="Accept"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>expanded'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
+								icon="sap-icon://accept" press="onCloseDisruption"  enabled="{Profile>/identifiedUser/permissions/WORK_DIS_CLOSE}"/>
+								
 
 						</Toolbar>
 					</Panel>
