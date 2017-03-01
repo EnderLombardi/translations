@@ -4,54 +4,38 @@ jQuery.sap.declare("airbus.mes.components.util.Formatter");
 
 airbus.mes.components.util.Formatter = {
 
-    translateFilter: function (sName) {
-        return airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty(sName);
+    translateFilter : function(sName) {
+        return  airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty(sName);
     },
 
-    convertJsontoXmlPapi: function (json) {
+    convertJsontoXmlPapi: function(json){
         var sXmlStart = '<?xml version="1.0" encoding="UTF-8"?><Rowsets><Rowset>'
-            + '<Columns>'
-            + '<Column SourceColumn="BOMComponentBO" SQLDataType="12" Name="BOMComponentBO" MinRange="0" MaxRange="100" Description="BOMComponentBO"/>'
-            + '<Column SourceColumn="Site" SQLDataType="12" Name="Site" MinRange="0" MaxRange="100" Description="Site"/>'
-            + '<Column SourceColumn="Checked_Components" SQLDataType="12" Name="Checked_Components" MinRange="0" MaxRange="100" Description="Checked_Components"/>'
-            + '<Column SourceColumn="Fitted_Components" SQLDataType="12" Name="Fitted_Components" MinRange="0" MaxRange="100" Description="Fitted_Components"/>'
-            + '</Columns>';
-        var sXmlEnd = '</Rowset></Rowsets>';
+                      + '<Columns>'
+                      + '<Column SourceColumn="BOMComponentBO" SQLDataType="12" Name="BOMComponentBO" MinRange="0" MaxRange="100" Description="BOMComponentBO"/>'
+                      + '<Column SourceColumn="Site" SQLDataType="12" Name="Site" MinRange="0" MaxRange="100" Description="Site"/>'
+                      + '<Column SourceColumn="Checked_Components" SQLDataType="12" Name="Checked_Components" MinRange="0" MaxRange="100" Description="Checked_Components"/>'
+                      + '<Column SourceColumn="Fitted_Components" SQLDataType="12" Name="Fitted_Components" MinRange="0" MaxRange="100" Description="Fitted_Components"/>'
+                      + '</Columns>';
+        var sXmlEnd =     '</Rowset></Rowsets>';
         var sXmlByRow = "";
-        json.forEach(function (el) {
-            sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({
-                Row: {
-                    BOMComponentBO: [el.BOMComponentBO],
-                    Site: [airbus.mes.settings.site],
-                    Checked_Components: [el.Checked_Components],
-                    Fitted_Components: [el.Fitted_Components],
-                },
-            })
+        json.forEach(function(el){
+            sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({Row : {
+            	BOMComponentBO : [el.BOMComponentBO],
+            	Site : [airbus.mes.settings.site],
+            	Checked_Components : [el.Checked_Components],
+            	Fitted_Components : [el.Fitted_Components],
+            },})
         });
         var sXml = sXmlStart + sXmlByRow + sXmlEnd;
         airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi = sXml;
     },
-<<<<<<< Upstream, based on origin/MESv1.5
-
-    convertJsontoXmlJCO: function (json) {
-=======
                             
     convertJsontoXmlJCO: function(json, sUser, sPassword){
->>>>>>> 0a371f0 [Component] service to update fitted component
         var sXmlStart = '<?xml version="1.0" encoding="UTF-8"?>'
-            + '<Z_MES_SAVE_COMPONENT_>'
-            + '<INPUT>'
-            + '<IT_COMPONENTS>';
+                      + '<Z_MES_SAVE_COMPONENT_>'
+                      + '<INPUT>'
+                      + '<IT_COMPONENTS>';
         var sXmlEnd = '</IT_COMPONENTS>'
-<<<<<<< Upstream, based on origin/MESv1.5
-            + '<IV_APPLICATION_ID>MES</IV_APPLICATION_ID>'
-            + '<IV_BADGE_ID/>'
-            + "<IV_LANGUAGE>'E'</IV_LANGUAGE>"
-            + '<IV_PASSWORD>Sopra0007</IV_PASSWORD>'
-            + '<IV_UNAME>NG1FCF2</IV_UNAME>'
-            + '</INPUT>'
-            + '</Z_MES_SAVE_COMPONENT_>';
-=======
 			        + '<IV_APPLICATION_ID>MES</IV_APPLICATION_ID>'
 			        + '<IV_BADGE_ID/>'
 			        + "<IV_LANGUAGE>'E'</IV_LANGUAGE>"
@@ -63,18 +47,15 @@ airbus.mes.components.util.Formatter = {
 			        + '</IV_UNAME>'
 			        + '</INPUT>'
 			        + '</Z_MES_SAVE_COMPONENT_>';
->>>>>>> 0a371f0 [Component] service to update fitted component
 
         var sXmlByRow = "";
-        json.forEach(function (el) {
-            sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({
-                Row: {
-                    BOMComponentBO: [el.BOMComponentBO],
-                    Site: [airbus.mes.settings.site],
-                    Checked_Components: [el.Checked_Components],
-                    Fitted_Components: [el.Fitted_Components],
-                },
-            })
+        json.forEach(function(el){
+            sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({Row : {
+            	BOMComponentBO : [el.BOMComponentBO],
+            	Site : [airbus.mes.settings.site],
+            	Checked_Components : [el.Checked_Components],
+            	Fitted_Components : [el.Fitted_Components],
+            },})
         });
         var sXml = sXmlStart + sXmlByRow + sXmlEnd;
         airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO = sXml;

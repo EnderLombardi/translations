@@ -291,27 +291,27 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     },
 
     //is called when the save button is clicked. It handles the datan converts it in xml and send them to backend.
-    onbtnComponentsSave: function (oEvent) {
-    	
-//    	Open popup to confirm current user
-    	if (jQuery.sap.getObject("airbus.mes.userConfirmation.Component") === undefined) {
-    		jQuery.sap.registerModulePath("airbus.mes.userConfirmation", "../components/userConfirmation");
-    		sap.ui.getCore().createComponent({            
-    		    name: "airbus.mes.userConfirmation"
-    		});      
-    		airbus.mes.userConfirmation.oView.byId("OKForConfirmation").attachPress(airbus.mes.components.oView.getController().onSave());
-    		
-    		
-    	} else {
-    		airbus.mes.userConfirmation.oView.byId("partialTckTmplt").open();
-    	}  	
-    	
-    },
+//    onbtnComponentsSave: function (oEvent) {
+//    	
+////    	Open popup to confirm current user
+//    	if (jQuery.sap.getObject("airbus.mes.userConfirmation.Component") === undefined) {
+//    		jQuery.sap.registerModulePath("airbus.mes.userConfirmation", "../components/userConfirmation");
+//    		sap.ui.getCore().createComponent({            
+//    		    name: "airbus.mes.userConfirmation"
+//    		});      
+//    		airbus.mes.userConfirmation.oView.byId("OKForConfirmation").attachPress(airbus.mes.components.oView.getController().onSave());
+//    		
+//    		
+//    	} else {
+//    		airbus.mes.userConfirmation.oView.byId("partialTckTmplt").open();
+//    	}  	
+//    	
+//    },
     
-    onSave: function() {
+    onbtnComponentsSave: function() {
 //    	Retrieve user/password
-    	var user = airbus.mes.userConfirmation.oView.getController().getOwnerComponent().getUser();
-    	var password = airbus.mes.userConfirmation.oView.getController().getOwnerComponent().getPassword();
+//    	var user = airbus.mes.userConfirmation.oView.getController().getOwnerComponent().getUser();
+//    	var password = airbus.mes.userConfirmation.oView.getController().getOwnerComponent().getPassword();
     	    	
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         var count = oTable.getBinding("rows").oList.length;
@@ -333,6 +333,47 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         airbus.mes.components.util.Formatter.convertJsontoXmlJCO(airbus.mes.components.util.ModelManager.dataSaveJson, user, password);
         airbus.mes.components.util.Formatter.convertJsontoXmlPapi(airbus.mes.components.util.ModelManager.dataSaveJson);
                 
+        
+//      Param.1=$site&Param.2=$ERPSystem&Param.3=$xmlPAPI&Param.4=$xmlJCO
+	    var url = this.urlModel.getProperty("componentsSaveFittedComponent");
+	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
+	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$ERPSystem", airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system);
+	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlPAPI", airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi);
+	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlJCO", airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO);
+	    return url;
+    
+        
+//      call service
+        jQuery.ajax({
+            type : 'get',
+            async : false,
+            url : this.urlModel.getProperty("componentsSaveFittedComponent"),
+            contentType : 'application/json',
+            
+            success : function(data) {
+            	  console.log("sucess");
+//                if (typeof data == "string") {
+//                    data = JSON.parse(data);
+//                }
+//                if (typeof data != "object" || data === null) {
+//                	/* In case the tool list is empty, we receive "null" */
+//                	data = { toolInfoList : [] };
+//                }
+//                data.toolInfoList = data.toolInfoList || [];
+//                if (!Array.isArray(data.toolInfoList)) {
+//                	/* In case the tool list contain one element, we receive an object */
+//                    data.toolInfoList = [ data.toolInfoList ];
+//                }
+//                oViewModel.setData(data);
+//                oViewModel.refresh();
+            },
+
+            error : function(error, jQXHR) {
+                console.log(error);
+            }
+        });
+        
+        
     },
 
     //is called when the save button is clicked.
