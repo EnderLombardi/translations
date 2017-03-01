@@ -462,11 +462,11 @@ TASK ADHERENCE
 .classKpiHeaderContent .taktAdherenceTrend .TrendRed {
   margin-bottom: 0.5rem; }
 .classKpiHeaderContent .taktAdherenceTrend .taktKpiName.takt_kpi_trend {
-  font-size: 1vw; }
+  font-size: 1.1rem; }
 .classKpiHeaderContent .taktKpiName {
   height: 25px;
   text-align: right !important;
-  font-size: 0.85vw;
+  font-size: 1rem;
   vertical-align: middle;
   display: baseline; }
 .classKpiHeaderContent .taktKpiValue {
@@ -627,7 +627,7 @@ SHIFT STAFFING
 
 #idLinetracker--shifStaffingHeader .sapSuiteDmcTitle,
 #idLinetracker--shifStaffingHeader .sapSuiteDmcLbls {
-  font-size: 0.8vw; }
+  font-size: 1rem; }
 #idLinetracker--shifStaffingHeader .sapSuiteDmcCnt {
   right: 2rem; }
 #idLinetracker--shifStaffingHeader .sapSuiteDmcDelta {
@@ -663,7 +663,7 @@ SHIFT STAFFING for Station KPI
 #idLinetracker--shifStaffingHeader{
     .sapSuiteDmcTitle,
     .sapSuiteDmcLbls{
-        font-size: 0.8vw;
+        font-size: 1rem;
     }
     .sapSuiteDmcCnt {
         right: 2rem;
@@ -704,7 +704,7 @@ KPI Header Content
   .kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
     vertical-align: sub !important;
     max-height: 30px;
-    font-size: 0.9vw; }
+    font-size: 1.1rem; }
 .kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel {
   vertical-align: top !important;
   max-height: 42px; }
@@ -739,7 +739,7 @@ KPI Header Content
     .openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel {
       vertical-align: middle !important;
       max-height: 25px;
-      font-size: 0.9vw; }
+      font-size: 1.1rem; }
   .openDisruptionTotal .sapMFlexItem:nth-child(2), .openDisruptionTotal .sapMFlexItem:nth-child(4) {
     height: 20px; }
     .openDisruptionTotal .sapMFlexItem:nth-child(2) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(4) .sapMLabel {
