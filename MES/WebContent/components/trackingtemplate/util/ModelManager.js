@@ -196,8 +196,44 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             totalPartialConfirmationUrl, "password", password);
         totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
             totalPartialConfirmationUrl, "logon", userId.toUpperCase());
-
+        console.log(totalPartialConfirmationUrl.toString());
         return totalPartialConfirmationUrl;
+    },
+
+    /***************************************************************************
+     * Request for sending note
+     **************************************************************************/
+    sendWONotes: function (shopOrderNum, erpSystem, badgeID, description, reasonCodeText, password, userId) {
+        // var sMessageSuccess = this.getView().getModel("i18n")
+        //     .getProperty("SuccessfulConfirmation");
+        // var sMessageError = this.getView().getModel("i18n")
+        //     .getProperty("ErrorDuringConfirmation");
+        var sMessageSuccess;
+        var sMessageError = 'Error during confirmation';
+        jQuery
+            .ajax({
+                url: airbus.mes.trackingtemplate.util.ModelManager
+                    .getSendNotesUrl(shopOrderNum, erpSystem, badgeID, description, reasonCodeText, password, userId),
+                async: false,
+                error: function (xhr, status, error) {
+                    if (result.Rowsets.Rowset && result.Rowsets.Rowset[0].Row[0].Message) {
+                        sMessageError = result.Rowsets.Rowset[0].Row[0].Message;
+                    }
+                    airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageError);
+
+                },
+                success: function (result, status, xhr) {
+                    if (result.Rowsets.Rowset && result.Rowsets.Rowset[0].Row) {
+                        sMessageSuccess = result.Rowsets.Rowset[0].Row[0].Message;
+                    } else {
+                        sMessageSuccess = sMessageError;
+                    }
+                    //récupérer la reference du WO note. Non renvoyé par MII
+                    airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
+                    airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
+                    airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
+                }
+            });
     },
 
     /***************************************************************************
@@ -222,6 +258,46 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             closeOnBrowserNavigation: false
         });
 
+    },
+
+    /***************************************************************************
+     * Send POST attached document request
+     **************************************************************************/
+    attachDocument: function (site, referenceWO, fileName, fileBase64, userName) {
+        jQuery.ajax({
+            async: false,
+            url: airbus.mes.trackingtemplate.util.ModelManager.getPostAttachedDocumentUrl(),
+            dataType: "json",
+            cache: false,
+            contentType: 'application/json',
+            type: 'post',
+            data: JSON.stringify({
+                "site": site,
+                "type": "TKT",
+                "ref": referenceWO,
+                "fileName": fileName,
+                "fileDescript": "test MF",
+                "fileBase64": fileBase64,
+                "userName": userName
+            })
+            ,
+            success: function (data, textStatus, jqXHR) {
+                console.log(textStatus);
+                airbus.mes.trackingtemplate.util.ModelManager.messageShow('Attached Document success');
+            },
+            error: function (data, textStatus, jqXHR) {
+                console.log(textStatus);
+                airbus.mes.trackingtemplate.util.ModelManager.messageShow('Cannot attached document');
+            }
+        });
+    },
+
+    /***
+     * return post url
+     */
+    getPostAttachedDocumentUrl: function () {
+        console.log(this.urlModel.getProperty("postAttachedDocument"));
+        return this.urlModel.getProperty("postAttachedDocument");
     },
 
 };

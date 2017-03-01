@@ -124,7 +124,6 @@ SETTINGS
 .classSelectListBox .sapMBar label { color: rgba(0, 86, 112, 0.94); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 1.125rem; font-family: Arial,Helvetica,sans-serif; height: 3rem; line-height: 3rem; padding: 0 1rem; }
 
 /************************************
-<<<<<<< Upstream, based on origin/MESv1.5
 Défilement text tooltip
 ************************************/
 @-webkit-keyframes marqueelike { 0%, 100% { margin-left: 0; }
@@ -142,40 +141,6 @@ Défilement text tooltip
 @keyframes marqueelike { 0%, 100% { margin-left: 0; }
   99.99% { margin-left: -100%; } }
 
-=======
-D├®filement text tooltip
-************************************/
-@-webkit-keyframes marqueelike {
-  0%,
-    100% {
-    margin-left: 0; }
-  99.99% {
-    margin-left: -100%; } }
-@-moz-keyframes marqueelike {
-  0%,
-    100% {
-    margin-left: 0; }
-  99.99% {
-    margin-left: -100%; } }
-@-o-keyframes marqueelike {
-  0%,
-    100% {
-    margin-left: 0; }
-  99.99% {
-    margin-left: -100%; } }
-@-ms-keyframes marqueelike {
-  0%,
-    100% {
-    margin-left: 0; }
-  99.99% {
-    margin-left: -100%; } }
-@keyframes marqueelike {
-  0%,
-    100% {
-    margin-left: 0; }
-  99.99% {
-    margin-left: -100%; } }
->>>>>>> cbd50ec [kpiheader] - font size
 /********************
 TABLE
 *********************/
@@ -548,7 +513,6 @@ label.teamLabel { font-size: 2rem; font-weight: bold; }
 
 /***********************
 TASK ADHERENCE
-<<<<<<< Upstream, based on origin/MESv1.5
 ************************/
 .taktAdherenceTrend { height: 100%; padding-right: 0 !important; }
 
@@ -560,9 +524,9 @@ TASK ADHERENCE
 
 .classKpiHeaderContent .taktAdherenceTrend .TrendRed { margin-bottom: 0.5rem; }
 
-.classKpiHeaderContent .taktAdherenceTrend .taktKpiName.takt_kpi_trend { font-size: 1vw; }
+.classKpiHeaderContent .taktAdherenceTrend .taktKpiName.takt_kpi_trend { font-size: 1.2rem; }
 
-.classKpiHeaderContent .taktKpiName { height: 25px; text-align: right !important; font-size: 0.85vw; vertical-align: middle; display: baseline; }
+.classKpiHeaderContent .taktKpiName { height: 25px; text-align: right !important; font-size: 1rem; vertical-align: middle; display: baseline; }
 
 .classKpiHeaderContent .taktKpiValue { height: 25px; display: inline-block; vertical-align: baseline; }
 
@@ -572,44 +536,6 @@ TASK ADHERENCE
 
 #stationTrackerView--takt_adherence_adherence_value { font-size: 15px; }
 
-=======
-************************/
-.taktAdherenceTrend {
-  height: 100%;
-  padding-right: 0 !important; }
-  .taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > div {
-    margin: 0 0.5rem 0 0;
-    line-height: 1rem; }
-  .taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > .sapUiRespGridSpanL4 {
-    margin: 0;
-    width: auto; }
-
-.classKpiHeaderContent .taktAdherenceTrend .TrendGree {
-  margin-bottom: 0.5rem; }
-.classKpiHeaderContent .taktAdherenceTrend .TrendRed {
-  margin-bottom: 0.5rem; }
-.classKpiHeaderContent .taktAdherenceTrend .taktKpiName.takt_kpi_trend {
-  font-size: 1.2rem; }
-.classKpiHeaderContent .taktKpiName {
-  height: 25px;
-  text-align: right !important;
-  font-size: 1rem;
-  vertical-align: middle;
-  display: baseline; }
-.classKpiHeaderContent .taktKpiValue {
-  height: 25px;
-  display: inline-block;
-  vertical-align: baseline; }
-.classKpiHeaderContent .KPITaktChartBlueText {
-  color: #74d2e7; }
-.classKpiHeaderContent .KPITaktChartRightText {
-  text-align: right !important;
-  width: 100%; }
-
-#stationTrackerView--takt_adherence_adherence_value {
-  font-size: 15px; }
-
->>>>>>> cbd50ec [kpiheader] - font size
 /*************
 ARE CHART
 **************/
@@ -643,7 +569,6 @@ svg#stationTrackerView--takt_adherence_area_chart { border: none; }
 
 /*******************************
 SHIFT STAFFING
-<<<<<<< Upstream, based on origin/MESv1.5
 ********************************/
 #stationTrackerView--shifStaffingHeader-dmc-chart .sapSuiteDMCBar1 { background-color: #84bd00; }
 
@@ -655,7 +580,7 @@ SHIFT STAFFING
 
 #stationTrackerView--shifStaffingHeader { width: 100%; }
 
-#stationTrackerView--shifStaffingHeader .sapSuiteDMCTitle, #stationTrackerView--shifStaffingHeader .sapSuiteDMCLbls { font-size: 0.8vw; }
+#stationTrackerView--shifStaffingHeader .sapSuiteDMCTitle, #stationTrackerView--shifStaffingHeader .sapSuiteDMCLbls { font-size: 1rem; }
 
 #stationTrackerView--shifStaffingHeader .sapSuiteDMCCnt { right: 2rem; }
 
@@ -665,33 +590,6 @@ SHIFT STAFFING
 
 #stationTrackerView--shifStaffingHeader .sapSuiteDMCDirectionLeft { background-color: #84bd00; }
 
-=======
-********************************/
-#stationTrackerView--shifStaffingHeader-dmc-chart .sapSuiteDMCBar1 {
-  background-color: #84bd00; }
-
-#stationTrackerView--shifStaffingHeader-dmc-bar-delta {
-  max-width: calc(100% - 3px); }
-  #stationTrackerView--shifStaffingHeader-dmc-bar-delta .sapSuiteDMCBarDeltaInt {
-    background: #fe5000; }
-  #stationTrackerView--shifStaffingHeader-dmc-bar-delta .sapSuiteDMCBarDeltaStripe {
-    background-color: #74d2e7 !important; }
-
-#stationTrackerView--shifStaffingHeader {
-  width: 100%; }
-  #stationTrackerView--shifStaffingHeader .sapSuiteDMCTitle,
-  #stationTrackerView--shifStaffingHeader .sapSuiteDMCLbls {
-    font-size: 1rem; }
-  #stationTrackerView--shifStaffingHeader .sapSuiteDMCCnt {
-    right: 2rem; }
-  #stationTrackerView--shifStaffingHeader .sapSuiteDMCSemanticColorNeutral {
-    color: white; }
-  #stationTrackerView--shifStaffingHeader .sapSuiteDMCDirectionLeft {
-    background-color: #84bd00; }
-  #stationTrackerView--shifStaffingHeader .sapSuiteDMCDirectionLeft {
-    background-color: #84bd00; }
-
->>>>>>> cbd50ec [kpiheader] - font size
 /***********************************
 STATION TRACKER TOOLBAR
 ************************************/
@@ -874,7 +772,6 @@ div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI { border: none; }
 
 /************************
 OTHER
-<<<<<<< Upstream, based on origin/MESv1.5
 *************************/
 #team-popover button { display: block; width: 100%; }
 
@@ -989,7 +886,7 @@ OTHER
 
 .wrap .sapMLabel { white-space: normal !important; }
 
-.disruptionTextSize .sapSuiteCmpChartItemTitle { font-size: 0.8vw !important; padding-right: 2vw; padding-bottom: 0.25vw; }
+.disruptionTextSize .sapSuiteCmpChartItemTitle { font-size: 1rem !important; padding-right: 2vw; padding-bottom: 0.25vw; }
 
 .spaceBetweenCharts .sapSuiteCmpChartItem.Normal.Auto { margin-top: 0.5rem !important; }
 
@@ -1000,259 +897,6 @@ OTHER
 
 .oswPopover .sapUiSizeCompact .sapMTokenizer .sapMToken { margin-top: 0.23rem; }
 
-=======
-*************************/
-#team-popover button {
-  display: block;
-  width: 100%; }
-
-.div.Left.sapSuiteDmcBarInternal {
-  background: #006CA7; }
-
-.selectBoxStation {
-  height: 30px;
-  padding-left: 10px;
-  width: 100px;
-  position: relative; }
-
-.marginLeft0 {
-  margin-left: 0 !important; }
-
-.partialConfirmCss .sapUxAPObjectPageSectionTitle {
-  color: #006CA7 !important;
-  border-bottom: 0px solid #999999 !important; }
-
-.partialConfirmCss2 .sapUxAPObjectPageSectionHeader {
-  border-bottom: 0px solid #f2f2f2 !important; }
-
-.partialConfirmCss3 .sapUxAPObjectPageSectionHeader {
-  height: 0rem; }
-
-.partialConfHeader .sapUxAPObjectPageHeaderIdentifier {
-  background-color: #0085ad !important; }
-
-.whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle,
-.whitePartialConfHeader2 .sapUxAPObjectPageHeaderIdentifierDescription {
-  color: white !important; }
-
-.lockCss .sapUxAPObjectPageHeaderLockBtn .sapMBtnTransparent > .sapMBtnIcon {
-  color: #ED8E01; }
-
-.ylabel:hover .tolltip {
-  visibility: visible; }
-
-.dhx_cal_date {
-  visibility: hidden;
-  z-index: -1; }
-
-.otherStations {
-  background-color: #515456; }
-
-.Blue {
-  background-color: #006CA7 !important;
-  z-index: 1 !important; }
-
-.white {
-  background-color: white !important; }
-
-.centerItems.NS.sapSuiteHdrCellNorth {
-  text-align: center !important; }
-
-.whiteTextButton .sapMBtnTransparent {
-  color: white !important;
-  text-align: left; }
-
-.blackTextButton .sapMBtnTransparent {
-  color: black !important;
-  text-align: left; }
-
-.blackTextButton2 .sapMBtn {
-  border-bottom-style: inset;
-  border-top: none;
-  border-left: none;
-  border-right: none; }
-.blackTextButton2 .sapMBtnIcon {
-  width: 3rem;
-  font-size: 1rem; }
-.blackTextButton2 .sapMBtnContent {
-  padding-left: 9px; }
-
-.alignTextLeft .sapMIBar-CTX .sapMTitle {
-  font-family: "Verdana";
-  font-weight: bold;
-  font-size: medium;
-  padding-right: 75%; }
-
-.hachure {
-  background-image: url("../../components/stationtracker/css/img/fat_lines.png"); }
-
-.panelContent .sapMPanelContent {
-  padding: 0rem;
-  background-color: #CCE6EE; }
-
-.panelContentList .sapMListBGSolid .sapMLIB {
-  background-color: #CCE6EE; }
-
-.textBlackPanel .sapMTB-Transparent-CTX .sapMLabel {
-  color: black; }
-
-.pageStation {
-  background: #006CA7 !important; }
-
-.pageWelcome2 {
-  font-family: "Arial" !important;
-  font-weight: bold;
-  font-size: 14px !important;
-  text-align: center !important;
-  color: white !important; }
-
-.stationTitle {
-  color: #006CA7 !important;
-  font-family: "Arial" !important;
-  font-weight: 400;
-  font-size: 24px !important; }
-
-.blueTitle {
-  color: #006CA7; }
-
-.stationWelcome {
-  color: #006CA7 !important;
-  font-family: "Arial" !important;
-  font-weight: 400;
-  font-size: 14px !important; }
-
-.pageUsername {
-  font-family: "Arial" !important;
-  font-weight: 400;
-  font-size: 14px;
-  color: white !important; }
-
-.greenBottom {
-  box-shadow: 0 5px 0 green; }
-
-.redBottom {
-  color: red;
-  box-shadow: 0 5px 0 red; }
-
-.duck-egg-blue {
-  background-color: #d5f5f8 !important; }
-
-.eventOrange {
-  background-color: #F9DAAB;
-  color: black; }
-
-.Hour {
-  background-color: grey;
-  opacity: 0.5;
-  filter: alpha(opacity=25); }
-
-.buttonNotif .sapMBtnContent {
-  color: orange;
-  font-weight: Bold;
-  padding-top: 10px !important; }
-
-.notifDetails {
-  font-size: smaller !important; }
-
-#operationDetailPopup--operationDetailPopUp-scrollCont {
-  padding: 0rem !important;
-  height: 100%; }
-
-.dhx_marked_timespan,
-.dhx_matrix_now_time {
-  border-left-color: purple !important;
-  opacity: 1;
-  border-width: 3px !important; }
-
-#stationTrackerView--toolbarstationtracker-popover-scroll {
-  color: #000000; }
-  #stationTrackerView--toolbarstationtracker-popover-scroll > button > div {
-    color: inherit !important; }
-    #stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed {
-      background-color: #005483 !important; }
-      #stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed:hover {
-        opacity: 0.8; }
-      #stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed > * {
-        color: #ffffff !important;
-        background-color: #005483 !important; }
-  #stationTrackerView--toolbarstationtracker-popover-scroll > button:hover > div:not(.sapMToggleBtnPressed) {
-    background-color: rgba(222, 222, 222, 0.5); }
-
-#ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed {
-  color: #ffffff !important;
-  background-color: #005483 !important; }
-  #ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed:hover {
-    opacity: 0.8; }
-
-.sidenav {
-  height: 0;
-  /* height - change this with JavaScript*/
-  width: 100%;
-  /*100% Full-width */
-  position: fixed;
-  /* Stay in place */
-  z-index: 101;
-  /* Stay on top */
-  bottom: 0;
-  left: 0;
-  background-color: #4a4b4b;
-  /* Black*/
-  overflow-y: hidden;
-  /* Disable horizontal scroll */
-  margin-top: -1rem !important;
-  transition: 0.10s;
-  transition-delay: 1s;
-  /*transition effect to slide in the sidenav */ }
-
-#main {
-  transition: margin-right .5s; }
-
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px; }
-
-  .sidenav a {
-    font-size: 18px; } }
-.sidebarContentMargin {
-  margin: 0 1rem 1rem 1rem; }
-
-.slidingUpDownPanel {
-  height: 100%;
-  /* height - change this with JavaScript*/
-  width: 100%;
-  /*100% Full-width */
-  position: fixed;
-  /* Stay in place */
-  z-index: 101;
-  /* Stay on top */
-  overflow-y: hidden;
-  /* Disable horizontal scroll */
-  display: none; }
-
-#stationTrackerView--disruptNotifications > .sapMFlexItem {
-  width: 100% !important;
-  height: 100% !important; }
-
-.wrap .sapMLabel {
-  white-space: normal !important; }
-
-.disruptionTextSize .sapSuiteCmpChartItemTitle {
-  font-size: 1rem !important;
-  padding-right: 2vw;
-  padding-bottom: 0.25vw; }
-
-.spaceBetweenCharts .sapSuiteCmpChartItem.Normal.Auto {
-  margin-top: 0.5rem !important; }
-
-/* oswPopover */
-.oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] {
-  margin: 0 !important; }
-  .oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] .sapMCbBg {
-    top: 0.5125rem; }
-.oswPopover .sapUiSizeCompact .sapMTokenizer .sapMToken {
-  margin-top: 0.23rem; }
-
->>>>>>> cbd50ec [kpiheader] - font size
 /*********
 reschedule
 **********/
@@ -1266,7 +910,6 @@ reschedule
 
 /********************
 KPI Header Content
-<<<<<<< Upstream, based on origin/MESv1.5
 *********************/
 /*KPI header*/
 .classKpiHeaderContent { height: 195px; overflow-y: hidden; }
@@ -1279,13 +922,13 @@ KPI Header Content
 
 .classKpiHeaderContent .sapSuiteCmpChartBarNoValue { background-color: rgba(187, 188, 188, 0.15); }
 
-.classKpiHeaderContent .kpiValue { /* font-size: 1.6vw; */ font-size: 1vw; width: 100%; text-align: center !important; }
+.classKpiHeaderContent .kpiValue { /* font-size: 1.6vw; */ font-size: 1.2rem; width: 100%; text-align: center !important; }
 
 .classKpiHeaderContent .kpiName { text-align: center !important; width: 100%; }
 
-.classKpiHeaderContent .whiteTextHeader { white-space: normal; text-align: center !important; color: #ffffff; width: 100%; font-size: 1vw; }
+.classKpiHeaderContent .whiteTextHeader { white-space: normal; text-align: center !important; color: #ffffff; width: 100%; font-size: 1.2rem; }
 
-.classKpiHeaderContent .sapSuiteCmpChartItemTitle, .classKpiHeaderContent .sapSuiteCmpChartItemValue, .classKpiHeaderContent .sapSuiteCpMCChartItemTitle, .classKpiHeaderContent .sapSuiteCpMCChartItemValue, .classKpiHeaderContent label { color: #ffffff; font-size: 0.78vw; }
+.classKpiHeaderContent .sapSuiteCmpChartItemTitle, .classKpiHeaderContent .sapSuiteCmpChartItemValue, .classKpiHeaderContent .sapSuiteCpMCChartItemTitle, .classKpiHeaderContent .sapSuiteCpMCChartItemValue, .classKpiHeaderContent label { color: #ffffff; font-size: 0.9rem; }
 
 /*KPI boxes*/
 .kpiBoxes > .sapMFlexItem:first-child { height: 50px; }
@@ -1303,7 +946,7 @@ KPI Header Content
 
 .kpiBoxExtraWork .sapMFlexItem:nth-child(2), .kpiBoxExtraWork .sapMFlexItem:nth-child(4) { height: 30px; }
 
-.kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel { vertical-align: sub !important; max-height: 30px; font-size: 0.9vw; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel { vertical-align: sub !important; max-height: 30px; font-size: 1.1rem; }
 
 .kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel { vertical-align: top !important; max-height: 42px; }
 
@@ -1323,7 +966,7 @@ KPI Header Content
 
 .openDisruptionTotal .sapMFlexItem:nth-child(1) { height: 25px; }
 
-.openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel { vertical-align: middle !important; max-height: 25px; font-size: 0.9vw; }
+.openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel { vertical-align: middle !important; max-height: 25px; font-size: 1.1rem; }
 
 .openDisruptionTotal .sapMFlexItem:nth-child(2), .openDisruptionTotal .sapMFlexItem:nth-child(4) { height: 20px; }
 
@@ -1339,7 +982,7 @@ KPI Header Content
 
 .openDisruptionDetail .sapMFlexItem:nth-child(1), .openDisruptionValues .sapMFlexItem:nth-child(1), .openDisruptionAndon .sapMFlexItem:nth-child(1) { height: 25px; }
 
-.openDisruptionDetail .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionValues .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionAndon .sapMFlexItem:nth-child(1) .sapMLabel { max-height: 25px; font-size: 0.9vw; }
+.openDisruptionDetail .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionValues .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionAndon .sapMFlexItem:nth-child(1) .sapMLabel { max-height: 25px; font-size: 1.1rem; }
 
 .taktAdherenceTrendBox > .sapMFlexItem { height: 100%; }
 
@@ -1383,226 +1026,6 @@ KPI Header Content
 
 .customListItem > div > button:nth-child(2) { border-bottom: solid 1px #ffffff; border-top: solid 1px #ffffff; }
 
-=======
-*********************/
-/*KPI header*/
-.classKpiHeaderContent {
-  height: 195px;
-  overflow-y: hidden; }
-  .classKpiHeaderContent .contentHeaderCont {
-    white-space: normal;
-    background-color: #0f2d65;
-    border-right: solid 1px #74d2e7;
-    margin: 0px !important;
-    border-bottom: none;
-    border-top: solid 1px #74d2e7;
-    padding: 0 5px;
-    display: block; }
-  .classKpiHeaderContent .contentHeaderCont:last-child {
-    border-right: none !important; }
-  .classKpiHeaderContent .sapSuiteCpMCChartBarNoValue {
-    background-color: rgba(187, 188, 188, 0.15); }
-  .classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
-    background-color: rgba(187, 188, 188, 0.15); }
-  .classKpiHeaderContent .kpiValue {
-    /* font-size: 1.6vw; */
-    font-size: 1.2rem;
-    width: 100%;
-    text-align: center !important; }
-  .classKpiHeaderContent .kpiName {
-    text-align: center !important;
-    width: 100%; }
-  .classKpiHeaderContent .whiteTextHeader {
-    white-space: normal;
-    text-align: center !important;
-    color: #ffffff;
-    width: 100%;
-    font-size: 1.2rem; }
-  .classKpiHeaderContent .sapSuiteCmpChartItemTitle, .classKpiHeaderContent .sapSuiteCmpChartItemValue, .classKpiHeaderContent .sapSuiteCpMCChartItemTitle, .classKpiHeaderContent .sapSuiteCpMCChartItemValue,
-  .classKpiHeaderContent label {
-    color: #ffffff;
-    font-size: 0.9rem; }
-
-/*KPI boxes*/
-.kpiBoxes > .sapMFlexItem:first-child {
-  height: 50px; }
-  .kpiBoxes > .sapMFlexItem:first-child .sapMLabel {
-    display: inline-block;
-    vertical-align: middle !important;
-    max-width: 100% !important;
-    max-height: 50px; }
-
-.labourEfficiencyBox .sapMFlexItem:nth-child(2) {
-  height: 144px;
-  display: block;
-  vertical-align: middle !important; }
-  .labourEfficiencyBox .sapMFlexItem:nth-child(2) .sapMLabel {
-    vertical-align: super !important;
-    max-height: 144px; }
-
-/*general kpi*/
-.kpiBoxExtraWork .sapMFlexItem {
-  width: 100% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important; }
-  .kpiBoxExtraWork .sapMFlexItem .sapMLabel {
-    display: inline-block;
-    max-width: 100% !important;
-    vertical-align: middle !important; }
-.kpiBoxExtraWork .sapMFlexItem:nth-child(2), .kpiBoxExtraWork .sapMFlexItem:nth-child(4) {
-  height: 30px; }
-  .kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
-    vertical-align: sub !important;
-    max-height: 30px;
-    font-size: 1.1rem; }
-.kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel {
-  vertical-align: top !important;
-  max-height: 42px; }
-
-.kpiBody {
-  height: 139px; }
-
-.kpiBodyWithoutMargin {
-  height: 144px; }
-
-.kpiDeltaMicroChart {
-  margin: 10px 0;
-  height: 119px; }
-
-.marginTopKpiBody {
-  margin-top: 5px; }
-
-.openDisruptionTotal {
-  justify-content: inherit !important;
-  padding-right: 5px; }
-  .openDisruptionTotal .sapMFlexItem {
-    width: 100% !important;
-    line-height: normal;
-    display: inline-block;
-    vertical-align: middle !important; }
-    .openDisruptionTotal .sapMFlexItem .sapMLabel {
-      display: inline-block;
-      max-width: 100% !important;
-      vertical-align: middle !important; }
-  .openDisruptionTotal .sapMFlexItem:nth-child(1) {
-    height: 25px; }
-    .openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel {
-      vertical-align: middle !important;
-      max-height: 25px;
-      font-size: 1.1rem; }
-  .openDisruptionTotal .sapMFlexItem:nth-child(2), .openDisruptionTotal .sapMFlexItem:nth-child(4) {
-    height: 20px; }
-    .openDisruptionTotal .sapMFlexItem:nth-child(2) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(4) .sapMLabel {
-      vertical-align: middle !important;
-      max-height: 20px; }
-  .openDisruptionTotal .sapMFlexItem:nth-child(3) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(5) .sapMLabel {
-    vertical-align: top !important;
-    max-height: 30px; }
-
-.openDisruptionDetail, .openDisruptionValues {
-  padding-right: 5px; }
-
-.openDisruptionDetail .sapMFlexItem, .openDisruptionValues .sapMFlexItem, .openDisruptionAndon .sapMFlexItem {
-  width: 100% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important;
-  height: 23px; }
-  .openDisruptionDetail .sapMFlexItem .sapMLabel, .openDisruptionValues .sapMFlexItem .sapMLabel, .openDisruptionAndon .sapMFlexItem .sapMLabel {
-    display: inline-block;
-    max-width: 100% !important;
-    vertical-align: middle !important;
-    max-height: 23px; }
-.openDisruptionDetail .sapMFlexItem:nth-child(1), .openDisruptionValues .sapMFlexItem:nth-child(1), .openDisruptionAndon .sapMFlexItem:nth-child(1) {
-  height: 25px; }
-  .openDisruptionDetail .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionValues .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionAndon .sapMFlexItem:nth-child(1) .sapMLabel {
-    max-height: 25px;
-    font-size: 1.1rem; }
-
-.taktAdherenceTrendBox > .sapMFlexItem {
-  height: 100%; }
-
-.whiteText {
-  text-align: center !important;
-  color: #ffffff;
-  width: 100%; }
-
-.redText {
-  text-align: center !important;
-  color: #fe5000 !important;
-  width: 100%; }
-
-.chartColumn {
-  height: 100%; }
-  .chartColumn > .sapMFlexItem:nth-child(1) {
-    height: 25px; }
-    .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid {
-      width: 100%;
-      height: 100%;
-      padding: 0; }
-      .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div {
-        margin: 0 2%;
-        width: 46% !important;
-        line-height: normal;
-        display: inline-block;
-        vertical-align: middle !important;
-        height: 25px; }
-        .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:nth-child(1) {
-          text-align: -webkit-right !important; }
-        .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:nth-child(2) {
-          text-align: -webkit-left !important; }
-        .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div .sapMLabel {
-          display: inline-block;
-          max-width: 100% !important;
-          vertical-align: middle !important;
-          max-height: 25px; }
-  .chartColumn > .sapMFlexItem:nth-child(2) {
-    height: 119px; }
-  .chartColumn > .sapMFlexItem:nth-child(3) {
-    height: 25px;
-    width: 100% !important;
-    line-height: normal;
-    display: inline-block;
-    vertical-align: middle !important; }
-    .chartColumn > .sapMFlexItem:nth-child(3) .sapMLabel {
-      display: inline-block;
-      max-width: 100% !important;
-      vertical-align: bottom !important;
-      max-height: 25px; }
-  .chartColumn > .sapMFlexItem:nth-child(4) {
-    height: 25px; }
-    .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid {
-      width: 100%;
-      height: 100%;
-      padding: 0; }
-      .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div {
-        margin: 0;
-        width: 50% !important;
-        line-height: normal;
-        display: inline-block;
-        vertical-align: middle !important;
-        height: 25px; }
-        .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div .sapMLabel {
-          display: inline-block;
-          max-width: 100% !important;
-          vertical-align: middle !important;
-          max-height: 25px; }
-
-#teamPopoverID-intHeader {
-  background-color: #2c2a29 !important;
-  box-shadow: none; }
-
-.customListItem {
-  background-color: #2c2a29 !important;
-  border-bottom-color: #2c2a29; }
-  .customListItem > div > button > div > span {
-    color: #ffffff !important; }
-  .customListItem > div > button:nth-child(2) {
-    border-bottom: solid 1px #ffffff;
-    border-top: solid 1px #ffffff; }
-
->>>>>>> cbd50ec [kpiheader] - font size
 /*******************************
 BOX RESOLUTION EFFICIENCY
 ********************************/
@@ -2629,7 +2052,6 @@ KPI Charts
 
 /***********************
 TASK ADHERENCE
-<<<<<<< Upstream, based on origin/MESv1.5
 ************************/
 .taktAdherenceTrend { height: 100%; padding-right: 0 !important; }
 
@@ -2641,54 +2063,14 @@ TASK ADHERENCE
 
 .classKpiHeaderContent .taktAdherenceTrend .TrendRed { margin-bottom: 0.5rem; }
 
-.classKpiHeaderContent .taktAdherenceTrend .taktKpiName.takt_kpi_trend { font-size: 1vw; }
+.classKpiHeaderContent .taktAdherenceTrend .taktKpiName.takt_kpi_trend { font-size: 1.1rem; }
 
-.classKpiHeaderContent .taktKpiName { height: 25px; text-align: right !important; font-size: 0.85vw; vertical-align: middle; display: baseline; }
+.classKpiHeaderContent .taktKpiName { height: 25px; text-align: right !important; font-size: 1rem; vertical-align: middle; display: baseline; }
 
 .classKpiHeaderContent .taktKpiValue { height: 25px; display: inline-block; vertical-align: baseline; }
 
 .classKpiHeaderContent .KPITaktChartRightText { text-align: right !important; width: 100%; }
 
-=======
-************************/
-.taktAdherenceTrend {
-  height: 100%;
-  padding-right: 0 !important; }
-
-.taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > div {
-  margin: 0 0.5rem 0 0;
-  line-height: 1rem; }
-
-.taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > .sapUiRespGridSpanL4 {
-  margin: 0;
-  width: auto; }
-
-.classKpiHeaderContent .taktAdherenceTrend .TrendGree {
-  margin-bottom: 0.5rem; }
-
-.classKpiHeaderContent .taktAdherenceTrend .TrendRed {
-  margin-bottom: 0.5rem; }
-
-.classKpiHeaderContent .taktAdherenceTrend .taktKpiName.takt_kpi_trend {
-  font-size: 1.1rem; }
-
-.classKpiHeaderContent .taktKpiName {
-  height: 25px;
-  text-align: right !important;
-  font-size: 1rem;
-  vertical-align: middle;
-  display: baseline; }
-
-.classKpiHeaderContent .taktKpiValue {
-  height: 25px;
-  display: inline-block;
-  vertical-align: baseline; }
-
-.classKpiHeaderContent .KPITaktChartRightText {
-  text-align: right !important;
-  width: 100%; }
-
->>>>>>> cbd50ec [kpiheader] - font size
 /*
 #idLinetracker--takt_adherence_adherence_value {
   font-size: 15px; }
@@ -2766,11 +2148,10 @@ BOX RESOLUTION EFFICIENCY
 
 /*******************************
 SHIFT STAFFING
-<<<<<<< Upstream, based on origin/MESv1.5
 ********************************/
 #idLinetracker--shifStaffingHeader-dmc-chart .Left { background-color: #84bd00; }
 
-#idLinetracker--shifStaffingHeader .sapSuiteDmcTitle, #idLinetracker--shifStaffingHeader .sapSuiteDmcLbls { font-size: 0.8vw; }
+#idLinetracker--shifStaffingHeader .sapSuiteDmcTitle, #idLinetracker--shifStaffingHeader .sapSuiteDmcLbls { font-size: 1rem; }
 
 #idLinetracker--shifStaffingHeader .sapSuiteDmcCnt { right: 2rem; }
 
@@ -2780,28 +2161,6 @@ SHIFT STAFFING
 
 #idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaStripe { background-color: #74d2e7; }
 
-=======
-********************************/
-#idLinetracker--shifStaffingHeader-dmc-chart .Left {
-  background-color: #84bd00; }
-
-#idLinetracker--shifStaffingHeader .sapSuiteDmcTitle,
-#idLinetracker--shifStaffingHeader .sapSuiteDmcLbls {
-  font-size: 1rem; }
-
-#idLinetracker--shifStaffingHeader .sapSuiteDmcCnt {
-  right: 2rem; }
-
-#idLinetracker--shifStaffingHeader .sapSuiteDmcDelta {
-  color: white; }
-
-#idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
-  background: #fe5000; }
-
-#idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
-  background-color: #74d2e7; }
-
->>>>>>> cbd50ec [kpiheader] - font size
 /*******************************
 BOX RESOLUTION EFFICIENCY
 ********************************/
@@ -2813,11 +2172,10 @@ BOX RESOLUTION EFFICIENCY
 
 /*******************************
 SHIFT STAFFING for Station KPI
-<<<<<<< Upstream, based on origin/MESv1.5
 ********************************/
 #idLinetracker--stationshifStaffingHeader-dmc-chart .Left { background-color: #84bd00; }
 
-#idLinetracker--shifStaffingHeader .sapSuiteDmcTitle, #idLinetracker--shifStaffingHeader .sapSuiteDmcLbls { font-size: 0.8vw; }
+#idLinetracker--shifStaffingHeader .sapSuiteDmcTitle, #idLinetracker--shifStaffingHeader .sapSuiteDmcLbls { font-size: 1rem; }
 
 #idLinetracker--shifStaffingHeader .sapSuiteDmcCnt { right: 2rem; }
 
@@ -2827,30 +2185,11 @@ SHIFT STAFFING for Station KPI
 
 #idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaStripe { background-color: #74d2e7; }
 
-=======
-********************************/
-#idLinetracker--stationshifStaffingHeader-dmc-chart .Left {
-  background-color: #84bd00; }
-
-#idLinetracker--shifStaffingHeader .sapSuiteDmcTitle,
-#idLinetracker--shifStaffingHeader .sapSuiteDmcLbls {
-  font-size: 1rem; }
-#idLinetracker--shifStaffingHeader .sapSuiteDmcCnt {
-  right: 2rem; }
-#idLinetracker--shifStaffingHeader .sapSuiteDmcDelta {
-  color: white; }
-#idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
-  background: #fe5000; }
-#idLinetracker--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
-  background-color: #74d2e7; }
-
->>>>>>> cbd50ec [kpiheader] - font size
 /************************
 Station header KPI Styles
 *************************/
 /********************
 KPI Header Content
-<<<<<<< Upstream, based on origin/MESv1.5
 *********************/
 /*general kpi*/
 .kpiBoxExtraWork .sapMFlexItem { width: 100% !important; line-height: normal; display: inline-block; vertical-align: middle !important; }
@@ -2859,7 +2198,7 @@ KPI Header Content
 
 .kpiBoxExtraWork .sapMFlexItem:nth-child(2), .kpiBoxExtraWork .sapMFlexItem:nth-child(4) { height: 30px; }
 
-.kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel { vertical-align: sub !important; max-height: 30px; font-size: 0.9vw; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel { vertical-align: sub !important; max-height: 30px; font-size: 1.1rem; }
 
 .kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel { vertical-align: top !important; max-height: 42px; }
 
@@ -2879,7 +2218,7 @@ KPI Header Content
 
 .openDisruptionTotal .sapMFlexItem:nth-child(1) { height: 25px; }
 
-.openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel { vertical-align: middle !important; max-height: 25px; font-size: 0.9vw; }
+.openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel { vertical-align: middle !important; max-height: 25px; font-size: 1.1rem; }
 
 .openDisruptionTotal .sapMFlexItem:nth-child(2), .openDisruptionTotal .sapMFlexItem:nth-child(4) { height: 20px; }
 
@@ -2921,162 +2260,6 @@ KPI Header Content
 
 .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div .sapMLabel { display: inline-block; max-width: 100% !important; vertical-align: middle !important; max-height: 25px; }
 
-=======
-*********************/
-/*general kpi*/
-.kpiBoxExtraWork .sapMFlexItem {
-  width: 100% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important; }
-
-.kpiBoxExtraWork .sapMFlexItem .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important; }
-
-.kpiBoxExtraWork .sapMFlexItem:nth-child(2), .kpiBoxExtraWork .sapMFlexItem:nth-child(4) {
-  height: 30px; }
-
-.kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
-  vertical-align: sub !important;
-  max-height: 30px;
-  font-size: 1.1rem; }
-
-.kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel {
-  vertical-align: top !important;
-  max-height: 42px; }
-
-.kpiBody {
-  height: 139px; }
-
-.kpiBodyWithoutMargin {
-  height: 144px; }
-
-.kpiDeltaMicroChart {
-  margin: 10px 0;
-  height: 119px; }
-
-.marginTopKpiBody {
-  margin-top: 5px; }
-
-.openDisruptionTotal {
-  justify-content: inherit !important;
-  padding-right: 5px; }
-
-.openDisruptionTotal .sapMFlexItem {
-  width: 100% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important; }
-
-.openDisruptionTotal .sapMFlexItem .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important; }
-
-.openDisruptionTotal .sapMFlexItem:nth-child(1) {
-  height: 25px; }
-
-.openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel {
-  vertical-align: middle !important;
-  max-height: 25px;
-  font-size: 1.1rem; }
-
-.openDisruptionTotal .sapMFlexItem:nth-child(2), .openDisruptionTotal .sapMFlexItem:nth-child(4) {
-  height: 20px; }
-
-.openDisruptionTotal .sapMFlexItem:nth-child(2) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(4) .sapMLabel {
-  vertical-align: middle !important;
-  max-height: 20px; }
-
-.openDisruptionTotal .sapMFlexItem:nth-child(3) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(5) .sapMLabel {
-  vertical-align: top !important;
-  max-height: 30px; }
-
-.taktAdherenceTrendBox > .sapMFlexItem {
-  height: 100%; }
-
-.whiteText {
-  text-align: center !important;
-  color: #ffffff;
-  width: 100%; }
-
-.redText {
-  text-align: center !important;
-  color: #fe5000 !important;
-  width: 100%; }
-
-.chartColumn {
-  height: 100%; }
-
-.chartColumn > .sapMFlexItem:nth-child(1) {
-  height: 25px; }
-
-.chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid {
-  width: 100%;
-  height: 100%;
-  padding: 0; }
-
-.chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div {
-  margin: 0 2%;
-  width: 46% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important;
-  height: 25px; }
-
-.chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:nth-child(1) {
-  text-align: -webkit-right !important; }
-
-.chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:nth-child(2) {
-  text-align: -webkit-left !important; }
-
-.chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important;
-  max-height: 25px; }
-
-.chartColumn > .sapMFlexItem:nth-child(2) {
-  height: 119px; }
-
-.chartColumn > .sapMFlexItem:nth-child(3) {
-  height: 25px;
-  width: 100% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important; }
-
-.chartColumn > .sapMFlexItem:nth-child(3) .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: bottom !important;
-  max-height: 25px; }
-
-.chartColumn > .sapMFlexItem:nth-child(4) {
-  height: 25px; }
-
-.chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid {
-  width: 100%;
-  height: 100%;
-  padding: 0; }
-
-.chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div {
-  margin: 0;
-  width: 50% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important;
-  height: 25px; }
-
-.chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important;
-  max-height: 25px; }
-
->>>>>>> cbd50ec [kpiheader] - font size
 /***************************
 Physical Station Popover
 ****************************/
