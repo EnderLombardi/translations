@@ -22,7 +22,8 @@
             <Button id="btnReschedule" visible="false" text="{StationTrackerI18n>confirm}" icon="sap-icon://history" type="Transparent" press="onRescheduleConfirm" />
             
             <Button id="btnCommittedFitted" text="{StationTrackerI18n>Components}" icon="sap-icon://wrench" type="Transparent" press="onCommittedFitted" visible="false" />
-            <Button id="btnSave" text="{StationTrackerI18n>Save}" icon="sap-icon://save" type="Transparent" press="onSave" visible="false" />
+            <Button id="btnSave" text="{StationTrackerI18n>Save}" icon="sap-icon://save" type="Transparent" press="onSave" 
+            enabled="false" visible="false" />
             <Button id="btnFreeze" text="{StationTrackerI18n>Freeze}" icon="sap-icon://stop" type="Transparent" press="onFreeze"
             enabled="false" visible="false" />
 
