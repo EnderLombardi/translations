@@ -25,7 +25,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         if (sap.ui.getCore().byId("selectFilter--selectFilterComponents")) {
             sap.ui.getCore().byId("selectFilter--selectFilterComponents").removeSelections(true);
         }
-        
+
         // Get setting from ME/MII and select the good button between operation and work order
         this.filterComponents(this.sSet);
 
@@ -303,7 +303,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
     },
 
-    //is called when the save button is clicked
+    //change the view between components and fitted/committed
     onbtnCommittedFitted: function (oEvent) {
         var committedFitted = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("CommittedFitted");
         var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");
