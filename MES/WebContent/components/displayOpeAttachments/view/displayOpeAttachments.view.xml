@@ -53,9 +53,9 @@
                         </template>
                     </Column>     
                     <Column width="10%">
-                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>annotate}"/>
+                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>annotated}"/>
                         <template>
-                        <core:Icon src="sap-icon://request" visible="{ path : 'getOpeAttachments>annotate', formatter : 'airbus.mes.displayOpeAttachments.util.Formatter.showHideAnnotate' }" />
+                        <core:Icon src="sap-icon://request" visible="{ path : 'getOpeAttachments>annotated', formatter : 'airbus.mes.displayOpeAttachments.util.Formatter.showHideAnnotate' }" />
                         </template>
                     </Column>              
                 </columns>

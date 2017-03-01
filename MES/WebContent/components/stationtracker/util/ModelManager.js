@@ -16,7 +16,9 @@ airbus.mes.stationtracker.util.ModelManager = {
     stationInProgress: {
         ShopOrderBO: undefined,
         RouterStepBO: undefined,
-        ERP_SYSTEM: undefined
+        ERP_SYSTEM: undefined,
+        SFC : undefined,
+        OPERATION_BO : undefined
     },
 
     //     parameters from the settings component
@@ -1197,7 +1199,9 @@ airbus.mes.stationtracker.util.ModelManager = {
                 airbus.mes.stationtracker.util.ModelManager.stationInProgress.RouterStepBO = aModel[0].ROUTERSTEPBO;
                 airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM = aModel[0].ERP_SYSTEM;
                 airbus.mes.stationtracker.util.ModelManager.stationInProgress.WORKORDER_ID = aModel[0].WORKORDER_ID;
-                airbus.mes.stationtracker.util.ModelManager.stationInProgress.OPERATION_ID = aModel[0].OPERATION_ID
+                airbus.mes.stationtracker.util.ModelManager.stationInProgress.OPERATION_ID = aModel[0].OPERATION_ID;
+                airbus.mes.stationtracker.util.ModelManager.stationInProgress.SFC = aModel[0].SFC;
+                airbus.mes.stationtracker.util.ModelManager.stationInProgress.OPERATION_BO = aModel[0].OPERATION_BO;
 
 
                 // calculate status of operation
