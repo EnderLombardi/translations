@@ -15,6 +15,7 @@ airbus.mes.qdc.ModelManager = {
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.qdc.config.url_config");
 		this.loadQDCModel();
 		this.loadQDCData();
+		this.loadQACheckModel();
 	},
 
 	loadQDCModel : function() {
@@ -42,4 +43,22 @@ airbus.mes.qdc.ModelManager = {
 		oModel.setData(JSON.parse(rep.responseText))
 		sap.ui.getCore().setModel(oModel, "GetQDCDataModel")
 	},
+	
+	loadQACheckModel : function(){
+		var rep = jQuery.ajax({
+			async : false,
+			url : this.urlModel.getProperty('QACheckurl'),
+			type : 'POST',
+			data : JSON.stringify({
+				"site":"FNZ1",
+				"userBOList":["UserBO:FNZ1,NG56D2A"],
+				"sfcStepBOList":["SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,11016372-0258,RouterBO:FNZ1,11016372-F212.18470.000,U,A,1,30"],
+				"mode":"assignment"
+
+			}),
+		});		
+		var oModel = new sap.ui.model.json.JSONModel();
+		oModel.setData(JSON.parse(rep.responseText))
+		sap.ui.getCore().setModel(oModel, "QACheckModel")
+	}
 }

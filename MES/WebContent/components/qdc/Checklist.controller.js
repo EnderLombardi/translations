@@ -7,6 +7,9 @@ sap.ui.controller("airbus.mes.qdc.Checklist", {
 	},
 
 	onClick : function(oEvt) {
+		
+		var oData = sap.ui.getCore().getModel("QACheckModel");
+		
 		//		var oVal = airbus.mes.qdc.ModelManager.loadQDCData();
 		var oVal = sap.ui.getCore().getModel("GetQDCDataModel");
 		var sGroup = "";

@@ -23,7 +23,7 @@ airbus.mes.qdc.util.Formatter = {
 		var oVal = sap.ui.getCore().getModel("GetQDCDataModel");
 
 		var obj = oVal.oData.Rowsets.Rowset[1].Row;
-		if (oVal.oData.Rowsets.Rowset[0].Row[0].QDCSTATUS === "X") {
+		if (oVal.oData.Rowsets.Rowset[0].Row[0].QDCSTATUS === "") {
 			if (airbus.mes.operationdetail.oView.byId("switchStatusLabel").mProperties.text === "Execution Mode") {
 				obj.filter(function(row) {
 					if (row.DOC_TYPE === "MEA") {
