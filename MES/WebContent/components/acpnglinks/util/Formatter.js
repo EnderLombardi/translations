@@ -10,10 +10,14 @@ airbus.mes.acpnglinks.util.Formatter = {
 	 * @returns {boolean} return : true/false
 	 */
 	toBooleanLeft : function(sValue) {
-		if (sValue.toUpperCase() == "NEVER") {
-			return false;
-		} else {
-			return !Boolean(sValue.toUpperCase() == "TRUE");
+		if (sValue != undefined) {
+			if (sValue.toUpperCase() == "NEVER") {
+				return false;
+			} else {
+				return !Boolean(sValue.toUpperCase() == "TRUE");
+			}
+		}else{
+			return false
 		}
 	},
 
@@ -31,6 +35,8 @@ airbus.mes.acpnglinks.util.Formatter = {
 			} else {
 				return Boolean(sValue.toUpperCase() == "TRUE");
 			}
+		}else{
+			return false;
 		}
 	},
 
@@ -38,7 +44,7 @@ airbus.mes.acpnglinks.util.Formatter = {
 		var result = sValue % 5;
 		var oRow;
 			
-		if(sValue == undefined) {
+		if(sValue == undefined || isNaN(sValue) == true) {
 			result = 1;
 		}
 		try{

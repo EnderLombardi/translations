@@ -38,7 +38,6 @@ airbus.mes.acpnglinks.model.ModelManager = {
 			;
 			return bFound;
 		} catch (e) {
-			console.log(e);
 			return false;
 		}
 	},
@@ -48,6 +47,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	 * Load the main model and transforms it
 	 */
 	loadacpnglinksWorkOrderDetail: function () {
+		try{
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
 
 		jQuery.ajax({
@@ -200,9 +200,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 							}]
 						}
 					};
-					//console.log(airbus.mes.settings.GlobalFunction.getRowsetsFromREST(data.elementList)) 
 					jsonFormat.Rowsets.Rowset[0].Row = data.elementList
-					//console.log(jsonFormat)
 					oModel.setData(jsonFormat);
 					oModel.refresh();
 
@@ -227,6 +225,9 @@ airbus.mes.acpnglinks.model.ModelManager = {
 			var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row);
 			oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
 		}
+		}catch(error){
+// do nothing no model			
+		}
 
 	},
 
@@ -234,9 +235,13 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	 * get Model using url
 	 */
 	getacpnglinksWorkOrderDetail: function () {
+		try{
 		var url = this.urlModel.getProperty("acpnglinksWorkOrderDetail");
 		url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
 		return url;
+		}catch(error){
+			return "";
+		}
 	},
 
 	/**

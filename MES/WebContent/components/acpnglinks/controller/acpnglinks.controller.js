@@ -75,8 +75,9 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 				id = oTTbl[i].sId.slice([ index + 2 ], oTTbl[i].sId.length);
 				// find the column in the model
 				index = this.findIndexObjectKey(model, "Name", id); 
-				
-				model[index].Sort = i; // new sort value
+				if (index != null){
+					model[index].Sort = i; // new sort value
+				}
 			}
 			// Model update
 			airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getData().Rowsets.Rowset[0].Columns.Column = model;
