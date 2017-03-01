@@ -9,49 +9,49 @@
 		<content>
 
 			<VBox id="TabChecklist" class="TabChecklist">
-				<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable"
+				<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" rootLevel="1"
 					class="TabChecklistTable" selectionMode="None" visibleRowCount="4"
 					expandFirstLevel="true">
 					<tab:columns>
 						<tab:Column>
-							<Label class="TabChecklistLabel" text="{i18n>PointofAttention}" />
+							<Label class="TabChecklistLabel" text="{i18nModel>PointofAttention}" />
 							<tab:template>
 								<HBox>
 									<HBox justifyContent="Begin" width="100%">
 										<Text text="{QDCModel>name}" class="AllignItem"
-											visible="{path:'QDCModel>name', formatter:'airbus.mes.qdc.util.Formatter.getEnabled'}" />
+											visible="{= ${GetQDCDataModel>/Rowsets/Rowset/0/Row/0/QDCSTATUS} === 'X'}" />
 										<Label text="" class="adjustWidth" />
 									</HBox>
 									<HBox justifyContent="End">
 										<core:Icon color="orange"
 											src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}" 
-											visible="{path:'QDCModel>name', formatter:'airbus.mes.qdc.util.Formatter.getExclamationVisible'}"></core:Icon>
+											visible="{parts: [ {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/TOT_COUNT'}, {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/CLOSE_COUNT'} ], formatter: 'airbus.mes.qdc.util.Formatter.getExclamationVisible'}"></core:Icon>
 									</HBox>
 								</HBox>
 							</tab:template>
 						</tab:Column>
 						<tab:Column>
-							<Label class="TabChecklistLabel" text="{i18n>record}" />
+							<Label class="TabChecklistLabel" text="{i18nModel>record}" />
 							<tab:template>
-								<Label text="{path:'GetQDCDataModel>TOT_COUNT', formatter:'airbus.mes.qdc.util.Formatter.getDescription'}"  visible="{path:'QDCModel>name', formatter:'airbus.mes.qdc.util.Formatter.getEnabled'}" class="AllignItem" />
+								<Label text="{parts: [ {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/TOT_COUNT'}, {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/CLOSE_COUNT'} ], formatter: 'airbus.mes.qdc.util.Formatter.getDescription'}" visible="{= ${GetQDCDataModel>/Rowsets/Rowset/0/Row/0/QDCSTATUS} === 'X'}" class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 					</tab:columns>
 				</tab:TreeTable>
 				<HBox>
 					<HBox justifyContent="Begin" width="100%">
-						<Button id="idButtonMEA" text="{i18n>MEA}"
+						<Button id="idButtonMEA" text="{i18nModel>MEA}"
 							class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"
 							press="onClick"></Button>
-						<Button id="idButtonMAA" text="{i18n>MAA}"
+						<Button id="idButtonMAA" text="{i18nModel>MAA}"
 							class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"
 							press="onClick"></Button>
-						<Button id="idButtonQDC" text="{i18n>QDC}"
+						<Button id="idButtonQDC" text="{i18nModel>QDC}"
 							class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"
 							press="onClick"></Button>
 					</HBox>
 					<HBox justifyContent="End">
-						<Button text="{i18n>confirm}" class="ConfirmChecklist"></Button>
+						<Button text="{i18nModel>confirm}" class="ConfirmChecklist" enabled="false"></Button>
 					</HBox>
 				</HBox>
 

@@ -4,7 +4,7 @@
 	xmlns:tab="sap.ui.table" xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<Page showHeader="false" height="100%" enableScrolling="false">
 		<content>
-			<Button id="modifyColumnsButton" text="{i18nAcpngLinksModel>ModifyColumns}" press="onColumnsChange" />
+			<Button id="modifyColumnsButton" text="{i18nAcpngLinksModel>ModifyColumns}" press="onColumnsChange" type="Transparent" />
 			<VBox id="ACPnGLinks" class="ACPnGLinkslist">
 				<tab:TreeTable id="ACPnGTreeTable" class="ACPnGTreeTable"
 					rows="{path : 'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/'}"
@@ -17,9 +17,9 @@
 							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>Type}" />
 							<tab:template>
 								<Text text="{acpnglinksWorkOrderDetail>Type}" class="AllignItem">
-								<customData>
-									<core:CustomData key="level" value="{path : 'acpnglinksWorkOrderDetail>Level', formatter:'airbus.mes.acpnglinks.util.Formatter.levelFormat'}" writeToDom="true" />
-								</customData>
+									<customData>
+										<core:CustomData key="level" value="{path : 'acpnglinksWorkOrderDetail>Level', formatter:'airbus.mes.acpnglinks.util.Formatter.levelFormat'}" writeToDom="true" />
+									</customData>
 								</Text>
 							</tab:template>
 						</tab:Column>
@@ -73,7 +73,7 @@
 								<Label text="{acpnglinksWorkOrderDetail>STV}" class="AllignItem" />
 							</tab:template>
 						</tab:Column>
-						<tab:Column id="c"
+						<tab:Column id="ACPWorkstation"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/7/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="ACPWorkstation">
 							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>acpWorkstation}" />

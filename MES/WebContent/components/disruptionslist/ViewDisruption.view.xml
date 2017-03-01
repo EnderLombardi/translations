@@ -11,11 +11,19 @@
 				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/0/Row'}">
 
 				<CustomListItem>
-
+				<!-- <content>
+					<Bar design="Header">
+						<contentLeft>
+						<Label text="{i18nModel>disruption}" design="Bold" />
+						</contentLeft>
+						<contentRight>
+						<Button text="{i18nModel>newdisruption}" icon="sap-icon://edit" type="Transparent" />
+						</contentRight>
+					</Bar> -->
 					<!-- <Panel expandable="true" expanded="false" class="disruptionExpandablePanel" expand="handleDisruptionPanelExpand"> -->
-					<Panel class="disruptionExpandablePanel" expandable="true" expanded="{=${operationDisruptionsModel>expanded} === 'true'}" >
+					<Panel class="disruptionExpandablePanel" expandable="true" expanded="{=${operationDisruptionsModel>expanded} === 'true'}">
 						<headerToolbar>
-							<Toolbar class="disrptlistdesc" >
+							<Toolbar class="disrptListToolbar" >
 								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>EscalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
 								<Label text="DIS-{operationDisruptionsModel>DisruptionNumber} - {path: 'operationDisruptionsModel>Category'} {operationDisruptionsModel>Reason}" design="Bold" />
 								
@@ -42,10 +50,7 @@
 									visible="{path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"
 									class="disrptlistdesc" />
 								
-								<Button text="{i18nModel>close}" type="Accept"
-									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
-									design="Transparent" icon="sap-icon://accept" press="onCloseDisruption" class="disruptionTitleBarButtons" enabled="{Profile>/identifiedUser/permissions/WORK_DIS_CLOSE}"/>
-
+								
 								<Button text="{i18nModel>delete}" type="Reject"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>expanded'}], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
 									design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" class="disruptionTitleBarButtons"/>
@@ -53,65 +58,53 @@
 								<Button text="{i18nModel>editButton}" type="Emphasized"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ,{path: 'operationDisruptionsModel>expanded'}], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
 									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" class="disruptionTitleBarButtons"/>
-								<Button press="handleDisruptionPanelExpand" design="Transparent" icon="sap-icon://arrow-down" class="disruptionTitleBarButtons"/>
+								<Button press="handleDisruptionPanelExpand"   design="Transparent" icon="sap-icon://slim-arrow-down" 
+									visible="{=${operationDisruptionsModel>expanded} !== 'true'}" />
+								<Button press="handleDisruptionPanelCollapse" design="Transparent" icon="sap-icon://slim-arrow-up"
+									visible="{=${operationDisruptionsModel>expanded} === 'true'}" />
 
 							</Toolbar>
 						</headerToolbar>
 
 						<!-- <f:Form class="formoperationDisruptionsModel" editable="true"> -->
-						<f:SimpleForm id="SimpleFormDisplay"
-										maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3"
-										columnsM="3" columnsS="3">
-									<f:content>
-								<core:Title text="" />		
-<!-- 									MES V1.5 [Beg] -->							    
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>CategoryClass}" />
-												<Text text="{=${operationDisruptionsModel>CategoryClass} === '' ? '-' : ${operationDisruptionsModel>CategoryClass}}">
-												</Text>								
-<!-- 									MES V1.5 [End] -->									
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Category}"/>
-												<Text text="{path: 'operationDisruptionsModel>Category'}">
-												</Text>
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>reason}" />
-												<Text text="{operationDisruptionsModel>Reason}">
-												</Text>
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Jigtool}" />
-												<Text text="{path: 'operationDisruptionsModel>JigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
-												</Text>
+						<f:SimpleForm id="SimpleFormDisplay" backgroundDesign="Translucent"
+							maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3">
+							<f:content>
+								<core:Title text="" />									    
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>CategoryClass}" />
+									<Text text="{=${operationDisruptionsModel>CategoryClass} === '' ? '-' : ${operationDisruptionsModel>CategoryClass}}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Category}"/>
+									<Text text="{path: 'operationDisruptionsModel>Category'}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>reason}" />
+									<Text text="{operationDisruptionsModel>Reason}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Jigtool}" />
+									<Text text="{path: 'operationDisruptionsModel>JigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}" />
 												
 												
 								<core:Title text="" />				
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>gravity}" />
-												<Text id="gravityText"
-													text="{path: 'operationDisruptionsModel>Gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
-												</Text>
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>resGroup}" />
-												<Text text="{operationDisruptionsModel>ResponsibleGroupDesc}">	
-												</Text>
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>TimeLost}" />
-												<Text text="{path: 'operationDisruptionsModel>TimeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}">
-												</Text>
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>escalation}" />
-												<Text id="escalationText"
-													text="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
-												</Text>
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>gravity}" />
+									<Text id="gravityText"
+										text="{path: 'operationDisruptionsModel>Gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>resGroup}" />
+									<Text text="{operationDisruptionsModel>ResponsibleGroupDesc}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>TimeLost}" />
+									<Text text="{path: 'operationDisruptionsModel>TimeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>escalation}" />
+									<Text id="escalationText"
+										text="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}" />
 												
 												
 												
 								<core:Title text="" />					
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OpenDate}" />
-												<Text text="{operationDisruptionsModel>OpeningTime}">
-												</Text>
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Expected}" />		
-												<Text text="{operationDisruptionsModel>RequiredFixBy}">	
-												</Text>
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>promisedDateTime}" />
-												<Text text="{=${operationDisruptionsModel>PromisedDateTime} === '' ? '-' : ${operationDisruptionsModel>PromisedDateTime}}">
-												</Text>
-												
-												<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OriginatorGroup}"/>										
-												<Text text="{operationDisruptionsModel>OriginatorGroupDesc}">
-												</Text>
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OpenDate}" />
+									<Text text="{operationDisruptionsModel>OpeningTime}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Expected}" />		
+									<Text text="{operationDisruptionsModel>RequiredFixBy}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>promisedDateTime}" />
+									<Text text="{=${operationDisruptionsModel>PromisedDateTime} === '' ? '-' : ${operationDisruptionsModel>PromisedDateTime}}" />
+									
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OriginatorGroup}"/>										
+									<Text text="{operationDisruptionsModel>OriginatorGroupDesc}" />
 										
 									<!-- 	<f:FormElement visible="{path: 'operationDisruptionsModel>ClosureDate', formatter: 'airbus.mes.disruptions.Formatter.setOpeningTimeVisibility'}">
 											<f:label>
@@ -129,9 +122,35 @@
 												</Text>
 											</f:fields>
 										</f:FormElement> -->
-						</f:content>
-				</f:SimpleForm>
-
+							</f:content>
+					</f:SimpleForm>
+					
+					<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Translucent"
+							maxContainerCols="3" editable="false" columnsL="3" columnsM="3">
+						<f:content>
+							<core:Title text="" />
+							<Label text="{i18nModel>area}" />
+							<Text text="{operationDisruptionsModel>area}" />
+							<Label text="{i18nModel>plan}" />
+							<Text text="{operationDisruptionsModel>plan}" />
+							<Label text="{i18nModel>materiall}" />
+							<Text text="{operationDisruptionsModel>materiall}" />
+							
+							<core:Title text="" />
+							<Label text="{i18nModel>ribs}" />
+							<Text text="{operationDisruptionsModel>ribs}" />
+							<Label text="{i18nModel>view}" />
+							<Text text="{operationDisruptionsModel>view}" />
+							<Label text="{i18nModel>tools}" />
+							<Text text="{operationDisruptionsModel>tools}" />
+							
+							<core:Title text="" />
+							<Label text="{i18nModel>stringer}" />
+							<Text text="{operationDisruptionsModel>stringer}" />
+							<Label text="{i18nModel>stringer_rail}" />
+							<Text text="{operationDisruptionsModel>stringer_rail}" />
+						</f:content>	
+					</f:SimpleForm>
 
 						<!-- <Text text="{i18nModel>status} : {path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}"
 							class="sapUiMediumMarginBegin statusText" /> -->
@@ -224,10 +243,15 @@
   						  	<Button text="{i18nModel>refuse}" type="Reject"
 								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRefuseButtonVisibility'}"
 								press="onRefuseDisruption" design="Transparent"/>
+								
+							<Button text="{i18nModel>close}" type="Accept"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>expanded'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
+								icon="sap-icon://accept" press="onCloseDisruption"  enabled="{Profile>/identifiedUser/permissions/WORK_DIS_CLOSE}"/>
+								
 
 						</Toolbar>
 					</Panel>
-
+					
 				</CustomListItem>
 
 			</List>

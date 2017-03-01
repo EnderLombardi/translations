@@ -8,11 +8,8 @@ jQuery.sap.declare("airbus.mes.userConfirmation.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.userConfirmation.Component", {
 	metadata : {
 		properties : { 
-			site : undefined,
-			phStation : undefined,
-			workOrder : undefined,
-			operation : undefined,
-			sSet      : undefined
+			user : undefined,
+			password : undefined
 		},
 	}
 });
@@ -35,19 +32,21 @@ airbus.mes.userConfirmation.Component.prototype.createContent = function() {
 			type : "XML",
 			height:"100%"
 		})
-		airbus.mes.jigtools.oView = this.oView;
+		airbus.mes.userConfirmation.oView = this.oView;
 
-		var i18nModel = new sap.ui.model.resource.ResourceModel({ bundleName : "airbus.mes.jigtools.i18n.i18n" });
-		this.oView.setModel(i18nModel, "i18nuserConfirmationModel");		
+		var i18nModel = new sap.ui.model.resource.ResourceModel({ bundleName : "airbus.mes.userConfirmation.i18n.i18n" });
+		this.oView.setModel(i18nModel, "i18nUserConfirmationModel");		
 
         // Initialize ModelManager and load needed file
 //        airbus.mes.userConfirmation.util.ModelManager.init(sap.ui.getCore());		
 		
-		return this.oView;
+//		return this.oView;
 		
 	} else {
 		
-		return airbus.mes.userConfirmation.oView;
+//		return airbus.mes.userConfirmation.oView;
 		
 	}
+	
+	airbus.mes.userConfirmation.oView.byId("partialTckTmplt").open()
 };

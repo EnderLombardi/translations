@@ -73,10 +73,10 @@ sap.ui
                                   * selected disruption
                                   */
                                   applyFiltersOnComments : function() {
-                                         var listItems = this.getView().byId("disrptlist")
-                                                       .getItems();
-                                         $.each(listItems, function(key, oItem) {
-                                                /** Apply filters on Message Comments * */
+                                         /*var listItems = this.getView().byId("disrptlist")
+                                                       .getItems();*/
+                                         /*$.each(listItems, function(key, oItem) {
+                                                *//** Apply filters on Message Comments * *//*
 
                                                 // Get Message Ref from current list
                                                 var messageRef = oItem.getBindingContext("operationDisruptionsModel")
@@ -108,7 +108,7 @@ sap.ui
                                                 
                                                 // Hide Comment Box every time on data re-load
                                                 //oItem.getContent()[0].getContent()[4].setVisible(false);
-                                         });
+                                         });*/
 
                                   },
 
@@ -689,13 +689,13 @@ sap.ui
 
                                          var obDate = new Date(date);
                                          
-                                         // Validate Promised Date Time
-                                         if (obDate == "Invalid Date" || date.length != 10){
-                                                airbus.mes.shell.ModelManager.messageShow(
-                                                       this.getView().getModel("i18nModel").getProperty("invalidDateError"));
-                                                
-                                                return;
-                                         }
+//                                         // Validate Promised Date Time
+//                                         if (obDate == "Invalid Date" || date.length != 10){
+//                                                airbus.mes.shell.ModelManager.messageShow(
+//                                                       this.getView().getModel("i18nModel").getProperty("invalidDateError"));
+//                                                
+//                                                return;
+//                                         }
                                          
                                          // Set Busy
                                          airbus.mes.disruptions.__enterAckCommentDialogue.setBusyIndicatorDelay(0);
@@ -829,36 +829,22 @@ sap.ui
                                   handleDisruptionPanelExpand : function(oEvent) {
                                 	  var oPanel = oEvent.oSource.getParent().getParent();
                                 	  if(oPanel.getExpanded()){
-					                      this.getView().getModel("operationDisruptionsModel").setProperty(this.sExpandedPanelPath + "/expanded", "false");
                                 		  return;
                                 	  }
                                 	  
-                                	  if(this.sExpandedPanelPath){
-                                		  this.getView().getModel("operationDisruptionsModel")
-                                		  	.setProperty(this.sExpandedPanelPath+"/expanded", "false");
-                                	  }
+                                	  // Close prevoiusly expanded panel
+                                	  if(this.sExpandedPanelPath != undefined)
+                                		  this.getView().getModel("operationDisruptionsModel").setProperty(this.sExpandedPanelPath + "/expanded", "false");
                                 		  
                                 	  var sPath = oEvent.getSource().getBindingContext("operationDisruptionsModel").sPath;
                                       this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/expanded", "true");
                                       this.getView().getModel("operationDisruptionsModel").refresh();
                                       this.sExpandedPanelPath = sPath;
-                                        /* 
-                                         
-                                         this.expandedDisruptionPanel = oevent.getSource().getId();
-                                         
-                                         var disruptions = this.getView().byId("disrptlist");
-                                         $(disruptions.getItems())
-                                                       .each(
-                                                                     function() {
-                                                                           var currentPanel = this
-                                                                                         .getContent()[0];
-                                                                           if (oevent.getSource().getId() != currentPanel
-                                                                                         .getId())
-                                                                                  currentPanel.setExpanded(false)
-                                                                     });
-*/
                                   },
-                                  
+                                  handleDisruptionPanelCollapse: function(){
+                                	  this.getView().getModel("operationDisruptionsModel").setProperty(this.sExpandedPanelPath+"/expanded", "false");
+                                	  this.sExpandedPanelPath = undefined;
+                                  },
 
                                   onReportDisruption : function(oEvent) {
                                          

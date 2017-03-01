@@ -7,42 +7,42 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     oFilterRB: undefined,
     sSet: undefined,
     committedFittedView: false,
-    
+
+    //is called after view is rendered.
     onAfterRendering: function () {
         this.oFilterSearch = undefined;
         this.oFilterFilter = undefined;
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         oTable.setSelectionMode("None");
         oTable.setVisibleRowCount(oTable.getBinding("rows").oList.length);
-        if (airbus.mes.shell.RoleManager.profile.identifiedUser.permissions.FITTED_COMPONENTS) {
-            this.changeButtonColor();
-        }
         if (sap.ui.getCore().byId("selectFilter--selectFilterComponents")) {//clear filters list if filter already exists
             sap.ui.getCore().byId("selectFilter--selectFilterComponents").removeSelections(true);
         }
         // Get setting from ME/MII and select the good button between operation and work order
         this.filterComponents(this.sSet);
-        
-//    	Init value of SearchField
-    	sap.ui.getCore().byId("componentsView--idSearchComponent").setValue("");    	        
+
+        //    	Init value of SearchField
+        sap.ui.getCore().byId("componentsView--idSearchComponent").setValue("");
     },
 
+    //changes the colour of synchronize button (green if it’s the same value than the required quantity
     changeButtonColor: function () {
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
-        var count = oTable.getRows(); // oTable.getBinding("rows").oList.length;
+        var count = oTable.getBinding("rows").oList.length;
         for (var i = 0; i < count; i++) {
             oTable.getRows()[i];
             var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[i];
             if (dataIndex.withdrawQty === dataIndex.reqQty) {
-                oTable.getRows()[i].getCells()[11].getItems()[0].setType("Accept");
-                oTable.getRows()[i].getCells()[12].getItems()[0].setType("Accept");
+                oTable.getRows()[i].getCells()[5].getItems()[0].setType("Accept");
+                oTable.getRows()[i].getCells()[6].getItems()[0].setType("Accept");
             } else {
-                oTable.getRows()[i].getCells()[11].getItems()[0].setType("Default");
-                oTable.getRows()[i].getCells()[12].getItems()[0].setType("Default");
+                oTable.getRows()[i].getCells()[5].getItems()[0].setType("Default");
+                oTable.getRows()[i].getCells()[6].getItems()[0].setType("Default");
             }
         }
     },
 
+    //checks operation or work order mode
     checkSettingComponents: function () {
         // confirm if we have already check the ME settings
         if (this.sSet === undefined) {
@@ -56,7 +56,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             } else {
                 this.sSet = sSet;
             }
-
         }
 
         switch (this.sSet) {
@@ -73,7 +72,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     //get user action on the checkbox field
     onSelectLevel: function (oEvent) {
-
         var sId = oEvent.mParameters.selectedIndex;
         switch (sId) {
             case 0://operation button
@@ -87,7 +85,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
     },
 
-    //table filter
+    //filters on sSet
     filterComponents: function (sScope) {
         this.sSet = sScope;
         switch (sScope) {
@@ -102,11 +100,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
         //Apply all filter
         this.applyFilters();
-
     },
 
+    //filters on search in the searchbar
     onFilterComponent: function (oEvent) {
-
         // add filter for search
         var sQuery = oEvent.getSource().getValue();
         if (sQuery && sQuery.length > 0) {
@@ -139,10 +136,12 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         this.applyFilters();
     },
 
+    //adds a filter in the filter list.
     addFilter: function (sName, sQuery) {
         return new sap.ui.model.Filter(sName, sap.ui.model.FilterOperator.Contains, sQuery);
     },
 
+    //apply the filter on the model data
     onSelectFilter: function (oEvent) {
         if (airbus.mes.components.selectFilter === undefined) {
             var oView = airbus.mes.components.oView;
@@ -160,6 +159,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         });
     },
 
+    //prepare to apply the filters after a small delay (due to async rendering)
     onSelectFilterFinish: function () {
         var that = this;
         var aFilters = [];
@@ -187,12 +187,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
                     default:
                         break;
                 }
-            }
-
-            )
+            })
             //OR Filter
             var oCurrentFilter = new sap.ui.model.Filter(aFilters, false);
-
             this.oFilterFilter = oCurrentFilter;
         } else {
             //No filter or filter remove
@@ -203,6 +200,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         this.applyFilters();
     },
 
+    //apply the filter (for real after the several functions)
     applyFilters: function () {
         var oFilter;
         var aFilter = [];
@@ -264,6 +262,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         } else {
             oEvent.getSource().setValue(0);
         }
+
+        //changebuttoncolor not possible while we keep this sapui version
+        //this.changeButtonColor();
+
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
         //sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     },
@@ -280,11 +282,37 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         } else {
             oEvent.getSource().setValue(0);
         }
+
+        //changebuttoncolor not possible while we keep this sapui version
+        //this.changeButtonColor();
+
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
         //sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     },
 
-    onbtnComponentsSave: function (oEvent) {
+    //is called when the save button is clicked. It handles the datan converts it in xml and send them to backend.
+//    onbtnComponentsSave: function (oEvent) {
+//    	
+////    	Open popup to confirm current user
+//    	if (jQuery.sap.getObject("airbus.mes.userConfirmation.Component") === undefined) {
+//    		jQuery.sap.registerModulePath("airbus.mes.userConfirmation", "../components/userConfirmation");
+//    		sap.ui.getCore().createComponent({            
+//    		    name: "airbus.mes.userConfirmation"
+//    		});      
+//    		airbus.mes.userConfirmation.oView.byId("OKForConfirmation").attachPress(airbus.mes.components.oView.getController().onSave());
+//    		
+//    		
+//    	} else {
+//    		airbus.mes.userConfirmation.oView.byId("partialTckTmplt").open();
+//    	}  	
+//    	
+//    },
+    
+    onbtnComponentsSave: function() {
+//    	Retrieve user/password
+//    	var user = airbus.mes.userConfirmation.oView.getController().getOwnerComponent().getUser();
+//    	var password = airbus.mes.userConfirmation.oView.getController().getOwnerComponent().getPassword();
+    	    	
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         var count = oTable.getBinding("rows").oList.length;
         if (airbus.mes.components.util.ModelManager.dataSaveJson != []) {
@@ -302,10 +330,53 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             }
             airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
         }
-        airbus.mes.components.util.Formatter.convertJsontoXml(airbus.mes.components.util.ModelManager.dataSaveJson);
+        airbus.mes.components.util.Formatter.convertJsontoXmlJCO(airbus.mes.components.util.ModelManager.dataSaveJson, user, password);
+        airbus.mes.components.util.Formatter.convertJsontoXmlPapi(airbus.mes.components.util.ModelManager.dataSaveJson);
+                
+        
+//      Param.1=$site&Param.2=$ERPSystem&Param.3=$xmlPAPI&Param.4=$xmlJCO
+	    var url = this.urlModel.getProperty("componentsSaveFittedComponent");
+	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
+	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$ERPSystem", airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system);
+	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlPAPI", airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi);
+	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlJCO", airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO);
+	    return url;
+    
+        
+//      call service
+        jQuery.ajax({
+            type : 'get',
+            async : false,
+            url : this.urlModel.getProperty("componentsSaveFittedComponent"),
+            contentType : 'application/json',
+            
+            success : function(data) {
+            	  console.log("sucess");
+//                if (typeof data == "string") {
+//                    data = JSON.parse(data);
+//                }
+//                if (typeof data != "object" || data === null) {
+//                	/* In case the tool list is empty, we receive "null" */
+//                	data = { toolInfoList : [] };
+//                }
+//                data.toolInfoList = data.toolInfoList || [];
+//                if (!Array.isArray(data.toolInfoList)) {
+//                	/* In case the tool list contain one element, we receive an object */
+//                    data.toolInfoList = [ data.toolInfoList ];
+//                }
+//                oViewModel.setData(data);
+//                oViewModel.refresh();
+            },
 
+            error : function(error, jQXHR) {
+                console.log(error);
+            }
+        });
+        
+        
     },
 
+    //is called when the save button is clicked.
     onbtnComponentsFreeze: function (oEvent) {
         var buttonText = oEvent.getSource().getText();
         var freeze = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("freeze");
@@ -317,15 +388,26 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
     },
 
+    //is called when the save button is clicked.
     onbtnCommittedFitted: function (oEvent) {
+        var committedFitted = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("CommittedFitted");
+        var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");
+
         this.committedFittedView = !this.committedFittedView;
+
+        //change button text
+        if (this.committedFittedView) {
+            oEvent.getSource().setText(committedFitted);
+        } else {
+            oEvent.getSource().setText(components);
+        }
 
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         var columns = oTable.getColumns();
-
         this.changeColVisibility(columns, this.committedFittedView);
     },
 
+    //changes the visibility of the several columns
     changeColVisibility: function (columns, committedFittedView) {
         var colVisibilityArray;
         if (!committedFittedView) {
@@ -335,11 +417,19 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
 
         for (var i = 0; i < columns.length; i++) {
-            if (colVisibilityArray.indexOf(columns[i].sId) !== -1 ) {
+            if (colVisibilityArray.indexOf(columns[i].sId) !== -1) {
                 columns[i].setVisible(true);
             } else {
                 columns[i].setVisible(false);
             }
         }
+
+        //changebuttoncolor not possible while we keep this sapui version
+        // setTimeout(function() {
+        //     if (airbus.mes.components.oView.oController.committedFittedView) {
+        //     airbus.mes.components.oView.oController.changeButtonColor();
+        //     }
+        // }, 0);
+
     }
 });

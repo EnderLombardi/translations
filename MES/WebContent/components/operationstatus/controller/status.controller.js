@@ -660,7 +660,7 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
             return;
 
         } else {
-            this.setProgressScreenBtn(false, false, false, true);
+            this.setProgressScreenBtn(false, false, false, false);
             return;
         }
 

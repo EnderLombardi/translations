@@ -48,7 +48,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
         //Permit to know on wich device we are => on destop you can drag scroll when rescheduling on touchpad not
         try {
             document.createEvent("TouchEvent");
-            // cant drag & drop verticaly if set to force
+            // cant drag & drop verticaly if set to force when scrolling
             scheduler.config.touch = "force";
             console.log("you are on touchpad")
         } catch (e) {
@@ -164,15 +164,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
                 return false;
 
             }
-            if (sInitialAvlLine === sNewAvlLine) {
-                if (sap.ui.getCore().getModel("Profile").oData.identifiedUser.permissions.STATION_GANTT_RESCHEDULE === false) {
-                    return false;
-                }
-            } else {
-                if (sap.ui.getCore().getModel("Profile").oData.identifiedUser.permissions.STATION_GANTT_MOVE === false) {
-                    return false;
-                }
-            }
             //Store oFinal and oInitial value in case of check qa is not successfull
             airbus.mes.stationtracker.oFinal = oFinal;
             airbus.mes.stationtracker.oInitial = oInitial;
@@ -193,7 +184,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
             var that = this;
             this.byPassOnDrag = false;
             this.id = id;
-
+            // Cancel drag and drop
+            if ( !sap.ui.getCore().getModel("Profile").oData.identifiedUser.permissions.STATION_GANTT_RESCHEDULE ) {
+            	return false;
+            }
+            
             // cannot reschedule an initial operation                            
             if (this.getEvent(id).type === "I") {
 

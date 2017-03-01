@@ -210,8 +210,9 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setCloseButtonVisibility : function(originatorFlag, status) {
-
+	setCloseButtonVisibility : function(originatorFlag, status ,expanded) {
+		if(expanded != "true")
+			return false;
 		if (originatorFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.rejected

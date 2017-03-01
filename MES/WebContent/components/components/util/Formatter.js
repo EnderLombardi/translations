@@ -30,7 +30,7 @@ airbus.mes.components.util.Formatter = {
         airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi = sXml;
     },
                             
-    convertJsontoXmlJCO: function(json){
+    convertJsontoXmlJCO: function(json, sUser, sPassword){
         var sXmlStart = '<?xml version="1.0" encoding="UTF-8"?>'
                       + '<Z_MES_SAVE_COMPONENT_>'
                       + '<INPUT>'
@@ -39,8 +39,12 @@ airbus.mes.components.util.Formatter = {
 			        + '<IV_APPLICATION_ID>MES</IV_APPLICATION_ID>'
 			        + '<IV_BADGE_ID/>'
 			        + "<IV_LANGUAGE>'E'</IV_LANGUAGE>"
-			        + '<IV_PASSWORD>Sopra0007</IV_PASSWORD>'
-			        + '<IV_UNAME>NG1FCF2</IV_UNAME>'
+			        + '<IV_PASSWORD>'
+			        + sPassword
+			        + '</IV_PASSWORD>'
+			        + '<IV_UNAME>'
+			        + sUser
+			        + '</IV_UNAME>'
 			        + '</INPUT>'
 			        + '</Z_MES_SAVE_COMPONENT_>';
 

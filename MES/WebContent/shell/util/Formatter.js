@@ -124,5 +124,17 @@ airbus.mes.shell.util.Formatter = {
 			}, 0);
 		};
 	},
+	/**
+	 * Check if application is running locally
+	 * then make logout button invisible, else make 
+	 * it visible.
+	 */
+	onCheckLogout: function () {
+		if(window.location.hostname === "localhost"){
+  		  return false;
+  	  } else {
+  		  return true;
+  	  }
+	}
 
 };
