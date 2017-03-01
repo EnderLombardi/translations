@@ -155,7 +155,8 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Submit a comment 
      */
     submitComment: function () {
-
+        // var attachmentFilesCollection = this.getView().byId('UploadCollection');
+        // console.log(attachmentFilesCollection.getItems);
         if (airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").getSelectedKey()) {
             if (this.getView().byId('commentArea').getValue()) {
                 if (!this._oUserConfirmationDialog) {
@@ -218,7 +219,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     /**
      * Remove the comment, reason code and value set in confirmation dialog
      * TODO : need a better method to clean value. 
-     * TODO : Clean attach document
      */
     cleanAfterAddingNotes: function () {
         //if the view is ready yet, dont try to reset value 
@@ -245,7 +245,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         if (sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation")) {
             sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation").setValue();
         }
-        this.attachDocument.length = 0;
+        this.cleanListFiles();
     },
 
     /**
@@ -384,6 +384,9 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         reader.readAsBinaryString(files[0]);
     },
 
+    /**
+     * Send file one by one and call the request function
+     */
     submitAttachedDocument: function () {
         var i = 0;
         var attachDocumentLength = this.attachDocument.length;
@@ -394,6 +397,16 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                 this.attachDocument[0].fileName, this.attachDocument[0].fileBase64,
                 'S00DB44');
         }
-    }
+    },
+
+    /**
+     * Remove items in upload collection list
+     */
+    cleanListFiles: function () {
+        var attachmentFilesCollection = this.getView().byId('UploadCollection');
+        attachmentFilesCollection.removeAllItems();
+        this.attachDocument.length = 0;
+    },
+
 
 });

@@ -34,7 +34,6 @@
 						<ToolbarSpacer />
 						<Button class="icon-edit" text="{i18n>won_toolbar_edit}" press="showCommentBox" icon="sap-icon://edit" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_NOTE}"/>
 						<!--<Button class="icon-print" text="{i18n>won_toolbar_print}" press="printTrackingTemplate" icon="sap-icon://print"/>-->
-
 					</OverflowToolbar>
 					<!-- Comment box -->
 					<Panel id="commentBox" visible="false" class="commentPanel">
@@ -45,20 +44,19 @@
 							</Select>
 						</Panel>
 						<TextArea id="commentArea" growing="true" maxLength="255" placeholder="{i18n>textAreaPlaceHolder}"/>
-						<UploadCollection id="UploadCollection" 
-							maximumFileSize="10" 
-							multiple="false" 
-							sameFilenameAllowed="false" 
-							instantUpload="false" 
-							showSeparators="All" 
-							change="onChangeUploadCollection" 
-							fileDeleted="onFileDeleted" 
-							filenameLengthExceed="onFilenameLengthExceed" 
-							fileSizeExceed="onFileSizeExceed" 
-							typeMissmatch="onTypeMissmatch" 
-							uploadComplete="onUploadComplete" 
-							beforeUploadStarts="onBeforeUploadStarts">
-							</UploadCollection>
+						<UploadCollection 
+						id="UploadCollection" 
+						maximumFileSize="10" 
+						multiple="false" 
+						sameFilenameAllowed="false" 
+						instantUpload="false" 
+						showSeparators="All" 
+						change="onChangeUploadCollection" 
+						fileDeleted="onFileDeleted" 
+						filenameLengthExceed="onFilenameLengthExceed" 
+						fileSizeExceed="onFileSizeExceed" 
+						typeMissmatch="onTypeMissmatch">
+						</UploadCollection>
 						<HBox>
 							<Button text="{i18n>submitComment}" type="Accept" press="submitComment" class="sapUiSmallMarginEnd buttonAccept" width="12rem" />
 							<Button text="{i18n>cancel}" type="Reject" press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject" width="12rem" />

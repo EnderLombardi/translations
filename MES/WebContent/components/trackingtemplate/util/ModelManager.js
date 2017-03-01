@@ -273,7 +273,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             type: 'post',
             data: JSON.stringify({
                 "site": site,
-                "type": "TKT",
+                "type": "TT",
                 "ref": referenceWO,
                 "fileName": fileName,
                 "fileDescript": "test MF",
