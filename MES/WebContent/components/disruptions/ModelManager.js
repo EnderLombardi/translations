@@ -140,7 +140,7 @@ airbus.mes.disruptions.ModelManager = {
 		var sIssuer = "";
 		if (this.createViewMode == "Create") {
 			sIssuer = this.getIssuer();
-			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
+			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "f", sIssuer);
 		} else {
 			sIssuer = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/OriginatorID");
 			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
@@ -999,6 +999,7 @@ airbus.mes.disruptions.ModelManager = {
 	 // If generic user and no operator assigned, prompt for username
 		if	(sUser==undefined) 
 			sUser=airbus.mes.shell.oView.getController().goToMyProfile();
+		    
 		else
 		return sUser;
 	},

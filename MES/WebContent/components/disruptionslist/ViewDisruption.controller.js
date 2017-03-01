@@ -689,13 +689,13 @@ sap.ui
 
                                          var obDate = new Date(date);
                                          
-                                         // Validate Promised Date Time
-                                         if (obDate == "Invalid Date" || date.length != 10){
-                                                airbus.mes.shell.ModelManager.messageShow(
-                                                       this.getView().getModel("i18nModel").getProperty("invalidDateError"));
-                                                
-                                                return;
-                                         }
+//                                         // Validate Promised Date Time
+//                                         if (obDate == "Invalid Date" || date.length != 10){
+//                                                airbus.mes.shell.ModelManager.messageShow(
+//                                                       this.getView().getModel("i18nModel").getProperty("invalidDateError"));
+//                                                
+//                                                return;
+//                                         }
                                          
                                          // Set Busy
                                          airbus.mes.disruptions.__enterAckCommentDialogue.setBusyIndicatorDelay(0);
