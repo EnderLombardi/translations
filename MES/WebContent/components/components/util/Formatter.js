@@ -60,14 +60,6 @@ airbus.mes.components.util.Formatter = {
         var sXml = sXmlStart + sXmlByRow + sXmlEnd;
         airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO = sXml;
     },
-    
-    color : function(value) {
-    	if (value === 0 ) {
-    		return andonColor;
-    	} else {
-    		return completedColor;
-    	}
-    },
 
     fittedComponentsComparator : function(Fitted_Components, reqQty) {
          if (parseInt(Fitted_Components, 10) === parseInt(reqQty, 10)) {
