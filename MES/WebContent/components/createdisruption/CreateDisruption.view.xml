@@ -145,7 +145,8 @@
 										</Select>
 										</VBox>
 										
-									
+									</f:content>
+						</f:SimpleForm>
 
 								<!-- <f:FormElement>
 									<f:label>
@@ -169,11 +170,42 @@
 										</Select>
 									</f:fields>
 								</f:FormElement> -->
+								<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Transparent" 	title="{i18nModel>additionalInfo}"
+										maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" columnsL="3"
+										columnsM="3" columnsS="3" class="sapUiSmallMargin" visible="true">	
+									<f:content>
+									<core:Title text="" />
+									<Label text="{i18nModel>area}" />
+									<Input value="" />
+									<Label text="{i18nModel>plan}" />
+									<Input value="" />
+									<Label text="{i18nModel>materiall}" />
+									<Input value="" />
+									
+									<core:Title text="" />
+									<Label text="{i18nModel>ribs}" />
+									<Input value="" />
+									<Label text="{i18nModel>view}" />
+									<Input value="" />
+									<Label text="{i18nModel>tools}" />
+									<Input value="" />
+									
+									<core:Title text="" />
+									<Label text="{i18nModel>stringer}" />
+									<Input value="" />
+									<Label text="{i18nModel>stringer_rail}" />
+									<Input value="" />
+									</f:content>
+									</f:SimpleForm>
+									
 
 								
 										
-									
-								<core:Title text="" />
+								<f:SimpleForm id="commentArea" backgroundDesign="Transparent"
+										maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" columnsL="1"
+										columnsM="1" columnsS="1" class="sapUiSmallMargin" visible="true">	
+									<f:content>
+									<core:Title text="" />
 										<Label text=" " />
 										<TextArea placeholder="{i18nModel>AddComment}" id="comment"
 										valueLiveUpdate="true" rows="10" value="">
@@ -186,7 +218,7 @@
 										<layoutData>
 											<l:GridData span="XL1 L1 M2 S12" />
 										</layoutData>
-										<HBox width="100%" justifyContent="End">
+									<HBox width="100%" justifyContent="End">
 
 											<u:FileUploader id="idfileUploader" name="{i18nModel>myFileUpload}"
 												uploadUrl="{i18nModel>uploadURL}" tooltip="{i18nModel>attachFile}" icon="sap-icon://attachment"
@@ -203,9 +235,10 @@
 										<Link id="idAttachmentLink" text="{AttachmentList>/RowCount} {i18nModel>Attachment}"
 											press="airbus.mes.disruptions.AttachmentManager.showAttachedDocsList" wrapping="true" />
 
-									</VBox>
-						</f:content>
-						</f:SimpleForm>
+										</VBox>
+										</f:content>
+									</f:SimpleForm>
+						
 
 			</items>
 		</FlexBox>
