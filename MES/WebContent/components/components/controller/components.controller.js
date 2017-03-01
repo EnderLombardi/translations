@@ -10,6 +10,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     //is called after view is rendered.
     onAfterRendering: function () {
+        this.committedFittedView = false;
         this.oFilterSearch = undefined;
         this.oFilterFilter = undefined;
         if (sap.ui.getCore().byId("selectFilter--selectFilterComponents")) {//clear filters list if filter already exists
@@ -87,10 +88,11 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         if (sQuery && sQuery.length > 0) {
             var aFilters = [];
 
+            aFilters.push(this.addFilter("sequence", sQuery));
             aFilters.push(this.addFilter("itemNumber", sQuery));
             aFilters.push(this.addFilter("operationNumber", sQuery));
-            aFilters.push(this.addFilter("materialDescription", sQuery));
             aFilters.push(this.addFilter("materialType", sQuery));
+            aFilters.push(this.addFilter("materialDescription", sQuery));
             aFilters.push(this.addFilter("storageLocation", sQuery));
             aFilters.push(this.addFilter("FKBm", sQuery));
             aFilters.push(this.addFilter("reqQty", sQuery));
@@ -100,7 +102,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             aFilters.push(this.addFilter("serialNumber", sQuery));
             aFilters.push(this.addFilter("Checked_Components", sQuery));
             aFilters.push(this.addFilter("Fitted_Components", sQuery));
-
+            aFilters.push(this.addFilter("BOMComponentBO", sQuery));
+            aFilters.push(this.addFilter("ERPSequence", sQuery));
+            
             //OR Filter
             var oCurrentFilter = new sap.ui.model.Filter(aFilters, false);
             this.oFilterSearch = oCurrentFilter;
@@ -209,11 +213,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     },
 
-    synchronizeFieldCommitted: function (oEvent) {
-        var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
-        var index = oEvent.getSource().oParent.oParent.getCells()[0].oParent.getIndex();
-        var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[index];
-        oEvent.getSource().oParent.getItems()[1].setValue(dataIndex.withdrawQty);
+    synchronizeField: function (oEvent) {
+        var value = oEvent.getSource().getParent().getParent().mAggregations.cells[5].mProperties.text
+        oEvent.getSource().oParent.getItems()[1].setValue(value);
 
         sap.ui.getCore().byId("operationDetailPopup--btnSave").setEnabled(true);
 
@@ -221,33 +223,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         //sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setEnabled(true);
     },
 
-    synchronizeFieldFitted: function (oEvent) {
-        var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
-        var index = oEvent.getSource().oParent.oParent.getCells()[0].oParent.getIndex();
-        var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[index];
-        oEvent.getSource().oParent.getItems()[1].setValue(dataIndex.withdrawQty);
-        sap.ui.getCore().byId("operationDetailPopup--btnSave").setEnabled(true);
-
-        //freeze not available now
-        //sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setEnabled(true);
-    },
-
-    committedLiveChange: function (oEvent) {
-        var inputVal = oEvent.getSource().getValue();
-        oEvent.getSource().setValue(inputVal);
-
+    liveChange: function (oEvent) {
         sap.ui.getCore().byId("operationDetailPopup--btnSave").setEnabled(true);
         
-        //freeze not available now
-        //sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setEnabled(true);
-    },
-
-    fittedLiveChange: function (oEvent) {
-        var inputVal = oEvent.getSource().getValue();
-        oEvent.getSource().setValue(inputVal);
-
-        sap.ui.getCore().byId("operationDetailPopup--btnSave").setEnabled(true);
-
         //freeze not available now
         //sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setEnabled(true);
     },
@@ -302,7 +280,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         
     },
 
-    //is called when the save button is clicked.
+    //freeze not available now
+    //is called when the save button is clicked
     onbtnComponentsFreeze: function (oEvent) {
         var buttonText = oEvent.getSource().getText();
         var freeze = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("freeze");
@@ -314,7 +293,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
     },
 
-    //is called when the save button is clicked.
+    //is called when the save button is clicked
     onbtnCommittedFitted: function (oEvent) {
         var committedFitted = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("CommittedFitted");
         var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");
@@ -353,5 +332,5 @@ sap.ui.controller("airbus.mes.components.controller.components", {
                 columns[i].setVisible(false);
             }
         }
-    },
+    }
 });

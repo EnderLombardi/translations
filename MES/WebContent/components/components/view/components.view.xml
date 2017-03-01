@@ -113,7 +113,7 @@
 						<table:template>
 							<HBox>
 								<Button icon="sap-icon://synchronize" type="Default"
-									press="synchronizeFieldCommitted" class="committedFittedButton">
+									press="synchronizeField" class="committedFittedButton">
 									<customData>
 										<core:CustomData key="equal" 
 										value="{parts :[{path : 'componentsWorkOrderDetail>Checked_Components'}, 
@@ -125,7 +125,7 @@
 									value="{componentsWorkOrderDetail>Checked_Components}" width="{width}"
 									min="0"
 									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
-									editable="true" change="committedLiveChange" />
+									editable="true" change="liveChange" />
 							</HBox>
 						</table:template>
 					</table:Column>
@@ -135,7 +135,7 @@
 						<table:template>
 							<HBox>
 								<Button icon="sap-icon://synchronize" type="Default"
-									press="synchronizeFieldFitted" class="committedFittedButton">
+									press="synchronizeField" class="committedFittedButton">
 									<customData>
 										<core:CustomData key="equal" 
 										value="{parts :[{path : 'componentsWorkOrderDetail>Fitted_Components'}, 
@@ -147,7 +147,7 @@
 									min="0"
 									value="{componentsWorkOrderDetail>Fitted_Components}" width="{width}"
 									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
-									editable="true" change="fittedLiveChange" />
+									editable="true" change="liveChange" />
 							</HBox>
 						</table:template>
 					</table:Column>
