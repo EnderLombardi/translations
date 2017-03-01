@@ -292,6 +292,27 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     //is called when the save button is clicked. It handles the datan converts it in xml and send them to backend.
     onbtnComponentsSave: function (oEvent) {
+    	
+//    	Open popup to confirm current user
+    	if (jQuery.sap.getObject("airbus.mes.userConfirmation.Component") === undefined) {
+    		jQuery.sap.registerModulePath("airbus.mes.userConfirmation", "../components/userConfirmation");
+    		sap.ui.getCore().createComponent({            
+    		    name: "airbus.mes.userConfirmation"
+    		});      
+    		airbus.mes.userConfirmation.oView.byId("OKForConfirmation").attachPress(airbus.mes.components.oView.getController().onSave());
+    		
+    		
+    	} else {
+    		airbus.mes.userConfirmation.oView.byId("partialTckTmplt").open();
+    	}  	
+    	
+    },
+    
+    onSave: function() {
+//    	Retrieve user/password
+    	var user = airbus.mes.userConfirmation.oView.getController().getOwnerComponent().getUser();
+    	var password = airbus.mes.userConfirmation.oView.getController().getOwnerComponent().getPassword();
+    	    	
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         var count = oTable.getBinding("rows").oList.length;
         if (airbus.mes.components.util.ModelManager.dataSaveJson != []) {
@@ -309,8 +330,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             }
             airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
         }
-        airbus.mes.components.util.Formatter.convertJsontoXml(airbus.mes.components.util.ModelManager.dataSaveJson);
-
+        airbus.mes.components.util.Formatter.convertJsontoXmlJCO(airbus.mes.components.util.ModelManager.dataSaveJson, user, password);
+        airbus.mes.components.util.Formatter.convertJsontoXmlPapi(airbus.mes.components.util.ModelManager.dataSaveJson);
+                
     },
 
     //is called when the save button is clicked.

@@ -5,11 +5,11 @@
 	xmlns:f="sap.ui.layout.form"
 	controllerName="airbus.mes.userConfirmation.controller.userConfirmation">
 
-	<Dialog title="{i18n>userConfirmation}" type="Message" id="partialTckTmplt" width="70% !important" height="100%" >
+	<Dialog title="{i18nUserConfirmationModel>userConfirmation}" type="Message" id="partialTckTmplt" width="70% !important" height="100%" >
             <content>
             <HBox id="scanTckTmpltButtonEnd" justifyContent="Center">
-                <Button id="scanTckTmpltButton" icon="sap-icon://business-card" text="{i18n>scan}" type="Emphasized" 
-					press="onScanConfirmation" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
+                <Button id="scanTckTmpltButton" icon="sap-icon://business-card" text="{i18nUserConfirmationModel>scan}" type="Emphasized" 
+					press="onScanConfirmation" visible="{path:'i18nUserConfirmationModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
             </HBox>
             <HBox height="35px" class="messageHBox">
                 <MessageStrip id="msgstrpTckTmpltConfirm" visible="false"
@@ -23,31 +23,31 @@
                     labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
                     columnsL="3" columnsM="3">
                     <f:content>
-                        <Label text="{i18n>UID}" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
+                        <Label text="{i18nUserConfirmationModel>UID}" visible="{path:'i18nUserConfirmationModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
                         <Input id="UIDTckTmpltForConfirmation" type="Text"
-                            placeholder="{i18n>UID}" liveChange="uIDLive" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}" enabled="false"/>
-                        <Label text="{i18n>BadgeID}" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
+                            placeholder="{i18nUserConfirmationModel>UID}" liveChange="uIDLive" visible="{path:'i18nUserConfirmationModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}" enabled="false"/>
+                        <Label text="{i18nUserConfirmationModel>BadgeID}" visible="{path:'i18nUserConfirmationModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
                         <Input id="badgeIDTckTmpltForConfirmation" type="Text"
-                            placeholder="{i18n>BadgeID}" liveChange="badgeIDLive" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}" enabled="false"/>
-                        <Label text="{i18n>PIN}" id="confirmTckTmpltPinLabel" required="false" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayPin'}"/>
+                            placeholder="{i18nUserConfirmationModel>BadgeID}" liveChange="badgeIDLive" visible="{path:'i18nUserConfirmationModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}" enabled="false"/>
+                        <Label text="{i18nUserConfirmationModel>PIN}" id="confirmTckTmpltPinLabel" required="false" visible="{path:'i18nUserConfirmationModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayPin'}"/>
                         <Input id="pinTckTmpltForConfirmation" type="Text" maxLength = "7"
-                            placeholder="{i18n>PIN}" liveChange="pinIDLive" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayPin'}"/>
-                        <Text text="{i18n>OR}" textAlign="Center" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displaySeperator'}"/>
-                        <Label text="{i18n>username}" required="true" />
-						<Input id="userNameTckTmpltForConfirmation" type="Text" placeholder="{i18n>username}"
+                            placeholder="{i18nUserConfirmationModel>PIN}" liveChange="pinIDLive" visible="{path:'i18nUserConfirmationModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayPin'}"/>
+                        <Text text="{i18nUserConfirmationModel>OR}" textAlign="Center" visible="{path:'i18nUserConfirmationModel>' , formatter:'airbus.mes.operationdetail.Formatter.displaySeperator'}"/>
+                        <Label text="{i18nUserConfirmationModel>username}" required="true" />
+						<Input id="userNameTckTmpltForConfirmation" type="Text" placeholder="{i18nUserConfirmationModel>username}"
 							liveChange="usernameLive" />
-						<Label text="{i18n>password}" required="true" />
-						<Input id="passwordTckTmpltForConfirmation" type="Password" placeholder="{i18n>password}"
+						<Label text="{i18nUserConfirmationModel>password}" required="true" />
+						<Input id="passwordTckTmpltForConfirmation" type="Password" placeholder="{i18nUserConfirmationModel>password}"
 							liveChange="passwordLive" />
                     </f:content>
                 </f:SimpleForm>
             </HBox>
         </content>
         <beginButton>
-            <Button text="{i18n>cancel}" press="onCancelConfirmation" />
+            <Button text="{i18nUserConfirmationModel>cancel}" press="onCancelConfirmation" />
         </beginButton>
         <endButton>
-            <Button type="Transparent" text="{i18n>OK}" press="onOKConfirmation" />
+            <Button id="OKForConfirmation" type="Transparent" text="{i18nUserConfirmationModel>OK}" />
         </endButton>
     </Dialog>
 </mvc:View>

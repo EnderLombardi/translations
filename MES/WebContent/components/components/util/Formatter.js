@@ -31,13 +31,19 @@ airbus.mes.components.util.Formatter = {
         var sXml = sXmlStart + sXmlByRow + sXmlEnd;
         airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi = sXml;
     },
+<<<<<<< Upstream, based on origin/MESv1.5
 
     convertJsontoXmlJCO: function (json) {
+=======
+                            
+    convertJsontoXmlJCO: function(json, sUser, sPassword){
+>>>>>>> 0a371f0 [Component] service to update fitted component
         var sXmlStart = '<?xml version="1.0" encoding="UTF-8"?>'
             + '<Z_MES_SAVE_COMPONENT_>'
             + '<INPUT>'
             + '<IT_COMPONENTS>';
         var sXmlEnd = '</IT_COMPONENTS>'
+<<<<<<< Upstream, based on origin/MESv1.5
             + '<IV_APPLICATION_ID>MES</IV_APPLICATION_ID>'
             + '<IV_BADGE_ID/>'
             + "<IV_LANGUAGE>'E'</IV_LANGUAGE>"
@@ -45,6 +51,19 @@ airbus.mes.components.util.Formatter = {
             + '<IV_UNAME>NG1FCF2</IV_UNAME>'
             + '</INPUT>'
             + '</Z_MES_SAVE_COMPONENT_>';
+=======
+			        + '<IV_APPLICATION_ID>MES</IV_APPLICATION_ID>'
+			        + '<IV_BADGE_ID/>'
+			        + "<IV_LANGUAGE>'E'</IV_LANGUAGE>"
+			        + '<IV_PASSWORD>'
+			        + sPassword
+			        + '</IV_PASSWORD>'
+			        + '<IV_UNAME>'
+			        + sUser
+			        + '</IV_UNAME>'
+			        + '</INPUT>'
+			        + '</Z_MES_SAVE_COMPONENT_>';
+>>>>>>> 0a371f0 [Component] service to update fitted component
 
         var sXmlByRow = "";
         json.forEach(function (el) {
