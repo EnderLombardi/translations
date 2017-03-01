@@ -21,9 +21,9 @@ airbus.mes.components.util.Formatter = {
         json.forEach(function(el){
             sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({Row : {
             	BOMComponentBO : [el.BOMComponentBO],
-            	Site : [airbus.mes.settings.site],
-            	Checked_Components : [el.Checked_Components],
-            	Fitted_Components : [el.Fitted_Components],
+            	Site : [airbus.mes.settings.ModelManager.site],
+            	Checked_Components : [el.committed],
+            	Fitted_Components : [el.fitted],
             },})
         });
         var sXml = sXmlStart + sXmlByRow + sXmlEnd;
@@ -51,14 +51,28 @@ airbus.mes.components.util.Formatter = {
         var sXmlByRow = "";
         json.forEach(function(el){
             sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({Row : {
-            	BOMComponentBO : [el.BOMComponentBO],
-            	Site : [airbus.mes.settings.site],
-            	Checked_Components : [el.Checked_Components],
-            	Fitted_Components : [el.Fitted_Components],
+            	ORDER_NUMBER : [airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no],
+            	ITEM_NUMBER : [el.ERPSequence],
+            	FITTED_USER : [""],
+            	FITTED_DATE : [""],
+            	FITTED_QUANTITY : [el.fitted],
+            	FITTED_QUAN_UNIT : ["EA"],
+            	COMMITTED_USER : [""],
+            	COMMITTED_DATE : [""],
+            	COMMITTED_QUANTITY : [el.committed],
+            	COMMITTED_QUAN_UNIT: ["EA"],
             },})
         });
         var sXml = sXmlStart + sXmlByRow + sXmlEnd;
         airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO = sXml;
     },
+    
+    color : function(value) {
+    	if (value === 0 ) {
+    		return andonColor;
+    	} else {
+    		return completedColor;
+    	}
+    }
 
 };
