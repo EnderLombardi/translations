@@ -51,6 +51,12 @@
 							<Text text="{componentsWorkOrderDetail>materialType}" />
 						</table:template>
 					</table:Column>
+					<table:Column id="materialCol" autoResizable="true" visible="false">
+						<Label textAlign="Center" text="{i18nComponentsModel>material}" />
+						<table:template>
+							<Text text="{componentsWorkOrderDetail>itemNumber}" />
+						</table:template>
+					</table:Column>
 					<table:Column id="materialDescriptionCol" autoResizable="true">
 						<Label textAlign="Center" text="{i18nComponentsModel>materialDescription}" />
 						<table:template>
