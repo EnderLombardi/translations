@@ -293,7 +293,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 //            }
             airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
         }
-        airbus.mes.components.util.Formatter.convertJsontoXmlJCO(airbus.mes.components.util.ModelManager.dataSaveJson, "NG1FCF2", "Alters18*");
+        airbus.mes.components.util.Formatter.convertJsontoXmlJCO(airbus.mes.components.util.ModelManager.dataSaveJson);
         airbus.mes.components.util.Formatter.convertJsontoXmlPapi(airbus.mes.components.util.ModelManager.dataSaveJson);
                 
         
