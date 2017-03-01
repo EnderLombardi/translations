@@ -73,10 +73,10 @@ sap.ui
                                   * selected disruption
                                   */
                                   applyFiltersOnComments : function() {
-                                         var listItems = this.getView().byId("disrptlist")
-                                                       .getItems();
-                                         $.each(listItems, function(key, oItem) {
-                                                /** Apply filters on Message Comments * */
+                                         /*var listItems = this.getView().byId("disrptlist")
+                                                       .getItems();*/
+                                         /*$.each(listItems, function(key, oItem) {
+                                                *//** Apply filters on Message Comments * *//*
 
                                                 // Get Message Ref from current list
                                                 var messageRef = oItem.getBindingContext("operationDisruptionsModel")
@@ -108,7 +108,7 @@ sap.ui
                                                 
                                                 // Hide Comment Box every time on data re-load
                                                 //oItem.getContent()[0].getContent()[4].setVisible(false);
-                                         });
+                                         });*/
 
                                   },
 

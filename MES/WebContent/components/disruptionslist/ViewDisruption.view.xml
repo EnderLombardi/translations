@@ -11,7 +11,15 @@
 				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/0/Row'}">
 
 				<CustomListItem>
-
+				<!-- <content>
+					<Bar design="Header">
+						<contentLeft>
+						<Label text="{i18nModel>disruption}" design="Bold" />
+						</contentLeft>
+						<contentRight>
+						<Button text="{i18nModel>newdisruption}" icon="sap-icon://edit" type="Transparent" />
+						</contentRight>
+					</Bar> -->
 					<!-- <Panel expandable="true" expanded="false" class="disruptionExpandablePanel" expand="handleDisruptionPanelExpand"> -->
 					<Panel class="disruptionExpandablePanel" expandable="true" expanded="{=${operationDisruptionsModel>expanded} === 'true'}" >
 						<headerToolbar>
@@ -131,7 +139,35 @@
 										</f:FormElement> -->
 						</f:content>
 				</f:SimpleForm>
-
+							<Panel  expandable="true" >
+							<f:SimpleForm id="extraFieldDisruption" 
+									maxContainerCols="3" editable="false" layout="ResponsiveGridLayout"
+									emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="3">
+								<f:content>
+									<core:Title text="" />
+									<Label text="{i18nModel>area}" />
+									<Text text="{operationDisruptionsModel>area}" />
+									<Label text="{i18nModel>plan}" />
+									<Text text="{operationDisruptionsModel>plan}" />
+									<Label text="{i18nModel>materiall}" />
+									<Text text="{operationDisruptionsModel>materiall}" />
+									
+									<core:Title text="" />
+									<Label text="{i18nModel>ribs}" />
+									<Text text="{operationDisruptionsModel>ribs}" />
+									<Label text="{i18nModel>view}" />
+									<Text text="{operationDisruptionsModel>view}" />
+									<Label text="{i18nModel>tools}" />
+									<Text text="{operationDisruptionsModel>tools}" />
+									
+									<core:Title text="" />
+									<Label text="{i18nModel>stringer}" />
+									<Text text="{operationDisruptionsModel>stringer}" />
+									<Label text="{i18nModel>stringer_rail}" />
+									<Text text="{operationDisruptionsModel>stringer_rail}" />
+								</f:content>	
+							</f:SimpleForm>
+							</Panel>
 
 						<!-- <Text text="{i18nModel>status} : {path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}"
 							class="sapUiMediumMarginBegin statusText" /> -->
@@ -227,7 +263,7 @@
 
 						</Toolbar>
 					</Panel>
-
+					
 				</CustomListItem>
 
 			</List>
