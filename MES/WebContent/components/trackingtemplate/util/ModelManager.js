@@ -111,12 +111,14 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         previousRow = array[0];
         previousRow.lastOperationNote = true;
         previousRow.operationNumber = this.getOperationNumber(previousRow);
+        this.getPercentage(previousRow, previousRow.Progress, previousRow.Duration);
 
         //we add the attribute lastOperationNote to each item of the array. This attribute is set to true 
         //for each most recent confirmation note of a group of operation(Production_Context_GBO)
         for (; index < len; index += 1) {
             //we update the user first name to show only the first letter. 
             array[index].operationNumber = this.getOperationNumber(array[index]);
+            this.getPercentage(array[index], array[index].Progress, array[index].Duration);
             if (previousRow.OperationBO !== array[index].OperationBO) {
                 array[index].lastOperationNote = true;
             } else {
@@ -127,7 +129,14 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         return array;
     },
 
-
+    /**
+     * Calculate the percentage
+     */
+    getPercentage: function( obj, n1, n2) {
+        if( n1 && n2) {
+            obj.percentage = n1/n2*100;
+        }
+    },
     /**
      * load reason code
     */

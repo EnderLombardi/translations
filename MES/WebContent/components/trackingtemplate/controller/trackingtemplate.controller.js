@@ -2,6 +2,7 @@
 sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
 
     attachDocument: [],
+    
     /**
     * Apply a filter on the confirmation Notes List and the WO Notes List
     * depending on the Production_Context_GBO name
@@ -155,8 +156,8 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Submit a comment 
      */
     submitComment: function () {
-        // var attachmentFilesCollection = this.getView().byId('UploadCollection');
-        // console.log(attachmentFilesCollection.getItems);
+        //check the attachDocument list
+        this.compareListAndRemove();
         if (airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").getSelectedKey()) {
             if (this.getView().byId('commentArea').getValue()) {
                 if (!this._oUserConfirmationDialog) {
@@ -368,8 +369,10 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
 
     onChangeUploadCollection: function (oEvent) {
         // var oUploadCollection = oEvent.getSource();
+
         var files = oEvent.getParameters().files;
         var file = files[0];
+        this.updateFile(file.name);
         var reader = new FileReader();
         var filesListBase64 = this.attachDocument;
         reader.onload = function (readerEvt) {
@@ -382,6 +385,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
             filesListBase64.push(oBase64);
         }
         reader.readAsBinaryString(files[0]);
+
     },
 
     /**
@@ -408,5 +412,49 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         this.attachDocument.length = 0;
     },
 
+    /**
+     * We don't allow to add same file name. At least we delete the first one then add the new one
+     */
+    updateFile: function (name) {
+        var attachmentFilesCollection = this.getView().byId('UploadCollection');
+        attachmentFilesCollection.getItems();
+        this.removeFileFromAttachDocument(name);
+        var i = 0;
+        var len = attachmentFilesCollection.getItems().length;
+        for (; i < len; i += 1) {``
+            var namelist = attachmentFilesCollection.getItems()[i].getFileName();
+            if (attachmentFilesCollection.getItems()[i].getFileName() === name) {
+                // return attachmentFilesCollection.removeItem(i);
+                attachmentFilesCollection.removeItem(i);
+            }
+        }
+        return null;
+    },
+
+    /**
+     * compare the list see in UI5 (attachmentFilesCollection) and attachDocument which we put the fileBase64
+     * if we don't find the file name attachmentFilesCollection we delete remove the file in attachDocument
+     */
+    compareListAndRemove: function () {
+        var attachmentFilesCollection = this.getView().byId('UploadCollection');
+        var i = this.attachDocument.length-1;
+        for (; i >= 0; i -= 1) {
+            // We are looking if the attachDocument's list is still present in the collection.
+            var index = attachmentFilesCollection.getItems().map(function (e) { return e.getFileName(); }).indexOf(this.attachDocument[i].fileName);
+            if(index === -1) {
+                this.attachDocument.splice(i, 1);
+            }
+        }
+    },
+
+    /**
+     * remove file by the name from the array named AttachDocument
+     */
+    removeFileFromAttachDocument: function (name) {
+        var index = this.attachDocument.map(function (e) { return e.fileName; }).indexOf(name);
+        if (index !== -1) {
+            this.attachDocument.splice(index, 1);
+        }
+    },
 
 });

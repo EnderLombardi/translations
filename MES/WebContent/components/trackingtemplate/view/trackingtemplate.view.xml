@@ -20,7 +20,7 @@
 					<!-- List Comment -->
 					<List id="confirmationNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row'}" class="customListItem">
 						<items>
-							<StandardListItem title="OP {TrackingTemplate>operationNumber} - {TrackingTemplate>User_First_Name}.{TrackingTemplate>User_Last_Name}" description="{path: 'TrackingTemplate>Comments', formatter: 'airbus.mes.trackingtemplate.util.Formatter.commentFormat'}" info="{path: 'TrackingTemplate>Created_Date_Time'}"/>
+							<StandardListItem title="OP {TrackingTemplate>operationNumber} ( {TrackingTemplate>percentage}% ) - {TrackingTemplate>User_First_Name}.{TrackingTemplate>User_Last_Name}" description="{path: 'TrackingTemplate>Comments', formatter: 'airbus.mes.trackingtemplate.util.Formatter.commentFormat'}" info="{path: 'TrackingTemplate>Created_Date_Time'}"/>
 						</items>
 					</List>
 				</content>
@@ -48,11 +48,10 @@
 						id="UploadCollection" 
 						maximumFileSize="10" 
 						multiple="false" 
-						sameFilenameAllowed="false" 
+						sameFilenameAllowed="true" 
 						instantUpload="false" 
 						showSeparators="All" 
 						change="onChangeUploadCollection" 
-						fileDeleted="onFileDeleted" 
 						filenameLengthExceed="onFilenameLengthExceed" 
 						fileSizeExceed="onFileSizeExceed" 
 						typeMissmatch="onTypeMissmatch">

@@ -1,0 +1,438 @@
+// 20170302154620
+// http://dmivie0.eu.airbus.corp:55600/XMII/Illuminator?QueryTemplate=XX_MOD1684_MES%2FMII%2FOperationDetails%2FTrackingTemplate%2FEND_Select_WO_Notes_QUE&IsTesting=T&Content-Type=text%2Fjson&Param.1=FNZ1&Param.2=11016229
+
+{
+  "Rowsets": {
+    "DateCreated": "2017-03-02T15:44:53",
+    "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+    "StartDate": "2017-03-02T14:44:53+0100",
+    "EndDate": "2017-03-02T15:44:53+0100",
+    "CachedTime": "",
+    "Rowset": [
+      {
+        "Columns": {
+          "Column": [
+            {
+              "Name": "Activity",
+              "SourceColumn": "Activity",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "Comments",
+              "SourceColumn": "Comments",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "Comment_Type",
+              "SourceColumn": "Comment_Type",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "Context_GBO",
+              "SourceColumn": "Context_GBO",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "Created_Date_Time",
+              "SourceColumn": "Created_Date_Time",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "Handle",
+              "SourceColumn": "Handle",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "Modified_Date_Time",
+              "SourceColumn": "Modified_Date_Time",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "Production_Context_GBO",
+              "SourceColumn": "Production_Context_GBO",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "Reason_Code_BO",
+              "SourceColumn": "Reason_Code_BO",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "Sequence",
+              "SourceColumn": "Sequence",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "Site",
+              "SourceColumn": "Site",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "State",
+              "SourceColumn": "State",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "TXN_ID",
+              "SourceColumn": "TXN_ID",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "User_BO",
+              "SourceColumn": "User_BO",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "User_First_Name",
+              "SourceColumn": "User_First_Name",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "User_Last_Name",
+              "SourceColumn": "User_Last_Name",
+              "Description": "",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            }
+          ]
+        },
+        "Row": [
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "test AFE",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-02-10 08:51:51",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,6",
+            "Modified_Date_Time": "2017-02-10 08:51:51",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "6",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "24855331173960-65b8f37e:15a2434c4e1:-1fcc",
+            "User_BO": "UserBO:FNZ1,MESYS",
+            "User_First_Name": "",
+            "User_Last_Name": "site admin"
+          },
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "test AFE",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-02-21 13:51:37",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,7",
+            "Modified_Date_Time": "2017-02-21 13:51:37",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "7",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "2778262721020-5e2e2e15:15a5fc21e29:-21e4",
+            "User_BO": "UserBO:FNZ1,MESYS",
+            "User_First_Name": "",
+            "User_Last_Name": "site admin"
+          },
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "TEST DESCRIPTION MME FROM DGI",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-02-21 13:52:21",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,8",
+            "Modified_Date_Time": "2017-02-21 13:52:21",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "8",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "150080580111637-42b06d59:15a5fc21e45:-466a",
+            "User_BO": "UserBO:FNZ1,NG1FCF2",
+            "User_First_Name": "ARNAUD",
+            "User_Last_Name": "CABANDE"
+          },
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "TEST DESCRIPTION MME FROM DGI",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-02-21 13:59:33",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,9",
+            "Modified_Date_Time": "2017-02-21 13:59:33",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "9",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "44848457521760-5e2e2e15:15a5fc21e29:-1ea5",
+            "User_BO": "UserBO:FNZ1,NG1FCF2",
+            "User_First_Name": "ARNAUD",
+            "User_Last_Name": "CABANDE"
+          },
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "test AFE",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-03-02 14:09:28",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,10",
+            "Modified_Date_Time": "2017-03-02 14:09:28",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "10",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "484450272718868-426de233:15a8af718ef:452d",
+            "User_BO": "UserBO:FNZ1,MESYS",
+            "User_First_Name": "",
+            "User_Last_Name": "site admin"
+          },
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "test NJ01",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-03-02 14:10:32",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,11",
+            "Modified_Date_Time": "2017-03-02 14:10:32",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "11",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "446207061718942-426de233:15a8af718ef:457c",
+            "User_BO": "UserBO:FNZ1,NG5E7C1",
+            "User_First_Name": "NICOLAS",
+            "User_Last_Name": "JANVIER"
+          },
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "test NJA",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-03-02 14:10:51",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,12",
+            "Modified_Date_Time": "2017-03-02 14:10:51",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "12",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "746422933521474-2191ea34:15a8e2e4d13:-2210",
+            "User_BO": "UserBO:FNZ1,NG5E7C1",
+            "User_First_Name": "NICOLAS",
+            "User_Last_Name": "JANVIER"
+          },
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "test NJA2",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-03-02 14:33:24",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,13",
+            "Modified_Date_Time": "2017-03-02 14:33:24",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "13",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "24400358720427-426de233:15a8af718ef:4bb8",
+            "User_BO": "UserBO:FNZ1,NG5E7C1",
+            "User_First_Name": "NICOLAS",
+            "User_Last_Name": "JANVIER"
+          },
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "test AFE",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-03-02 14:36:07",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,14",
+            "Modified_Date_Time": "2017-03-02 14:36:07",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "14",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "1959144147720665-426de233:15a8af718ef:4cb3",
+            "User_BO": "UserBO:FNZ1,MESYS",
+            "User_First_Name": "",
+            "User_Last_Name": "site admin"
+          },
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "test AFE2",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-03-02 14:37:38",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,15",
+            "Modified_Date_Time": "2017-03-02 14:37:38",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "15",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "1070372984720797-426de233:15a8af718ef:4d42",
+            "User_BO": "UserBO:FNZ1,NG5E7C1",
+            "User_First_Name": "NICOLAS",
+            "User_Last_Name": "JANVIER"
+          },
+          {
+            "Activity": "EXTERNAL",
+            "Comments": "test NJA2",
+            "Comment_Type": "C",
+            "Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Created_Date_Time": "2017-03-02 14:41:13",
+            "Handle": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,16",
+            "Modified_Date_Time": "2017-03-02 14:41:13",
+            "Production_Context_GBO": "ShopOrderBO:FNZ1,11016229",
+            "Reason_Code_BO": "ReasonCodeBO:FNZ1,0000,C",
+            "Sequence": "16",
+            "Site": "FNZ1",
+            "State": "---",
+            "TXN_ID": "1028459383721091-426de233:15a8af718ef:4e82",
+            "User_BO": "UserBO:FNZ1,NG5E7C1",
+            "User_First_Name": "NICOLAS",
+            "User_Last_Name": "JANVIER"
+          }
+        ]
+      },
+      {
+        "Columns": {
+          "Column": [
+            {
+              "Name": "PRODUCTION_COMMENT",
+              "SourceColumn": "PRODUCTION_COMMENT",
+              "Description": "ProductionCommentBO Handle",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "FILE_NAME",
+              "SourceColumn": "FILE_NAME",
+              "Description": "File Name",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "FILE_EXT",
+              "SourceColumn": "FILE_EXT",
+              "Description": "File Extension",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "FILE_URL",
+              "SourceColumn": "FILE_URL",
+              "Description": "File URL",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            },
+            {
+              "Name": "FILE_COUNT",
+              "SourceColumn": "FILE_COUNT",
+              "Description": "File Count",
+              "SQLDataType": 1,
+              "MinRange": 1.0,
+              "MaxRange": 1.0
+            }
+          ]
+        },
+        "Row": [
+          {
+            "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,6",
+            "FILE_NAME": "jpeg-test-nj-0.jpg",
+            "FILE_EXT": "jpg",
+            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-0.jpg",
+            "FILE_COUNT": "0"
+          },
+          {
+            "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,6",
+            "FILE_NAME": "jpeg-test-nj-2-1.jpg",
+            "FILE_EXT": "jpg",
+            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-2-1.jpg",
+            "FILE_COUNT": "1"
+          },
+          {
+            "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,6",
+            "FILE_NAME": "jpeg-test-nj-3-2.jpg",
+            "FILE_EXT": "jpg",
+            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-3-2.jpg",
+            "FILE_COUNT": "2"
+          },
+          {
+            "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,7",
+            "FILE_NAME": "jpeg-test-nj-4-0.jpg",
+            "FILE_EXT": "jpg",
+            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-4-0.jpg",
+            "FILE_COUNT": "0"
+          },
+          {
+            "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,9",
+            "FILE_NAME": "jpeg-test-nj-5-0.jpg",
+            "FILE_EXT": "jpg",
+            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-5-0.jpg",
+            "FILE_COUNT": "0"
+          },
+          {
+            "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,9",
+            "FILE_NAME": "jpeg-test-nj-6-1.jpg",
+            "FILE_EXT": "jpg",
+            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-6-1.jpg",
+            "FILE_COUNT": "1"
+          }
+        ]
+      }
+    ]
+  }
+}
