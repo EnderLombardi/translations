@@ -153,7 +153,7 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailsView--idtouchngo").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idJignTools").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(true);
-                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
+//                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idTrackingTemplate").setVisible(true);
             }

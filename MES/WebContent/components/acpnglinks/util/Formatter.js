@@ -64,12 +64,13 @@ airbus.mes.acpnglinks.util.Formatter = {
 	 */
 	currentWOFormat : function(sValue){
 		var result = "false";
+		var oRow;
 		if ( sValue == airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getWorkOrder()){
 			result = "true";
 		}
 		try{
 			oRow = this.getParent().getParent();
-			oRow.data("currentWO", result , true);
+			oRow.data("currentwo", result , true);
 		} catch(e){
 //do nothing			
 		}

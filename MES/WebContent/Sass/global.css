@@ -3910,7 +3910,7 @@ DATE PICKER
 
 [id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-level="0"] { background-color: #daebe8; }
 
-[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-currentWO="true"] { background-color: #fbefcc; }
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-currentwo="true"] { background-color: #fbefcc; }
 
 #acpnglinksView--modifyColumnsButton { position: absolute; right: 30px; }
 

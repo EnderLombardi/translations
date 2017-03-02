@@ -49,7 +49,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	loadacpnglinksWorkOrderDetail: function () {
 		try{
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
-
+		airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setWorkOrder("acpId1");
 		jQuery.ajax({
 			type: 'post',
 			url: this.getacpnglinksWorkOrderDetail(),
@@ -57,8 +57,8 @@ airbus.mes.acpnglinks.model.ModelManager = {
 			async: false,
 			data: JSON.stringify({
 				"site": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSite(),
-				"sfcStep": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSfcstep(),
-				
+				//"sfcStep": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSfcstep(),
+				"sfcStep": "step",
 			}),
 
 			success: function (data) {
@@ -211,7 +211,8 @@ airbus.mes.acpnglinks.model.ModelManager = {
 					//oModel.refresh();
 
 				} catch (e) {
-
+					oModel.setData(undefined);
+					oModel.refresh()
 					return;
 				}
 
