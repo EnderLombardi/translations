@@ -40,13 +40,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         var showOnlyNotConfirmedConfirmationNote = this.getView().byId("trackingtemplateView--showOnlyNotConfirmedConfirmationNote").getSelected();
         var aFilters = [];
 
-        aFilters.push(new sap.ui.model.Filter({
-            path: "Production_Context_GBO",
-            test: function (oValue) {
-                return !oValue.toUpperCase().startsWith("SHOPORDERBO");
-            }
-        }));
-
         //we had the filter only if the checkbox state is true.
         if (showOnlyLastConfirmationNote) {
             aFilters.push(new sap.ui.model.Filter({
@@ -94,12 +87,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         var lastWoCheckBox = this.getView().byId("trackingtemplateView--showOnlyLastWONote").getSelected();
         var aFilters = [];
 
-        aFilters.push(new sap.ui.model.Filter({
-            path: "Production_Context_GBO",
-            test: function (oValue) {
-                return oValue.toUpperCase().startsWith("SHOPORDERBO");
-            }
-        }));
         //we had the filter only if the checkbox state is true.
         if (lastWoCheckBox) {
             aFilters.push(new sap.ui.model.Filter({
@@ -209,9 +196,10 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
             //Param.6 password
             sap.ui.getCore().byId('passwordTckTmpltForConfirmation').getValue(),
             //Param.7 logon
-            sap.ui.getCore().byId('userNameTckTmpltForConfirmation').getValue()
+            sap.ui.getCore().byId('userNameTckTmpltForConfirmation').getValue(),
+            //Param.8 site
+            airbus.mes.settings.ModelManager.site
         );
-        this.submitAttachedDocument();
 
         this._oUserConfirmationDialog.close();
     },
@@ -391,15 +379,16 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     /**
      * Send file one by one and call the request function
      */
-    submitAttachedDocument: function () {
+    submitAttachedDocument: function (handle, userId) {
         var i = 0;
         var attachDocumentLength = this.attachDocument.length;
         for (; i < attachDocumentLength; i += 1) {
             airbus.mes.trackingtemplate.util.ModelManager.attachDocument(
                 airbus.mes.settings.ModelManager.site,
-                '1234',
-                this.attachDocument[0].fileName, this.attachDocument[0].fileBase64,
-                'S00DB44');
+                handle,
+                this.attachDocument[0].fileName, 
+                this.attachDocument[0].fileBase64,
+                userId);
         }
     },
 
@@ -424,8 +413,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         for (; i < len; i += 1) {``
             var namelist = attachmentFilesCollection.getItems()[i].getFileName();
             if (attachmentFilesCollection.getItems()[i].getFileName() === name) {
-                // return attachmentFilesCollection.removeItem(i);
-                attachmentFilesCollection.removeItem(i);
+                return attachmentFilesCollection.removeItem(i);
             }
         }
         return null;

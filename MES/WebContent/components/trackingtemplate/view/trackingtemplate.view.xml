@@ -18,9 +18,9 @@
 						<CheckBox id="showOnlyNotConfirmedConfirmationNote" text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false" select="filterConfirmationNoteList"/>
 					</OverflowToolbar>
 					<!-- List Comment -->
-					<List id="confirmationNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row'}" class="customListItem">
+					<List id="confirmationNotes" items="{path:'ConfirmationsNotes>/Rowsets/Rowset/0/Row'}" class="customListItem">
 						<items>
-							<StandardListItem title="OP {TrackingTemplate>operationNumber} ( {TrackingTemplate>percentage}% ) - {TrackingTemplate>User_First_Name}.{TrackingTemplate>User_Last_Name}" description="{path: 'TrackingTemplate>Comments', formatter: 'airbus.mes.trackingtemplate.util.Formatter.commentFormat'}" info="{path: 'TrackingTemplate>Created_Date_Time'}"/>
+							<StandardListItem title="OP {ConfirmationsNotes>operationNumber} ( {ConfirmationsNotes>percentage}% ) - {ConfirmationsNotes>User_First_Name}.{ConfirmationsNotes>User_Last_Name}" description="{path: 'ConfirmationsNotes>Comments', formatter: 'airbus.mes.trackingtemplate.util.Formatter.commentFormat'}" info="{path: 'ConfirmationsNotes>Created_Date_Time'}"/>
 						</items>
 					</List>
 				</content>
@@ -33,7 +33,6 @@
 						<CheckBox id="showOnlyLastWONote" text="{i18n>won_toolbar_last}" enabled="true" selected="false" select="showOnlyLastWONote"/>
 						<ToolbarSpacer />
 						<Button class="icon-edit" text="{i18n>won_toolbar_edit}" press="showCommentBox" icon="sap-icon://edit" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_NOTE}"/>
-						<!--<Button class="icon-print" text="{i18n>won_toolbar_print}" press="printTrackingTemplate" icon="sap-icon://print"/>-->
 					</OverflowToolbar>
 					<!-- Comment box -->
 					<Panel id="commentBox" visible="false" class="commentPanel">
@@ -44,28 +43,27 @@
 							</Select>
 						</Panel>
 						<TextArea id="commentArea" growing="true" maxLength="255" placeholder="{i18n>textAreaPlaceHolder}"/>
-						<UploadCollection 
-						id="UploadCollection" 
-						maximumFileSize="10" 
-						multiple="false" 
-						sameFilenameAllowed="true" 
-						instantUpload="false" 
-						showSeparators="All" 
-						change="onChangeUploadCollection" 
-						filenameLengthExceed="onFilenameLengthExceed" 
-						fileSizeExceed="onFileSizeExceed" 
-						typeMissmatch="onTypeMissmatch">
-						</UploadCollection>
+						<UploadCollection id="UploadCollection" maximumFileSize="10" multiple="false" sameFilenameAllowed="true" instantUpload="false" showSeparators="All" change="onChangeUploadCollection" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"></UploadCollection>
 						<HBox>
 							<Button text="{i18n>submitComment}" type="Accept" press="submitComment" class="sapUiSmallMarginEnd buttonAccept" width="12rem" />
 							<Button text="{i18n>cancel}" type="Reject" press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject" width="12rem" />
 						</HBox>
 					</Panel>
 					<!-- List Comment -->
-					<List id="listNotes" items="{path:'TrackingTemplate>/Rowsets/Rowset/0/Row', sorter: {path: 'Created_Date_Time', descending : true}}" class="customListItem">
-						<items>
-							<StandardListItem title="{TrackingTemplate>User_First_Name}.{TrackingTemplate>User_Last_Name}" description="{TrackingTemplate>Comments}" info="{path: 'TrackingTemplate>Created_Date_Time'}"/>
-						</items>
+					<List id="listNotes" items="{path:'WONotes>/Rowsets/Rowset/0/Row', sorter: {path: 'Created_Date_Time', descending : true}}" class="customListItem">
+						<!--<items><StandardListItem title="{WONotes>User_First_Name}.{WONotes>User_Last_Name}" description="{WONotes>Comments}" info="{path: 'WONotes>Created_Date_Time'}"/><List items="{WONotes>attachedDocument}"><items><Link text="{WONotes>FILE_NAME}" href="{WONotes>FILE_URL}"/></items></List></items>-->
+						<CustomListItem>
+							<HBox>
+								<VBox >
+									<Label text="{WONotes>User_First_Name}.{WONotes>User_Last_Name}"/>
+									<Text text="{WONotes>Comments}"/>
+									<HBox items= "{WONotes>attachedDocument}">
+										<Link text="{WONotes>FILE_NAME}" href="{WONotes>FILE_URL}"/>
+									</HBox>
+								</VBox>
+								<Label text="{WONotes>Created_Date_Time}"/>
+							</HBox>
+						</CustomListItem>
 					</List>
 				</content>
 			</Panel>

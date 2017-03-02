@@ -24,7 +24,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     showDisrupionBtnClicked: false, // button Disruption on Station Tracker clicked
     init: function (core) {
 
-        var aModel = ["TrackingTemplate"];
+        var aModel = ["ConfirmationsNotes","WONotes"];
 
         airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
@@ -37,10 +37,12 @@ airbus.mes.trackingtemplate.util.ModelManager = {
      * Refresh all the data of tracking template
      */
     refreshTrackingTemplateModel: function () {
-        var oViewModel = sap.ui.getCore().getModel("TrackingTemplate");
+        var oViewModel = sap.ui.getCore().getModel("ConfirmationsNotes");
+        var woNotesModel = sap.ui.getCore().getModel("WONotes");
         var reasonCodeModel = sap.ui.getCore().getModel("reasonCodeModel");
-        this.loadTrackingTemplateData(oViewModel, "urltrackingtemplate");
+        this.loadConfirmationsNotesData(oViewModel, "getConfirmationsNotes");
         this.loadReasonCodeData(reasonCodeModel, "getReasonCodes");
+        this.loadWONotesData(woNotesModel, "getWorkOrderNotes");
     },
 
     /**
@@ -57,11 +59,11 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     /**
      * Call the service to update data
      */
-    loadTrackingTemplateData: function (oViewModel, model) {
+    loadConfirmationsNotesData: function (oViewModel, model) {
 
         jQuery.ajax({
             type: 'get',
-            url: this.getTrackingTemplateUrl(model),
+            url: this.getConfirmationsNotesUrl(model),
             contentType: 'application/json',
 
             success: function (data) {
@@ -82,7 +84,56 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             }
         });
     },
+    /**
+     * Call the service to update data
+     */
+    loadWONotesData: function (woNotesModel, model) {
 
+        jQuery.ajax({
+            type: 'get',
+            url: this.getConfirmationsNotesUrl(model),
+            contentType: 'application/json',
+
+            success: function (data) {
+                if (typeof data == "string") {
+                    data = JSON.parse(data);
+                }
+                
+                airbus.mes.trackingtemplate.util.ModelManager.attachedDocumentToWoNotes(data.Rowsets.Rowset[0].Row,data.Rowsets.Rowset[1].Row);
+
+                woNotesModel.setData(data);
+            },
+
+            error: function (error, jQXHR) {
+                jQuery.sap.log.info(error);
+            }
+        });
+    },
+
+    attachedDocumentToWoNotes: function (wonotes, attachedDocument) {
+        wonotes = wonotes.sort(airbus.mes.shell.util.Formatter.fieldComparator(['Handle']));
+        attachedDocument = attachedDocument.sort(airbus.mes.shell.util.Formatter.fieldComparator(['PRODUCTION_COMMENT']));
+        var indexAttDoc, indexWONotes, lengthAttDoc, lengthWONotes;
+        indexAttDoc = 0;
+        indexWONotes = 0;
+        lengthAttDoc = attachedDocument.length;
+        lengthWONotes = wonotes.length;
+
+        for(; indexAttDoc < lengthAttDoc; indexAttDoc+=1) {
+            for(; indexWONotes < lengthWONotes ; indexWONotes+=1) {
+                wonotes[indexWONotes]["User_First_Name"] = wonotes[indexWONotes]["User_First_Name"].substring(0, 1);
+                if(!wonotes[indexWONotes].attachedDocument) {
+                    wonotes[indexWONotes].attachedDocument = [];
+                }
+                if(wonotes[indexWONotes].Handle === attachedDocument[indexAttDoc]['PRODUCTION_COMMENT']) {
+                    wonotes[indexWONotes].attachedDocument.push(attachedDocument[indexAttDoc]);
+                    break;
+                }
+            }
+        }
+        wonotes = wonotes.sort(airbus.mes.shell.util.Formatter.fieldComparator(['-Created_Date_Time']));
+        wonotes[0].lastOperationNote = true;
+    },
 
     /**
      * getOperationNumber
@@ -163,14 +214,14 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     /***************************************************************************
      * Get URL for tracking template
      **************************************************************************/
-    getTrackingTemplateUrl: function (model) {
+    getConfirmationsNotesUrl: function (model) {
         var trackingTemplateUrl = this.urlModel.getProperty(model);
         var site = airbus.mes.settings.ModelManager.site;
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
             trackingTemplateUrl, "$site", site);
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
             trackingTemplateUrl, "$workOrder", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no);
-        // console.log(trackingTemplateUrl.toString());
+        console.log(trackingTemplateUrl.toString());
         return trackingTemplateUrl;
     },
     /***************************************************************************
@@ -188,7 +239,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     /***************************************************************************
      * Get URL for sending note
      **************************************************************************/
-    getSendNotesUrl: function (shopOrderNum, erpSystem, badgeID, description, reasonCodeText, password, userId) {
+    getSendNotesUrl: function (shopOrderNum, erpSystem, badgeID, description, reasonCodeText, password, userId, site) {
         var totalPartialConfirmationUrl = this.urlModel
             .getProperty("sendNotesUrl");
         totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
@@ -205,6 +256,8 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             totalPartialConfirmationUrl, "password", password);
         totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
             totalPartialConfirmationUrl, "logon", userId.toUpperCase());
+        totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+            totalPartialConfirmationUrl, "$site", site);
         console.log(totalPartialConfirmationUrl.toString());
         return totalPartialConfirmationUrl;
     },
@@ -212,7 +265,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     /***************************************************************************
      * Request for sending note
      **************************************************************************/
-    sendWONotes: function (shopOrderNum, erpSystem, badgeID, description, reasonCodeText, password, userId) {
+    sendWONotes: function (shopOrderNum, erpSystem, badgeID, description, reasonCodeText, password, userId, site) {
         // var sMessageSuccess = this.getView().getModel("i18n")
         //     .getProperty("SuccessfulConfirmation");
         // var sMessageError = this.getView().getModel("i18n")
@@ -222,7 +275,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         jQuery
             .ajax({
                 url: airbus.mes.trackingtemplate.util.ModelManager
-                    .getSendNotesUrl(shopOrderNum, erpSystem, badgeID, description, reasonCodeText, password, userId),
+                    .getSendNotesUrl(shopOrderNum, erpSystem, badgeID, description, reasonCodeText, password, userId, site),
                 async: false,
                 error: function (xhr, status, error) {
                     if (result.Rowsets.Rowset && result.Rowsets.Rowset[0].Row[0].Message) {
@@ -237,6 +290,9 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                     } else {
                         sMessageSuccess = sMessageError;
                     }
+                    //get handle for attached document
+                    var handle = result.Rowsets.Rowset[0].Row[0].Production_Comment;
+                    airbus.mes.trackingtemplate.oView.oController.submitAttachedDocument(handle,userId);
                     //récupérer la reference du WO note. Non renvoyé par MII
                     airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
                     airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
@@ -291,11 +347,9 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             })
             ,
             success: function (data, textStatus, jqXHR) {
-                console.log(textStatus);
                 airbus.mes.trackingtemplate.util.ModelManager.messageShow('Attached Document success');
             },
             error: function (data, textStatus, jqXHR) {
-                console.log(textStatus);
                 airbus.mes.trackingtemplate.util.ModelManager.messageShow('Cannot attached document');
             }
         });
