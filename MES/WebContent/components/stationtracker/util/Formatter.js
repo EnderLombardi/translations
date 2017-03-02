@@ -509,6 +509,13 @@ airbus.mes.stationtracker.util.Formatter = {
 			return 0;
 		}
 	},
+	
+	rescheduleLine: function (avlLine, skill) {
+		window.event.stopPropagation();
+		
+		console.log("reScheduleLine");
+		alert("Test");
+	},
 
 	/*----------------------------------------------------------------------------
 	 * Permit to display the different case to the left y-axis of scheduler
@@ -549,8 +556,8 @@ airbus.mes.stationtracker.util.Formatter = {
 		var bNotConfirmedOpLS = airbus.mes.stationtracker.util.ShiftManager.noTotalConfLastShift(oSection);
 
 		if (bNotConfirmedOpLS) {
-
-			sNotConfirmedOpLS = '<span class="classNotConfirmedOperation" onclick="airbus.mes.stationtracker.oView.getController().test()"></span>';
+			sNotConfirmedOpLS = '<span class="classNotConfirmedOperation" onclick="airbus.mes.stationtracker.util.Formatter.rescheduleLine(\''
+			+ oSection.avlLine + '\',\'' + oSection.avlLine + '\')"></span>';
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
