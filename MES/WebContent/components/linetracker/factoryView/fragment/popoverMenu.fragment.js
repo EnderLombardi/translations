@@ -1,5 +1,5 @@
 "use strict";
-sap.ui.jsfragment("airbus.mes.linetracker.popoverMenu", {
+sap.ui.jsfragment("airbus.mes.factoryView.popoverMenu", {
 	
 	createContent : function(oController) {
 
@@ -10,7 +10,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.popoverMenu", {
 			var tp = sap.ui.getCore().byId(id);
 			if (!tp) {
 				var cnfFull = new sap.m.Button({
-					text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("ConfirmFull"),//-vaibhav
+					text : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("ConfirmFull"),//-vaibhav
 					//text : "Confirm Full", //+vaibhav
 					width : "100%",
 					icon : "sap-icon://process",
@@ -23,7 +23,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.popoverMenu", {
 				});
 
 				var cnfPart = new sap.m.Button({
-					text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("ConfirmPartial"),//-vaibhav
+					text : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("ConfirmPartial"),//-vaibhav
 					//text : "Confirm Partial",//+vaibhav
 					width : "100%",
 					icon : "sap-icon://instance",
@@ -36,7 +36,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.popoverMenu", {
 					}
 				});
 				/*var andon = new sap.m.Button({
-					text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("Andon"),//-vaibhav
+					text : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("Andon"),//-vaibhav
 					//text : "Andon",//+vaibhav
 					width : "100%",
 					icon : "sap-icon://quality-issue",
@@ -48,7 +48,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.popoverMenu", {
 				});*/
 
 				var touchngo = new sap.m.Button({
-					text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("TouchnGo"),//-vaibhav
+					text : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("TouchnGo"),//-vaibhav
 					//text : "Touch n Go",//+vaibhav
 					width : "100%",
 					icon : "sap-icon://physical-activity",

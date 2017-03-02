@@ -1,5 +1,5 @@
 "use strict";
-sap.ui.controller("airbus.mes.linetracker.StationView", {
+sap.ui.controller("airbus.mes.factoryView.StationView", {
 
     /**
      * Called when a controller is instantiated and its View controls (if
@@ -22,37 +22,37 @@ sap.ui.controller("airbus.mes.linetracker.StationView", {
         if(oEvent){
 
             oEvent.getSource().addStyleClass("hboxselect");
-            airbus.mes.linetracker.util.ModelManager.line_number = parseInt(oEvent.getSource().getBindingContext("newStationModel").getPath().split("")[1],10)+1;
-            sap.ui.getCore().byId('idMainView--idProduction').setText(airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("productionLine") + airbus.mes.linetracker.util.ModelManager.line_number);
-            airbus.mes.linetracker.util.ModelManager.msn = oEvent.getSource().getContent().getItems()[0].getMsn();
-            airbus.mes.linetracker.util.ModelManager.hand = oEvent.getSource().getContent().getItems()[0].getHand();
+            airbus.mes.factoryView.util.ModelManager.line_number = parseInt(oEvent.getSource().getBindingContext("newStationModel").getPath().split("")[1],10)+1;
+            sap.ui.getCore().byId('idMainView--idProduction').setText(airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("productionLine") + airbus.mes.factoryView.util.ModelManager.line_number);
+            airbus.mes.factoryView.util.ModelManager.msn = oEvent.getSource().getContent().getItems()[0].getMsn();
+            airbus.mes.factoryView.util.ModelManager.hand = oEvent.getSource().getContent().getItems()[0].getHand();
         } else {
-            sap.ui.getCore().byId("idStationView--staionVbox2").getItems()[airbus.mes.linetracker.util.ModelManager.line_number-1].addStyleClass("hboxselect");
+            sap.ui.getCore().byId("idStationView--staionVbox2").getItems()[airbus.mes.factoryView.util.ModelManager.line_number-1].addStyleClass("hboxselect");
         }
     },
     onProductionSelect:function(oEvt){
         var oEventBus = sap.ui.getCore().getEventBus();
         if(oEvt.getSource().getText().substring(8,10).trim()!="5"){
-        airbus.mes.linetracker.util.ModelManager.line_number = sap.ui.getCore().getModel("newStationModel").getProperty(oEvt.getSource().getBindingContext("newStationModel").getPath()).Line
+        airbus.mes.factoryView.util.ModelManager.line_number = sap.ui.getCore().getModel("newStationModel").getProperty(oEvt.getSource().getBindingContext("newStationModel").getPath()).Line
         oEventBus.publish("MainView", "onClickLine",null);
         }
     },
     refreshStationDetail : function(ok){
-        airbus.mes.linetracker.util.ModelManager.loadModelStationModel();
-        airbus.mes.linetracker.util.ModelManager.refreshFactoryModel();
-        airbus.mes.linetracker.util.ModelManager.loadModelProductionModel();
+        airbus.mes.factoryView.util.ModelManager.loadModelStationModel();
+        airbus.mes.factoryView.util.ModelManager.refreshFactoryModel();
+        airbus.mes.factoryView.util.ModelManager.loadModelProductionModel();
 
     },
 
     onStationPress : function(oEvt){
         var sLineNumber = parseInt(oEvt.getSource().getLineNumber(),10);
         var sMsn = oEvt.getSource().getMsn();
-        var sStationNumber = airbus.mes.linetracker.util.ModelManager.station_number;
-        var sFactory = airbus.mes.linetracker.util.ModelManager.factory_name;
-        var sSite = airbus.mes.linetracker.util.ModelManager.site;
+        var sStationNumber = airbus.mes.factoryView.util.ModelManager.station_number;
+        var sFactory = airbus.mes.factoryView.util.ModelManager.factory_name;
+        var sSite = airbus.mes.factoryView.util.ModelManager.site;
 
         airbus.mes.settings.ModelManager.msn = sMsn;
-        airbus.mes.linetracker.util.ModelManager.getTranscoStation(sSite, sFactory, sLineNumber, sStationNumber);
+        airbus.mes.factoryView.util.ModelManager.getTranscoStation(sSite, sFactory, sLineNumber, sStationNumber);
     },
     /*onAfterRendering: function(){
     }*/

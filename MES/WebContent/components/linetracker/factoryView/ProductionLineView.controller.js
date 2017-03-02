@@ -1,5 +1,5 @@
 "use strict";
-sap.ui.controller("airbus.mes.linetracker.ProductionLineView", {
+sap.ui.controller("airbus.mes.factoryView.ProductionLineView", {
 
 	/**
 	 * Called when a controller is instantiated and its View controls (if
@@ -23,9 +23,9 @@ sap.ui.controller("airbus.mes.linetracker.ProductionLineView", {
 		var oEventBus = sap.ui.getCore().getEventBus();
 		var oStation = oEvent.getSource();
 		// get Station name
-		airbus.mes.linetracker.util.ModelManager.station_number = oStation.getHeading().substring(8);
-		airbus.mes.linetracker.util.ModelManager.msn = oStation.getMsn();
-		airbus.mes.linetracker.util.ModelManager.hand = oStation.getHand();
+		airbus.mes.factoryView.util.ModelManager.station_number = oStation.getHeading().substring(8);
+		airbus.mes.factoryView.util.ModelManager.msn = oStation.getMsn();
+		airbus.mes.factoryView.util.ModelManager.hand = oStation.getHand();
 		// get Line for station clicked
 //		ModelManager.line_number = oStation.getLineNumber().substring(1, 2);//gives line number
 		
@@ -37,9 +37,9 @@ sap.ui.controller("airbus.mes.linetracker.ProductionLineView", {
 		return parseInt(value,10);
 	},
 	 refreshProdLine : function(ok) {
-			airbus.mes.linetracker.util.ModelManager.loadModelProductionModel();
+			airbus.mes.factoryView.util.ModelManager.loadModelProductionModel();
 			if(ok === true){
-				airbus.mes.linetracker.util.ModelManager.loadModelFactoryModel();
+				airbus.mes.factoryView.util.ModelManager.loadModelFactoryModel();
 /*why put in a condition commented for now*/
 //ModelManager.loadModelProductionModel();
 			}

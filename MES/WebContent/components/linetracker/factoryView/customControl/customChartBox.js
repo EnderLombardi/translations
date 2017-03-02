@@ -1,5 +1,5 @@
 "use strict";
-sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.customChartBox", {
+sap.ui.core.Control.extend("airbus.mes.factoryView.customControl.customChartBox", {
 	metadata : {
 		properties : {
 			heading : {

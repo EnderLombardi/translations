@@ -9,9 +9,9 @@ var oRefreshDiaporama;
 // refer:StationView.cotroller.js lockStation function
 /* Initializing Gannt Objects for 'order worklist' and 'Operation worklist' */
 
-jQuery.sap.declare("airbus.mes.linetracker.util.ModelManager");
+jQuery.sap.declare("airbus.mes.factoryView.util.ModelManager");
 
-airbus.mes.linetracker.util.ModelManager = {
+airbus.mes.factoryView.util.ModelManager = {
     operation_User : [],
     role : undefined,
     user : "", // constant
@@ -99,11 +99,11 @@ airbus.mes.linetracker.util.ModelManager = {
         // attach event on end of loading model
 
         sap.ui.getCore().getModel("FactoryModel").attachRequestCompleted(
-                airbus.mes.linetracker.util.ModelManager.onFactoryModelLoaded);
+                airbus.mes.factoryView.util.ModelManager.onFactoryModelLoaded);
         sap.ui.getCore().getModel("ProductionModel").attachRequestCompleted(
-                airbus.mes.linetracker.util.ModelManager.onProductionModelLoaded);
+                airbus.mes.factoryView.util.ModelManager.onProductionModelLoaded);
         sap.ui.getCore().getModel("StationModel").attachRequestCompleted(
-                airbus.mes.linetracker.util.ModelManager.onStationModelLoaded);
+                airbus.mes.factoryView.util.ModelManager.onStationModelLoaded);
         // Set Max setSizeLimit(this.maxModelSize)
 
         sap.ui.getCore().getModel("FactoryModel").setSizeLimit(this.maxModelSize);
@@ -138,7 +138,7 @@ airbus.mes.linetracker.util.ModelManager = {
         }
 
         this.urlModel = new sap.ui.model.resource.ResourceModel({
-            bundleUrl : "../components/linetracker/config/url_config.properties",
+            bundleUrl : "../components/factoryView/config/url_config.properties",
             bundleLocale : dest
         });
 
@@ -205,7 +205,7 @@ airbus.mes.linetracker.util.ModelManager = {
             var notifier = new sap.ui.ux3.Notifier({
                 title : "Message Logs"
             });
-            notifier.attachMessageSelected(airbus.mes.linetracker.util.ModelManager.msgClickListener);
+            notifier.attachMessageSelected(airbus.mes.factoryView.util.ModelManager.msgClickListener);
             this.MessageBar.setMessageNotifier(notifier);
         }
 
@@ -225,7 +225,7 @@ airbus.mes.linetracker.util.ModelManager = {
     },
     msgClickListener : function(oEvent) {
         var oMessage = oEvent.getParameter("message");
-        airbus.mes.linetracker.util.ModelManager.messageShow(oMessage.getText());
+        airbus.mes.factoryView.util.ModelManager.messageShow(oMessage.getText());
     },
     minimizeMsgBar : function() {
         if (this.MessageBar)
@@ -245,26 +245,26 @@ airbus.mes.linetracker.util.ModelManager = {
 
     // ************************************Launch/StopDiaporama**************************************
     launchdiaporama : function() {//
-        if (airbus.mes.linetracker.util.ModelManager.vStopdiaporama) {
+        if (airbus.mes.factoryView.util.ModelManager.vStopdiaporama) {
             oRefreshDiaporama = setInterval(function() {
 
-                airbus.mes.linetracker.util.ModelManager.screendiaporama();
+                airbus.mes.factoryView.util.ModelManager.screendiaporama();
 
             }, 5000)
             sap.ui.getCore().byId("idMainView--Slideshow").setVisible(true);
             sap.ui.getCore().byId("idMainView--diaporama").setIcon(
                     "sap-icon://pause");
-            airbus.mes.linetracker.util.ModelManager.vStopdiaporama = false;
+            airbus.mes.factoryView.util.ModelManager.vStopdiaporama = false;
         } else {
 
             clearInterval(oRefreshDiaporama);
             sap.ui.getCore().byId("idMainView--Slideshow").setVisible(false);
             sap.ui.getCore().byId("idMainView--diaporama").setIcon(
                     "sap-icon://play");
-            airbus.mes.linetracker.util.ModelManager.vStopdiaporama = true;
+            airbus.mes.factoryView.util.ModelManager.vStopdiaporama = true;
             if (sap.ui.getCore().byId("idMainView--myShell")
                     .getSelectedWorksetItem() === "idMainView--idFactory")
-                airbus.mes.linetracker.util.ModelManager.lockshellselected = false;
+                airbus.mes.factoryView.util.ModelManager.lockshellselected = false;
         }
     },
 
@@ -339,7 +339,7 @@ airbus.mes.linetracker.util.ModelManager = {
                         key : "order"
                     }
                 };
-                airbus.mes.linetracker.util.ModelManager.lockshellselected = true;
+                airbus.mes.factoryView.util.ModelManager.lockshellselected = true;
                 // ModelManager.loadOrderWorklistModel();
                 sap.ui.getCore().byId("idMainView").getController()
                         .worksetItemSelected(oEvtReplica);
@@ -357,7 +357,7 @@ airbus.mes.linetracker.util.ModelManager = {
 //                    key : "factory"
 //                }
 //            };
-//            airbus.mes.linetracker.util.ModelManager.lockshellselected = true
+//            airbus.mes.factoryView.util.ModelManager.lockshellselected = true
 //            sap.ui.getCore().byId("idMainView").getController()
 //                    .worksetItemSelected(oEvtReplica);
 //            this.indexrow++;
@@ -372,17 +372,17 @@ airbus.mes.linetracker.util.ModelManager = {
     // ************************************Launch/StopRefreshAllModel**************************************
 
     launchrefresh : function() {
-        if (airbus.mes.linetracker.util.ModelManager.vStoprefresh) {
+        if (airbus.mes.factoryView.util.ModelManager.vStoprefresh) {
             oRefresh = setInterval(function() {
-                airbus.mes.linetracker.util.ModelManager.refreshall();
+                airbus.mes.factoryView.util.ModelManager.refreshall();
             }, 30000)
             sap.ui.getCore().byId("idMainView--refresh").setVisible(true);
-            airbus.mes.linetracker.util.ModelManager.vStoprefresh = false;
+            airbus.mes.factoryView.util.ModelManager.vStoprefresh = false;
         } else {
 
             clearInterval(oRefresh);
             sap.ui.getCore().byId("idMainView--refresh").setVisible(false);
-            airbus.mes.linetracker.util.ModelManager.vStoprefresh = true;
+            airbus.mes.factoryView.util.ModelManager.vStoprefresh = true;
         }
     },
     // ************************************RefreshActivePage**************************************
@@ -500,60 +500,60 @@ airbus.mes.linetracker.util.ModelManager = {
             },
             success : function(data, textStatus, jqXHR) {
                 var message;
-                if (airbus.mes.linetracker.util.ModelManager.Load_Unload == "Load") {
+                if (airbus.mes.factoryView.util.ModelManager.Load_Unload == "Load") {
                     message = "Load successful";
                 }
-                airbus.mes.linetracker.util.ModelManager.loadModelFactoryModel();
-                airbus.mes.linetracker.util.ModelManager.ajaxMsgHandler(data, message);
+                airbus.mes.factoryView.util.ModelManager.loadModelFactoryModel();
+                airbus.mes.factoryView.util.ModelManager.ajaxMsgHandler(data, message);
             },
-            error : airbus.mes.linetracker.util.ModelManager.ajaxError
+            error : airbus.mes.factoryView.util.ModelManager.ajaxError
         });
     },
     ajaxError : function(jqXHR, textStatus, errorThrown) {
         var message = textStatus + errorThrown;
-        airbus.mes.linetracker.util.ModelManager.addMessages(message, sap.ui.core.MessageType.Error);
-        airbus.mes.linetracker.util.ModelManager.messageShow(message);
+        airbus.mes.factoryView.util.ModelManager.addMessages(message, sap.ui.core.MessageType.Error);
+        airbus.mes.factoryView.util.ModelManager.messageShow(message);
         sap.ui.core.BusyIndicator.hide();
     },
     ajaxMsgHandler : function(data, Message) {
 
         if (data.Rowsets.FatalError != undefined) {
             sap.ui.core.BusyIndicator.hide();
-            airbus.mes.linetracker.util.ModelManager.messageShow(data.Rowsets.FatalError);
-            airbus.mes.linetracker.util.ModelManager.addMessages(data.Rowsets.FatalError,
+            airbus.mes.factoryView.util.ModelManager.messageShow(data.Rowsets.FatalError);
+            airbus.mes.factoryView.util.ModelManager.addMessages(data.Rowsets.FatalError,
                     sap.ui.core.MessageType.Error);
 
         } else if (data.Rowsets.Messages != undefined) {
         // Need to implement Server message
         // else if(data.Rowsets.Message_Type ){
-            airbus.mes.linetracker.util.ModelManager.addMessages(data.Rowsets.Messages[0].Message,
+            airbus.mes.factoryView.util.ModelManager.addMessages(data.Rowsets.Messages[0].Message,
                     sap.ui.core.MessageType.Success);
         } else if (data.Rowsets.Rowset != undefined) {
             // [0].Row[0].Message != undefined
             if (data.Rowsets.Rowset[0].Row[0].Message_Type != undefined) {
 
-                airbus.mes.linetracker.util.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+                airbus.mes.factoryView.util.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
                 if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S")
-                    airbus.mes.linetracker.util.ModelManager.addMessages(
+                    airbus.mes.factoryView.util.ModelManager.addMessages(
                             data.Rowsets.Rowset[0].Row[0].Message,
                             sap.ui.core.MessageType.Success);
                 else
-                    airbus.mes.linetracker.util.ModelManager.addMessages(
+                    airbus.mes.factoryView.util.ModelManager.addMessages(
                             data.Rowsets.Rowset[0].Row[0].Message,
                             sap.ui.core.MessageType.Error);
 
             } else {
-                airbus.mes.linetracker.util.ModelManager.messageShow(Message);
-                airbus.mes.linetracker.util.ModelManager.addMessages(Message,
+                airbus.mes.factoryView.util.ModelManager.messageShow(Message);
+                airbus.mes.factoryView.util.ModelManager.addMessages(Message,
                         sap.ui.core.MessageType.Success);
             }
             sap.ui.core.BusyIndicator.hide();
         } else {
-            airbus.mes.linetracker.util.ModelManager.refreshFactoryModel();
+            airbus.mes.factoryView.util.ModelManager.refreshFactoryModel();
             sap.ui.core.BusyIndicator.hide();
 
-            airbus.mes.linetracker.util.ModelManager.messageShow(Message);
-            airbus.mes.linetracker.util.ModelManager.addMessages(Message, sap.ui.core.MessageType.Success);
+            airbus.mes.factoryView.util.ModelManager.messageShow(Message);
+            airbus.mes.factoryView.util.ModelManager.addMessages(Message, sap.ui.core.MessageType.Success);
 
         }
         sap.ui.core.BusyIndicator.hide();
@@ -574,10 +574,10 @@ airbus.mes.linetracker.util.ModelManager = {
             },
             success : function(data, textStatus, jqXHR) {
 
-                airbus.mes.linetracker.util.ModelManager.ajaxMsgHandler(data, "Pulse successful");
-                airbus.mes.linetracker.util.ModelManager.refreshFactoryModel();
+                airbus.mes.factoryView.util.ModelManager.ajaxMsgHandler(data, "Pulse successful");
+                airbus.mes.factoryView.util.ModelManager.refreshFactoryModel();
             },
-            error : airbus.mes.linetracker.util.ModelManager.ajaxError
+            error : airbus.mes.factoryView.util.ModelManager.ajaxError
         });
 
     },
@@ -593,10 +593,10 @@ airbus.mes.linetracker.util.ModelManager = {
             },
             success : function(data, textStatus, jqXHR) {
 
-                airbus.mes.linetracker.util.ModelManager.ajaxMsgHandler(data, "Line Pulse successful");
-                airbus.mes.linetracker.util.ModelManager.refreshFactoryModel();
+                airbus.mes.factoryView.util.ModelManager.ajaxMsgHandler(data, "Line Pulse successful");
+                airbus.mes.factoryView.util.ModelManager.refreshFactoryModel();
             },
-            error : airbus.mes.linetracker.util.ModelManager.ajaxError
+            error : airbus.mes.factoryView.util.ModelManager.ajaxError
         });
 
     },
@@ -607,24 +607,24 @@ airbus.mes.linetracker.util.ModelManager = {
         var line = oEvt.getSource().getParent().getItems()[0].getText().split(
                 " ")[1];
         jQuery.ajax({
-            url : airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('refreshoperation'),
+            url : airbus.mes.factoryView.util.ModelManager.urlModel.getProperty('refreshoperation'),
             type : 'POST',
             async : 'false',
             data : {
                 "Param.1" : "F1",
                 "Param.2" : line,
-                "Param.3" : airbus.mes.linetracker.util.ModelManager.station_number,
+                "Param.3" : airbus.mes.factoryView.util.ModelManager.station_number,
 
             },
             success : function(data, textStatus, jqXHR) {
 
-                airbus.mes.linetracker.util.ModelManager.ajaxMsgHandler(data, "Refresh successful");
+                airbus.mes.factoryView.util.ModelManager.ajaxMsgHandler(data, "Refresh successful");
 
-                airbus.mes.linetracker.util.ModelManager.refreshStationDetail();
-                airbus.mes.linetracker.util.ModelManager.refreshProdLine();
+                airbus.mes.factoryView.util.ModelManager.refreshStationDetail();
+                airbus.mes.factoryView.util.ModelManager.refreshProdLine();
                 sap.ui.core.BusyIndicator.hide();
             },
-            error : airbus.mes.linetracker.util.ModelManager.ajaxError
+            error : airbus.mes.factoryView.util.ModelManager.ajaxError
         });
 
     },
@@ -632,7 +632,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
     logOut : function() {
         jQuery.ajax({
-            url : airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urllogout"),
+            url : airbus.mes.factoryView.util.ModelManager.urlModel.getProperty("urllogout"),
             type : 'POST',
             async : false,
             complete : function() {
@@ -653,7 +653,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
     loadModelFactoryModel : function() {
 
-        var geturlfact = airbus.mes.linetracker.util.ModelManager.getUrlFactoryModel();
+        var geturlfact = airbus.mes.factoryView.util.ModelManager.getUrlFactoryModel();
         var oViewModel = sap.ui.getCore().getModel("FactoryModel");
         oViewModel.loadData(geturlfact, null, false);
     },
@@ -686,12 +686,12 @@ airbus.mes.linetracker.util.ModelManager = {
             var k = 0;
             for (var i = 0; i <= 8; i++) {
                 if (sModelDataLine[k]
-                        && sModelDataLine[k].Station == airbus.mes.linetracker.util.ModelManager.StationList[i]) {
+                        && sModelDataLine[k].Station == airbus.mes.factoryView.util.ModelManager.StationList[i]) {
                     cModelDataLine.push(sModelDataLine[k++])
                 } else {
                     var oJson = {
                         "Line" : line[count],
-                        "Station" : airbus.mes.linetracker.util.ModelManager.StationList[i],
+                        "Station" : airbus.mes.factoryView.util.ModelManager.StationList[i],
                         "Conveyor_Status" : "",
                         "Takt_Resource_Status" : "",
                         "MSN" : "",
@@ -731,9 +731,9 @@ airbus.mes.linetracker.util.ModelManager = {
     },
     onProductionModelLoaded : function() {
         var ProductionImage =
-            [ "Station 5", airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("skeletonBuild"), airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("Automation"),
-                           airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("BottomManualDrill"),  airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("TopManualDrill"), airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("BottomBolt"),
-                           airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("MixedBolting"), airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("TopBolting"), airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("WingUnload") ];
+            [ "Station 5", airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("skeletonBuild"), airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("Automation"),
+                           airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("BottomManualDrill"),  airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("TopManualDrill"), airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("BottomBolt"),
+                           airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("MixedBolting"), airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("TopBolting"), airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("WingUnload") ];
         var oProperty;
         var oLength = 0;
         if (sap.ui.getCore().getModel("ProductionModel").getProperty(
@@ -744,7 +744,7 @@ airbus.mes.linetracker.util.ModelManager = {
         }
         var ModelData = [];
         for (var j = 0; j < oLength; j++) {
-            if (parseInt(oProperty[j].Line,10) == airbus.mes.linetracker.util.ModelManager.line_number) {
+            if (parseInt(oProperty[j].Line,10) == airbus.mes.factoryView.util.ModelManager.line_number) {
                 ModelData.push(oProperty[j]);
             }
         }
@@ -755,7 +755,7 @@ airbus.mes.linetracker.util.ModelManager = {
                 i--;
                 k++;
             } else if (ModelData[k]
-                    && ModelData[k].Station === airbus.mes.linetracker.util.ModelManager.StationList[i]) {
+                    && ModelData[k].Station === airbus.mes.factoryView.util.ModelManager.StationList[i]) {
                 var total;
                 var onSchedule = Math.abs(parseInt(ModelData[k].Takt,10)
                         - parseInt(ModelData[k].Progress,10));
@@ -765,10 +765,10 @@ airbus.mes.linetracker.util.ModelManager = {
                         onSchedule = 100;
                     total = 100 - (parseInt(ModelData[k].Takt,10) + onSchedule)
                     ModelData[k].Donut = [ {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("certifiedWorkOnTime"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("certifiedWorkOnTime"),
                         "value" : ModelData[k].Takt
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("IncompleteWorkInPast"),// this field will
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("IncompleteWorkInPast"),// this field will
                         // always remain
                         // zero in this case
                         // as Incomplete
@@ -778,10 +778,10 @@ airbus.mes.linetracker.util.ModelManager = {
                         // progress)
                         "value" : 0
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("CertifiedWorkInFuture"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("CertifiedWorkInFuture"),
                         "value" : onSchedule
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("futureWork"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("futureWork"),
                         "value" : total
                     } ];
 
@@ -789,13 +789,13 @@ airbus.mes.linetracker.util.ModelManager = {
                     total = 100 - (parseInt(ModelData[k].Progress,10) + onSchedule)
 
                     ModelData[k].Donut = [ {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("certifiedWorkOnTime"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("certifiedWorkOnTime"),
                         "value" : ModelData[k].Progress
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("IncompleteWorkInPast"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("IncompleteWorkInPast"),
                         "value" : onSchedule
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("CertifiedWorkInFuture"),// this field will
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("CertifiedWorkInFuture"),// this field will
                         // always remain
                         // zero in this case
                         // as work done
@@ -804,7 +804,7 @@ airbus.mes.linetracker.util.ModelManager = {
                         // (progress < takt)
                         "value" : 0
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("futureWork"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("futureWork"),
                         "value" : total
                     } ];
                 }
@@ -815,8 +815,8 @@ airbus.mes.linetracker.util.ModelManager = {
                 k++;
             } else {
                 var oJson = {
-                    "Line" : airbus.mes.linetracker.util.ModelManager.line_number,
-                    "Station" : airbus.mes.linetracker.util.ModelManager.StationList[i],
+                    "Line" : airbus.mes.factoryView.util.ModelManager.line_number,
+                    "Station" : airbus.mes.factoryView.util.ModelManager.StationList[i],
                     "STV" : 0,
                     "TAKT_STATUS" : "",
                     "Andon_raised" : 0,
@@ -833,20 +833,20 @@ airbus.mes.linetracker.util.ModelManager = {
                     "MSN" : null,
                     "HAND" : "",
                     "RTO" : 0,
-                    "Image" : "../images/Station" + airbus.mes.linetracker.util.ModelManager.StationList[i]
+                    "Image" : "../images/Station" + airbus.mes.factoryView.util.ModelManager.StationList[i]
                             + ".png",
                     "ImageName" : ProductionImage[i],
                     "Donut" : [ {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("certifiedWorkOnTime"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("certifiedWorkOnTime"),
                         "value" : 0
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("IncompleteWorkInPast"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("IncompleteWorkInPast"),
                         "value" : 0
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("CertifiedWorkInFuture"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("CertifiedWorkInFuture"),
                         "value" : 0
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("futureWork"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("futureWork"),
                         "value" : 100
                     } ]
                 };
@@ -869,7 +869,7 @@ airbus.mes.linetracker.util.ModelManager = {
         var oViewModel = sap.ui.getCore().getModel("StationModel");
         // var newStationModel = sap.ui.getCore().getModel("newStationModel");
 
-        oViewModel.loadData(airbus.mes.linetracker.util.ModelManager.getUrlStationModel(), null, false);
+        oViewModel.loadData(airbus.mes.factoryView.util.ModelManager.getUrlStationModel(), null, false);
     },
     onStationModelLoaded : function() {
 
@@ -884,7 +884,7 @@ airbus.mes.linetracker.util.ModelManager = {
         var ModelData = [];
 
         for (var j = 0; j < oLength; j++) {
-            if (parseInt(oProperty[j].Station,10) == airbus.mes.linetracker.util.ModelManager.station_number) {
+            if (parseInt(oProperty[j].Station,10) == airbus.mes.factoryView.util.ModelManager.station_number) {
                 ModelData.push(oProperty[j]);
             }
         }
@@ -902,10 +902,10 @@ airbus.mes.linetracker.util.ModelManager = {
                         onSchedule = 100;
                     total = 100 - (parseInt(ModelData[k].Takt,10) + onSchedule)
                     ModelData[k].Donut = [ {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("certifiedWorkOnTime"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("certifiedWorkOnTime"),
                         "value" : ModelData[k].Takt
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("IncompleteWorkInPast"),// this field will
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("IncompleteWorkInPast"),// this field will
                         // always remain
                         // zero in this case
                         // as Incomplete
@@ -915,10 +915,10 @@ airbus.mes.linetracker.util.ModelManager = {
                         // progress)
                         "value" : 0
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("CertifiedWorkInFuture"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("CertifiedWorkInFuture"),
                         "value" : onSchedule
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("futureWork"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("futureWork"),
                         "value" : total
                     } ];
 
@@ -926,13 +926,13 @@ airbus.mes.linetracker.util.ModelManager = {
                     total = 100 - (parseInt(ModelData[k].Progress,10) + onSchedule)
 
                     ModelData[k].Donut = [ {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("certifiedWorkOnTime"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("certifiedWorkOnTime"),
                         "value" : ModelData[k].Progress
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("IncompleteWorkInPast"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("IncompleteWorkInPast"),
                         "value" : onSchedule
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("CertifiedWorkInFuture"),// this field will
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("CertifiedWorkInFuture"),// this field will
                         // always remain
                         // zero in this case
                         // as work done
@@ -941,7 +941,7 @@ airbus.mes.linetracker.util.ModelManager = {
                         // (progress < takt)
                         "value" : 0
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("futureWork"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("futureWork"),
                         "value" : total
                     } ];
                 }
@@ -978,7 +978,7 @@ airbus.mes.linetracker.util.ModelManager = {
             } else {
                 var oJson = {
                     "Line" : "0" + i,
-                    "Station" : airbus.mes.linetracker.util.ModelManager.station_number,
+                    "Station" : airbus.mes.factoryView.util.ModelManager.station_number,
                     "STV" : 0,
                     "TAKT_STATUS" : "",
                     "Andon_raised" : 0,
@@ -996,16 +996,16 @@ airbus.mes.linetracker.util.ModelManager = {
                     "RTO" : 0,
                     "HAND" : "",
                     "Donut" : [ {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("certifiedWorkOnTime"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("certifiedWorkOnTime"),
                         "value" : 0
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("IncompleteWorkInPast"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("IncompleteWorkInPast"),
                         "value" : 0
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("CertifiedWorkInFuture"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("CertifiedWorkInFuture"),
                         "value" : 0
                     }, {
-                        "name" : airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("futureWork"),
+                        "name" : airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("futureWork"),
                         "value" : 100
                     } ],
                     "Actual" : {
@@ -1035,7 +1035,7 @@ airbus.mes.linetracker.util.ModelManager = {
     },
     // *************************************PulseModel*********************************
     loadPulseModel : function() {
-        sap.ui.getCore().getModel("PulseModel").setData(airbus.mes.linetracker.util.ModelManager.PulseList);
+        sap.ui.getCore().getModel("PulseModel").setData(airbus.mes.factoryView.util.ModelManager.PulseList);
         // sap.ui.getCore().setModel(newPulseModel, "PulseModel");
     },
     /*
@@ -1043,7 +1043,7 @@ airbus.mes.linetracker.util.ModelManager = {
      */
     loadStationListModel : function() {
         sap.ui.getCore().getModel("stationList").setData(
-                airbus.mes.linetracker.util.ModelManager.StationList);
+                airbus.mes.factoryView.util.ModelManager.StationList);
     },
     // ***********************************SwapStations******************************************
     onSwap : function(oEvent) {
@@ -1059,13 +1059,13 @@ airbus.mes.linetracker.util.ModelManager = {
         switch (worksetItem) {
 //        case "idMainView--idFactory":
         case "idFactoryView":
-            airbus.mes.linetracker.util.ModelManager.swapStationsFactoryView(pressed);
+            airbus.mes.factoryView.util.ModelManager.swapStationsFactoryView(pressed);
 
             break;
 
 //        case "idMainView--idProduction":
         case "idProductionView":
-            airbus.mes.linetracker.util.ModelManager.swapStationsProductionView(pressed);
+            airbus.mes.factoryView.util.ModelManager.swapStationsProductionView(pressed);
             break;
 
         default:
@@ -1115,14 +1115,14 @@ airbus.mes.linetracker.util.ModelManager = {
     },
 
     onAndonClick : function() {
-        window.open(airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlandonapp'), "_blank");
+        window.open(airbus.mes.factoryView.util.ModelManager.urlModel.getProperty('urlandonapp'), "_blank");
     },
     launchResourcePool : function() {
-        window.open(airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlresourcepoolapp'),
+        window.open(airbus.mes.factoryView.util.ModelManager.urlModel.getProperty('urlresourcepoolapp'),
                 "_blank");
     },
     launchCusto : function() {
-        window.open(airbus.mes.linetracker.util.ModelManager.urlModel.getProperty('urlcustoapp'),"_blank");
+        window.open(airbus.mes.factoryView.util.ModelManager.urlModel.getProperty('urlcustoapp'),"_blank");
     },
 
     // *************************************colorPaletteModel*********************************
@@ -1136,7 +1136,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
         var oViewModel = sap.ui.getCore().getModel("colorPaletteModel");
         oViewModel
-                .loadData(airbus.mes.linetracker.util.ModelManager.getUrlColorPaletteModel(), null, false);
+                .loadData(airbus.mes.factoryView.util.ModelManager.getUrlColorPaletteModel(), null, false);
     },
 
     getColorPalette : function(Type) {
@@ -1156,7 +1156,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
     loadStationColorPalette : function() {
         // Get Color Palette from Model
-        var unorderedPalett = airbus.mes.linetracker.util.ModelManager.getColorPalette("Donut");
+        var unorderedPalett = airbus.mes.factoryView.util.ModelManager.getColorPalette("Donut");
 
         var colorPalette = []; // Order of colors is important
         colorPalette.push(unorderedPalett.CertifiedWorkOnTime);
@@ -1201,7 +1201,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
     loadProdLineColorPalette : function() {
         // Get Color Palette form Model
-        var unorderedPalett = airbus.mes.linetracker.util.ModelManager.getColorPalette("Donut");
+        var unorderedPalett = airbus.mes.factoryView.util.ModelManager.getColorPalette("Donut");
 
         var colorPalette = []; // Order of colors is important
         colorPalette.push(unorderedPalett.CertifiedWorkOnTime);
@@ -1227,4 +1227,4 @@ airbus.mes.linetracker.util.ModelManager = {
         }
     }
 };
-//airbus.mes.linetracker.util.ModelManager.init(sap.ui.getCore());
+//airbus.mes.factoryView.util.ModelManager.init(sap.ui.getCore());

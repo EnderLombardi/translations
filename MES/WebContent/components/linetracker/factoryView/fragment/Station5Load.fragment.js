@@ -1,10 +1,10 @@
 "use strict";
-sap.ui.jsfragment("airbus.mes.linetracker.Station5Load", {  
+sap.ui.jsfragment("airbus.mes.factoryView.Station5Load", {  
     createContent: function(oController) { 
     var sIDrow = "";
     var sIDrow1 = "";
        //Obtain data from controller  
-    airbus.mes.linetracker.util.ModelManager.getAvailableStations();
+    airbus.mes.factoryView.util.ModelManager.getAvailableStations();
 	sap.ui.getCore().getModel("lModel").refresh(true);						
 	// Local Station 5 global temporary Model
 	var tModel = new sap.ui.model.json.JSONModel();
@@ -52,7 +52,7 @@ var oAffectation7 = new sap.ui.commons.CheckBox({
 	editable : false
 	});
 	
-	airbus.mes.linetracker.util.ModelManager.a_UserSave = [ {} ];
+	airbus.mes.factoryView.util.ModelManager.a_UserSave = [ {} ];
 	var clicked = undefined;
 	var oTemplate = new sap.m.ColumnListItem({
 		type : 'Active',
@@ -138,7 +138,7 @@ var oAffectation7 = new sap.ui.commons.CheckBox({
 				//oController.SelectedStationBtnObj.setIcon("sap-icon://down");
 				//oController.SelectedStationBtnObj.setTooltip("Unload " + oController.stype);
 //				ModelManager.refreshStationModel5(ModelManager.line_number,msn_loaded,hand_loaded);
-				airbus.mes.linetracker.util.ModelManager.loadUnloadStation5(tModel.oData.MSN,tModel.oData.hand);
+				airbus.mes.factoryView.util.ModelManager.loadUnloadStation5(tModel.oData.MSN,tModel.oData.hand);
 //				ModelManager.loadModelFactoryModel();
 				oDialog5.close();
 			};
@@ -150,7 +150,7 @@ var oAffectation7 = new sap.ui.commons.CheckBox({
 		text : "Cancel",
 		press : function() {
 			oDialog5.close();
-			airbus.mes.linetracker.util.ModelManager.a_UserSave = [ {} ];
+			airbus.mes.factoryView.util.ModelManager.a_UserSave = [ {} ];
 		}
 	});
 	var oDialog5 = new sap.m.Dialog({

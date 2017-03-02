@@ -30,8 +30,8 @@
         return false;
     };
 }*/
-jQuery.sap.declare("airbus.mes.linetracker.util.Formatter");
-airbus.mes.linetracker.util.Formatter = {
+jQuery.sap.declare("airbus.mes.factoryView.util.Formatter");
+airbus.mes.factoryView.util.Formatter = {
 
     parseInteger : function(value) {
 
@@ -40,11 +40,11 @@ airbus.mes.linetracker.util.Formatter = {
 
     imageFormatter : function(taktStatus) {
         if (taktStatus === "GOOD")
-            return "../components/linetracker/images/green.png"
+            return "../components/factoryView/images/green.png"
         else if (taktStatus === "BAD")
-            return "../components/linetracker/images/red_new.png"
+            return "../components/factoryView/images/red_new.png"
         else
-            return "../components/linetracker/images/grey.png"
+            return "../components/factoryView/images/grey.png"
     },
 
     stationColor : function(convNumber) {
@@ -57,18 +57,18 @@ airbus.mes.linetracker.util.Formatter = {
     lineFormatter : function(lineNo, stationNumber) {
         if (stationNumber == "5") {
             if (parseInt(lineNo,10) === 1)
-                return  airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("Station") + " 5 " + airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("panel")
+                return  airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("Station") + " 5 " + airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("panel")
             else if (parseInt(lineNo,10) === 2)
-                return airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("Station") + " 5 " + airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("ribs")
+                return airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("Station") + " 5 " + airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("ribs")
             else
-                return airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("Station") + " 5 " + airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("spars")
+                return airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("Station") + " 5 " + airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("spars")
         } else {
             if (lineNo == "01")
-                return airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("line1")
+                return airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("line1")
             else if (lineNo == "02")
-                return airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("line2")
+                return airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("line2")
             else
-                return airbus.mes.linetracker.oView.getModel("linetrackerI18n").getProperty("line3")
+                return airbus.mes.factoryView.oView.getModel("factoryViewI18n").getProperty("line3")
         }
     },
 
@@ -80,11 +80,11 @@ airbus.mes.linetracker.util.Formatter = {
     },
     factoryImageFormatter : function(taktStatus) {
         if (taktStatus === "OK")
-            return "../components/linetracker/images/green.png"
+            return "../components/factoryView/images/green.png"
         else if (taktStatus === "KO")
-            return "../components/linetracker/images/red_new.png"
+            return "../components/factoryView/images/red_new.png"
         else
-            return "../components/linetracker/images/grey.png"
+            return "../components/factoryView/images/grey.png"
     },
     stationName : function(lineNo, station_number) {
         if (parseInt(station_number,10) === 5) {
@@ -115,34 +115,34 @@ airbus.mes.linetracker.util.Formatter = {
         return parseFloat(value);
     },
     setVisible : function(value) {
-        return airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PULSE');
+        return airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_PULSE');
     },
 //    isPolypolyEditable : function() {
 //        if (PolypolyManager.globalContext.tabSelected == "polypoly") {
-//            return airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
-//                    || airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
-//                    || airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_HOOPE')
-//                    || airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
+//            return airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
+//                    || airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
+//                    || airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_HOOPE')
+//                    || airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
 //        } else {
 //            return false;
 //        }
 //    },
 //    isPolypolyVisible : function() {
-//        return airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
-//                || airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
-//                || airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_HOOPE')
-//                || airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MFTEAM')
-//                || airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_CDTSUP')
-//                || airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PLTMNG');
+//        return airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
+//                || airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
+//                || airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_HOOPE')
+//                || airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_MFTEAM')
+//                || airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_CDTSUP')
+//                || airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_PLTMNG');
 //    },
 
     appendStation : function(stationNumber) {
-        return airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("Station") + stationNumber
+        return airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("Station") + stationNumber
     },
 
     showCusto : function() {
-        return airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_ADM')
-                || airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_DEV');
+        return airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_ADM')
+                || airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_DEV');
     },
     iconFormatterAffectation : function(status) {
         switch (status) {

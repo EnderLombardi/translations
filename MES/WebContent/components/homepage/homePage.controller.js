@@ -66,6 +66,9 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			case "StationHandover":
 				airbus.mes.shell.util.navFunctions.stationHandover();
 				break;
+			case "FactoryView" :
+				airbus.mes.shell.util.navFunctions.factoryView();
+				break;
 			default:
 				break;
 		}

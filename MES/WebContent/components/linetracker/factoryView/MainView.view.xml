@@ -1,28 +1,28 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m" xmlns:ux="sap.ui.ux3" xmlns:common="sap.ui.commons"
-    controllerName="airbus.mes.linetracker.MainView" xmlns:html="http://www.w3.org/1999/xhtml">
+    controllerName="airbus.mes.factoryView.MainView" xmlns:html="http://www.w3.org/1999/xhtml">
     <!-- <Page title="Title"> <content> -->
     <!-- <ux:Shell id="myShell" applyContentPadding="false" showFeederTool="false"
         showSearchTool="false" worksetItemSelected="worksetItemSelected" showTools="false"
         showPane="false" fullHeightContent="true" appIcon="/images/Airbus.jpg"
         shellHeaderType="BrandOnly" appTitle="" appIconTooltip="Airbus Factory, Broughton"
-        class="myShell" logout="airbus.mes.linetracker.util.ModelManager.logOut">
+        class="myShell" logout="airbus.mes.factoryView.util.ModelManager.logOut">
         <ux:headerItems> <common:TextView id="refresh" text="Refresh Auto : On" visible="false"
         /> <common:TextView id="Slideshow" text="Slide Show : On" visible="false"
         /> <common:ToggleButton pressed="false" id="refreshbutton" icon="sap-icon://refresh"
-        press="airbus.mes.linetracker.util.ModelManager.launchrefresh" /> <common:Button
+        press="airbus.mes.factoryView.util.ModelManager.launchrefresh" /> <common:Button
         id="ResourcePool" tooltip="ResourcePool" icon="sap-icon://citizen-connect"
-        press="airbus.mes.linetracker.util.ModelManager.launchResourcePool" /> <common:Button
-        id="Andon" tooltip="Andon" icon="sap-icon://marketing-campaign" press="airbus.mes.linetracker.util.ModelManager.onAndonClick"
+        press="airbus.mes.factoryView.util.ModelManager.launchResourcePool" /> <common:Button
+        id="Andon" tooltip="Andon" icon="sap-icon://marketing-campaign" press="airbus.mes.factoryView.util.ModelManager.onAndonClick"
         /> <common:ToggleButton id="swapStationButton" class="#idMainViewswapStationButton"
-        press="airbus.mes.linetracker.util.ModelManager.onSwap" icon="sap-icon://sort"
+        press="airbus.mes.factoryView.util.ModelManager.onSwap" icon="sap-icon://sort"
         /> <Slider id="refreshSlider" visible="false" value="30" width="50%" class="refreshSlider"
         /> <common:Button id="diaporama" tooltip="Diaporama" icon="sap-icon://play"
-        press="airbus.mes.linetracker.util.ModelManager.launchdiaporama" /> <common:Button
-        id="customize" icon="sap-icon://settings" press="airbus.mes.linetracker.util.ModelManager.launchCusto"
-        visible="{path:'messageBundle>OK',formatter:'airbus.mes.linetracker.util.Formatter.showCusto'}"
+        press="airbus.mes.factoryView.util.ModelManager.launchdiaporama" /> <common:Button
+        id="customize" icon="sap-icon://settings" press="airbus.mes.factoryView.util.ModelManager.launchCusto"
+        visible="{path:'messageBundle>OK',formatter:'airbus.mes.factoryView.util.Formatter.showCusto'}"
         /> </ux:headerItems> <ux:paneBarItems> </ux:paneBarItems> <ux:content> <mvc:XMLView
-        viewName="airbus.mes.linetracker.FactoryView" height="97%"></mvc:XMLView>
+        viewName="airbus.mes.factoryView.FactoryView" height="97%"></mvc:XMLView>
         </ux:content> -->
     <!-- <ux:worksetItems> <ux:NavigationItem id="idFactory" key="factory" text="FACTORY
         VIEW" /> <ux:NavigationItem id="idProduction" key="prod_line" text="PRODUCTION
@@ -31,47 +31,47 @@
         id="MessageBar" visibleStatus="min" alwaysShowToggler="true" class="sapUiNotificationBarDemokit">
         </ux:NotificationBar> </ux:notificationBar> -->
 
-    <Bar id="lineTrackerSubheader" class="pageHeader">
+    <Bar id="factoryViewSubheader" class="pageHeader">
         <contentLeft>
-            <Button id="navBack" icon="sap-icon://arrow-left" text="{linetrackerI18n>back}" press="onNavBack" type="Transparent"/>
+            <Button id="navBack" icon="sap-icon://arrow-left" text="{factoryViewI18n>back}" press="onNavBack" type="Transparent"/>
         </contentLeft>
         <contentMiddle>
-            <Label id="lineTrackerName" text="{linetrackerI18n>lineTrackerTitle}" class="lineTrackerName" />
+            <Label id="factoryViewName" text="{factoryViewI18n>factoryViewTitle}" class="factoryViewName" />
         </contentMiddle>
     </Bar>
 
-    <Toolbar id="lineTrackerToolbar"  class="lineTrackerSubheader Subheader theme-disabled">
+    <Toolbar id="factoryViewToolbar"  class="factoryViewSubheader Subheader theme-disabled">
         <content>
             <SegmentedButton id="IconTabsPages">
                 <items>
                     <SegmentedButtonItem id="idFactory" icon="sap-icon://factory"
-                        text="{linetrackerI18n>factoryView}" key="factory" press="worksetItemSelected" />
+                        text="{factoryViewI18n>factoryView}" key="factory" press="worksetItemSelected" />
                     <SegmentedButtonItem enabled="false" id="idProduction"
-                        icon="sap-icon://flight" text="{linetrackerI18n>productionLine}" key="prod_line"
+                        icon="sap-icon://flight" text="{factoryViewI18n>productionLine}" key="prod_line"
                         press="worksetItemSelected" />
                     <SegmentedButtonItem enabled="false" id="idStation"
-                        icon="sap-icon://customer-view" text="{linetrackerI18n>stationDetail}" key="station"
+                        icon="sap-icon://customer-view" text="{factoryViewI18n>stationDetail}" key="station"
                         press="worksetItemSelected" />
 
                 </items>
             </SegmentedButton>
             <ToolbarSpacer />
-            <Text id="refresh" text="{linetrackerI18n>autoRefresh}n" visible="false" />
-            <Text id="Slideshow" text="{linetrackerI18n>showSlide}" visible="false" />
+            <Text id="refresh" text="{factoryViewI18n>autoRefresh}n" visible="false" />
+            <Text id="Slideshow" text="{factoryViewI18n>showSlide}" visible="false" />
             <ToggleButton pressed="false" type="Transparent" id="refreshbutton"
-                icon="sap-icon://refresh" press="airbus.mes.linetracker.util.ModelManager.launchrefresh" />
+                icon="sap-icon://refresh" press="airbus.mes.factoryView.util.ModelManager.launchrefresh" />
             <Button id="Andon" type="Transparent" tooltip="Andon"
-                icon="sap-icon://marketing-campaign" press="airbus.mes.linetracker.util.ModelManager.onAndonClick" />
+                icon="sap-icon://marketing-campaign" press="airbus.mes.factoryView.util.ModelManager.onAndonClick" />
             <ToggleButton id="swapStationButton" type="Transparent"
-                class="#idMainViewswapStationButton rotated-icon" press="airbus.mes.linetracker.util.ModelManager.onSwap"
+                class="#idMainViewswapStationButton rotated-icon" press="airbus.mes.factoryView.util.ModelManager.onSwap"
                 icon="sap-icon://sort" />
             <Slider id="refreshSlider" visible="false" value="30" width="50%"
                 class="refreshSlider" />
             <Button id="diaporama" type="Transparent" tooltip="Diaporama"
-                icon="sap-icon://play" press="airbus.mes.linetracker.util.ModelManager.launchdiaporama" />
+                icon="sap-icon://play" press="airbus.mes.factoryView.util.ModelManager.launchdiaporama" />
             <Button id="customize" type="Transparent" icon="sap-icon://settings"
-                press="airbus.mes.linetracker.util.ModelManager.launchCusto"
-                    visible="{path:'linetrackerI18n>OK',formatter:'airbus.mes.linetracker.util.Formatter.showCusto'}" />
+                press="airbus.mes.factoryView.util.ModelManager.launchCusto"
+                    visible="{path:'factoryViewI18n>OK',formatter:'airbus.mes.factoryView.util.Formatter.showCusto'}" />
         </content>
     </Toolbar>
     <NavContainer id="MainViewNavContainer">

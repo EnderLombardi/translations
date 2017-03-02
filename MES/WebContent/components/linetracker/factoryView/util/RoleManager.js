@@ -1,6 +1,6 @@
 "use strict";
-jQuery.sap.declare("airbus.mes.linetracker.util.RoleManager")
-airbus.mes.linetracker.util.RoleManager = {
+jQuery.sap.declare("airbus.mes.factoryView.util.RoleManager")
+airbus.mes.factoryView.util.RoleManager = {
 
 	init : function(core) {
 		//	this.parseProfile();
@@ -28,8 +28,8 @@ airbus.mes.linetracker.util.RoleManager = {
 //check if the current user has the right role to execute the action define in ROLES array
 	isAllowed: function (role) {
 		/*return this.userProfile.IllumLoginRoles.some(function (el) {
-//			//return airbus.mes.linetracker.util.RoleManager.ROLES[role].indexOf(el) >= 0;
-			return airbus.mes.linetracker.util.RoleManager.userProfile.IllumLoginRoles.indexOf(role) >= 0;
+//			//return airbus.mes.factoryView.util.RoleManager.ROLES[role].indexOf(el) >= 0;
+			return airbus.mes.factoryView.util.RoleManager.userProfile.IllumLoginRoles.indexOf(role) >= 0;
 			
 		});*/
 		return true;
@@ -38,7 +38,7 @@ airbus.mes.linetracker.util.RoleManager = {
 	
 //Set all information about current user log in userProfile variable
 	parseProfile : function () {
-		var profile = airbus.mes.linetracker.util.ModelManager.getRoles().Rowsets.Rowset[0].Row;
+		var profile = airbus.mes.factoryView.util.ModelManager.getRoles().Rowsets.Rowset[0].Row;
 		for (var i=0; i<profile.length; i++) {
 			this.userProfile[profile[i].Name] = profile[i].Value;
 		}
@@ -49,4 +49,4 @@ airbus.mes.linetracker.util.RoleManager = {
 				
 };
 
-//airbus.mes.linetracker.util.RoleManager.init(sap.ui.getCore());
+//airbus.mes.factoryView.util.RoleManager.init(sap.ui.getCore());

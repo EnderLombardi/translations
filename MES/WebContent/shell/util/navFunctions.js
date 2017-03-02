@@ -174,7 +174,15 @@ airbus.mes.shell.util.navFunctions = {
         nav.to(airbus.mes.linetracker.oView.getId());
     },
 
-
+    factoryView : function() {
+       if (airbus.mes.factoryView === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.factoryView", "../components/linetracker/factoryView");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.factoryView" });
+            nav.addPage(airbus.mes.factoryView.oView);
+        }
+        nav.to(airbus.mes.factoryView.oView.getId());
+    },
+    
     operationstatus: function (oNavContainer, navigate) {
         if (airbus.mes.operationstatus === undefined || airbus.mes.operationstatus.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.operationstatus", "../components/operationstatus");

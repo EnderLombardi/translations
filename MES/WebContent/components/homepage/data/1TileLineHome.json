@@ -70,6 +70,15 @@
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": "stationHandoverEnabled"
+	},
+	{
+	"text": "FactoryView",
+		"sub" : "",
+		"icon": "factory",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": "true"
+	
 	}
 	]
 }

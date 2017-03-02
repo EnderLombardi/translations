@@ -1,5 +1,5 @@
 "use strict";
-sap.ui.jsfragment("airbus.mes.linetracker.Confirmation", {
+sap.ui.jsfragment("airbus.mes.factoryView.Confirmation", {
 	createContent : function(oController) {
 
 //		var model = sap.ui.getCore().getModel("oprWrkListModel");
@@ -11,7 +11,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.Confirmation", {
 		// create confirm button
 		var oBtnCnf = new sap.m.Button({
 			//visible : RoleManager.isAllowed("CONFIRMATION"),
-			text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("Confirm"),
+			text : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("Confirm"),
 			press : function(oEvt) {
 				oController.saveconfirmationFragment(oEvt);
 			}
@@ -19,31 +19,31 @@ sap.ui.jsfragment("airbus.mes.linetracker.Confirmation", {
 
 		// create cancel button
 		var oBtnCancel = new sap.m.Button({
-			text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("Close"),
+			text : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("Close"),
 			press : oController.closeoBtnCancel,
 
 		});
 
 		// creating the popup and its layout
 		username = new sap.m.Input("username", {
-			placeholder : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("UsernamePlaceholder")
+			placeholder : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("UsernamePlaceholder")
 		}).addStyleClass("upperCaseConversion");
 		var user = new sap.m.Label({
-			text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("UsernameLabel"),
+			text : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("UsernameLabel"),
 			required : true
 		});
 
 		password = new sap.m.Input("password", {
-			placeholder : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("PasswordPlaceholder"),
+			placeholder : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("PasswordPlaceholder"),
 			type : sap.m.InputType.Password
 		});
 		var pass = new sap.m.Label({
-			text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("PasswordLabel"),
+			text : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("PasswordLabel"),
 			required : true
 		});
 
 		var pcent = new sap.m.Label("pcent", {
-			text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("PercentageLabel")
+			text : airbus.mes.factoryView.util.ModelManager.i18nModel.getProperty("PercentageLabel")
 			+ "%",
 			required : true
 		});
