@@ -671,11 +671,54 @@ airbus.mes.stationtracker.util.ShiftManager = {
 		
 	},
 	
-
 	/**
-	 * Search in last shift if there is an operation not confirmed return true if result
+	 * Count the number of nt confirmed operations
+	 * 
+	 * @param 	{OBJECT} a section (AVL Line informations)
+	 * @returns {Number} Number of not confirmed operations
+	 */
+	countNoTotalConfLastShif: function (oSection) { 
+		var count = 0;
+		
+		var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
+		var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
+		
+		// Selectet only previous shift
+		if ( fIndexShift != -1 && fIndexShift != 0 ) {
+						
+			var oPreviousShift = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1] ;
+			// Check if the avl to parse exist , when we add new avl Line by press + it not exist in the airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy 
+			if ( airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group] != undefined ) {
+				
+				if ( airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine] != undefined ) {
+					
+					var oOperation = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine];			
+	
+					for ( var aBox in oOperation ) {
+							
+						var aOpration = oOperation[aBox];
+						
+						//Parse all opration in corresponding group avlLine
+						aOpration.forEach(function(el,index){
+							// check if operation start date is less than the end date of prevous shift.
+							if ( airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(aOpration[index].START_TIME) <  oPreviousShift.EndDate ) {
+								if ( el.STATE != "C" ) {
+									count++;
+								}
+							}
+						});
+					}
+				}
+			}
+		}
+		return count;
+	},
+	
+	/**
+	 * Search in last shift if there is an operation not confirmed 
 	 * 
 	 * @param {OBJECT} oSection, AVL line wich is currently rendering
+	 * @returns  {Boolean} True if an operation is not confirmed on the 
 	 */
 	noTotalConfLastShift : function (oSection) {
 		
@@ -731,8 +774,9 @@ airbus.mes.stationtracker.util.ShiftManager = {
 			}
 			
 		}
+		return false;
 	},
-	
+
 	/**
 	 * Add update of shift selection when swiping in scheduler of the initial event of scheduler
 	 */
