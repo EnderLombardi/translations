@@ -1025,6 +1025,79 @@ airbus.mes.stationtracker.util.ModelManager = {
 
         });
     },
+    
+    // Reschedule AVL Line(s)
+    sendRescheduleLineRequest: function (lines) {
+        // get Url of the service
+        var urlReschedulingLineService = this.urlModel.getProperty("urlReschedulingLineService");
+        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
+        
+        
+        // Get current shift id
+		var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
+		console.log("Current shift ID: " + oShift.shiftID);
+		var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
+		
+		// Get previous shift id
+		if ( fIndexShift != -1 && fIndexShift != 0 ) {
+			var prevShiftID = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1].shiftID;
+			console.log("Prev shift ID: " + prevShift);
+		
+			
+			var data = JSON.stringify({
+				"site": 		oData.site,
+				"phStation": 	oData.station,
+				"msn": 			oData.msn,
+				"currShiftID":  oShift.shiftID,
+				"prevShiftID": 	prevShiftID,
+				"curentDate": 	currentDate,
+				"lines": 		lines
+            });
+	        
+	        jQuery.ajax({
+	            type: 'post',
+	            url: urlReschedulingLineService,
+	            async: false,
+	            contentType: 'application/json',
+	            data: data,
+	            success: function (data) {
+	                if (typeof data == "string") {
+	                    data = JSON.parse(data);
+	                }
+	            },
+	            error: function (error, jQXHR) {
+	                jQuery.sap.log.info(error);
+	            }
+	        });
+		}
+    },
+    
+	rescheduleLine: function (avlLine, count) {
+		window.event.stopPropagation();
+		
+		// Get AVL Line number and skill from avlLine string
+		var avlline  = avlLine.split("_");
+		var line  = avlline[0];
+		var skill = avlline[1];
+
+		var lines = [
+			{
+			"line": line,
+			"skill": skill
+			}
+		]
+		// console.log("lines: " + line + " / " + skill);
+		// console.log("countNotConfOpe = " + count);
+		
+		
+		/*
+		 * CONFIRMATION POP UP HERE !!
+		 * 
+		 */
+		
+		// call request
+		//airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest(lines);
+	},
 
     openWorkListPopover: function (id) {
 
