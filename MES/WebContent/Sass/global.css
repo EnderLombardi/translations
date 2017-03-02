@@ -2,6 +2,9 @@
 /****************
 STATIONTRACKER
 *****************/
+/****************
+STATIONTRACKER
+*****************/
 /*********************
 GLOBAL
 *********************/
@@ -98,7 +101,9 @@ STATION TRACKER
 
 .Save_reschedule { color: #747473; border: 1px solid #CECECE; background: 0 0; text-decoration: none; height: 30px; line-height: 30px; text-align: center; width: auto; font-size: 12px; font-weight: 700; font-family: arial; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 
-.classNotConfirmedOperation { position: absolute; width: 5px; background: #ee373d; left: -10px; top: -500px; height: 1000px; }
+.classNotConfirmedOperation { position: absolute; width: 5px; -webkit-transition: width 0.3s ease-in-out; -moz-transition: width 0.3s ease-in-out; transition: width 0.3s ease-in-out; background: #ee373d; left: -10px; top: -500px; height: 1000px; z-index: 999; }
+
+.classNotConfirmedOperation:hover { width: 80%; /*@include transition(all , 0s);*/ }
 
 #stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #calendar--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #calendar--buttonViewMode .sapMSegBBtnDis { height: 3rem; border: none; border-right: 1px solid #8db9ca; background-color: transparent; color: #0D5D76; text-transform: uppercase; line-height: 3rem; }
 
