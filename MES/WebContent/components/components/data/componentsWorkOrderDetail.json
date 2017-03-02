@@ -90,7 +90,7 @@
                 "shortage": "48",
                 "unit": "U",
                 "serialNumber": "01",
-                "Checked_Components": "5",
+                "Checked_Components": "5.40",
                 "Fitted_Components": "10",
                 "bomComponentBO": "bombom"
             }, {
@@ -464,7 +464,7 @@
                 "shortage": "10",
                 "unit": "U",
                 "serialNumber": "02",
-                "Checked_Components": "18",
+                "Checked_Components": "18.540",
                 "Fitted_Components": "6",
                 "bomComponentBO": "bombom"
             }]

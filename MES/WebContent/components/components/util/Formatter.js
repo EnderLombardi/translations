@@ -61,8 +61,12 @@ airbus.mes.components.util.Formatter = {
         airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO = sXml;
     },
 
+    parseFloat : function (nb) {
+        return parseFloat(nb);
+    },
+
     fittedComponentsComparator : function(Fitted_Components, reqQty) {
-         if (parseInt(Fitted_Components, 10) === parseInt(reqQty, 10)) {
+         if (parseFloat(Fitted_Components, 10) === parseFloat(reqQty, 10)) {
             return '1';
         } else {
             return '0';
@@ -70,7 +74,7 @@ airbus.mes.components.util.Formatter = {
     },
 
     checkedComponentsComparator : function(Checked_Components, reqQty) {
-        if (parseInt(Checked_Components, 10) === parseInt(reqQty, 10)) {
+        if (parseFloat(Checked_Components) === parseFloat(reqQty)) {
             return '1';
         } else {
             return '0';
