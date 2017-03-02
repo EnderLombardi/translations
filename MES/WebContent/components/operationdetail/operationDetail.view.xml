@@ -126,14 +126,14 @@
                     <items>
                         <IconTabFilter id="idStatus" text="{i18n>Status}" tooltip="{i18n>Status}" key="status"></IconTabFilter>
                         <IconTabFilter id="idCheckList" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_CHECKLIST}" text="{i18n>CheckListAndRecords}" tooltip="{i18n>CheckListAndRecords}" key="checkList"></IconTabFilter>
-                        <IconTabFilter id="idNCDisplay" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_NC_DISPLAY}" text="{i18n>ncDisplay}" tooltip="{i18n>ncDisplay}" key="ncDisplay"></IconTabFilter>
-                        <IconTabFilter id="idDisruption" text="{i18n>Disruption}" tooltip="{i18n>Disruption}" key="disruption"></IconTabFilter>
-                        <IconTabFilter id="idDisplayOpeAttachments" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_DOC_VISUALIZE}" text="{i18n>Documents}" tooltip="{i18n>Documents}" key="displayOpeAttachments"></IconTabFilter>
-                        <IconTabFilter id="idReschedule" text="{i18n>Reschedule}" tooltip="{i18n>Reschedule}" key="reschedule" visible="{Profile>/identifiedUser/permissions/STATION_DRILL_RESCHEDULE}"></IconTabFilter>
-                        <IconTabFilter id="idtouchngo" text="{i18n>Touchngo}" tooltip="{i18n>Touchngo}" key="touchngo"></IconTabFilter>
-                        <IconTabFilter id="idComponents" enabled="{Profile>/identifiedUser/permissions/topic_componentsOpeDetail}" text="{i18n>Components}" tooltip="{i18n>Components}" key="components"></IconTabFilter>
-                        <IconTabFilter id="idJignTools" enabled="{Profile>/identifiedUser/permissions/operationDetailsJigNTool}" text="{i18n>JignTools}" tooltip="{i18n>JignTools}" key="jigntools"></IconTabFilter>
-                        <IconTabFilter id="idACPnGLinks" text="{i18n>ACPnGLinks}" tooltip="{i18n>ACPnGLinks}" key="ACPnGLinks"></IconTabFilter>
+                        <IconTabFilter id="idNCDisplay"  enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_NC_DISPLAY}" text="{i18n>ncDisplay}" tooltip="{i18n>ncDisplay}" key="ncDisplay"></IconTabFilter>
+                        <IconTabFilter id="idDisruption"  text="{i18n>Disruption}" tooltip="{i18n>Disruption}" key="disruption"></IconTabFilter>
+                        <IconTabFilter id="idDisplayOpeAttachments" design="Horizontal" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_DOC_VISUALIZE}" text="{i18n>Documents}" tooltip="{i18n>Documents}" key="displayOpeAttachments"></IconTabFilter>
+                        <IconTabFilter id="idReschedule"  text="{i18n>Reschedule}" tooltip="{i18n>Reschedule}" key="reschedule" visible="{Profile>/identifiedUser/permissions/STATION_DRILL_RESCHEDULE}"></IconTabFilter>
+                        <IconTabFilter id="idtouchngo"  text="{i18n>Touchngo}" tooltip="{i18n>Touchngo}" key="touchngo"></IconTabFilter>
+                        <IconTabFilter id="idComponents" enabled="{Profile>/identifiedUser/permissions/topic_componentsOpeDetail}" text="{i18n>Components}" tooltip="{i18n>Components}" key="components" class="TabCounter"></IconTabFilter>
+                        <IconTabFilter id="idJignTools"  enabled="{Profile>/identifiedUser/permissions/operationDetailsJigNTool}" text="{i18n>JignTools}" tooltip="{i18n>JignTools}" key="jigntools"></IconTabFilter>
+                        <IconTabFilter id="idACPnGLinks"  text="{i18n>ACPnGLinks}" tooltip="{i18n>ACPnGLinks}" key="ACPnGLinks"></IconTabFilter>
                         <IconTabFilter id="idTrackingTemplate" text="{i18n>tckTemplate}" tooltip="{i18n>tckTemplate}" key="tckTemplate"></IconTabFilter>
                     </items>
                 </IconTabBar>
