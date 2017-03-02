@@ -1,0 +1,25 @@
+{ "Rowsets" : { 
+        "DateCreated" : "2016-10-22T18:13:16", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-10-22T17:13:16+0200", "EndDate" : "2016-10-22T18:13:16+0200", "CachedTime" : "", 
+        "Rowset" : [ 
+        { "Columns" : { 
+               "Column" : [ 
+               { "Name" : "Type", "SourceColumn" : "Type", "Description" : "", "SQLDataType" : 12, "MinRange" : 100.0, "MaxRange" : 100.0 }, 
+               { "Name" : "Property", "SourceColumn" : "Property", "Description" : "", "SQLDataType" : 12, "MinRange" : 100.0, "MaxRange" : 100.0 }, 
+               { "Name" : "CurrentPalette", "SourceColumn" : "CurrentPalette", "Description" : "", "SQLDataType" : 12, "MinRange" : 100.0, "MaxRange" : 100.0 }, 
+               { "Name" : "DefaultPalette", "SourceColumn" : "DefaultPalette", "Description" : "", "SQLDataType" : 12, "MinRange" : 100.0, "MaxRange" : 100.0 } ] }, 
+        "Row" : [ 
+               { "Type" : "Gantt", "Property" : "CertifiedWorkOnTime", "CurrentPalette" : "Green", "DefaultPalette" : "Green" }, 
+               { "Type" : "Gantt", "Property" : "IncompleteWorkInPast", "CurrentPalette" : "red", "DefaultPalette" : "red" }, 
+               { "Type" : "Gantt", "Property" : "OutstandingOperations", "CurrentPalette" : "#f3ec8b", "DefaultPalette" : "#f3ec8b" }, 
+               { "Type" : "Gantt", "Property" : "CertifiedWorkInFuture", "CurrentPalette" : "#FFC200", "DefaultPalette" : "#FFC200" }, 
+               { "Type" : "Gantt", "Property" : "OrphanOperations", "CurrentPalette" : "#97ced5", "DefaultPalette" : "#97ced5" }, 
+               { "Type" : "Gantt", "Property" : "ProgressLineMarker", "CurrentPalette" : "DarkRed", "DefaultPalette" : "black" }, 
+               { "Type" : "Gantt", "Property" : "FutureWork", "CurrentPalette" : "Blue", "DefaultPalette" : "Blue" }, 
+               { "Type" : "Gantt", "Property" : "ShiftMarker", "CurrentPalette" : "DarkBlue", "DefaultPalette" : "black" }, 
+               { "Type" : "Donut", "Property" : "CertifiedWorkOnTime", "CurrentPalette" : "Green", "DefaultPalette" : "Green" }, 
+               { "Type" : "Donut", "Property" : "IncompleteWorkInPast", "CurrentPalette" : "Red", "DefaultPalette" : "red" }, 
+               { "Type" : "Donut", "Property" : "CertifiedWorkInFuture", "CurrentPalette" : "Yellow", "DefaultPalette" : "#FFC200" }, 
+               { "Type" : "Donut", "Property" : "FutureWork", "CurrentPalette" : "Orange", "DefaultPalette" : "Blue" } ]
+               } ]
+        }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Cache-control" content="max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+
+<!-- moment libs -->
+<script src="resources/moment.js"></script>
+<script src="resources/moment_zone.js"></script>
+
+<script src="/sapui5/resources/sap-ui-core.js" id="sap-ui-bootstrap"
+	data-sap-ui-libs="sap.ui.core,sap.ui.commons,sap.ui.table,sap.ui.ux3,sap.viz,sap.suite.ui.commons,sap.m,sap.ui.layout"
+	data-sap-ui-theme="sap_bluecrystal" data-sap-ui-inspect="true"
+	data-sap-ui-language="en"  data-sap-ui-xx-bindingSyntax="complex">
+</script>
+
+<!-- loading css files -->
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+
+<!-- loading dhtmlxgantt libs -->
+<script src="dhtmlx/codebase/dhtmlxgantt.js"></script>
+<script src="dhtmlx/codebase/ext/dhtmlxgantt_marker.js"></script>
+<!-- <script src="http://export.dhtmlx.com/gantt/api.js"></script>
+ -->
+ <link rel="stylesheet" href="./dhtmlx/codebase/dhtmlxgantt.css" type="text/css" title="no title">
+
+<!-- loading of fragments -->
+<script type="text/javascript" src="airbus/Confirmation.fragment.js"></script>
+<script type="text/javascript" src="airbus/popoverMenu.fragment.js"></script>
+<script type="text/javascript" src="airbus/Station5Load.fragment.js"></script>
+
+<!-- loading utility classes-->
+<script type="text/javascript" src="airbus/ModelManager.js"></script>
+<script type="text/javascript" src="airbus/RoleManager.js"></script>
+<script type="text/javascript" src="airbus/formatter.js"></script>
+<script type="text/javascript" src="airbus/PolypolyManager.js"></script>
+
+<script>
+	sap.ui.localResources("airbus");
+		var view = sap.ui.view({
+			id : "idMainView",
+			viewName : "airbus.MainView",
+			type : sap.ui.core.mvc.ViewType.XML,
+			height: "100%"
+		});
+		var factoryView = sap.ui.view({
+			id : "idFactoryView",
+			viewName : "airbus.FactoryView",
+			type : sap.ui.core.mvc.ViewType.XML,
+			height : "100%",
+			width: "100%"
+		});  
+		view.placeAt("content");
+</script>
+
+</head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+	<div id="mytimeline"></div>
+</body>
+</html>

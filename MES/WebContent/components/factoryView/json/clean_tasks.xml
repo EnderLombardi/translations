@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Rowsets CachedTime="" DateCreated="2016-02-24T11:50:37"
+	EndDate="2016-02-24T11:50:36" StartDate="2016-02-24T10:50:36"
+	Version="15.0 SP4 Patch 0 (Apr 21, 2015)">
+	<script id="tinyhippos-injected" />
+	<Rowset>
+		<Columns>
+			<Column Description="" MaxRange="1" MinRange="0" Name="ID"
+				SQLDataType="1" SourceColumn="ID" />
+			<Column Description="" MaxRange="1" MinRange="0" Name="Desccription"
+				SQLDataType="1" SourceColumn="Desccription" />
+			<Column Description="" MaxRange="1" MinRange="0" Name="START"
+				SQLDataType="1" SourceColumn="START" />
+			<Column Description="" MaxRange="1" MinRange="0" Name="END"
+				SQLDataType="1" SourceColumn="END" />
+			<Column Description="" MaxRange="1" MinRange="0" Name="Parent"
+				SQLDataType="1" SourceColumn="Parent" />
+			<Column Description="" MaxRange="1" MinRange="0" Name="Progress"
+				SQLDataType="1" SourceColumn="Progress" />
+			<Column Description="" MaxRange="1" MinRange="0" Name="Status"
+				SQLDataType="1" SourceColumn="Status" />
+			<Column Description="" MaxRange="1" MinRange="0" Name="Outstanding"
+				SQLDataType="1" SourceColumn="Outstanding" />
+		</Columns>
+		<Row>
+			<ID>Takt</ID>
+			<Desccription>Takt</Desccription>
+			<START />
+			<END />
+			<Parent />
+			<Progress>0.17428571701</Progress>
+			<Status>R</Status>
+			<Outstanding>KO</Outstanding>
+		</Row>
+		<Row>
+			<ID>Shift</ID>
+			<Desccription>Shift</Desccription>
+			<START>2016-02-23 13:49:33</START>
+			<END>2016-02-23 15:49:33</END>
+			<Parent />
+			<Progress>0.17428571701</Progress>
+			<Status>R</Status>
+			<Outstanding>KO</Outstanding>
+		</Row>
+		<Row>
+			<ID>WP2.1</ID>
+			<Desccription>WP2.1</Desccription>
+			<START />
+			<END />
+			<Parent>Takt</Parent>
+			<Progress>0.17428571701</Progress>
+			<Status>R</Status>
+			<Outstanding>KO</Outstanding>
+		</Row>
+		<Row>
+			<ID>100006340_10_1</ID>
+			<Desccription>---</Desccription>
+			<START>2016-02-23 13:49:33</START>
+			<END>2016-02-23 15:49:33</END>
+			<Parent>WP2.1</Parent>
+			<Progress>0.61</Progress>
+			<Status>R</Status>
+			<Outstanding>KO</Outstanding>
+		</Row>
+		<Row>
+			<ID>100006340_20_2</ID>
+			<Desccription>---</Desccription>
+			<START>2016-02-23 15:49:33</START>
+			<END>2016-02-23 18:49:33</END>
+			<Parent>WP2.1</Parent>
+			<Progress>0.0</Progress>
+			<Status>R</Status>
+			<Outstanding>KO</Outstanding>
+		</Row>
+		<Row>
+			<ID>100006340_30_3</ID>
+			<Desccription>---</Desccription>
+			<START>2016-02-23 18:49:33</START>
+			<END>2016-02-23 19:49:33</END>
+			<Parent>WP2.1</Parent>
+			<Progress>0.0</Progress>
+			<Status>R</Status>
+			<Outstanding>KO</Outstanding>
+		</Row>
+		<Row>
+			<ID>100006340_40_4</ID>
+			<Desccription>---</Desccription>
+			<START>2016-02-23 19:49:33</START>
+			<END>2016-02-23 20:49:33</END>
+			<Parent>WP2.1</Parent>
+			<Progress>0.0</Progress>
+			<Status>R</Status>
+			<Outstanding>KO</Outstanding>
+		</Row>
+	</Rowset>
+</Rowsets>

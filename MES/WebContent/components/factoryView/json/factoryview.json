@@ -1,0 +1,43 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-06-16T14:43:16", "Version" : "15.1 SP1 Patch 0 (Jan 21, 2016)", "StartDate" : "2016-06-16T13:43:16+0200", "EndDate" : "2016-06-16T14:43:16+0200", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "Line", "SourceColumn" : "Line", "Description" : "Line", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Station", "SourceColumn" : "Station", "Description" : "Station", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Conveyor_Status", "SourceColumn" : "Conveyor_Status", "Description" : "Conveyor Status OK/KO", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Takt_Resource_Status", "SourceColumn" : "Takt_Resource_Status", "Description" : "Takt_Status ok/ko", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "MSN", "SourceColumn" : "MSN", "Description" : "MSN", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "TF", "SourceColumn" : "TF", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "HAND", "SourceColumn" : "HAND", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "Line" : "01", "Station" : 5, "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "01", "Station" : 10, "Conveyor_Status" : "0", "Takt_Resource_Status" : "KO", "MSN" : "7121", "TF" : "SA", "HAND" : "LH" }, 
+		{ "Line" : "01", "Station" : 20, "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "01", "Station" : 30, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "01", "Station" : 40, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "01", "Station" : 50, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "01", "Station" : 60, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "01", "Station" : 70, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "01", "Station" : 80, "Conveyor_Status" : "", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "02", "Station" : 5, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "02", "Station" : 10, "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "02", "Station" : 20, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "02", "Station" : 30, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "02", "Station" : 40, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "02", "Station" : 50, "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "02", "Station" : 60, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "02", "Station" : 70, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "02", "Station" : 80, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "03", "Station" : 5, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "03", "Station" : 10, "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "03", "Station" : 20, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "03", "Station" : 30, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "03", "Station" : 40, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "03", "Station" : 50, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "03", "Station" : 60, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "03", "Station" : 70, "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "03", "Station" : 80, "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" } ]
+		 } ]
+	 }
+ }

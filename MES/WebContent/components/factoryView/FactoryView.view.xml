@@ -1,0 +1,183 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:custom="airbus.mes.factoryView.customControl"
+    controllerName="airbus.mes.factoryView.FactoryView" xmlns:html="http://www.w3.org/1999/xhtml">
+    <HBox id="factoryHBox" class="factHBox" fitContainer="true">
+        <items>
+            <VBox id="VboxLeft" height="100%" width="15%" justifyContent="Start">
+                <items>
+                    <VBox height="22%" width="100%" justifyContent="Start">
+                        <items>
+                            <Button class="factory_lineButton" text="{factoryViewI18n>line} 3 R/H"
+                                press="onLinePress" width="100%" />
+                            <VBox height="100%" justifyContent="SpaceAround">
+                            <items>
+                            <HBox width="100%" class="adjustPulseSelect"
+                                visible="{path:'PulseModel>ProductId' , formatter:'airbus.mes.factoryView.util.Formatter.setVisible'}">
+                                <items>
+                                    <Select width="100%"  forceSelection="false" items="{PulseModel>/}"
+                                        change="onPluseDropDownSelect">
+                                        <core:Item key="{ProductId}" text="{PulseModel>}" />
+                                    </Select>
+                                    <Button width="auto" text="{factoryViewI18n>pulse}" enabled="false" type="Reject"
+                                        class="myPulseButton" press="pulse" />
+                                </items>
+                            </HBox>
+                            </items>
+                            </VBox>
+                        </items>
+                    </VBox>
+                    <VBox height="22%" width="100%" justifyContent="Star">
+                        <items>
+                            <Button class="factory_lineButton" text="{factoryViewI18n>line} 2 L/H"
+                                press="onLinePress" width="100%" />
+                            <VBox height="100%" justifyContent="SpaceAround">
+                            <items>
+                            <HBox  width="100%" class="adjustPulseSelect"
+                                visible="{path:'PulseModel>ProductId' , formatter:'airbus.mes.factoryView.util.Formatter.setVisible'}">
+                                <!-- visible="airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_PULSE')" -->
+                                <items>
+                                    <Select width="100%" forceSelection="false" items="{PulseModel>/}"
+                                        change="onPluseDropDownSelect">
+                                        <core:Item key="{ProductId}" text="{PulseModel>}" />
+                                    </Select>
+                                    <Button width="auto" text="{factoryViewI18n>pulse}" enabled="false" type="Reject"
+                                        class="myPulseButton" press="pulse" />
+                                </items>
+                            </HBox>
+                            </items>
+                            </VBox>
+                        </items>
+                    </VBox>
+                    <VBox height="5%" width="100%" justifyContent="Center" class="spaceTransferIsle"></VBox>
+                    <VBox height="22%" width="100%" justifyContent="Star">
+                        <items>
+                            <Button class="factory_lineButton" text="{factoryViewI18n>line} 1 Mix"
+                                press="onLinePress" width="100%" />
+                            <VBox height="100%" justifyContent="SpaceAround">
+                            <items>
+                            <HBox  width="100%" class="adjustPulseSelect"
+                                visible="{path:'PulseModel>ProductId' , formatter:'airbus.mes.factoryView.util.Formatter.setVisible'}">
+                                <!-- visible="airbus.mes.factoryView.util.RoleManager.isAllowed('MII_MOD1684_PULSE')" -->
+                                <items>
+                                    <Select width="100%" forceSelection="false" items="{PulseModel>/}"
+                                        change="onPluseDropDownSelect">
+                                        <core:Item key="{ProductId}" text="{PulseModel>}" />
+                                    </Select>
+                                    <Button width="auto" text="{factoryViewI18n>pulse}" enabled="false" type="Reject"
+                                        class="myPulseButton" press="pulse" />
+                                </items>
+                            </HBox>
+                            </items>
+                            </VBox>
+                        </items>
+                    </VBox>
+                    <!-- "{ path: 'newFactoryModel>/', filters: [{ path: 'Line', operator:
+                        'EQ', value1: '03' }] }" -->
+                    <VBox height="26%" width="100%" justifyContent="Center"></VBox>
+                </items>
+            </VBox>
+            <VBox id="VboxRight" height="100%" width="85%" justifyContent="Start">
+                <HBox id="stationLine3" items="{newFactoryModel>/}" height="22%"
+                    class="productionLine3" direction="RowReverse">
+                    <items>
+                        <custom:customStationBox heading="{factoryViewI18n>Station} {newFactoryModel>Station}"
+                            msn="{path:'newFactoryModel>MSN' , formatter:'airbus.mes.factoryView.util.Formatter.MSNFormatter'}"
+                            hand="{path:'newFactoryModel>HAND' , formatter:'airbus.mes.factoryView.util.Formatter.MSNFormatter'}"
+                            lineNumber="{newFactoryModel>Line}" taktResourceStatus="{newFactoryModel>Takt_Resource_Status}"
+                            press="onStationSelect"
+                            stationHeadColor="{path:'newFactoryModel>Conveyor_Status' , formatter:'airbus.mes.factoryView.util.Formatter.stationColor'}"
+                            class="customStation">
+                            <Image class="factStationBoxImg"
+                                src="{path:'newFactoryModel>Takt_Resource_Status'
+                                            , formatter:'airbus.mes.factoryView.util.Formatter.factoryImageFormatter'}">
+                            </Image>
+                        </custom:customStationBox>
+                    </items>
+                </HBox><!-- { path: 'newFactoryModel>/', filters: [{ path: 'Line', operator:
+                    'EQ', value1: '02' }] }" -->
+                <HBox id="stationLine2" items="{newFactoryModel>/}" height="22%"
+                    class="productionLine2" direction="RowReverse">
+                    <items>
+                        <custom:customStationBox heading="{factoryViewI18n>Station} {newFactoryModel>Station}"
+                            msn="{path:'newFactoryModel>MSN' , formatter:'airbus.mes.factoryView.util.Formatter.MSNFormatter'}"
+                            hand="{path:'newFactoryModel>HAND' , formatter:'airbus.mes.factoryView.util.Formatter.MSNFormatter'}"
+                            lineNumber="{newFactoryModel>Line}" taktResourceStatus="{newFactoryModel>Takt_Resource_Status}"
+                            stationHeadColor="{path:'newFactoryModel>Conveyor_Status' , formatter:'airbus.mes.factoryView.util.Formatter.stationColor'}"
+                            press="onStationSelect" class="customStation">
+                            <Image class="factStationBoxImg"
+                                src="{path:'newFactoryModel>Takt_Resource_Status'
+                                            , formatter:'airbus.mes.factoryView.util.Formatter.factoryImageFormatter'}">
+                            </Image>
+                        </custom:customStationBox>
+                    </items>
+                </HBox>
+                <HBox height="5%" id="stationLine4" class="transferIsle">
+                    <items>
+                        <Text textAlign="Center" width="100%" text="{factoryViewI18n>isleTranfer}"
+                            class="transferIsle" />
+                    </items>
+                </HBox>
+                <HBox id="stationLine1" items="{newFactoryModel>/}" height="22%"
+                    class="productionLine1" direction="RowReverse">
+                    <items>
+                        <custom:customStationBox heading="{factoryViewI18n>Station} {newFactoryModel>Station}"
+                            msn="{path:'newFactoryModel>MSN' , formatter:'airbus.mes.factoryView.util.Formatter.MSNFormatter'}"
+                            hand="{path:'newFactoryModel>HAND' , formatter:'airbus.mes.factoryView.util.Formatter.MSNFormatter'}"
+                            lineNumber="{newFactoryModel>Line}" taktResourceStatus="{newFactoryModel>Takt_Resource_Status}"
+                            stationHeadColor="{path:'newFactoryModel>Conveyor_Status' , formatter:'airbus.mes.factoryView.util.Formatter.stationColor'}"
+                            press="onStationSelect" class="customStation">
+                            <Image class="factStationBoxImg"
+                                src="{path:'newFactoryModel>Takt_Resource_Status'
+                                            , formatter:'airbus.mes.factoryView.util.Formatter.factoryImageFormatter'}">
+                            </Image>
+                        </custom:customStationBox>
+                    </items>
+                </HBox>
+                <HBox height="26%" class="productionLine5">
+                    <items>
+                        <html:fieldset id="stationLoadingPartStyle" style="border-style: groove ; height:100%;width:99%;padding: 8px;">
+                            <html:legend style="font-size: 1em">Loading Station</html:legend>
+                            <HBox id="stationLine5"
+                                items="{path:'newFactoryModel>/' ,
+                                                       filters: [{
+                                                      path : 'Station',
+                                                  operator : 'EQ',
+                                                    value1 : '5'
+                                                               }
+                                                            ]}"
+
+                                height="92%" justifyContent="SpaceAround" class="productionLine5Station"
+                                direction="RowReverse">
+                                <items>
+                                    <VBox class="factoryStation5" height="100%">
+                                        <items>
+                                            <custom:customStationBox
+                                                heading="{factoryViewI18n>Station} {parts:[{path:'newFactoryModel>Line'},{path:'newFactoryModel>Station'}] , formatter:'airbus.mes.factoryView.util.Formatter.stationName'}"
+                                                msn="{path:'newFactoryModel>MSN' ,formatter:'airbus.mes.factoryView.util.Formatter.MSNFormatter'}"
+                                                hand="{path:'newFactoryModel>HAND' ,formatter:'airbus.mes.factoryView.util.Formatter.MSNFormatter'}"
+                                                lineNumber="{newFactoryModel>Line}" taktResourceStatus="{newFactoryModel>Takt_Resource_Status}"
+                                                stationHeadColor="{path:'newFactoryModel>Conveyor_Status' ,formatter:'airbus.mes.factoryView.util.Formatter.stationColor'}"
+                                                press="onStationSelect" class="customStation station5FacHeight">
+                                                <Image class="factStationBoxImg"
+                                                    src="{path:'newFactoryModel>Takt_Resource_Status'
+                                            , formatter:'airbus.mes.factoryView.util.Formatter.factoryImageFormatter'}">
+                                                </Image>
+                                            </custom:customStationBox>
+                                            <Button
+                                                icon="{path:'newFactoryModel>MSN' ,formatter:'airbus.mes.factoryView.util.Formatter.loadUnloadIcon'}"
+                                                type="Reject"
+                                                text="{path:'newFactoryModel>MSN' ,formatter:'airbus.mes.factoryView.util.Formatter.loadUnloadText'}"
+                                                press="onClickStation5" class="factoryButton" width="100%"
+                                                height="100%"
+                                                visible="{path:'newFactoryModel>MSN' , formatter:'airbus.mes.factoryView.util.Formatter.setVisible'}" />
+                                        </items>
+                                    </VBox>
+                                </items>
+                            </HBox>
+                        </html:fieldset>
+                    </items>
+                </HBox>
+            </VBox>
+        </items>
+    </HBox>
+</core:View>

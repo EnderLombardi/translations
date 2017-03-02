@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Rowsets CachedTime="" DateCreated="2016-03-11T15:29:05" EndDate="2016-03-11T15:29:04" StartDate="2016-03-11T14:29:04" Version="15.0 SP4 Patch 0 (Apr 21, 2015)">
+<script id="tinyhippos-injected"/>
+<Rowset>
+<Columns>
+<Column Description="" MaxRange="1" MinRange="0" Name="ID" SQLDataType="1" SourceColumn="ID"/>
+<Column Description="" MaxRange="1" MinRange="0" Name="Desccription" SQLDataType="1" SourceColumn="Desccription"/>
+<Column Description="" MaxRange="1" MinRange="0" Name="START" SQLDataType="1" SourceColumn="START"/>
+<Column Description="" MaxRange="1" MinRange="0" Name="END" SQLDataType="1" SourceColumn="END"/>
+<Column Description="" MaxRange="1" MinRange="0" Name="Parent" SQLDataType="1" SourceColumn="Parent"/>
+<Column Description="" MaxRange="1" MinRange="0" Name="Progress" SQLDataType="1" SourceColumn="Progress"/>
+<Column Description="" MaxRange="1" MinRange="0" Name="Status" SQLDataType="1" SourceColumn="Status"/>
+<Column Description="" MaxRange="1" MinRange="0" Name="Outstanding" SQLDataType="1" SourceColumn="Outstanding"/>
+<Column Description="" MaxRange="1" MinRange="0" Name="Theoric_Progress" SQLDataType="1" SourceColumn="Theoric_Progress"/>
+<Column Description="" MaxRange="1" MinRange="0" Name="User_Affectation" SQLDataType="1" SourceColumn="User_Affectation"/>
+<Column Description="" MaxRange="1" MinRange="0" Name="Display_Icon" SQLDataType="1" SourceColumn="Display_Icon"/>
+</Columns>
+<Row>
+<ID>Takt</ID>
+<Desccription>Takt</Desccription>
+<START>2016-03-11 13:36:37</START>
+<END>2016-03-12 00:36:37</END>
+<Parent/>
+<Progress>0.341860466003</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.07</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>NO</Display_Icon>
+</Row>
+<Row>
+<ID>Shift</ID>
+<Desccription>Shift</Desccription>
+<START>2016-03-11 13:49:33</START>
+<END>2016-03-11 20:49:33</END>
+<splitStart>4</splitStart>
+<splitEnd>6</splitEnd>
+<Parent>Takt</Parent>
+<Progress></Progress>
+<Status>S</Status>
+<Outstanding>KO</Outstanding>
+</Row>
+<Row>
+<ID>Pause</ID>
+<Desccription>Pause</Desccription>
+<START>2016-03-11 12:00:00</START>
+<END>2016-03-11 13:30:00</END>
+<Parent>Takt</Parent>
+<Progress></Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+</Row>
+<Row>
+<ID>WP204.0</ID>
+<Desccription>WP204.0</Desccription>
+<START/>
+<END/>
+<Parent>Takt</Parent>
+<Progress>0.11428571701</Progress>
+<Status>G</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.12</Theoric_Progress>
+<User_Affectation>gezgze</User_Affectation>
+<Display_Icon>NO</Display_Icon>
+</Row>
+<Row>
+<ID>WP204.1</ID>
+<Desccription>WP204.1</Desccription>
+<START/>
+<END/>
+<Parent>Takt</Parent>
+<Progress>0.44444442749</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.09</Theoric_Progress>
+<User_Affectation>sdds</User_Affectation>
+<Display_Icon>NO</Display_Icon>
+</Row>
+<Row>
+<ID>WP204.2</ID>
+<Desccription>WP204.2</Desccription>
+<START/>
+<END/>
+<Parent>Takt</Parent>
+<Progress>0.91111114502</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.09</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>NO</Display_Icon>
+</Row>
+<Row>
+<ID>WP204.3</ID>
+<Desccription>WP204.3</Desccription>
+<START/>
+<END/>
+<Parent>Takt</Parent>
+<Progress>0.0</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.09</Theoric_Progress>
+<User_Affectation>sdsddssdsd/fsdsdffd</User_Affectation>
+<Display_Icon>NO</Display_Icon>
+</Row>
+<Row>
+<ID>WP204.4</ID>
+<Desccription>WP204.4</Desccription>
+<START/>
+<END/>
+<Parent>Takt</Parent>
+<Progress>0.188888893127</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.09</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>NO</Display_Icon>
+</Row>
+<Row>
+<ID>100006459_10_1</ID>
+<Desccription>DEBURR WING PYLON, RIBS 19 to 21</Desccription>
+<START>2016-03-11 13:36:37</START>
+<END>2016-03-11 15:36:37</END>
+<Parent>WP204.3</Parent>
+<Progress>0.0</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.433333320618</Theoric_Progress>
+<User_Affectation>gezgdsdsddsdsze/babar</User_Affectation>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006462_10_2</ID>
+<Desccription>TOP SKIN RIBS 2-8, PRIMARY OPERATOR TO C</Desccription>
+<START>2016-03-11 13:36:37</START>
+<END>2016-03-11 15:36:37</END>
+<Parent>WP204.4</Parent>
+<Progress>0.0</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.433333320618</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006453_10_3</ID>
+<Desccription>DEBURR WING STRUCTURE, RIBS 2 TO 8.</Desccription>
+<START>2016-03-11 13:36:37</START>
+<END>2016-03-11 15:36:37</END>
+<Parent>WP204.1</Parent>
+<Progress>0.0</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.433333320618</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006450_10_4</ID>
+<Desccription>---</Desccription>
+<START>2016-03-11 13:36:37</START>
+<END>2016-03-11 15:36:37</END>
+<Parent>WP204.0</Parent>
+<Progress>0.1</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.433333320618</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006456_10_5</ID>
+<Desccription>DEBURR WING STRUCTURE, RIBS 12 to 18</Desccription>
+<START>2016-03-11 13:36:37</START>
+<END>2016-03-11 15:36:37</END>
+<Parent>WP204.2</Parent>
+<Progress>0.1</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.433333320618</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006450_20_6</ID>
+<Desccription>---</Desccription>
+<START>2016-03-11 15:36:37</START>
+<END>2016-03-11 18:36:37</END>
+<Parent>WP204.0</Parent>
+<Progress>0.2</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.0</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006459_20_7</ID>
+<Desccription>DEBURR HOLES FORWARD OF FRONT SPAR RIBS</Desccription>
+<START>2016-03-11 15:36:37</START>
+<END>2016-03-11 19:36:37</END>
+<Parent>WP204.3</Parent>
+<Progress>0.0</Progress>
+<Status>G</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.0</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006453_20_8</ID>
+<Desccription>DEBURR HOLES FORWARD OF FRONT SPAR RIBS</Desccription>
+<START>2016-03-11 15:36:37</START>
+<END>2016-03-11 19:36:37</END>
+<Parent>WP204.1</Parent>
+<Progress>1</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.0</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006462_20_9</ID>
+<Desccription>DEBURR HOLES FORWARD OF FRONT SPAR RIBS</Desccription>
+<START>2016-03-11 15:36:37</START>
+<END>2016-03-11 19:36:37</END>
+<Parent>WP204.4</Parent>
+<Progress>0.2</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.0</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006456_20_10</ID>
+<Desccription>DEBURR HOLES FORWARD OF FRONT SPAR RIBS</Desccription>
+<START>2016-03-11 15:36:37</START>
+<END>2016-03-11 19:36:37</END>
+<Parent>WP204.2</Parent>
+<Progress>2</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.0</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006450_30_11</ID>
+<Desccription>---</Desccription>
+<START>2016-03-11 18:36:37</START>
+<END>2016-03-11 20:36:37</END>
+<Parent>WP204.0</Parent>
+<Progress>0.0</Progress>
+<Status>G</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.0</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006453_30_12</ID>
+<Desccription>RIBS 2-8, PRIMARY OPERATOR TO ENSURE ALL</Desccription>
+<START>2016-03-11 19:36:37</START>
+<END>2016-03-11 22:36:37</END>
+<Parent>WP204.1</Parent>
+<Progress>0.0</Progress>
+<Status>G</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.0</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006459_30_13</ID>
+<Desccription>RIBS 2-8, PRIMARY OPERATOR TO ENSURE ALL</Desccription>
+<START>2016-03-11 19:36:37</START>
+<END>2016-03-11 22:36:37</END>
+<Parent>WP204.3</Parent>
+<Progress>0.0</Progress>
+<Status>G</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.0</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006462_30_14</ID>
+<Desccription>RIBS 2-8, PRIMARY OPERATOR TO ENSURE ALL</Desccription>
+<START>2016-03-11 19:36:37</START>
+<END>2016-03-11 22:36:37</END>
+<Parent>WP204.4</Parent>
+<Progress>0.3</Progress>
+<Status>R</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.0</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+<Row>
+<ID>100006456_30_15</ID>
+<Desccription>RIBS 12, PRIMARY OPERATOR TO ENSURE ALL</Desccription>
+<START>2016-03-11 19:36:37</START>
+<END>2016-03-11 22:36:37</END>
+<Parent>WP204.2</Parent>
+<Progress>0.0</Progress>
+<Status>G</Status>
+<Outstanding>KO</Outstanding>
+<Theoric_Progress>0.0</Theoric_Progress>
+<User_Affectation/>
+<Display_Icon>YES</Display_Icon>
+</Row>
+</Rowset>
+</Rowsets>

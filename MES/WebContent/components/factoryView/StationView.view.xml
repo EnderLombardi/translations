@@ -1,0 +1,103 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
+    xmlns:custom="airbus.mes.factoryView.customControl" xmlns:chart="sap.suite.ui.microchart" xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data" xmlns:vtype="sap.viz.ui5.types"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" controllerName="airbus.mes.factoryView.StationView"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <!-- <Page enableScrolling="false" showHeader="false"> <content> -->
+    <HBox id="staionHbox" height="100%">
+        <items>
+            <FlexBox id="staionVbox1" items="{newStationModel>/}" direction="ColumnReverse"
+                class="stationButtons">
+                <items>
+                    <!-- <CustomTile class="myCustomTileBlank"> <content> -->
+                    <VBox justifyContent="Center">
+                        <Button
+                            text="{parts:[{path:'newStationModel>Line'},{path:'newStationModel>Station'}] , formatter:'airbus.mes.factoryView.util.Formatter.lineFormatter'}"
+                            width="100%" press="onProductionSelect" />
+                        <Button text="{factoryViewI18n>opeRefresh}" type="Reject"
+                            press="airbus.mes.factoryView.util.ModelManager.refreshOperation" />
+                    </VBox>
+                    <!-- </content> </CustomTile> -->
+                </items>
+            </FlexBox>
+            <VBox id="staionVbox2" items="{newStationModel>/}" class="stationTiles"
+                direction="ColumnReverse">
+                <items>
+                    <CustomTile class="myStationTile" press="lockStation">
+                        <content>
+                            <HBox height="inherit" class="stationTilesHbox">
+                                <items>
+                                    <custom:customStationBox
+                                        press= "onStationPress" height="100%"
+                                        heading="{factoryViewI18n>Station} {parts:[{path:'newStationModel>Line'},{path:'newStationModel>Station'}] , formatter:'airbus.mes.factoryView.util.Formatter.stationName'}"
+                                        state="{factoryViewI18n>error}" msnLabel="{factoryView>msnLabel}" msn="{newStationModel>MSN}" handLabel="{factoryView>handLabel}" hand="{newStationModel>HAND}"
+                                        stationHeadColor="{path:'newStationModel>Conveyor_Status' , formatter:'airbus.mes.factoryView.util.Formatter.stationColor'}"
+                                        lineNumber="{newStationModel>Line}" taktResourceStatus="{newStationModel>TAKT_STATUS}">
+                                        <Image class="stationDetailImgStation"
+                                            src="{path:'newStationModel>TAKT_STATUS' , formatter:'airbus.mes.factoryView.util.Formatter.imageFormatter'}">
+                                        </Image>
+                                    </custom:customStationBox>
+                                    <viz:VizFrame legendVisible="false" height="100%"
+                                        width="100%" vizType='donut' >
+                                        <viz:dataset>
+                                            <viz.data:FlattenedDataset data="{newStationModel>Donut}">
+                                                <viz.data:dimensions>
+                                                    <viz.data:DimensionDefinition
+                                                        name="Name" value="{name}" />
+                                                </viz.data:dimensions>
+                                                <viz.data:measures>
+                                                    <viz.data:MeasureDefinition
+                                                        name="Value" value="{value}" />
+                                                </viz.data:measures>
+                                            </viz.data:FlattenedDataset>
+                                        </viz:dataset>
+                                        <viz:feeds>
+                                            <viz.feeds:FeedItem uid="size" type="Measure"
+                                                values="Value" />
+                                            <viz.feeds:FeedItem uid="color" type="Dimension"
+                                                values="Name" />
+                                        </viz:feeds>
+                                    </viz:VizFrame>
+                                    <custom:sCustomProductionBox
+                                        height="100%" progress="{newStationModel>Progress}" progressLabel="{factoryViewI18n>progress}" taktLabel="{factoryViewI18n>takt}" takt="{newStationModel>Takt}"
+                                        stv="{newStationModel>STV}" stvLabel="{factoryViewI18n>totalTime}" taktTimeLabel="{factoryViewI18n>taktTimeLabel}" taktTime="{newStationModel>TaktTime}"
+                                        open="{newStationModel>Andon_raised}" openLabel="{factoryViewI18n>openLabel}" escalatedLabel="{factoryViewI18n>escalatedLabel}" escalated="{newStationModel>Andon_escalated}" andonLabel="{factoryViewI18n>andonLabel}"
+                                        openStatus="{newStationModel>Andon_rai_stat}" escalatedStatus="{newStationModel>Andon_esc_stat}"
+                                        width="100%" />
+                                    <custom:customChartBox width="100%"
+                                        height="100%" rto="{newStationModel>RTO} {factoryViewI18n>people}" rtoLabel="{factoryViewI18n>rtoLabel}" taktLabel="{factoryViewI18n>taktLabel}" takt="{newStationModel>Target_Takt}"
+                                        allocValue="{newStationModel>Labour_Assigned}" alloc="{factoryViewI18n>allocLabel}"
+                                        totalTime="{factoryViewI18n>totalTime}"
+                                        ><!-- totalTimeValue="{path:'newStationModel>Total_Time' , formatter:'airbus.mes.factoryView.util.Formatter.totalTimeFormatter'}" -->
+                                        <custom:content height="100%">
+                                            <chart:BulletMicroChart size="XL"
+                                                scale=" {factoryViewI18n>hours}" targetValue="{path:'newStationModel>Total_Time' , formatter:'airbus.mes.factoryView.util.Formatter.totalTimeFormatter'}" width="70%" minValue="0"
+                                                scaleColor="MediumLight" showActualValue="true"
+                                                showTargetValue="true" showValueMarker="true" mode="Actual">
+                                                <chart:actual>
+                                                    <chart:BulletMicroChartData
+                                                        value="{newStationModel>Actual/value}" color="{newStationModel>Actual/color}" />
+                                                </chart:actual>
+                                                <chart:thresholds>
+                                                    <chart:BulletMicroChartData
+                                                        value="{newStationModel>Threshold/0/value}" />
+                                                    <chart:BulletMicroChartData
+                                                        value="{newStationModel>Threshold/1/value}" />
+                                                    <chart:BulletMicroChartData
+                                                        value="{newStationModel>Threshold/2/value}" />
+                                                    <chart:BulletMicroChartData
+                                                        value="{newStationModel>Threshold/3/value}" />
+                                                </chart:thresholds>
+                                            </chart:BulletMicroChart>
+                                        </custom:content>
+                                    </custom:customChartBox>
+                                </items>
+                            </HBox>
+                        </content>
+                    </CustomTile>
+                </items>
+            </VBox>
+        </items>
+    </HBox>
+</core:View>

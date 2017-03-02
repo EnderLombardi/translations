@@ -176,7 +176,7 @@ airbus.mes.shell.util.navFunctions = {
 
     factoryView : function() {
        if (airbus.mes.factoryView === undefined) {
-            jQuery.sap.registerModulePath("airbus.mes.factoryView", "../components/linetracker/factoryView");
+            jQuery.sap.registerModulePath("airbus.mes.factoryView", "../components/factoryView");
             sap.ui.getCore().createComponent({ name: "airbus.mes.factoryView" });
             nav.addPage(airbus.mes.factoryView.oView);
         }

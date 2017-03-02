@@ -1,0 +1,423 @@
+{
+
+   "Rowsets": {
+
+      "DateCreated": "2016-03-11T15:38:22",
+
+      "Version": "15.0 SP4 Patch 0 (Apr 21, 2015)",
+
+      "StartDate": "2016-03-11T14:38:22+0100",
+
+      "EndDate": "2016-03-11T15:38:22+0100",
+
+      "CachedTime": "",
+
+      "Rowset": [
+
+         {
+
+            "Columns": {
+
+               "Column": [
+
+                  {
+
+                     "Name": "Line",
+
+                     "SourceColumn": "Line",
+
+                     "Description": "Line",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Station",
+
+                     "SourceColumn": "Station",
+
+                     "Description": "Station",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "STV",
+
+                     "SourceColumn": "STV",
+
+                     "Description": "STV value",
+
+                     "SQLDataType": 4,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "TAKT_STATUS",
+
+                     "SourceColumn": "TAKT_STATUS",
+
+                     "Description": "Takt status",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Andon_raised",
+
+                     "SourceColumn": "Andon_raised",
+
+                     "Description": "Andon raised",
+
+                     "SQLDataType": 4,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Andon_rai_stat",
+
+                     "SourceColumn": "Andon_rai_stat",
+
+                     "Description": "Andon raised status",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Andon_escalated",
+
+                     "SourceColumn": "Andon_escalated",
+
+                     "Description": "Andon escalated",
+
+                     "SQLDataType": 4,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Andon_esc_stat",
+
+                     "SourceColumn": "Andon_esc_stat",
+
+                     "Description": "Andon escalated status",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Takt",
+
+                     "SourceColumn": "Takt",
+
+                     "Description": "objective percentage",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "TaktTime",
+
+                     "SourceColumn": "TaktTime",
+
+                     "Description": "takt time",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Progress",
+
+                     "SourceColumn": "Progress",
+
+                     "Description": "real percentage",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Target_Takt",
+
+                     "SourceColumn": "Target_Takt",
+
+                     "Description": "TargetTakt",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Allocated_Resource",
+
+                     "SourceColumn": "Allocated_Resource",
+
+                     "Description": "Allocated Resource",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Total_Time",
+
+                     "SourceColumn": "Total_Time",
+
+                     "Description": "TotalTime",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "Labour_Assigned",
+
+                     "SourceColumn": "Labour_Assigned",
+
+                     "Description": "Labour Assigned",
+
+                     "SQLDataType": 4,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "MSN",
+
+                     "SourceColumn": "MSN",
+
+                     "Description": "MSN Number",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "RTO",
+
+                     "SourceColumn": "RTO",
+
+                     "Description": "RTO",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  }
+
+               ]
+
+            },
+
+            "Row": [
+
+               {
+
+                  "Line": "01",
+
+                  "Station": "10",
+
+                  "STV": 43,
+
+                  "TAKT_STATUS": "BAD",
+
+                  "Andon_raised": 0,
+
+                  "Andon_rai_stat": "GOOD",
+
+                  "Andon_escalated": 0,
+
+                  "Andon_esc_stat": "GOOD",
+
+                  "Takt": "150",
+
+                  "TaktTime": "10",
+
+                  "Progress": "60",
+
+                  "Target_Takt": "11.00",
+
+                  "Allocated_Resource": 5,
+
+                  "Total_Time": "43",
+
+                  "Labour_Assigned": 0,
+
+                  "MSN": "7156",
+
+                  "RTO": "3.9"
+
+               },
+
+               {
+
+                  "Line": "01",
+
+                  "Station": "20",
+
+                  "STV": 14,
+
+                  "TAKT_STATUS": "BAD",
+
+                  "Andon_raised": 0,
+
+                  "Andon_rai_stat": "GOOD",
+
+                  "Andon_escalated": 0,
+
+                  "Andon_esc_stat": "GOOD",
+
+                  "Takt": "10",
+
+                  "TaktTime": "9",
+
+                  "Progress": "41",
+
+                  "Target_Takt": "10.00",
+
+                  "Allocated_Resource": "0",
+
+                  "Total_Time": "14",
+
+                  "Labour_Assigned": 0,
+
+                  "MSN": "7155",
+
+                  "RTO": "1.4"
+
+               },
+
+               {
+
+                  "Line": "01",
+
+                  "Station": "30",
+
+                  "STV": 0,
+
+                  "TAKT_STATUS": "BAD",
+
+                  "Andon_raised": 0,
+
+                  "Andon_rai_stat": "GOOD",
+
+                  "Andon_escalated": 0,
+
+                  "Andon_esc_stat": "GOOD",
+
+                  "Takt": "09",
+
+                  "TaktTime": "10",
+
+                  "Progress": "0",
+
+                  "Target_Takt": "11.00",
+
+                  "Allocated_Resource": "0",
+
+                  "Total_Time": "NA",
+
+                  "Labour_Assigned": 0,
+
+                  "MSN": "7121",
+
+                  "RTO": "0.0"
+
+               }
+
+            ]
+
+         }
+
+      ]
+
+   }
+
+}
