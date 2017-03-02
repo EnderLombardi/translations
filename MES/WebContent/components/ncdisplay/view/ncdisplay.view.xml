@@ -4,16 +4,15 @@
           xmlns:table="sap.ui.table"
           controllerName="airbus.mes.ncdisplay.controller.ncdisplay" >
 
-    <Page enableScrolling="false" showHeader="false">
+    <Page enableScrolling="false" showHeader="false" class="sapUiSizeCozy mesOperationDetailView">
         <content>
-            <table:Table id="ncDisplay"
-                         class="mesTable"
+            <table:Table id="ncDisplay" class="mesTable"
 		                 rows="{path: 'ncdisplaydata>/ncDetailList/'}"
 		                 itemPress="onLineClick"
 		                 width="100%" visibleRowCountMode="Auto" selectionMode="None" >
 
 				<table:extension>
-					<VBox id="ncDisplayCheck" class="ncDisplayListcheck mesRadioButtonsCheck">
+					<VBox id="ncDisplayCheck" class="mesRadioButtonsCheck">
 		              <RadioButtonGroup columns="2" select="onSelectLevel">
 		                    <buttons>
 		                        <RadioButton id="ncDisplayOpe" text="For Operation"/>

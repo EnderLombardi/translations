@@ -10,7 +10,7 @@
 				width="100%" visibleRowCountMode="Auto" selectionMode="None">
 
 				<table:extension>
-					<VBox id="ComponentsCheck" class="ComponentsCheck mesRadioButtonsCheck">
+					<VBox id="ComponentsCheck" class="mesRadioButtonsCheck">
 						<RadioButtonGroup columns="2" select="onSelectLevel">
 							<buttons>
 								<RadioButton id="operationButton"
@@ -32,6 +32,7 @@
 						</SearchField>
 					</OverflowToolbar>
 				</table:extension>
+				
 				<table:columns>
 					<table:Column id="bomItemNbCol" autoResizable="true">
 						<Label textAlign="Center" text="{i18nComponentsModel>itemNumber}" />

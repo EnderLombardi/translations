@@ -3849,26 +3849,6 @@ DATE PICKER
 
 .DisOpAttLabel { color: white; padding-top: 8px; padding-left: inherit; }
 
-#ncdisplayView--ncDisplay.ncDisplayTable { width: 95% !important; margin: 0 auto; padding: 0; }
-
-#ncdisplayView--ncDisplay.ncDisplayTable > table { border: solid 1px #97999b; }
-
-#ncdisplayView--ncDisplay.ncDisplayTable > table > thead > tr > th { background-color: #0085ad; border-right: 1px solid white; }
-
-#ncdisplayView--ncDisplay.ncDisplayTable > table > thead > tr > th > span { color: white; }
-
-#ncdisplayView--ncDisplay.ncDisplayTable > table > tbody tr:nth-child(even) { background: #fff; }
-
-#ncdisplayView--ncDisplay.ncDisplayTable > table > tbody tr:nth-child(odd) { background: #fcfcfc; }
-
-#ncdisplayView--ncDisplay.ncDisplayTable > table > tbody tr:hover { background-color: #efefef; }
-
-#ncdisplayView--ncDisplay.ncDisplayTable > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; }
-
-#ncdisplayView--ncDisplayCheck.ncDisplayListcheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
-
-#ncdisplayView--ncDisplayCheck.ncDisplayListcheck .sapMRbGCol { display: inline-flex; }
-
 #acpnglinksView--ACPnGLinks { width: 95% !important; margin: 50px auto; padding: 0; border: solid 1px #97999b; }
 
 #acpnglinksView--ACPnGLinks .sapUiTableCnt .sapUiTableColHdrCnt { height: 46px !important; background-color: #0085ad; }

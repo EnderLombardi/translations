@@ -19,7 +19,7 @@ airbus.mes.ncdisplay.Component.prototype.createContent = function() {
             id : "ncdisplayView",
             viewName : "airbus.mes.ncdisplay.view.ncdisplay",
             type : "XML",
-            height:"auto"
+            height:"100%"
         })
 
         airbus.mes.ncdisplay.oView = this.oView;
