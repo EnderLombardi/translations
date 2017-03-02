@@ -1,68 +1,55 @@
 <mvc:View
-          xmlns:core="sap.ui.core"
           xmlns:mvc="sap.ui.core.mvc"
           xmlns="sap.m"
-          controllerName="airbus.mes.ncdisplay.controller.ncdisplay"
-          xmlns:f="sap.ui.layout.form"
-          xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
-          xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+          xmlns:table="sap.ui.table"
+          controllerName="airbus.mes.ncdisplay.controller.ncdisplay" >
 
     <Page enableScrolling="false" showHeader="false">
         <content>
-            <VBox id="ncDisplayCheck" class="ncDisplayListcheck">
-                <RadioButtonGroup columns="2" select="onSelectLevel">
-                    <buttons>
-                        <RadioButton id="ncDisplayOpe" text="For Operation"/>
-                        <RadioButton id="ncDisplayOrder" text="For whole work order"/>
-                    </buttons>
-                </RadioButtonGroup>
-            </VBox>
-
-            <Table     id="ncDisplay"
+            <table:Table     id="ncDisplay"
                    class="ncDisplayTable"
                    items="{path: 'ncdisplaydata>/ncDetailList/'}"
                    itemPress="onLineClick">
 
-                <headerToolbar>
-                    <!-- Search and sort item
-       <OverflowToolbar id="otbSubheader">
-                        <ToolbarSpacer/>
-                        <SearchField id="maxPrice" liveChange="onFilter">
-                            <layoutData><OverflowToolbarLayoutData minWidth="200px" maxWidth="300px" shrinkable="true"/></layoutData>
-                        </SearchField>
-                        <Button text="Reset" type="" press="onReset"/>
-                        <OverflowToolbarButton type="" text="Sort" icon="sap-icon://sort" press="onSort"/>
-                        <OverflowToolbarButton type="" text="Group" icon="sap-icon://group-2" press="onGroup"/>
-                    </OverflowToolbar> -->
-                </headerToolbar>
+				<table:extension>
+					<VBox id="ncDisplayCheck" class="ncDisplayListcheck mesRadioButtonsCheck">
+		              <RadioButtonGroup columns="2" select="onSelectLevel">
+		                    <buttons>
+		                        <RadioButton id="ncDisplayOpe" text="For Operation"/>
+		                        <RadioButton id="ncDisplayOrder" text="For whole work order"/>
+		                    </buttons>
+		                </RadioButtonGroup>
+					</VBox>					
+				</table:extension>
 
-                <columns>
-                    <Column>
-                        <Text text="ACP Status" />
-                    </Column>
-                    <Column>
-                        <Text text="Type" />
-                    </Column>
-                    <Column>
-                        <Text text="Reference Number" />
-                    </Column>
-                    <Column>
-                        <Text text="Title" />
-                    </Column>
-                </columns>
+				<table:columns>
+					<table:Column>
+						<Label textAlign="Center" text="ACP Status" />
+						<table:template>
+							<Text text="{ncdisplaydata>acpStatus}" />
+						</table:template>
+					</table:Column>
+					<table:Column>
+						<Label textAlign="Center" text="Type" />
+						<table:template>
+							<Text text="{ncdisplaydata>ncType}" />
+						</table:template>							
+					</table:Column>
+					<table:Column>
+						<Label textAlign="Center" text="Reference Number" />
+						<table:template>
+							<Text text="{ncdisplaydata>ncReference}" />
+						</table:template>						
+					</table:Column>
+					<table:Column>
+						<Label textAlign="Center" text="Title" />
+						<table:template>
+							<Text text="{ncdisplaydata>description}" />
+						</table:template>								
+					</table:Column>
+				</table:columns>
 
-                <items>
-                    <ColumnListItem type="Active">
-                        <cells>
-                            <Text text="{ncdisplaydata>acpStatus}" />
-                            <Text text="{ncdisplaydata>type}" />
-                            <Text text="{ncdisplaydata>ncReference}" />
-                            <Text text="{ncdisplaydata>description}" />
-                        </cells>
-                    </ColumnListItem>
-                </items>
-
-            </Table>
+            </table:Table>
 
         </content>
 
