@@ -225,6 +225,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 		if (oModel.getData().Rowsets.Rowset[0].Row != undefined){
 			var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row);
 			oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
+			oModel.refresh();
 		}
 		}catch(error){
 // do nothing no model			

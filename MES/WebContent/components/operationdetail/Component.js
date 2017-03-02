@@ -34,7 +34,8 @@ if (jQuery.sap.getObject("airbus.mes.acpnglinks.Component") === undefined) {
 		site : airbus.mes.settings.ModelManager.site,
 		phStation : airbus.mes.settings.ModelManager.station,
 		workOrder : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no,
-	    operation : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no
+	    operation : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no,
+	    sfcStep :  sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref
 	});
 }
 
