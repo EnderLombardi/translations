@@ -421,7 +421,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"value" : oView.byId("materials").getValue()
 				}, {
 					"attribute" : "RIBS",
-					"value" : oView.byId("RIBS").getValue()
+					"value" : oView.byId("ribs").getValue()
 				}, {
 					"attribute" : "VIEW",
 					"value" : oView.byId("view").getValue()
