@@ -4,6 +4,7 @@ jQuery.sap.declare("airbus.mes.missingParts.util.ModelManager")
 airbus.mes.missingParts.util.ModelManager = {
 	urlModel: undefined,
 	i18nModel: undefined,
+	excludedFields : ["sfcStepBO"],
 
 	/**
 	 * Initialize Model Manager
@@ -22,36 +23,9 @@ airbus.mes.missingParts.util.ModelManager = {
 	//request + loadData + model refresh
 	loadMPDetail: function () {
 		var oViewModel = airbus.mes.missingParts.oView.getModel("getMissingParts");
-		
-		if (sessionStorage.loginType !== "local") {
-			jQuery.ajax({
-				type: 'post',
-				url: this.urlModel.getProperty("urlMissingParts"),
-				contentType: 'application/json',
-				data: JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
-				"physicalStation": airbus.mes.settings.ModelManager.station,
-				"msn": airbus.mes.settings.ModelManager.msn
-				}),
-
-				success: function (data) {
-					if (typeof data == "string") {
-						data = JSON.parse(data);
-					}
-					try {
-						oViewModel.setData(airbus.mes.settings.GlobalFunction.getRowsetsFromREST(data.missingPartList));
-					} catch (error) {
-						console.log(error);
-					};
-				},
-
-				error: function (error, jQXHR) {
-				console.log(error);
-				}
-			});
-		} else {
-			oViewModel.loadData(this.urlModel.getProperty("getMissingParts"), null, false);
-		}
+		oViewModel.setData(airbus.mes.stationtracker.util.Globals_Functions.getMissingPartsData(airbus.mes.settings.ModelManager.site,
+								  								   airbus.mes.settings.ModelManager.station,
+								  								   airbus.mes.settings.ModelManager.msn));
 
 		var sorterCombo = airbus.mes.missingParts.oView.byId("missingPartsView--mpSorter");
 		if ( sorterCombo ){
@@ -62,10 +36,12 @@ airbus.mes.missingParts.util.ModelManager = {
 			}
 		}
 
+
 		var dialog = airbus.mes.missingParts.oView.byId("missingPartsView--missingPartsPopUp");
-		dialog.setDraggable(true);
-		dialog.setResizable(true);
-		dialog.oPopup.setModal(false);
+		if(dialog) dialog.oPopup.setModal(false);
 		oViewModel.refresh(true);//refresh the model (and so the view)
-	}
+	},
+
+	
+	
 };

@@ -26,14 +26,6 @@
                             "MaxRange": 1
                         },
                         {
-                            "Name": "sfcStepBO",
-                            "SourceColumn": "sfcStepBO",
-                            "Description": "",
-                            "SQLDataType": 1,
-                            "MinRange": 1,
-                            "MaxRange": 1
-                        },
-                        {
                             "Name": "partNumber",
                             "SourceColumn": "partNumber",
                             "Description": "",
@@ -78,7 +70,7 @@
                 "Row": [
                     {
                         "workOrder": "123456",
-                        "operation": "10",
+                        "operation": "50065593-1-0-0020",
                         "partNumber": "A",
                         "partDescription": "Rail",
                         "quantity": "2",
@@ -87,7 +79,7 @@
                     },
                     {
                         "workOrder": "123456",
-                        "operation": "20",
+                        "operation": "50065593-1-0-0020",
                         "partNumber": "B",
                         "partDescription": "Rail",
                         "quantity": "2",
@@ -96,7 +88,7 @@
                     },
                     {
                         "workOrder": "123456",
-                        "operation": "30",
+                        "operation": "50065593-1-0-0020",
                         "partNumber": "C",
                         "partDescription": "Rail",
                         "quantity": "2",
@@ -105,7 +97,7 @@
                     },
                     {
                         "workOrder": "123456",
-                        "operation": "40",
+                        "operation": "50065593-1-0-0020",
                         "partNumber": "D",
                         "partDescription": "Rail",
                         "quantity": "2",

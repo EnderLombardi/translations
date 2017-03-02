@@ -3,6 +3,7 @@ jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/opera
 jQuery.sap.require("airbus.mes.operationdetail.Formatter");
 jQuery.sap.require("airbus.mes.operationdetail.ModelManager");
 
+
 // instantiate component 
 if (jQuery.sap.getObject("airbus.mes.jigtools.Component") === undefined) {
 	jQuery.sap.registerModulePath("airbus.mes.jigtools", "../components/jigtools");
@@ -40,9 +41,6 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
 
 
     if (airbus.mes.operationdetail.oView === undefined) {
-        //        Initialization
-        airbus.mes.operationdetail.ModelManager.init(sap.ui.getCore());
-
         // View on XML
         this.oView = sap.ui.view({
             id : "operationDetailsView",
@@ -56,6 +54,8 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
          });
 
         this.oView.setModel(i18nModel, "i18n");
+        //        Initialization
+        airbus.mes.operationdetail.ModelManager.init(sap.ui.getCore(), i18nModel);
 
     //    this.oView.setModel(sap.ui.getCore().getModel("reasonCodeModel"), "reasonCodeModel");)
         return this.oView;

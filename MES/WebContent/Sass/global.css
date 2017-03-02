@@ -1759,6 +1759,14 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 #operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div > .sapMITBDisabled > * { cursor: default; }
 
+#operationDetailsView--MissingPartsNotif { background: #ffd0d8 !important; border-radius: 4px !important; border-bottom: 0px !important; height: 2rem !important; }
+
+.MissingPartsNotifTitle { font-weight: bold; color: #fe5000; margin-left: 10px; margin-right: 10px; }
+
+.MissingPartsNotifMsg { font-style: normal; color: #fe5000; }
+
+.MissingPartsNotifIcon { color: #fe5000; }
+
 #ViewDisruptionView--disrptlist { width: 95% !important; margin: 50px auto !important; padding: 0; }
 
 .classFormHint { font-size: 80% !important; font-style: italic !important; }
@@ -4244,8 +4252,6 @@ DISRUPTIONTRACKER
 .trackingTemplate .reasonCodeContainer .sapMPanelContent:not(.sapMPanelBGTransparent) { border: 0; }
 
 .trackingTemplate .reasonCodeContainer label { margin: auto; padding-right: 10px; }
-
-#missingPartsView--mpPage > section#missingPartsView--mpPage-cont { height: 100%; }
 
 #missingPartsView--MPTable { width: 100% !important; height: inherit !important; margin: 0 auto; padding: 0; }
 

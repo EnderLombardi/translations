@@ -11,7 +11,9 @@
                 class="operationDetailHeadPanel sapUiSmallMarginTop sapUiSmallMarginBeginEnd">
                 <headerToolbar>
                     <Toolbar height="7rem" class="ML-05">
+
                         <VBox width="100%">
+                        
                             <HBox height="30%" justifyContent="SpaceBetween">
                                 <Text id="operationName" class="mainText"
                                     text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_id} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}" />
@@ -39,6 +41,8 @@
                                     <Text id="taskId"
                                         text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/CPP_CLUSTER}"
                                         class="subText sapUiSmallMarginEnd"></Text>
+                                    <core:Icon src="sap-icon://alert" height="100%" width="100%" 
+                                        class="MissingPartsNotifIcon" visible="{MissPartsNotifModel>/Visibility}"/>
                                     <Button id="opDetailExpandButton" type="Transparent"
                                         iconFirst="false" text="{i18n>showMore}" icon="sap-icon://navigation-down-arrow"
                                         press="expandOperationDetailPanel" class="expandButton"></Button>
@@ -51,11 +55,20 @@
                     </Toolbar>
                 </headerToolbar>
                 <content>
+                    <Toolbar id="MissingPartsNotif" visible="{MissPartsNotifModel>/Visibility}">
+				        <core:Icon src="sap-icon://alert" class="MissingPartsNotifIcon"/>
+						<Title text="{i18n>MissingPartsNotifTitle}" class="MissingPartsNotifTitle"/>
+						<Title text="{MissPartsNotifModel>/Message}" class="MissingPartsNotifMsg"/>
+						<ToolbarSpacer />
+						<Button text="Open Missing Parts" type="Transparent"
+								visible="true"
+								press="onMissingPartsNotifPress" design="Transparent"/>
+					</Toolbar>
                     <f:SimpleForm id="operationDetailForm" class="operationDetailForm"
                         labelSpanL="1" labelSpanM="2" adjustLabelSpan="false" emptySpanL="0"
                         emptySpanM="0" columnsL="4" columnsM="4">
                         <f:content>
-                            <VBox>
+                            <VBox>           
                                 <Label text="{i18n>start} :" />
                                 <Text
                                     text=" {= ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} === 'TimeUnavailable' ? ${i18n>notStarted} : ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} } " />

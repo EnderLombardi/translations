@@ -504,4 +504,24 @@
             }
         }
     }
+
+}
+#operationDetailsView--MissingPartsNotif{
+	background: #ffd0d8 !important;
+    border-radius: 4px !important;
+    border-bottom: 0px !important;
+    height: 2rem !important;
+}
+.MissingPartsNotifTitle{
+    font-weight: bold;
+    color: #fe5000;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.MissingPartsNotifMsg{
+    font-style: normal;
+    color: #fe5000;
+}
+.MissingPartsNotifIcon{
+    color: #fe5000;
 }

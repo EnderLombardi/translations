@@ -6,52 +6,52 @@
 
 	<m:Dialog id="missingPartsPopUp" class="ClassMissingPartsPopUpPopUp theme-disabled"
 		contentWidth="100%" contentHeight="60%" verticalScrolling="false"
-		showHeader="false" afterClose="afterCloseMissingPartsPopup">
-		<m:content>
-		<m:Page
-		id="mpPage"
+		showHeader="true"
+		draggable="true"
+		resizable="true"
 		title="{i18nmissingPartsModel>title}"
-		showNavButton="false" >
-		<m:headerContent>
-			<m:Button m:Text="{StationTrackerI18n>Close}" icon="sap-icon://arrow-down"
-				press="onCloseMPPopup" />
-		</m:headerContent>
-		<m:subHeader id="FiltersSubHeader">
-			<m:Toolbar id="SearchBar">
-			<m:HBox width="100%" alignContent="Center">
-			<m:ComboBox
-				id="mpFilter"
-				placeholder="Select Filter..."
-				items="{getMissingParts>/Rowsets/Rowset/0/Columns/Column}"
-				selectionChange="onSearch">
-				<core:Item key="{FilterId}" text="{path: 'getMissingParts>Name' , formatter: 'airbus.mes.missingParts.util.Formatter.getTranslation'}" />
-			</m:ComboBox>
-			<m:ComboBox
-				id="mpSorter"
-				placeholder="Select Order..."
-				selectionChange="onSearch">
-			</m:ComboBox>
-			<m:SearchField 
-				id="searchField"
-				width="50%"
-				placeholder="search for..."
-				enableSuggestions="false"
-				search="onSearch"/>
-			</m:HBox>
-			</m:Toolbar>
-		</m:subHeader>
+		modal="true"
+		afterClose="afterCloseMissingPartsPopup">
+		<m:endButton>
+			<m:Button icon="sap-icon://arrow-down" press="onCloseMPPopup" />
+		</m:endButton>
+		<m:content>
 			<Table id="MPTable"
-					class="MPTable"
-                    rows="{getMissingParts>/Rowsets/Rowset/0/Row}"
-					selectionMode="None"
-					enableBusyIndicator="true"
-					enableColumnReordering="false"
-					enableSelectAll="false"
-					visibleRowCount="auto"
-					editable="false"
-					height="100%"
-					width="100%">
-				<columns >
+				 class="MPTable"
+                   	 rows="{getMissingParts>/Rowsets/Rowset/0/Row}"
+				 selectionMode="None"
+				 enableBusyIndicator="true"
+				 enableColumnReordering="false"
+				 enableSelectAll="false"
+				 visibleRowCountMode="Auto"
+				 editable="false"
+				 height="100%"
+				 width="100%">
+				<extension>
+						<m:Toolbar id="SearchBar" width="100%" height="100%">
+								<m:ComboBox
+									id="mpFilter"
+									placeholder="Select Filter..."
+									items="{getMissingParts>/Rowsets/Rowset/0/Columns/Column}"
+									selectionChange="onSearch">
+									<core:Item key="{FilterId}" text="{path: 'getMissingParts>Name' , formatter: 'airbus.mes.missingParts.util.Formatter.getTranslation'}" />
+								</m:ComboBox>
+								<m:ToolbarSpacer/>
+								<m:ComboBox
+									id="mpSorter"
+									placeholder="Select Order..."
+									selectionChange="onSearch">
+								</m:ComboBox>
+								<m:ToolbarSpacer/>
+								<m:SearchField 
+									id="searchField"
+									width="50%"
+									placeholder="search for..."
+									enableSuggestions="false"
+									search="onSearch"/>
+						</m:Toolbar>
+				</extension>
+				<columns>
 					<Column width="10rem">
 						<m:Label class="MPTLabel" text="{i18nmissingPartsModel>workOrder}" />
 						<template>
@@ -96,7 +96,6 @@
 					</Column>
 				</columns>
 			</Table>
-			</m:Page>
 		</m:content>
 		<m:buttons>
 		</m:buttons>

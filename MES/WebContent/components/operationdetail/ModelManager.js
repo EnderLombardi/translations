@@ -1,5 +1,6 @@
 "use strict";
 
+
 jQuery.sap.declare("airbus.mes.operationdetail.ModelManager")
 
 airbus.mes.operationdetail.ModelManager = {
@@ -17,13 +18,15 @@ airbus.mes.operationdetail.ModelManager = {
     jsonConfirmationCheckList: undefined,
     brOnMessageCallBack:function (data) {},
 
-    init: function (core) {
+    init: function (core, i18nModel = {}) {
 
         // Handle URL Model
         this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.operationdetail.config.url_config");
 
-        airbus.mes.shell.ModelManager.createJsonModel(core, ["reasonCodeModel", "dispatchModel"]);
+        airbus.mes.shell.ModelManager.createJsonModel(core, ["reasonCodeModel", "dispatchModel","MissPartsNotifModel"]);
         
+        // Model for Missing Parts Notification
+        this.loadMissingPartsModel(i18nModel);
     },
 
     /***************************************************************************
@@ -269,5 +272,37 @@ airbus.mes.operationdetail.ModelManager = {
             }
         }
         return flagSuccess;
+    },
+    /***************************************************************************
+     * Set the Models for Missing Parts Notification
+     **************************************************************************/
+    loadMissingPartsModel: function (oI18n) {
+        var oMissingPartsNotif = {Visibility: false, Message: ""};
+        var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
+        var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
+        var oMissPartsNotifModel = sap.ui.getCore().getModel("MissPartsNotifModel");
+        var nbComponent = 0;
+        var nbMissing = 0;
+        //get Missing Parts data
+        var MPData = airbus.mes.stationtracker.util.Globals_Functions.getMissingPartsData(
+                                                airbus.mes.settings.ModelManager.site,
+								                airbus.mes.settings.ModelManager.station,
+								                airbus.mes.settings.ModelManager.msn,
+                                                sWorkOrder);
+        //Update counters of missing parts 
+        MPData.Rowsets.Rowset[0].Row.forEach(function(element){
+            if (element.operation == operationId){
+                nbComponent++;
+                nbMissing += parseInt(element.quantity);
+            }
+        });
+        //Update and show notification
+        if (nbComponent > 0){
+            oMissingPartsNotif.Message = oI18n.getProperty("MissingPartMsg");
+            oMissingPartsNotif.Message = oMissingPartsNotif.Message.replace("%Param0%", nbComponent.toString()).replace("%Param1%", nbMissing.toString()); 
+            oMissingPartsNotif.Visibility = true;
+        }
+        oMissPartsNotifModel.setData(oMissingPartsNotif);
+
     },
 };

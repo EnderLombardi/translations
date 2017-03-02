@@ -33,7 +33,8 @@ airbus.mes.settings.GlobalFunction = {
      * @param {any} RestData 
      * @returns Rowsets
      */
-    getRowsetsFromREST: function(RestData){
+    getRowsetsFromREST: function(RestData, ExcludedFields = []){
+        //Create rowset empty instance 
         var rowsets = {
             "DateCreated" : "",
             "Version" : "",
@@ -44,22 +45,43 @@ airbus.mes.settings.GlobalFunction = {
         };
         
         if( Array.isArray(RestData) && (RestData.length > 0) ) {
-            var attributs = Object.keys(RestData[0]);
-            rowsets.Rowset.push({"Columns" : { "Column" : [] },
+            var aFields = Object.keys(RestData[0]);
+            if (aFields) { 
+                //add Rowset sub object instance
+                rowsets.Rowset.push({"Columns" : { "Column" : [] },
                                  "Row" : []});
-            attributs.forEach(function(att){
-                rowsets.Rowset[0].Columns.Column.push({
-                    "Name" : att,
-                    "SourceColumn" : att,
-                    "Description" : "",
-                    "SQLDataType" : "1",
-                    "MinRange" : "1",
-                    "MaxRange" : "1",
+                //Add Column array attribut
+                aFields.forEach(function(sField){
+                    //Check field to exclude before add to columns array
+                    if ( ExcludedFields.indexOf(sField) == -1 ) {
+                        rowsets.Rowset[0].Columns.Column.push({
+                            "Name" : sField,
+                            "SourceColumn" : sField,
+                            "Description" : "",
+                            "SQLDataType" : "1",
+                            "MinRange" : "1",
+                            "MaxRange" : "1",
+                        });
+                    } 
+                    
                 });
-            });
-            RestData.forEach(function(row){
-                rowsets.Rowset[0].Row.push(row);
-            });
+
+                //Add rows array attribut
+                RestData.forEach(function(oRow){
+                    //Filtering row attributs not included in columns list
+                    var oNewRow = {};
+                    var aRowKeys = Object.keys(oRow);
+                    var aRowValues = Object.values(oRow);
+                    for( var i = 0; i < aRowKeys.length; i++){
+                        if(rowsets.Rowset[0].Columns.Column.find(function(e){ 
+                            if( e.Name === aRowKeys[i] ){ return true } else {return false}})){
+                            oNewRow[aRowKeys[i]] = aRowValues[i];
+                        }
+                    }
+                    //Add New filtered row object
+                    rowsets.Rowset[0].Row.push(oNewRow);
+                });
+            }
         }
         return { "Rowsets" : rowsets};
     }

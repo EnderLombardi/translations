@@ -412,6 +412,16 @@ sap.ui
 
             };
 
-        }
+        },
+
+    onMissingPartsNotifPress: function (oEvent){
+        //tabselection
+        $(this.tabSelected).removeClass("operationDetailTabSelected");
+        this.tabSelected = "#operationDetailsView--idComponents";
+        $(this.tabSelected).addClass("operationDetailTabSelected");
+        airbus.mes.shell.util.navFunctions.componentsDetail(this.nav);
+        /** Navigate **/
+        this.nav.to(airbus.mes.components.oView.getId());
+    }
 
     });
