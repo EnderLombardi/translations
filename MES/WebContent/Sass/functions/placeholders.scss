@@ -1,3 +1,6 @@
+// Functions
+@import 'mixins.scss';
+
 // Styles
 @import '../styles/colours.scss';
 
@@ -442,12 +445,17 @@ STATION TRACKER
 %classNotConfirmedOperation{
     position: absolute;
     width: 5px;
+    @include transition(width , 0.3s);
     background: #ee373d;
     left: -10px;
     top: -500px;
     height: 1000px;
+    z-index: 999;
+    &:hover {
+    	width: 80%;
+    	/*@include transition(all , 0s);*/
+    }
 }
-
 //BUTTONS
 %sapMsegStationTracker{
     height: 3rem;
