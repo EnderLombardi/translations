@@ -3,13 +3,10 @@ sap.ui.controller("airbus.mes.qdc.Checklist", {
 	onAfterRendering : function() {
 		var oTTbl = airbus.mes.qdc.oView.byId("TabChecklistTable");
 		oTTbl.expandToLevel(1);
-		// this.updateTreeTableView();
 	},
 	/**
-	 * BR: SD-QDC-HMI-150
-	 * Function is used to download the file
-	 * based on the document type.
-	 * First a QA check is also performed.
+	 * BR: SD-QDC-HMI-150 Function is used to download the file based on the
+	 * document type. First a QA check is also performed.
 	 */
 	onClick : function(oEvt) {
 		var oData = sap.ui.getCore().getModel("QACheckModel");
@@ -33,7 +30,7 @@ sap.ui.controller("airbus.mes.qdc.Checklist", {
 			});
 
 			obj.filter(function(row) {
-				if (row.DOC_TYPE === "PLA") {
+				if (row.DOC_TYPE === "MAA") {
 					sGroup = row.GROUP;
 				}
 			});
@@ -89,7 +86,7 @@ sap.ui.controller("airbus.mes.qdc.Checklist", {
 
 			}
 			// Optionally allow the user to choose a file name by providing
-			// an imput field in the HTML and using the collected data here
+			// an input field in the HTML and using the collected data here
 			// var fileNameToSaveAs = txtFileName.text;
 
 			// create a link for our script to 'click'

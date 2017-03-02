@@ -2,16 +2,14 @@
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tab="sap.ui.table"
 	controllerName="airbus.mes.qdc.Checklist">
 
-
-
 	<Page id="idChecklistPage" showHeader="false" height="100%"
 		enableScrolling="false">
 		<content>
 
 			<VBox id="TabChecklist" class="TabChecklist">
-				<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" rootLevel="1"
-					class="TabChecklistTable" selectionMode="None" visibleRowCount="4"
-					expandFirstLevel="true">
+				<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable"
+					rootLevel="1" class="TabChecklistTable" selectionMode="None"
+					visibleRowCount="4" expandFirstLevel="true">
 					<tab:columns>
 						<tab:Column>
 							<Label class="TabChecklistLabel" text="{i18nModel>PointofAttention}" />
@@ -24,7 +22,7 @@
 									</HBox>
 									<HBox justifyContent="End">
 										<core:Icon color="orange"
-											src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}" 
+											src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}"
 											visible="{parts: [ {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/TOT_COUNT'}, {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/CLOSE_COUNT'} ], formatter: 'airbus.mes.qdc.util.Formatter.getExclamationVisible'}"></core:Icon>
 									</HBox>
 								</HBox>
@@ -33,7 +31,10 @@
 						<tab:Column>
 							<Label class="TabChecklistLabel" text="{i18nModel>record}" />
 							<tab:template>
-								<Label text="{parts: [ {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/TOT_COUNT'}, {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/CLOSE_COUNT'} ], formatter: 'airbus.mes.qdc.util.Formatter.getDescription'}" visible="{= ${GetQDCDataModel>/Rowsets/Rowset/0/Row/0/QDCSTATUS} === 'X'}" class="AllignItem" />
+								<Label
+									text="{parts: [ {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/TOT_COUNT'}, {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/CLOSE_COUNT'} ], formatter: 'airbus.mes.qdc.util.Formatter.getDescription'}"
+									visible="{= ${GetQDCDataModel>/Rowsets/Rowset/0/Row/0/QDCSTATUS} === 'X'}"
+									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 					</tab:columns>
@@ -51,7 +52,8 @@
 							press="onClick"></Button>
 					</HBox>
 					<HBox justifyContent="End">
-						<Button text="{i18nModel>confirm}" class="ConfirmChecklist" enabled="false"></Button>
+						<Button text="{i18nModel>confirm}" class="ConfirmChecklist"
+							enabled="false"></Button>
 					</HBox>
 				</HBox>
 

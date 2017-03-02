@@ -7,7 +7,8 @@ airbus.mes.qdc.ModelManager = {
 
 	init : function(core) {
 
-		var aModel = [ "QDCModel" ]; // Model having list of attachments for disruptions
+		var aModel = [ "QDCModel" ]; // Model having list of attachments for
+										// disruptions
 
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
@@ -26,7 +27,7 @@ airbus.mes.qdc.ModelManager = {
 		jQuery.ajax({
 			url : this.urlModel.getProperty('QDCDataurl'),
 			type : 'POST',
-			async:true,
+			async : true,
 			data : JSON.stringify({
 				"Site" : sap.ui.getCore().getModel("userSettingModel").oData.Rowsets.Rowset[0].Row[0].site,
 				"st_langu" : airbus.mes.shell.RoleManager.profile.connectedUser.Language,
@@ -35,11 +36,11 @@ airbus.mes.qdc.ModelManager = {
 				"st_work_order_oper" : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_id
 
 			}),
-			success : function(data){
+			success : function(data) {
 				var oModel = new sap.ui.model.json.JSONModel();
 				oModel.setData(data)
 				sap.ui.getCore().setModel(oModel, "GetQDCDataModel");
-				
+
 				airbus.mes.qdc.oView.byId("idButtonMEA").setEnabled(false);
 				airbus.mes.qdc.oView.byId("idButtonMAA").setEnabled(false);
 				airbus.mes.qdc.oView.byId("idButtonQDC").setEnabled(false);
@@ -68,37 +69,35 @@ airbus.mes.qdc.ModelManager = {
 
 						});
 					}
-				};
-				
-				},
-			error : function(error, jQXHR) {
-					console.log(error);
-
 				}
+				;
+
+			},
+			error : function(error, jQXHR) {
+				console.log(error);
+
+			}
 		});
 
 	},
-	
-	loadQACheckModel : function(){
+
+	loadQACheckModel : function() {
 		var site = sap.ui.getCore().getModel("userSettingModel").oData.Rowsets.Rowset[0].Row[0].site;
 		var sUser = airbus.mes.shell.RoleManager.profile.connectedUser.IllumLoginName;
-		var sfc_step_rfc = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
-//		var oVal = sap.ui.getCore().getModel("GetQDCDataModel").oData.Rowsets.Rowset[0].Row[0];
-//		var iWorkOrder = oVal.OF;
-//		var iOperation = oVal.OPERATION;
+		var sfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
 		jQuery.ajax({
 			url : this.urlModel.getProperty('QACheckurl'),
 			type : 'POST',
-			async:true,
+			async : true,
 			contentType : 'application/json',
 			data : JSON.stringify({
-				"site": site,
-				"userBOList":["UserBO:"+site+ ","+sUser],
-				"sfcStepBOList":[sfc_step_rfc],
-				"mode":"assignment"
+				"site" : site,
+				"userBOList" : [ "UserBO:" + site + "," + sUser ],
+				"sfcStepBOList" : [ sfcStepRef ],
+				"mode" : "assignment"
 
 			}),
-			success : function(data) {				
+			success : function(data) {
 				var oModel = new sap.ui.model.json.JSONModel();
 				oModel.setData(data)
 				sap.ui.getCore().setModel(oModel, "QACheckModel")
@@ -107,7 +106,7 @@ airbus.mes.qdc.ModelManager = {
 				console.log(error);
 
 			}
-		});		
+		});
 
 	}
 }
