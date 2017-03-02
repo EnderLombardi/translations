@@ -14,7 +14,7 @@
 
 		<content width="100%" height="100%">
 		
-						<Panel id="kpi_header" expandable="true" expanded="true"
+						<Panel id="kpi_header" expandable="true" expanded="{Profile>/identifiedUser/permissions/STATION_KPI_TAKT}"
 								expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 								<headerToolbar>
 									<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
@@ -38,7 +38,7 @@
 											type="Transparent"
 											class="iconbuttonTeam"
 											icon="sap-icon://group" press="onTeamPress" />
-										<Button id="hideKPI" type="Transparent" enabled="true" icon="sap-icon://hide"
+										<Button id="hideKPI" type="Transparent" enabled="{Profile>/identifiedUser/permissions/STATION_KPI_TAKT}" icon="sap-icon://hide"
 											text="{StationTrackerI18n>HideKPIS}" press="toggleKPI"/>
 									</Toolbar>
 				

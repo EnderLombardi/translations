@@ -7,7 +7,7 @@
 		<content>
 			<TileContainer tileDelete="handleTileDelete"
 				tiles="{1TileLineHome>/buttonDetail}" height="100%">
-				<CustomTile press="onPressLine1" class="customTiles" visible="{Profile>/identifiedUser/permissions/HOMESCREEN}"> 
+				<CustomTile press="onPressLine1" class="customTiles" visible="{Profile>/identifiedUser/permissions/HOMESCREEN}" enabbled="{ path : '{Profile>/identifiedUser/permissions/HOMESCREEN}' , formatter : 'enabledTiles' }"> 
 	
 			  
 					<customData>

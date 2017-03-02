@@ -64,7 +64,7 @@
 			"SITE": "FNZ1",
 			"Feature": "STATION_KPI_TAKT",
 			"Description": "Takt Adherence",
-			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
+			"Roles": ["eval host('sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_OP_ACTIVATE",
@@ -162,7 +162,7 @@
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
-			"Feature": "LINE_EMPTY_STAT",
+			"Feature": "LINE_EMPTY_STATION",
 			"Description": "Line Tracker>Empty Station",
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {

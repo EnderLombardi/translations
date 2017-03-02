@@ -513,8 +513,10 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (airbus.mes.stationtracker.util.AssignmentManager.userSelected === '%') {
                     //if the previous user selected was "ALL USERS" we assigne the user to load at workTrackerUser
                     airbus.mes.stationtracker.util.AssignmentManager.userSelected = workTrackerUser;
-                    airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
-                    airbus.mes.stationtracker.oView.oController.hideKPI();
+                    if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT") ) {
+                        airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
+                        airbus.mes.stationtracker.oView.oController.hideKPI();
+                    }
 
                 } else if (previousUserSelectedDeleted) {
                     airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
@@ -532,16 +534,20 @@ airbus.mes.stationtracker.util.ModelManager = {
                 } else {
                     //if the previous user selected was different and is still in the ressourcePoolList
                     workTrackerUser = airbus.mes.stationtracker.util.AssignmentManager.userSelected;
-                    airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
-                    airbus.mes.stationtracker.oView.oController.hideKPI();
+                    if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT") ) {
+                        airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
+                        airbus.mes.stationtracker.oView.oController.hideKPI();
+                    }
                 }
                 sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey(workTrackerUser);
                 airbus.mes.stationtracker.util.ModelManager.loadSplitModel(workTrackerUser);
             } else if (airbus.mes.stationtracker.util.AssignmentManager.userSelected !== "No") {
                 //if we are in station stacker mode we reset the user to --> ALL USERS in order to reload the complete station tracker list
                 airbus.mes.stationtracker.util.AssignmentManager.userSelected = '%';
+                if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT") ) {
                 airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(true);
                 airbus.mes.stationtracker.oView.oController.showKPI();
+                }
                 sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey("ALL");
             }
 

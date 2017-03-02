@@ -28,11 +28,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      */
     onBeforeRendering: function () {
 
-        airbus.mes.stationtracker.oView.byId("unplannedButton").setVisible(true);
-        airbus.mes.stationtracker.oView.byId("oswButton").setVisible(true);
-        airbus.mes.stationtracker.oView.byId("kpi_header").setExpanded(true);
-        airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(true);
-
         // change title
         //TODO : translate
         if (airbus.mes.shell.util.navFunctions.splitMode == "WorkTracker") {
