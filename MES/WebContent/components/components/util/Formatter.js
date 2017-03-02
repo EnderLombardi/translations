@@ -65,20 +65,12 @@ airbus.mes.components.util.Formatter = {
         return parseFloat(nb);
     },
 
-    fittedComponentsComparator : function(Fitted_Components, reqQty) {
-         if (parseFloat(Fitted_Components, 10) === parseFloat(reqQty, 10)) {
+    componentsComparator : function(nbComponents, reqQty) {
+         if (parseFloat(nbComponents) === parseFloat(reqQty)) {
             return '1';
         } else {
             return '0';
         }
     },
-
-    checkedComponentsComparator : function(Checked_Components, reqQty) {
-        if (parseFloat(Checked_Components) === parseFloat(reqQty)) {
-            return '1';
-        } else {
-            return '0';
-        }
-    }
 
 };

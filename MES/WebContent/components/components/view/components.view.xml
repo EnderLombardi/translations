@@ -118,12 +118,11 @@
 										<core:CustomData key="equal" 
 										value="{parts :[{path : 'componentsWorkOrderDetail>Checked_Components'}, 
 										{path : 'componentsWorkOrderDetail>reqQty'}], 
-										formatter:'airbus.mes.components.util.Formatter.checkedComponentsComparator'}" writeToDom="true" />
+										formatter:'airbus.mes.components.util.Formatter.componentsComparator'}" writeToDom="true" />
 									</customData>						
 								</Button>
 								<StepInput id="stepInputCommitted" type="Number" class="stepInputComponent"
-									value="{path : 'componentsWorkOrderDetail>Checked_Components', formatter:'airbus.mes.components.util.Formatter.parseFloat'}" 
-									width="{width}"
+                                    value="{componentsWorkOrderDetail>Checked_Components}" width="{width}"
 									min="0"
 									enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}"/>
 							</HBox>
@@ -140,13 +139,12 @@
 										<core:CustomData key="equal" 
 										value="{parts :[{path : 'componentsWorkOrderDetail>Fitted_Components'}, 
 										{path : 'componentsWorkOrderDetail>reqQty'}], 
-										formatter:'airbus.mes.components.util.Formatter.checkedComponentsComparator'}" writeToDom="true" />
+										formatter:'airbus.mes.components.util.Formatter.componentsComparator'}" writeToDom="true" />
 									</customData>						
 								</Button>
 								<StepInput id="stepInputFitted" type="Number" class="stepInputComponent"
 									min="0"
-									value="{path : 'componentsWorkOrderDetail>Fitted_Components', formatter:'airbus.mes.components.util.Formatter.parseFloat'}" 
-									width="{width}"
+                                    value="{componentsWorkOrderDetail>Fitted_Components}" width="{width}"
 									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"/>
 							</HBox>
 						</table:template>
