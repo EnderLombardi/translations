@@ -51,6 +51,6 @@ airbus.mes.jigtools.Component.prototype.createContent = function() {
         airbus.mes.jigtools.util.ModelManager.init(sap.ui.getCore());		
 	} 
 		
-	return airbus.mes.jigstools.oView;
+	return airbus.mes.jigtools.oView;
 
 };
