@@ -1609,9 +1609,13 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn { position: relative; color: #333333; }
 
-.operationDetailHeadPanel + .opDetailNavToolbar .operationDetailTabSelected > .sapMITBText { color: rgba(0, 86, 112, 0.94) !important; background: transparent; font-weight: bold; margin: 1rem 0 0 0; height: calc(100% - 1rem); }
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMITBTab { display: inline-block; vertical-align: middle; }
 
-.operationDetailHeadPanel + .opDetailNavToolbar .operationDetailTabSelected > .sapMITBText:after { content: ""; height: 4px; position: absolute; bottom: 0; left: 0; right: 0; background: #fe5000; }
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMITBText { display: inline-block; background-color: #fe5000 !important; font-weight: lighter; color: #FFFFFF; padding: 4px; width: 15px; height: 15px; text-align: center; vertical-align: middle; margin-left: 6px; border-radius: 50%; outline: none !important; }
+
+.operationDetailHeadPanel + .opDetailNavToolbar .operationDetailTabSelected > .sapMITBTab .sapMITBCount { color: rgba(0, 86, 112, 0.94) !important; font-weight: bold; }
+
+.operationDetailHeadPanel + .opDetailNavToolbar .operationDetailTabSelected > .sapMITBTab .sapMITBCount:after { content: ""; height: 4px; position: absolute; top: 20px; bottom: 0; left: 0; right: 0; background: #fe5000; }
 
 html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocusable:hover { background: rgba(0, 86, 112, 0.2); color: rgba(0, 86, 112, 0.94); }
 
@@ -1744,15 +1748,15 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 #operationDetailsView--operationDetailPanel > header > div { height: 4.375rem !important; }
 
-#operationDetailsView--opDetailNavToolbar { height: 3rem; }
+#operationDetailsView--opDetailNavToolbar { height: 2rem; }
 
 #operationDetailsView--operDetailNavContainer { height: calc(100% - 4.375rem - 3rem - 1rem) !important; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH { box-shadow: none; height: 3.1rem; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH { box-shadow: none; height: 2rem; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH > span { height: 3.1rem; top: 0; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > span { height: 2rem; top: 0; }
 
-#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer { height: 3.1rem; }
+#operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer { height: 2rem; }
 
 #operationDetailsView--opDetailSegmentButtons > div.sapMITH > .sapMITBScrollContainer > div { margin-top: 0; }
 
