@@ -607,9 +607,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
     },
 
-
-
-
     /***************************************************************************
 	 * Filter autoclosure operation of OSW
 	 * 
@@ -759,7 +756,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      * button
      ****************************************************************************/
     changeGroupUnplannedOsw: function (oEvent, sValue) {
-
         var sFilter = "";
 
         if (sValue === undefined) {
@@ -767,22 +763,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         } else {
             sFilter = sValue;
         }
-
-        //        sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").bindAggregation('items', {
-        //            path: "WorkListModel>/",
-        //            template: sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
-        //            sorter: [new sap.ui.model.Sorter({
-        //                // Change this value dynamic
-        //                path: sFilter, //oEvt.getSource().getSelectedKey();
-        //                descending: false,
-        //                group: true,
-        //            }), new sap.ui.model.Sorter({
-        //                path: 'index',
-        //                descending: false
-        //            })],
-        //        filters: OldFilter
-        //        });
-
 
         var oSorter = [];
         var GroupingSort = new sap.ui.model.Sorter({
@@ -1017,15 +997,11 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         } else {
             sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter([]);
         }
-        //        }
-
     },
 
     ClosePolyPoly: function (oEvent) {
-
         this.onCloseDialog(oEvent);
         airbus.mes.stationtracker.util.AssignmentManager.polypolyAffectation = false;
-
     },
 
     getI18nValue: function (sKey) {
@@ -1081,15 +1057,9 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             } else {
                 airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
             }
-
-
-
         }
-
-
-
-
     },
+
     showDisruption: function (oEvent) {
         // aboolean variable is taken to know if the button Disruption from station tracker is clicked
         //If yes, then the Disruptiontracker will be loaded with filter on Current Station
@@ -1167,8 +1137,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         var aModel = airbus.mes.stationtracker.worklistPopover.aModel;
 
         aModel = aModel.filter(function (el) {
-            return el.OPERATION_ID === sOperation_id &&
-                el.WORKORDER_ID === sWorkOrder_id;
+            return el.OPERATION_ID === sOperation_id && el.WORKORDER_ID === sWorkOrder_id;
         });
         // Call the operation list popup
         airbus.mes.stationtracker.util.ModelManager.openOperationDetailPopup(aModel);

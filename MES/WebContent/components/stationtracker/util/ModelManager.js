@@ -18,8 +18,8 @@ airbus.mes.stationtracker.util.ModelManager = {
         ShopOrderBO: undefined,
         RouterStepBO: undefined,
         ERP_SYSTEM: undefined,
-        SFC : undefined,
-        OPERATION_BO : undefined
+        SFC: undefined,
+        OPERATION_BO: undefined
     },
 
     //     parameters from the settings component
@@ -378,44 +378,44 @@ airbus.mes.stationtracker.util.ModelManager = {
 
     },
 
-	    onUnPlannedLoad : function() {
+    onUnPlannedLoad: function () {
 
-		airbus.mes.stationtracker.oView.byId("unplannedButton").setBusy(false);
-		var aModel = sap.ui.getCore().getModel("unPlannedModel");
+        airbus.mes.stationtracker.oView.byId("unplannedButton").setBusy(false);
+        var aModel = sap.ui.getCore().getModel("unPlannedModel");
 
-		if (!aModel.getProperty("/Rowsets/Rowset/0/Row")) {
+        if (!aModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
-			aModel = [];
-			console.log("no Unplanned operation load");
+            aModel = [];
+            console.log("no Unplanned operation load");
 
-		} else {
-			aModel = aModel.getProperty("/Rowsets/Rowset/0/Row");
+        } else {
+            aModel = aModel.getProperty("/Rowsets/Rowset/0/Row");
 
-			try {
-				aModel.forEach(function(el) {
+            try {
+                aModel.forEach(function (el) {
 
-					if (el.RMA_STATUS_COLOR != "---") {
+                    if (el.RMA_STATUS_COLOR != "---") {
 
-						el.RMA_STATUS_COLOR = "1";
+                        el.RMA_STATUS_COLOR = "1";
 
-					} else {
+                    } else {
 
-						el.RMA_STATUS_COLOR = "0";
-					}
+                        el.RMA_STATUS_COLOR = "0";
+                    }
 
-				})
+                })
 
-			} catch (e) {
-				console.log("formating unplanned does not work");
-				console.log(e);
-			}
+            } catch (e) {
+                console.log("formating unplanned does not work");
+                console.log(e);
+            }
 
-		}
+        }
 
-		// Compute status for Unplanned and OSW Model
-		airbus.mes.stationtracker.util.ModelManager.computeStatus(aModel);
+        // Compute status for Unplanned and OSW Model
+        airbus.mes.stationtracker.util.ModelManager.computeStatus(aModel);
 
-	},
+    },
 
     onOWSLoad: function () {
 
@@ -1245,7 +1245,7 @@ airbus.mes.stationtracker.util.ModelManager = {
                                 "operation_desc": aModel[0].OPERATION_DESCRIPTION,
                                 "material_description": aModel[0].WORKORDER_DESCRIPTION,
                                 "operation_revision": aModel[0].SFC_STEP_REF.split(",")[5],
-                                "shopOrderBo" : aModel[0].SHOP_ORDER_BO,
+                                "shopOrderBo": aModel[0].SHOP_ORDER_BO,
                                 "wo_no": aModel[0].SHOP_ORDER_BO.split(",")[1],
                                 "workcenter": aModel[0].WORK_CENTER,
                                 "status": sStatus,
@@ -1294,11 +1294,6 @@ airbus.mes.stationtracker.util.ModelManager = {
                 airbus.mes.stationtracker.operationDetailPopup.open();
                 airbus.mes.operationdetail.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId + "-scrollCont");
 
-                //                airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").setData(oOperModel);
-                //                airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").refresh();
-                //                sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
-                //                sap.ui.getCore().getModel("operationDetailModel").refresh();
-
                 // If previously_started is true, the operation has to be on execution mode
                 if (aModel[0].PREVIOUSLY_STARTED === "true") {
                     airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(true);
@@ -1319,11 +1314,36 @@ airbus.mes.stationtracker.util.ModelManager = {
                 airbus.mes.shell.util.navFunctions.acpnglinksDetail(airbus.mes.operationdetail.oView.getController().nav);
                 sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(airbus.mes.acpnglinks.model.ModelManager.checkExistingChildrentData());
 
+                //Load components model
+                airbus.mes.stationtracker.util.ModelManager.loadComponentsTabs();
+
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
 
             }, 0);
         }, 0);
     },
+
+    loadComponentsTabs: function () {
+        if (airbus.mes.components === undefined || airbus.mes.components.oView === undefined) {
+
+            jQuery.sap.registerModulePath("airbus.mes.components", "../components/components");
+            sap.ui.getCore().createComponent({
+                name: "airbus.mes.components",
+                site: airbus.mes.settings.ModelManager.site,
+                sfc: sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc,
+                sSet: airbus.mes.shell.util.navFunctions.components.configME
+            });
+        } else { // or load model
+            airbus.mes.components.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
+            airbus.mes.components.oView.getController().getOwnerComponent().setWorkOrder(sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
+            airbus.mes.components.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no);
+            airbus.mes.components.util.ModelManager.loadcomponentsWorkOrderDetail();
+            airbus.mes.components.util.ModelManager.loadselectFilterModel();
+            airbus.mes.components.oView.getController().checkSettingComponents();
+        }
+
+    },
+
     OpenReschedule: function (id) {
 
         //

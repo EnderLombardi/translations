@@ -124,8 +124,7 @@
 								<StepInput id="stepInputCommitted" type="Number" class="stepInputComponent"
 									value="{componentsWorkOrderDetail>Checked_Components}" width="{width}"
 									min="0"
-									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
-									editable="true" change="liveChange" />
+									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"/>
 							</HBox>
 						</table:template>
 					</table:Column>
@@ -146,8 +145,7 @@
 								<StepInput id="stepInputFitted" type="Number" class="stepInputComponent"
 									min="0"
 									value="{componentsWorkOrderDetail>Fitted_Components}" width="{width}"
-									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"
-									editable="true" change="liveChange" />
+									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"/>
 							</HBox>
 						</table:template>
 					</table:Column>

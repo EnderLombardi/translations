@@ -321,24 +321,16 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     componentsDetail: function (container) {
-        //    	Create component
-        if (airbus.mes.components === undefined || airbus.mes.components.oView === undefined) {
+        //the component isn't create in navFunctionx, it's created at the pop-up opening
+        //by this way we can keep the data entered in the fields when we change of tab
 
-            jQuery.sap.registerModulePath("airbus.mes.components", "../components/components");
-            sap.ui.getCore().createComponent({
-                name: "airbus.mes.components",
-                site: airbus.mes.settings.ModelManager.site,
-                sfc: sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc,
-                sSet: airbus.mes.shell.util.navFunctions.components.configME
-            });
-        } else { // or load model
-            airbus.mes.components.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
-            airbus.mes.components.oView.getController().getOwnerComponent().setWorkOrder(sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
-            airbus.mes.components.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].operation_no);
-            airbus.mes.components.util.ModelManager.loadcomponentsWorkOrderDetail();
-            airbus.mes.components.util.ModelManager.loadselectFilterModel();
-            airbus.mes.components.oView.getController().checkSettingComponents();
+        //set buttons visible if we are on the fitted/committed view
+        if (airbus.mes.components !== undefined && airbus.mes.components.oView !== undefined && airbus.mes.components.oView.oController.committedFittedView) {
+            sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(true);
+            sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(true);
         }
+
+        //fill the container
         if (container.getPage("componentsView") === null) {
             container.addPage(airbus.mes.components.oView);
         }

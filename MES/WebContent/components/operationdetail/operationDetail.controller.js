@@ -358,10 +358,12 @@ sap.ui
             //case tracking template
             sap.ui.getCore().byId("operationDetailPopup--btnPrintTckTmplt").setVisible(false);
 
-            //case components
-            sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(false);
-            sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(false);
-            sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(false);
+            //set visible false if the view isn't components one
+            if (oEvent.mParameters.toId !== "componentsView") {
+                sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(false);
+                sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(false);
+                sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(false);
+            }
 
         },
 
