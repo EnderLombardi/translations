@@ -18,15 +18,12 @@ airbus.mes.operationdetail.ModelManager = {
     jsonConfirmationCheckList: undefined,
     brOnMessageCallBack:function (data) {},
 
-    init: function (core, i18nModel = {}) {
+    init: function (core) {
 
         // Handle URL Model
         this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.operationdetail.config.url_config");
 
         airbus.mes.shell.ModelManager.createJsonModel(core, ["reasonCodeModel", "dispatchModel","MissPartsNotifModel"]);
-        
-        // Model for Missing Parts Notification
-        this.loadMissingPartsModel(i18nModel);
     },
 
     /***************************************************************************

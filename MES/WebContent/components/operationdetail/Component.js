@@ -66,7 +66,7 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
 
         this.oView.setModel(i18nModel, "i18n");
         //        Initialization
-        airbus.mes.operationdetail.ModelManager.init(sap.ui.getCore(), i18nModel);
+        airbus.mes.operationdetail.ModelManager.init(sap.ui.getCore());
 
     //    this.oView.setModel(sap.ui.getCore().getModel("reasonCodeModel"), "reasonCodeModel");)
         return this.oView;

@@ -1296,7 +1296,8 @@ airbus.mes.stationtracker.util.ModelManager = {
                     airbus.mes.operationdetail.oView = this.oOperationDetailComp.oView;
                     airbus.mes.operationdetail.parentId = airbus.mes.stationtracker.operationDetailPopup.sId;
                 }
-
+                // Model for Missing Parts Notification
+                airbus.mes.operationdetail.ModelManager.loadMissingPartsModel(airbus.mes.operationdetail.oView.getModel("i18n"));
                 airbus.mes.stationtracker.operationDetailPopup.open();
                 airbus.mes.operationdetail.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId + "-scrollCont");
 
