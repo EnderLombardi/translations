@@ -550,7 +550,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 		if (bNotConfirmedOpLS) {
 
-			sNotConfirmedOpLS = '<span class="classNotConfirmedOperation"></span>';
+			sNotConfirmedOpLS = '<span class="classNotConfirmedOperation" onclick="airbus.mes.stationtracker.oView.getController().test()"></span>';
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {

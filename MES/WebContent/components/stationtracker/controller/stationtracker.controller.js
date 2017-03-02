@@ -1450,5 +1450,10 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
     onFreeze: function () {
         airbus.mes.components.oView.oController.onbtnComponentsFreeze();
     },
+    test : function() {
+    	
+    	console.log("toto");
+    	
+    }
 
 });

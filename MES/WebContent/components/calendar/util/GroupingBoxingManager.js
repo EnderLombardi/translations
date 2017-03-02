@@ -249,7 +249,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					//Compute object wich represent the all the total box to create loaned to does not need to be use	
 					//===============	
 					if ( el.loanedTo != "true" ) {
-						if (  Math.abs(oBox.start_date -  oBox.end_date) >= fStep ) {
+						//if (  Math.abs(oBox.start_date -  oBox.end_date) >= fStep ) {
 						       
 							// Check if we are in day mode or not if we are day the scale is on a day otherwise on the hours
 							if ( fStep === 86400000 ) {
@@ -257,14 +257,14 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 								//workers partially available dunring time frame is considered as not that why we reset the startdate at the begining of the day		
 								var fStartDate = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).setHours(0, 0, 0);
 								//workers partially available dunring time frame is considered as not that why we set the enDdate at the end of the current days 	
-								var fEndDate = new Date(oFormatter.jsDateFromDayTimeStr(el.endDateTime)-1000).setHours(24,0,0) 
+								var fEndDate = new Date(oFormatter.jsDateFromDayTimeStr(el.endDateTime)-1).setHours(24,0,0) 
 								
 							} else {
 								// we will chekc on the begining of the hours
 								//workers partially available dunring time frame is considered as not that why we reset the startdate at the begining of the hours	
 								var fStartDate = new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)).setMinutes(0,0,0);
 								//workers partially available dunring time frame is considered as not that why we set the enDdate at the end of the current hours 	
-								var fEndDate = new Date(oFormatter.jsDateFromDayTimeStr(el.endDateTime)-1000).setMinutes(60,0,0);
+								var fEndDate = new Date(oFormatter.jsDateFromDayTimeStr(el.endDateTime)-1).setMinutes(60,0,0);
 
 							}
 							
@@ -296,7 +296,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 								}	
 							}
 						}
-					}			
+					//}			
 				});
 		
 			});
