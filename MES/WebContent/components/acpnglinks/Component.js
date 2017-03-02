@@ -12,6 +12,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.acpnglinks.Component", {
 			phStation : undefined,
 			workOrder : undefined,
 			operation : undefined,
+			sfcstep	  : undefined,
 			
 		},
 	}

@@ -352,6 +352,7 @@ airbus.mes.shell.util.navFunctions = {
         }
         airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setPhStation(airbus.mes.settings.ModelManager.station);
         airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no);
+        airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setSfcstep(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref);
         if (container.getPage("acpnglinksView") === null) {
             container.addPage(airbus.mes.acpnglinks.oView);
         }

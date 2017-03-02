@@ -40,6 +40,9 @@ airbus.mes.acpnglinks.util.Formatter = {
 		}
 	},
 
+	/**
+	 * Set custom data level on DOM
+	 */
 	levelFormat : function(sValue) {
 		var result = sValue % 5;
 		var oRow;
@@ -54,5 +57,22 @@ airbus.mes.acpnglinks.util.Formatter = {
 			//do nothing	
 			}
 		return result.toString();
+	},
+	
+	/**
+	 * Set custom data CurrentWO on DOM
+	 */
+	currentWOFormat : function(sValue){
+		var result = "false";
+		if ( sValue == airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getWorkOrder()){
+			result = "true";
+		}
+		try{
+			oRow = this.getParent().getParent();
+			oRow.data("currentWO", result , true);
+		} catch(e){
+//do nothing			
+		}
+		return result;
 	}
 };

@@ -99,7 +99,7 @@
 	 	{
  		
 			&[data-level="1"]{
-				background-color: #fbefcc;
+				background-color: white;
 			}
 			&[data-level="2"]{
 				background-color: #cfe0e8;
@@ -113,6 +113,9 @@
 			}
 			&[data-level="0"]{
 				background-color: #daebe8;
+			}
+			&[data-currentWO="true"]{
+				background-color: #fbefcc;
 			}
 	}
   }

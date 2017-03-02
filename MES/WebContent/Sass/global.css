@@ -3900,7 +3900,7 @@ DATE PICKER
 
 .listButtons > div:nth-child(2) span { margin-top: 1px; margin-right: 2px; }
 
-[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-level="1"] { background-color: #fbefcc; }
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-level="1"] { background-color: white; }
 
 [id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-level="2"] { background-color: #cfe0e8; }
 
@@ -3909,6 +3909,8 @@ DATE PICKER
 [id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-level="4"] { background-color: #87bdd8; }
 
 [id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-level="0"] { background-color: #daebe8; }
+
+[id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-currentWO="true"] { background-color: #fbefcc; }
 
 #acpnglinksView--modifyColumnsButton { position: absolute; right: 30px; }
 

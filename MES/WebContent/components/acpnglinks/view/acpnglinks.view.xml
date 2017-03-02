@@ -19,6 +19,7 @@
 								<Text text="{acpnglinksWorkOrderDetail>Type}" class="AllignItem">
 									<customData>
 										<core:CustomData key="level" value="{path : 'acpnglinksWorkOrderDetail>Level', formatter:'airbus.mes.acpnglinks.util.Formatter.levelFormat'}" writeToDom="true" />
+										<core:CustomData key="currentWO" value="{path : 'acpnglinksWorkOrderDetail>Reference', formatter:'airbus.mes.acpnglinks.util.Formatter.currentWOFormat'}" writeToDom="true" />
 									</customData>
 								</Text>
 							</tab:template>
