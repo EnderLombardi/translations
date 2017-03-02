@@ -5,7 +5,7 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
 	
     onAfterRendering: function(){
 		this.filterNcDisplay(this.sSet);
-    },
+	},
 
 	checkSettingNCDisplay: function () {
 		
@@ -87,18 +87,18 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
     	var sUrl;
     	var sNcReference;
     	
-        var cellText = oEvent.getParameter("listItem").getCells()[1].getProperty("text");
-        if(cellText === "NC" || cellText === "PNC" || cellText === "IR"){
+//        var cellText = oEvent.getParameter("listItem").getCells()[1].getProperty("text");
+//        if(cellText === "NC" || cellText === "PNC" || cellText === "IR"){
 //        	Get url
         	sUrl = airbus.mes.ncdisplay.util.ModelManager.loadExternalUrl();
         	
 //        	Replace parameters
-        	sNcReference = sap.ui.getCore().getModel("ncdisplaydata").getObject(oEvent.getParameter("listItem").getBindingContext("ncdisplaydata").getPath()).ncReference;
+        	sNcReference = sap.ui.getCore().getModel("ncdisplaydata").getProperty(oEvent.getSource().getParent().getBindingContext("ncdisplaydata").getPath()).ncReference;
         	sUrl = sUrl.replace("p_notification", sNcReference);
 
 //			Open URL        	
         	window.open(sUrl);
-        }
+//        }
     },
 
     closePopUp: function(){

@@ -36,9 +36,9 @@ airbus.mes.ncdisplay.util.ModelManager = {
 			contentType : 'application/json',
 			async : 'true',
 			data : JSON.stringify({
-				"site" : "FNZ1", //airbus.mes.settings.ModelManager.site,
-				"phStation" : "PHYS_ST_IP3", // airbus.mes.settings.ModelManager.station, 
-				"shopOrderBO" : "ShopOrderBO:FNZ1,5097075", //airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].shopOrderBo,
+				"site" : airbus.mes.settings.ModelManager.site,
+				"phStation" : airbus.mes.settings.ModelManager.station, 
+				"shopOrderBO" : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].shopOrderBo,
 			}),
 
 			success : function(data) {

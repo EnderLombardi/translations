@@ -2,6 +2,7 @@
 
 jQuery.sap.registerModulePath("airbus.mes.ncdisplay", "../components/ncdisplay");
 jQuery.sap.require("airbus.mes.ncdisplay.util.ModelManager");
+jQuery.sap.require("airbus.mes.ncdisplay.util.Formatter");
 jQuery.sap.declare("airbus.mes.ncdisplay.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.ncdisplay.Component", {

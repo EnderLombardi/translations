@@ -23,6 +23,14 @@
 				</table:extension>
 
 				<table:columns>
+ 					<table:Column>
+						<Label textAlign="Center" text="More Detail" />
+						<table:template>
+							<Button visible="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" 
+									enabled="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" 
+									press="onLineClick"/>
+						</table:template>
+					</table:Column>			
 					<table:Column>
 						<Label textAlign="Center" text="ACP Status" />
 						<table:template>
