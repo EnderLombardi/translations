@@ -283,26 +283,30 @@ airbus.mes.operationdetail.ModelManager = {
         var oMissPartsNotifModel = sap.ui.getCore().getModel("MissPartsNotifModel");
         var nbComponent = 0;
         var nbMissing = 0;
-        //get Missing Parts data
-        var MPData = airbus.mes.stationtracker.util.Globals_Functions.getMissingPartsData(
+        
+        try {
+            //get Missing Parts data
+            var MPData = airbus.mes.stationtracker.util.Globals_Functions.getMissingPartsData(
                                                 airbus.mes.settings.ModelManager.site,
 								                airbus.mes.settings.ModelManager.station,
 								                airbus.mes.settings.ModelManager.msn,
                                                 sWorkOrder);
-        //Update counters of missing parts 
-        MPData.Rowsets.Rowset[0].Row.forEach(function(element){
-            if (element.operation == operationId){
-                nbComponent++;
-                nbMissing += parseInt(element.quantity);
+            //Update counters of missing parts 
+            MPData.Rowsets.Rowset[0].Row.forEach(function(element){
+                if (element.operation == operationId){
+                    nbComponent++;
+                    nbMissing += parseInt(element.quantity);
+                }
+            });
+            //Update and show notification
+            if (nbComponent > 0){
+                oMissingPartsNotif.Message = oI18n.getProperty("MissingPartMsg");
+                oMissingPartsNotif.Message = oMissingPartsNotif.Message.replace("%Param0%", nbComponent.toString()).replace("%Param1%", nbMissing.toString()); 
+                oMissingPartsNotif.Visibility = true;
             }
-        });
-        //Update and show notification
-        if (nbComponent > 0){
-            oMissingPartsNotif.Message = oI18n.getProperty("MissingPartMsg");
-            oMissingPartsNotif.Message = oMissingPartsNotif.Message.replace("%Param0%", nbComponent.toString()).replace("%Param1%", nbMissing.toString()); 
-            oMissingPartsNotif.Visibility = true;
-        }
+        } catch (error) {
+            console.log(error);
+        };
         oMissPartsNotifModel.setData(oMissingPartsNotif);
-
     },
 };
