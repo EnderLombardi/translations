@@ -6,7 +6,7 @@
 		"icon": "calendar",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "calendarEnabled"
+		"enable": "TEAM_AVAILABILITY_SCREEN"
 	},{
 
 		"text": "TeamCompetencies",
@@ -22,7 +22,7 @@
 		"icon": "customer-history",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "true"
+		"enable": "false"
 	},	
 	{
 
@@ -31,7 +31,7 @@
 		"icon": "flight",
 		"app":"",
 		"url": "/MES/WebContent/components/linetracker/index.html",
-		"enable": "true"
+		"enable": "LINE_DIS_LINE_STATION"
 	},{
 		"text": "StationTracker",
 		"sub" : "",

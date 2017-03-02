@@ -137,7 +137,7 @@
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
-			"Feature": "LINE_DIS_LINE_STAT",
+			"Feature": "LINE_DIS_LINE_STATION",
 			"Description": "Line Tracker>Display Line Status",
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
@@ -271,7 +271,10 @@
             "Feature": "STATION_WORKER_BC_UNASSIGN",
             "Description": "Station Tracker>Worker Assignment>BC Unassignment",
             "Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
-		}
-		
+		}, {	"SITE": "FNZ1",
+			"Feature": "TEAM_AVAILABILITY_SCREEN",
+			"Description": "calendar>display tile",
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
+		}		
 	]
 }

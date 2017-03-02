@@ -7,6 +7,7 @@
 "use strict"; // ESLint
 
 jQuery.sap.require("sap.ui.core.UIComponent");
+jQuery.sap.require("airbus.mes.homepage.util.Formatter");
 
 /**
  * @extends sap.ui.core.UIComponent

@@ -7,11 +7,11 @@
 		<content>
 			<TileContainer tileDelete="handleTileDelete"
 				tiles="{1TileLineHome>/buttonDetail}" height="100%">
-				<CustomTile press="onPressLine1" class="customTiles" visible="{Profile>/identifiedUser/permissions/HOMESCREEN}" enabbled="{ path : '{Profile>/identifiedUser/permissions/HOMESCREEN}' , formatter : 'enabledTiles' }"> 
+				<CustomTile press="onPressLine1" class="customTiles" visible="{Profile>/identifiedUser/permissions/HOMESCREEN}" enabbled="{ path : '{Profile>/identifiedUser/permissions/}' , formatter : 'enabledTiles' }"> 
 	
 			  
 					<customData>
-						<core:CustomData key="enabled" value="{1TileLineHome>enable}" writeToDom="true" />
+						<core:CustomData key="enabled" value="{path:'1TileLineHome>enable', formatter:'airbus.mes.homepage.util.Formatter.enabledTiles'}" writeToDom="true" />
 					</customData>
 					<content>
 						<VBox width="auto" 
