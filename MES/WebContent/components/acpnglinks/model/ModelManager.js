@@ -49,7 +49,6 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	loadacpnglinksWorkOrderDetail: function () {
 		try{
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
-		airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setWorkOrder("acpId1");
 		jQuery.ajax({
 			type: 'post',
 			url: this.getacpnglinksWorkOrderDetail(),
