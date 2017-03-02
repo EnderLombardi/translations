@@ -113,7 +113,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             aFilters.push(this.addFilter("Fitted_Components", sQuery));
             aFilters.push(this.addFilter("BOMComponentBO", sQuery));
             aFilters.push(this.addFilter("ERPSequence", sQuery));
-            
+
             //OR Filter
             var oCurrentFilter = new sap.ui.model.Filter(aFilters, false);
             this.oFilterSearch = oCurrentFilter;
@@ -134,12 +134,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     //apply the filter on the model data
     onSelectFilter: function (oEvent) {
         if (airbus.mes.components.selectFilter === undefined) {
-            var oView = airbus.mes.components.oView;
-            airbus.mes.components.selectFilter = sap.ui.xmlfragment("selectFilter", "airbus.mes.components.fragment.selectFilterPopover", airbus.mes.components.oView.getController());
-            airbus.mes.components.selectFilter.addStyleClass("alignTextLeft");
-            oView.addDependent(airbus.mes.components.selectFilter);
-
-            airbus.mes.components.selectFilter.setModel(sap.ui.getCore().getModel("selectFilterModel"), "selectFilterModel");
+            this.createSelectFilterPopoverFragment();
         }
 
         // delay because addDependent will do a async rerendering and the popover will immediately close without it
@@ -147,6 +142,16 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         jQuery.sap.delayedCall(0, this, function () {
             airbus.mes.components.selectFilter.openBy(oButton);
         });
+        
+    },
+
+    createSelectFilterPopoverFragment: function () {
+        var oView = airbus.mes.components.oView;
+        airbus.mes.components.selectFilter = sap.ui.xmlfragment("selectFilter", "airbus.mes.components.fragment.selectFilterPopover", airbus.mes.components.oView.getController());
+        airbus.mes.components.selectFilter.addStyleClass("alignTextLeft");
+        oView.addDependent(airbus.mes.components.selectFilter);
+
+        airbus.mes.components.selectFilter.setModel(sap.ui.getCore().getModel("selectFilterModel"), "selectFilterModel");
     },
 
     //prepare to apply the filters after a small delay (due to async rendering)
@@ -228,8 +233,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     },
 
     //is called when the save button is clicked. It handles the datan converts it in xml and send them to backend.
-    onbtnComponentsSave: function() {
-   	
+    onbtnComponentsSave: function () {
+
         var count = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row.length;
         if (airbus.mes.components.util.ModelManager.dataSaveJson != []) {
             airbus.mes.components.util.ModelManager.dataSaveJson = [];
@@ -238,7 +243,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             var tableVal = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row[i].Checked_Components;
             var tableValFitt = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row[i].Fitted_Components;
             var dataIndex = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row[i];
-            
+
             dataIndex.committed = tableVal;
             dataIndex.fitted = tableValFitt;
 
@@ -246,32 +251,32 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
         airbus.mes.components.util.Formatter.convertJsontoXmlJCO(airbus.mes.components.util.ModelManager.dataSaveJson);
         airbus.mes.components.util.Formatter.convertJsontoXmlPapi(airbus.mes.components.util.ModelManager.dataSaveJson);
-                
-        
-//      Param.1=$site&Param.2=$ERPSystem&Param.3=$xmlPAPI&Param.4=$xmlJCO
-	    var url = airbus.mes.components.util.ModelManager.urlModel.getProperty("componentsSaveFittedComponent");
-	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
-	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$ERPSystem", airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system);
-	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlPAPI", airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi);
-	    url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlJCO", airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO);
-        
-//      call service
+
+
+        //      Param.1=$site&Param.2=$ERPSystem&Param.3=$xmlPAPI&Param.4=$xmlJCO
+        var url = airbus.mes.components.util.ModelManager.urlModel.getProperty("componentsSaveFittedComponent");
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$ERPSystem", airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlPAPI", airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlJCO", airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO);
+
+        //      call service
         jQuery.ajax({
-            type : 'get',
-            async : false,
-            url : url,
-            contentType : 'application/json',
-            
-            success : function(data) {
-            	  console.log("sucess");
+            type: 'get',
+            async: false,
+            url: url,
+            contentType: 'application/json',
+
+            success: function (data) {
+                console.log("sucess");
             },
 
-            error : function(error, jQXHR) {
+            error: function (error, jQXHR) {
                 console.log(error);
             }
         });
-        
-        
+
+
     },
 
     //freeze not available now
@@ -304,7 +309,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(false);
         }
-        
+
         this.changeColVisibility(this.committedFittedView);
     },
 
@@ -312,7 +317,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     changeColVisibility: function (committedFittedView) {
         var colVisibilityArray;
         var columns = sap.ui.getCore().byId("componentsView--ComponentsList").getColumns();
-        
+
         if (!committedFittedView) {
             colVisibilityArray = airbus.mes.components.util.ModelManager.colVisibilityComponents;
         } else {

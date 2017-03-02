@@ -60,7 +60,7 @@
 						<Title text="{i18n>MissingPartsNotifTitle}" class="MissingPartsNotifTitle"/>
 						<Title text="{MissPartsNotifModel>/Message}" class="MissingPartsNotifMsg"/>
 						<ToolbarSpacer />
-						<Button text="Open Missing Parts" type="Transparent"
+						<Button text="{i18n>openMissingParts}" type="Transparent"
 								visible="true"
 								press="onMissingPartsNotifPress" design="Transparent"/>
 					</Toolbar>

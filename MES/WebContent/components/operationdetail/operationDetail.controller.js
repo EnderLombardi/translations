@@ -83,7 +83,7 @@ sap.ui
                 $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
             }
             /****** hide buttons *********/
-           // sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
+            // sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(false);
@@ -135,7 +135,7 @@ sap.ui
         setToolbarVisible: function () {
             var state = sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState();
             if (!state) {
-//                sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(false);
+                //                sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(false);
                 //sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(false);
@@ -203,7 +203,7 @@ sap.ui
                         airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO, sSfcStepRef);
                         this.disruptionsFlag = true;
                     }
-                    
+
                     break;
                 case "displayOpeAttachments":
                     //tabselection
@@ -311,7 +311,7 @@ sap.ui
                     break;
 
                 case "tckTemplate":
-                     //tabselection
+                    //tabselection
                     $(this.tabSelected).removeClass("operationDetailTabSelected");
                     this.tabSelected = "#operationDetailsView--idTrackingTemplate";
                     $(this.tabSelected).addClass("operationDetailTabSelected");
@@ -396,7 +396,7 @@ sap.ui
                         // set buttons according to create disruption
                         sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
                         sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(true);
-                        sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);                        
+                        sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
                     }
 
                     break;
@@ -411,19 +411,34 @@ sap.ui
                     airbus.mes.components.oView.oController.checkSettingComponents();
                     break;
                 default:
-
             };
-
         },
 
-    onMissingPartsNotifPress: function (oEvent){
-        //tabselection
-        $(this.tabSelected).removeClass("operationDetailTabSelected");
-        this.tabSelected = "#operationDetailsView--idComponents";
-        $(this.tabSelected).addClass("operationDetailTabSelected");
-        airbus.mes.shell.util.navFunctions.componentsDetail(this.nav);
-        /** Navigate **/
-        this.nav.to(airbus.mes.components.oView.getId());
-    }
+        onMissingPartsNotifPress: function (oEvent) {
+            //tab selection
+            $(this.tabSelected).removeClass("operationDetailTabSelected");
+            this.tabSelected = "#operationDetailsView--idComponents";
+            $(this.tabSelected).addClass("operationDetailTabSelected");
+            airbus.mes.shell.util.navFunctions.componentsDetail(this.nav);
+
+            //set visible the buttons of the components view
+            sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(true);
+            if (airbus.mes.components !== undefined && airbus.mes.components.oView !== undefined && airbus.mes.components.oView.oController.committedFittedView) {
+                sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(true);
+                sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(true);
+            }
+
+            //navigate and create the filter fragment
+            this.nav.to(airbus.mes.components.oView.getId());
+            if (airbus.mes.components.selectFilter === undefined) {
+                airbus.mes.components.oView.oController.createSelectFilterPopoverFragment();
+            }
+            
+            //select the good filter
+            var missingPartsFilter = sap.ui.getCore().byId("selectFilter--selectFilterComponents").getItems()[3];
+            sap.ui.getCore().byId("selectFilter--selectFilterComponents").removeSelections(true)
+            sap.ui.getCore().byId("selectFilter--selectFilterComponents").setSelectedItem(missingPartsFilter);
+            airbus.mes.components.oView.oController.onSelectFilterFinish();
+        }
 
     });
