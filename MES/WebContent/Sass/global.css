@@ -1609,7 +1609,7 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn { position: relative; color: #333333; }
 
-.operationDetailHeadPanel + .opDetailNavToolbar .sapMITBTab { display: inline-block; vertical-align: middle; }
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMITBTab { display: inline-block; vertical-align: middle; width: auto; }
 
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMITBText { display: inline-block; background-color: #fe5000 !important; font-weight: lighter; color: #FFFFFF; padding: 4px; width: 15px; height: 15px; text-align: center; vertical-align: middle; margin-left: 6px; border-radius: 50%; outline: none !important; }
 
