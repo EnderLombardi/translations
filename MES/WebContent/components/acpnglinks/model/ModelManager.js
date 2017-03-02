@@ -56,7 +56,9 @@ airbus.mes.acpnglinks.model.ModelManager = {
 			contentType: 'application/json',
 			async: false,
 			data: JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site
+				"site": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSite(),
+				"sfcStep": "STEP"
+				
 			}),
 
 			success: function (data) {
@@ -210,7 +212,6 @@ airbus.mes.acpnglinks.model.ModelManager = {
 
 				} catch (e) {
 
-					console.log(e);
 					return;
 				}
 
@@ -237,7 +238,9 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	getacpnglinksWorkOrderDetail: function () {
 		try{
 		var url = this.urlModel.getProperty("acpnglinksWorkOrderDetail");
-		url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
+//		  url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSite());
+//		  url = airbus.mes.shell.ModelManager.replaceURI(url, "$sfcstep", airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSite());
+//        url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getWorkOrder());
 		return url;
 		}catch(error){
 			return "";

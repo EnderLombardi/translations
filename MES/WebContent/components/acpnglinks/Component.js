@@ -7,7 +7,13 @@ jQuery.sap.declare("airbus.mes.acpnglinks.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.acpnglinks.Component", {
 	metadata : {
-		properties : { },
+		properties : { 
+			site 	  : undefined,
+			phStation : undefined,
+			workOrder : undefined,
+			operation : undefined,
+			
+		},
 	}
 });
 

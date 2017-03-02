@@ -345,12 +345,21 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     acpnglinksDetail: function (container) {
-        if (airbus.mes.acpnglinks === undefined || airbus.mes.acpnglinks.oView === undefined) {
+    	 //    	Retrieve current workOrder Display
+        var sCurrentWorkOrder = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
 
-            jQuery.sap.registerModulePath("airbus.mes.acpnglinks", "../components/acpnglinks");
-            sap.ui.getCore().createComponent({ name: "airbus.mes.acpnglinks" });
+        if (airbus.mes.acpnglinks === undefined || airbus.mes.acpnglinks.oView === undefined) {
+        	 jQuery.sap.registerModulePath("airbus.mes.acpnglinks", "../components/acpnglinks");
+             sap.ui.getCore().createComponent({ name: "airbus.mes.acpnglinks" });
+             airbus.mes.acpnglinks.model.ModelManager.loadacpnglinksWorkOrderDetail();
+        } else if (airbus.mes.acpnglinks.oView.oController.workOrder !== sCurrentWorkOrder) {
+            // If WorkdOrder changed, need to reload data in the model
+        	airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
+            airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setWorkOrder(airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
             airbus.mes.acpnglinks.model.ModelManager.loadacpnglinksWorkOrderDetail();
         }
+        airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setPhStation(airbus.mes.settings.ModelManager.station);
+        airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no);
         if (container.getPage("acpnglinksView") === null) {
             container.addPage(airbus.mes.acpnglinks.oView);
         }
