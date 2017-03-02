@@ -126,7 +126,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		var aElements2 = [];
 		var aBox = [];
 		var sPoolId = airbus.mes.calendar.util.ShiftManager.shiftIdSelected;
-		var oTotal = airbus.mes.calendar.util.GroupingBoxingManager.totalHierarchy = {};		
+		var oTotal = airbus.mes.calendar.util.GroupingBoxingManager.totalHierarchy = {"line":{},};		
 		var aShifts = airbus.mes.calendar.util.ShiftManager.shifts;
 		var fTotalUser = 0;
 		//Day or shift mode step is on day
@@ -273,12 +273,25 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 								if (fStartDate + fStep <= fEndDate ) {
 									
 									var fId = fStartDate;
+									var sLineId = line+fId;
+
 									if (oTotal[fId] === undefined) {
-										oTotal[fId] = 0;									
+										oTotal[fId] = 0;	
 									}
+									//Permit to does not count the doublon of absence
+									if ( oTotal.line[sLineId] === undefined ) {
+										oTotal.line[sLineId] = 0;								
+									}
+									oTotal.line[sLineId] += 1;
 									oTotal[fId] += 1;
 									fStartDate += fStep;
+									
+									if ( oTotal.line[sLineId] > 1 ) {
+										oTotal[fId]--;								
+									}
+									
 								} else {
+									
 									fStartDate += fStep;
 								}	
 							}
