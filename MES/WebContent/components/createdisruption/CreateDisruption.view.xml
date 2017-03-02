@@ -96,38 +96,16 @@
 									</f:content>
 						</f:SimpleForm>
 
-								<!-- <f:FormElement>
-									<f:label>
-										<Label text="{i18nModel>RootCause}">
-											<layoutData>
-												<l:GridData span="L2 M3 S12" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<Select id="selectRootCause" selectedKey=""
-											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
-											change="onSelectionChange">
-											<items>
-												<core:Item text="{disruptionCustomData>RootCause}"
-													key="{disruptionCustomData>RootCause}" />
-											</items>
-											<layoutData>
-												<l:GridData span="L3 M9 S12" />
-											</layoutData>
-										</Select>
-									</f:fields>
-								</f:FormElement> -->
 								<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Transparent" 	title="{i18nModel>additionalInfo}"
 										maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" columnsL="3"
 										columnsM="3" columnsS="3" class="sapUiSmallMargin" visible="true">	
 									<f:content>
 									<core:Title text="" />
 									<Label text="{i18nModel>area}" />
-									<Input value="" />
+									<Input id="area" value="" />
 									<Label text="{i18nModel>plan}" />
-									<Input value="" />
-									<Label text="{i18nModel>materiall}"/>									
+									<Input id="plan" value="" />
+									<Label text="{i18nModel>material}"/>									
 										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
 											tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
 											enabled="false">		
@@ -136,9 +114,9 @@
 									
 									<core:Title text="" />
 									<Label text="{i18nModel>ribs}" />
-									<Input value="" />
+									<Input id="ribs" value="" />
 									<Label text="{i18nModel>view}" />
-									<Input value="" />
+									<Input id="view" value="" />
 									<Label text="{i18nModel>Jigtool}" />
 										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange"
 											liveChange="onJigToolTokenChange" enabled="false">
@@ -146,9 +124,9 @@
 									
 									<core:Title text="" />
 									<Label text="{i18nModel>stringer}" />
-									<Input value="" />
+									<Input id="stringer" value="" />
 									<Label text="{i18nModel>stringer_rail}" />
-									<Input value="" />
+									<Input id="stringer_rail" value="" />
 									</f:content>
 									</f:SimpleForm>
 									

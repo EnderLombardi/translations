@@ -704,10 +704,13 @@ sap.ui
                                          // Calculate Promised Date Time
                                          var time = sap.ui.getCore().byId("disruptionAckTime").getValue();
 
-                                         if (time == "")
-                                                time = "00:00:00";
+//                                         if (time == "")
+//                                                time = "00:00:00";
 
                                          var dateTime = date + " " + time;
+                                         
+                                         if (dateTime = " ") dateTime = "";
+
 
                                          var msgRef = sap.ui.getCore().byId("disruptionAckSpathMsgRef").getText();
 

@@ -410,7 +410,31 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 				}, {
 					"attribute" : "LINE",
 					"value" : airbus.mes.settings.ModelManager.line
-				}, ]
+				}, {
+					"attribute" : "AREA",
+					"value" : oView.byId("area").getValue()
+				}, {
+					"attribute" : "PLAN",
+					"value" : oView.byId("plan").getValue()
+				}, {
+					"attribute" : "MATERIAL",
+					"value" : oView.byId("materials").getValue()
+				}, {
+					"attribute" : "RIBS",
+					"value" : oView.byId("RIBS").getValue()
+				}, {
+					"attribute" : "VIEW",
+					"value" : oView.byId("view").getValue()
+				}, {
+					"attribute" : "TOOLS",
+					"value" : oView.byId("jigtools").getValue()
+				}, {
+					"attribute" : "STRINGER",
+					"value" : oView.byId("stringer").getValue()
+				}, {
+					"attribute" : "STRINGER_RAIL",
+					"value" : oView.byId("stringer_rail").getValue()
+				} ]
 
 		}
 		aModelData.push(oJson);
@@ -592,7 +616,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		
 		oView.byId("comment").setValue();
 
-		oView.byId("materials").destroyTokens();
+		//oView.byId("materials").destroyTokens();
 		oView.byId("jigtools").destroyTokens();
 	},
 

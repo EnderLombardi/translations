@@ -125,6 +125,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 //			time = "00:00:00";
 
 		var dateTime = date + " " + time;
+		if (dateTime = " ") dateTime = "";
 
 		var comment = airbus.mes.disruptions.Formatter.actions.acknowledge + this.getView().byId("comment").getValue();
 		var i18nModel = this.getView().getModel("i18nModel");
