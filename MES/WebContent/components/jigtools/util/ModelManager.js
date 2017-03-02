@@ -5,33 +5,41 @@ airbus.mes.jigtools.util.ModelManager = {
 
 	urlModel : undefined,
 	
-	// variable for filter
+//  constant for for filter
 	workOrder : "P",
 	operation : "O",
 
-//	variable for operation
-//	site      : undefined,
-//	workOrder : undefined,
-		
-
+	/**
+	 * Initialize all model for the component
+	 * 
+	 * @param {object} core object level to bind model
+	 */
 	init : function(core) {
 
 		this.core = core;
 
-	    // Handle URL Model
+//      Define configuration
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.jigtools.config.url_config");
 		
-		//"jigToolsConfigModel", 
+//		Define and load model 
 		airbus.mes.shell.ModelManager.createJsonModel(core,["jigToolsWorkOrderDetail"]);
 		this.loadjigToolsWorkOrderDetail();
 		
 	},
 
-	//load
+	/**
+	 * Load the tool model by calling the corresponding service  
+	 */
 	loadjigToolsWorkOrderDetail : function() {
 		
-        var oViewModel = sap.ui.getCore().getModel("jigToolsWorkOrderDetail");
-
+//		Retrieve the tool model
+		try {
+			var oViewModel = sap.ui.getCore().getModel("jigToolsWorkOrderDetail");
+		} catch(oException) {
+			console.log("error when getting tool model");
+		}
+        
+//      Launch the service 
         jQuery.ajax({
             type : 'post',
             async : false,
@@ -47,12 +55,12 @@ airbus.mes.jigtools.util.ModelManager = {
                     data = JSON.parse(data);
                 }
                 if (typeof data != "object" || data === null) {
-                	/* In case the tool list is empty, we receive "null" */
+ //					In case the tool list is empty, we receive "null"
                 	data = { toolInfoList : [] };
                 }
                 data.toolInfoList = data.toolInfoList || [];
                 if (!Array.isArray(data.toolInfoList)) {
-                	/* In case the tool list contain one element, we receive an object */
+//					In case the tool list contain one element, we receive an object
                     data.toolInfoList = [ data.toolInfoList ];
                 }
                 oViewModel.setData(data);

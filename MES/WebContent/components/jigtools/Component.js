@@ -16,18 +16,26 @@ sap.ui.core.UIComponent.extend("airbus.mes.jigtools.Component", {
 	}
 });
 
-
+/**
+ * Initialization of the component
+ */
 airbus.mes.jigtools.Component.prototype.init = function () {
     // call the init function of the parent
 	sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
 };
 
-
+/**
+ * Create the content of the component.
+ * it means : create the view, the i18n model and the model manager
+ * 
+ * @returns {object} view of the component
+ */
 airbus.mes.jigtools.Component.prototype.createContent = function() {
 
+//	Create the current only if the component is not already loaded
 	if (airbus.mes.jigtools.oView === undefined) {
 		
-		// View on XML
+// 		View on XML
 		this.oView = sap.ui.view({
 			id : "jigtoolsView",
 			viewName : "airbus.mes.jigtools.view.jigtools",
@@ -39,14 +47,10 @@ airbus.mes.jigtools.Component.prototype.createContent = function() {
 		var i18nModel = new sap.ui.model.resource.ResourceModel({ bundleName : "airbus.mes.jigtools.i18n.i18n" });
 		this.oView.setModel(i18nModel, "i18nJigstoolsModel");		
 
-        // Initialize ModelManager and load needed file
+// 		Initialize ModelManager and load needed file
         airbus.mes.jigtools.util.ModelManager.init(sap.ui.getCore());		
+	} 
 		
-		return this.oView;
-		
-	} else {
-		
-		return airbus.mes.jigstools.oView;
-		
-	}
+	return airbus.mes.jigstools.oView;
+
 };

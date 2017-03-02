@@ -2,13 +2,20 @@
 
 sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 
+//	Contain value of radiobutton setting by default mode or by user 
 	sSet : undefined,
 	
-	// Get setting from ME/MII and select the good button between operation and work order
+	/**
+	 * Launch after rendering
+	 * Define the radiobutton set
+	 */	
 	onAfterRendering: function () {
 		this.filterJigsTools(this.sSet);
 	},
-	
+
+	/**
+	 * Get setting from ME/MII and select the good button between operation and work order
+	 */		
 	checkSettingJigsTools: function () {
 		
 		// confirm if we have already check the ME settings
@@ -20,23 +27,24 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 				var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL_" + airbus.mes.settings.ModelManager.station);
 				
 				if(sSet === null) {
-					this.sSet = 'O';
+//					Default mode
+					this.sSet = airbus.mes.jigtools.util.ModelManager.operation;
 				} else {
 					this.sSet = sSet;
 				}
 				
 			} else {
 				
-				// set the global variable
+// 				Set the global variable
 				this.sSet = this.getOwnerComponent().getSSet();
 			}
 		}
 		
 		switch (this.sSet) {
-			case "O"://operation
+			case airbus.mes.jigtools.util.ModelManager.operation:
 				sap.ui.getCore().byId("jigtoolsView--operationButton").setSelected(true);
 				break;
-			case "P"://work order
+			case airbus.mes.jigtools.util.ModelManager.workOrder:
 				sap.ui.getCore().byId("jigtoolsView--workOrderButton").setSelected(true);
 				break;
 			default: //if Null operation default mode
@@ -44,12 +52,16 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 				break;
 		}
 		
-		//this.filterJigsTools(this.sSet);
 	},
 
-	//get user action on the checkbox field
+	//
+	/**
+	 * Get user action on the checkbox field
+	 * 
+	 * @param {object} oEvent : Current event
+	 */	
 	onSelectLevel: function (oEvent) {
-
+//		Retrieve index of selected radiobutton 
 		var sId = oEvent.mParameters.selectedIndex;
 		switch (sId) {
 			case 0://operation button
@@ -63,8 +75,13 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 		}
 	},
 
-	//table filter 
+	/**
+	 * Apply the filter on the model 
+	 * 
+	 * @param {string} sScope : radiobutton selected by user
+	 */	
 	filterJigsTools: function (sScope) {
+//		Update the user choice to retrieve it when popup is reopen
 		this.sSet = sScope;
 		switch (sScope) {
 			case airbus.mes.jigtools.util.ModelManager.operation:
@@ -76,7 +93,7 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 			default:
 				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("rows").filter(new sap.ui.model.Filter("routerStep", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].routerStepBo));
 				break;
+			}
 		}
 	}
-}
 );
