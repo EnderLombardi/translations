@@ -15,14 +15,23 @@ sap.ui.core.UIComponent.extend("airbus.mes.components.Component", {
 	}
 });
 
+/**
+ * Initialization of the component
+ */
 airbus.mes.components.Component.prototype.init = function () {
-    // call the init function of the parent
+//  call the init function of the parent
 	sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
 };
 
+/**
+ * Create the content of the component.
+ * it means : create the view, the i18n model and the model manager
+ * 
+ * @returns {object} view of the component
+ */
 airbus.mes.components.Component.prototype.createContent = function() {
 
-	//Set current work Order and operation
+//	Set current work Order and operation
     airbus.mes.components.workOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
     airbus.mes.components.operation = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
 
@@ -43,11 +52,9 @@ airbus.mes.components.Component.prototype.createContent = function() {
 		var i18nModel = new sap.ui.model.resource.ResourceModel({ bundleName : "airbus.mes.components.i18n.i18n" });
 		this.oView.setModel(i18nModel, "i18nComponentsModel");		
 		
-		return this.oView;
+	} 
 		
-	} else {
+	return airbus.mes.components.oView;
 		
-		return airbus.mes.components.oView;
-		
-	}
+	
 };

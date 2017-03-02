@@ -6,10 +6,11 @@
 
     <Page enableScrolling="false" showHeader="false">
         <content>
-            <table:Table     id="ncDisplay"
-                   class="ncDisplayTable"
-                   items="{path: 'ncdisplaydata>/ncDetailList/'}"
-                   itemPress="onLineClick">
+            <table:Table id="ncDisplay"
+                         class="mesTable"
+		                 rows="{path: 'ncdisplaydata>/ncDetailList/'}"
+		                 itemPress="onLineClick"
+		                 width="100%" visibleRowCountMode="Auto" selectionMode="None" >
 
 				<table:extension>
 					<VBox id="ncDisplayCheck" class="ncDisplayListcheck mesRadioButtonsCheck">

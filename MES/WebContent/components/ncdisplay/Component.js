@@ -14,9 +14,6 @@ airbus.mes.ncdisplay.Component.prototype.createContent = function() {
 
     if (airbus.mes.ncdisplay.oView === undefined) {
 
-        // Initialize ModelManager and load needed file
-        airbus.mes.ncdisplay.util.ModelManager.init(sap.ui.getCore());     
-    	
     	// View on XML
         this.oView = sap.ui.view({
             id : "ncdisplayView",
@@ -24,20 +21,21 @@ airbus.mes.ncdisplay.Component.prototype.createContent = function() {
             type : "XML",
             height:"auto"
         })
+
         airbus.mes.ncdisplay.oView = this.oView;
 
-   
-        
         var i18nModel = new sap.ui.model.resource.ResourceModel({
             bundleName : "airbus.mes.ncdisplay.i18n.i18n"
         });
 
         this.oView.setModel(i18nModel, "i18ncdisplaylinksModel");
 
-        return this.oView;
-    } else {
+        // Initialize ModelManager and load needed file
+        airbus.mes.ncdisplay.util.ModelManager.init(sap.ui.getCore());             
+        
+    } 
 
-        return airbus.mes.ncdisplay.oView;
-    }
+    return airbus.mes.ncdisplay.oView;
+
 
 };

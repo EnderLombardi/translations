@@ -7,7 +7,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
     brOnMessageCallBack:function (data) {},
 
     // variable for filter
-    productionOrder : "P",
+    workOrder : "P",
     operation : "O",
     operationData: undefined,
 
@@ -50,7 +50,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
                         data.ncDetailList = [data.ncDetailList];
                  }
                  oViewModel.setData(data);
-
+                 oViewModel.refresh();
 				} catch (e) {
 					console.log("NO NC Display data load");
 					
