@@ -57,14 +57,9 @@
 			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
-			"Feature": "STATION_KPI_DISRUPTIONS",
-			"Description": "Disruption Overview",
-			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
-		}, {
-			"SITE": "FNZ1",
 			"Feature": "STATION_KPI_TAKT",
 			"Description": "Takt Adherence",
-			"Roles": ["eval host('sopra|dmi|imi|qmi')&&!feature('role')"]
+			"Roles": ["eval host('local|sopra|dmi|imi|qmi')&&!feature('role')"]
 		}, {
 			"SITE": "FNZ1",
 			"Feature": "WORK_OP_ACTIVATE",

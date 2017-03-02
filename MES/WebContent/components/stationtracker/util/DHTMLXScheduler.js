@@ -147,13 +147,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
 
             // Check if the grouping of operation is different
             if (sInitialGroup != sNewGroup) {
-
                 return false;
-
             }
-
-
-
+            // Disable verticale drag and drop if no right for this
+            if ( !sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_GANTT_MOVE") ) {
+	            if (sInitialAvlLine != sNewAvlLine) {
+	            	return false;	            	
+	            }
+            }
             //To avoid call rescheduling when drag and drop check if moved the operation if not we dont launch the drag
             if (sInitialAvlLine === sNewAvlLine && Math.abs(oInitial.start_date - oFinal.start_date) < airbus.mes.stationtracker.util.ModelManager.timeMinR) {
 
