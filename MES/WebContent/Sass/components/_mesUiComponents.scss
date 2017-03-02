@@ -13,6 +13,9 @@
     }
 }
 
+
+//xml parameters needed : 
+//width="100%" visibleRowCountMode="Auto" selectionMode="None"
 .mesTable {
     >.sapUiTableCnt {//container
         border: solid 1px $cool-grey;
@@ -51,7 +54,6 @@
                             tr:hover{background-color: #efefef }
                             >tr {
                     			>td {
-                    				text-align:left !important;
                     				border-left:1px solid $cool-grey;
                     			}
                     		}

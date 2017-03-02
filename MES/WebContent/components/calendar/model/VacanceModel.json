@@ -31,7 +31,7 @@
             {
          "id": "7",
          "userId": "USER2",
-         "lastName": "user2",
+         "lastName": "usefgggr2",
          "resourcePoolId": "12",
          "startdDateTime": "2016-12-01T12:00:00.000+01:00",
          "endDateTime": "2016-12-22T00:00:00.000+01:00",
@@ -41,7 +41,7 @@
       }, {
          "id": "7",
          "userId": "vdvs",
-         "lastName": "user2",
+         "lastName": "usdfffder2",
          "resourcePoolId": "12",
          "startdDateTime": "2016-12-01T12:00:00.000+01:00",
          "endDateTime": "2016-12-22T00:00:00.000+01:00",
@@ -51,7 +51,7 @@
       }, {
          "id": "7",
          "userId": "vsdvsdvsv",
-         "lastName": "user2",
+         "lastName": "ussddsdsqer2",
          "resourcePoolId": "12",
          "startdDateTime": "2016-12-01T12:00:00.000+01:00",
          "endDateTime": "2016-12-22T00:00:00.000+01:00",
@@ -61,7 +61,7 @@
       }, {
          "id": "7",
          "userId": "vsdvsvdsvsd",
-         "lastName": "user2",
+         "lastName": "usdsqdqdqer2",
          "resourcePoolId": "12",
          "startdDateTime": "2016-12-01T12:00:00.000+01:00",
          "endDateTime": "2016-12-22T00:00:00.000+01:00",
@@ -71,7 +71,7 @@
       }, {
          "id": "7",
          "userId": "fdsfsf",
-         "lastName": "user2",
+         "lastName": "usdsqdqsqdqdqer2",
          "resourcePoolId": "12",
          "startdDateTime": "2016-12-01T12:00:00.000+01:00",
          "endDateTime": "2016-12-22T00:00:00.000+01:00",
@@ -81,7 +81,7 @@
       },  {
          "id": "7",
          "userId": "fsqfqfsqsqfsqf",
-         "lastName": "user2",
+         "lastName": "usdsqdsqdsqdqer2",
          "resourcePoolId": "12",
          "startdDateTime": "2016-12-02T00:00:00.000+01:00",
          "endDateTime": "2016-12-21T00:00:01.000+01:00",
@@ -90,8 +90,28 @@
          "loanedFrom": "false"
       }, {
          "id": "7",
+         "userId": "fsqfqfsqsqfsqf",
+         "lastName": "usdsqdsqqdqder2",
+         "resourcePoolId": "12",
+         "startdDateTime": "2016-12-02T00:00:00.000+01:00",
+         "endDateTime": "2016-12-21T00:00:01.000+01:00",
+         "validated": "false",
+         "loanedTo": "false",
+         "loanedFrom": "false"
+      }, {
+         "id": "7",
+         "userId": "fsqfqfsqsqfsqf",
+         "lastName": "usdsqdsqqdqder2",
+         "resourcePoolId": "12",
+         "startdDateTime": "2016-12-02T00:00:00.000+01:00",
+         "endDateTime": "2016-12-21T00:00:01.000+01:00",
+         "validated": "false",
+         "loanedTo": "false",
+         "loanedFrom": "false"
+      },{
+         "id": "7",
          "userId": "fqsfsqfqfsqfsqfsqfsfqfqfqs",
-         "lastName": "user2",
+         "lastName": "usdqsdqddsqer2",
          "resourcePoolId": "12",
          "startdDateTime": "2016-12-01T11:30:00.000+01:00",
          "endDateTime": "2016-12-21T15:30:00.000+01:00",

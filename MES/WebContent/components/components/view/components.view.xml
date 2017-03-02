@@ -5,7 +5,7 @@
 		<content>
 
 
-			<table:Table id="ComponentsList" class="ComponentsList mesTable"
+			<table:Table id="ComponentsList" class="mesTable"
 				rows="{componentsWorkOrderDetail>/Rowsets/Rowset/0/Row/}" editable="true"
 				width="100%" visibleRowCountMode="Auto" selectionMode="None">
 
