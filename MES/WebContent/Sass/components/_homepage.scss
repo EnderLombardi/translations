@@ -9,9 +9,11 @@
     -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     &:not([data-enabled^="false"]){
-        cursor:pointer;
         &:hover {
             background-color: $teal-blue-hover;
+        }
+        * {
+            cursor:pointer;
         }
     }
 }

@@ -4313,9 +4313,9 @@ DISRUPTIONTRACKER
 
 .customTiles { height: 15rem; border: none; border-radius: 0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); background-color: rgba(12, 75, 131, 0.9); margin: 0.5rem; width: 13rem; -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
 
-.customTiles:not([data-enabled^="false"]) { cursor: pointer; }
-
 .customTiles:not([data-enabled^="false"]):hover { background-color: #0f2d65; }
+
+.customTiles:not([data-enabled^="false"]) * { cursor: pointer; }
 
 .headerTileText { font-size: 18px; color: #ffffff; }
 
