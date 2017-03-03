@@ -50,18 +50,18 @@
 						</HBox>
 					</Panel>
 					<!-- List Comment -->
-					<List id="listNotes" items="{path:'WONotes>/Rowsets/Rowset/0/Row', sorter: {path: 'Created_Date_Time', descending : true}}" class="customListItem">
+					<List id="listNotes" items="{path:'WONotes>/Rowsets/Rowset/0/Row', sorter: {path: 'Created_Date_Time', descending : true}}" class="customWOListItem">
 						<!--<items><StandardListItem title="{WONotes>User_First_Name}.{WONotes>User_Last_Name}" description="{WONotes>Comments}" info="{path: 'WONotes>Created_Date_Time'}"/><List items="{WONotes>attachedDocument}"><items><Link text="{WONotes>FILE_NAME}" href="{WONotes>FILE_URL}"/></items></List></items>-->
 						<CustomListItem>
-							<HBox>
-								<VBox >
-									<Label text="{WONotes>User_First_Name}.{WONotes>User_Last_Name}"/>
-									<Text text="{WONotes>Comments}"/>
-									<HBox items= "{WONotes>attachedDocument}">
-										<Link text="{WONotes>FILE_NAME}" href="{WONotes>FILE_URL}"/>
+							<HBox id="wo-items" class="wo-items">
+								<VBox class="wo-items-left-container">
+									<Label class="wo-items-title" text="{WONotes>User_First_Name}.{WONotes>User_Last_Name}"/>
+									<Text class="wo-items-comments" text="{WONotes>Comments}"/>
+									<HBox class="wo-items-documents-container" items= "{WONotes>attachedDocument}">
+										<Link class="wo-items-document" text="{WONotes>FILE_NAME}" href="{WONotes>FILE_URL}"/>
 									</HBox>
 								</VBox>
-								<Label text="{WONotes>Created_Date_Time}"/>
+								<Label id="wo-items-date" class="wo-items-date" text="{WONotes>Created_Date_Time}"/>
 							</HBox>
 						</CustomListItem>
 					</List>

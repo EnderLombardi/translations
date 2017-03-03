@@ -46,6 +46,7 @@ h1 {
   padding: 10px;
   display: inline-flex;
 }
+
 #trackingtemplateView--showOnlyLastConfirmationNote {
   padding: 10px;
   display: inline-flex;
@@ -58,9 +59,9 @@ h1 {
 #trackingtemplateView--showOnlyLastWONote {
   align-items: center;
   display: flex;
-  color:#666666;
+  color: #666666;
   border-bottom: 1px solid #cccccc;
-  padding:10px;
+  padding: 10px;
 }
 
 #trackingtemplateView--commentBox {
@@ -69,7 +70,7 @@ h1 {
 
 .overflowCheckBoxConfirmationNoteBar {
   display: inline-flex;
-  color:#666666;
+  color: #666666;
   border-bottom: 1px solid #cccccc;
   padding: 10px;
 }
@@ -83,8 +84,8 @@ h1 {
 }
 
 .sapMSLIDiv .sapMSLIDescriptionDiv {
-  padding : 10px;
-  display:flex;
+  padding: 10px;
+  display: flex;
 }
 
 .sapMSLIDiv .sapMSLIDescriptionDiv .sapMSLIDescription {
@@ -99,4 +100,45 @@ h1 {
 
 .sapMSLITitleOnly {
   font-weight: bold;
+}
+
+.wo-items {
+  padding: 10px;
+  min-height: 3rem;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+
+}
+
+.wo-items .wo-items-left-container {
+  -webkit-flex: 2 0 0;
+  flex: 2 0 0;
+}
+
+.wo-items .wo-items-left-container .wo-items-title {
+  font-weight:bold;
+  font-size: 1rem;
+  padding-bottom: 0.375rem;
+  display:block;
+}
+
+.wo-items .wo-items-left-container .wo-items-comments {
+  padding-bottom: 0.2rem;
+  display:block;
+}
+
+.wo-items .wo-items-left-container .wo-items-documents-container {
+  padding-bottom: 0.2rem;
+  display:block;
+}
+
+.wo-items .wo-items-date {
+  -webkit-flex: 1 0 0;
+  flex: 1 0 0;
+}
+
+.wo-items .wo-items-left-container .wo-items-documents-container .sapMFlexItem {
+  display:inline-block;
+  margin : 0 0 0 0.4rem
 }
