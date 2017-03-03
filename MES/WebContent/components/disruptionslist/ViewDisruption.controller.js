@@ -709,7 +709,7 @@ sap.ui
 
                                          var dateTime = date + " " + time;
                                          
-                                         if (dateTime == " ") dateTime = "";
+                                         if (dateTime = " ") dateTime = "";
 
 
                                          var msgRef = sap.ui.getCore().byId("disruptionAckSpathMsgRef").getText();
@@ -834,13 +834,14 @@ sap.ui
                                 	  if(oPanel.getExpanded()){
                                 		  return;
                                 	  }
-                                	  
+                                	// Call when expand to create msgLog
+                             	 // airbus.mesdisruptions.ModelManager.createMessageLogCode(); 
                                 	  // Close prevoiusly expanded panel
                                 	  if(this.sExpandedPanelPath != undefined)
                                 		  this.getView().getModel("operationDisruptionsModel").setProperty(this.sExpandedPanelPath + "/expanded", "false");
                                 		  
                                 	  var sPath = oEvent.getSource().getBindingContext("operationDisruptionsModel").sPath;
-                                      this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/expanded", "true");
+                                      this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/expanded", "true");                                      
                                       this.getView().getModel("operationDisruptionsModel").refresh();
                                       this.sExpandedPanelPath = sPath;
                                   },
@@ -861,8 +862,7 @@ sap.ui
                                 		  {mode: "Create", oData: {}},
                                 		  sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
                                 		  sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-                                		  sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption"),  // Cancel Button
-                                		  sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption")   //create and close button
+                                		  sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")  // Cancel Button
                                 	  );
                                          
                                       // clear disruptionDetailModel if edit is loaded before ReportDisruption
@@ -918,8 +918,7 @@ sap.ui
                                 		  {mode: "Edit", oData: oData},
                                 		  sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
                                 		  sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-                                		  sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption"),  // Cancel Button
-                                		  sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption")
+                                		  sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")  // Cancel Button
                                 	  );
 
                                   },

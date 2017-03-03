@@ -45,6 +45,8 @@
 								<Label text="{path:'operationDisruptionsModel>RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}"  design="Bold" />
 								
 								<ToolbarSpacer />
+								<core:Icon id="disrptListEnvelop" src="sap-icon://email" visible="{operationDisruptionsModel>lastUpdated}" />
+								
 								<Label
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>ClosureDate}"
 									visible="{path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"

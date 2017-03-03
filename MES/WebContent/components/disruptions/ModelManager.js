@@ -1013,5 +1013,33 @@ airbus.mes.disruptions.ModelManager = {
 		var oViewModel = sap.ui.getCore().getModel("AttachmentList");
 		oViewModel.loadData(this.urlModel.getProperty("ListOfAttachment"), null, false);
 	},
-
+	/***************************************************************************
+	 * Create Message Log Codes
+	 * 
+	 */
+	createMessageLogCode:function(){
+		var urlToCreateMsgLogCode = this.urlModel.getProperty("urlCreateMsgLogCode");
+		JQuery.ajax({
+			async : true,
+			cache : false,
+			url : urlToCreateMsgLogCode,
+			type : 'POST',
+			data : {
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : "MessageDO:FNZ1,71911-426de233:15a6ff506d2:-4d08",
+				"Param.3" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.4" : "READ",
+			},
+			success : function() {
+				
+			},
+			error : function() {
+				
+			}	
+			
+		});	
+		
+	},
+	
+	
 };
