@@ -3892,7 +3892,7 @@ DATE PICKER
 
 [id^="acpnglinksView--ACPnGTreeTable-table"] > tbody > tr[data-currentwo="true"] { background-color: #fbefcc; }
 
-#acpnglinksView--modifyColumnsButton { position: absolute; right: 30px; }
+#acpnglinksView--modifyColumnsButton { position: absolute; right: 2.5%; }
 
 #acpnglinksView--modifyColumnsButton-inner { background-color: #0085ad; border-radius: 0.125rem; color: #ffffff; }
 
