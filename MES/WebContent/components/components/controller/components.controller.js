@@ -263,17 +263,18 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     //is called when the save button is clicked. It handles the data converts it in xml and send them to backend.
     onbtnComponentsSave: function () {
 
-        var count = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row.length;
+    	var oModel = sap.ui.getCore().getModel("componentsWorkOrderDetail");
+        var count = oModel.getData().Rowsets.Rowset[0].Row.length;
         if (airbus.mes.components.util.ModelManager.dataSaveJson != []) {
             airbus.mes.components.util.ModelManager.dataSaveJson = [];
         }
         for (var i = 0; i < count; i++) {
-            var tableVal = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row[i].Checked_Components;
-            var tableValFitt = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row[i].Fitted_Components;
-            var dataIndex = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row[i];
+            var tableVal = oModel.getData().Rowsets.Rowset[0].Row[i].Checked_Components;
+            var tableValFitt = oModel.getData().Rowsets.Rowset[0].Row[i].Fitted_Components;
+            var dataIndex = oModel.getData().Rowsets.Rowset[0].Row[i];
 
-            if (airbus.mes.components.util.ModelManager.aInitialModel.Rowsets.Rowset[0].Row[i].Checked_Components != tableVal
-            || airbus.mes.components.util.ModelManager.aInitialModel.Rowsets.Rowset[0].Row[i].Fitted_Components   != tableValFitt ) {
+            if (oModel.getData().Rowsets.Rowset[0].Row[i].Checked_Components_old != tableVal
+            || oModel.getData().Rowsets.Rowset[0].Row[i].Fitted_Components_old   != tableValFitt ) {
                 dataIndex.committed = tableVal;
                 dataIndex.fitted = tableValFitt;
                 airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
@@ -307,8 +308,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         });
 
         
-//      Save current data model in initialmodel
-        airbus.mes.components.util.ModelManager.aInitialModel = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData();
+//      Save current data model in old data
+        this.saveOldValue(oModel);
 
     },
 

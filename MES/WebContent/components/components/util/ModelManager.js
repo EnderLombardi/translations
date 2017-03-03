@@ -38,11 +38,19 @@ airbus.mes.components.util.ModelManager = {
     loadcomponentsWorkOrderDetail: function () {
         var oModel = sap.ui.getCore().getModel("componentsWorkOrderDetail");
         oModel.loadData(this.getcomponentsWorkOrderDetail(), null, false);
-        this.aInitialModel = oModel.getData();
+        this.saveOldValue(oModel);
         var row = oModel.oData.Rowsets.Rowset[0].Row;
         this.replaceStepInputsWithoutValue(row);
     },
-
+    saveOldValue : function(oModel) {
+        var count = oModel.getData().Rowsets.Rowset[0].Row.length;
+//      Keep old value
+        for (var i = 0; i < count; i++) {
+        	oModel.getData().Rowsets.Rowset[0].Row[i].Checked_Components_old = oModel.getData().Rowsets.Rowset[0].Row[i].Checked_Components;
+        	oModel.getData().Rowsets.Rowset[0].Row[i].Fitted_Components_old = oModel.getData().Rowsets.Rowset[0].Row[i].Fitted_Components;
+        }    	
+    },
+    
     //get
     getcomponentsWorkOrderDetail: function () {
         var url = this.urlModel.getProperty("componentsWorkOrderDetail");
