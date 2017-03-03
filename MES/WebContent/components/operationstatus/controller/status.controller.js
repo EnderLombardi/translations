@@ -107,7 +107,7 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
 
         // Refresh User Operation Model and Operation Detail
         if (flagSuccess == true) {
-            oView.getController().setProgressScreenBtn(true, false, true);
+            oView.getController().setProgressScreenBtn(true, false, true, true);
 
             // Refresh User Operation Model and Operation Detail
             airbus.mes.shell.oView.getController().renderStationTracker();
@@ -163,7 +163,7 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
         });
 
         if (flagSuccess == true) {
-            oView.getController().setProgressScreenBtn(false, true, false);
+            oView.getController().setProgressScreenBtn(false, true, false, false);
 
             // Refresh User Operation Model and Operation Detail
             airbus.mes.shell.oView.getController().renderStationTracker();
@@ -502,7 +502,7 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
                     if (oView.getController().operationStatus == "X") {
                         sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status",
                                 "COMPLETED");
-                        oView.getController().setProgressScreenBtn(false, false, false);
+                        oView.getController().setProgressScreenBtn(false, false, false, false);
                     }
 
                     sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/progress",
@@ -653,7 +653,7 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
                 break;
 
             case airbus.mes.operationdetail.Formatter.status.completed:
-                this.setProgressScreenBtn(false, false, false, true);
+                this.setProgressScreenBtn(false, false, false, false);
                 break;
             }
 
