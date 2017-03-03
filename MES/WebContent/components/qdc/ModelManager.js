@@ -7,7 +7,7 @@ airbus.mes.qdc.ModelManager = {
 
 	init : function(core) {
 
-		var aModel = [ "QDCModel" ]; // Model having list of attachments for
+		var aModel = [ "QDCModel", "GetQDCDataModel" ]; // Model having list of attachments for
 										// disruptions
 
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
@@ -37,40 +37,9 @@ airbus.mes.qdc.ModelManager = {
 
 			}),
 			success : function(data) {
-				var oModel = new sap.ui.model.json.JSONModel();
-				oModel.setData(data)
-				sap.ui.getCore().setModel(oModel, "GetQDCDataModel");
+				sap.ui.getCore().getModel("GetQDCDataModel").setData(data);
 
-				airbus.mes.qdc.oView.byId("idButtonMEA").setEnabled(false);
-				airbus.mes.qdc.oView.byId("idButtonMAA").setEnabled(false);
-				airbus.mes.qdc.oView.byId("idButtonQDC").setEnabled(false);
-
-				var obj = data.Rowsets.Rowset[1].Row;
-				if (data.Rowsets.Rowset[0].Row[0].QDCSTATUS === "X") {
-					if (airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").getState() === true) {
-						obj.filter(function(row) {
-							if (row.DOC_TYPE === "MEA") {
-								airbus.mes.qdc.oView.byId("idButtonMEA").setEnabled();
-							}
-
-						});
-
-						obj.filter(function(row) {
-							if (row.DOC_TYPE === "PLA") {
-								airbus.mes.qdc.oView.byId("idButtonMAA").setEnabled();
-							}
-
-						});
-
-						obj.filter(function(row) {
-							if (row.DOC_TYPE === "QDC") {
-								airbus.mes.qdc.oView.byId("idButtonQDC").setEnabled();
-							}
-
-						});
-					}
-				}
-				;
+				airbus.mes.qdc.oView.getController().enableButtons();
 
 			},
 			error : function(error, jQXHR) {

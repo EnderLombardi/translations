@@ -247,40 +247,52 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 			
 			sStatus = airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(el.STATE, el.PAUSED, el.PREVIOUSLY_STARTED );
 			
-			//Opened Blocking and Escalated disruption
+			//Operation Not Started and Disruptions Exists
 			if ( el.DISRUPTION === "D1") {
 				sStatus = "4";
 			}
-			//Opened Blocking disruption
-			if ( el.DISRUPTION === "D2") {
+			//Opened Escalated disruption
+			else if ( el.DISRUPTION === "D2") {
 				sStatus = "5";
 			}
-			//Solved Blocking and Escalated disruption
-			if ( el.DISRUPTION === "D3") {
+			//Open Block Disruption
+			else if ( el.DISRUPTION === "D3") {
 				sStatus = "6";
 			}
-			//Solved Blocking disruption
-			if ( el.DISRUPTION === "D4") {
+			//Answered Escalated disruption
+			else if ( el.DISRUPTION === "D4") {
 				sStatus = "7";
 			}
+			//Answered Blocking disruption
+			else if ( el.DISRUPTION === "D5") {
+				sStatus = "8";
+			}
+			//Solved Escalated disruption
+			else if ( el.DISRUPTION === "D6") {
+				sStatus = "9";
+			}
+			//Solved Blocking disruption
+			else if ( el.DISRUPTION === "D7") {
+				sStatus = "10";
+			}
 			//andon
-			/*if ( el.DISRUPTION === "B") {
+			/*else if ( el.DISRUPTION === "B") {
 				sStatus = "99";
 			}*/
 			// Operation is from OSW
-			if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {
+			else if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {
 				fOSW = "3";
 			}
 			// Operation is from OSW ACPng
-			if ( el.EXECUTION_STATION_SOURCE[0] === "4" ) {
+			else if ( el.EXECUTION_STATION_SOURCE[0] === "4" ) {
 				fOSW = "4";
 			}
 			// Operation is from unplanned
-			if ( el.EXECUTION_STATION_SOURCE[0] === "1" ) {
+			else if ( el.EXECUTION_STATION_SOURCE[0] === "1" ) {
 				sUnplanned = "1";
 			}
 			// Maturity
-			if ( el.RMA_STATUS_COLOR != "---" ) {
+			else if ( el.RMA_STATUS_COLOR != "---" ) {
 				fRMA = "1";		
 			}
 				

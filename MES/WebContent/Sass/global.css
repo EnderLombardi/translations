@@ -263,7 +263,7 @@ BOX MANAGEMENT
 
 .trackerBox:hover .openBlocked { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #ffbf00 !important; }
 
-.trackerBox:hover .solvedBlocked { background: repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px); background-size: 56px 56px; -webkit-animation: slide 20s infinite linear forwards; -moz-animation: slide 20s infinite linear forwards; animation: slide 20s infinite linear forwards; -webkit-transition: background 0.2s ease-in-out; -moz-transition: background 0.2s ease-in-out; transition: background 0.2s ease-in-out; }
+.trackerBox:hover .answeredBlocked { background: repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px); background-size: 56px 56px; -webkit-animation: slide 20s infinite linear forwards; -moz-animation: slide 20s infinite linear forwards; animation: slide 20s infinite linear forwards; -webkit-transition: background 0.2s ease-in-out; -moz-transition: background 0.2s ease-in-out; transition: background 0.2s ease-in-out; }
 
 @-webkit-keyframes slide { 0% { background-position: 0% 0%; }
   100% { background-position: 100% 0%; } }
@@ -277,7 +277,7 @@ BOX MANAGEMENT
 @keyframes slide { 0% { background-position: 0% 0%; }
   100% { background-position: 100% 0%; } }
 
-.trackerBox:hover .solvedBlockedExcalated { background: repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px); background-size: 56px 56px; -webkit-animation: slide 20s infinite linear forwards; -moz-animation: slide 20s infinite linear forwards; animation: slide 20s infinite linear forwards; }
+.trackerBox:hover .answeredBlockedExcalated { background: repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px); background-size: 56px 56px; -webkit-animation: slide 20s infinite linear forwards; -moz-animation: slide 20s infinite linear forwards; animation: slide 20s infinite linear forwards; }
 
 @-webkit-keyframes slide { 0% { background-position: 0% 0%; }
   100% { background-position: 100% 0%; } }
@@ -299,9 +299,9 @@ BOX MANAGEMENT
 
 .trackerTextBlack { color: #000; }
 
-.solvedBlockedExcalated { height: inherit; width: 100%; background: repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px); background-position: 14px 0; background-size: 56px 56px; }
+.answeredBlockedExcalated { height: inherit; width: 100%; background: repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px); background-position: 14px 0; background-size: 56px 56px; }
 
-.solvedBlocked { height: inherit; width: 100%; background: repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px); background-position: 14px 0; background-size: 56px 56px; }
+.answeredBlocked { height: inherit; width: 100%; background: repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px); background-position: 14px 0; background-size: 56px 56px; }
 
 /***********************
 KPI HEADER

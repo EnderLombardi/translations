@@ -331,10 +331,71 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 
 				break;
-
-			// Opened Blocking and disruption
+				
+			// Operation not started but disruption exists
 			case 4:
 				sColorProgress = boxDisplayManager.colorProgress_OpenBlocked;
+
+				if (oBox.rmaStatus === 1) { //rma
+					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
+				}
+//				if (oBox.OSW === 3) { //OSW
+//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+//				}
+				if (oBox.isUnplanned === 1) { //Unplanned
+					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+				}
+				
+				break;
+
+			// Opened Escalated disruption = andon raised
+			case 5:
+				sColorProgress = boxDisplayManager.colorProgress_Escalated;
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop");
+
+				if (oBox.rmaStatus === 1) { //rma
+					sLeftIcon = boxDisplayManager.leftTriangleIcon;
+				}
+				
+				if (dispatch) {
+					
+					dispatchWhite = true;
+				}
+				
+//				if (oBox.OSW === 3) { //OSW
+//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+//				}
+				if (oBox.isUnplanned === 1) { //Unplanned
+					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+				}
+				
+				break;
+
+			// Opened Blocking disruption
+			case 6:
+				sColorProgress = boxDisplayManager.colorProgress_OpenBlocked;
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
+
+				if (oBox.rmaStatus === 1) { //rma
+					sLeftIcon = boxDisplayManager.leftTriangleIcon;
+				}
+//				if (oBox.OSW === 3) { //OSW
+//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+//				}
+				if (oBox.isUnplanned === 1) { //Unplanned
+					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+				}
+				
+				if (dispatch) {
+					
+					dispatchWhite = true;
+				}
+				
+				break;
+
+			// Answered Blocking
+			case 7:
+				sColorProgress = boxDisplayManager.colorProgress_AnsweredBlocked;
 				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
 
 				if (oBox.rmaStatus === 1) { //rma
@@ -343,26 +404,19 @@ airbus.mes.stationtracker.util.Formatter = {
 //				if (oBox.OSW === 3) { //OSW
 //					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
 //				}
+
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
-				
-
 				break;
 
-			// Opened Blocking disruption
-			case 5:
-				sColorProgress = boxDisplayManager.colorProgress_Escalated;
+			// Answered escalated = andon answered
+			case 8:
+				sColorProgress = boxDisplayManager.colorProgress_AnsweredBlockedExcalated;
 				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop");
 
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
-				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
-				if (oBox.isUnplanned === 1) { //Unplanned
-					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
 				
 				if (dispatch) {
@@ -370,12 +424,19 @@ airbus.mes.stationtracker.util.Formatter = {
 					dispatchWhite = true;
 				}
 				
+//				if (oBox.OSW === 3) { //OSW
+//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+//				}
+				if (oBox.isUnplanned === 1) { //Unplanned
+					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+				}
 				break;
+				
 
-			// Solved Blocking
-			case 6:
+			// Solved Escalated disruption
+			case 9:
 				sColorProgress = boxDisplayManager.colorProgress_SolvedBlocked;
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play", "petrol");
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
 
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
@@ -387,14 +448,12 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
-				
-
 				break;
-
-			// Solved Blocking and escalated = andon solved
-			case 7:
+			
+			// Solved Blocking disruption
+			case 10:
 				sColorProgress = boxDisplayManager.colorProgress_SolvedBlockedExcalated;
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play");
+				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop");
 
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
@@ -412,6 +471,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
 				break;
+				
 			default:
 		}
 		

@@ -4,6 +4,50 @@ sap.ui.controller("airbus.mes.qdc.Checklist", {
 		var oTTbl = airbus.mes.qdc.oView.byId("TabChecklistTable");
 		oTTbl.expandToLevel(1);
 	},
+	
+
+	/**
+	 * BR: SD-QDC-HMI-160 This function is used to enable or disable the
+	 * External tools buttons on switching the display only and Execution mode
+	 * Switch control
+	 */
+	enableButtons: function(){
+		var oData = sap.ui.getCore().getModel("GetQDCDataModel").getData();
+
+		airbus.mes.qdc.oView.byId("idButtonMEA").setEnabled(false);
+		airbus.mes.qdc.oView.byId("idButtonMAA").setEnabled(false);
+		airbus.mes.qdc.oView.byId("idButtonQDC").setEnabled(false);
+
+		if (oData.Rowsets.Rowset[0].Row[0].QDCSTATUS === "X" &&
+			// Operation Started
+			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").getState() === true) {
+			var obj = oData.Rowsets.Rowset[1].Row;
+			
+			obj.filter(function(row) {
+				if (row.DOC_TYPE === "MEA") {
+					airbus.mes.qdc.oView.byId("idButtonMEA").setEnabled();
+				}
+		
+			});
+		
+			obj.filter(function(row) {
+				if (row.DOC_TYPE === "MAA") {
+					airbus.mes.qdc.oView.byId("idButtonMAA").setEnabled();
+				}
+		
+			});
+		
+			obj.filter(function(row) {
+				if (row.DOC_TYPE === "QDC") {
+					airbus.mes.qdc.oView.byId("idButtonQDC").setEnabled();
+				}
+		
+			});
+		}
+	},
+	
+	
+	
 	/**
 	 * BR: SD-QDC-HMI-150 Function is used to download the file based on the
 	 * document type. First a QA check is also performed.

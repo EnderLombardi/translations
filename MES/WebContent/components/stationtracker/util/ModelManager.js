@@ -7,7 +7,6 @@ airbus.mes.stationtracker.util.ModelManager = {
 
 
     urlModel: undefined,
-    //queryParams : jQuery.sap.getUriParameters(),
 
     i18nModel: undefined,
     operationType: undefined,
