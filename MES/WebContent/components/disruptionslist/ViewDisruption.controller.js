@@ -709,7 +709,7 @@ sap.ui
 
                                          var dateTime = date + " " + time;
                                          
-                                         if (dateTime = " ") dateTime = "";
+                                         if (dateTime == " ") dateTime = "";
 
 
                                          var msgRef = sap.ui.getCore().byId("disruptionAckSpathMsgRef").getText();
