@@ -23,7 +23,7 @@
 				</table:extension>
 
 				<table:columns>
- 					<table:Column>
+ 					<table:Column width="10%">
 						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayMoreDetail}" />
 						<table:template>
 							<Button icon="sap-icon://inspection"
@@ -32,19 +32,19 @@
 									press="onLineClick"/>
 						</table:template>
 					</table:Column>			
-					<table:Column>
+					<table:Column width="10%">
 						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayACPStatus}" />
 						<table:template>
 							<Text text="{ncdisplaydata>acpStatus}" />
 						</table:template>
 					</table:Column>
-					<table:Column>
+					<table:Column width="10%">
 						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayType}" />
 						<table:template>
 							<Text text="{ncdisplaydata>ncType}" />
 						</table:template>							
 					</table:Column>
-					<table:Column>
+					<table:Column width="10%">
 						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayReference}" />
 						<table:template>
 							<Text text="{ncdisplaydata>ncReference}" />
