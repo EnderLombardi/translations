@@ -187,18 +187,22 @@ airbus.mes.stationtracker.util.ModelManager = {
     loadDispatchFromMesModel: function () {
         var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         var opeData = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-
+        var lang = airbus.mes.settings.ModelManager.loadLanguage();
+        
         var oViewModel = sap.ui.getCore().getModel("dispatchFromMesModel");
         var getUrlMesStatus = this.urlModel.getProperty("urlDispatchFromMes");
 
         getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
-            .replaceURI(getUrlMesStatus, "$site", oData.site);
+            .replaceURI(getUrlMesStatus, "$erpSystem", oData.erp_system);
+        
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+        .replaceURI(getUrlMesStatus, "$site", oData.site);
 
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+        .replaceURI(getUrlMesStatus, "$language", lang);
+        
         getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(getUrlMesStatus, "$workorder", opeData.wo_no);
-
-        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
-            .replaceURI(getUrlMesStatus, "$operation", opeData.operation_id);
 
         getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(getUrlMesStatus, "$sfcstep", opeData.sfc_step_ref);
