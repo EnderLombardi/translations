@@ -8,6 +8,30 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     sSet: undefined,
     committedFittedView: false,
 
+//    Check on change focus
+//    onInit: function() {
+//    	this.getView().byId("ComponentsList").attachBrowserEvent("keydown",jQuery.proxy(this.handleFocusChange,this))
+//    },
+//
+//    handleFocusChange:function(oEvent){
+//		console.log(oEvent.target.id);
+//		if(oEvent.target.id.indexOf("Col1")!== -1){
+//			
+//		}else if(oEvent.target.id.indexOf("col12")!== -1){
+//			var getRowIndex = oEvent.target.id.indexOf("col12");
+////			var rowNumber = oEvent.target.id.substr((getRowIndex+11),getRowIndex+12);
+////			rowNumber = parseInt(rowNumber);
+////			rowNumber+=1;
+////			console.log(this.getView().byId("ComponentsList").getItems()[rowNumber].getCells());
+//			getRowIndex+=1;
+//			this.getView().byId("ComponentsList").getRows()[getRowIndex].getCells()[1].focus();
+//			
+//		}else if(oEvent.target.id.indexOf("col13")!== -1){
+//			
+//		}
+//		
+//	},  
+    
     //is called after view is rendered.
     onAfterRendering: function () {
         this.oFilterSearch = undefined;
@@ -111,7 +135,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             aFilters.push(this.addFilter("serialNumber", sQuery));
             aFilters.push(this.addFilter("Checked_Components", sQuery));
             aFilters.push(this.addFilter("Fitted_Components", sQuery));
-            aFilters.push(this.addFilter("BOMComponentBO", sQuery));
             aFilters.push(this.addFilter("ERPSequence", sQuery));
 
             //OR Filter
@@ -219,7 +242,12 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
         if (aFilter.length > 0) {
             oFilter = new sap.ui.model.Filter(aFilter, true);
-            binding.filter(oFilter);
+            try {//try to filter
+                binding.filter(oFilter);
+            } catch (e) {//if no data fits, we catch the error and apply an impossible filter (so no rows in the table)
+                var impossibleFilter = [new sap.ui.model.Filter("shortage", sap.ui.model.FilterOperator.LT, "0")];
+                binding.filter(impossibleFilter);
+            }
         } else {
             //No filter
             binding.filter();
@@ -232,7 +260,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         oEvent.getSource().oParent.getItems()[1].setValue(value);
     },
 
-    //is called when the save button is clicked. It handles the datan converts it in xml and send them to backend.
+    //is called when the save button is clicked. It handles the data converts it in xml and send them to backend.
     onbtnComponentsSave: function () {
 
         var count = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row.length;
