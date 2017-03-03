@@ -58,7 +58,6 @@
                 "serialNumber": "01",
                 "Checked_Components": "6",
                 "Fitted_Components": "3",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0010",
                 "BOMComponentBO" : "0010"
             }, {
@@ -77,7 +76,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0020",
                 "BOMComponentBO" : "0010"
             }, {
@@ -96,7 +94,6 @@
                 "serialNumber": "01",
                 "Checked_Components": "5.40",
                 "Fitted_Components": "10",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0030",
                 "BOMComponentBO" : "0010"
             }, {
@@ -113,9 +110,8 @@
                 "shortage": "0",
                 "unit": "U",
                 "serialNumber": "0101",
-                "Checked_Components": "6",
-                "Fitted_Components": "7",
-                "bomComponentBO": "bombom",
+                "Checked_Components": "",
+                "Fitted_Components": "",
                 "ERPSequence": "0040",
                 "BOMComponentBO" : "0010"
             }, {
@@ -134,7 +130,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0050",
                 "BOMComponentBO" : "0010"
             }, {
@@ -153,7 +148,6 @@
                 "serialNumber": "01",
                 "Checked_Components": "5",
                 "Fitted_Components": "10",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0060",
                 "BOMComponentBO" : "0010"
             }, {
@@ -172,7 +166,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0070",
                 "BOMComponentBO" : "0010"
             }, {
@@ -191,7 +184,6 @@
                 "serialNumber": "01",
                 "Checked_Components": "5",
                 "Fitted_Components": "10",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0080",
                 "BOMComponentBO" : "0010"
             }, {
@@ -210,7 +202,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0090",
                 "BOMComponentBO" : "0010"
             }, {
@@ -229,7 +220,6 @@
                 "serialNumber": "01",
                 "Checked_Components": "5",
                 "Fitted_Components": "10",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0100",
                 "BOMComponentBO" : "0010"
             }, {
@@ -248,7 +238,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0110",
                 "BOMComponentBO" : "0010"
             }, {
@@ -267,7 +256,6 @@
                 "serialNumber": "0101",
                 "Checked_Components": "6",
                 "Fitted_Components": "7",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0120",
                 "BOMComponentBO" : "0010"
             }, {
@@ -286,7 +274,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0130",
                 "BOMComponentBO" : "0010"
             }, {
@@ -305,7 +292,6 @@
                 "serialNumber": "0101",
                 "Checked_Components": "6",
                 "Fitted_Components": "7",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0140",
                 "BOMComponentBO" : "0010"
             }, {
@@ -324,7 +310,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0150",
                 "BOMComponentBO" : "0010"
             }, {
@@ -343,7 +328,6 @@
                 "serialNumber": "0101",
                 "Checked_Components": "6",
                 "Fitted_Components": "7",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0160",
                 "BOMComponentBO" : "0010"
             }, {
@@ -362,7 +346,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0170",
                 "BOMComponentBO" : "0010"
             }, {
@@ -381,7 +364,6 @@
                 "serialNumber": "0101",
                 "Checked_Components": "6",
                 "Fitted_Components": "7",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0180",
                 "BOMComponentBO" : "0010"
             }, {
@@ -400,7 +382,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0190",
                 "BOMComponentBO" : "0010"
             }, {
@@ -419,7 +400,6 @@
                 "serialNumber": "0101",
                 "Checked_Components": "6",
                 "Fitted_Components": "7",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0200",
                 "BOMComponentBO" : "0010"
             }, {
@@ -438,7 +418,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0210",
                 "BOMComponentBO" : "0010"
             }, {
@@ -457,7 +436,6 @@
                 "serialNumber": "0101",
                 "Checked_Components": "6",
                 "Fitted_Components": "7",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0220",
                 "BOMComponentBO" : "0010"
             }, {
@@ -476,7 +454,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0230",
                 "BOMComponentBO" : "0010"
             }, {
@@ -495,7 +472,6 @@
                 "serialNumber": "0101",
                 "Checked_Components": "6",
                 "Fitted_Components": "7",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0240",
                 "BOMComponentBO" : "0010"
             }, {
@@ -514,7 +490,6 @@
                 "serialNumber": "02",
                 "Checked_Components": "18.540",
                 "Fitted_Components": "6",
-                "bomComponentBO": "bombom",
                 "ERPSequence": "0250",
                 "BOMComponentBO" : "0010"
             }]

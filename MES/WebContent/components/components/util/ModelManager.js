@@ -32,8 +32,6 @@ airbus.mes.components.util.ModelManager = {
 
         //"componentsConfigModel",
         airbus.mes.shell.ModelManager.createJsonModel(core, ["componentsWorkOrderDetail", "selectFilterModel"]);
-        this.loadcomponentsWorkOrderDetail();
-        this.loadselectFilterModel();
     },
 
     //load
@@ -41,6 +39,8 @@ airbus.mes.components.util.ModelManager = {
         var oModel = sap.ui.getCore().getModel("componentsWorkOrderDetail");
         oModel.loadData(this.getcomponentsWorkOrderDetail(), null, false);
         this.aInitialModel = oModel.getData();
+        var row = oModel.oData.Rowsets.Rowset[0].Row;
+        this.replaceStepInputsWithoutValue(row);
     },
 
     //get
@@ -50,6 +50,18 @@ airbus.mes.components.util.ModelManager = {
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", airbus.mes.components.oView.getController().getOwnerComponent().getWorkOrder());
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$operation", "");
         return url;
+    },
+
+    //replace "" values by a 0
+    replaceStepInputsWithoutValue: function (row) {
+        for (var i = 0; i < row.length; i++) {
+            if (row[i].Checked_Components === "") {
+                row[i].Checked_Components = 0;
+            }
+            if (row[i].Fitted_Components === "") {
+                row[i].Fitted_Components = 0;
+            }
+        }
     },
 
     loadselectFilterModel: function () {
