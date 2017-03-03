@@ -1408,7 +1408,7 @@ POLYPOLY
 
 #polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] .sapUiTableCol, #polypoly--oTablePolypoly-tableCCnt .sapUiTableTr > td, #polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] .sapUiTableTr > td, #polypoly--oTablePolypoly-tableCCnt #polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt, #polypoly--oTablePolypoly-tableCCnt #polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt .sapUiTableColHdrCnt { border: none; outline: 1px dotted transparent; }
 
-#polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] tr, #polypoly--oTablePolypoly-tableCCnt .sapUiTableCnt .sapUiTableColHdrCnt { background-color: #ffffff; -webkit-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; -moz-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; -o-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; -ms-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; }
+#polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] tr, #polypoly--oTablePolypoly-tableCCnt .sapUiTableCnt .sapUiTableColHdrCnt { background-color: #ffffff; -webkit-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; -ms-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; }
 
 [id^="polypoly--oTablePolypoly-table-fixed"] tr:nth-child(1) { background-color: #f5f5f5; }
 
@@ -2292,7 +2292,10 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
+/*!
+*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
+*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+*/
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -4307,6 +4310,18 @@ DISRUPTIONTRACKER
 .mesTable > .sapUiTableCnt > .sapUiTableCCnt > .sapUiTableCtrlScr > .sapUiTableCtrlCnt > table > tbody > tr > td { border-left: 1px solid #97999b; }
 
 .mesRadioButtonsCheck { width: 50%; margin: 20px auto 10px auto; padding: 0; text-align: center; }
+
+.customTiles { height: 15rem; border: none; border-radius: 0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); background-color: rgba(12, 75, 131, 0.9); margin: 0.5rem; width: 13rem; -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+
+.customTiles:not([data-enabled^="false"]) { cursor: pointer; }
+
+.customTiles:not([data-enabled^="false"]):hover { background-color: #0f2d65; }
+
+.headerTileText { font-size: 18px; color: #ffffff; }
+
+.customTileText { opacity: 0.6; font-size: 16px; color: #ffffff; font-weight: normal; font-style: normal; font-stretch: normal; margin-top: 1rem; }
+
+.iconTile { font-size: 5em; color: #5f89ae; }
 
 /*************
 GENERALE RULES

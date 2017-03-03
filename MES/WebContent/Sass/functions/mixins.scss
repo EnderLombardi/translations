@@ -76,28 +76,6 @@ STATIONTRACKER
     border-radius: 999px;
     margin-right: 0.8125rem;
 }
-@mixin customTiles(){
-    width : 14rem;
-    height: 15rem;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    background-color: rgba(12, 75, 131, 0.9);
-    margin: 0.5rem;
-    width: 13rem;
-    -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    -moz-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-@mixin CustomTileText(){
-    opacity: 0.6;
-    font-size: 16px;
-    color: $white-two;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    margin-top: 1rem;
-}
 @mixin media($width1, $width2){
     @media (min-width: $width1) and (max-width: $width2){
         @content;
@@ -107,8 +85,6 @@ STATIONTRACKER
 @mixin polypolyTable(){
     background-color: $white-two;
     -webkit-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-    -moz-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-    -o-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
     -ms-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
     transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
 }

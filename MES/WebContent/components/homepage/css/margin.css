@@ -5,48 +5,12 @@
     margin-bottom: 1rem !important;
 }
 
-.headerTileText {
-    font-size: 18px;
-    color: #ffffff;
-}
-
 .pageHeader .sapMSltArrow{
     background:transparent !important;
     color:#fff;
 
 }
-.CustomTileText {
-    opacity: 0.6;
-    font-size: 16px;
-    color: #ffffff;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    margin-top: 1rem;
-}
 
-.IconTile {
-    font-size: 5em;
-    color: rgba(95, 137, 174, 1);
-}
-
-.customTiles {
-
-    width : 14rem;
-    height: 15rem;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    background-color: rgba(12, 75, 131, 0.9);
-    margin: 0.5rem;
-    width: 13rem;
-    -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    -moz-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-.customTiles:not([data-enabled^="false"]){
-    box-shadow: 0 0 10px rgba(9, 56, 99, 0.5);
-}
 .titleToolbar {
     background-color: lightgrey;
 }
@@ -56,34 +20,12 @@
     height: 1.9rem
 }
 
-.GenricBgColor {
-    background-color: #EBEEF2;
-}
-
-.langbutton {
-    float: left;
-    width: 33.3%;
-    color: black !important;
-}
-
-.langbutton .sapMBtnContent {
-    text-align: start !important;
-    font: 1.125rem !important;
-}
-
-.textSize {
-    font: caption;
-}
-
-.PanelbgImg {
+.panelbgImg {
     background-color: white;
     background-image: url(../images/dottedCarbon.png);
-    opacity: 3%;
-    /* background-size: contain; */
     display: block;
     background-size: 100% 100%;
 }
-
 
 .tiffanyColor .sapMBtnInner.sapMBtnText {
     font-family: "Arial", Sans-serif !important;
@@ -127,9 +69,6 @@ div[data-enabled^="true"] .sapMCustomTileContent:after {
     outline:none;
 }
 
-/*.sapMTCAnim div[data-enabled^="false"] .IconTile {
-color: rgb(181, 181, 181);
-}*/
 @media (min-width: 952px) and (max-width: 1229px) {
     #homePageView .sapMTC {
         width: 80%!important;

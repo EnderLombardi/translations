@@ -1,26 +1,20 @@
-<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m"
-	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-	controllerName="airbus.mes.homepage.homePage" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="MES" enableScrolling="false" class="PanelbgImg"
-		showHeader="false">
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" controllerName="airbus.mes.homepage.homePage">
+	<Page title="MES" enableScrolling="false" class="panelbgImg" showHeader="false">
 		<content>
 			<TileContainer tileDelete="handleTileDelete"
 				tiles="{1TileLineHome>/buttonDetail}" height="100%">
-				<CustomTile press="onPressLine1" class="customTiles" visible="{path:'1TileLineHome>enable', formatter:'airbus.mes.homepage.util.Formatter.enabledTiles'}"> 
-	
-			  
+				<CustomTile press="onPressLine1" class="customTiles" 
+				visible="{path:'1TileLineHome>enable', formatter:'airbus.mes.homepage.util.Formatter.enabledTiles'}"> 
 					<customData>
 						<core:CustomData key="enabled" value="{path:'1TileLineHome>enable', formatter:'airbus.mes.homepage.util.Formatter.enabledTiles'}" writeToDom="true" />
 					</customData>
 					<content>
-						<VBox width="auto" 
-						justifyContent="SpaceBetween" class="tileBox" >
+						<VBox width="auto" justifyContent="SpaceBetween" class="tileBox" >
 							<VBox>
 								<Text text="{ path : '1TileLineHome>text' , formatter : '.getI18nValue' }" class="headerTileText" />
-								<Text text="{ path : '1TileLineHome>sub' , formatter : '.getI18nValue' }" class="CustomTileText" />
+								<Text text="{ path : '1TileLineHome>sub' , formatter : '.getI18nValue' }" class="customTileText" />
 							</VBox>
-							<core:Icon src="{1TileLineHome>icon}" class="IconTile"></core:Icon>
+							<core:Icon src="{1TileLineHome>icon}" class="iconTile"></core:Icon>
 						</VBox>
 					</content>
 				</CustomTile>

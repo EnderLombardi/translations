@@ -1,0 +1,37 @@
+.customTiles {
+    height: 15rem;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    background-color: rgba(12, 75, 131, 0.9);
+    margin: 0.5rem;
+    width: 13rem;
+    -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    &:not([data-enabled^="false"]){
+        cursor:pointer;
+        &:hover {
+            background-color: $teal-blue-hover;
+        }
+    }
+}
+
+.headerTileText {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.customTileText {
+    opacity: 0.6;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    margin-top: 1rem;
+}
+
+.iconTile {
+    font-size: 5em;
+    color: rgba(95, 137, 174, 1);
+}
