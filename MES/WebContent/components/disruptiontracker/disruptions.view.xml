@@ -35,11 +35,11 @@
 			</Select>
 
 			<Select id="resolutionGroupBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
+				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/disruptionListDetails}"
 				selectedKey="" change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
-				<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}"
-					text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
+				<core:Item key="{disruptionsTrackerModel>responsibleGroup}"
+					text="{disruptionsTrackerModel>responsibleGroupDesc}" />
 			</Select>
 
 		</Toolbar>
@@ -86,7 +86,7 @@
 
 
 		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="true" selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: '.setSelectionMode'}" selectionBehavior="Row"
-			rows="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
+			rows="{ path: 'disruptionsTrackerModel>/disruptionListDetails' }"
 			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick">
 
 			<ui:columns>
@@ -94,63 +94,63 @@
 					<Label text="{disruptiontrackerI18n>operation}" />
 					<ui:template>
 						<Text
-							text="{disruptionsTrackerModel>WorkOrder} / {path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}" />
+							text="{disruptionsTrackerModel>workOrder} / {path: 'disruptionsTrackerModel>operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="categoryCol" filterProperty="Category"
-					sortProperty="Category">
+				<ui:Column id="categoryCol" filterProperty="category"
+					sortProperty="category">
 					<Label text="{disruptiontrackerI18n>category}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>Category}" />						
+						<Text text="{disruptionsTrackerModel>category}" />						
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="reasonCol" filterProperty="Reason"
-					sortProperty="Reason">
+				<ui:Column id="reasonCol" filterProperty="reason"
+					sortProperty="reason">
 					<Label text="{disruptiontrackerI18n>reason}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>Reason}" />
+						<Text text="{disruptionsTrackerModel>reason}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="originator" filterProperty="OriginatorName"
-					sortProperty="OriginatorName">
+				<ui:Column id="originator" filterProperty="originatorName"
+					sortProperty="originatorName">
 					<Label text="{disruptiontrackerI18n>originator}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>OriginatorName}" />
+						<Text text="{disruptionsTrackerModel>originatorName}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="openingTime" filterProperty="OpeningTime"
-					sortProperty="OpeningTime">
+				<ui:Column id="openingTime" filterProperty="openingTime"
+					sortProperty="openingTime">
 					<Label text="{disruptiontrackerI18n>openingTime}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>OpeningTime}" />
+						<Text text="{disruptionsTrackerModel>openingTime}" />
 					</ui:template>
 				</ui:Column>
 					
-				<ui:Column id="gravityCol" filterProperty="Gravity"
-					sortProperty="Gravity">
+				<ui:Column id="gravityCol" filterProperty="severity"
+					sortProperty="severity">
 					<Label text="{disruptiontrackerI18n>gravity}" />
 					<ui:template>
 						<HBox>
 							<core:Icon
-								src="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}"
-								color="{path: 'disruptionsTrackerModel>Gravity', formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}"
+								src="{path: 'disruptionsTrackerModel>status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}"
+								color="{path: 'disruptionsTrackerModel>severity', formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}"
 								class="sapUiSmallMarginEnd" />
 							<Text
-								text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>gravity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />
+								text="{parts: [ {path: 'disruptionsTrackerModel>status'}, {path: 'disruptionsTrackerModel>severity'}, {path: 'disruptionsTrackerModel>escalationLevel'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />
 						</HBox>
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="statusCol" filterProperty="Status"
-					sortProperty="Status">
+				<ui:Column id="statusCol" filterProperty="status"
+					sortProperty="status">
 					<Label text="{disruptiontrackerI18n>status}" />
 					<ui:template>
 						<Text
-							text="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setDisruptionTrackerStatus'}" />
+							text="{path: 'disruptionsTrackerModel>status', formatter: 'airbus.mes.disruptiontracker.Formatter.setDisruptionTrackerStatus'}" />
 					</ui:template>
 				</ui:Column>
 
@@ -159,50 +159,50 @@
 					sortProperty="Solution">
 					<Label text="{disruptiontrackerI18n>solution}" />
 					<ui:template>
-						<Text text="{path: 'disruptionsTrackerModel>Solution', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}" />
+						<Text text="{path: 'disruptionsTrackerModel>solution', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}" />
 					</ui:template>
 				</ui:Column>
 				
 				<ui:Column id="resolutionGroupCol"
-					sortProperty="ResponsibleGroupDesc">
+					sortProperty="responsibleGroupDesc">
 					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
+						<Text text="{disruptionsTrackerModel>responsibleGroupDesc}" />
 					</ui:template>
 				</ui:Column>
 				
 				<ui:Column id="resolver"
-					sortProperty="ResolverName">
+					sortProperty="resolverName">
 					<Label text="{disruptiontrackerI18n>resolver}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>ResolverName}" />
+						<Text text="{disruptionsTrackerModel>resolverName}" />
 					</ui:template>
 				</ui:Column>
 				
 				<ui:Column id="fixByTimeCol"
-					sortProperty="RequiredFixBy">
+					sortProperty="requiredFixBy">
 					<Label text="{disruptiontrackerI18n>fixByTime}" />
 					<ui:template>
 						<Text
-							text="{path :'disruptionsTrackerModel>RequiredFixBy'}" />
+							text="{path :'disruptionsTrackerModel>requiredFixBy'}" />
 					</ui:template>
 				</ui:Column>
 				
 				<ui:Column id="escalationCol"
-					sortProperty="EscalationLevel">
+					sortProperty="escalationLevel">
 					<Label text="{disruptiontrackerI18n>escalation}" />
 					<ui:template>
 						<Text
-							text="{path: 'disruptionsTrackerModel>EscalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
+							text="{path: 'disruptionsTrackerModel>escalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
 					</ui:template>
 				</ui:Column>
 				
 				<ui:Column id="escalationDate"
-					sortProperty="EscalationDateTime">
+					sortProperty="escalationDateTime">
 					<Label text="{disruptiontrackerI18n>dateofescalation}" />
 					<ui:template>
 						<Text
-							text="{path: 'disruptionsTrackerModel>EscalationDateTime'}" />
+							text="{path: 'disruptionsTrackerModel>escalationDateTime'}" />
 					</ui:template>
 				</ui:Column>
 
@@ -211,25 +211,25 @@
 					<Label text="{disruptiontrackerI18n>timeToGetFix}" />
 					<ui:template>
 						<Text
-							text="{parts: [ {path: 'disruptionsTrackerModel>OpeningTime'}, {path: 'disruptionsTrackerModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
+							text="{parts: [ {path: 'disruptionsTrackerModel>openingTime'}, {path: 'disruptionsTrackerModel>closureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
 					</ui:template>
 				</ui:Column>
 				
 								
 				<ui:Column id="dateOfanswer"
-					sortProperty="DateOfAnswer">
+					sortProperty="dateOfAnswer">
 					<Label text="{disruptiontrackerI18n>dateofanswer}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>DateOfAnswer}" />
+						<Text text="{disruptionsTrackerModel>dateOfAnswer}" />
 					</ui:template>
 				</ui:Column>
 				
 				
 				<ui:Column id="originatorGroupCol"
-					sortProperty="OriginatorGroupDesc">
+					sortProperty="originatorGroupDesc">
 					<Label text="{disruptiontrackerI18n>originatorGroup}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>OriginatorGroupDesc}" />
+						<Text text="{disruptionsTrackerModel>originatorGroup}" />
 					</ui:template>
 				</ui:Column>
 					

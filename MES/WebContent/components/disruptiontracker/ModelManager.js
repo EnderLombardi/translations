@@ -2,7 +2,7 @@
 jQuery.sap.declare("airbus.mes.disruptiontracker.ModelManager");
 airbus.mes.disruptiontracker.ModelManager = {
 	oDisruptionFilter: {},
-
+	
 	init : function(core) {
 		//Model having disruptions tracker data
 		airbus.mes.shell.ModelManager.createJsonModel(core,["disruptionsTrackerModel"]);
@@ -10,8 +10,44 @@ airbus.mes.disruptiontracker.ModelManager = {
 	},
 	
 	loadDisruptionTrackerModel : function() {
+		var oViewModel = sap.ui.getCore().getModel("disruptionsTrackerModel");
 		
-		var oFilters = airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter;
+		jQuery.ajax({
+			type : 'post',
+			url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDisruptionListURL"),
+			contentType : 'application/json',
+			cache : false,
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"workCenterBO": "",
+				"sfcStepBO": "",
+				"msnNumber": "",
+				"forMobile": ""
+			}),
+
+			success : function(data) {
+				if (typeof data == "string") {
+					data = JSON.parse(data);
+				}
+				var aDisruptions = [];
+				if (data.disruptionListDetails) {
+					if (data.disruptionListDetails && !data.disruptionListDetails[0]) {
+						aDisruptions = [ data.disruptionListDetails ];
+					} else{
+						aDisruptions = data;
+					}
+				}
+				
+				oViewModel.setData(aDisruptions);
+			},
+
+			error : function(error, jQXHR) {
+				//airbus.mes.operationdetail.oView.setBusy(false);
+			}
+
+		});
+		
+		/*var oFilters = airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter;
 		
 		//Set Busy Indicator
 		airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusyIndicatorDelay(0);
@@ -30,7 +66,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 			airbus.mes.disruptiontracker.oView.byId("msnComboBox").setSelectedKey(oFilters.msn);
 		} else {
 			airbus.mes.disruptiontracker.oView.byId("msnComboBox").setSelectedKey("");
-		}
+		}*/
 	},
 	
 	onDisruptionsLoad: function(){
@@ -64,5 +100,5 @@ airbus.mes.disruptiontracker.ModelManager = {
 		
 		//Remove Busy Indicator
 		airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusy(false);
-	},
+	}
 }

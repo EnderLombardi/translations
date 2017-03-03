@@ -16,6 +16,59 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		this.getView().byId("timeLost").setPlaceholder(airbus.mes.disruptions.Formatter.getConfigTimeFullUnit());
 	},
 
+	
+	initializeScreen: function(sMode, msgRef, sMsgType, sResolverGroup){
+		
+		this.loadData(sMode, msgRef, sMsgType);
+		this.loadResolverModel(sResolverGroup);
+		
+	},
+
+
+
+	/***************************************************************************
+	 * Load disruptions detail from message reference
+	 **************************************************************************/
+	loadDisruptionDetail: function(msgRef){
+		jQuery.ajax({
+			type : 'post',
+			url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDisruptionDetailsURL"),
+			contentType : 'application/json',
+			cache : false,
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"messageRef" : msgRef,
+				"forMobile" : false
+			}),
+			success : function(data) {			
+				sap.ui.getCore().getModel("DisruptionDetailModel").setData(data);
+				airbus.mes.disruptiondetail.oView.setBusy(false);
+			},
+
+			error : function(error, jQXHR) {
+				airbus.mes.disruptiondetail.oView.setBusy(false);
+			}
+
+		});
+	},
+	
+
+	/***************************************************************************
+	 * Load Step3 model for create disruption screen (Resolver Names for a
+	 * Resolver Group)
+	 **************************************************************************/
+	loadResolverModel : function(sResolverGroup) {
+		var oView = this.getView();
+
+		// Set Busy's
+		oView.byId("selectResolver").setBusyIndicatorDelay(0);
+		oView.byId("selectResolver").setBusy(true);
+
+		var url = airbus.mes.disruptions.ModelManager.getResolverModelURL(sResolverGroup)
+		sap.ui.getCore().getModel("disruptionResolverModel").loadData(url);
+		
+	},
+	
 
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the
@@ -104,7 +157,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 			return;
 		}
 
-		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
+		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/messageRef");
 		// this.getView().byId("promisedDate").setDateValue(new Date());
 
 		var date = this.getView().byId("promisedDate").getValue();
@@ -196,8 +249,8 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		} else {
 			var sComment = airbus.mes.disruptions.Formatter.actions.reject + this.getView().byId("comment").getValue();
 		}
-		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
-		var sStatus = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/Status");
+		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/messageRef");
+		var sStatus = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/status");
 		var sMessage = i18nModel.getProperty("successReject");
 		airbus.mes.disruptions.ModelManager.rejectDisruption(sComment, sMessageRef, sStatus, sMessage, i18nModel);
 
@@ -218,7 +271,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		} else {
 			sComment = airbus.mes.disruptions.Formatter.actions.solve + this.getView().byId("comment").getValue();
 		}
-		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
+		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/messageRef");
 		// Call to Mark Solved Disruption
 		
 		jQuery.ajax({
@@ -243,7 +296,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 					var sMessageSuccess = i18nModel.getProperty("successSolved");
 					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
 					// load again disruptions data
-					oView.getModel("DisruptionDetailModel").setProperty("/Status", airbus.mes.disruptions.Formatter.status.solved);
+					oView.getModel("DisruptionDetailModel").setProperty("/status", airbus.mes.disruptions.Formatter.status.solved);
 
 					var currDate = new Date();
 					var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
@@ -257,7 +310,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 						"UserFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
 							.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
 					};
-					oView.getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);
+					oView.getModel("DisruptionDetailModel").getProperty("/disruptionComments").push(oComment);
 					
 					
 					//oView.getModel("DisruptionDetailModel").setProperty("/ResolverName",oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/last_name") + " "	+ oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name"));
@@ -287,7 +340,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 			sComment = airbus.mes.disruptions.Formatter.actions.refuse + this.getView().byId("comment").getValue();
 		}
 
-		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
+		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/messageRef");
 		// Call Disruption Service
 		 
 		jQuery.ajax({
@@ -311,7 +364,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 					var sMessageSuccess = i18nModel.getProperty("successRefused");
 					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
 					
-					oView.getModel("DisruptionDetailModel").setProperty("/Status", airbus.mes.disruptions.Formatter.status.pending);
+					oView.getModel("DisruptionDetailModel").setProperty("/status", airbus.mes.disruptions.Formatter.status.pending);
 
 					var currDate = new Date();
 					var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
@@ -338,8 +391,8 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 			var i18nModel = this.getView().getModel("i18nModel");
 			var oView = this.getView();
 			sComment = airbus.mes.disruptions.Formatter.actions.refuse + this.getView().byId("comment").getValue();
-			var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef");
-			var timeLostValue = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/TimeLost");
+			var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/messageRef");
+			var timeLostValue = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/timeLost");
 			  // Call Close Disruption Service
             jQuery.ajax({
                    url : airbus.mes.disruptions.ModelManager.getUrlToCloseDisruption(),
@@ -370,7 +423,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
                                  var message = i18nModel.getProperty("successClosed");
                                  airbus.mes.shell.ModelManager.messageShow(message);
                                  
-                                 oView.getModel("DisruptionDetailModel").setProperty("/Status", airbus.mes.disruptions.Formatter.status.closed);
+                                 oView.getModel("DisruptionDetailModel").setProperty("/status", airbus.mes.disruptions.Formatter.status.closed);
 
              					var currDate = new Date();
              					var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();

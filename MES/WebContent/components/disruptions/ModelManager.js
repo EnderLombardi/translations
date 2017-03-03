@@ -27,7 +27,7 @@ airbus.mes.disruptions.ModelManager = {
 		/***********************************************************************
 		 * Attach request complete methods
 		 **********************************************************************/
-		sap.ui.getCore().getModel("operationDisruptionsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
+		//sap.ui.getCore().getModel("operationDisruptionsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
 		sap.ui.getCore().getModel("disruptionCategoryModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onLoadDisruptionCategory);
 		sap.ui.getCore().getModel("disruptionRsnRespGrp").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onLoadDisruptionRsnRespGrp);
 		sap.ui.getCore().getModel("disruptionResolverModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onLoadDisruptionResolver);
@@ -42,7 +42,7 @@ airbus.mes.disruptions.ModelManager = {
 	 * Generic Function to get URL for to get Disruptions with filters or no
 	 * filters
 	 */
-	getDisruptionsURL : function(oFilters) {
+	/*getDisruptionsURL : function(oFilters) {
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDiruptionsURL");
 
 		getDisruptionsURL = getDisruptionsURL.replace('$Site', airbus.mes.settings.ModelManager.site);
@@ -81,36 +81,70 @@ airbus.mes.disruptions.ModelManager = {
 			getDisruptionsURL = getDisruptionsURL.replace('$MSN', "");
 
 		return getDisruptionsURL;
-	},
+	},*/
 
 	/***************************************************************************
 	 * Load Disruptions for a single operation
 	 */
-	loadDisruptionsByOperation : function(operation, sSfcStepRef) {
+	loadDisruptionsByOperation : function(sSfcStepRef) {
 
 		airbus.mes.operationdetail.oView.setBusyIndicatorDelay(0);
 		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
 		var oViewModel = sap.ui.getCore().getModel("operationDisruptionsModel");
 
-		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.getDisruptionsURL({
-			"operation" : operation,
-			"sfc_step_ref" : sSfcStepRef
-		});
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("getDiruptionsURL"),
+			contentType : 'application/json',
+			cache : false,
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"workCenterBO" : "",
+				"sfcStepBO" : sSfcStepRef,
+				"userBO" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"msnNumber" : ""
+			}),
 
-		oViewModel.loadData(getDisruptionsURL);
+			success : function(data) {
+				if (typeof data == "string") {
+					data = JSON.parse(data);
+				}
+				var aDisruptions = [];
+				if (data.disruptionListDetails) {
+					if (data.disruptionsListDetails && !data.disruptionListDetails[0]) {
+						aDisruptions = [ data.disruptionListDetails ];
+					}
+				}
+				
+				oViewModel.setData(aDisruptions);
+
+				airbus.mes.operationdetail.oView.setBusy(false);
+
+				if (nav.getCurrentPage().sId == "stationTrackerView" && airbus.mes.disruptions.ModelManager.createEditFlag) {
+
+					airbus.mes.disruptions.ModelManager.checkDisruptionStatus(airbus.mes.disruptionslist.oView.getModel("operationDisruptionsModel"));
+				}
+				airbus.mes.disruptions.ModelManager.createEditFlag = false;
+			},
+
+			error : function(error, jQXHR) {
+				airbus.mes.operationdetail.oView.setBusy(false);
+			}
+
+		});
 
 	},
 
 	/***************************************************************************
 	 * After Disruptions related to a operation is loaded
 	 */
-	onOperationDisruptionsLoad : function() {
+	/*onOperationDisruptionsLoad : function() {
 
 		// Reset in hard the model of the view otherwise its not Re-Binded...
 		var oView = airbus.mes.disruptionslist.oView;
 
-		/* Set filter for Comments on all the disruptions */
+		 Set filter for Comments on all the disruptions 
 		oView.oController.applyFiltersOnComments();
 
 		// Un-Set Busy
@@ -121,15 +155,11 @@ airbus.mes.disruptions.ModelManager = {
 			airbus.mes.disruptions.ModelManager.checkDisruptionStatus(airbus.mes.disruptionslist.oView.getModel("operationDisruptionsModel"));
 		}
 		airbus.mes.disruptions.ModelManager.createEditFlag = false;
-	},
+	},*/
 
 	/***************************************************************************
 	 * Set the Models for Category of Disruption Creation
 	 **************************************************************************/
-	loadDisruptionCategory : function() {
-		var url = airbus.mes.disruptions.ModelManager.getDisruptionCategoryURL();
-		sap.ui.getCore().getModel("disruptionCategoryModel").loadData(url);
-	},
 	getDisruptionCategoryURL : function() {
 		var urlCustomCategory = this.urlModel.getProperty("urlGetCategory");
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$site", airbus.mes.settings.ModelManager.site);
@@ -140,9 +170,9 @@ airbus.mes.disruptions.ModelManager = {
 		var sIssuer = "";
 		if (this.createViewMode == "Create") {
 			sIssuer = this.getIssuer();
-			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "f", sIssuer);
+			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
 		} else {
-			sIssuer = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/OriginatorID");
+			sIssuer = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/originatorID");
 			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
 		}
 
@@ -154,7 +184,11 @@ airbus.mes.disruptions.ModelManager = {
 		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
 
 		// Un-Set Busy Indicator
-		oView.setBusy(false);
+		oView.byId("selectCategory").setBusy(false);
+		oView.byId("selectOriginator").setBusy(false);
+		
+		if(this.createViewMode == "Create")
+			oView.setBusy(false);
 	},
 
 	/***************************************************************************

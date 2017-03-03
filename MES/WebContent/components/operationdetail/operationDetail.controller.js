@@ -5,7 +5,6 @@ sap.ui
     {
         reasonCodeText: undefined,
         operationStatus: undefined,
-        disruptionsFlag: false,
         tabSelected: "#operationDetailsView--idStatus",
 
         /**
@@ -54,7 +53,6 @@ sap.ui
                 airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
             }
 
-            this.disruptionsFlag = false;
 
             // Navigation to Status every time pop-up is opened
             this.nav.to(airbus.mes.operationstatus.oView.getId());
@@ -194,26 +192,9 @@ sap.ui
                     break;
 
                 case "disruption":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idDisruption";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
-                    airbus.mes.shell.util.navFunctions.viewDisruptionsList(this.nav,
-                        sap.ui.getCore().byId("operationDetailPopup--reportDisruption") // Report Disruption Button
-                    );
-
-                    /***************************************************
-                     * Load Disruption Data
-                     **************************************************/
-                    if (!this.disruptionsFlag) {
-                        var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
-                        var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
-                        airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO, sSfcStepRef);
-                        this.disruptionsFlag = true;
-                    }
-
+                	this.goToDisruptionListView();
                     break;
+                    
                 case "displayOpeAttachments":
                     //tabselection
                     $(this.tabSelected).removeClass("operationDetailTabSelected");
@@ -395,7 +376,7 @@ sap.ui
                      *  Set buttons visibility
                      *****************************/
                     // In case of Update of Disruption
-                    if (sap.ui.getCore().getModel("DisruptionDetailModel").getData().MessageType != undefined) {
+                    if (sap.ui.getCore().getModel("DisruptionDetailModel").getData().messageType != undefined) {
 
                         // set buttons according to update disruption
                         sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(true);
@@ -451,6 +432,21 @@ sap.ui
             sap.ui.getCore().byId("selectFilter--selectFilterComponents").removeSelections(true)
             sap.ui.getCore().byId("selectFilter--selectFilterComponents").setSelectedItem(missingPartsFilter);
             airbus.mes.components.oView.oController.onSelectFilterFinish();
-        }
 
+        },
+        
+        /***********************************************************
+         * Open disruption list view screen
+         */
+        goToDisruptionListView: function() {
+            airbus.mes.shell.util.navFunctions.viewDisruptionsList(this.nav,
+                sap.ui.getCore().byId("operationDetailPopup--reportDisruption") // Report Disruption Button
+            );
+            
+            //tabselection
+            $(this.tabSelected).removeClass("operationDetailTabSelected");
+            this.tabSelected = "#operationDetailsView--idDisruption";
+            $(this.tabSelected).addClass("operationDetailTabSelected");
+
+        },
     });

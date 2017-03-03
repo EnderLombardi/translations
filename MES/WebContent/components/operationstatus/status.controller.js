@@ -263,29 +263,6 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
    
 
 
-
-    /***********************************************************
-     * on click of go to Disruption button when status of
-     * operation is Blocked
-     *
-     */
-    onPressGotoDisruptios : function() {
-        this.nav = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer")
-        airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav, sap.ui.getCore().byId(
-                "operationDetailPopup--reportDisruption"), // Report
-        // Disruption
-        // Button
-        sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create
-        sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update
-        sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption") // Cancel
-        );
-        this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
-
-        sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(
-                sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getButtons()[2].sId);
-
-    },
-
     /***********************************************************
      *
      * User Confirmation Dialog Methods
@@ -685,6 +662,10 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         }
 
 
+    },
+    
+    onPressGotoDisruptios: function(){
+    	airbus.mes.operationdetail.oView.oController.goToDisruptionListView();
     }
 
 });

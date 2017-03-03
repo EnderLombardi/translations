@@ -22,14 +22,14 @@
 				</Select>
 				<Label text="{i18nModel>OpenDate}" />
 				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
-					value="{path:'DisruptionDetailModel>/OpeningTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
+					value="{path:'DisruptionDetailModel>/openingTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker enabled="false" id="openTime" displayFormat="HH:mm"
 					valueFormat="HH:mm"
-					value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+					value="{path: 'DisruptionDetailModel>/openingTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -38,11 +38,11 @@
 				<Label text="{i18nModel>issuer}" />
 				<Select enabled="false">
 					<items>
-						<core:Item text="{DisruptionDetailModel>/OriginatorName}" />
+						<core:Item text="{DisruptionDetailModel>/originatorName}" />
 					</items>
 				</Select>
 				<Label text="{i18nModel>issuerGroup}" />
-				<Select id="selectOriginator" selectedKey="" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'},{path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setIssuerGroupEnable'}"
+				<Select id="selectOriginator" selectedKey="" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/originatorFlag'},{path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.setIssuerGroupEnable'}"
 					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}">
 					<items>
 						<core:Item text="{disruptionCategoryModel>group_desc}"
@@ -66,23 +66,23 @@
 				<Label text="{i18nModel>Expected}">
 				</Label>
 				<DatePicker id="expectedDate" displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
-					change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedDateEnable'}">
+					value="{path: 'DisruptionDetailModel>/requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/originatorFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedDateEnable'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker id="expectedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm"
-					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
-					change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedTimeEnable'}">
+					value="{path: 'DisruptionDetailModel>/requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/originatorFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedTimeEnable'}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
 				</TimePicker>
 				<Label text="{i18nModel>resGroup}" />
 				<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
-					change="onSelectionChange" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setResponsibleGrpEnable'}">
+					change="onSelectionChange" forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.setResponsibleGrpEnable'}">
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
 							key="{disruptionRsnRespGrp>ResponsibleGroup}" />
@@ -100,7 +100,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>reason}" />
 				<Select id="selectreason" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
-					forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}">
+					forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/originatorFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}">
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>REASON}" key="{disruptionRsnRespGrp>REASON}" />
 					</items>
@@ -122,7 +122,7 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>gravity}" />
-				<Select id="gravity" selectedKey="1" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setGravityEnable'}">
+				<Select id="gravity" selectedKey="1" enabled="{parts: [ {path: 'DisruptionDetailModel>/originatorFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.setGravityEnable'}">
 					<items>
 						<core:Item text="{i18nModel>NotBlocked}" key="1" />
 						<core:Item text="{i18nModel>Disturbed}" key="2" />
@@ -156,16 +156,16 @@
 				<Label text="{i18nModel>promisedDateTime}" id="promisedDateLabel" />
 				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 					displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
-					enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
+					value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					enabled="{parts: [  {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker id="promisedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm:ss"
-					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
-					enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedTimeEnable'}">
+					value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					enabled="{parts: [  {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedTimeEnable'}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -188,14 +188,14 @@
 
 				<Label text="{i18nModel>dateOfEscalation}" />
 				<DatePicker displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					value="{path: 'DisruptionDetailModel>/escalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
 					enabled="false">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker valueFormat="HH:mm" enabled="false"
-					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					value="{path: 'DisruptionDetailModel>/escalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					displayFormat="HH:mm">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
@@ -209,7 +209,7 @@
 				<Select id="selectResolver"
 					items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
 					forceSelection="false"
-					enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.selectResolverEnable'}">
+					enabled="{parts: [ {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.selectResolverEnable'}">
 					<items>
 						<core:Item text="{disruptionResolverModel>Name}" key="{disruptionResolverModel>UserID}" />
 					</items>
@@ -233,25 +233,25 @@
 				<VBox>
 					
 					<List showNoData="false"
-						class="sapUiSmallMarginBeginEnd" items="{path: 'DisruptionDetailModel>/comments'}">
+						class="sapUiSmallMarginBeginEnd" items="{path: 'DisruptionDetailModel>/disruptionComments'}">
 
 						<CustomListItem class="msgColor">
 							<HBox
 								class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
 								<items>
 									<Text
-										text="{i18nModel>from} : {path: 'DisruptionDetailModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
+										text="{i18nModel>from} : {path: 'DisruptionDetailModel>userFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
 									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 									<Text
-										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>Action'}, {path: 'DisruptionDetailModel>Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>action'}, {path: 'DisruptionDetailModel>comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
 									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 									<Text
-										text="{i18nModel>date/time} : {path: 'DisruptionDetailModel>Date'}"></Text>
+										text="{i18nModel>date/time} : {path: 'DisruptionDetailModel>date'}"></Text>
 								</items>
 							</HBox>
 
 							<Text
-								text="{path: 'DisruptionDetailModel>Comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
+								text="{path: 'DisruptionDetailModel>comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
 								class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom"></Text>
 						</CustomListItem>
 					</List>

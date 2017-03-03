@@ -27,17 +27,17 @@
 				</items>
 			</ViewSettingsFilterItem> -->
 			<ViewSettingsFilterItem id="categoryFilter" text="{disruptiontrackerI18n>category}"
-				key="{disruptiontrackerI18n>category}" multiSelect="false" items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
+				key="{disruptiontrackerI18n>category}" multiSelect="false" items="{ path: 'disruptionsTrackerModel' }">
 				<items>
-				<ViewSettingsItem text="{disruptionsTrackerModel>Category}"
-						key="{disruptionsTrackerModel>Category}" />
+				<ViewSettingsItem text="{disruptionsTrackerModel>category}"
+						key="{disruptionsTrackerModel>category}" />
 				</items>	
 			</ViewSettingsFilterItem>
 			<ViewSettingsFilterItem id="reasonFilter" text="{disruptiontrackerI18n>reason}"
-				key="{disruptiontrackerI18n>reason}" multiSelect="false" items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
+				key="{disruptiontrackerI18n>reason}" multiSelect="false" items="{ path: 'disruptionsTrackerModel' }">
 				<items>
-					<ViewSettingsItem text="{disruptionsTrackerModel>Reason}"
-						key="{disruptionsTrackerModel>Reason}" />
+					<ViewSettingsItem text="{disruptionsTrackerModel>reason}"
+						key="{disruptionsTrackerModel>reason}" />
 				</items>
 			</ViewSettingsFilterItem> 
 			<ViewSettingsFilterItem id="escalationFilter" text="{disruptiontrackerI18n>escalation}"
@@ -54,7 +54,7 @@
 				</items>
 			</ViewSettingsFilterItem>
 			<ViewSettingsFilterItem id="gravityFilter" text="{disruptiontrackerI18n>gravity}"
-				key="{disruptionsTrackerModel>Gravity}" multiSelect="false">
+				key="{disruptionsTrackerModel>severity}" multiSelect="false">
 				<items>
 					<ViewSettingsItem text="{disruptiontrackerI18n>not_Blocked}" key="1" />
 					<ViewSettingsItem text="{disruptiontrackerI18n>disturbed}" key="2" />

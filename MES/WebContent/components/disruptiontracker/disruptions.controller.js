@@ -26,10 +26,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * @memberOf table.table
 	 */
 	onAfterRendering : function() {
-		var oSorter = new sap.ui.model.Sorter("OpeningTime", true);
+		var oSorter = new sap.ui.model.Sorter("openingTime", true);
 
 		// sorting based on opening time
-		this.getView().byId("disruptiontrackerView--disruptionsTable").getBinding("rows").sort(oSorter);
+		//this.getView().byId("disruptiontrackerView--disruptionsTable").getBinding("rows").sort(oSorter);
 
 		airbus.mes.disruptiontracker.oView.byId("gotoDisruptionKpi").setVisible(true);
 
@@ -257,7 +257,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		// set data of the selected row to Data Model
 		// binding context changed as table used is sap.ui.table
 		var sPath = oEvt.getParameters().rowBindingContext.getPath();
-		var disruptionData = {
+		var disruptionData = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath);
+		/*var disruptionData = {
 			"Rowsets" : {
 				"Rowset" : [ {
 					"Row" : [ oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath) ]
@@ -267,18 +268,22 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			}
 		};
 
-		var aComments = sap.ui.getCore().getModel("disruptionsTrackerModel").getData().Rowsets.Rowset[1].Row;
-		var sCurrMessageRef = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath).MessageRef;
-		aComments.find(function(el) {
+		var aComments = sap.ui.getCore().getModel("disruptionsTrackerModel").getData().Rowsets.Rowset[1].Row;*/
+		var sCurrMessageRef = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath).messageRef;
+		var sMessageType = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath).messageType;
+		var sResolverGroup = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath).resolverGroup;
+		/*aComments.find(function(el) {
 			if (el.MessageRef == sCurrMessageRef)
 				disruptionData.Rowsets.Rowset[1].Row.push(el);
-		});
+		});*/
+		
+		
 
 		/***************************
 		 * MES V1.5 Navigate to disruption Detail Page if opened from Desktop/Laptop [Begin]
 		 */
-		if (sap.ui.Device.system.desktop && disruptionData.Rowsets.Rowset[0].Row[0].ResponsibleFlag == "X") {
-			airbus.mes.shell.util.navFunctions.disruptionsDetailScreen(disruptionData);
+		if (sap.ui.Device.system.desktop && disruptionData.responsibleFlag == "X") {
+			airbus.mes.shell.util.navFunctions.disruptionsDetailScreen(sCurrMessageRef,sMessageType, sResolverGroup);
 			
 			 
 		/*************************
@@ -295,27 +300,40 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.detailPopUp);
 			}
 
-			// Add View Disruptions view to pop-up navigation container
+			/*// Add View Disruptions view to pop-up navigation container
 			this.nav = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
-			airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav, 
-				0, // Report Disruption Button
-				0, // Create Button
-				// Update Button
-				sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption"), 
-				// Cancel Button
-				sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption") 
-			);
+			airbus.mes.shell.util.navFunctions.viewDisruptionsList(this.nav, 0);*/
 			
-			// Set Data in Model
-			sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
-			airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData(disruptionData);
+			jQuery.ajax({
+				type : 'post',
+				url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDisruptionDetailsURL"),
+				contentType : 'application/json',
+				cache : false,
+				data : JSON.stringify({
+					"site" : airbus.mes.settings.ModelManager.site,
+					"messageRef": sCurrMessageRef,
+					"lang" : "EN",
+					"forMobile": true
+				}),
 
-			airbus.mes.disruptiontracker.detailPopUp.open();
+				success : function(data) {
+					if (typeof data == "string") {
+						data = JSON.parse(data);
+					}
+					
+					// Set Data in Model 
+					data.expanded="true"; //Set panel expanded by default
+					
+					sap.ui.getCore().getModel("DisruptionDetailModel").setData(data);
 
-			// Set Expanded by Default
-			//sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(false);
+					airbus.mes.disruptiontracker.detailPopUp.open();
+				},
 
-			this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
+				error : function(error, jQXHR) {
+					//airbus.mes.operationdetail.oView.setBusy(false);
+				}
+
+			});
 
 		}
 
@@ -330,11 +348,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 	afterCloseDisruptnDetailPopUp : function() {
 
-		// Reset Expandable
-		//sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(true);
-
 		// Empty Model
-		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData();
+		sap.ui.getCore().getModel("operationDisruptionsModel").setData();
 
 		if (airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh == true) {
 			airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
@@ -392,7 +407,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		for(var i=0;i<aIndices.length;i++){
 			aContexts.push( oTable.getContextByIndex(aIndices[i]));
 		}
-		//var aContexts = oTable.getSelectedContexts();
+
 		var aItems = aContexts.map(function(oEvent) {
 			return oEvent.getObject();
 		});
@@ -438,12 +453,12 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		
 		// loop to extract each row
 		for (var i = 0; i < arrData.length; i++) {
-			var row = airbus.mes.disruptiontracker.Formatter.setOperationText(arrData[i].Operation).toString() + ',' + arrData[i].WorkOrder + ',' + arrData[i].Category
-				+ ',' + arrData[i].Reason + ',' + arrData[i].OriginatorGroup + ',' + arrData[i].OriginatorName + ',' + arrData[i].OpeningTime + ','
-				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].Gravity) + ',' + arrData[i].Status + ',' + arrData[i].ResponsibleGroup + ','
-				+ arrData[i].ResolverName + ',' + arrData[i].RequiredFixBy + ','
-				+ airbus.mes.disruptiontracker.Formatter.setEscalationText(arrData[i].EscalationLevel) + ',' + arrData[i].EscalationDateTime + ','
-				+ arrData[i].DateOfAnswer + ',' + airbus.mes.disruptions.Formatter.formatComment(arrData[i].Solution);
+			var row = airbus.mes.disruptiontracker.Formatter.setOperationText(arrData[i].operation).toString() + ',' + arrData[i].workOrder + ',' + arrData[i].category
+				+ ',' + arrData[i].reason + ',' + arrData[i].originatorGroup + ',' + arrData[i].originatorName + ',' + arrData[i].openingTime + ','
+				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].severity) + ',' + arrData[i].status + ',' + arrData[i].responsibleGroup + ','
+				+ arrData[i].resolverName + ',' + arrData[i].requiredFixBy + ','
+				+ airbus.mes.disruptiontracker.Formatter.setEscalationText(arrData[i].escalationLevel) + ',' + arrData[i].escalationDateTime + ','
+				+ arrData[i].dateOfAnswer + ',' + airbus.mes.disruptions.Formatter.formatComment(arrData[i].solution);
 
 			// add a line break after each row
 			CSV += row + '\r\n';

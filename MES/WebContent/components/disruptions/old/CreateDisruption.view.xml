@@ -245,14 +245,14 @@
 									<f:fields>
 										<DatePicker enabled="false" id="openDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											value="{path: 'DisruptionDetailModel>openingTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
 												<l:GridData span="L2 M5 S6" />
 											</layoutData>
 										</DatePicker>
 										<TimePicker enabled="false" id="openTime"
 											displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+											value="{path: 'DisruptionDetailModel>openingTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 											<layoutData>
 												<l:GridData span="L1 M4 S6" />
 											</layoutData>
@@ -271,7 +271,7 @@
 									<f:fields>
 										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											value="{path: 'DisruptionDetailModel>requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
 												<l:GridData span="L2 M5 S6" />
 											</layoutData>
@@ -280,7 +280,7 @@
 										</DatePicker>
 										<TimePicker id="expectedTime" displayFormat="HH:mm:ss"
 											valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+											value="{path: 'DisruptionDetailModel>requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 											<layoutData>
 												<l:GridData span="L1 M4 S6" />
 											</layoutData>
@@ -319,7 +319,7 @@
 
 										<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											value="{path: 'DisruptionDetailModel>promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
 												<l:GridData span="L2 M5 S6" />
 											</layoutData>
@@ -328,7 +328,7 @@
 										</DatePicker>
 										<TimePicker id="promisedTime" displayFormat="HH:mm:ss"
 											valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+											value="{path: 'DisruptionDetailModel>promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 											<layoutData>
 												<l:GridData span="L1 M4 S6" />
 											</layoutData>

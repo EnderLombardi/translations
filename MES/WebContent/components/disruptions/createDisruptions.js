@@ -1,5 +1,4 @@
 "use strict";
-
 sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 	/***************************************************************************
@@ -7,7 +6,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * @param {string} sMode tells it is edit disruption page or new disruption page
 	 * @param {object} oData data to be set on the Model
 	 */
-	loadData : function(sMode, oData) {
+	loadData : function(sMode, msgRef, sMsgType) {
 
 		airbus.mes.disruptions.ModelManager.createViewMode = sMode;
 
@@ -19,41 +18,52 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.setBusyIndicatorDelay(0);
 		oView.setBusy(true);
 		
-		
-		// Set Data
-		var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-		oModel.setData(oData);
-		oModel.refresh();
-		
-		
 		var ModelManager = airbus.mes.disruptions.ModelManager;
 		ModelManager.createViewMode = sMode;
 
 		// Reset All fields
 		this.resetAllFields();
 
-		ModelManager.loadDisruptionCategory();
+		this.loadDisruptionCategory();
 		ModelManager.loadMaterialList();
 		ModelManager.loadJigtoolList();
 
-		if (sMode == "Create") {
+		if (sMode == "Create") {	
+			// Set Data
+			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+			oModel.setData({});
+			oModel.refresh();
             
             this.createDisruptionSettings();
             
 		} else if (sMode == "Edit") {
 			
-			var sMsgType = oModel.getProperty("/MessageType");
-			var sResolverGroup = oModel.getProperty("/ResponsibleGroup");
+			// Load data if Edit Mode
+			this.loadDisruptionDetail(msgRef);
 
 			this.loadRsnResponsibleGrp(sMsgType);
-			this.loadResolverModel(sResolverGroup);
 
 			this.editPreSettings();
 
 		}
 
 	},
-	
+
+	/***************************************************************************
+	 * Set the Models for Category of Disruption Creation
+	 **************************************************************************/
+	loadDisruptionCategory : function() {
+		var oView = this.getView();
+
+		// Set Busy's
+		oView.byId("selectCategory").setBusyIndicatorDelay(0);
+		oView.byId("selectCategory").setBusy(true);
+		oView.byId("selectOriginator").setBusyIndicatorDelay(0);
+		oView.byId("selectOriginator").setBusy(true);
+		
+		var url = airbus.mes.disruptions.ModelManager.getDisruptionCategoryURL();
+		sap.ui.getCore().getModel("disruptionCategoryModel").loadData(url);
+	},
 	
 	/***************************************************************************
 	 * Load Step2 model for create disruption screen (Reason and Responsible
@@ -188,11 +198,11 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			// Empty Comment
 			oView.byId("comment").setValue();
 
-			var oMatInp = oView.byId("materials");
+			/*var oMatInp = oView.byId("materials");
 			var oJiginp = oView.byId("jigtools");
 
-			var aMatArray = oModel.oData.Materials.split(",");
-			var aJigArray = oModel.oData.JigTools.split(",");
+			var aMatArray = oModel.oData.materials.split(",");
+			var aJigArray = oModel.oData.jigTools.split(",");
 
 			var aMatTokens = [];
 			var aJigTokens = [];
@@ -234,13 +244,13 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 				this.jigToolSelectDialog.close()
 
-			}
+			}*/
 
 			/*******************************************************************
 			 * Disable/Enable inputs according to  Originator/Resolution Group *
 			 ******************************************************************/
-			var origFlag = oModel.getProperty("/OriginatorFlag");
-			var resFlag = oModel.getProperty("/ResponsibleFlag");
+			var origFlag = oModel.getProperty("/originatorFlag");
+			var resFlag = oModel.getProperty("/responsibleFlag");
 
 			if (origFlag != "X" && resFlag == "X") {
 				this.resolutionGroupSettings();
@@ -497,7 +507,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	onUpdateDisruption : function() {
 		var oView = airbus.mes.createdisruption.oView;
 
-		var sMessageRef = oView.getModel("DisruptionDetailModel").getProperty("/MessageRef")
+		var sMessageRef = oView.getModel("DisruptionDetailModel").getProperty("/messageRef")
 		var sReason = oView.byId("selectreason").getSelectedKey();
 		var sResponsibleGroup = oView.byId("selectResponsibleGrp").getSelectedKey();
 
