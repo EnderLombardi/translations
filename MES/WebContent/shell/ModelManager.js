@@ -318,7 +318,6 @@ airbus.mes.shell.ModelManager = {
 			
 			aName.forEach(function(el){
 				if(oController.getModel(el) === undefined){
-//					debugger;
 					var oModel = new sap.ui.model.json.JSONModel();
 					oModel.setSizeLimit(10000);
 					oController.setModel(oModel,el);

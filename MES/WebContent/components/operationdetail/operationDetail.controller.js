@@ -443,6 +443,14 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailPopup--reportDisruption") // Report Disruption Button
             );
             
+
+            /***************************************************
+            * Load Disruption Data
+            **************************************************/
+            var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
+            airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(sSfcStepRef);
+           
+            
             //tabselection
             $(this.tabSelected).removeClass("operationDetailTabSelected");
             this.tabSelected = "#operationDetailsView--idDisruption";

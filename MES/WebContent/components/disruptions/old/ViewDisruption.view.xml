@@ -327,7 +327,7 @@
 										
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>stMaterial}">
+												<Label class="detailLabels" text="{i18nModel>bomItem}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>

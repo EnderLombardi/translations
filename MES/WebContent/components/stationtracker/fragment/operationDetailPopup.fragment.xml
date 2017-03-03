@@ -14,20 +14,18 @@
 			
 			<Button id="btnAssignToObserver" text="{StationTrackerI18n>assignObserver}" icon="sap-icon://activity-individual" type="Transparent" press="onAssignObserver" visible="false" />
            
+            <Button id="reportandCloseDisruption" text="{StationTrackerI18n>reportAndClose}" press="" icon="sap-icon://create-entry-time" visible="false" enabled = "{Profile>/identifiedUser/permissions/WORK_DIS_CREATE}"/>
             <Button id="btnCreateDisruption" text="{StationTrackerI18n>create}" icon="sap-icon://add" type="Transparent" press="onCreateDisruption" visible="false" />
             <Button id="btnUpdateDisruption" text="{StationTrackerI18n>update}" icon="sap-icon://save" type="Transparent" press="onUpdateDisruption" visible="false" />
             <Button id="btnCancelDisruption" text="{StationTrackerI18n>cancel}" icon="sap-icon://sys-cancel" type="Transparent" press="onCancelCreateDisruption" visible="false" />
             <Button id="reportDisruption" text="{StationTrackerI18n>reportDisruption}" press="" icon="sap-icon://add" visible="false" enabled = "{Profile>/identifiedUser/permissions/WORK_DIS_CREATE}"/>
-            <Button id="reportandCloseDisruption" text="{StationTrackerI18n>reportAndClose}" press="" icon="sap-icon://add" visible="false" enabled = "{Profile>/identifiedUser/permissions/WORK_DIS_CREATE}"/>
             
 
             <Button id="btnReschedule" visible="false" text="{StationTrackerI18n>confirm}" icon="sap-icon://history" type="Transparent" press="onRescheduleConfirm" />
             
             <Button id="btnCommittedFitted" text="{StationTrackerI18n>Components}" icon="sap-icon://wrench" type="Transparent" press="onCommittedFitted" visible="false" />
-            <Button id="btnSave" text="{StationTrackerI18n>Save}" icon="sap-icon://save" type="Transparent" press="onSave" 
-            enabled="true" visible="false" />
-            <Button id="btnFreeze" text="{StationTrackerI18n>Freeze}" icon="sap-icon://stop" type="Transparent" press="onFreeze"
-            enabled="false" visible="false" />
+            <Button id="btnSave" text="{StationTrackerI18n>Save}" icon="sap-icon://save" type="Transparent" press="onSave" enabled="true" visible="false" />
+            <Button id="btnFreeze" text="{StationTrackerI18n>Freeze}" icon="sap-icon://stop" type="Transparent" press="onFreeze" enabled="false" visible="false" />
 
             <Button id="btnPrintTckTmplt" visible="false" class="icon-print" text="{StationTrackerI18n>print}" press="printTrackingTemplate" icon="sap-icon://print" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_NOTE}"/>
             <Button text="{StationTrackerI18n>Close}"  icon="sap-icon://decline" press="onCloseOperationDetailPopup" />

@@ -45,8 +45,8 @@
 											</items>
 										</Select>
 										
-										<Label text="{i18nModel>stMaterial}"  />
-									<Input value="" />
+										<Label text="{i18nModel>bomItem}"  />
+										<Input value="{DisruptionDetailModel>bomItem}" />
 										
 									
 									<core:Title text="" />
@@ -122,10 +122,6 @@
 											enabled="{parts: [  {path: 'DisruptionDetailModel>responsibleFlag'}, {path: 'DisruptionDetailModel>status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">	
 										</TimePicker>
 										
-										<Label text="{i18nModel>Jigtool}" />
-										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange"
-											liveChange="onJigToolTokenChange" enabled="false">
-										</MultiInput>
 										<Select id="selectRootCause" selectedKey=""
 											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
 											change="onSelectionChange">
@@ -153,9 +149,9 @@
 									<f:content>
 									<core:Title text="" />
 										<Label text="{i18nModel>area}" />
-										<Input id="area" value="" />
+										<Input id="area" value="{DisruptionDetailModel>area}" />
 										<Label text="{i18nModel>plan}" />
-										<Input id="plan" value="" />
+										<Input id="plan" value="{DisruptionDetailModel>plan}" />
 										<Label text="{i18nModel>material}"/>									
 										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
 											tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
@@ -165,19 +161,19 @@
 									
 									<core:Title text="" />
 										<Label text="{i18nModel>ribs}" />
-										<Input id="ribs" value="" />
+										<Input id="ribs" value="{DisruptionDetailModel>ribs}" />
 										<Label text="{i18nModel>view}" />
-										<Input id="view" value="" />
+										<Input id="view" value="{DisruptionDetailModel>view}" />
 										<Label text="{i18nModel>Jigtool}" />
 										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange"
-											liveChange="onJigToolTokenChange" enabled="false">
+											liveChange="onJigToolTokenChange">
 										</MultiInput>
 									
 									<core:Title text="" />
 										<Label text="{i18nModel>stringer}" />
-										<Input id="stringer" value="" />
+										<Input id="stringer" value="{DisruptionDetailModel>stringer}" />
 										<Label text="{i18nModel>stringer_rail}" />
-										<Input id="stringer_rail" value="" />
+										<Input id="stringer_rail" value="{DisruptionDetailModel>stringer_rail}" />
 									</f:content>
 									</f:SimpleForm>
 									

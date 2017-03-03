@@ -59,7 +59,7 @@
 						<core:Item text="{disruptionRsnRespGrp>REASON}" key="{disruptionRsnRespGrp>REASON}" />
 					</items>
 				</Select>
-				<Label text="{i18nModel>stMaterial}" />
+				<Label text="{i18nModel>bomItem}" />
 				<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
 					tokenChange="onMaterialTokenChange" enabled="false">
 				</MultiInput>

@@ -257,28 +257,12 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		// set data of the selected row to Data Model
 		// binding context changed as table used is sap.ui.table
 		var sPath = oEvt.getParameters().rowBindingContext.getPath();
-		var disruptionData = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath);
-		/*var disruptionData = {
-			"Rowsets" : {
-				"Rowset" : [ {
-					"Row" : [ oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath) ]
-				}, {
-					"Row" : []
-				} ]
-			}
-		};
-
-		var aComments = sap.ui.getCore().getModel("disruptionsTrackerModel").getData().Rowsets.Rowset[1].Row;*/
-		var sCurrMessageRef = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath).messageRef;
-		var sMessageType = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath).messageType;
-		var sResolverGroup = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath).resolverGroup;
-		/*aComments.find(function(el) {
-			if (el.MessageRef == sCurrMessageRef)
-				disruptionData.Rowsets.Rowset[1].Row.push(el);
-		});*/
+		var disruptionData = sap.ui.getCore().getModel("disruptionsTrackerModel").getProperty(sPath);
 		
+		var sCurrMessageRef = disruptionData.messageRef;
+		var sMessageType = disruptionData.messageType;
+		var sResolverGroup = disruptionData.responsibleGroup;
 		
-
 		/***************************
 		 * MES V1.5 Navigate to disruption Detail Page if opened from Desktop/Laptop [Begin]
 		 */
@@ -300,9 +284,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.detailPopUp);
 			}
 
-			/*// Add View Disruptions view to pop-up navigation container
+			// Add View Disruptions view to pop-up navigation container
 			this.nav = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
-			airbus.mes.shell.util.navFunctions.viewDisruptionsList(this.nav, 0);*/
+			airbus.mes.shell.util.navFunctions.viewDisruptionsList(this.nav, 0);
 			
 			jQuery.ajax({
 				type : 'post',
@@ -312,25 +296,27 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				data : JSON.stringify({
 					"site" : airbus.mes.settings.ModelManager.site,
 					"messageRef": sCurrMessageRef,
-					"lang" : "EN",
 					"forMobile": true
 				}),
 
 				success : function(data) {
-					if (typeof data == "string") {
-						data = JSON.parse(data);
+					
+					var aDisruptions = [];
+					if (data) {
+						if (data && !data[0]) {
+
+							data.expanded="true"; //Set panel expanded by default
+							aDisruptions = [ data ];
+						}
 					}
 					
 					// Set Data in Model 
-					data.expanded="true"; //Set panel expanded by default
-					
-					sap.ui.getCore().getModel("DisruptionDetailModel").setData(data);
+					sap.ui.getCore().getModel("operationDisruptionsModel").setData(aDisruptions);
 
 					airbus.mes.disruptiontracker.detailPopUp.open();
 				},
 
 				error : function(error, jQXHR) {
-					//airbus.mes.operationdetail.oView.setBusy(false);
 				}
 
 			});

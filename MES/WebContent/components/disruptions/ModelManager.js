@@ -187,7 +187,7 @@ airbus.mes.disruptions.ModelManager = {
 		oView.byId("selectCategory").setBusy(false);
 		oView.byId("selectOriginator").setBusy(false);
 		
-		if(this.createViewMode == "Create")
+		if(airbus.mes.disruptions.ModelManager.createViewMode == "Create")
 			oView.setBusy(false);
 	},
 

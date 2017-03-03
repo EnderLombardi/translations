@@ -11,16 +11,7 @@
 				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'operationDisruptionsModel'}">
 
 				<CustomListItem>
-				<!-- <content>
-					<Bar design="Header">
-						<contentLeft>
-						<Label text="{i18nModel>disruption}" design="Bold" />
-						</contentLeft>
-						<contentRight>
-						<Button text="{i18nModel>newdisruption}" icon="sap-icon://edit" type="Transparent" />
-						</contentRight>
-					</Bar> -->
-					<!-- <Panel expandable="true" expanded="false" class="disruptionExpandablePanel" expand="handleDisruptionPanelExpand"> -->
+
 					<Panel class="disruptionExpandablePanel" expandable="true" expanded="{=${operationDisruptionsModel>expanded} === 'true'}">
 						<headerToolbar>
 							<Toolbar class="disrptListToolbar" >

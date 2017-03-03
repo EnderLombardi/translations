@@ -217,23 +217,16 @@ airbus.mes.shell.util.navFunctions = {
 
     viewDisruptionsList: function (container, reportDisruptButton) {
 
-        if (airbus.mes.disruptionslist === undefined || airbus.mes.disruptionslist.oView === undefined) {
+        if(airbus.mes.disruptionslist === undefined || airbus.mes.disruptionslist.oView === undefined){
         	      	
         	jQuery.sap.registerModulePath("airbus.mes.disruptionslist", "../components/disruptionslist");
             sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionslist" });
-
-            container.addPage(airbus.mes.disruptionslist.oView);
         }
-
-        container.to(airbus.mes.disruptionslist.oView.getId());
         
-
-         /***************************************************
-         * Load Disruption Data
-         **************************************************/
-        var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
-        airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(sSfcStepRef);
+        if(container.getPage(airbus.mes.disruptionslist.oView.sId) == null)
+            container.addPage(airbus.mes.disruptionslist.oView);
         
+        container.to(airbus.mes.disruptionslist.oView.getId());        
 
         // Set click event on report disruption button
         if (reportDisruptButton) {
@@ -245,7 +238,7 @@ airbus.mes.shell.util.navFunctions = {
 
     createDisruptionScreen: function (container, oParams, createButton, updateButton, cancelButton ,createAndCloseButton) {
 
-        if (airbus.mes.createdisruption === undefined || airbus.mes.createdisruption.oView === undefined) {
+        if(airbus.mes.createdisruption === undefined || airbus.mes.createdisruption.oView === undefined){
             jQuery.sap.registerModulePath("airbus.mes.createdisruption", "../components/createdisruption");
             sap.ui.getCore().createComponent({ name: "airbus.mes.createdisruption" });
 
@@ -255,10 +248,12 @@ airbus.mes.shell.util.navFunctions = {
                     airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode);
                 }
             });
-
-            // Add Page to navigation container
-            container.addPage(airbus.mes.createdisruption.oView);
         }
+        
+        // Add Page to navigation container
+        if(container.getPage(airbus.mes.createdisruption.oView.sId) == null)
+            container.addPage(airbus.mes.createdisruption.oView);
+        
 
         container.to(airbus.mes.createdisruption.oView.getId(), oParams);
 
@@ -520,7 +515,7 @@ airbus.mes.shell.util.navFunctions = {
             // Add event delegate to pass the data and load the services
             airbus.mes.disruptiondetail.oView.addEventDelegate({
                 onBeforeShow: function (evt) {
-                	airbus.mes.disruptiondetail.oView.getController().initializeScreen(evt.data.mode, evt.data.msgRef, evt.data.messageType, evt.data.resolverGroup);
+                	airbus.mes.disruptiondetail.oView.getController().initializeScreen(evt.data.mode, evt.data.messageRef, evt.data.messageType, evt.data.responsibleGroup);
                 }
             });
         }

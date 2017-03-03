@@ -361,7 +361,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>stMaterial}">
+										<Label text="{i18nModel>bomItem}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>

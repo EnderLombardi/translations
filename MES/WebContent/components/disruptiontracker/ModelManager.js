@@ -10,7 +10,25 @@ airbus.mes.disruptiontracker.ModelManager = {
 	},
 	
 	loadDisruptionTrackerModel : function() {
+		var oFilters = airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter;
+		
+		//Set Busy Indicator
+		airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusyIndicatorDelay(0);
+		airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusy(true);
+
 		var oViewModel = sap.ui.getCore().getModel("disruptionsTrackerModel");
+
+		var site = airbus.mes.settings.ModelManager.site;
+		var workCenterBO = "";
+		var msnNumber = "";
+		
+		if(oFilters.station != undefined && oFilters.station != ""){
+			workCenterBO = "WorkCenterBO:" + airbus.mes.settings.ModelManager.site + "," + oFilters.station;
+		}
+		
+		if(oFilters.msn != undefined && oFilters.msn != ""){
+			msnNumber = oFilters.msn;
+		}
 		
 		jQuery.ajax({
 			type : 'post',
@@ -18,11 +36,11 @@ airbus.mes.disruptiontracker.ModelManager = {
 			contentType : 'application/json',
 			cache : false,
 			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"workCenterBO": "",
+				"site" : site,
+				"workCenterBO": workCenterBO,
 				"sfcStepBO": "",
-				"msnNumber": "",
-				"forMobile": ""
+				"msnNumber": msnNumber,
+				"forMobile": true
 			}),
 
 			success : function(data) {
@@ -39,10 +57,14 @@ airbus.mes.disruptiontracker.ModelManager = {
 				}
 				
 				oViewModel.setData(aDisruptions);
+				
+				//Set Busy Indicator
+				airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusy(false);
 			},
 
 			error : function(error, jQXHR) {
-				//airbus.mes.operationdetail.oView.setBusy(false);
+				//Set Busy Indicator
+				airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusy(false);
 			}
 
 		});
