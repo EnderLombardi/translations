@@ -45,12 +45,18 @@ airbus.mes.ncdisplay.util.ModelManager = {
 				try {
                     if (typeof data == "string") {
                         data = JSON.parse(data);
-                 }
-                 if(!data.ncDetailList[0]){
-                        data.ncDetailList = [data.ncDetailList];
-                 }
-                 oViewModel.setData(data);
-                 oViewModel.refresh();
+	                 }
+	                 if (typeof data != "object" || data === null) {
+//						In case the tool list is empty, we receive "null"
+   	                 	data = { ncDetailList : [] };
+	               	 }         
+	                 data.ncDetailList = data.ncDetailList || [];	                 
+	                 if (!Array.isArray(data.ncDetailList)) {
+//		 				 In case the tool list contain one element, we receive an object
+	                	 data.ncDetailList = [ data.ncDetailList ];
+		             }
+	                 oViewModel.setData(data);
+	                 oViewModel.refresh();
 				} catch (e) {
 					console.log("NO NC Display data load");
 					

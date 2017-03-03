@@ -15,8 +15,8 @@
 					<VBox id="ncDisplayCheck" class="mesRadioButtonsCheck">
 		              <RadioButtonGroup columns="2" select="onSelectLevel">
 		                    <buttons>
-		                        <RadioButton id="ncDisplayOpe" text="For Operation"/>
-		                        <RadioButton id="ncDisplayOrder" text="For whole work order"/>
+		                        <RadioButton id="ncDisplayOpe" text="{i18ncdisplaylinksModel>NCDisplayOperation}"/>
+		                        <RadioButton id="ncDisplayOrder" text="{i18ncdisplaylinksModel>NCDisplayWorkOrder}"/>
 		                    </buttons>
 		                </RadioButtonGroup>
 					</VBox>					
@@ -24,33 +24,34 @@
 
 				<table:columns>
  					<table:Column>
-						<Label textAlign="Center" text="More Detail" />
+						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayMoreDetail}" />
 						<table:template>
-							<Button visible="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" 
+							<Button icon="sap-icon://inspection"
+							        visible="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" 
 									enabled="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" 
 									press="onLineClick"/>
 						</table:template>
 					</table:Column>			
 					<table:Column>
-						<Label textAlign="Center" text="ACP Status" />
+						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayACPStatus}" />
 						<table:template>
 							<Text text="{ncdisplaydata>acpStatus}" />
 						</table:template>
 					</table:Column>
 					<table:Column>
-						<Label textAlign="Center" text="Type" />
+						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayType}" />
 						<table:template>
 							<Text text="{ncdisplaydata>ncType}" />
 						</table:template>							
 					</table:Column>
 					<table:Column>
-						<Label textAlign="Center" text="Reference Number" />
+						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayReference}" />
 						<table:template>
 							<Text text="{ncdisplaydata>ncReference}" />
 						</table:template>						
 					</table:Column>
 					<table:Column>
-						<Label textAlign="Center" text="Title" />
+						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayTitle}" />
 						<table:template>
 							<Text text="{ncdisplaydata>description}" />
 						</table:template>								
