@@ -9,37 +9,12 @@ ul {
   vertical-align: middle;
 }
 
-.sapMSLIDiv {
-  display: flex;
-  width: 100%;
-  min-height: 3rem;
-  border-bottom: 1px solid #e5e5e5;
-  align-items: center;
-  justify-content: center;
-}
-
-.sapMSLITitleOnly {
-  -webkit-flex: 1 0 0;
-  flex: 1 0 0;
-}
-
-.sapMSLIDescriptionDiv {
-  -webkit-flex: 2 0 0;
-  flex: 2 0 0;
-}
-
-.sapMSLIInfo .sapMSLIInfoNone {
-  -webkit-flex: 1 0 0;
-  flex: 1 0 0;
-}
-
 .sapMBtn {
   display: none;
 }
 
 h1 {
   font-weight: normal;
-
 }
 
 #trackingtemplateView--showOnlyNotConfirmedConfirmationNote {
@@ -72,35 +47,9 @@ h1 {
   display: inline-flex;
   color: #666666;
   border-bottom: 1px solid #cccccc;
-  padding: 10px;
+  width: 100%;
 }
 
-.sapMSLITitle {
-  font-weight: bold;
-}
-
-.sapMSLIDiv {
-  display: flex;
-}
-
-.sapMSLIDiv .sapMSLIDescriptionDiv {
-  padding: 10px;
-  display: flex;
-}
-
-.sapMSLIDiv .sapMSLIDescriptionDiv .sapMSLIDescription {
-  -webkit-flex: 2 0 0;
-  flex: 2 0 0;
-}
-
-.sapMSLIDiv .sapMSLIDescriptionDiv .sapMSLIInfo .sapMSLIInfoNone {
-  -webkit-flex: 1 0 0;
-  flex: 1 0 0;
-}
-
-.sapMSLITitleOnly {
-  font-weight: bold;
-}
 
 .wo-items {
   padding: 10px;
@@ -124,12 +73,12 @@ h1 {
 }
 
 .wo-items .wo-items-left-container .wo-items-comments {
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.375rem;
   display:block;
 }
 
 .wo-items .wo-items-left-container .wo-items-documents-container {
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.375rem;
   display:block;
 }
 

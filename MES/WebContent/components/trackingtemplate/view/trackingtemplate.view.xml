@@ -18,10 +18,16 @@
 						<CheckBox id="showOnlyNotConfirmedConfirmationNote" text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false" select="filterConfirmationNoteList"/>
 					</OverflowToolbar>
 					<!-- List Comment -->
-					<List id="confirmationNotes" items="{path:'ConfirmationsNotes>/Rowsets/Rowset/0/Row'}" class="customListItem">
-						<items>
-							<StandardListItem title="OP {ConfirmationsNotes>operationNumber} ( {ConfirmationsNotes>percentage}% ) - {ConfirmationsNotes>User_First_Name}.{ConfirmationsNotes>User_Last_Name}" description="{path: 'ConfirmationsNotes>Comments', formatter: 'airbus.mes.trackingtemplate.util.Formatter.commentFormat'}" info="{path: 'ConfirmationsNotes>Created_Date_Time'}"/>
-						</items>
+					<List id="confirmationNotes" items="{path:'ConfirmationsNotes>/Rowsets/Rowset/0/Row'}" class="customWOListItem">
+						<CustomListItem>
+							<HBox class="wo-items">
+								<VBox class="wo-items-left-container">
+									<Label class="wo-items-title" text="OP {ConfirmationsNotes>operationNumber} ( {ConfirmationsNotes>percentage}% ) - {ConfirmationsNotes>User_First_Name}.{ConfirmationsNotes>User_Last_Name}"/>
+									<Text class="wo-items-comments" text="{path: 'ConfirmationsNotes>Comments', formatter: 'airbus.mes.trackingtemplate.util.Formatter.commentFormat'}"/>
+								</VBox>
+								<Label class="wo-items-date" text="{ConfirmationsNotes>Created_Date_Time}"/>
+							</HBox>
+						</CustomListItem>
 					</List>
 				</content>
 			</Panel>
@@ -51,9 +57,8 @@
 					</Panel>
 					<!-- List Comment -->
 					<List id="listNotes" items="{path:'WONotes>/Rowsets/Rowset/0/Row', sorter: {path: 'Created_Date_Time', descending : true}}" class="customWOListItem">
-						<!--<items><StandardListItem title="{WONotes>User_First_Name}.{WONotes>User_Last_Name}" description="{WONotes>Comments}" info="{path: 'WONotes>Created_Date_Time'}"/><List items="{WONotes>attachedDocument}"><items><Link text="{WONotes>FILE_NAME}" href="{WONotes>FILE_URL}"/></items></List></items>-->
 						<CustomListItem>
-							<HBox id="wo-items" class="wo-items">
+							<HBox class="wo-items">
 								<VBox class="wo-items-left-container">
 									<Label class="wo-items-title" text="{WONotes>User_First_Name}.{WONotes>User_Last_Name}"/>
 									<Text class="wo-items-comments" text="{WONotes>Comments}"/>
@@ -61,7 +66,7 @@
 										<Link class="wo-items-document" text="{WONotes>FILE_NAME}" href="{WONotes>FILE_URL}"/>
 									</HBox>
 								</VBox>
-								<Label id="wo-items-date" class="wo-items-date" text="{WONotes>Created_Date_Time}"/>
+								<Label class="wo-items-date" text="{WONotes>Created_Date_Time}"/>
 							</HBox>
 						</CustomListItem>
 					</List>
