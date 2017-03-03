@@ -386,8 +386,8 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
             airbus.mes.trackingtemplate.util.ModelManager.attachDocument(
                 airbus.mes.settings.ModelManager.site,
                 handle,
-                this.attachDocument[0].fileName, 
-                this.attachDocument[0].fileBase64,
+                this.attachDocument[i].fileName, 
+                this.attachDocument[i].fileBase64,
                 userId);
         }
     },
