@@ -6,7 +6,7 @@
 		class="sapUiSizeCozy">
 		<m:content>
 			<TreeTable id="TreeTableBasic"
-				rows="{path:'oswModel>/', parameters: {arrayNames:['row']}}"
+				rows="{path:'oswModel>/', parameters: {arrayNames:['outstandingWorkOrderInfoList']}}"
 				selectionMode="None" enableSelectAll="true" visibleRowCountMode="Auto"
 				enableBusyIndicator="true" enableCellFilter="true">
 				<extension>
@@ -68,25 +68,25 @@
 					<Column autoResizable="true" width="5rem">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Blocked}" />
 						<template>
-							<custom:customIcon color="{oswModel>BLOCKED}" />
+							<custom:customIcon color="{oswModel>blocked}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Type}" />
 						<template>
-							<m:Label text="{oswModel>TYPE}" />
+							<m:Label text="{oswModel>type}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Reference}" />
 						<template>
-							<m:Label text="{oswModel>REFERENCE}" />
+							<m:Label text="{oswModel>reference}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Description}" />
 						<template>
-							<m:Label text="{oswModel>DESCRIPTION}" />
+							<m:Label text="{oswModel>description}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
@@ -106,19 +106,19 @@
 					<Column autoResizable="true" width="7rem">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>RemainingTime}" />
 						<template>
-							<m:Label text="{oswModel>REMAINING_TIME}" />
+							<m:Label text="{oswModel>remainingTime}" />
 						</template>
 					</Column>
 					<Column autoResizable="true" width="7rem">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Confirmation}" />
 						<template>
-							<m:Label text="{oswModel>CONFIRMATION}" />
+							<m:Label text="{oswModel>confirmationPercentage}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>UserStatus}" />
 						<template>
-							<m:Label text="{oswModel>USER_STATUS}" />
+							<m:Label text="{oswModel>userStatus}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
@@ -130,91 +130,91 @@
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ReviewedEndDate}" />
 						<template>
-							<m:Label text="{oswModel>REVIEWED_END_DATE}" />
+							<m:Label text="{oswModel>reviewedEndDate}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FamilyTarget}" />
 						<template>
-							<m:Label text="{oswModel>FAMILY_TARGET}" />
+							<m:Label text="{oswModel>family}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>BlockingReason}" />
 						<template>
-							<m:Label text="{oswModel>BLOCKING_REASON}" />
+							<m:Label text="{oswModel>blockingReason}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>CA}" />
 						<template>
-							<m:Label text="{oswModel>CA}" />
+							<m:Label text="{oswModel>ca}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>TDL}" />
 						<template>
-							<m:Label text="{oswModel>TDL}" />
+							<m:Label text="{oswModel>tdl}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Zoning}" />
 						<template>
-							<m:Label text="{oswModel>ZONING}" />
+							<m:Label text="{oswModel>zoning}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ATA/subATA}" />
 						<template>
-							<m:Label text="{oswModel>ATA_SUBATA}" />
+							<m:Label text="{oswModel>ata}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>WorkPackage}" />
 						<template>
-							<m:Label text="{oswModel>WORK_PACKAGE}" />
+							<m:Label text="{oswModel>workPackage}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Note}" />
 						<template>
-							<m:Label text="{oswModel>NOTE}" />
+							<m:Label text="{oswModel>note}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ACPWorkstation}" />
 						<template>
-							<m:Label text="{oswModel>ACP_WORK_PACKAGE}" />
+							<m:Label text="{oswModel>acpWorkstation}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FatherLink}" />
 						<template>
-							<m:Label text="{oswModel>FATHER_LINK}" />
+							<m:Label text="{oswModel>fatherLink}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ExecStation}" />
 						<template>
-							<m:Label text="{oswModel>EXEC_STATION}" />
+							<m:Label text="{oswModel>executionStation}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>OriginWorkstation}" />
 						<template>
-							<m:Label text="{oswModel>ORIGIN_WORKSTATION}" />
+							<m:Label text="{oswModel>originWorkstation}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>UpperFamily}" />
 						<template>
-							<m:Label text="{oswModel>UPPER_FAMILY}" />
+							<m:Label text="{oswModel>upperFamily}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>MaterialDescription}" />
 						<template>
-							<m:Label text="{oswModel>MATERIAL_DESCRIPTION}" />
+							<m:Label text="{oswModel>materialDescription}" />
 						</template>
 					</Column>
 

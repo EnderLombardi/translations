@@ -52,7 +52,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var sValue = oEvt.getSource().mProperties.value;
 		if (sValue != "") {
 
-			airbus.mes.stationHandover.util.ModelManager.filter.search = new sap.ui.model.Filter("WOID", "EQ", sValue);
+			airbus.mes.stationHandover.util.ModelManager.filter.search = new sap.ui.model.Filter("shopOrder", "EQ", sValue);
 
 		} else {
 			// Reset filter
@@ -115,7 +115,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 			airbus.mes.stationHandover.oView.byId("TreeTableBasic").bindAggregation('rows', {
 				path : "oswModel>/",
-				parameters : "{arrayNames:['row']}",
+				parameters : "{arrayNames:['outstandingWorkOrderInfoList']}",
 
 				sorter : new sap.ui.model.Sorter({
 					// Change this value dynamic
@@ -245,19 +245,19 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 	},
 	/***************************************************************************
-	 * trigger when the user check/unechek the INsertedLine checkbox it filter
-	 * the tree table regading the INsertedLine value
+	 * trigger when the user check/unechek the SELECED_UILine checkbox it filter
+	 * the tree table regading the SELECED_UILine value
 	 **************************************************************************/
 	filterInsertedLines : function(oEvt) {
 
 		var sValue = oEvt.getSource().mProperties.selected;
 		if (sValue) {
 
-			airbus.mes.stationHandover.util.ModelManager.filter.inserted = undefined;
+			airbus.mes.stationHandover.util.ModelManager.filter.selected = undefined;
 
 		} else {
 
-			airbus.mes.stationHandover.util.ModelManager.filter.inserted = new sap.ui.model.Filter("INSERTED", "EQ", "false");
+			airbus.mes.stationHandover.util.ModelManager.filter.selected = new sap.ui.model.Filter("selected", "EQ", "false");
 
 		}
 
@@ -313,12 +313,12 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var that = this;
 
 		// Check if we selected a chill or not
-		if (oModel.MATERIAL_DESCRIPTION != undefined) {
+		if (oModel.materialDescription != undefined) {
 				
 			//Save the selection value in the model on the attributes SELECTED
 			that.isSelected(bValue,oModel);
 
-			oModel.row.forEach(function(el,indice){
+			oModel.outstandingWorkOrderInfoList.forEach(function(el,indice){
 				
 				that.isSelected(bValue,el);
 				
@@ -351,7 +351,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		}
 			
-			oToTest2.SELECTED = bValue;
+			oToTest2.SELECED_UI = bValue;
 	
 	},
 	/************************************************************************/
@@ -414,19 +414,19 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 **************************************************************************/
 	onPressInsert : function() {
 
-		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").oData.row;
+		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").oData.outstandingWorkOrderInfoList;
 		
 		airbus.mes.stationHandover.util.ModelManager.aSelected = [];
 		
 		oModel.forEach(function(el){
-			if ( el.SELECTED != el.INSERTED ) {
+			if ( el.SELECED_UI != el.selected ) {
 				
 				airbus.mes.stationHandover.util.ModelManager.aSelected.push(el);
 			}			
 			
-				el.row.forEach(function(al){
+				el.outstandingWorkOrderInfoList.forEach(function(al){
 				
-					if ( al.SELECTED != al.INSERTED ) {
+					if ( al.SELECED_UI != al.selected ) {
 						
 						airbus.mes.stationHandover.util.ModelManager.aSelected.push(al);
 					}	

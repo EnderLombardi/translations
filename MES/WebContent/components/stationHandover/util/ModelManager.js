@@ -9,7 +9,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 	filter : {
 		"search" : undefined,
 		"type" : new sap.ui.model.Filter({
-			path : "TYPE",
+			path : "type",
 			test : function(oValue) {
 
 				if (airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1) {
@@ -22,7 +22,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 			}
 		}),
 		"noTime" : new sap.ui.model.Filter("NO_TIME", "EQ", "false"),
-		"inserted" : new sap.ui.model.Filter("INSERTED", "EQ", "false"),
+		"selected" : new sap.ui.model.Filter("selected", "EQ", "false"),
 		"station" : new sap.ui.model.Filter({
 			path : "ORIGIN_STATION",
 			test : function(oValue) {
@@ -152,17 +152,17 @@ airbus.mes.stationHandover.util.ModelManager = {
 		
 		try {
 
-			var aModel = oViewModel.oData.row;
+			var aModel = oViewModel.oData.outstandingWorkOrderInfoList;
 			airbus.mes.stationHandover.util.ModelManager.copyOfModel = JSON.parse(JSON.stringify(oViewModel.oData));
 			//Create tree of for manage selection of tree
 			aModel.forEach(function(el, indice) {
 				
-				//Save in field selected the value INSERTED to manage the selection/unselection of lines 
-				el.SELECTED = el.INSERTED;
+				//Save in field selected the value selected to manage the selection/unselection of lines 
+				el.SELECED_UI = el.selected;
 
-				aModel[indice].row.forEach(function(al, indice1) {
+				aModel[indice].outstandingWorkOrderInfoList.forEach(function(al, indice1) {
 					
-					al.SELECTED = al.INSERTED;
+					al.SELECED_UI = al.selected;
 				})
 			})
 
