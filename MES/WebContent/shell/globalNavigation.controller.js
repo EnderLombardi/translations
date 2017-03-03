@@ -90,6 +90,7 @@ sap.ui.controller(
 
             //                        Update the language on the settings ModelManager
             airbus.mes.settings.ModelManager.saveUserSetting(sText);
+            airbus.mes.settings.ModelManager.setUserLang(sText);
 
             //                        Reload the url with the new language
             this.updateUrlForLanguage(sText);

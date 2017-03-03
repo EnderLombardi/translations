@@ -87,11 +87,33 @@ airbus.mes.settings.ModelManager = {
 		var langUrl = this.urlModel.getProperty("urlLanguage");
 		return langUrl;
 	},
+	// ********************************************************************************
 
 	loadLangModel : function() {
 		var oLangModel = this.core.getModel("langModel");
 		oLangModel.loadData(airbus.mes.settings.ModelManager.getUrlLang(),
 				null, false);
+	},
+	// ********************************************************************************
+	getUrlUserLang : function() {
+		var langUrl = this.urlModel.getProperty("urlUserLanguage");
+		return langUrl;
+	},
+	// ********************************************************************************
+	getUserLang : function() {
+		var urlUserLanguage = this.getUrlUserLang();
+		var lang = "";
+		try{
+			lang = jQuery.get({ async: false, url: urlUserLanguage }).responseJSON.language
+		}catch(e){
+//			do nothing
+		}
+		return lang;
+	},
+	// ********************************************************************************
+	setUserLang : function(sLang){
+		var urlUserLanguage = this.getUrlUserLang();
+		jQuery.ajax({ method: "PUT", url: urlUserLanguage + "&lang="+sLang, async: false })
 	},
 	// ********************************************************************************
 	getUrlUserSetting : function() {
@@ -210,13 +232,13 @@ airbus.mes.settings.ModelManager = {
 	},
 
 	loadLanguage : function() {
-
-		var urlUserSetting = this.urlModel.getProperty("urlUserSettings");
-
-		var oUserSettingModel = new sap.ui.model.json.JSONModel();
-		oUserSettingModel.loadData(urlUserSetting, null, false);
-
-		return oUserSettingModel.getProperty("/Rowsets/Rowset/0/Row/0/language");
+		return this.getUserLang();
+//		var urlUserSetting = this.urlModel.getProperty("urlUserSettings");
+//
+//		var oUserSettingModel = new sap.ui.model.json.JSONModel();
+//		oUserSettingModel.loadData(urlUserSetting, null, false);
+//
+//		return oUserSettingModel.getProperty("/Rowsets/Rowset/0/Row/0/language");
 
 	},
 
@@ -234,10 +256,12 @@ airbus.mes.settings.ModelManager = {
 
 			airbus.mes.shell.oView.getController().updateUrlForLanguage(
 					sSaveLanguage);
+			airbus.mes.settings.ModelManager.setUserLang(sSaveLanguage)
 
 		} else {
 
 			airbus.mes.settings.ModelManager.saveUserSetting(sSapLanguage);
+			airbus.mes.settings.ModelManager.setUserLang(sSapLanguage);
 			airbus.mes.shell.oView.getController().updateUrlForLanguage(
 					sSapLanguage);
 
