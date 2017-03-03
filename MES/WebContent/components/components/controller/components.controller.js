@@ -244,10 +244,12 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             var tableValFitt = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row[i].Fitted_Components;
             var dataIndex = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row[i];
 
-            dataIndex.committed = tableVal;
-            dataIndex.fitted = tableValFitt;
-
-            airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
+            if (airbus.mes.components.util.ModelManager.aInitialModel.Rowsets.Rowset[0].Row[i].Checked_Components != tableVal
+            || airbus.mes.components.util.ModelManager.aInitialModel.Rowsets.Rowset[0].Row[i].Fitted_Components   != tableValFitt ) {
+                dataIndex.committed = tableVal;
+                dataIndex.fitted = tableValFitt;
+                airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
+            }
         }
         airbus.mes.components.util.Formatter.convertJsontoXmlJCO(airbus.mes.components.util.ModelManager.dataSaveJson);
         airbus.mes.components.util.Formatter.convertJsontoXmlPapi(airbus.mes.components.util.ModelManager.dataSaveJson);
@@ -276,6 +278,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             }
         });
 
+        
+//      Save current data model in initialmodel
+        airbus.mes.components.util.ModelManager.aInitialModel = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData();
 
     },
 

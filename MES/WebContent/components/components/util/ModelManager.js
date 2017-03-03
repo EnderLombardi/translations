@@ -6,7 +6,8 @@ airbus.mes.components.util.ModelManager = {
     urlModel: undefined,
     dataSaveJson: [],
     jsonConvertedToXml: undefined,
-
+    aInitialModel : [],
+    
     // variable for filter
     workOrder: "P",
     operation: "O",
@@ -38,6 +39,7 @@ airbus.mes.components.util.ModelManager = {
     //load
     loadcomponentsWorkOrderDetail: function () {
         var oModel = sap.ui.getCore().getModel("componentsWorkOrderDetail");
+        this.aInitialModel = oModel.getData();
         oModel.loadData(this.getcomponentsWorkOrderDetail(), null, false);
     },
 
