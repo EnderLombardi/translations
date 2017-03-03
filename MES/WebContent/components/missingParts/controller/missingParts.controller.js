@@ -45,31 +45,31 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 	onSearch: function(oEvent) {
 		var oFilters = [];
 		var oSorter = null;
-		var query = oEvent.getParameter("query");
 		var mpTable_Binding = this.getView().byId("missingPartsView--MPTable").getBinding("rows");
 		var comboFilter = airbus.mes.missingParts.oView.byId("missingPartsView--mpFilter");
 		var comboSorter = airbus.mes.missingParts.oView.byId("missingPartsView--mpSorter");
+		var searchField = airbus.mes.missingParts.oView.byId("missingPartsView--searchField");
+	    	var query = (searchField.mProperties.value != "")? searchField.mProperties.value: undefined;
 		var filterSelected = comboFilter.getSelectedItem();
 		var sorterSelected= comboSorter.getSelectedItemId();
 		
 		if ( filterSelected )
 		{
 			var filterCriteria = filterSelected.getBindingInfo("text").binding.oValue;
-			if( query ){
-				oFilters.push(new sap.ui.model.Filter(filterCriteria,  sap.ui.model.FilterOperator.Contains, query));
+			if( query 
+			&& (filterCriteria != undefined)
+			&& (filterCriteria != airbus.mes.missingParts.util.Formatter.getTranslation("FilterPlaceholder"))){
+
+				oFilters.push(new sap.ui.model.Filter(filterCriteria,  sap.ui.model.FilterOperator.EQ, query));
 			}
-			if ( sorterSelected == "Ascending" ) {
-				oSorter = new sap.ui.model.Sorter({
-                path: filterCriteria,
-                descending: false});
-			}else
-			{
-			    oSorter = new sap.ui.model.Sorter({
-                path: filterCriteria,
-                descending: true});
+		
+			if( sorterSelected 
+			&& (filterCriteria != undefined)
+			&& (filterCriteria != airbus.mes.missingParts.util.Formatter.getTranslation("FilterPlaceholder"))){
+						oSorter = new sap.ui.model.Sorter({path: filterCriteria,
+											descending: (sorterSelected == "Descending") ? true : false });
 			}
 		}
-	
 		mpTable_Binding.filter(oFilters);
 		mpTable_Binding.sort(oSorter);
 	}

@@ -274,7 +274,7 @@ airbus.mes.operationdetail.ModelManager = {
      * Set the Models for Missing Parts Notification
      **************************************************************************/
     loadMissingPartsModel: function (oI18n) {
-        var oMissingPartsNotif = {Visibility: false, Message: "", MissingPartCount: ""};
+        var oMissingPartsNotif = {Visibility: false, Message: "", MissingPartCount: null};
         var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
         var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
         var oMissPartsNotifModel = sap.ui.getCore().getModel("MissPartsNotifModel");
@@ -296,7 +296,7 @@ airbus.mes.operationdetail.ModelManager = {
                 }
             });
             //Update and show notification
-            if (nbComponent > 0){
+            if ( (nbComponent > 0) && (nbMissing > 0) ){
                 oMissingPartsNotif.Message = oI18n.getProperty("MissingPartMsg");
                 oMissingPartsNotif.Message = oMissingPartsNotif.Message.replace("%Param0%", nbComponent.toString()).replace("%Param1%", nbMissing.toString()); 
                 oMissingPartsNotif.MissingPartCount = parseInt(nbMissing);

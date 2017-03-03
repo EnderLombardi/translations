@@ -131,7 +131,7 @@
                         <IconTabFilter id="idDisplayOpeAttachments" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_DOC_VISUALIZE}" count="{i18n>Documents}" tooltip="{i18n>Documents}" key="displayOpeAttachments"></IconTabFilter>
                         <IconTabFilter id="idReschedule"  count="{i18n>Reschedule}" tooltip="{i18n>Reschedule}" key="reschedule" visible="{Profile>/identifiedUser/permissions/STATION_DRILL_RESCHEDULE}"></IconTabFilter>
                         <IconTabFilter id="idtouchngo"  count="{i18n>Touchngo}" tooltip="{i18n>Touchngo}" key="touchngo"></IconTabFilter>
-                        <IconTabFilter id="idComponents" enabled="{Profile>/identifiedUser/permissions/topic_componentsOpeDetail}" count="{i18n>Components}" tooltip="{i18n>Components}" key="components" class="TabCounter"></IconTabFilter>
+                        <IconTabFilter id="idComponents" text="{MissPartsNotifModel>/MissingPartCount}" enabled="{Profile>/identifiedUser/permissions/topic_componentsOpeDetail}" count="{i18n>Components}" tooltip="{i18n>Components}" key="components"></IconTabFilter>
                         <IconTabFilter id="idJignTools"  enabled="{Profile>/identifiedUser/permissions/operationDetailsJigNTool}" count="{i18n>JignTools}" tooltip="{i18n>JignTools}" key="jigntools"></IconTabFilter>
                         <IconTabFilter id="idACPnGLinks"  count="{i18n>ACPnGLinks}" tooltip="{i18n>ACPnGLinks}" key="ACPnGLinks"></IconTabFilter>
                         <IconTabFilter id="idTrackingTemplate" count="{i18n>tckTemplate}" tooltip="{i18n>tckTemplate}" key="tckTemplate"></IconTabFilter>

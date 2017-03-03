@@ -31,11 +31,12 @@ airbus.mes.missingParts.util.ModelManager = {
 		if ( sorterCombo ){
 			var items  = sorterCombo.getItems();
 			if ( items.length === 0 ){
+				sorterCombo.insertItem(new sap.ui.core.ListItem({text: airbus.mes.missingParts.util.Formatter.getTranslation("SortPlaceholder"), key: "Placeholder"}), 0);
 				sorterCombo.addItem(new sap.ui.core.ListItem("Descending").setText(airbus.mes.missingParts.util.Formatter.getTranslation("Descending")));
 				sorterCombo.addItem(new sap.ui.core.ListItem("Ascending").setText(airbus.mes.missingParts.util.Formatter.getTranslation("Ascending")));
 			}
 		}
-
+		oViewModel.oData.Rowsets.Rowset[0].Columns.Column.splice(0, 0, { Name: airbus.mes.missingParts.util.Formatter.getTranslation("FilterPlaceholder") });
 
 		var dialog = airbus.mes.missingParts.oView.byId("missingPartsView--missingPartsPopUp");
 		if(dialog) dialog.oPopup.setModal(false);
