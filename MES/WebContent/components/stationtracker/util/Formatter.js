@@ -600,12 +600,17 @@ airbus.mes.stationtracker.util.Formatter = {
 
 		//** folder row **/
 		if (oSection.children != undefined) {
-
+			
+			var sAddLine = "";
+			// Checking Roles. If true then a new Line will be added, else not
+	    	if( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_GANTT_CREATE") ) {
+	    	
+	    		sAddLine = '<span id= add_' + oSection.key + ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.util.AssignmentManager.newLine(\'' + oSection.key + '\')"></span>'
+	    	}
+	    	
 			html = '<div><span id= folder_' + oSection.key + ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(oSection.open)
 				+ '"></span><div title=' + airbus.mes.stationtracker.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
-				+ '</div><span id= add_' + oSection.key + ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.util.AssignmentManager.newLine(\''
-				//+ ' style="color: grey;" class="fa fa-plus custom" onclick="airbus.mes.stationtracker.util.AssignmentManager.newLine(\''
-				+ oSection.key + '\')"></span></div>';
+				+ '</div>' + sAddLine + '</div>';
 			return html;
 		}
 

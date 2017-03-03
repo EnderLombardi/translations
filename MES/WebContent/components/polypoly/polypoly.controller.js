@@ -519,7 +519,8 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
                                                              formatter : function(
                                                                      type) {
 //                                                                 return formatter.isPolypolyEditable();
-                                                                 return airbus.mes.polypoly.util.Formatter.isVisible();
+                                                                 //return airbus.mes.polypoly.util.Formatter.isVisible();
+                                                                 return sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/PM_POLY_NEED");
                                                              },
                                                          },
                                                      }),

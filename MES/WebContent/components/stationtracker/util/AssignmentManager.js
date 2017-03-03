@@ -100,8 +100,7 @@ airbus.mes.stationtracker.util.AssignmentManager = {
 	 *	action attach to + button on scheduler 
 	 */
 	newLine : function(sKey) {
-		//Checking Roles. If true then a new Line will be added, else not
-    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_GANTT_CREATE === true ){
+		
 
 //			TODO : only 9 numbers (INTEGER --> 9 numbers)
 //			Define an unique identifier for the AVL Line by the difference in milliseconde between the 01/01/2016 and the current date
@@ -117,11 +116,7 @@ airbus.mes.stationtracker.util.AssignmentManager = {
 				name:"Select Operator",
 				avlLine: sAVLKey.toString() + newLineText,
 				}, sKey );   
-    	} else { 
-        	return;
-       	} 
-
-	},
+    },
 	
 	 idName : function(sText){
 			 

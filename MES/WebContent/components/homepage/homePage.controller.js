@@ -83,9 +83,12 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 *            oEvt : Tile press event
 	 */
 	onPressLine1: function (oEvt) {
+		var bIsEnabled = String(oEvt.getSource().getCustomData()[0].mProperties.value) == "true";
+		if ( bIsEnabled ) {
 		var sPath = oEvt.getSource().oBindingContexts["1TileLineHome"].sPath;
 		var text = airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text;
 		this.onPress(text);
+		}
 	},
 
 	/**

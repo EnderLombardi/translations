@@ -352,7 +352,7 @@
 										type="Transparent" class="sapUiTinyMarginBeginEnd"
 										press="onOSWPress" visible = "{Profile>/identifiedUser/permissions/STATION_DRILL_OSW}"></custom:util.customButton>
 									<Button id="unplannedButton" text="{StationTrackerI18n>UnplannedActivities}" type="Transparent"
-										icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
+										icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress" visible = "{Profile>/identifiedUser/permissions/STATION_DRILL_OSW}"></Button>
 									<ToggleButton text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
 										icon="sap-icon://past" class="sapUiTinyMarginBeginEnd" press="onInitialPlanPress" />
 				

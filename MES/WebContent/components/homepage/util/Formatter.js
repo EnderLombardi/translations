@@ -9,14 +9,20 @@ airbus.mes.homepage.util.Formatter = {
 		
 			if (sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/" + sFeature) != undefined) {
 	
-				return sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/" + sFeature);
+				 if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/" + sFeature) ) {
+					 
+					 	return "true";
+					 } else {
+						 
+						 return "false";
+					 }
 	
 			}
 	
-			return true;
+			return "true";
 			
 		} 
-		return false;
+		return "false";
 	}
 
 };

@@ -30,7 +30,7 @@ var dest = rootdest + '/current';
 // TODO : create a table for multi push
 var miiHost = ['http://swinsapdi01.ptx.fr.sopra:50000', 'http://dmivie0.eu.airbus.corp:55600'];
 var miiUser = ['NG560DB', 'NG560DB'];
-var miiPassword = ['pierre248', 'pierre250'];
+var miiPassword = ['pierre248', 'pierre251'];
 var miiTransaction = 'XX_MOD1684_MES_Temp%2FTools%2FCreateFile';
 var pushServiceUrlMDI = `${miiHost[0]}/XMII/Illuminator?QueryTemplate=${miiTransaction}&j_user=${miiUser[0]}&j_password=${miiPassword[0]}`;
 var pushServiceUrlDMI = `${miiHost[1]}/XMII/Illuminator?QueryTemplate=${miiTransaction}&j_user=${miiUser[1]}&j_password=${miiPassword[1]}`;
