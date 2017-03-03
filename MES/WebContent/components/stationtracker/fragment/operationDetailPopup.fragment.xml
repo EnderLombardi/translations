@@ -18,6 +18,8 @@
             <Button id="btnUpdateDisruption" text="{StationTrackerI18n>update}" icon="sap-icon://save" type="Transparent" press="onUpdateDisruption" visible="false" />
             <Button id="btnCancelDisruption" text="{StationTrackerI18n>cancel}" icon="sap-icon://sys-cancel" type="Transparent" press="onCancelCreateDisruption" visible="false" />
             <Button id="reportDisruption" text="{StationTrackerI18n>reportDisruption}" press="" icon="sap-icon://add" visible="false" enabled = "{Profile>/identifiedUser/permissions/WORK_DIS_CREATE}"/>
+            <Button id="reportandCloseDisruption" text="{StationTrackerI18n>reportAndClose}" press="" icon="sap-icon://add" visible="false" enabled = "{Profile>/identifiedUser/permissions/WORK_DIS_CREATE}"/>
+            
 
             <Button id="btnReschedule" visible="false" text="{StationTrackerI18n>confirm}" icon="sap-icon://history" type="Transparent" press="onRescheduleConfirm" />
             

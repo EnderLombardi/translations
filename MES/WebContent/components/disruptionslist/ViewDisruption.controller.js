@@ -861,7 +861,8 @@ sap.ui
                                 		  {mode: "Create", oData: {}},
                                 		  sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
                                 		  sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-                                		  sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")  // Cancel Button
+                                		  sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption"),  // Cancel Button
+                                		  sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption")   //create and close button
                                 	  );
                                          
                                       // clear disruptionDetailModel if edit is loaded before ReportDisruption
@@ -917,7 +918,8 @@ sap.ui
                                 		  {mode: "Edit", oData: oData},
                                 		  sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
                                 		  sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-                                		  sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")  // Cancel Button
+                                		  sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption"),  // Cancel Button
+                                		  sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption")
                                 	  );
 
                                   },

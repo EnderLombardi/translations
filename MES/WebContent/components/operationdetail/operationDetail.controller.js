@@ -85,6 +85,7 @@ sap.ui
             /****** hide buttons *********/
             // sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
+            sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
@@ -357,6 +358,8 @@ sap.ui
             sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(false);
+            sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption").setVisible(false);
+            
 
             //case "reschedulePage--reschedulePage":
             // Hide buttons
@@ -397,12 +400,14 @@ sap.ui
                         // set buttons according to update disruption
                         sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(true);
                         sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
+                        sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption").setVisible(false);
                         sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
                     } else {
                         // In case of Creation of disruption
                         // set buttons according to create disruption
                         sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
                         sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(true);
+                        sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption").setVisible(true);
                         sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
                     }
 

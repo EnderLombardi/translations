@@ -227,7 +227,7 @@ airbus.mes.shell.util.navFunctions = {
     },
 
 
-    createDisruptionScreen: function (container, oParams, createButton, updateButton, cancelButton) {
+    createDisruptionScreen: function (container, oParams, createButton, updateButton, cancelButton ,createAndCloseButton) {
 
         if (airbus.mes.createdisruption === undefined || airbus.mes.createdisruption.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.createdisruption", "../components/createdisruption");
@@ -260,6 +260,10 @@ airbus.mes.shell.util.navFunctions = {
         if (cancelButton) {
             cancelButton.detachPress(airbus.mes.createdisruption.oView.oController.onCancelCreateDisruption);
             cancelButton.attachPress(airbus.mes.createdisruption.oView.oController.onCancelCreateDisruption);
+        }
+        if (createAndCloseButton) {
+        	createAndCloseButton.detachPress(airbus.mes.createdisruption.oView.oController.onCreateAndCloseDisruption);
+        	createAndCloseButton.attachPress(airbus.mes.createdisruption.oView.oController.onCreateAndCloseDisruption);
         }
     },
 

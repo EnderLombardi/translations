@@ -313,7 +313,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	},
 
 	onCreateDisruption : function() {
-
+		var reportAndCloseFlag = "";
 		var oView = airbus.mes.createdisruption.oView;
 		var validationFlag = oView.getController().checkExpectedDate();
 		if (validationFlag == false) {
@@ -438,8 +438,8 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		}
 		aModelData.push(oJson);
-
-		airbus.mes.disruptions.ModelManager.createDisruption(sHandle, sCategory, sComment, aModelData);
+		
+		airbus.mes.disruptions.ModelManager.createDisruption(sHandle, sCategory, sComment, aModelData ,reportAndCloseFlag);
 	},
 
 	/***************************************************************************
@@ -862,5 +862,119 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	onJigToolTokenChange : function() {
 		this.onJigToolValueHelpRequest();
 	},
+	onCreateAndCloseDisruption:function(){
+		
 
+
+		var oView = airbus.mes.createdisruption.oView;
+		var reportAndCloseFlag = 'X'
+
+		// Some mandatory fields need to be filled before
+		// creating a disruption.
+		
+
+		var sCategory = oView.byId("selectCategory").getSelectedKey();
+		// var sRootCause = oView.byId("selectRootCause").getSelectedKey();
+		var sComment = airbus.mes.disruptions.Formatter.actions.create + oView.byId("comment").getValue();
+
+		// Get handle for the selected disruption custom data row
+		// Hanlde is a unique for Custom Data
+		var sPathReason = oView.byId("selectreason").getSelectedItem().getBindingInfo("key").binding.getContext().sPath
+		var sHandle = oView.getModel("disruptionRsnRespGrp").getProperty(sPathReason).HANDLE;
+
+		// Create a JSON for Payload attributes
+		var aModelData = []
+
+		var oJson = {
+			"payload" : [
+				{
+					"attribute" : "OPERATION_BO",
+					"value" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo"),
+				},
+				{
+					"attribute" : "WORKORDER",
+					"value" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/wo_no"),
+				},
+				{
+					"attribute" : "SFC_BO",
+					"value" : "SFCBO:" + airbus.mes.settings.ModelManager.site + ","
+						+ sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc"),
+				}, {
+					"attribute" : "SFC_STEP_BO",
+					"value" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
+				}, {
+					"attribute" : "REASON",
+					"value" : oView.byId("selectreason").getSelectedKey()
+				}, {
+					"attribute" : "TIME_LOST",
+					"value" : airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue())
+				}, {
+					"attribute" : "REQD_FIX_BY",
+					"value" : oView.byId("expectedDate").getValue() + " " + oView.byId("expectedTime").getValue()
+				}, {
+					"attribute" : "GRAVITY",
+					"value" : oView.byId("gravity").getSelectedKey()
+				}, {
+					"attribute" : "STATUS",
+					"value" : airbus.mes.disruptions.Formatter.status.pending
+				}, /*
+					 * { "attribute" : "ROOT_CAUSE", "value" :
+					 * oView.byId("selectRootCause").getSelectedKey() },
+					 */{
+					"attribute" : "MSN",
+					"value" : airbus.mes.settings.ModelManager.msn
+				}, {
+					"attribute" : "RESPONSIBLE_GROUP",
+					"value" : oView.byId("selectResponsibleGrp").getSelectedKey()
+				}, {
+					"attribute" : "WORK_CENTER_BO",
+					"value" : "WorkCenterBO:" + airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station
+				}, {
+					"attribute" : "MATERIALS",
+					"value" : sMaterials
+				}, {
+					"attribute" : "JIG_TOOLS",
+					"value" : sJigtools
+				}, {
+					"attribute" : "ISSUER", // V1.5
+					"value" : airbus.mes.disruptions.ModelManager.getIssuer()
+				}, {
+					"attribute" : "FIVEM_CATEGORY", // V1.5
+					"value" : oView.byId("selectFivemCategory").getSelectedKey()
+				}, {
+					"attribute" : "LINE",
+					"value" : airbus.mes.settings.ModelManager.line
+				}, {
+					"attribute" : "AREA",
+					"value" : oView.byId("area").getValue()
+				}, {
+					"attribute" : "PLAN",
+					"value" : oView.byId("plan").getValue()
+				}, {
+					"attribute" : "MATERIAL",
+					"value" : oView.byId("materials").getValue()
+				}, {
+					"attribute" : "RIBS",
+					"value" : oView.byId("ribs").getValue()
+				}, {
+					"attribute" : "VIEW",
+					"value" : oView.byId("view").getValue()
+				}, {
+					"attribute" : "TOOLS",
+					"value" : oView.byId("jigtools").getValue()
+				}, {
+					"attribute" : "STRINGER",
+					"value" : oView.byId("stringer").getValue()
+				}, {
+					"attribute" : "STRINGER_RAIL",
+					"value" : oView.byId("stringer_rail").getValue()
+				} ]
+
+		}
+		aModelData.push(oJson);
+
+		airbus.mes.disruptions.ModelManager.createDisruption(sHandle, sCategory, sComment, aModelData,reportAndCloseFlag);
+	
+	
+}
 });
