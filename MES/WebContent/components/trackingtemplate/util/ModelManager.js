@@ -53,7 +53,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         airbus.mes.trackingtemplate.oView.oController.uncheckedAllSelectedBox();
         airbus.mes.trackingtemplate.oView.oController.hideCommentBox();
         airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
-
+        airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
     },
 
     /**
@@ -358,6 +358,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 // airbus.mes.trackingtemplate.util.ModelManager.messageShow('Attached Document success');
             },
             error: function (data, textStatus, jqXHR) {
+                airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
                 // airbus.mes.trackingtemplate.util.ModelManager.messageShow('Attached Document failed');
             }
         });

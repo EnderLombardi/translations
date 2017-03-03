@@ -391,17 +391,21 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     },
 
     /**
-     * Remove items in upload collection list
+     * Remove items in upload collection list and attachDocument
+     * Use everytime we change tab or send all file after adding note
      */
     cleanListFiles: function () {
         var attachmentFilesCollection = this.getView().byId('UploadCollection');
         attachmentFilesCollection.removeAllItems();
+        if(this.attachDocument.length > 0 ) {
+            this.attachDocument.length = 0;
+        }
     },
 
     /**
      * remove the last file in attachDocument
+     * Use when we send a file with success to KM
      */
-
     removeLastFileAttachDocument: function () {
         this.attachDocument.splice(-1,1);
         if(this.attachDocument.length > 0) {
