@@ -160,7 +160,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 				//Save in field selected the value selected to manage the selection/unselection of lines 
 				el.SELECED_UI = el.selected;
 
-				aModel[indice].outstandingWorkOrderInfoList.forEach(function(al, indice1) {
+				aModel[indice].outstandingWorkStepInfoList.forEach(function(al, indice1) {
 					
 					al.SELECED_UI = al.selected;
 				})

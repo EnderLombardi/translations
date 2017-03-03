@@ -6,7 +6,7 @@
 		class="sapUiSizeCozy">
 		<m:content>
 			<TreeTable id="TreeTableBasic"
-				rows="{path:'oswModel>/', parameters: {arrayNames:['outstandingWorkOrderInfoList']}}"
+				rows="{path:'oswModel>/'}"
 				selectionMode="None" enableSelectAll="true" visibleRowCountMode="Auto"
 				enableBusyIndicator="true" enableCellFilter="true">
 				<extension>

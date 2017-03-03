@@ -34,7 +34,7 @@
          "originWorkstation": "originWorkstation*",
          "upperFamily": "upperFamily*",
          "materialDescription": "materialDescription*",
-         "outstandingWorkOrderInfoList": [
+         "outstandingWorkStepInfoList": [
             {	
                "ORIGIN_STATION" : "PHYS_ST_IP3",
             		 "selected" : "false",
@@ -83,7 +83,7 @@
          "originWorkstation": "originWorkstation*",
          "upperFamily": "upperFamily*",
          "materialDescription": "materialDescription*",
-         "outstandingWorkOrderInfoList": [
+         "outstandingWorkStepInfoList": [
             {	 
             "ORIGIN_STATION" : "PHYS_ST_IP4",
             "selected" : "false",
@@ -133,7 +133,7 @@
          "originWorkstation": "originWorkstation*",
          "upperFamily": "upperFamily*",
          "materialDescription": "materialDescription*",
-         "outstandingWorkOrderInfoList": [
+         "outstandingWorkStepInfoList": [
             {	
             "ORIGIN_STATION" : "PHYS_ST_IP4",
              "selected" : "true",

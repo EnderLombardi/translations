@@ -318,7 +318,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			//Save the selection value in the model on the attributes SELECTED
 			that.isSelected(bValue,oModel);
 
-			oModel.outstandingWorkOrderInfoList.forEach(function(el,indice){
+			oModel.outstandingWorkStepInfoList.forEach(function(el,indice){
 				
 				that.isSelected(bValue,el);
 				
@@ -424,7 +424,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 				airbus.mes.stationHandover.util.ModelManager.aSelected.push(el);
 			}			
 			
-				el.outstandingWorkOrderInfoList.forEach(function(al){
+				el.outstandingWorkStepInfoList.forEach(function(al){
 				
 					if ( al.SELECED_UI != al.selected ) {
 						
