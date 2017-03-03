@@ -6,7 +6,6 @@ airbus.mes.components.util.ModelManager = {
     urlModel: undefined,
     dataSaveJson: [],
     jsonConvertedToXml: undefined,
-    aInitialModel : [],
     
     // variable for filter
     workOrder: "P",

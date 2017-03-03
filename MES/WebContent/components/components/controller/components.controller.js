@@ -309,7 +309,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
         
 //      Save current data model in old data
-        this.saveOldValue(oModel);
+        airbus.mes.components.util.ModelManager.saveOldValue(oModel);
 
     },
 
