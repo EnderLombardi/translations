@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+	<Dialog title="{ShellI18n>UserLogin}" contentHeight="auto" contentWidth="30%"	id="badgeMngMyProfile">
+		<Toolbar class="toolBarBottom">
+			<Button id="scanButtonMyProfile" icon="sap-icon://business-card" text="{ShellI18n>scan}" type="Emphasized" press="onScanMyProfile" visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayBadge'}"/>
+			<ToolbarSpacer/>
+<!-- 			<Button id="editMyProfile" icon="sap-icon://edit" text="{ShellI18n>edit}" type="Emphasized" press="onEditMyProfile"/> -->
+		</Toolbar>
+		<content>		
+			<HBox height="3rem" class="messageHBox">
+				<MessageStrip id="msgstrpMyProfile" visible="false"
+					width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true"
+					showCloseButton="true">
+				</MessageStrip>
+			</HBox>
+			<HBox justifyContent="Center">					
+
+					<f:SimpleForm id="myProfile" minWidth="1024"
+						maxContainerCols="1" editable="true" layout="ResponsiveGridLayout"
+						labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
+						columnsL="3" columnsM="3">
+						<f:content>
+							<Input id="uIdMyProfile" type="Text"
+								placeholder="{ShellI18n>UID}" liveChange="uIDLive" enabled="false"  visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayBadge'}"/>							
+							<Input id="badgeIdMyProfile" type="Text"
+								placeholder="{ShellI18n>badgeID}" liveChange="badgeIDLive" enabled="false"  visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayBadge'}"/>
+							<Input id="pinCodeMyProfile" type="Text" maxLength = "4"
+								placeholder="{ShellI18n>pinCode}" liveChange="pinCodeLive"  visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayPin'}"/>							
+							<Input id="userNameMyProfile" type="Text" required="true"
+								placeholder="{ShellI18n>userName}" liveChange="usernameLive" />
+							<Input id="passwordMyProfile" type="Password" required="true"
+								placeholder="{ShellI18n>password}" liveChange="passwordLive" />
+						</f:content>
+					</f:SimpleForm>
+
+			</HBox>
+
+		</content>
+		<beginButton>
+			<Button id="myProfileCancel" text="{ShellI18n>cancel}" press="onCancelMyProfile" icon="sap-icon://decline"
+					class="myProfileButton"/>
+		</beginButton>
+		<endButton>
+			<Button id="myProfileAccept" text="{ShellI18n>Login}" press="onSaveMyProfile" icon="sap-icon://accept"
+					class="myProfileButton"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
