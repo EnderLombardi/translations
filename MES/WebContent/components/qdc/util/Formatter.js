@@ -34,7 +34,7 @@ airbus.mes.qdc.util.Formatter = {
 				});
 
 				obj.filter(function(row) {
-					if (row.DOC_TYPE === "PLA") {
+					if (row.DOC_TYPE === "MAA") {
 						airbus.mes.qdc.oView.byId("idButtonMAA").setEnabled(true);
 					}
 
@@ -60,7 +60,7 @@ airbus.mes.qdc.util.Formatter = {
 				});
 
 				obj.filter(function(row) {
-					if (row.DOC_TYPE === "PLA") {
+					if (row.DOC_TYPE === "MAA") {
 						airbus.mes.qdc.oView.byId("idButtonMAA").setEnabled(false);
 					}
 

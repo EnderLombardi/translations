@@ -74,15 +74,15 @@ sap.ui.controller("airbus.mes.qdc.Checklist", {
 			var sText = oEvt.oSource.mProperties.text;
 			if (sText === "MEA") {
 				// Specify the name of the file to be saved
-				var fileNameToSaveAs = "myNewFile.MEA";
+				var fileNameToSaveAs = "MES_"+oQDCData.USERID+".MEA";
 
 			} else if (sText === "MAA") {
 				// Specify the name of the file to be saved
-				var fileNameToSaveAs = "myNewFile.MAA";
+				var fileNameToSaveAs = "MES_"+oQDCData.USERID+".MAA";
 
 			} else if (sText === "MQM") {
 				// Specify the name of the file to be saved
-				var fileNameToSaveAs = "myNewFile.MQM";
+				var fileNameToSaveAs = "MES_"+oQDCData.USERID+".MQM";
 
 			}
 			// Optionally allow the user to choose a file name by providing
