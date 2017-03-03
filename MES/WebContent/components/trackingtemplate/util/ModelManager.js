@@ -292,11 +292,18 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                     }
                     //get handle for attached document
                     var handle = result.Rowsets.Rowset[0].Row[0].Production_Comment;
-                    airbus.mes.trackingtemplate.oView.oController.submitAttachedDocument(handle,userId);
+                    var userFromRequest = result.Rowsets.Rowset[0].Row[0].UserID;
+                    if(userFromRequest.length > 0) {
+                        userId = userFromRequest;
+                    }; 
+                    //if we send  badgeID => UserID != null
                     //récupérer la reference du WO note. Non renvoyé par MII
                     airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
-                    airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
-                    airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
+                    if(result.Rowsets.Rowset[0].Row[0].Message_Type === 'S') {
+                        airbus.mes.trackingtemplate.oView.oController.submitAttachedDocument(handle,userId);
+                        airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
+                        airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
+                    }
                 }
             });
     },
@@ -347,10 +354,11 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             })
             ,
             success: function (data, textStatus, jqXHR) {
-                airbus.mes.trackingtemplate.util.ModelManager.messageShow('Attached Document success');
+                airbus.mes.trackingtemplate.oView.oController.removeLastFileAttachDocument();
+                // airbus.mes.trackingtemplate.util.ModelManager.messageShow('Attached Document success');
             },
             error: function (data, textStatus, jqXHR) {
-                airbus.mes.trackingtemplate.util.ModelManager.messageShow('Cannot attached document');
+                // airbus.mes.trackingtemplate.util.ModelManager.messageShow('Attached Document failed');
             }
         });
     },

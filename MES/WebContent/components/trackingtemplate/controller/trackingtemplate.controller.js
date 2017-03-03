@@ -234,7 +234,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         if (sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation")) {
             sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation").setValue();
         }
-        this.cleanListFiles();
     },
 
     /**
@@ -380,9 +379,8 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Send file one by one and call the request function
      */
     submitAttachedDocument: function (handle, userId) {
-        var i = 0;
-        var attachDocumentLength = this.attachDocument.length;
-        for (; i < attachDocumentLength; i += 1) {
+        var i = this.attachDocument.length-1;
+        for (; i >= 0; i -= 1) {
             airbus.mes.trackingtemplate.util.ModelManager.attachDocument(
                 airbus.mes.settings.ModelManager.site,
                 handle,
@@ -398,9 +396,18 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     cleanListFiles: function () {
         var attachmentFilesCollection = this.getView().byId('UploadCollection');
         attachmentFilesCollection.removeAllItems();
-        this.attachDocument.length = 0;
     },
 
+    /**
+     * remove the last file in attachDocument
+     */
+
+    removeLastFileAttachDocument: function () {
+        this.attachDocument.splice(-1,1);
+        if(this.attachDocument.length > 0) {
+            this.cleanListFiles();
+        }
+    },
     /**
      * We don't allow to add same file name. At least we delete the first one then add the new one
      */
