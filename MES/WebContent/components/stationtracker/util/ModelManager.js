@@ -1084,7 +1084,13 @@ airbus.mes.stationtracker.util.ModelManager = {
 			"line": line,
 			"skill": skill
 			}
-		]
+		];
+		
+		
+		
+		airbus.mes.stationtracker.oView.getController().openRescheduleLinePopUp(count);
+        //airbus.mes.stationtracker.openRescheduleLinePopUp(count);
+        
 		// console.log("lines: " + line + " / " + skill);
 		// console.log("countNotConfOpe = " + count);
 		

@@ -1446,9 +1446,20 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         airbus.mes.components.oView.oController.onbtnComponentsFreeze();
     },
     test : function() {
-    	
-    	console.log("toto");
-    	
+    		sole.log("toto");
+	},
+	
+	// Confirm PopUp to reschedule not confirmed operation(s) on AVL Line
+    openRescheduleLinePopUp: function (lineCount) {
+		airbus.mes.stationtracker.rescheduleLinePopUp = sap.ui.xmlfragment("rescheduleLinePopUp", "airbus.mes.stationtracker.fragment.rescheduleLinePopUp", airbus.mes.stationtracker.oView.getController());
+		airbus.mes.stationtracker.rescheduleLinePopUp.addStyleClass("alignTextLeft");
+		airbus.mes.stationtracker.rescheduleLinePopUp.open();
+    },
+    closeRescheduleLinePopUp: function () {
+		airbus.mes.stationtracker.rescheduleLinePopUp.close();
+    },
+    sendRescheduleLine: function () {
+		airbus.mes.stationtracker.rescheduleLinePopUp.close();
     }
-
+	
 });

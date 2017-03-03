@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+    <Dialog id="rescheduleLinePopUp" class="" contentWidth="60%"
+        contentHeight="50%" verticalScrolling="false" showHeader="false" afterClose="afterCloseOperationDetailPopup">
+        <content>
+        </content>
+
+        <buttons>
+            <Button id="btnReschedule"      text="Yes" icon="sap-icon://accept"  press=""/>
+            <Button id="btnRescheduleClose" text="No"  icon="sap-icon://decline" press=""/>
+        </buttons>
+    </Dialog>
+
+</core:FragmentDefinition>
