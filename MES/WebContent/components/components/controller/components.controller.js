@@ -8,6 +8,30 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     sSet: undefined,
     committedFittedView: false,
 
+//    Check on change focus
+//    onInit: function() {
+//    	this.getView().byId("ComponentsList").attachBrowserEvent("keydown",jQuery.proxy(this.handleFocusChange,this))
+//    },
+//
+//    handleFocusChange:function(oEvent){
+//		console.log(oEvent.target.id);
+//		if(oEvent.target.id.indexOf("Col1")!== -1){
+//			
+//		}else if(oEvent.target.id.indexOf("col12")!== -1){
+//			var getRowIndex = oEvent.target.id.indexOf("col12");
+////			var rowNumber = oEvent.target.id.substr((getRowIndex+11),getRowIndex+12);
+////			rowNumber = parseInt(rowNumber);
+////			rowNumber+=1;
+////			console.log(this.getView().byId("ComponentsList").getItems()[rowNumber].getCells());
+//			getRowIndex+=1;
+//			this.getView().byId("ComponentsList").getRows()[getRowIndex].getCells()[1].focus();
+//			
+//		}else if(oEvent.target.id.indexOf("col13")!== -1){
+//			
+//		}
+//		
+//	},  
+    
     //is called after view is rendered.
     onAfterRendering: function () {
         this.oFilterSearch = undefined;

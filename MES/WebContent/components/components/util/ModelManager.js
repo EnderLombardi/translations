@@ -39,8 +39,8 @@ airbus.mes.components.util.ModelManager = {
     //load
     loadcomponentsWorkOrderDetail: function () {
         var oModel = sap.ui.getCore().getModel("componentsWorkOrderDetail");
-        this.aInitialModel = oModel.getData();
         oModel.loadData(this.getcomponentsWorkOrderDetail(), null, false);
+        this.aInitialModel = oModel.getData();
     },
 
     //get
