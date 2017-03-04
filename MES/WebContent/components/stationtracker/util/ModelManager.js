@@ -193,7 +193,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         var getUrlMesStatus = this.urlModel.getProperty("urlDispatchFromMes");
 
         getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
-            .replaceURI(getUrlMesStatus, "$erpSystem", oData.erp_system);
+            .replaceURI(getUrlMesStatus, "$erpSystem", opeData.erp_system);
         
         getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
         .replaceURI(getUrlMesStatus, "$site", oData.site);
@@ -208,7 +208,9 @@ airbus.mes.stationtracker.util.ModelManager = {
             .replaceURI(getUrlMesStatus, "$sfcstep", opeData.sfc_step_ref);
 
         oViewModel.loadData(getUrlMesStatus, null, true);
-
+        
+        oData.lang = lang;
+        oData.erp_system = opeData.erp_system;
 
     },
 

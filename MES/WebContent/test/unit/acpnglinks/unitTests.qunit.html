@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Unit tests for acpnglinks</title>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+	<meta charset="UTF-8">
+
+	<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/1.40.11/resources/sap-ui-core.js">
+	</script>
+
+	<script>
+		jQuery.sap.require("sap.ui.qunit.qunit-css");
+		jQuery.sap.require("sap.ui.thirdparty.qunit");
+		jQuery.sap.require("sap.ui.qunit.qunit-junit");
+		jQuery.sap.require("sap.ui.qunit.qunit-coverage");
+		jQuery.sap.registerModulePath("airbus.mes","../../../components");
+		jQuery.sap.registerModulePath("airbus.mes.test", "../../../test");
+
+		// tests
+		jQuery.sap.require("airbus.mes.acpnglinks.util.Formatter");
+		jQuery.sap.require("airbus.mes.test.unit.acpnglinks.formatter");
+	</script>
+
+</head>
+<body>
+<div id="content"></div>
+<h1 id="qunit-header">Unit tests for acpnglinks</h1>
+
+<h2 id="qunit-banner"></h2>
+
+<h2 id="qunit-userAgent"></h2>
+
+<div id="qunit-testrunner-toolbar"></div>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture"></div>
+</body>
+</html>

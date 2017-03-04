@@ -78,6 +78,11 @@ airbus.mes.operationdetail.ModelManager = {
 
         geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(geturlDispatchToObserver, "$site", oData.site);
+        geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager
+        .replaceURI(geturlDispatchToObserver, "$erpSystem", oData.erp_system);
+        geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager
+        .replaceURI(geturlDispatchToObserver, "$language", oData.lang);
+        
         oViewModel.loadData(geturlDispatchToObserver, null, true);
     },
     
