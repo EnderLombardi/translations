@@ -103,10 +103,10 @@
                             </items>
                         </ComboBox>
                         <Label id="lblMSN" text="{i18n>MSN}" design="Bold" />
-                        <ComboBox id="selectMSN" items="{plantModel>/Rowsets/Rowset/0/Row}"
+                        <ComboBox id="selectMSN" items="{path : 'plantModel>/Rowsets/Rowset/0/Row'  , sorter : {path : 'msn' , ascending : 'true'}}"
                             visible="true" selectionChange="onSelectionChange" enabled="false">
                             <items>
-                                <core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
+                                <core:Item key="{plantModel>msn'}" text="{plantModel>msn} " />
                             </items>
                         </ComboBox>
                         <CheckBox id="currMSN" selected="false" text="{i18n>CurrentMSN}"
