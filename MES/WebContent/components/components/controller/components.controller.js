@@ -328,25 +328,32 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     //change the view between components and fitted/committed
     onbtnCommittedFitted: function (oEvent) {
-        var committedFitted = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("CommittedFitted");
-        var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");
-
+//      Inverse the value
         this.committedFittedView = !this.committedFittedView;
 
+//      Retrieve button
+        var oButton = oEvent.getSource();
+        this.setBtnCommittedFittedValue(oButton, this.committedFittedView);
+    },
+
+    setBtnCommittedFittedValue : function(oButton, bValue) {
+        var committedFitted = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("CommittedFitted");
+        var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");    	
+    	
         //change button text
-        if (this.committedFittedView) {
-            oEvent.getSource().setText(committedFitted);
+        if (bValue) {
+        	oButton.setText(committedFitted);
             sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(true);
             sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(true);
         } else {
-            oEvent.getSource().setText(components);
+        	oButton.setText(components);
             sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(false);
         }
 
-        this.changeColVisibility(this.committedFittedView);
+        this.changeColVisibility(bValue);
     },
-
+    
     //changes the visibility of the several columns
     changeColVisibility: function (committedFittedView) {
         var colVisibilityArray;
