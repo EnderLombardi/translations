@@ -103,10 +103,11 @@ sap.ui
          
             var oSwitchButton = oEvent.getSource();
             
-            if (airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status") == airbus.mes.operationdetail.Formatter.status.blocked)
-           	 oSwitchButton.setState() == false
-           	sap.m.MessageToast.show(this.getView().getModel("i18n").getProperty("BlockedOperation"))
-           	 return;
+            if (airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status") == airbus.mes.operationdetail.Formatter.status.blocked) {
+				oSwitchButton.setState() == false
+				sap.m.MessageToast.show(this.getView().getModel("i18n").getProperty("BlockedOperation"))
+				return;
+            }
             
             if (oSwitchButton.getState() == true) {
                 this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("Execution"));
