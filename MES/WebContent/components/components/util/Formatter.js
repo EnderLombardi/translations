@@ -44,9 +44,16 @@ airbus.mes.components.util.Formatter = {
 
         var sXmlByRow = "";
         json.forEach(function(el){
+        	var sequence;
+        	if(el.ERPSequence !== "") {
+        		sequence = el.ERPSequence;
+        	} else {
+        		sequence = el.sequence;
+        	}
+        	
             sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({item : {
             	ORDER_NUMBER : [airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no],
-            	ITEM_NUMBER : [el.ERPSequence],
+            	ITEM_NUMBER : [sequence],
             	FITTED_USER : [""],
             	FITTED_DATE : [""],
             	FITTED_QUANTITY : [el.fitted],
