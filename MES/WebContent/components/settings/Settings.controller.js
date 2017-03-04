@@ -503,7 +503,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                           return el.program ===  airbus.mes.settings.ModelManager.program &&
                                     el.line === airbus.mes.settings.oView.byId("selectLine").getSelectedKey() &&
                                  el.station === airbus.mes.settings.oView.byId("selectStation").getSelectedKey() &&
-                                 el.msn === airbus.mes.settings.oView.byId("selectMSN").getValue();
+                                 el.msn === airbus.mes.settings.oView.byId("selectMSN").getValue().trim();
                         })[0];
                     //Internal value update
                     airbus.mes.settings.ModelManager.line = this.getView().byId("selectLine").getSelectedKey();
