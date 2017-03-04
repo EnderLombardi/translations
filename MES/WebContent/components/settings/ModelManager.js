@@ -103,10 +103,13 @@ airbus.mes.settings.ModelManager = {
 	getUserLang : function() {
 		var urlUserLanguage = this.getUrlUserLang();
 		var lang = "";
-		try{
+		try {
 			lang = jQuery.get({ async: false, url: urlUserLanguage }).responseJSON.language
-		}catch(e){
-//			do nothing
+		} catch(e) {
+			var urlUserSetting = this.urlModel.getProperty("urlUserSettings");
+			var oUserSettingModel = new sap.ui.model.json.JSONModel();
+			oUserSettingModel.loadData(urlUserSetting, null, false);
+			return oUserSettingModel.getProperty("/Rowsets/Rowset/0/Row/0/language");
 		}
 		return lang;
 	},
@@ -260,8 +263,8 @@ airbus.mes.settings.ModelManager = {
 
 		} else {
 
-			airbus.mes.settings.ModelManager.saveUserSetting(sSapLanguage);
-			airbus.mes.settings.ModelManager.setUserLang(sSapLanguage);
+			// airbus.mes.settings.ModelManager.saveUserSetting(sSapLanguage);
+			// airbus.mes.settings.ModelManager.setUserLang(sSapLanguage);
 			airbus.mes.shell.oView.getController().updateUrlForLanguage(
 					sSapLanguage);
 
