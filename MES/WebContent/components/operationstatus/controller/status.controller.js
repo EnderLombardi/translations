@@ -525,6 +525,33 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
         sap.ui.getCore().getModel("operationDetailModel").refresh();
         oView._dipatchDialog.close();
     },
+
+    onDispatchObserver : function() {
+    //	var sMessageError = i18nModel.getProperty("tryAgain");
+    	var sMessageError = "Dispatch error";
+    	var sMessageSuccess = "Dispatch success";
+    	var userGroup = sap.ui.getCore().byId("observerSelectBox").getSelectedKey();
+        var level = "WO";
+        
+        // check level chosen by user
+        if (!sap.ui.getCore().byId("WOlevel").getProperty("selected"))
+        	level = "OP";
+    	
+    	
+        jQuery.ajax({
+            url : airbus.mes.operationdetail.ModelManager.getUrlDispatch(userGroup, level),
+            async : false,
+            error : function(xhr, status, error) {
+            	airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);
+            	
+            },
+            success : function(result, status, xhr) {
+            	airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
+
+            }
+        });
+    	
+    },    
     
     onChangeLevelAssign : function(){
         var oSorter = new sap.ui.model.Sorter("USER_GROUP");
@@ -534,10 +561,10 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
      
         // check level chosen by user
         if (!sap.ui.getCore().byId("WOlevel").getProperty("selected"))
-        	level = "OPE";
+        	level = "OP";
 
-        // filter user group according level (OPE or WO)
-        filter = new sap.ui.model.Filter("LEVEL",sap.ui.model.FilterOperator.Contains , level);
+        // filter user group according level (OP or WO)
+        filter = new sap.ui.model.Filter("level",sap.ui.model.FilterOperator.Contains , level);
         binding = sap.ui.getCore().byId("observerSelectBox").getBinding("items");
         binding.filter(filter,"Application");
         binding.refresh(true);

@@ -505,7 +505,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
         
         // check level chosen by user
         if (!sap.ui.getCore().byId("WOlevel").getProperty("selected"))
-        	level = "OPE";
+        	level = "OP";
     	
     	
         jQuery.ajax({
@@ -531,10 +531,10 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
      
         // check level chosen by user
         if (!sap.ui.getCore().byId("WOlevel").getProperty("selected"))
-        	level = "OPE";
+        	level = "OP";
 
-        // filter user group according level (OPE or WO)
-        filter = new sap.ui.model.Filter("LEVEL",sap.ui.model.FilterOperator.Contains , level);
+        // filter user group according level (OP or WO)
+        filter = new sap.ui.model.Filter("level",sap.ui.model.FilterOperator.Contains , level);
         binding = sap.ui.getCore().byId("observerSelectBox").getBinding("items");
         binding.filter(filter,"Application");
         binding.refresh(true);

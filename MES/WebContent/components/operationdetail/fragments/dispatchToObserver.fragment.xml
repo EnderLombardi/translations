@@ -20,7 +20,7 @@
 	             <Label text="{i18n>groupList}"/>
 	             <Select change="onSelectionObserver" id="observerSelectBox" forceSelection="true"
 	                 items="{dispatchModel>/Rowsets/Rowset/0/Row}">
-	                 <core:Item key="{dispatchModel>USER_GROUP}" text="{dispatchModel>DESCRIPTION}" />
+	                 <core:Item key="{dispatchModel>internalUserStatus}" text="{dispatchModel>descriptionBOX}" />
 	             </Select>   
 	        </f:content>
        </f:SimpleForm>

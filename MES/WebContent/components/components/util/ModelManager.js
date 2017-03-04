@@ -37,11 +37,15 @@ airbus.mes.components.util.ModelManager = {
     loadcomponentsWorkOrderDetail: function () {
         var oModel = sap.ui.getCore().getModel("componentsWorkOrderDetail");
         oModel.loadData(this.getcomponentsWorkOrderDetail(), null, false);
-        this.saveOldValue(oModel);
-        var row = oModel.oData.Rowsets.Rowset[0].Row;
-        this.replaceStepInputsWithoutValue(row);
+        try{
+	        this.saveOldValue(oModel);
+	        var row = oModel.oData.Rowsets.Rowset[0].Row;
+	        this.replaceStepInputsWithoutValue(row);
+        } catch(exception){
+        	console.log(exception);
+        }
     },
-    saveOldValue : function(oModel) {
+    saveOldValue : function(oModel) {    	
         var count = oModel.getData().Rowsets.Rowset[0].Row.length;
 //      Keep old value
         for (var i = 0; i < count; i++) {
