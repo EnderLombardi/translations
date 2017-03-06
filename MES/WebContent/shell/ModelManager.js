@@ -114,12 +114,7 @@ airbus.mes.shell.ModelManager = {
 	        var rep = jQuery.ajax({
 	            async : false,
 	            url : this.urlModel.getProperty('urlgetrolesfromsite'), 
-	            type : 'POST',
-	            contentType : 'application/json',
-				data : JSON.stringify({
-					"site" : "*",
-					"lang" : "en"
-				}),
+	            type : 'GET'
 	        });
 	        return rep.responseJSON;
 	        
@@ -129,7 +124,7 @@ airbus.mes.shell.ModelManager = {
 			var rep = jQuery.ajax({
 				async : false,
 				url : this.urlModel.getProperty('FeatureRoleModelurl'),
-				type : 'POST',
+				type : 'GET',
 			});
 			return JSON.parse(rep.responseText);
 		},
