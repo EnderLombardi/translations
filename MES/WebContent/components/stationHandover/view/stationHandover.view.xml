@@ -17,11 +17,11 @@
 							class="headerText sapUiSmallMarginBeginEnd" />
 
 						<m:Select id="selectStationHandover" visible="false" class="comboStationHandover"
-							change="changeShift"
+							change="changeShift" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"
 							items="{ path : 'msnModel>/' , sorter : {path : 'text' , descending : 'false'} }">
 							<core:Item key="{selectMSN>key}" text="{TrackerShift>shiftName}" />
 						</m:Select>
-						<m:Select id="selectMsnHandover" class="comboStationHandover"
+						<m:Select id="selectMsnHandover" class="comboStationHandover" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"
 							change="changeShift" items="{ path : 'msnModel>/' }" visible="false">
 							<core:Item key="{msnModel>key}" text="{msnModel>msn}" />
 
@@ -32,36 +32,36 @@
 					<m:OverflowToolbar id="headerstationhandover">
 						<m:Button id="navBack" icon="sap-icon://arrow-left"
 							press="onBackPress" type="Transparent" />
-						<m:SearchField width="15%" id="searchHandover"
+						<m:SearchField width="15%" id="searchHandover" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"
 							liveChange="filterWo" />
-						<m:Select id="groupHandover" change="sorterMode"
+						<m:Select id="groupHandover" change="sorterMode" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"
 							items="{ path : 'groupModel>/' }">
 							<core:Item key="{groupModel>key}"
 								text="{path:'groupModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
 						</m:Select>
-						<m:Button id="typeHandOver" press="openFilterType" text="{stationHandoverI18n>typeOfWo}"></m:Button>
-						<m:Button id="originHandOver" press="openFilterStation" text="{stationHandoverI18n>originStation}"></m:Button>
+						<m:Button id="typeHandOver" press="openFilterType" text="{stationHandoverI18n>typeOfWo}" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"></m:Button>
+						<m:Button id="originHandOver" press="openFilterStation" text="{stationHandoverI18n>originStation}" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"></m:Button>
 						<m:ToolbarSpacer />
 
 						<m:CheckBox text="{stationHandoverI18n>ShowOpwithNoTime}"
-							selected="false" select="filterNoTime" />
+							selected="false" select="filterNoTime"  enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"/>
 						<m:CheckBox text="{stationHandoverI18n>ShowInsertedLines}"
-							selected="false" select="filterInsertedLines" />
+							selected="false" select="filterInsertedLines"  enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"/>
 
 						<m:ToolbarSpacer />
 
 						<m:Button icon="sap-icon://add-activity" id="insertHandOver"
-							text="{stationHandoverI18n>insert}" press="onPressInsert"/>
+							text="{stationHandoverI18n>insert}" press="onPressInsert" visible="{Profile>/identifiedUser/permissions/STATION_OSW_SELECT}"/>
 
 					</m:OverflowToolbar>
 
 				</extension>
 				<columns>
 					<Column width="5rem"	>
-						<m:CheckBox class="DisOpAttLabelHandOver" select="selectAll" />
+						<m:CheckBox class="DisOpAttLabelHandOver" select="selectAll" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_SELECT}"/>
 						<template>
 							<m:CheckBox select="onSelectRow"
-								selected="{path:'oswModel>' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}"
+								selected="{path:'oswModel>' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_SELECT}"
 								/>
 						</template>
 					</Column>

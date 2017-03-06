@@ -5,7 +5,7 @@
 		afterOpen="onAfterOpenPolypoly" contentWidth="90%" resizable="false" stretch="false" draggable="false">
 		<buttons>
 			<Button id="deleteLineAssignmentButton" text="{StationTrackerI18n>DeleteAssignment}" icon="sap-icon://employee-rejections"
-				press="deleteLineAssignment" />
+				press="deleteLineAssignment" visible = "{Profile>/identifiedUser/permissions/STATION_WORKER_BC_ASSIGN}" />
 			<Button text="{StationTrackerI18n>Close}" icon="sap-icon://decline"
 				press="ClosePolyPoly" />
 		</buttons>

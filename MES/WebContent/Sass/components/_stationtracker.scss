@@ -1250,7 +1250,15 @@ STATION TRACKER TOOLBAR
             background-color: $petrol-20;
         }
     }
-}
+    .disable {
+        text-shadow: none;
+        cursor: default;
+        opacity: 0.5;
+        &:hover{
+        background-color: transparent !important;   
+        }
+    }
+    } 
 
 .sapMPopoverScroll {
     .sapMSelectListItemBaseSelected {

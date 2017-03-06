@@ -69,7 +69,7 @@
 		"icon": "product",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "stationHandoverEnabled"
+		"enable": "STATION_OSW_OPEN"
 	},
 	{
 	"text": "FactoryView",
