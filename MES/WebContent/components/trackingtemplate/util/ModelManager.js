@@ -273,10 +273,6 @@ airbus.mes.trackingtemplate.util.ModelManager = {
      * Request for sending note
      **************************************************************************/
     sendWONotes: function (shopOrderNum, erpSystem, badgeID, description, reasonCodeText, password, userId, site) {
-        // var sMessageSuccess = this.getView().getModel("i18n")
-        //     .getProperty("SuccessfulConfirmation");
-        // var sMessageError = this.getView().getModel("i18n")
-        //     .getProperty("ErrorDuringConfirmation");
         var sMessageSuccess;
         var sMessageError = 'Error during confirmation';
         jQuery
@@ -300,7 +296,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                     //get handle for attached document
                     var handle = result.Rowsets.Rowset[0].Row[0].Production_Comment;
                     var userFromRequest = result.Rowsets.Rowset[0].Row[0].UserID;
-                    if (userFromRequest.length > 0) {
+                    if (userFromRequest.length) {
                         userId = userFromRequest;
                     };
                     //if we send  badgeID => UserID != null
@@ -362,11 +358,9 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             ,
             success: function (data, textStatus, jqXHR) {
                 airbus.mes.trackingtemplate.oView.oController.removeLastFileAttachDocument();
-                // airbus.mes.trackingtemplate.util.ModelManager.messageShow('Attached Document success');
             },
             error: function (data, textStatus, jqXHR) {
                 airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
-                // airbus.mes.trackingtemplate.util.ModelManager.messageShow('Attached Document failed');
             }
         });
     },

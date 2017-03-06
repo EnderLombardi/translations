@@ -2,7 +2,9 @@
 sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
 
     attachDocument: [],
-    
+    userConfirmationFragmentIsInitialised: undefined,
+    isRendered : undefined,
+
     /**
     * Apply a filter on the confirmation Notes List and the WO Notes List
     * depending on the Production_Context_GBO name
@@ -10,6 +12,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     initNotesList: function () {
         var listConfirmationNotes = this.getView().byId("trackingtemplateView--confirmationNotes");
         var listWONotes = this.getView().byId("trackingtemplateView--listNotes");
+        this.userConfirmationFragmentIsInitialised = false;
 
         //we apply the filter here
         listConfirmationNotes.getBinding("items").filter(new sap.ui.model.Filter({
@@ -26,6 +29,12 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                 return oValue.toUpperCase().startsWith("SHOPORDERBO");
             }
         }));
+    },
+
+    onAfterRendering: function () {
+        setTimeout(function () { //setTimeout is a trick to permit setBusy to be effective, without it's not working
+            airbus.mes.trackingtemplate.oView.oController.isRendered = true;
+        }, 0);
     },
 
     /**
@@ -153,11 +162,12 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                         .xmlfragment(
                         "airbus.mes.trackingtemplate.fragments.userConfirmation",
                         this);
-
                     this.getView().addDependent(
                         this._oUserConfirmationDialog);
                 }
+                
                 this._oUserConfirmationDialog.open();
+                this.userConfirmationFragmentIsInitialised = true;
             } else {
                 var sMessageError = this.getView().getModel("i18n").getProperty("WriteSomething");
                 airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageError);
@@ -173,6 +183,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      */
     onCancelConfirmation: function () {
         this._oUserConfirmationDialog.close();
+        this.cleanUserConfirmation();
     },
 
     /**
@@ -210,28 +221,21 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * TODO : need a better method to clean value. 
      */
     cleanAfterAddingNotes: function () {
-        //if the view is ready yet, dont try to reset value 
-        if (airbus.mes.trackingtemplate.oView.byId('commentArea')) {
-            //Param.4 Desciption
+        if(this.isRendered) {
+        //if the view is not ready yet, dont try to reset value 
             airbus.mes.trackingtemplate.oView.byId('commentArea').setValue();
-        }
-        if (airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox")) {
-            //Param.5 ReasonCode
             airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").setSelectedKey('');
         }
-        if (sap.ui.getCore().byId('passwordTckTmpltForConfirmation')) {
-            //Param.6 password
-            sap.ui.getCore().byId('passwordTckTmpltForConfirmation').setValue();
-        }
-        if (sap.ui.getCore().byId('userNameTckTmpltForConfirmation')) {
-            //Param.7 logon
-            sap.ui.getCore().byId('userNameTckTmpltForConfirmation').setValue();
-        }
+    },
 
-        if (sap.ui.getCore().byId("UIDTckTmpltForConfirmation")) {
+    /**
+     * reset user confirmation field
+     */
+    cleanUserConfirmation: function () {
+        if (this.userConfirmationFragmentIsInitialised) {
+            sap.ui.getCore().byId('passwordTckTmpltForConfirmation').setValue();
+            sap.ui.getCore().byId('userNameTckTmpltForConfirmation').setValue();
             sap.ui.getCore().byId("UIDTckTmpltForConfirmation").setValue();
-        }
-        if (sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation")) {
             sap.ui.getCore().byId("badgeIDTckTmpltForConfirmation").setValue();
         }
     },
@@ -355,8 +359,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     },
 
     onChangeUploadCollection: function (oEvent) {
-        // var oUploadCollection = oEvent.getSource();
-
+        airbus.mes.shell.busyManager.setBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--UploadCollection");
         var files = oEvent.getParameters().files;
         var file = files[0];
         this.updateFile(file.name);
@@ -364,27 +367,27 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         var filesListBase64 = this.attachDocument;
         reader.onload = function (readerEvt) {
             var binaryString = readerEvt.target.result;
-            // var base64 = btoa(binaryString);
             var oBase64 = {};
             oBase64.fileName = file.name;
             oBase64.type = file.type;
             oBase64.fileBase64 = btoa(binaryString);
             filesListBase64.push(oBase64);
+            airbus.mes.shell.busyManager.unsetBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--UploadCollection");
         }
         reader.readAsBinaryString(files[0]);
-
     },
+
 
     /**
      * Send file one by one and call the request function
      */
     submitAttachedDocument: function (handle, userId) {
-        var i = this.attachDocument.length-1;
+        var i = this.attachDocument.length - 1;
         for (; i >= 0; i -= 1) {
             airbus.mes.trackingtemplate.util.ModelManager.attachDocument(
                 airbus.mes.settings.ModelManager.site,
                 handle,
-                this.attachDocument[i].fileName, 
+                this.attachDocument[i].fileName,
                 this.attachDocument[i].fileBase64,
                 userId);
         }
@@ -397,7 +400,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     cleanListFiles: function () {
         var attachmentFilesCollection = this.getView().byId('UploadCollection');
         attachmentFilesCollection.removeAllItems();
-        if(this.attachDocument.length > 0 ) {
+        if (this.attachDocument.length > 0) {
             this.attachDocument.length = 0;
         }
     },
@@ -407,8 +410,8 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Use when we send a file with success to KM
      */
     removeLastFileAttachDocument: function () {
-        this.attachDocument.splice(-1,1);
-        if(this.attachDocument.length > 0) {
+        this.attachDocument.splice(-1, 1);
+        if (this.attachDocument.length > 0) {
             this.cleanListFiles();
         }
     },
@@ -421,7 +424,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         this.removeFileFromAttachDocument(name);
         var i = 0;
         var len = attachmentFilesCollection.getItems().length;
-        for (; i < len; i += 1) {``
+        for (; i < len; i += 1) {
             var namelist = attachmentFilesCollection.getItems()[i].getFileName();
             if (attachmentFilesCollection.getItems()[i].getFileName() === name) {
                 return attachmentFilesCollection.removeItem(i);
@@ -436,11 +439,11 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      */
     compareListAndRemove: function () {
         var attachmentFilesCollection = this.getView().byId('UploadCollection');
-        var i = this.attachDocument.length-1;
+        var i = this.attachDocument.length - 1;
         for (; i >= 0; i -= 1) {
             // We are looking if the attachDocument's list is still present in the collection.
             var index = attachmentFilesCollection.getItems().map(function (e) { return e.getFileName(); }).indexOf(this.attachDocument[i].fileName);
-            if(index === -1) {
+            if (index === -1) {
                 this.attachDocument.splice(i, 1);
             }
         }
