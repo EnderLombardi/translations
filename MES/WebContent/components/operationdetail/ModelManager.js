@@ -127,7 +127,7 @@ airbus.mes.operationdetail.ModelManager = {
 
         return urlStartOperation;
     },
-    getUrlConfirmationCheckList : function(data){
+    getUrlConfirmationCheckList : function(data, stationIDcheck){
         var urlConfirmationCheckList = this.urlModel.getProperty("confirmationCheckList");
         urlConfirmationCheckList = airbus.mes.shell.ModelManager
             .replaceURI(urlConfirmationCheckList, "$Site", airbus.mes.settings.ModelManager.site);
@@ -139,13 +139,15 @@ airbus.mes.operationdetail.ModelManager = {
         .replaceURI(urlConfirmationCheckList, "$WorkOrder", data.wo_no);
         urlConfirmationCheckList = airbus.mes.shell.ModelManager
         .replaceURI(urlConfirmationCheckList, "$OperationID", data.operation_id);
+        urlConfirmationCheckList = airbus.mes.shell.ModelManager
+        .replaceURI(urlConfirmationCheckList, "$PhysStation", stationIDcheck);
         return urlConfirmationCheckList;
  
     },
-    getDataConfirmationCheckList : function(data){
+    getDataConfirmationCheckList : function(data, stationIDcheck){
         var getData;
         jQuery.ajax({
-            url : airbus.mes.operationdetail.ModelManager.getUrlConfirmationCheckList(data),
+            url : airbus.mes.operationdetail.ModelManager.getUrlConfirmationCheckList(data, stationIDcheck),
             async : false,
             error : function(xhr, status, error) {
                 airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);
