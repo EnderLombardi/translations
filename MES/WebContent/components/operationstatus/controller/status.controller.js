@@ -547,7 +547,7 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
             },
             success : function(result, status, xhr) {
             	airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
-
+            	airbus.mes.operationstatus.oView._dipatchDialog.close();
             }
         });
     	
