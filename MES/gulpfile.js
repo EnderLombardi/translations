@@ -142,7 +142,8 @@ gulp.task('copy', ['clean'], function () {
 		'./components/disruptions/local/Jigtool_Server.json',
 		'./components/disruptions/local/MaterialList_Server.json',
 		'./components/components/data/selectFilterModel.json',
-		'./components/trackingtemplate/styles/trackingtemplatePrint.css'
+		'./components/trackingtemplate/styles/trackingtemplatePrint.css',
+		'./components/factoryView/images/**'
 	], { cwd: src, cwdbase: true }).pipe(gulp.dest(dest));
 });
 
