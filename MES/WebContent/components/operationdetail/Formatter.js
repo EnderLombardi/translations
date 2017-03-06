@@ -255,12 +255,16 @@ airbus.mes.operationdetail.Formatter = {
 
     displayStatus: function(assigned){
 
-        if(assigned != null && assigned != undefined) 
-            return true;
-        
-        else 
-            return false;
-        
+        if(assigned === "1" ) {
+        	
+        	return true;
+        	
+        } else {
+        	
+        	return false;
+        	
+        }
+         
     }
 
 };
