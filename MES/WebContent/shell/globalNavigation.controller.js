@@ -636,7 +636,7 @@ sap.ui.controller(
                         }, 1000)
 
                 }
-            }
+            };
 
             var response = function (data) {
                 clearInterval(timer);
@@ -790,8 +790,7 @@ sap.ui.controller(
 
                             var sMessageSuccess = sap.ui.getCore().getModel("ShellI18n").getProperty("successMsgwhileSavingProfile");
 
-                            airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
-                            return user;
+                            airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);=
                         }
 
 

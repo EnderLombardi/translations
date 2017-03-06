@@ -81,7 +81,7 @@ sap.ui
                 $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
             }
             /****** hide buttons *********/
-            // sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
+            sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
@@ -104,8 +104,8 @@ sap.ui
             var oSwitchButton = oEvent.getSource();
             
             if (airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status") == airbus.mes.operationdetail.Formatter.status.blocked) {
-				oSwitchButton.setState() == false
-				sap.m.MessageToast.show(this.getView().getModel("i18n").getProperty("BlockedOperation"))
+				oSwitchButton.setState(false);
+				sap.m.MessageToast.show(this.getView().getModel("i18n").getProperty("BlockedOperation"));
 				return;
             }
             
@@ -123,8 +123,9 @@ sap.ui
                      */
                     airbus.mes.operationstatus.oView.oController.setOperationActionButtons();
                     
-                    if (jQuery.sap.getObject("airbus.mes.qdc.oView") != undefined)
+                    if (jQuery.sap.getObject("airbus.mes.qdc.oView") != undefined){
                     	airbus.mes.qdc.oView.getController().enableButtons();
+                    }
 
 
                 } else {

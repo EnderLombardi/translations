@@ -601,9 +601,7 @@ airbus.mes.disruptions.ModelManager = {
 					"Param.5" : dateTime
 				},
 				error : function(xhr, status, error) {
-					if (!airbus.mes.disruptions.func.isSupportTeamViaDestop()) {
-						airbus.mes.disruptions.__enterAckCommentDialogue.setBusy(false);
-					}
+					airbus.mes.disruptions.__enterAckCommentDialogue.setBusy(false);
 					airbus.mes.disruptions.func.tryAgainError(i18nModel);
 				},
 				success : function(result, status, xhr) {
@@ -616,28 +614,22 @@ airbus.mes.disruptions.ModelManager = {
 						airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
 
 						// load again disruptions data
-						if (!airbus.mes.disruptions.func.isSupportTeamViaDestop()) {
+						airbus.mes.disruptions.__enterAckCommentDialogue.setBusy(false);
+						airbus.mes.disruptions.__enterAckCommentDialogue.close();
 
-							airbus.mes.disruptions.__enterAckCommentDialogue.setBusy(false);
-							airbus.mes.disruptions.__enterAckCommentDialogue.close();
+						if (nav.getCurrentPage().getId() == "stationTrackerView") {
+							var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+							var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
 
-							if (nav.getCurrentPage().getId() == "stationTrackerView") {
-								var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
-								var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
-
-							} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
-								var operationBO = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].Operation;
-								var sSfcStepRef = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].SfcStepBO;
-							}
-							airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO, sSfcStepRef);
-
-							// Set Refresh disruption tracker flag
-							if (nav.getCurrentPage().getId() == "disruptiontrackerView")
-								airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
-
-						} else {
-							airbus.mes.shell.util.navFunctions.disruptionTracker();
+						} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
+							var operationBO = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].Operation;
+							var sSfcStepRef = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].SfcStepBO;
 						}
+						airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO, sSfcStepRef);
+
+						// Set Refresh disruption tracker flag
+						if (nav.getCurrentPage().getId() == "disruptiontrackerView")
+							airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 					}
 
 				}

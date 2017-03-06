@@ -144,45 +144,44 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		nav.back();
 		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 	},
+	
 	/**
-	 * ON acknowledge disruption from disruption detail page from dekstop MES
-	 * MESV1.5
-	 * 
+	 * On acknowledge disruption from disruption detail page from desktop MES
 	 * @param {object}
 	 *            oEvt object of control
 	 */
 	onAckDisruption : function(oEvt) {
-		if (this.getView().byId("promisedDate").getValue() == "" || this.getView().byId("promisedTime").getValue() == "") {
-			airbus.mes.shell.ModelManager.messageShow(this.getView().getModel("i18nModel").getProperty("emptyPromiseDate"));
-			return;
+		var oView = this.getView();
+		var i18nModel = oView.getModel("i18nModel");
+		var sPromisedDateTime = "";
+
+		var date = sap.ui.getCore().byId("promiseDate").getValue();
+		var time = sap.ui.getCore().byId("promisedTime").getValue();
+		if(date != ""){
+
+			if (time == ""){time = "00:00:00";}
+			
+			sPromisedDateTime = date + " " + time;
+			
+			var oPromisedDateTime = new Date(sPromisedDateTime);
+
+			// Validate Promised Date Time
+			if (oPromisedDateTime == "Invalid Date"){
+				airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("invalidDateError"));
+				return;
+			}
+			
+			//Check - User can't enter old date time
+			if(new Date().getTime() > oPromisedDateTime.getTime()){
+				airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("errorPrevPromisedDateTime"));
+				return;
+			}
 		}
 
 		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/messageRef");
-		// this.getView().byId("promisedDate").setDateValue(new Date());
 
-		var date = this.getView().byId("promisedDate").getValue();
-
-		var obDate = new Date(date);
-
-		// Validate Promised Date Time
-		if (obDate == "Invalid Date" || date.length != 10) {
-			airbus.mes.shell.ModelManager.messageShow(this.getView().getModel("i18nModel").getProperty("invalidDateError"));
-
-			return;
-		}
-
-		// Calculate Promised Date Time
-		var time = this.getView().byId("promisedTime").getValue();
-
-//		if (time == "")
-//			time = "00:00:00";
-
-		var dateTime = date + " " + time;
-		if (dateTime == " ") dateTime = "";
-
-		var comment = airbus.mes.disruptions.Formatter.actions.acknowledge + this.getView().byId("comment").getValue();
-		var i18nModel = this.getView().getModel("i18nModel");
-		var oView = this.getView();
+		var comment = airbus.mes.disruptions.Formatter.actions.acknowledge + oView.byId("comment").getValue();
+		
 		// Call to Acknowledge Disruption
 		jQuery
 		.ajax({
@@ -192,7 +191,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 				"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"Param.3" : sMessageRef,
 				"Param.4" : comment,
-				"Param.5" : dateTime
+				"Param.5" : sPromisedDateTime
 			},
 			error : function(xhr, status, error) {
 				airbus.mes.disruptions.func.tryAgainError(i18nModel);
@@ -235,6 +234,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		
 
 	},
+	
 	/***************************************************************************
 	 * Reject the Disruption MESV1.5
 	 * 
@@ -255,6 +255,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		airbus.mes.disruptions.ModelManager.rejectDisruption(sComment, sMessageRef, sStatus, sMessage, i18nModel);
 
 	},
+	
 	/***************************************************************************
 	 * solve the Disruption MESV1.5
 	 * 

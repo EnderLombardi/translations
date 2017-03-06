@@ -456,38 +456,46 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 	 * When Comment is Added to Acknowledge Disruption
 	 */
 	onAcceptAckDisruptionComment : function() {
+		var oView = airbus.mes.disruptionslist.oView;
+		var sPromisedDateTime = "";
 
 		var date = sap.ui.getCore().byId("disruptionAckDate").getValue();
+		var time = sap.ui.getCore().byId("disruptionAckTime").getValue();
+		if(date != ""){
 
-		// var obDate = new Date(date);
+			if (time == ""){time = "00:00:00";}
+			
+			sPromisedDateTime = date + " " + time;
+			
+			var oPromisedDateTime = new Date(sPromisedDateTime);
 
-		// // Validate Promised Date Time
-		// if (obDate == "Invalid Date" || date.length != 10){
-		// airbus.mes.shell.ModelManager.messageShow(
-		// this.getView().getModel("i18nModel").getProperty("invalidDateError"));
-		//                                                
-		// return;
-		// }
+			// Validate Promised Date Time
+			if (oPromisedDateTime == "Invalid Date"){
+				airbus.mes.shell.ModelManager.messageShow(
+					oView.getModel("i18nModel").getProperty("invalidDateError"));
+				return;
+			}
+			
+			//Check - User can't enter old date time
+			if(new Date().getTime() > oPromisedDateTime.getTime()){
+				airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("errorPrevPromisedDateTime"));
+				return;
+			}
+		}
+		
 
 		// Set Busy
 		airbus.mes.disruptions.__enterAckCommentDialogue.setBusyIndicatorDelay(0);
 		airbus.mes.disruptions.__enterAckCommentDialogue.setBusy(true);
 
-		// Calculate Promised Date Time
-		var time = sap.ui.getCore().byId("disruptionAckTime").getValue();
-
-		if (time == "")
-			time = "00:00:00";
-
-		var dateTime = date + " " + time;
 
 		var msgRef = sap.ui.getCore().byId("disruptionAckSpathMsgRef").getText();
 
 		var comment = airbus.mes.disruptions.Formatter.actions.acknowledge + sap.ui.getCore().byId("disruptionAckComment").getValue();
 
 		// Call to Acknowledge Disruption
-		var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
-		airbus.mes.disruptions.ModelManager.ackDisruption(dateTime, msgRef, comment, i18nModel);
+		var i18nModel = oView.getModel("i18nModel");
+		airbus.mes.disruptions.ModelManager.ackDisruption(sPromisedDateTime, msgRef, comment, i18nModel);
 
 	},
 
