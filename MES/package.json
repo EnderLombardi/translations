@@ -1,6 +1,6 @@
 {
   "name": "mes",
-  "version": "1.5.1-90",
+  "version": "1.5.1-91",
   "description": "MES - AOS",
   "main": "WebContent/shell/index.html",
   "scripts": {
@@ -8,7 +8,7 @@
     "sass": "npm install gulp-sass"
   },
   "repository": {
-    "type": "git", 
+    "type": "git",
     "url": "https://bundleerp.git.ptx.fr.sopra/g/mes"
   },
   "keywords": [

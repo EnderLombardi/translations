@@ -53,7 +53,7 @@
 		"icon": "alert",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "true"
+		"enable": "STATION_DRILL_DISRUPTION"
 	}, {
 
 		"text": "DashboardPPS",
