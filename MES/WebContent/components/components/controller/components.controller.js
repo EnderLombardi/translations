@@ -8,30 +8,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     sSet: undefined,
     committedFittedView: false,
 
-//    Check on change focus
-//    onInit: function() {
-//    	this.getView().byId("ComponentsList").attachBrowserEvent("keydown",jQuery.proxy(this.handleFocusChange,this))
-//    },
-//
-//    handleFocusChange:function(oEvent){
-//		console.log(oEvent.target.id);
-//		if(oEvent.target.id.indexOf("Col1")!== -1){
-//			
-//		}else if(oEvent.target.id.indexOf("col12")!== -1){
-//			var getRowIndex = oEvent.target.id.indexOf("col12");
-////			var rowNumber = oEvent.target.id.substr((getRowIndex+11),getRowIndex+12);
-////			rowNumber = parseInt(rowNumber);
-////			rowNumber+=1;
-////			console.log(this.getView().byId("ComponentsList").getItems()[rowNumber].getCells());
-//			getRowIndex+=1;
-//			this.getView().byId("ComponentsList").getRows()[getRowIndex].getCells()[1].focus();
-//			
-//		}else if(oEvent.target.id.indexOf("col13")!== -1){
-//			
-//		}
-//		
-//	},  
-    
     //is called after view is rendered.
     onAfterRendering: function () {
         this.oFilterSearch = undefined;
@@ -165,7 +141,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         jQuery.sap.delayedCall(0, this, function () {
             airbus.mes.components.selectFilter.openBy(oButton);
         });
-        
+
     },
 
     createSelectFilterPopoverFragment: function () {
@@ -258,12 +234,23 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     synchronizeField: function (oEvent) {
         var value = oEvent.getSource().getParent().getParent().mAggregations.cells[5].mProperties.text
         oEvent.getSource().oParent.getItems()[1].setValue(value);
+
+        //enable or not the decrementButton
+        var col = oEvent.mParameters.id.match(/(?:col)(\d+)/)[1];//column id
+        var row = oEvent.mParameters.id.match(/(?:row)(\d+)/)[1];//row id
+        var hBoxId = oEvent.oSource.oParent.sId.split('--')[1].split('-')[0];//Committed ou Fitted
+        var decrementButton = sap.ui.getCore().byId("componentsView--stepInput" + hBoxId + "-col" + col + "-row" + row + "-decrementButton");
+        if (value !== "0") {
+            decrementButton.setEnabled(true);
+        } else {
+            decrementButton.setEnabled(false);
+        }
     },
 
     //is called when the save button is clicked. It handles the data converts it in xml and send them to backend.
     onbtnComponentsSave: function () {
 
-    	var oModel = sap.ui.getCore().getModel("componentsWorkOrderDetail");
+        var oModel = sap.ui.getCore().getModel("componentsWorkOrderDetail");
         var count = oModel.getData().Rowsets.Rowset[0].Row.length;
         if (airbus.mes.components.util.ModelManager.dataSaveJson != []) {
             airbus.mes.components.util.ModelManager.dataSaveJson = [];
@@ -274,7 +261,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             var dataIndex = oModel.getData().Rowsets.Rowset[0].Row[i];
 
             if (oModel.getData().Rowsets.Rowset[0].Row[i].Checked_Components_old != tableVal
-            || oModel.getData().Rowsets.Rowset[0].Row[i].Fitted_Components_old   != tableValFitt ) {
+                || oModel.getData().Rowsets.Rowset[0].Row[i].Fitted_Components_old != tableValFitt) {
                 dataIndex.committed = tableVal;
                 dataIndex.fitted = tableValFitt;
                 airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
@@ -306,9 +293,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
                 console.log(error);
             }
         });
-
-        
-//      Save current data model in old data
+        //Save current data model in old data
         airbus.mes.components.util.ModelManager.saveOldValue(oModel);
 
     },
@@ -328,32 +313,32 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     //change the view between components and fitted/committed
     onbtnCommittedFitted: function (oEvent) {
-//      Inverse the value
+        //      Inverse the value
         this.committedFittedView = !this.committedFittedView;
 
-//      Retrieve button
+        //      Retrieve button
         var oButton = oEvent.getSource();
         this.setBtnCommittedFittedValue(oButton, this.committedFittedView);
     },
 
-    setBtnCommittedFittedValue : function(oButton, bValue) {
+    setBtnCommittedFittedValue: function (oButton, bValue) {
         var committedFitted = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("CommittedFitted");
-        var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");    	
-    	
+        var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");
+
         //change button text
         if (bValue) {
-        	oButton.setText(committedFitted);
+            oButton.setText(committedFitted);
             sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(true);
             sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(true);
         } else {
-        	oButton.setText(components);
+            oButton.setText(components);
             sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(false);
         }
 
         this.changeColVisibility(bValue);
     },
-    
+
     //changes the visibility of the several columns
     changeColVisibility: function (committedFittedView) {
         var colVisibilityArray;
@@ -372,5 +357,24 @@ sap.ui.controller("airbus.mes.components.controller.components", {
                 columns[i].setVisible(false);
             }
         }
-    }
+    },
+
+    //called on commtted and fitted component hbox changes
+    //enable or not the several decrement button
+    onModelContextChange: function (oEvent) {
+        var value;
+        var numberOfRows = sap.ui.getCore().byId("componentsView--ComponentsList").getRows().length;
+        var col = oEvent.mParameters.id.match(/(?:col)(\d+)/)[1];//column id
+        var hBoxId = oEvent.mParameters.id.split('--')[1].split('-')[0];//Committed ou Fitted
+
+        //committed component
+        for (var i = 0; i < numberOfRows; i++) {
+            value = sap.ui.getCore().byId("componentsView--stepInput" + hBoxId + "-col" + col + "-row" + i + "-input")._lastValue;
+            if (value !== "0") {
+                sap.ui.getCore().byId("componentsView--stepInput" + hBoxId + "-col" + col + "-row" + i + "-decrementButton").setEnabled(true);
+            } else {
+                sap.ui.getCore().byId("componentsView--stepInput" + hBoxId + "-col" + col + "-row" + i + "-decrementButton").setEnabled(false);
+            }
+        }
+    },
 });

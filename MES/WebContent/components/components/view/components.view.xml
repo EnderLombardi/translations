@@ -112,7 +112,7 @@
 						 visible="false">
 						<Label textAlign="Center" text="{i18nComponentsModel>committed}" />
 						<table:template>
-							<HBox>
+							<HBox id="Committed" modelContextChange="onModelContextChange">
 								<Button icon="sap-icon://synchronize" type="Default" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}"
 									press="synchronizeField" class="committedFittedButton">
 									<customData>
@@ -133,7 +133,7 @@
 						 visible="false">
 						<Label textAlign="Center" text="{i18nComponentsModel>fitted}" />
 						<table:template>
-							<HBox>
+							<HBox id="Fitted" modelContextChange="onModelContextChange">
 								<Button icon="sap-icon://synchronize" type="Default"
 									press="synchronizeField" class="committedFittedButton">
 									<customData>
