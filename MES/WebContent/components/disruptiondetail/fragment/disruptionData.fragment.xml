@@ -5,14 +5,6 @@
 			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
 			columnsL="4" columnsM="2" columnsS="1">
 			<f:content>
-			
-			
-            	
-
-				
-
-
-
 
 				<core:Title text="" />
 				<Label text="{i18nModel>Category}" />
@@ -80,7 +72,6 @@
 				<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
 					tokenChange="onJigToolTokenChange" enabled="false" />
 					<Input id="selectFivemCategory" text="" visible="false"/>
-            	<Input id="selectOriginator" text=""  visible="false"/>
             	
             	<core:Title text="" />				
 				<Label text="{i18nModel>OpenDate}" />
