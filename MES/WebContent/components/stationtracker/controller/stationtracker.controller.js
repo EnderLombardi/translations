@@ -1445,21 +1445,24 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
     onFreeze: function () {
         airbus.mes.components.oView.oController.onbtnComponentsFreeze();
     },
-    test : function() {
-    		sole.log("toto");
+	test : function() {
+		console.log("toto");
 	},
 	
-	// Confirm PopUp to reschedule not confirmed operation(s) on AVL Line
-    openRescheduleLinePopUp: function (lineCount) {
-		airbus.mes.stationtracker.rescheduleLinePopUp = sap.ui.xmlfragment("rescheduleLinePopUp", "airbus.mes.stationtracker.fragment.rescheduleLinePopUp", airbus.mes.stationtracker.oView.getController());
-		airbus.mes.stationtracker.rescheduleLinePopUp.addStyleClass("alignTextLeft");
-		airbus.mes.stationtracker.rescheduleLinePopUp.open();
-    },
-    closeRescheduleLinePopUp: function () {
-		airbus.mes.stationtracker.rescheduleLinePopUp.close();
-    },
-    sendRescheduleLine: function () {
-		airbus.mes.stationtracker.rescheduleLinePopUp.close();
-    }
-	
+	// Open confirm PopUp to reschedule not confirmed operation(s) on AVL Line
+	openRescheduleLinePopUp: function (lineCount) {
+		if (!this.reschedulePop) {
+			this.reschedulePop = sap.ui.xmlfragment("airbus.mes.stationtracker.fragment.rescheduleLinePopUp", this);
+			this.reschedulePop.addStyleClass("alignTextLeft");
+			this.getView().addDependent(this.reschedulePop);
+		}
+		console.log("Reschedule popup: " + this.reschedulePop);
+		this.reschedulePop.open();
+	},
+	sendRescheduleLine: function (oEvent) {
+		this.onCloseDialog(oEvent);
+	},
+	closeRescheduleLinePopUp: function (oEvent) {
+		this.onCloseDialog(oEvent);
+	}
 });
