@@ -346,7 +346,7 @@ LINETRACKER
 /******************
 Old global.css
 *******************/
-.lineTrackerSubheader{
+.factoryViewSubheader{
     background-color: #d5f1f8
 }
  .noContentPadding {
@@ -355,15 +355,15 @@ Old global.css
     }
  }
 
-#idMainView--lineTrackerName {
+#idMainView--factoryViewName {
     font-size: 1.2rem;
     color: white;
 }
 /*standard class. temporary fix */
 /*to allow font scaling according to screen. No bad implications*/
-#idMainView--lineTrackerSubheader .sapMBtnContent,
-#idMainView--lineTrackerSubheader-BarLeft .sapMBtnContent,
-#idMainView--lineTrackerToolbar .sapMBtnContent {
+#idMainView--factoryViewSubheader .sapMBtnContent,
+#idMainView--factoryViewSubheader-BarLeft .sapMBtnContent,
+#idMainView--factoryViewToolbar .sapMBtnContent {
     font-size: 1.6vh;
 }
 
@@ -968,9 +968,9 @@ z-index :0 !important;
     background-color: transparent !important;
 }
 
-#idMainView--lineTrackerSubheader .fa,
-#idMainView--lineTrackerSubheader-BarLeft .fa,
-#idMainView--lineTrackerToolbar .fa {
+#idMainView--factoryViewSubheader .fa,
+#idMainView--factoryViewSubheader-BarLeft .fa,
+#idMainView--factoryViewToolbar .fa {
     cursor: pointer;
     font-size: 14px;
     text-align: center;
@@ -1104,7 +1104,7 @@ white-space: nowrap !important;
 }
 
 ////////////////////////////////////
-#idMainView--lineTrackerSubheader {
+#idMainView--factoryViewSubheader {
     box-shadow: 0px 2px 15px -5px #0F2D65;
     border: none;
     border-top:  0.6rem solid #ffffff;
@@ -1112,44 +1112,44 @@ white-space: nowrap !important;
     z-index: 10;
 }
 
-#idMainView--lineTrackerToolbar {
+#idMainView--factoryViewToolbar {
     border:0;
 }
 .stationBoxBody>[src$="red_new.png"] + div  {
     background:#000!important;
 }
-.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent {
+.sap-desktop .factoryViewSubheader button>.sapMBtnTransparent {
     border-radius:0;
     border:0;
     height: 3rem;
 }
 
-.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent.sapMToggleBtnPressed span, .sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent span#idMainView--diaporama-img.sapUiIconMirrorInRTL {
+.sap-desktop .factoryViewSubheader button>.sapMBtnTransparent.sapMToggleBtnPressed span, .sap-desktop .factoryViewSubheader button>.sapMBtnTransparent span#idMainView--diaporama-img.sapUiIconMirrorInRTL {
     color:#ffffff;
     background-color:#74D2E7;
 }
 
-.sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent {
+.sap-desktop .factoryViewSubheader button[class^="#"]>.sapMBtnTransparent {
     padding:0;
 }
-.sap-desktop .lineTrackerSubheader button {
+.sap-desktop .factoryViewSubheader button {
     padding:0;
 }
-.sap-desktop .lineTrackerSubheader button[class^="#"].sapMBarChild {
+.sap-desktop .factoryViewSubheader button[class^="#"].sapMBarChild {
     margin : 0.25rem 0;
     width: 3rem;
     height: 46px;
 
 }
-.sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent>.sapMBtnIcon {
+.sap-desktop .factoryViewSubheader button[class^="#"]>.sapMBtnTransparent>.sapMBtnIcon {
     width: 3rem;
     padding: 0;
     height: 46px;
 }
-.sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent {
+.sap-desktop .factoryViewSubheader button[class^="#"]>.sapMBtnTransparent {
     height: 46px;
 }
-.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent>.sapMBtnIcon {
+.sap-desktop .factoryViewSubheader button>.sapMBtnTransparent>.sapMBtnIcon {
     color: #0D5D76;
     line-height: 3rem;
     max-height: 3rem;
@@ -1157,29 +1157,29 @@ white-space: nowrap !important;
     background-color:transparent;
             padding: 0 0.25rem;
 }
-.lineTrackerSubheader .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable.sapMBtnActive {
+.factoryViewSubheader .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable.sapMBtnActive {
     color:#ffffff;
     background-color:#74D2E7;
 }
-.lineTrackerSubheader .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable span,
- .lineTrackerSubheade .sapMToggleBtnPressed.sapMBtnHoverable .sapMBtnIcon:hover,
-.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent.sapMToggleBtnPressed {
+.factoryViewSubheader .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable span,
+ .factoryViewSubheader .sapMToggleBtnPressed.sapMBtnHoverable .sapMBtnIcon:hover,
+.sap-desktop .factoryViewSubheader button>.sapMBtnTransparent.sapMToggleBtnPressed {
     background-color: rgba(0, 86, 112, 0.20);
 }
 
-.lineTrackerSubheader .sapMBarChild:nth-child(5) {
+.factoryViewSubheader .sapMBarChild:nth-child(5) {
     margin: 0 0 0 0.25rem!important;
 }
-.lineTrackerSubheader .sapMBarChild:nth-child(6) {
+.factoryViewSubheader .sapMBarChild:nth-child(6) {
     margin: 0 0.25rem!important;
 }
-.lineTrackerSubheader .sapMBarChild:nth-child(7) {
+.factoryViewSubheader .sapMBarChild:nth-child(7) {
     margin: 0 0 0 0!important;
 }
-.lineTrackerSubheader .sapMBarChild:nth-child(9) {
+.factoryViewSubheader .sapMBarChild:nth-child(9) {
     margin: 0 0.25rem!important;
 }
-.lineTrackerSubheader .sapMBarChild:nth-child(10) {
+.factoryViewSubheader .sapMBarChild:nth-child(10) {
     margin: 0!important;
 }
 
