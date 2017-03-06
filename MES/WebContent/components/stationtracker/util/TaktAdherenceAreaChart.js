@@ -18,7 +18,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.TaktAdherenceAreaChar
 
 		oRm.write("<svg ");
 		oRm.writeControlData(oControl);
+		if ( $('#stationTrackerView--chartId').width() != null ) {
 		oRm.write(" class='takt_adherence_area_chart' viewBox='0 0 " + $('#stationTrackerView--chartId').width() + " 119' perserveAspectRatio='xMinYMid'");
+		} else {
+			oRm.write(" class='takt_adherence_area_chart' viewBox='0 0 " + "0" + " 119' perserveAspectRatio='xMinYMid'");	
+		}
 		oRm.write(" />");
 
 	},
