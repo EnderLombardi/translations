@@ -2,6 +2,9 @@
 LINETRACKER
 *******************/
 
+//Arnaud bonvila : apply #idMainView to all the scss
+#idMainView {
+
 /******************
     FACTORY VIEW
     *******************/
@@ -91,8 +94,7 @@ LINETRACKER
 }
 
 
-//belamrani : apply #idFactoryView to all the scss
-#idFactoryView {
+
   //factory_lineButton
   .factory_lineButton {
     height: 100%;
@@ -736,6 +738,7 @@ Old bcrystal.css
     background-color: aliceblue;
     heigh: 33px;
   }
+
   /******************
 Old chart.css
 *******************/
@@ -1375,6 +1378,7 @@ old STATIONDETAIL
     padding: 0;
   }
 
+
   /* ID STATION VIEW */
   #idStationView {
     .structureStationBox {
@@ -1403,8 +1407,8 @@ old STATIONDETAIL
     }
 
   }
-
 }
+
 
 /*******************
 QUARANTINE USELESS CODE
