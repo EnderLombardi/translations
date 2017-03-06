@@ -75,8 +75,6 @@ airbus.mes.disruptions.AttachmentManager = {
      	   this.AttachmentDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.AttachmentDialog", airbus.mes.disruptions.AttachmentFile);
             this.getView().addDependent(this.AttachmentDialog);
         }
-    	this.AttachmentDialog.setContentHeight("895px");
-    	this.AttachmentDialog.setContentWidth("1750px");
     	
          this.AttachmentDialog.open();
 	},
@@ -132,5 +130,30 @@ airbus.mes.disruptions.AttachmentManager = {
 		var oModel = sap.ui.getCore().getModel("AttachmentList");
 		var iLength = oModel.getData().items.length;
 		oAttachmentHeader.setText(sAttachment + " (" + iLength + ")");
-	}
+	},
+	
+
+	setFileType : function() {
+		return airbus.mes.settings.AppConfManager.getConfiguration("AIRBUS_ALLOWED_FILE_TYPES");
+	},
+	getFileIcon : function(sType) {
+		var sIcon = "";
+		
+		if (sType === 'png' || sType === 'jpg') {
+			sIcon = "sap-icon://camera"
+		} else if (sType === 'txt') {
+			sIcon = "sap-icon://document-text"
+		} else if (sType === 'doc' || sType === 'docs') {
+			sIcon = "sap-icon://doc-attachment"
+		} else if (sType === 'pdf') {
+			sIcon = "sap-icon://pdf-attachment"
+		} else if (sType === 'xlsx') {
+			sIcon = "sap-icon://excel-attachment"
+		} else if (sType === 'pptx' || sType === 'ppt') {
+			sIcon = "sap-icon://ppt-attachment"
+		} else {
+			sIcon = "sap-icon://document-text"
+		}
+		return sIcon;
+	},
 };

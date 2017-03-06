@@ -1,25 +1,43 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
-	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
-	xmlns:l="sap.ui.layout"
-	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	<Dialog id="idAttachmentDialog">
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:u="sap.ui.unified">
+	<Dialog id="idAttachmentDialog" contentWidth="90%"
+		contentHeight="90%" showHeader="false">
+		<subHeader>
+			<Toolbar>
+				<Button icon="sap-icon://nav-back" press="onNavPress"
+					class="sapUiSmallMarginBegin" />
+				<Label text="{i18nModel>SelectDocs}" design="Bold"
+					class="sapUiSmallMarginBegin" />
+			</Toolbar>
+		</subHeader>
 		<content>
 			<Toolbar>
-				<Button icon="sap-icon://nav-back" press="onNavPress" />
-				<Label text="Select Documents to attach to Disruption" design="Bold"/>
+				<Label text="{i18nModel>DisplayAttachments}" design="Bold" />
 				<ToolbarSpacer></ToolbarSpacer>
-				
-				<CheckBox id="idCheckCurrOp" text="{i18nModel>CurrOP}"
+				<RadioButton id="idCheckCurrOp" text="{i18nModel>CurrOP}"
 					select="" class="sapUiSmallMarginEnd" />
-				<CheckBox id="idCheckCurrWO" text="{i18nModel>CurrWO}"
+				<RadioButton id="idCheckCurrWO" text="{i18nModel>CurrWO}"
 					select="" class="sapUiSmallMarginEnd" />
-				<CheckBox id="idCheckDesktop" text="{i18nModel>Desktop}"
+				<RadioButton id="idCheckDesktop" text="{i18nModel>Desktop}"
 					select="" class="sapUiSmallMarginEnd" />
+				<u:FileUploader id="idfileUploader" buttonText="{i18nModel>AttachDoc}" tooltip="{i18nModel>Attach}"
+					icon="sap-icon://sys-monitor" uploadComplete="onUploadComplete"
+					class="attachIcon" change="onFileSelect"
+					buttonOnly="true"  style="Transparent"
+					visible="true">
+
+				</u:FileUploader>
 			</Toolbar>
 
 			<HBox>
-					<Label text="{i18nModel>ListDisruption}" class="sapUiMediumMargin"></Label>
+				<Label text="{i18nModel>ListDocuments}" class="sapUiMediumMargin"></Label>
 			</HBox>
 		</content>
+		<beginButton>
+			<Button text="{i18nModel>Attach}" />
+		</beginButton>
+		<endButton>
+			<Button text="{i18nModel>cancel}" />
+		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

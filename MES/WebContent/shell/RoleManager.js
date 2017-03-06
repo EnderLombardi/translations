@@ -61,7 +61,7 @@ airbus.mes.shell.RoleManager = {
 	},
 	
 	/**
-	 * Fetch Functionnal Roles from the Customizing Table and then parse the list of roles
+	 * Fetch Functional Roles from the Customizing Table and then parse the list of roles
 	 * to populate 'this.features' object with each feature and the list of positive
 	 * and negative roles associated.
 	 */
