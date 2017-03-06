@@ -1449,19 +1449,31 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 		console.log("toto");
 	},
 	
-	// Open confirm PopUp to reschedule not confirmed operation(s) on AVL Line
-	openRescheduleLinePopUp: function (lineCount) {
+	/**
+	 * Open confirm PopUp to reschedule not confirmed operation(s) on AVL Line
+	 * @PARAM {OBJECT} AVL Line information
+	 */
+	openRescheduleLinePopUp: function (objLine) {
+		
 		if (!this.reschedulePop) {
 			this.reschedulePop = sap.ui.xmlfragment("airbus.mes.stationtracker.fragment.rescheduleLinePopUp", this);
 			this.reschedulePop.addStyleClass("alignTextLeft");
 			this.getView().addDependent(this.reschedulePop);
 		}
-		console.log("Reschedule popup: " + this.reschedulePop);
+		
+		this.reschedulePop.setModel(new sap.ui.model.json.JSONModel( objLine ), "RescheduleLineData");
 		this.reschedulePop.open();
 	},
+	
 	sendRescheduleLine: function (oEvent) {
+		var objLine = this.reschedulePop.getModel("RescheduleLineData").oData;
+		console.log(objLine);
+		// call request
+		var arryObjLine = [objLine];
+		airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest(arryObjLine);
 		this.onCloseDialog(oEvent);
 	},
+	
 	closeRescheduleLinePopUp: function (oEvent) {
 		this.onCloseDialog(oEvent);
 	}

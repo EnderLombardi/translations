@@ -53,6 +53,7 @@ airbus.mes.stationtracker.util.ModelManager = {
             "SplitDetailModel", // Model for Split Model
             "dispatchFromAcpngModel", //Model for ACPGN status
             "dispatchFromMesModel", //Model for MES status
+            "datas"
         ]
 
         airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
@@ -193,7 +194,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         var getUrlMesStatus = this.urlModel.getProperty("urlDispatchFromMes");
 
         getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
-            .replaceURI(getUrlMesStatus, "$erpSystem", opeData.erp_system);
+            .replaceURI(getUrlMesStatus, "$erpSystem", oData.erp_system);
         
         getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
         .replaceURI(getUrlMesStatus, "$site", oData.site);
@@ -208,9 +209,7 @@ airbus.mes.stationtracker.util.ModelManager = {
             .replaceURI(getUrlMesStatus, "$sfcstep", opeData.sfc_step_ref);
 
         oViewModel.loadData(getUrlMesStatus, null, true);
-        
-        oData.lang = lang;
-        oData.erp_system = opeData.erp_system;
+
 
     },
 
@@ -1034,9 +1033,8 @@ airbus.mes.stationtracker.util.ModelManager = {
     // Reschedule AVL Line(s)
     sendRescheduleLineRequest: function (lines) {
         // get Url of the service
-        var urlReschedulingLineService = this.urlModel.getProperty("urlReschedulingLineService");
+        var urlReschedulingLineService = this.urlModel.getProperty("urlReschedulLinesService");
         var oData = airbus.mes.stationtracker.util.ModelManager.settings;
-        
         
         // Get current shift id
 		var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
@@ -1077,37 +1075,29 @@ airbus.mes.stationtracker.util.ModelManager = {
 		}
     },
     
+    /**
+     * Reschedule not confirmed operations on a avl line
+     * @PARAM {String} AVL Line
+     * @PARAM {Int} number of not confirmed operation
+     */
 	rescheduleLine: function (avlLine, count) {
+		
 		window.event.stopPropagation();
 		
 		// Get AVL Line number and skill from avlLine string
 		var avlline  = avlLine.split("_");
-		var line  = avlline[0];
+		var nLine  = avlline[0];
 		var skill = avlline[1];
 
-		var lines = [
-			{
-			"line": line,
-			"skill": skill
-			}
-		];
+		var objLine = {
+			"avlLine": avlLine,
+			"nLine":   nLine,
+			"skill":   skill,
+			"count":   count
+		};
 		
-		
-		
-		airbus.mes.stationtracker.oView.getController().openRescheduleLinePopUp(count);
-        //airbus.mes.stationtracker.openRescheduleLinePopUp(count);
-        
-		// console.log("lines: " + line + " / " + skill);
-		// console.log("countNotConfOpe = " + count);
-		
-		
-		/*
-		 * CONFIRMATION POP UP HERE !!
-		 * 
-		 */
-		
-		// call request
-		//airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest(lines);
+		// Open confirm popup
+		airbus.mes.stationtracker.oView.getController().openRescheduleLinePopUp(objLine);
 	},
 
     openWorkListPopover: function (id) {
@@ -1470,7 +1460,6 @@ airbus.mes.stationtracker.util.ModelManager = {
         airbus.mes.stationtracker.ReschedulePopover.setModel(oModel, "RescheduleGroupModel");
 
         airbus.mes.stationtracker.ReschedulePopover.open();
-
     },
 
 

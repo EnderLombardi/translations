@@ -1049,5 +1049,4 @@ airbus.mes.stationtracker.util.Formatter = {
 	sumKPI: function (value1, value2, value3) {
 		return parseFloat(value1) + parseFloat(value2) + parseFloat(value3);
 	}
-
 };
