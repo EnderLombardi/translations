@@ -147,6 +147,8 @@ airbus.mes.operationdetail.ModelManager = {
         .replaceURI(urlConfirmationCheckList, "$OperationID", data.operation_id);
         urlConfirmationCheckList = airbus.mes.shell.ModelManager
         .replaceURI(urlConfirmationCheckList, "$PhysStation", stationIDcheck);
+        urlConfirmationCheckList = airbus.mes.shell.ModelManager
+        .replaceURI(urlConfirmationCheckList, "$erp_system", data.erp_system);
         return urlConfirmationCheckList;
  
     },
