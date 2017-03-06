@@ -108,7 +108,7 @@ airbus.mes.operationdetail.ModelManager = {
     		 urlDispatch, "$ERPSystem", airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system);    	     	 
     	 
     	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
-    		 urlDispatch, "$language", airbus.mes.stationtracker.util.ModelManager.settings.lang);   
+    		 urlDispatch, "$language", sap.ui.getCore().getConfiguration().getLanguage());   
     	 
          return urlDispatch;
     },   
