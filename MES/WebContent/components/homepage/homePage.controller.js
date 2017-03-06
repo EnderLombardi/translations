@@ -119,9 +119,20 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 * 
 	 * @memberOf components.globalnav.globalNavigation
 	 */
-	// onAfterRendering : function() {
-	// },
+	onAfterRendering : function() {
+		airbus.mes.homepage.oView.getController().enableDisableFactoryView();
+		
+	 },
 
+	 enableDisableFactoryView : function() {
+			if (airbus.mes.settings.ModelManager.site == "UBN1") {
+				airbus.mes.homepage.oView.getModel("1TileLineHome").setProperty("/buttonDetail/9/enable", "true");
+				airbus.mes.homepage.oView.getModel("1TileLineHome").refresh();
+			} else {
+				airbus.mes.homepage.oView.getModel("1TileLineHome").setProperty("/buttonDetail/9/enable", "false");
+				airbus.mes.homepage.oView.getModel("1TileLineHome").refresh();
+			}
+		}, 
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources and
 	 * finalize activities.

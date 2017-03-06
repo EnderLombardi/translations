@@ -22,7 +22,7 @@
 		"icon": "customer-history",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "false"
+		"enable": "true"
 	},	
 	{
 
@@ -77,7 +77,7 @@
 		"icon": "factory",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "true"
+		"enable": "false"
 	
 	}
 	]
