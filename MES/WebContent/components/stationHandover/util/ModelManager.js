@@ -23,19 +23,19 @@ airbus.mes.stationHandover.util.ModelManager = {
 		}),
 		"noTime" : new sap.ui.model.Filter("NO_TIME", "EQ", "false"),
 		"selected" : new sap.ui.model.Filter("selected", "EQ", "false"),
-//		"station" : new sap.ui.model.Filter({
-//			path : "ORIGIN_STATION",
-//			test : function(oValue) {
-//										
-//				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
-//					
-//					return true;
-//				} else {
-//					
-//					return false;
-//				}
-//			}
-//		}),
+		"station" : new sap.ui.model.Filter({
+			path : "ORIGIN_STATION",
+			test : function(oValue) {
+										
+				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
+					
+					return true;
+				} else {
+					
+					return false;
+				}
+			}
+		}),
 		"aType" : [ "0" ],
 		"aStation" : [],
 	},
@@ -45,7 +45,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 		var aModel = [ "oswModel", "msnModel", "typeModel", "groupModel", "phStation", "optionInsertOsw" ]
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
-		core.getModel("oswModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onOswLoad);
+		//core.getModel("oswModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onOswLoad);
 
 		var dest;
 
@@ -100,8 +100,42 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		var getUrlShifts = this.urlModel.getProperty("urltest");
+		
+		jQuery.ajax({
+			type : 'post',
+			url : getUrlShifts,
+			contentType : 'application/json',
+			async : 'false',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"physicalStationBO" : airbus.mes.settings.ModelManager.station,
+				"msn" : airbus.mes.settings.ModelManager.msn,
+				"calculateOWWithResponsibility" : true,
+				"calculateOWWithoutResponsibility" : true,
+				"calculateLocalOW" : true
+			}),
 
-		oViewModel.loadData(getUrlShifts, null, false);
+			success : function(data) {
+
+				try {
+					
+					oViewModel.setData(data);
+					//airbus.mes.calendar.oView.getModel("ressourcePoolModel").refresh(true);
+					airbus.mes.stationHandover.util.ModelManager.onOswLoad();
+				} catch (e) {
+
+					console.log("NO osw load problem");
+				}
+
+			},
+
+			error : function(error, jQXHR) {
+				console.log("NO osw load problem");
+
+			}
+		});
+
+		//oViewModel.loadData(getUrlShifts, null, false);
 
 	},
 
