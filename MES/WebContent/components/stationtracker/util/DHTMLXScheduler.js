@@ -300,20 +300,22 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
                     var myButton = airbus.mes.stationtracker.oPopoverPolypoly.getButtons().find(function (el) {
                         return el.sId == "deleteLineAssignmentButton";
                     });
-                    if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[section.avlLine]) {
-                        if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[section.avlLine][airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID]) {
-                            if (!myButton.getVisible()) {
-                                myButton.setVisible(true);
-                            }
-                        } else {
-                            if (myButton.getVisible()) {
-                                myButton.setVisible(false);
-                            }
-                        }
-                    } else {
-                        if (myButton.getVisible()) {
-                            myButton.setVisible(false);
-                        }
+                    if (sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_WORKER_BC_UNASSIGN")) {
+	                    if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[section.avlLine]) {
+	                        if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[section.avlLine][airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID]) {
+	                            if (!myButton.getVisible()) {
+	                                myButton.setVisible(true);
+	                            }
+	                        } else {
+	                            if (myButton.getVisible()) {
+	                                myButton.setVisible(false);
+	                            }
+	                        }
+	                    } else {
+	                        if (myButton.getVisible()) {
+	                            myButton.setVisible(false);
+	                        }
+	                    }
                     }
                     // Permit to display or not polypoly affectation or polypoly simple
                     airbus.mes.polypoly.oView.getController().initiatePolypoly();
