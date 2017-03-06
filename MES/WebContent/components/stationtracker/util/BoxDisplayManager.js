@@ -94,8 +94,7 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    colorProgress_Escalated: '<div class="openBlockedEscalated"></div>',
 		    colorProgress_AnsweredBlocked: '<div class="answeredBlocked"></div>',
 		    colorProgress_AnsweredBlockedExcalated: '<div class="answeredBlockedExcalated"></div>',
-		    colorProgress_SolvedBlocked: '<div class="solvedBlocked"></div>',
-		    colorProgress_SolvedBlockedExcalated: '<div class="solvedBlockedExcalated"></div>',
+		    colorProgress_SolvedDisruption: '<div class="solvedDisruption"></div>',
 		
 		    colorProgress_Constructor: function(color, sProgress) {
 		        if ( sProgress != undefined ){

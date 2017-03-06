@@ -41,7 +41,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Load Disruptions for a single operation
 	 */
-	loadDisruptionsByOperation : function(operation, sSfcStepRef) {
+	loadDisruptionsByOperation : function(workCenterBO, operation, sSfcStepRef) {
 
 		airbus.mes.operationdetail.oView.setBusyIndicatorDelay(0);
 		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
@@ -55,7 +55,7 @@ airbus.mes.disruptions.ModelManager = {
 			cache : false,
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
-				"workCenterBO" : "",
+				"workCenterBO" : workCenterBO,
 				"operationNo" : operation,
 				"sfcStepBO" : sSfcStepRef,
 				"userBO" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),

@@ -247,33 +247,41 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 			
 			sStatus = airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(el.STATE, el.PAUSED, el.PREVIOUSLY_STARTED );
 			
-			//Operation Not Started and Disruptions Exists
+			//Opened disruption Escalated
 			if ( el.DISRUPTION === "D1") {
 				sStatus = "4";
 			}
-			//Opened Escalated disruption
+			//Open and Blocked disruption
 			else if ( el.DISRUPTION === "D2") {
 				sStatus = "5";
 			}
-			//Open Block Disruption
+			//Open Non-Blocking Disruption
 			else if ( el.DISRUPTION === "D3") {
 				sStatus = "6";
 			}
-			//Answered Escalated disruption
+			//Answered or Rejected Escalated disruption
 			else if ( el.DISRUPTION === "D4") {
 				sStatus = "7";
 			}
-			//Answered Blocking disruption
+			//Answered or Rejected Blocked Disruption
 			else if ( el.DISRUPTION === "D5") {
 				sStatus = "8";
 			}
-			//Solved Escalated disruption
+			//Answered or Rejected Non-Blocking Disruption
 			else if ( el.DISRUPTION === "D6") {
 				sStatus = "9";
 			}
-			//Solved Blocking disruption
+			//Solved Escalated disruption
 			else if ( el.DISRUPTION === "D7") {
 				sStatus = "10";
+			}
+			//Solved Blocking disruption
+			else if ( el.DISRUPTION === "D7") {
+				sStatus = "11";
+			}
+			//Solved Non-Blocking disruption
+			else if ( el.DISRUPTION === "D7") {
+				sStatus = "12";
 			}
 			//andon
 			/*else if ( el.DISRUPTION === "B") {
