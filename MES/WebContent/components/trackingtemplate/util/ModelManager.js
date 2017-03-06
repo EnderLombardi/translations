@@ -57,7 +57,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     },
 
     /**
-     * Call the service to update data
+     * Call the service to update confirmations notes data
      */
     loadConfirmationsNotesData: function (oViewModel, model) {
         airbus.mes.shell.busyManager.setBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--confirmation_notes_panel");
@@ -87,7 +87,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         });
     },
     /**
-     * Call the service to update data
+     * Call the service to update  WO notes data
      */
     loadWONotesData: function (woNotesModel, model) {
         airbus.mes.shell.busyManager.setBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--wo_notes_panel");
@@ -119,6 +119,10 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         });
     },
 
+
+    /**
+     * Function in order to link attached document to a WO notes
+     */
     attachedDocumentToWoNotes: function (wonotes, attachedDocument) {
         wonotes = wonotes.sort(airbus.mes.shell.util.Formatter.fieldComparator(['Handle']));
         attachedDocument = attachedDocument.sort(airbus.mes.shell.util.Formatter.fieldComparator(['PRODUCTION_COMMENT']));
@@ -304,8 +308,6 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                     airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
                     if (result.Rowsets.Rowset[0].Row[0].Message_Type === 'S') {
                         airbus.mes.trackingtemplate.oView.oController.submitAttachedDocument(handle, userId);
-                        airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
-                        airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
                     }
                 }
             });
@@ -357,7 +359,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             })
             ,
             success: function (data, textStatus, jqXHR) {
-                airbus.mes.trackingtemplate.oView.oController.removeLastFileAttachDocument();
+                console.log(data);
             },
             error: function (data, textStatus, jqXHR) {
                 airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
@@ -369,7 +371,6 @@ airbus.mes.trackingtemplate.util.ModelManager = {
      * return post url
      */
     getPostAttachedDocumentUrl: function () {
-        console.log(this.urlModel.getProperty("postAttachedDocument"));
         return this.urlModel.getProperty("postAttachedDocument");
     },
 

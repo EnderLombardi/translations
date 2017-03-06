@@ -3,7 +3,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
 
     attachDocument: [],
     userConfirmationFragmentIsInitialised: undefined,
-    isRendered : undefined,
+    isRendered: undefined,
 
     /**
     * Apply a filter on the confirmation Notes List and the WO Notes List
@@ -165,7 +165,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                     this.getView().addDependent(
                         this._oUserConfirmationDialog);
                 }
-                
+
                 this._oUserConfirmationDialog.open();
                 this.userConfirmationFragmentIsInitialised = true;
             } else {
@@ -183,7 +183,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      */
     onCancelConfirmation: function () {
         this._oUserConfirmationDialog.close();
-        this.cleanUserConfirmation();
     },
 
     /**
@@ -221,11 +220,12 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * TODO : need a better method to clean value. 
      */
     cleanAfterAddingNotes: function () {
-        if(this.isRendered) {
-        //if the view is not ready yet, dont try to reset value 
+        if (this.isRendered) {
+            //if the view is not ready yet, dont try to reset value 
             airbus.mes.trackingtemplate.oView.byId('commentArea').setValue();
             airbus.mes.trackingtemplate.oView.byId("reasonCodeSelectBox").setSelectedKey('');
         }
+        this.cleanUserConfirmation();
     },
 
     /**
@@ -244,9 +244,11 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * unchecked all checked boxes
      */
     uncheckedAllSelectedBox: function () {
-        this.getView().byId("trackingtemplateView--showOnlyLastWONote").setSelected(false);
-        this.getView().byId("trackingtemplateView--showOnlyLastConfirmationNote").setSelected(false);
-        this.getView().byId("trackingtemplateView--showOnlyNotConfirmedConfirmationNote").setSelected(false);
+        if (this.isRendered) {
+            this.getView().byId("trackingtemplateView--showOnlyLastWONote").setSelected(false);
+            this.getView().byId("trackingtemplateView--showOnlyLastConfirmationNote").setSelected(false);
+            this.getView().byId("trackingtemplateView--showOnlyNotConfirmedConfirmationNote").setSelected(false);
+        }
     },
 
     /***********************************************************
@@ -391,6 +393,9 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
                 this.attachDocument[i].fileBase64,
                 userId);
         }
+        this.cleanAfterAddingNotes();
+        this.cleanListFiles();
+        airbus.mes.trackingtemplate.util.ModelManager.refreshTrackingTemplateModel();
     },
 
     /**
@@ -400,9 +405,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     cleanListFiles: function () {
         var attachmentFilesCollection = this.getView().byId('UploadCollection');
         attachmentFilesCollection.removeAllItems();
-        if (this.attachDocument.length > 0) {
-            this.attachDocument.length = 0;
-        }
+        this.attachDocument.length = 0;    
     },
 
     /**
@@ -411,9 +414,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      */
     removeLastFileAttachDocument: function () {
         this.attachDocument.splice(-1, 1);
-        if (this.attachDocument.length > 0) {
-            this.cleanListFiles();
-        }
     },
     /**
      * We don't allow to add same file name. At least we delete the first one then add the new one
