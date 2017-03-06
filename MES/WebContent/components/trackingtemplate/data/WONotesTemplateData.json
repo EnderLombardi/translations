@@ -390,42 +390,42 @@
             "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,6",
             "FILE_NAME": "jpeg-test-nj-0.jpg",
             "FILE_EXT": "jpg",
-            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-0.jpg",
+            "FILE_URL": "http://dmivie0.eu.airbus.corp:55600/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-0.jpg",
             "FILE_COUNT": "0"
           },
           {
             "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,6",
             "FILE_NAME": "jpeg-test-nj-2-1.jpg",
             "FILE_EXT": "jpg",
-            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-2-1.jpg",
+            "FILE_URL": "http://dmivie0.eu.airbus.corp:55600/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-2-1.jpg",
             "FILE_COUNT": "1"
           },
           {
             "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,6",
             "FILE_NAME": "jpeg-test-nj-3-2.jpg",
             "FILE_EXT": "jpg",
-            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-3-2.jpg",
+            "FILE_URL": "http://dmivie0.eu.airbus.corp:55600/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-3-2.jpg",
             "FILE_COUNT": "2"
           },
           {
             "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,7",
             "FILE_NAME": "jpeg-test-nj-4-0.jpg",
             "FILE_EXT": "jpg",
-            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-4-0.jpg",
+            "FILE_URL": "http://dmivie0.eu.airbus.corp:55600/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-4-0.jpg",
             "FILE_COUNT": "0"
           },
           {
             "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,9",
             "FILE_NAME": "jpeg-test-nj-5-0.jpg",
             "FILE_EXT": "jpg",
-            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-5-0.jpg",
+            "FILE_URL": "http://dmivie0.eu.airbus.corp:55600/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-5-0.jpg",
             "FILE_COUNT": "0"
           },
           {
             "PRODUCTION_COMMENT": "ProductionCommentBO:FNZ1,ShopOrderBO:FNZ1,11016229,9",
             "FILE_NAME": "jpeg-test-nj-6-1.jpg",
             "FILE_EXT": "jpg",
-            "FILE_URL": "https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-6-1.jpg",
+            "FILE_URL": "http://dmivie0.eu.airbus.corp:55600/irj/go/km/docs/documents/Public%20Documents/SAPMES/MOD1684/FNZ1/jpeg-test-nj-6-1.jpg",
             "FILE_COUNT": "1"
           }
         ]
