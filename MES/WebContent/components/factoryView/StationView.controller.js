@@ -60,6 +60,7 @@ sap.ui.controller("airbus.mes.factoryView.StationView", {
         
         airbus.mes.settings.ModelManager.msn = sMsn + "_" + sHand;
         airbus.mes.factoryView.util.ModelManager.getTranscoStation(sSite, sFactory, sLineNumber, sStationNumber);
+       
     },
     /*onAfterRendering: function(){
     }*/

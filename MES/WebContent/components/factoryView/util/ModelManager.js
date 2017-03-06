@@ -55,7 +55,8 @@ airbus.mes.factoryView.util.ModelManager = {
     // to open order worklist operation worklist and update confiramtion
     // operation
     factory_name : "F1",
-    site : "CHES",
+    //site : "CHES",
+    site : "UBN1",
     revision : "A",
     station_number : "",
     line_number : "",
@@ -181,13 +182,26 @@ airbus.mes.factoryView.util.ModelManager = {
                     airbus.mes.settings.ModelManager.program = "A320";
                     airbus.mes.settings.ModelManager.station = data.Rowsets.Rowset[0].Row[0].Physical_Station;
                     airbus.mes.settings.ModelManager.line = data.Rowsets.Rowset[0].Row[0].Line;
-                    airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
-                    airbus.mes.settings.ModelManager.loadUserSettingsModel();
-                    airbus.mes.settings.oView.getController().saveUserSettings();
+                   // airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
+                   // airbus.mes.settings.ModelManager.loadUserSettingsModel();
+                    
+                    var oModel = sap.ui.getCore().getModel("userSettingModel");
+                    
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/stationDescription",airbus.mes.settings.ModelManager.stationDesc);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/msn",airbus.mes.settings.ModelManager.msn);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/lineDescription",airbus.mes.settings.ModelManager.lineDesc);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/programDescription",airbus.mes.settings.ModelManager.programDesc);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/station",airbus.mes.settings.ModelManager.station);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/line",airbus.mes.settings.ModelManager.line);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/program",airbus.mes.settings.ModelManager.program);
+            		sap.ui.getCore().getModel("userSettingModel").refresh();
+                    
+            		 airbus.mes.shell.util.navFunctions.stationTracker(); 
+                   /* airbus.mes.settings.oView.getController().saveUserSettings();
                     // Permit to know if the user settings saved is correct or not regarding the plant model 
                     if ( airbus.mes.settings.ModelManager.saveSettingIsCorrect() ) {
                     	airbus.mes.shell.util.navFunctions.stationTracker();                    	
-                    }                   
+                    } */                  
                 }
 
             },
