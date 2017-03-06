@@ -468,8 +468,11 @@ sap.ui.controller("airbus.mes.settings.Settings",
                 airbus.mes.shell.util.navFunctions.jigsAndTools.configME = undefined;
                 
                 airbus.mes.settings.oView.byId("navBack").setEnabled(true);
-           
+                //show hide factory tile render screen again
+                airbus.mes.homepage.oView.getController().enableDisableFactoryView(); 
+                
                 this.navigate(oEvent);
+             
 
             },
 

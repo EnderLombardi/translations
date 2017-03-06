@@ -72,9 +72,9 @@ sap.ui.controller(
                         nav.to(airbus.mes.homepage.oView.getId());
                     }
                     break;
-                    //show hide factory tile render screen again
-                    airbus.mes.homepage.oView.getController().enableDisableFactoryView(); 
+                   
             }
+       
         },
 
         /**
