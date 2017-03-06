@@ -1044,9 +1044,11 @@ airbus.mes.stationtracker.util.ModelManager = {
 		// Get previous shift id
 		if ( fIndexShift != -1 && fIndexShift != 0 ) {
 			var prevShiftID = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1].shiftID;
-			console.log("Prev shift ID: " + prevShift);
+			var currentDate = new Date();
+			console.log("Prev shift ID : " + prevShiftID);
+			console.log("Current Date  : " + currentDate);
 		
-			
+			// TODO Ajouter username ou handle si possible
 			var data = JSON.stringify({
 				"site": 		oData.site,
 				"phStation": 	oData.station,

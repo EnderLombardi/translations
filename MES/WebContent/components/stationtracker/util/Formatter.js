@@ -623,7 +623,9 @@ airbus.mes.stationtracker.util.Formatter = {
 		if (bNotConfirmedOpLS) {
 			// Count number of not confirmed operation
 			var countNoConf = airbus.mes.stationtracker.util.ShiftManager.countNoTotalConfLastShif(oSection);
-			sNotConfirmedOpLS = '<span class="classNotConfirmedOperation" onclick="airbus.mes.stationtracker.util.ModelManager.rescheduleLine(\''+ oSection.avlLine + '\',' + countNoConf + ')"></span>';
+			sNotConfirmedOpLS = '<span class="classNotConfirmedOperation" onclick="airbus.mes.stationtracker.util.ModelManager.rescheduleLine(\''
+				+ oSection.avlLine + '\',' + countNoConf + ')"><span class="classNotConfirmedOpeButton">'
+			+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("RescheduleLineButton") +'</span><i class="fa fa-clock-o" aria-hidden="true"></i></span>';
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
