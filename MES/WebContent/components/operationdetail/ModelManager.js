@@ -95,9 +95,6 @@ airbus.mes.operationdetail.ModelManager = {
     		 urlDispatch, "$site", airbus.mes.settings.ModelManager.site);
     	 
     	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
-    		 urlDispatch, "$userGroup", userGroup);
-    	 
-    	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
     		 urlDispatch, "$level", level);
     	 
     	 urlDispatch = airbus.mes.stationtracker.util.ModelManager
@@ -105,6 +102,15 @@ airbus.mes.operationdetail.ModelManager = {
          
     	 urlDispatch = airbus.mes.stationtracker.util.ModelManager
          .replaceURI(urlDispatch, "$operation", opeData.operation_id);
+
+    	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
+    		 urlDispatch, "$userGroup", userGroup);    	 
+    	 
+    	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
+    		 urlDispatch, "$ERPSystem", airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system);    	     	 
+    	 
+    	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
+    		 urlDispatch, "$language", airbus.mes.stationtracker.util.ModelManager.settings.lang);   
     	 
          return urlDispatch;
     },   

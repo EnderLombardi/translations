@@ -27,9 +27,9 @@
 						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayMoreDetail}" />
 						<table:template>
 							<Button icon="sap-icon://inspection"
-							        visible="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" 
-									enabled="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" 
-									press="onLineClick"/>
+										press="onLineClick"/>
+<!-- 							        visible="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" 
+									enabled="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" -->
 						</table:template>
 					</table:Column>			
 					<table:Column width="10%">
