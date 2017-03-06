@@ -12,6 +12,9 @@
         width: 75% !important;
         max-width: none !important;
         min-width: 0 !important;
+        #componentsView--idSearchComponent-search {
+            cursor : pointer;
+        }
     }
 }
 

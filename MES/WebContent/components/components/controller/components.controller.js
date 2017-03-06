@@ -13,13 +13,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         this.oFilterSearch = undefined;
         this.oFilterFilter = undefined;
 
-        //reset the columns on compnents
-        if (this.committedFittedView) {
-            this.committedFittedView = false;
-
-            this.changeColVisibility(this.committedFittedView);
-        }
-
         //clear filters list if filter already exists
         if (sap.ui.getCore().byId("selectFilter--selectFilterComponents")) {
             sap.ui.getCore().byId("selectFilter--selectFilterComponents").removeSelections(true);
@@ -313,10 +306,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     //change the view between components and fitted/committed
     onbtnCommittedFitted: function (oEvent) {
-        //      Inverse the value
+        //Inverse the value
         this.committedFittedView = !this.committedFittedView;
 
-        //      Retrieve button
+        //Retrieve button
         var oButton = oEvent.getSource();
         this.setBtnCommittedFittedValue(oButton, this.committedFittedView);
     },

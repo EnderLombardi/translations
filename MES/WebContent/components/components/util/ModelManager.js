@@ -67,10 +67,10 @@ airbus.mes.components.util.ModelManager = {
     replaceStepInputsWithoutValue: function (row) {
         for (var i = 0; i < row.length; i++) {
             if (row[i].Checked_Components === "") {
-                row[i].Checked_Components = 0;
+                row[i].Checked_Components = "0";
             }
             if (row[i].Fitted_Components === "") {
-                row[i].Fitted_Components = 0;
+                row[i].Fitted_Components = "0";
             }
         }
     },

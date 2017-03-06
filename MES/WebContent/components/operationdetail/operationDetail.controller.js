@@ -281,8 +281,6 @@ sap.ui
                     this.nav.to(airbus.mes.components.oView.getId());
 
                     sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(true);
-//                  Reinitialize the button to Component
-                    airbus.mes.components.oView.getController().committedFittedView = false;
                     airbus.mes.components.oView.getController().setBtnCommittedFittedValue(sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted"),airbus.mes.components.oView.getController().committedFittedView);
                     
                     break;
