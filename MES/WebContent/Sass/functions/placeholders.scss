@@ -443,17 +443,48 @@ STATION TRACKER
     border-radius: 5px;
 }
 %classNotConfirmedOperation{
+    clear: both;
     position: absolute;
     width: 5px;
-    @include transition(width , 0.3s);
     background: #ee373d;
     left: -10px;
-    top: -500px;
-    height: 1000px;
+    top: -5px;
+    height: 105px;
     z-index: 999;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: arial;
+    overflow: hidden;
+    @include transition(width , 0.3s);
     &:hover {
-    	width: 80%;
-    	/*@include transition(all , 0s);*/
+    	width: 200px;
+    	/*@include transition(width , 0.3s);*/
+    }
+    i {
+        margin-left: 10px;
+        width: 40px;
+        height: auto;
+    }
+    .classNotConfirmedOpeButton {
+        padding-left: 40px;
+        line-height:52px;
+    }
+}
+%classRescheduleAllButton {
+    background: #ee373d;
+    position:absolute;
+    width: 5px;
+    height: 36px;
+    z-index: 999;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: arial;
+    overflow: hidden;
+    @include transition(width , 0.3s);
+    &:hover {
+        width:120px;
     }
 }
 //BUTTONS
