@@ -792,7 +792,7 @@ sap.ui.controller(
 
                             var sMessageSuccess = sap.ui.getCore().getModel("ShellI18n").getProperty("successMsgwhileSavingProfile");
 
-                            airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);=
+                            airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
                         }
 
 
