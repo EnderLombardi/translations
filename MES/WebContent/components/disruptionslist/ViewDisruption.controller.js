@@ -631,14 +631,35 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
     		  return;
     	  }
     	  
+    	  var oView = this.getView();
+    	  
     	  // Close previously expanded panel
-    	  if(this.sExpandedPanelPath != undefined)
-    		  this.getView().getModel("operationDisruptionsModel").setProperty(this.sExpandedPanelPath + "/expanded", "false");
+    	  if(this.sExpandedPanelPath != undefined){
+    		  oView.getModel("operationDisruptionsModel").setProperty(this.sExpandedPanelPath + "/expanded", "false");
+    	  }
     		  
     	  var sPath = oEvent.getSource().getBindingContext("operationDisruptionsModel").sPath;
-          this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/expanded", "true");
-          this.getView().getModel("operationDisruptionsModel").refresh();
+          oView.getModel("operationDisruptionsModel").setProperty(sPath+"/expanded", "true");
+          oView.getModel("operationDisruptionsModel").refresh();
           this.sExpandedPanelPath = sPath;
+          
+          
+          //Mark message as read
+          if(oView.getModel("operationDisruptionsModel").getProperty(sPath+"/lastUpdated") == "true"){
+        	  	var urlToCreateMsgLogCode = airbus.mes.disruptions.urlModel.getProperty("urlCreateMsgLogCode");
+      			JQuery.ajax({
+      				cache : false,
+      				url : urlToCreateMsgLogCode,
+      				type : 'POST',
+      				data : {
+      					"Param.1" : airbus.mes.settings.ModelManager.site,
+      					"Param.2" : oView.getModel("operationDisruptionsModel").getProperty(sPath+"/messageRef"),
+      					"Param.3" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+      					"Param.4" : "READ",
+      				}      			
+      			});	
+      			oView.getModel("operationDisruptionsModel").setProperty(sPath+"/lastUpdated", "false");
+          }
       },
       handleDisruptionPanelCollapse: function(){
     	  this.getView().getModel("operationDisruptionsModel").setProperty(this.sExpandedPanelPath+"/expanded", "false");
