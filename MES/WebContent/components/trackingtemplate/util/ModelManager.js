@@ -24,7 +24,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     showDisrupionBtnClicked: false, // button Disruption on Station Tracker clicked
     init: function (core) {
 
-        var aModel = ["ConfirmationsNotes","WONotes"];
+        var aModel = ["ConfirmationsNotes", "WONotes"];
 
         airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
@@ -60,7 +60,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
      * Call the service to update data
      */
     loadConfirmationsNotesData: function (oViewModel, model) {
-
+        airbus.mes.shell.busyManager.setBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--confirmation_notes_panel");
         jQuery.ajax({
             type: 'get',
             url: this.getConfirmationsNotesUrl(model),
@@ -77,10 +77,12 @@ airbus.mes.trackingtemplate.util.ModelManager = {
 
                 oViewModel.setData(data);
                 airbus.mes.trackingtemplate.oView.oController.initNotesList();
+                airbus.mes.shell.busyManager.unsetBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--confirmation_notes_panel");
             },
 
             error: function (error, jQXHR) {
                 jQuery.sap.log.info(error);
+                airbus.mes.shell.busyManager.unsetBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--confirmation_notes_panel");
             }
         });
     },
@@ -88,7 +90,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
      * Call the service to update data
      */
     loadWONotesData: function (woNotesModel, model) {
-
+        airbus.mes.shell.busyManager.setBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--wo_notes_panel");
         jQuery.ajax({
             type: 'get',
             url: this.getConfirmationsNotesUrl(model),
@@ -98,14 +100,21 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
-                
-                airbus.mes.trackingtemplate.util.ModelManager.attachedDocumentToWoNotes(data.Rowsets.Rowset[0].Row,data.Rowsets.Rowset[1].Row);
-
+                if (data.Rowsets.Rowset) {
+                    var wonotes = data.Rowsets.Rowset[0].Row;
+                    if (data.Rowsets.Rowset[1]) {
+                        airbus.mes.trackingtemplate.util.ModelManager.attachedDocumentToWoNotes(wonotes, data.Rowsets.Rowset[1].Row);
+                    }
+                    wonotes = wonotes.sort(airbus.mes.shell.util.Formatter.fieldComparator(['-Created_Date_Time']));
+                    wonotes[0].lastOperationNote = true;
+                }
                 woNotesModel.setData(data);
+                airbus.mes.shell.busyManager.unsetBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--wo_notes_panel");
             },
 
             error: function (error, jQXHR) {
                 jQuery.sap.log.info(error);
+                airbus.mes.shell.busyManager.unsetBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--wo_notes_panel");
             }
         });
     },
@@ -119,20 +128,18 @@ airbus.mes.trackingtemplate.util.ModelManager = {
         lengthAttDoc = attachedDocument.length;
         lengthWONotes = wonotes.length;
 
-        for(; indexAttDoc < lengthAttDoc; indexAttDoc+=1) {
-            for(; indexWONotes < lengthWONotes ; indexWONotes+=1) {
+        for (; indexAttDoc < lengthAttDoc; indexAttDoc += 1) {
+            for (; indexWONotes < lengthWONotes; indexWONotes += 1) {
                 wonotes[indexWONotes]["User_First_Name"] = wonotes[indexWONotes]["User_First_Name"].substring(0, 1);
-                if(!wonotes[indexWONotes].attachedDocument) {
+                if (!wonotes[indexWONotes].attachedDocument) {
                     wonotes[indexWONotes].attachedDocument = [];
                 }
-                if(wonotes[indexWONotes].Handle === attachedDocument[indexAttDoc]['PRODUCTION_COMMENT']) {
+                if (wonotes[indexWONotes].Handle === attachedDocument[indexAttDoc]['PRODUCTION_COMMENT']) {
                     wonotes[indexWONotes].attachedDocument.push(attachedDocument[indexAttDoc]);
                     break;
                 }
             }
         }
-        wonotes = wonotes.sort(airbus.mes.shell.util.Formatter.fieldComparator(['-Created_Date_Time']));
-        wonotes[0].lastOperationNote = true;
     },
 
     /**
@@ -183,9 +190,9 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     /**
      * Calculate the percentage
      */
-    getPercentage: function( obj, n1, n2) {
-        if( n1 && n2) {
-            obj.percentage = n1/n2*100;
+    getPercentage: function (obj, n1, n2) {
+        if (n1 && n2) {
+            obj.percentage = n1 / n2 * 100;
         }
     },
     /**
@@ -293,14 +300,14 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                     //get handle for attached document
                     var handle = result.Rowsets.Rowset[0].Row[0].Production_Comment;
                     var userFromRequest = result.Rowsets.Rowset[0].Row[0].UserID;
-                    if(userFromRequest.length > 0) {
+                    if (userFromRequest.length > 0) {
                         userId = userFromRequest;
-                    }; 
+                    };
                     //if we send  badgeID => UserID != null
                     //récupérer la reference du WO note. Non renvoyé par MII
                     airbus.mes.trackingtemplate.util.ModelManager.messageShow(sMessageSuccess);
-                    if(result.Rowsets.Rowset[0].Row[0].Message_Type === 'S') {
-                        airbus.mes.trackingtemplate.oView.oController.submitAttachedDocument(handle,userId);
+                    if (result.Rowsets.Rowset[0].Row[0].Message_Type === 'S') {
+                        airbus.mes.trackingtemplate.oView.oController.submitAttachedDocument(handle, userId);
                         airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
                         airbus.mes.trackingtemplate.oView.oController.cleanAfterAddingNotes();
                     }
