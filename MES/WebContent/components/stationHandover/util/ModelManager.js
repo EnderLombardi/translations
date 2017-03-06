@@ -23,19 +23,19 @@ airbus.mes.stationHandover.util.ModelManager = {
 		}),
 		"noTime" : new sap.ui.model.Filter("NO_TIME", "EQ", "false"),
 		"selected" : new sap.ui.model.Filter("selected", "EQ", "false"),
-		"station" : new sap.ui.model.Filter({
-			path : "ORIGIN_STATION",
-			test : function(oValue) {
-										
-				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
-					
-					return true;
-				} else {
-					
-					return false;
-				}
-			}
-		}),
+//		"station" : new sap.ui.model.Filter({
+//			path : "ORIGIN_STATION",
+//			test : function(oValue) {
+//										
+//				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
+//					
+//					return true;
+//				} else {
+//					
+//					return false;
+//				}
+//			}
+//		}),
 		"aType" : [ "0" ],
 		"aStation" : [],
 	},

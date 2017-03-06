@@ -32,12 +32,13 @@ airbus.mes.disruptiontracker.ModelManager = {
 		
 		jQuery.ajax({
 			type : 'post',
-			url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDisruptionListURL"),
+			url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDiruptionsURL"),
 			contentType : 'application/json',
 			cache : false,
 			data : JSON.stringify({
 				"site" : site,
 				"workCenterBO": workCenterBO,
+				"operationNo" : "",
 				"sfcStepBO": "",
 				"msnNumber": msnNumber,
 				"forMobile": true

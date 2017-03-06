@@ -18,14 +18,26 @@ sap.m.Button.extend("airbus.mes.stationtracker.util.customButton", {
 				defaultValue : '0'
 			},
 			
+			enabled : {
+				type : 'boolean',
+				group : 'Behavior',
+				defaultValue : true
+			},
+			
 		},
 	},
 	
 
 	renderer : function(oRm,oControl) {
 		
+		var fEnable = oControl.getEnabled();
+		console.log(fEnable);
+		
 		oRm.write("<button");
 		oRm.writeControlData(oControl);
+		if (!fEnable){
+			oRm.addClass("disable");			
+		}
 		oRm.addClass("sapMBtn sapMBtnBase");
         oRm.writeClasses();
         oRm.write(">");

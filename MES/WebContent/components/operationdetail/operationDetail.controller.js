@@ -453,8 +453,9 @@ sap.ui
             /***************************************************
             * Load Disruption Data
             **************************************************/
+            var operation = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo.split(",")[1];
             var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
-            airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(sSfcStepRef);
+            airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operation, sSfcStepRef);
            
             
             //tabselection

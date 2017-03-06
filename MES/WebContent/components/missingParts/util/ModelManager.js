@@ -36,8 +36,9 @@ airbus.mes.missingParts.util.ModelManager = {
 				sorterCombo.addItem(new sap.ui.core.ListItem("Ascending").setText(airbus.mes.missingParts.util.Formatter.getTranslation("Ascending")));
 			}
 		}
-		oViewModel.oData.Rowsets.Rowset[0].Columns.Column.splice(0, 0, { Name: airbus.mes.missingParts.util.Formatter.getTranslation("FilterPlaceholder") });
-
+		if ( oViewModel.oData.Rowsets != undefined ){
+			oViewModel.oData.Rowsets.Rowset[0].Columns.Column.splice(0, 0, { Name: airbus.mes.missingParts.util.Formatter.getTranslation("FilterPlaceholder") });
+		}
 		var dialog = airbus.mes.missingParts.oView.byId("missingPartsView--missingPartsPopUp");
 		if(dialog) dialog.oPopup.setModal(false);
 		oViewModel.refresh(true);//refresh the model (and so the view)

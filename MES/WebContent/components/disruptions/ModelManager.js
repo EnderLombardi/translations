@@ -39,54 +39,9 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	/***************************************************************************
-	 * Generic Function to get URL for to get Disruptions with filters or no
-	 * filters
-	 */
-	/*getDisruptionsURL : function(oFilters) {
-		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDiruptionsURL");
-
-		getDisruptionsURL = getDisruptionsURL.replace('$Site', airbus.mes.settings.ModelManager.site);
-		getDisruptionsURL = getDisruptionsURL.replace('$Status', "ALL");
-		getDisruptionsURL = getDisruptionsURL.replace('$Resource', "");
-
-		if (oFilters.operation != undefined && oFilters.operation != "")
-			getDisruptionsURL = getDisruptionsURL.replace('$Operation', oFilters.operation.split(",")[1]);
-		else
-			getDisruptionsURL = getDisruptionsURL.replace('$Operation', "");
-
-		if (oFilters.sfc_step_ref != undefined && oFilters.sfc_step_ref != "")
-			getDisruptionsURL = getDisruptionsURL.replace('$SFCStepRef', oFilters.sfc_step_ref);
-		else
-			getDisruptionsURL = getDisruptionsURL.replace('$SFCStepRef', "");
-
-		getDisruptionsURL = getDisruptionsURL.replace('$OperationRevision', "");
-		getDisruptionsURL = getDisruptionsURL.replace('$SignalFlag', "");
-		getDisruptionsURL = getDisruptionsURL.replace('$FromDate', "");
-		getDisruptionsURL = getDisruptionsURL.replace('$ToDate', "");
-
-		if (oFilters.station != undefined && oFilters.station != "")
-			getDisruptionsURL = getDisruptionsURL.replace('$WorkCenter', "WorkCenterBO:" + // WorkCenter
-			// BO
-			airbus.mes.settings.ModelManager.site + "," + oFilters.station);
-		else
-			getDisruptionsURL = getDisruptionsURL.replace('$WorkCenter', "");
-
-		getDisruptionsURL = getDisruptionsURL.replace('$userGroup', "");
-		getDisruptionsURL = getDisruptionsURL.replace('$MessageType', "");
-		getDisruptionsURL = getDisruptionsURL.replace('$User', sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"));
-
-		if (oFilters.msn != undefined && oFilters.msn != "")
-			getDisruptionsURL = getDisruptionsURL.replace('$MSN', oFilters.msn);
-		else
-			getDisruptionsURL = getDisruptionsURL.replace('$MSN', "");
-
-		return getDisruptionsURL;
-	},*/
-
-	/***************************************************************************
 	 * Load Disruptions for a single operation
 	 */
-	loadDisruptionsByOperation : function(sSfcStepRef) {
+	loadDisruptionsByOperation : function(operation, sSfcStepRef) {
 
 		airbus.mes.operationdetail.oView.setBusyIndicatorDelay(0);
 		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
@@ -101,6 +56,7 @@ airbus.mes.disruptions.ModelManager = {
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
 				"workCenterBO" : "",
+				"operationNo" : operation,
 				"sfcStepBO" : sSfcStepRef,
 				"userBO" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"msnNumber" : ""
@@ -165,7 +121,7 @@ airbus.mes.disruptions.ModelManager = {
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$site", airbus.mes.settings.ModelManager.site);
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$station", airbus.mes.settings.ModelManager.station);
 
-		// Get user to which operation is affected else current logged in user
+		/*// Get user to which operation is affected else current logged in user
 		// In Edit Mode originator field will contain Issuer
 		var sIssuer = "";
 		if (this.createViewMode == "Create") {
@@ -174,7 +130,7 @@ airbus.mes.disruptions.ModelManager = {
 		} else {
 			sIssuer = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/originatorID");
 			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
-		}
+		}*/
 
 		return urlCustomCategory;
 
@@ -185,7 +141,6 @@ airbus.mes.disruptions.ModelManager = {
 
 		// Un-Set Busy Indicator
 		oView.byId("selectCategory").setBusy(false);
-		oView.byId("selectOriginator").setBusy(false);
 		
 		if(airbus.mes.disruptions.ModelManager.createViewMode == "Create")
 			oView.setBusy(false);

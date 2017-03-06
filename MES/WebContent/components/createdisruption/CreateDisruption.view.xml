@@ -21,7 +21,7 @@
 									<f:content>
 								<core:Title text="" />		
 								<!-- SD-SP1604983-CDP-010 -->
-										<Label text="{i18nModel>CategoryClass}" />
+										<Label required="true" text="{i18nModel>CategoryClass}" />
 										<Select id="selectFivemCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/2/Row}" 
 											forceSelection="false" change="onSelectionChange" selectedKey="{DisruptionDetailModel>categoryClass}" >
 											<items>
@@ -62,7 +62,7 @@
 										
 											<Label required="true" text="{i18nModel>resGroup}" />
 											<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
-												change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>responsibleGroup}">
+												forceSelection="false" selectedKey="{DisruptionDetailModel>responsibleGroup}">
 												<items>
 													<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
 														key="{disruptionRsnRespGrp>ResponsibleGroup}" />

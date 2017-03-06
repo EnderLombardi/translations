@@ -58,8 +58,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		// Set Busy's
 		oView.byId("selectCategory").setBusyIndicatorDelay(0);
 		oView.byId("selectCategory").setBusy(true);
-		oView.byId("selectOriginator").setBusyIndicatorDelay(0);
-		oView.byId("selectOriginator").setBusy(true);
 		
 		var url = airbus.mes.disruptions.ModelManager.getDisruptionCategoryURL();
 		sap.ui.getCore().getModel("disruptionCategoryModel").loadData(url);
@@ -80,22 +78,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		var url = airbus.mes.disruptions.ModelManager.getRsnResponsibleGrpURL(sMsgType)
 		sap.ui.getCore().getModel("disruptionRsnRespGrp").loadData(url);
-	},
-
-	/***************************************************************************
-	 * Load Step3 model for create disruption screen (Resolver Names for a
-	 * Resolver Group)
-	 **************************************************************************/
-	loadResolverModel : function(sResolverGroup) {
-		/*var oView = this.getView();*/
-
-		// Set Busy's
-		/*oView.byId("selectResolver").setBusyIndicatorDelay(0);
-		oView.byId("selectResolver").setBusy(true);*/
-
-		var url = airbus.mes.disruptions.ModelManager.getResolverModelURL(sResolverGroup)
-		sap.ui.getCore().getModel("disruptionResolverModel").loadData(url);
-		
 	},
 
 	// ****** On change of item in the ComboBox ******//
@@ -127,10 +109,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 				oView.byId("selectResponsibleGrp").setEnabled(true);
 			}
 
-			// Disable and empty Resolver name field +V1.5
-			/*oView.byId("selectResolver").setEnabled(false);
-			oView.byId("selectResolver").setSelectedKey();*/
-
 			// Avoid un-necessary ajax call
 			if (oView.byId("selectCategory").getSelectedKey() == "") {
 				break;
@@ -141,12 +119,12 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		case "selectResponsibleGrp": // +V1.5
 
-			/*oView.byId("selectResolver").setSelectedKey();*/
+			oView.byId("selectResolver").setSelectedKey();
 
-			/*if (oView.byId("selectResponsibleGrp").getSelectedKey() == "")
+			if (oView.byId("selectResponsibleGrp").getSelectedKey() == "")
 				oView.byId("selectResolver").setEnabled(false);
 			else
-				oView.byId("selectResolver").setEnabled(true);*/
+				oView.byId("selectResolver").setEnabled(true);
 			
 			// Avoid un-necessary ajax call
 			if (oView.byId("selectResponsibleGrp").getSelectedKey() == "") {
@@ -154,21 +132,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			}
 
 			this.loadResolverModel(oView.byId("selectResponsibleGrp").getSelectedKey());
-			break;
-
-		case "selectreason":
-			// Do nothing - Last field since V1.5. Root Cause was removed in
-			// V1.5
-
-			/*
-			 * // Apply filter var aFilters = []; var sReason =
-			 * this.getView().byId("selectreason").getSelectedKey();
-			 * aFilters.push(new sap.ui.model.Filter("REASON",
-			 * sap.ui.model.FilterOperator.EQ, sReason));
-			 * this.getView().byId("selectRootCause").getBinding("items")
-			 * .filter(aFilters) // Enable field
-			 * this.getView().byId("selectRootCause").setEnabled(true);
-			 */
 			break;
 			
 		default:
@@ -533,9 +496,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		this.getView().byId("selectCategory").setEnabled(false);
 		this.getView().byId("selectreason").setEnabled(true);
 		this.getView().byId("selectResponsibleGrp").setEnabled(true);
-		this.getView().byId("selectOriginator").setEnabled(false);
-		//this.getView().byId("promisedDate").setEnabled(true);
-		//this.getView().byId("promisedTime").setEnabled(true);
 		this.getView().byId("expectedDate").setEnabled(true);
 		this.getView().byId("expectedTime").setEnabled(true);
 		this.getView().byId("gravity").setEnabled(true);
@@ -550,18 +510,14 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("selectFivemCategory").setEnabled(false);
 		oView.byId("selectCategory").setEnabled(false);
 		oView.byId("selectreason").setEnabled(false);
-		// oView.byId("selectRootCause").setEnabled(true); //-V1.5
 		oView.byId("selectResponsibleGrp").setEnabled(true);
-		oView.byId("selectOriginator").setEnabled(false);
-		//oView.byId("promisedDate").setEnabled(true);
-		//oView.byId("promisedTime").setEnabled(true);
 		oView.byId("expectedDate").setEnabled(false);
 		oView.byId("expectedTime").setEnabled(false);
 		oView.byId("gravity").setEnabled(false);
 		oView.byId("timeLost").setEnabled(false);
 		oView.byId("materials").setEnabled(false);
 		oView.byId("jigtools").setEnabled(false);
-		// this.getView().byId("selectResolver").setEnabled(false); // +V1.5
+		this.getView().byId("selectResolver").setEnabled(true);
 	},
 
 	originatorGroupSettings : function() {
@@ -570,18 +526,14 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("selectFivemCategory").setEnabled(false);
 		oView.byId("selectCategory").setEnabled(false);
 		oView.byId("selectreason").setEnabled(true);
-		// oView.byId("selectRootCause").setEnabled(true); //-V1.5
 		oView.byId("selectResponsibleGrp").setEnabled(true);
-		oView.byId("selectOriginator").setEnabled(false);
-		//oView.byId("promisedDate").setEnabled(false);
-		//oView.byId("promisedTime").setEnabled(false);
 		oView.byId("expectedDate").setEnabled(true);
 		oView.byId("expectedTime").setEnabled(true);
 		oView.byId("gravity").setEnabled(true);
 		oView.byId("timeLost").setEnabled(false);
 		oView.byId("materials").setEnabled(false);
 		oView.byId("jigtools").setEnabled(false);
-		oView.byId("selectResolver").setEnabled(true); // +V1.5
+		oView.byId("selectResolver").setEnabled(false);
 	},
 
 	/**
