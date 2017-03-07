@@ -359,6 +359,13 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(false);
                 sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(false);
             }
+            if (oEvent.mParameters.toId == "ncdisplayView") {
+					sap.ui.getCore().byId("operationDetailPopup--createNC").setVisible(true);
+					sap.ui.getCore().byId("operationDetailPopup--createPNC").setVisible(true);
+				} else {
+					sap.ui.getCore().byId("operationDetailPopup--createNC").setVisible(false);
+					sap.ui.getCore().byId("operationDetailPopup--createPNC").setVisible(false);
+				}
 
         },
 

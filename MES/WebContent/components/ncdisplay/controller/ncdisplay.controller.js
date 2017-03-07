@@ -98,5 +98,8 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
 
     closePopUp: function(){
         airbus.mes.ncdisplay.ncdisplayPopUp.close();
+    },
+    onCreteNC:function(){
+    	this.getView().byId("createNC");
     }
 });
