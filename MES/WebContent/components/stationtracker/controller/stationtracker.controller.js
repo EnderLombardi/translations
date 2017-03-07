@@ -1450,31 +1450,54 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 	},
 	
 	/**
-	 * Open confirm PopUp to reschedule not confirmed operation(s) on AVL Line
+	 * Open, Confirm and Close PopUp to reschedule not confirmed operation(s) on AVL Line
 	 * @PARAM {OBJECT} AVL Line information
 	 */
 	openRescheduleLinePopUp: function (objLine) {
-		
-		if (!this.reschedulePop) {
-			this.reschedulePop = sap.ui.xmlfragment("airbus.mes.stationtracker.fragment.rescheduleLinePopUp", this);
-			this.reschedulePop.addStyleClass("alignTextLeft");
-			this.getView().addDependent(this.reschedulePop);
+		if (!this.rescheduleLinePop) {
+			this.rescheduleLinePop = sap.ui.xmlfragment("airbus.mes.stationtracker.fragment.rescheduleLinePopUp", this);
+			//this.rescheduleLinePop.addStyleClass("alignTextLeft");
+			this.getView().addDependent(this.rescheduleLinePop);
 		}
-		
-		this.reschedulePop.setModel(new sap.ui.model.json.JSONModel( objLine ), "RescheduleLineData");
-		this.reschedulePop.open();
+		this.rescheduleLinePop.setModel(new sap.ui.model.json.JSONModel( objLine ), "RescheduleLineData");
+		this.rescheduleLinePop.open();
 	},
-	
-	sendRescheduleLine: function (oEvent) {
-		var objLine = this.reschedulePop.getModel("RescheduleLineData").oData;
-		console.log(objLine);
+	confirmRescheduleLinePopUp: function (oEvent) {
+		// Get and Format required line data for the request
+		var lineData = this.reschedulePop.getModel("RescheduleLineData").oData;
+		var lineArray = [{
+			"skill": 		 lineData.skill,
+			"avlLineNumber": lineData.nLine
+		}];  
+		
+		// Debug
+		//console.log("Line Data  : " + lineData);
+		//console.log("Line Array : " + lineArray);
+
 		// call request
-		var arryObjLine = [objLine];
-		airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest(arryObjLine);
+		airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest(lineArray);
 		this.onCloseDialog(oEvent);
 	},
-	
 	closeRescheduleLinePopUp: function (oEvent) {
 		this.onCloseDialog(oEvent);
+	},
+	
+	/*
+	openRescheduleAllPopUp: function (objLine) {
+		if (!this.rescheduleAllPop) {
+			this.rescheduleAllPop = sap.ui.xmlfragment("airbus.mes.stationtracker.fragment.rescheduleAllPopUp", this);
+			this.getView().addDependent(this.reschedulePop);
+		}
+		//this.rescheduleAllPop.setModel(new sap.ui.model.json.JSONModel( objLine ), "RescheduleAllData");
+		this.rescheduleAllPop.open();
+	},
+	confirmRescheduleAllPopUp: function (oEvent) {
+		// call request
+		//airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest(lineArray);
+		this.onCloseDialog(oEvent);
+	},
+	closeRescheduleAllPopUp: function (oEvent) {
+		this.onCloseDialog(oEvent);
 	}
+ 	*/
 });
