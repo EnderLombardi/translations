@@ -107,7 +107,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectreason"
+										<Select id="selectAttribute"
 											items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"  forceSelection="false">
 											<items>
 												<core:Item text="{disruptionRsnRespGrp>REASON}"

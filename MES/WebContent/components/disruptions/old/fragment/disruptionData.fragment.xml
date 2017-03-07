@@ -99,7 +99,7 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>reason}" />
-				<Select id="selectreason" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
+				<Select id="selectAttribute" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
 					forceSelection="false" enabled="{parts: [ {path: 'DisruptionDetailModel>/originatorFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}">
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>REASON}" key="{disruptionRsnRespGrp>REASON}" />

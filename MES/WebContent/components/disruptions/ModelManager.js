@@ -162,7 +162,7 @@ airbus.mes.disruptions.ModelManager = {
 		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
 
 		// Un-Set Busy's
-		oView.byId("selectreason").setBusy(false);
+		oView.byId("selectAttribute").setBusy(false);
 		oView.byId("selectResponsibleGrp").setBusy(false);
 
 	},
@@ -428,7 +428,7 @@ airbus.mes.disruptions.ModelManager = {
 
 		var disruptionModel = oModel.getProperty("/Rowsets/Rowset/0/Row/0");
 
-		disruptionModel.Reason = sap.ui.getCore().byId("createDisruptionView--selectreason").getSelectedKey();
+		disruptionModel.Reason = sap.ui.getCore().byId("createDisruptionView--selectAttribute").getSelectedKey();
 
 		if (sap.ui.getCore().byId("createDisruptionView--selectResponsibleGrp").getSelectedItem()) {
 			disruptionModel.ResponsibleGroupDesc = sap.ui.getCore().byId("createDisruptionView--selectResponsibleGrp").getSelectedItem().getText();

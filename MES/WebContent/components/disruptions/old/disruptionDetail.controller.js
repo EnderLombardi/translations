@@ -29,7 +29,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptions.disrupti
 	onInit : function() {
 
 		/*
-		 * this.getView().byId("selectreason").setSelectedKey();
+		 * this.getView().byId("selectAttribute").setSelectedKey();
 		 * this.getView().byId("selectResponsibleGrp").setSelectedKey();
 		 * this.getView().byId("selectOriginator").setSelectedKey(); if
 		 * (!sap.ui.Device.system.desktop) { this.setEnabledSelectBox(true,

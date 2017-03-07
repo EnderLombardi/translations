@@ -73,8 +73,8 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		var oView = this.getView();
 
 		// Set Busy's
-		oView.byId("selectreason").setBusyIndicatorDelay(0);
-		oView.byId("selectreason").setBusy(true);
+		oView.byId("selectAttribute").setBusyIndicatorDelay(0);
+		oView.byId("selectAttribute").setBusy(true);
 		oView.byId("selectResponsibleGrp").setBusyIndicatorDelay(0);
 		oView.byId("selectResponsibleGrp").setBusy(true);
 
@@ -104,14 +104,14 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			
 		case "selectCategory":
 
-			oView.byId("selectreason").setSelectedKey();
+			oView.byId("selectAttribute").setSelectedKey();
 			oView.byId("selectResponsibleGrp").setSelectedKey();
 
 			if (oView.byId("selectCategory").getSelectedKey() == "") {
-				oView.byId("selectreason").setEnabled(false);
+				oView.byId("selectAttribute").setEnabled(false);
 				oView.byId("selectResponsibleGrp").setEnabled(false);
 			} else {
-				oView.byId("selectreason").setEnabled(true);
+				oView.byId("selectAttribute").setEnabled(true);
 				oView.byId("selectResponsibleGrp").setEnabled(true);
 			}
 
@@ -235,7 +235,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		oView.byId("selectFivemCategory").setEnabled(true);
 		oView.byId("selectCategory").setEnabled(true);
-		oView.byId("selectreason").setEnabled(false);
+		oView.byId("selectAttribute").setEnabled(false);
 		// oView.byId("selectRootCause").setEnabled(false); //-V1.5
 		oView.byId("selectResponsibleGrp").setEnabled(false);
 		oView.byId("timeLost").setEnabled(true);
@@ -305,10 +305,10 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		}
 				
 		// Create a JSON for Payload attributes and make a call in ModelManager
-		this.dataForCreateDisruption( "");	
+		this.createDisruption("");	
 		
 	},
-	dataForCreateDisruption:function(reportAndCloseFlag){
+	createDisruption:function(reportAndCloseFlag){
 	
 		var oView = airbus.mes.createdisruption.oView;
 		var sJigtools = oView.getController().getSelectedJIgTool();
@@ -322,15 +322,13 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		}
 		// Get handle for the selected disruption custom data row
 		// Hanlde is a unique for Custom Data
-		if(oView.byId("selectreason").getSelectedItem()){
-			var sPathReason = oView.byId("selectreason").getSelectedItem().getBindingInfo("key").binding.getContext().sPath
+		 var sHandle = "";
+		if(oView.byId("selectAttribute").getSelectedItem()){
+			var sPathReason = oView.byId("selectAttribute").getSelectedItem().getBindingInfo("key").binding.getContext().sPath
 			var sHandle = oView.getModel("disruptionRsnRespGrp").getProperty(sPathReason).HANDLE;
-		}else{
-			 sPathReason = "";
-			 sHandle = "";
 		}
+		
 		var sCategory = oView.byId("selectCategory").getSelectedKey();
-		// var sRootCause = oView.byId("selectRootCause").getSelectedKey();
 		var sComment = airbus.mes.disruptions.Formatter.actions.create + oView.byId("comment").getValue();
 
 		var aModelData = []
@@ -353,7 +351,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"value" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
 				}, {
 					"attribute" : "REASON",
-					"value" : oView.byId("selectreason").getSelectedKey()
+					"value" : oView.byId("selectAttribute").getSelectedKey()
 				}, {
 					"attribute" : "TIME_LOST",
 					"value" : airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue())
@@ -366,10 +364,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 				}, {
 					"attribute" : "STATUS",
 					"value" : airbus.mes.disruptions.Formatter.status.pending
-				}, /*
-					 * { "attribute" : "ROOT_CAUSE", "value" :
-					 * oView.byId("selectRootCause").getSelectedKey() },
-					 */{
+				}, {
 					"attribute" : "MSN",
 					"value" : airbus.mes.settings.ModelManager.msn
 				}, {
@@ -435,7 +430,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		} else if (oView.byId("selectCategory").getSelectedKey() == "") {
 			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryCategory"));
 			return false;
-		} else if (oView.byId("selectreason").getSelectedKey() == "") {
+		} else if (oView.byId("selectAttribute").getSelectedKey() == "") {
 			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryReason"));
 			return false;
 		} else if (oView.byId("selectResponsibleGrp").getSelectedKey() == "") {
@@ -481,7 +476,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		var oView = airbus.mes.createdisruption.oView;
 
 		var sMessageRef = oView.getModel("DisruptionDetailModel").getProperty("/messageRef")
-		var sReason = oView.byId("selectreason").getSelectedKey();
+		var sReason = oView.byId("selectAttribute").getSelectedKey();
 		var sResponsibleGroup = oView.byId("selectResponsibleGrp").getSelectedKey();
 
 		// -[MES V1.5] root cause removed
@@ -504,7 +499,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	bothGroupSettings : function() {
 		this.getView().byId("selectFivemCategory").setEnabled(false);
 		this.getView().byId("selectCategory").setEnabled(false);
-		this.getView().byId("selectreason").setEnabled(true);
+		this.getView().byId("selectAttribute").setEnabled(true);
 		this.getView().byId("selectResponsibleGrp").setEnabled(true);
 		this.getView().byId("expectedDate").setEnabled(true);
 		this.getView().byId("expectedTime").setEnabled(true);
@@ -519,7 +514,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		oView.byId("selectFivemCategory").setEnabled(false);
 		oView.byId("selectCategory").setEnabled(false);
-		oView.byId("selectreason").setEnabled(false);
+		oView.byId("selectAttribute").setEnabled(false);
 		oView.byId("selectResponsibleGrp").setEnabled(true);
 		oView.byId("expectedDate").setEnabled(false);
 		oView.byId("expectedTime").setEnabled(false);
@@ -535,7 +530,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		oView.byId("selectFivemCategory").setEnabled(false);
 		oView.byId("selectCategory").setEnabled(false);
-		oView.byId("selectreason").setEnabled(true);
+		oView.byId("selectAttribute").setEnabled(true);
 		oView.byId("selectResponsibleGrp").setEnabled(true);
 		oView.byId("expectedDate").setEnabled(true);
 		oView.byId("expectedTime").setEnabled(true);
@@ -807,6 +802,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			return;
 		}
 		
-		this.dataForCreateDisruption( "X");		
+		this.createDisruption( "X");		
 }
 });

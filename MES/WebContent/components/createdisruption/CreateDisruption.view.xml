@@ -37,7 +37,7 @@
 											</items>
 										</Select>
 										<Label required="true" text="{i18nModel>reason}" class="textAlignLeft"/>
-										<Select id="selectreason" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
+										<Select id="selectAttribute" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
 										  forceSelection="false" selectedKey="{DisruptionDetailModel>reason}">
 											<items>
 												<core:Item text="{disruptionRsnRespGrp>REASON}"
