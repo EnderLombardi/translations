@@ -28,22 +28,17 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		ModelManager.loadMaterialList();
 		ModelManager.loadJigtoolList();
 
-		if (sMode == "Create") {	
-			// Set Data
-			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-			oModel.setData({});
-			oModel.refresh();
-			
+		if (sMode == "Create") {
             this.createDisruptionSettings();
             
 		} else if (sMode == "Edit") {
 			
 			// Load data if Edit Mode
-			this.loadDisruptionDetail(msgRef);
+			if(typeof this.loadDisruptionDetail !== "undefined"){
+				this.loadDisruptionDetail(msgRef);
+			}
 
 			this.loadRsnResponsibleGrp(sMsgType);
-
-			this.editPreSettings();
 
 		}
 
@@ -151,59 +146,14 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		if (oView.getModel("DisruptionDetailModel").getData() != undefined) {
 
-			// fill select boxes on edit screen
+			
 			var oModel = oView.getModel("DisruptionDetailModel");
 
-			// Empty Comment
-			oView.byId("comment").setValue();
-
-			var oMatInp = oView.byId("materials");
-			var oJiginp = oView.byId("jigtools");
-
-			var aMatArray = oModel.oData.materials.split(",");
-			var aJigArray = oModel.oData.jigTools.split(",");
-
-			var aMatTokens = [];
-			var aJigTokens = [];
-
-			for ( var i in aMatArray) {
-
-				if (aMatArray[i] !== "") {
-
-					var loMatToken = new sap.m.Token({
-						text : aMatArray[i],
-						editable : false,
-					});
-
-					aMatTokens.push(loMatToken)
-
-				}
-			}
-
-			oMatInp.setTokens(aMatTokens);
-			if (this._materialListDialog != undefined) {
-				this._materialListDialog.close();
-			}
-
-			for ( var j in aJigArray) {
-
-				if (aJigArray[j] != "") {
-					var loJigToken = new sap.m.Token({
-						text : aJigArray[j],
-						editable : false,
-					});
-
-					aJigTokens.push(loJigToken)
-
-				}
-			}
-
-			oJiginp.setTokens(aJigTokens);
-			if (this.jigToolSelectDialog != undefined) {
-
-				this.jigToolSelectDialog.close()
-
-			}
+			oModel.jigTools = oModel.oData.materials.split(",");
+			oModel.materials = oModel.oData.jigTools.split(",");
+			oModel.refresh();
+			
+			
 
 			/*******************************************************************
 			 * Disable/Enable inputs according to  Originator/Resolution Group *

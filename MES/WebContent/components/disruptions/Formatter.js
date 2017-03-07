@@ -685,7 +685,7 @@ airbus.mes.disruptions.Formatter = {
 	
 	setSolutionIn: function(promisedTime){
 		if (promisedTime == undefined || promisedTime =="")
-			return ---;
+			return "---";
 		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
 		var aPromisedTime = reggie.exec(promisedTime);
 		var oPromisedTime = new Date((+aPromisedTime[1]), (+aPromisedTime[2]) - 1, // Careful

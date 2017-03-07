@@ -564,25 +564,19 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 	 */
 	onEditDisruption : function(oEvent) {
 
-		/*
-		 * // Close expanded disruption panel if(this.expandedDisruptionPanel)
-		 * sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
-		 */
-
 		// Set the data for this new model from the already loaded model
 		var oBindingContext = oEvent.getSource().getBindingContext("operationDisruptionsModel");
 		var oData = oBindingContext.getProperty(oBindingContext.sPath);
 
 		// Navigate to Edit Screen
-		airbus.mes.shell.util.navFunctions.createDisruptionScreen(sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer"), {
-			mode : "Edit",
-			oData : oData
-		}, sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create
-																				// Button
-		sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update
-																			// Button
-		sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption") // Cancel
-																			// Button
+		airbus.mes.shell.util.navFunctions.createDisruptionScreen(sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer"),
+			{
+				mode : "Edit",
+				oData : oData
+			},
+			sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
+			sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
+			sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption") // Cancel Button
 		);
 	},
 	

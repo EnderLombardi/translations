@@ -52,10 +52,7 @@
 					</items>
 				</Select>
 				<Label text="{i18nModel>bomItem}" />
-				<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
-					tokenChange="onMaterialTokenChange" enabled="false">
-				</MultiInput>
-				
+				<MultiInput id="materials" enabled="false"  tokens="{DisruptionDetailModel>/materials}" />				
 
 
 				<core:Title text="" />
@@ -69,9 +66,8 @@
 					</items>
 				</Select>
 				<Label text="{i18nModel>Jigtool}" />
-				<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
-					tokenChange="onJigToolTokenChange" enabled="false" />
-					<Input id="selectFivemCategory" text="" visible="false"/>
+				<MultiInput id="jigtools" enabled="false"  tokens="{DisruptionDetailModel>/jigTools}" />
+				<Input id="selectFivemCategory" text="" visible="false"/>
             	
             	<core:Title text="" />				
 				<Label text="{i18nModel>OpenDate}" />
@@ -225,7 +221,7 @@
 							class="sapUiSmallMarginEnd" />
 						<core:Icon src="sap-icon://camera" width="1rem" />
 					</HBox>
-					<TextArea width="100%" height="100%" id="comment">
+					<TextArea width="100%" height="100%" id="comment" value="{DisruptionDetailModel>/comment}">
 						<layoutData>
 							<l:GridData span="L12 M12 S12" />
 						</layoutData>

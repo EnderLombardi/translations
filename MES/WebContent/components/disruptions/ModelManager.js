@@ -68,7 +68,7 @@ airbus.mes.disruptions.ModelManager = {
 					if (data.disruptionsListDetails && !data.disruptionListDetails[0]) {
 						aDisruptions = [ data.disruptionListDetails ];
 					} else{
-						aDisruptions = data;
+						aDisruptions = data.disruptionListDetails;
 					}
 				}
 				

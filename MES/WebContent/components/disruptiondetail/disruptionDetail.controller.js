@@ -42,6 +42,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 			}),
 			success : function(data) {			
 				sap.ui.getCore().getModel("DisruptionDetailModel").setData(data);
+				airbus.mes.disruptiondetail.oView.oController.editPreSettings();
 				airbus.mes.disruptiondetail.oView.setBusy(false);
 			},
 

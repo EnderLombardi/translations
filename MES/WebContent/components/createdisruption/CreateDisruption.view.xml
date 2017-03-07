@@ -154,8 +154,7 @@
 										<Label text="{i18nModel>plan}" class="textAlignLeft"/>
 										<Input id="plan" value="{DisruptionDetailModel>/plan}" />
 										<Label text="{i18nModel>material}" class="textAlignLeft"/>									
-										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" valueHelpOnly="true">		
-										</MultiInput>
+										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" valueHelpOnly="true" tokens="{DisruptionDetailModel>/materials}"/>
 									
 									
 									<core:Title  />
@@ -164,8 +163,7 @@
 										<Label text="{i18nModel>view}" class="textAlignLeft"/>
 										<Input id="view" value="{DisruptionDetailModel>/view}" />
 										<Label text="{i18nModel>Jigtool}" class="textAlignLeft"/>
-										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"  valueHelpOnly="true">
-										</MultiInput>
+										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"  valueHelpOnly="true" tokens="{DisruptionDetailModel>/jigTools}"/>
 									
 									<core:Title   />
 										<Label text="{i18nModel>stringer}" class="textAlignLeft"/>
@@ -183,7 +181,7 @@
 										columnsM="1" columnsS="1" class="sapUiSmallMargin" visible="true">	
 									<f:content>
 											<TextArea placeholder="{i18nModel>AddComment}" id="comment"
-											valueLiveUpdate="true" rows="10" value="">
+												valueLiveUpdate="true" rows="10" value="{DisruptionDetailModel>/comment}">
 											<layoutData>
 												<l:GridData span="Xl11 L11 M10 S10" />
 											</layoutData>

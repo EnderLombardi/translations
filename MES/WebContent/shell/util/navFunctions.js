@@ -245,7 +245,15 @@ airbus.mes.shell.util.navFunctions = {
             // Add event delegate
             airbus.mes.createdisruption.oView.addEventDelegate({
                 onBeforeShow: function (evt) {
-                    airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode);
+                	var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+        			oModel.setData(evt.data.oData);
+        			oModel.refresh();
+        			if(evt.data.mode == "Edit"){
+        				airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode, evt.data.oData.messageRef, evt.data.oData.messageType);
+        				airbus.mes.createdisruption.oView.oController.editPreSettings();
+        			} else{
+        				airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode);
+        			}
                 }
             });
         }
