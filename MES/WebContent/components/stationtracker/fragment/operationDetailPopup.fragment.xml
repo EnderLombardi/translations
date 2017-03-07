@@ -30,8 +30,8 @@
             <Button id="btnPrintTckTmplt" visible="false" class="icon-print" text="{StationTrackerI18n>print}" press="printTrackingTemplate" icon="sap-icon://print" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_NOTE}"/>
             <Button text="{StationTrackerI18n>Close}"  icon="sap-icon://decline" press="onCloseOperationDetailPopup" />
             
-            <Button id = "createNC" text="{StationTrackerI18n>Create NC}"  icon="sap-icon://add" press="onCreateNC" visible="false" />
-            <Button id = "createPNC" text="{StationTrackerI18n>Create Pnc}"  icon="sap-icon://add" press="onCreatePNC" visible="false" />
+            <Button id = "createNC" text="{StationTrackerI18n>Create NC}"  icon="sap-icon://add" press="" visible="false" />
+            <Button id = "createPNC" text="{StationTrackerI18n>Create Pnc}"  icon="sap-icon://add" press="" visible="false" />
             
         </buttons>
     </Dialog>

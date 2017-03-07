@@ -360,8 +360,15 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(false);
             }
             if (oEvent.mParameters.toId == "ncdisplayView") {
-					sap.ui.getCore().byId("operationDetailPopup--createNC").setVisible(true);
-					sap.ui.getCore().byId("operationDetailPopup--createPNC").setVisible(true);
+					var oButtonNc = sap.ui.getCore().byId("operationDetailPopup--createNC");
+					oButtonNc.setVisible(true);
+					var oButtonPnc = sap.ui.getCore().byId("operationDetailPopup--createPNC");
+					oButtonPnc.setVisible(true);
+					oButtonNc.detachPress(airbus.mes.ncdisplay.oView.oController.onCreateNC);
+					oButtonNc.attachPress(airbus.mes.ncdisplay.oView.oController.onCreateNC);
+					oButtonPnc.detachPress(airbus.mes.ncdisplay.oView.oController.onCreatePNC);
+					oButtonPnc.attachPress(airbus.mes.ncdisplay.oView.oController.onCreatePNC);
+					
 				} else {
 					sap.ui.getCore().byId("operationDetailPopup--createNC").setVisible(false);
 					sap.ui.getCore().byId("operationDetailPopup--createPNC").setVisible(false);
