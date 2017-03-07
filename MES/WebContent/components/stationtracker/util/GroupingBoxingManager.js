@@ -242,41 +242,40 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 			
 			var sStatus = "0";
 			var fOSW = "0";
+			var sStop = "0";
 			var fRMA = "0";
 			var sUnplanned = "0";
-			
+			var sBlock = "0";
+			var sStatus2 = airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(el.STATE, el.PAUSED, el.PREVIOUSLY_STARTED );			
+
 			sStatus = airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(el.STATE, el.PAUSED, el.PREVIOUSLY_STARTED );
-			
-			// Check if there is any blocking disruption - (not Closed and deleted)
-			if ( el.BLOCKING_DISRUPTION === "true") {
-				sStatus = "4";
-			}
+			//store the status start/paused/confirm/complete
 				
-			/*//Opened disruption Escalated
+			//Opened disruption Escalated red
 			if ( el.DISRUPTION === "D1") {
 				sStatus = "4";
 			}
-			//Open disruption
-			else if ( el.DISRUPTION === "D2") {
+			//Open disruption yellow
+			if ( el.DISRUPTION === "D2") {
 				sStatus = "5";
 			}
-			//Answered or Rejected Escalated disruption
-			else if ( el.DISRUPTION === "D4") {
+			//Answered Escalated red Hatch
+			if ( el.DISRUPTION === "D3") {
 				sStatus = "6";
 			}
-			//Answered or Rejected Disruption
-			else if ( el.DISRUPTION === "D5") {
+			//Answered yellow hatch
+			if ( el.DISRUPTION === "D4") {
 				sStatus = "7";
 			}
-			//Solved disruption
-			else if ( el.DISRUPTION === "D7") {
+			//All disruptions are solved green hatch
+			if ( el.DISRUPTION === "D5") {
 				sStatus = "8";
-			}*/
-			//andon
-			/*else if ( el.DISRUPTION === "B") {
-				sStatus = "99";
-			}*/
+			}
+			// if operation is not active and add disruption it should be display in yellow even if the disruption is escalated
+			if ( sStatus2 === "1" && sStatus >= "4" ) {
 				
+				sStatus = "4";
+			}
 			// Operation is from OSW
 			if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {
 				fOSW = "3";
@@ -293,7 +292,14 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 			if ( el.RMA_STATUS_COLOR != "---" ) {
 				fRMA = "1";		
 			}
-				
+//			// Check if there is any blocking disruption - (not Closed and deleted)
+			if ( el.BLOCKING_DISRUPTION === "true") {
+				sBlock = "1";
+			}
+			if ( el.STOP === "true") {
+				sStop = "1";				
+			}
+			
 			var oOperation = {		
 					
 					"WORKORDER_ID" : el.WORKORDER_ID, // workOrder
@@ -309,6 +315,8 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					"ANDONS": el.ANDONS,
 					"RMA_STATUS_COLOR": fRMA,
 					"status" : sStatus,
+					"status2" : sStatus2,
+					"isBlocked" : sBlock,
 					"ISUNPLANNED" : sUnplanned,
 					"CPP_CLUSTER" : el.CPP_CLUSTER,
 					"WORK_PACKAGE" : el.WORK_PACKAGE,
@@ -333,7 +341,8 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					"FAMILY_AVL_GROUPING" : el.FAMILY_AVL_GROUPING,
 					"FAMILY_AVL_BOXING" : el.FAMILY_AVL_BOXING,
 					"ROUTERSTEPBO" : el.ROUTER_STEP_BO,
-					"ACPNG_STATUS" : el.ACPNG_STATUS
+					"ACPNG_STATUS" : el.ACPNG_STATUS,
+					"STOP" : sStop
 										
 			};
 			
@@ -437,6 +446,9 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					var aRMAStatus = [];
 					var aUnplanned = [];
 					var aAcpngStatus = [];
+					var aStatus2 = [];
+					var aIsBlocked = [];
+					var aStop = [];
 					
 					var fProgress = 0;
 					var fDuration = 0;
@@ -470,6 +482,9 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 						aRMAStatus.push(el.RMA_STATUS_COLOR);
 						aUnplanned.push(el.ISUNPLANNED);
 						aAcpngStatus.push(el.ACPNG_STATUS);
+						aStatus2.push(el.status2);
+						aIsBlocked.push(el.isBlocked);
+						aStop.push(el.STOP);
 						
 						fProgress += parseFloat(el.PROGRESS);
 						fDuration += parseFloat(el.DURATION);
@@ -584,6 +599,9 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 							"previouslyStarted" : sPreviouslyStarted,
 							"routerStepBo": sRouterStepBo,	
 							"aAcpngStatus": Math.max.apply(null,aAcpngStatus),
+							"status2" : Math.max.apply(null,aStatus2),
+							"isBlocked" : Math.max.apply(null,aIsBlocked),
+							"stop" : Math.max.apply(null,aStop)
 						};
 					
 					aBox.push(oOperationRescheduling);
