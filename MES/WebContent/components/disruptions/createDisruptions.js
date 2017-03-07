@@ -31,10 +31,8 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		if (sMode == "Create") {	
 			// Set Data
 			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-			oModel.setData({});
+			oModel.setData();
 			oModel.refresh();
-
-			sap.ui.getCore().byId("createDisruptionView--selectCategory").setEnabled(false);
 			
             this.createDisruptionSettings();
             
@@ -97,8 +95,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			aFilters.push(new sap.ui.model.Filter("CATEGORY_CLASS", sap.ui.model.FilterOperator.EQ, sCateoryKey));
 			this.getView().byId("selectCategory").getBinding("items").filter(aFilters);
 			this.getView().byId("selectCategory").setSelectedKey();
-
-			sap.ui.getCore().byId("createDisruptionView--selectCategory").setEnabled(true);
 			
 			break;
 			

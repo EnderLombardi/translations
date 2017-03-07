@@ -8,7 +8,7 @@
 		<!-- <Text id="disruptLabel" class="sapUiSmallMargin" text="{i18nModel>Disruptions}" /> -->
 
 			<List id="disrptlist" noDataText="{i18nModel>noDisruptions}"
-				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'operationDisruptionsModel>/disruptionListDetails'}">
+				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'operationDisruptionsModel>/'}">
 
 				<CustomListItem>
 
@@ -33,10 +33,10 @@
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>solutionin}: " />
-								<Label text="{path:'operationDisruptionsModel>requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}"  design="Bold" />
+								<Label text="{path:'operationDisruptionsModel>promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}"  design="Bold" />
 								
 								<ToolbarSpacer />
-								<core:Icon id="disrptListEnvelop" src="sap-icon://email" visible="{operationDisruptionsModel>lastUpdated}" />
+								<core:Icon id="disrptListEnvelop" src="sap-icon://email" visible="{= ${operationDisruptionsModel>lastUpdated} === 'true' ? true: false}" />
 								
 								<Label
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>closureDate}"
