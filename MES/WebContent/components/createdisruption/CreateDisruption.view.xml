@@ -17,18 +17,18 @@
 
 					<f:SimpleForm id="createDisruptionForm" backgroundDesign="Transparent"
 										maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" columnsL="3"
-										columnsM="3" columnsS="3" class="sapUiSmallMargin" visible="true">
+										columnsM="3" columnsS="3" class="sapUiSmallMargin heightZero" visible="true">
 									<f:content>
-								<core:Title text="" />		
+								<core:Title />		
 								<!-- SD-SP1604983-CDP-010 -->
-										<Label required="true" text="{i18nModel>CategoryClass}" />
+										<Label required="true" text="{i18nModel>CategoryClass}" class="textAlignLeft"/>
 										<Select id="selectFivemCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}" 
 											forceSelection="false" change="onSelectionChange" selectedKey="{DisruptionDetailModel>categoryClass}" >
 											<items>
 												<core:Item text="{disruptionCategoryModel>CATEGORY_CLASS}" key="{disruptionCategoryModel>CATEGORY_CLASS}" />
 											</items>
 										</Select>
-										<Label required="true" text="{i18nModel>Category}" />									
+										<Label required="true" text="{i18nModel>Category}" class="textAlignLeft"/>									
 										<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
 											change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>messageType}">
 											<items>
@@ -36,7 +36,7 @@
 													key="{disruptionCategoryModel>MESSAGE_TYPE}" />
 											</items>
 										</Select>
-										<Label required="true" text="{i18nModel>reason}" />
+										<Label required="true" text="{i18nModel>reason}" class="textAlignLeft"/>
 										<Select id="selectreason" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
 										  forceSelection="false" selectedKey="{DisruptionDetailModel>reason}">
 											<items>
@@ -45,12 +45,12 @@
 											</items>
 										</Select>
 										
-										<Label text="{i18nModel>bomItem}"  />
+										<Label text="{i18nModel>bomItem}" class="textAlignLeft" />
 										<Input value="{DisruptionDetailModel>bomItem}" />
 										
 									
-									<core:Title text="" />
-										<Label required="true" text="{i18nModel>gravity}" />			
+									<core:Title />
+										<Label required="true" text="{i18nModel>gravity}" class="textAlignLeft"/>			
 											<Select id="gravity" selectedKey="{DisruptionDetailModel>/Gravity}">
 											<!-- selectedKey="{= ( typeof ${DisruptionDetailModel>/Gravity} == undefined ) ||  ${DisruptionDetailModel>/Gravity} == '' || ${DisruptionDetailModel>/Gravity} =null ? '3' : ${DisruptionDetailModel>/Gravity}}"> -->
 												<items>
@@ -60,7 +60,7 @@
 												</items>
 												</Select>
 										
-											<Label required="true" text="{i18nModel>resGroup}" />
+											<Label required="true" text="{i18nModel>resGroup}" class="textAlignLeft"/>
 											<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
 												forceSelection="false" selectedKey="{DisruptionDetailModel>responsibleGroup}">
 												<items>
@@ -68,13 +68,13 @@
 														key="{disruptionRsnRespGrp>ResponsibleGroup}" />
 												</items>
 											</Select>
-											<Label text="{i18nModel>TimeLost}" />	
+											<Label text="{i18nModel>TimeLost}" class="textAlignLeft"/>	
 											<Input placeholder="" id="timeLost" type="Number" value="{path: 'DisruptionDetailModel>timeLost', formatter: 'airbus.mes.disruptions.Formatter.timeMillisecondsToConfig'}">
 											</Input>
 									
 										
-									<core:Title text="" />
-										<Label text="{i18nModel>OpenDate}" />											
+									<core:Title />
+										<Label text="{i18nModel>OpenDate}" class="textAlignLeft"/>											
 										<DatePicker enabled="false" id="openDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
 											value="{path: 'DisruptionDetailModel>openingTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
@@ -83,7 +83,7 @@
 											displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
 											value="{path: 'DisruptionDetailModel>openingTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 										</TimePicker>
-										<Label required="true" text="{i18nModel>Expected}"/>										
+										<Label required="true" text="{i18nModel>Expected}" class="textAlignLeft"/>										
 										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
 											value="{path: 'DisruptionDetailModel>requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
@@ -143,37 +143,35 @@
 									
 									</f:content>
 						</f:SimpleForm>
-						<HBox><Text text='{i18nModel>additionalInfo}' /></HBox>
+						<HBox width="100%" justifyContent="Center"><Text text='{i18nModel>additionalInfo}' class="titleAdditionalInfo" /></HBox>
 								<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Transparent"
 										maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" columnsL="3"
-										columnsM="3" columnsS="3" class="sapUiSmallMargin" visible="true">	
+										columnsM="3" columnsS="3" class="sapUiSmallMargin heightZero" visible="true">	
 									<f:content>
-									<core:Title text="" />
-										<Label text="{i18nModel>area}" />
+									<core:Title  />
+										<Label text="{i18nModel>area}" class="textAlignLeft" />
 										<Input id="area" value="{DisruptionDetailModel>area}" />
-										<Label text="{i18nModel>plan}" />
+										<Label text="{i18nModel>plan}" class="textAlignLeft"/>
 										<Input id="plan" value="{DisruptionDetailModel>plan}" />
-										<Label text="{i18nModel>material}"/>									
+										<Label text="{i18nModel>material}" class="textAlignLeft"/>									
 										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
-											tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
-											enabled="false">		
+											 valueHelpOnly="true">		
 										</MultiInput>
 									
 									
-									<core:Title text="" />
-										<Label text="{i18nModel>ribs}" />
+									<core:Title  />
+										<Label text="{i18nModel>ribs}" class="textAlignLeft"/>
 										<Input id="ribs" value="{DisruptionDetailModel>ribs}" />
-										<Label text="{i18nModel>view}" />
+										<Label text="{i18nModel>view}" class="textAlignLeft"/>
 										<Input id="view" value="{DisruptionDetailModel>view}" />
-										<Label text="{i18nModel>Jigtool}" />
-										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange"
-											liveChange="onJigToolTokenChange">
+										<Label text="{i18nModel>Jigtool}" class="textAlignLeft"/>
+										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"  valueHelpOnly="true">
 										</MultiInput>
 									
-									<core:Title text="" />
-										<Label text="{i18nModel>stringer}" />
+									<core:Title   />
+										<Label text="{i18nModel>stringer}" class="textAlignLeft"/>
 										<Input id="stringer" value="{DisruptionDetailModel>stringer}" />
-										<Label text="{i18nModel>stringer_rail}" />
+										<Label text="{i18nModel>stringer_rail}" class="textAlignLeft"/>
 										<Input id="stringer_rail" value="{DisruptionDetailModel>stringer_rail}" />
 									</f:content>
 									</f:SimpleForm>

@@ -700,9 +700,9 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * On token change in MultiInput field directly, we need to restrict it
 	 **************************************************************************/
 
-	onMaterialTokenChange : function() {
+	/*onMaterialTokenChange : function() {
 		this.onMaterialValueHelpRequest();
-	},
+	},*/
 
 	handleCancelMaterialList : function() {
 		this._materialListDialog.close();
@@ -821,9 +821,9 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		this.jigToolSelectDialog.close();
 	},
-	onJigToolTokenChange : function() {
+	/*onJigToolTokenChange : function() {
 		this.onJigToolValueHelpRequest();
-	},
+	},*/
 	onCreateAndCloseDisruption:function(){
 		
 
