@@ -32,6 +32,22 @@
 			<HBox>
 				<Label text="{i18nModel>ListDocuments}" class="sapUiMediumMargin"></Label>
 			</HBox>
+			
+			<List id="idList" noDataText="{i18nModel>NoData}" 
+ 			class="disruptionDetail sapUiSmallMarginBottom"> 
+ 			<StandardListItem/>
+
+<!-- 					<CustomListItem>  -->
+<!--  					<Toolbar>  -->
+<!--  						<Label text="Title: {AttachmentList>Title}" />  -->
+<!--  						<Label text="Type: {AttachmentList>type}"/>  -->
+<!--  						<core:Icon size="2rem" src="{AttachmentList>icon}" /> -->
+<!--  					</Toolbar> -->
+			
+<!--  					</CustomListItem>  -->
+		</List> 
+ 	
+ 	
 		</content>
 		<beginButton>
 			<Button text="{i18nModel>Attach}" />

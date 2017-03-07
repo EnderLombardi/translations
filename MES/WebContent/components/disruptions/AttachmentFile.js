@@ -13,23 +13,47 @@ airbus.mes.disruptions.AttachmentFile = {
 				var oData = oModel.getData();
 				var sName = oFileUploader.oFilePath._lastValue;
 				
-				var sTitle = sap.ui.getCore().byId("idTitleInput").getValue();
+				var oInput = sap.ui.getCore().byId("idTitleInput");
+				var sTitle = oInput.getValue();
 		
 				var sType = oFileUploader.oFilePath._lastValue.split(".")[1];
 				var sIcon = airbus.mes.disruptions.AttachmentManager.getFileIcon(sType);
-		
-				oData.items.unshift({
-					"Title": sTitle,
-					"type" : sName,
-					"icon" : sIcon
+				var jsonObj = [];
+				var item={};
+				var iLen = oData.length;
+				if(iLen === undefined){
+				item ["Title"] = sTitle,
+				item ["type"] = sName,
+				item ["icon"] = sIcon
+
+				jsonObj.push(item);
+				oModel.setData(jsonObj);
+				} else {
+					oData.unshift({
+	     				"Title": sTitle,
+	 					"type" : sName,
+	 					"icon" : sIcon
+	 					})
+				}
+				var list = sap.ui.getCore().byId("idList")
+//				list.refreshItems()
+				list.bindItems({
+				path : "AttachmentList>/", 
+				template : new sap.m.StandardListItem({
+					title:"Title: {AttachmentList>Title}",
+//					content : [
+//					new sap.m.Label({text:"Title: {AttachmentList>Title}"})
+//					]
+					
+				}),
 				});
-				oModel.setData(oData);
+				oInput.destroy();
 		
 				// updates the attachment number on adding an attachment
-				var loLink = this.getView().byId("idAttachmentLink");
-				var loCount = oModel.getData().items.length;
-				var sAttachment = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Attachment");
-				loLink.setText(loCount + " " + sAttachment);
+//				var loLink = this.getView().byId("idAttachmentLink");
+//				var loCount = oModel.getData().items.length;
+//				var sAttachment = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Attachment");
+//				loLink.setText(loCount + " " + sAttachment);
 	},
 	onFileSelect : function(oEvt){
 		// When user selects a file, a popup is displayed
