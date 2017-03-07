@@ -273,6 +273,7 @@ sap.ui.controller(
 
             switch (nav.getCurrentPage().getId()) {
                 case "homePageView":
+                	airbus.mes.shell.oView.byId("informationButton").setVisible(false);
                     airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
                     airbus.mes.shell.oView.byId("homeButton").setVisible(false);
                     airbus.mes.shell.oView.byId("SelectLanguage").setVisible(true);

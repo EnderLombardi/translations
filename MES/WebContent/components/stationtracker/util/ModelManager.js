@@ -218,24 +218,14 @@ airbus.mes.stationtracker.util.ModelManager = {
         var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         this.operationType = sType;
 
-        var geturlstationtracker = this.urlModel
-            .getProperty('urlstationtrackeroperation');
-        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
-            .replaceURI(geturlstationtracker, "$site", oData.site);
-        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
-            .replaceURI(geturlstationtracker, "$station", oData.station);
-        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
-            .replaceURI(geturlstationtracker, "$msn", oData.msn);
-        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
-            .replaceURI(geturlstationtracker, "$operationType", sType);
-        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
-            .replaceURI(geturlstationtracker, "$productionGroup",
-            oData.prodGroup);
-        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager
-            .replaceURI(
-            geturlstationtracker,
-            "$user",
-            airbus.mes.stationtracker.util.AssignmentManager.userSelected);
+        var geturlstationtracker = this.urlModel.getProperty('urlstationtrackeroperation');
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlstationtracker, "$site", oData.site);
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", oData.prodGroup);
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlstationtracker, "$user", airbus.mes.stationtracker.util.AssignmentManager.userSelected);
+        geturlstationtracker = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlstationtracker, "$program", airbus.mes.stationtracker.util.ModelManager.settings.program);
         //console.log(geturlstationtracker);
         var oViewModel;
         switch (sType) {
