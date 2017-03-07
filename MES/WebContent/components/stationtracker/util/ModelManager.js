@@ -3,6 +3,7 @@
 jQuery.sap.require("sap.ui.core.format.DateFormat");
 jQuery.sap.require("airbus.mes.stationtracker.util.Globals_Functions");
 jQuery.sap.declare("airbus.mes.stationtracker.util.ModelManager");
+
 airbus.mes.stationtracker.util.ModelManager = {
 
 

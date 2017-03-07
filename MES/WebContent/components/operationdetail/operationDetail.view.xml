@@ -126,7 +126,7 @@
                     <items>
                         <IconTabFilter id="idStatus" count="{i18n>Status}" tooltip="{i18n>Status}" key="status"></IconTabFilter>
                         <IconTabFilter id="idCheckList" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_CHECKLIST}" count="{i18n>CheckListAndRecords}" tooltip="{i18n>CheckListAndRecords}" key="checkList"></IconTabFilter>
-                        <IconTabFilter id="idNCDisplay"  enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_NC_DISPLAY}" count="{i18n>ncDisplay}" tooltip="{i18n>ncDisplay}" key="ncDisplay"></IconTabFilter>
+                        <IconTabFilter id="idNCDisplay"  text="{ncdisplaydata>/ncDetailList/count}" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_NC_DISPLAY}" count="{i18n>ncDisplay}" tooltip="{i18n>ncDisplay}" key="ncDisplay"></IconTabFilter>
                         <IconTabFilter id="idDisruption"  count="{i18n>Disruption}" tooltip="{i18n>Disruption}" key="disruption"></IconTabFilter>
                         <IconTabFilter id="idDisplayOpeAttachments" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_DOC_VISUALIZE}" count="{i18n>Documents}" tooltip="{i18n>Documents}" key="displayOpeAttachments"></IconTabFilter>
                         <IconTabFilter id="idReschedule"  count="{i18n>Reschedule}" tooltip="{i18n>Reschedule}" key="reschedule" visible="{Profile>/identifiedUser/permissions/STATION_DRILL_RESCHEDULE}"></IconTabFilter>

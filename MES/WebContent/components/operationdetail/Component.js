@@ -39,6 +39,12 @@ if (jQuery.sap.getObject("airbus.mes.acpnglinks.Component") === undefined) {
 	});
 }
 
+if (jQuery.sap.getObject("airbus.mes.ncdisplays.Component") === undefined) {
+	jQuery.sap.registerModulePath("airbus.mes.ncdisplay", "../components/ncdisplay");
+	sap.ui.getCore().createComponent({
+		name : "airbus.mes.ncdisplay" 
+	});
+}
 
 jQuery.sap.declare("airbus.mes.operationdetail.Component");
 

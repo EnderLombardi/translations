@@ -42,9 +42,11 @@ airbus.mes.ncdisplay.util.ModelManager = {
 			}),
 
 			success : function(data) {
+
 				try {
                     if (typeof data == "string") {
                         data = JSON.parse(data);
+        				console.log(data);
 	                 }
 	                 if (typeof data != "object" || data === null) {
 //						In case the tool list is empty, we receive "null"
@@ -56,7 +58,9 @@ airbus.mes.ncdisplay.util.ModelManager = {
 	                	 data.ncDetailList = [ data.ncDetailList ];
 		             }
 	                 oViewModel.setData(data);
-	                 oViewModel.refresh();
+	                 oViewModel.getData().ncDetailList.count = oViewModel.getData().ncDetailList.length;
+	                 oViewModel.refresh(true);
+
 				} catch (e) {
 					console.log("NO NC Display data load");
 					
@@ -68,7 +72,8 @@ airbus.mes.ncdisplay.util.ModelManager = {
 				console.log("NO NC Display data load");
 
 			}
-		});	    	
+		});	 
+		
     	
     },
 
