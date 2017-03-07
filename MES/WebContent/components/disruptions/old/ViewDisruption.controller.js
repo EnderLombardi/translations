@@ -441,30 +441,13 @@ sap.ui
                                   * Reject the Disruption
                                   */
                                   onRejectDisruption : function(oEvt) {
-                                         
-                                         /*// Close Comment Box if open
-                                         var path = oEvt.getSource().sId;
-                                         var listnum = path.split("-");
-                                         listnum = listnum[listnum.length - 1];
-                                         var commentBox = this.getView().byId(
-                                                       this.getView().sId + "--commentBox-"
-                                                                     + this.getView().sId + "--disrptlist-"
-                                                                     + listnum);
-                                         commentBox.setVisible(false);
-                                         
-                                         var submitCommentId = sap.ui.getCore().byId(
-                                                       this.getView().sId + "--addComment-"
-                                                                     + this.getView().sId + "--disrptlist-"
-                                                                     + listnum);
-
-                                         submitCommentId.setVisible(true);
-                                         //*********************************************************
-*/                                         
                                          var title = airbus.mes.disruptionslist.oView
                                                        .getModel("i18nModel").getProperty("rejectDisruption");
                                          var msgRef = oEvt.getSource().getBindingContext(
                                                        "operationDisruptionsModel").getObject("MessageRef");
                                          var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
+                                         
+                                         // Status required because user can reject before or after claim (Acknowledge)
                                          var sStatus = oEvt.getSource().getBindingContext(
                                                        "operationDisruptionsModel").getObject("Status");
 
@@ -476,13 +459,13 @@ sap.ui
                                   * Confirming Reject Disruption
                                   */
                                   onConfirmRejection : function(oEvent) {
+                                	 var i18nModel = this.getview().getModel("i18nModel");
+                                	  
                                      var comment = airbus.mes.disruptions.Formatter.actions.reject +
                                                             sap.ui.getCore().byId("disruptionCommentBox").getValue();
                                      
                                      // Comment is mandatory while rejection
                                      if(comment == "") {
-                                         var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
-
                                     	 sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
                                     	 return;
                                      }
@@ -497,7 +480,6 @@ sap.ui
                                                    "disruptionCommentStatus").getText();
 
                                      // Call Reject disruption Service
-                                     var i18nModel = this.getview().getModel("i18nModel");
                                      airbus.mes.disruptions.ModelManager.rejectDisruption(comment, msgRef, sStatus, i18nModel);
                                   },
                                   
@@ -668,7 +650,7 @@ sap.ui
                                          sap.ui.getCore().byId("disruptionAckDate")
                                                        .setDateValue(new Date());
 
-                                         sap.ui.getCore().byId("disruptionAckSpathMsgRef")
+                                         sap.ui.getCore().byId("disruptionAckMsgRef")
                                                        .setText(msgRef);
 
                                          sap.ui.getCore().byId("disruptionAckSpath").setText(
@@ -710,7 +692,7 @@ sap.ui
 
                                          var dateTime = date + " " + time;
 
-                                         var msgRef = sap.ui.getCore().byId("disruptionAckSpathMsgRef").getText();
+                                         var msgRef = sap.ui.getCore().byId("disruptionAckMsgRef").getText();
 
                                          var comment = airbus.mes.disruptions.Formatter.actions.acknowledge +
                                                                 sap.ui.getCore().byId("disruptionAckComment").getValue();

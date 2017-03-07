@@ -9,7 +9,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * 
 	 * @memberOf table.table
 	 */
-	disruptionTrackerRefresh : false,
+	disruptionTrackerRefresh : undefined,
 	mFilterParams : undefined,
 	onInit : function() {
 		// if the page is not busy
@@ -26,12 +26,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * @memberOf table.table
 	 */
 	onAfterRendering : function() {
-		var oSorter = new sap.ui.model.Sorter("openingTime", true);
-
-		// sorting based on opening time
-		//this.getView().byId("disruptiontrackerView--disruptionsTable").getBinding("rows").sort(oSorter);
-
-		airbus.mes.disruptiontracker.oView.byId("gotoDisruptionKpi").setVisible(true);
 
 	},
 

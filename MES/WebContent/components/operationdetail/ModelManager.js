@@ -305,14 +305,14 @@ airbus.mes.operationdetail.ModelManager = {
             MPData.Rowsets.Rowset[0].Row.forEach(function(element){
                 if (element.operation == operationId){
                     nbComponent++;
-                    nbMissing += parseInt(element.quantity);
+                    nbMissing += parseInt(element.quantity,0);
                 }
             });
             //Update and show notification
             if ( (nbComponent > 0) && (nbMissing > 0) ){
                 oMissingPartsNotif.Message = oI18n.getProperty("MissingPartMsg");
                 oMissingPartsNotif.Message = oMissingPartsNotif.Message.replace("%Param0%", nbComponent.toString()).replace("%Param1%", nbMissing.toString()); 
-                oMissingPartsNotif.MissingPartCount = parseInt(nbMissing);
+                oMissingPartsNotif.MissingPartCount = parseInt(nbMissing,0);
                 oMissingPartsNotif.Visibility = true;
             }
         } catch (error) {

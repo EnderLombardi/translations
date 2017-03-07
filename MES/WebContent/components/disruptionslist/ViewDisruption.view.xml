@@ -12,7 +12,8 @@
 
 				<CustomListItem>
 
-					<Panel class="disruptionExpandablePanel" expandable="true" expanded="{=${operationDisruptionsModel>expanded} === 'true'}">
+					<Panel class="disruptionExpandablePanel" expandable="true" expanded="{=${operationDisruptionsModel>expanded} === 'true'}" 
+						busy="{=${operationDisruptionsModel>itemBusy} === 'true'}">
 						<headerToolbar>
 							<Toolbar class="disrptListToolbar" >
 								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>severity','operationDisruptionsModel>escalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
@@ -59,7 +60,6 @@
 							</Toolbar>
 						</headerToolbar>
 
-						<!-- <f:Form class="formoperationDisruptionsModel" editable="true"> -->
 
 						<f:SimpleForm id="SimpleFormDisplay"
 							maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3">

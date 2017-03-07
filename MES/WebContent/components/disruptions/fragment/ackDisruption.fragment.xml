@@ -22,7 +22,7 @@
                         rows="10" cols="50" />
                 </VBox>
             </HBox>
-            <core:InvisibleText id="disruptionAckSpathMsgRef"
+            <core:InvisibleText id="disruptionAckMsgRef"
                 text="" />
             <core:InvisibleText id="disruptionAckSpath" text="" />
 
