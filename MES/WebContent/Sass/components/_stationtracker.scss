@@ -1015,10 +1015,47 @@ label {
     color: red;
 }
 
+/* Reschedule one line button */
 .rescheduleLineBtn {
-    @extend %rescheduleLineBtn;
+    @extend %rescheduleBtn;
+    width: 5px;
+    height: 105px;
+    top: -5px;
+    left: -10px;
+    &:hover {
+    	width: 200px;
+    	/*@include transition(width , 0.3s);*/
+    }
+    .rescheduleLineLabelBtn {
+        padding-left: 40px;
+        line-height: 52px;
+    }
+    i {
+        margin-left: 10px;
+        width: 40px;
+        height: auto;
+    }
 }
-
+/* Reschedule all line button */
+.rescheduleAllBtn {
+	@extend %rescheduleBtn;
+	width: 5px;
+	height: 37px;
+	top: 0;
+    /*left: -10px;*/
+    &:hover {
+        width:200px;
+    }
+    .rescheduleAllLabelBtn {
+        padding-left: 40px;
+        line-height: 40px;
+    }
+    i {
+        margin-left: 10px;
+        width: 40px;
+        height: auto;
+    }
+}
 
 /***********************
 TASK ADHERENCE

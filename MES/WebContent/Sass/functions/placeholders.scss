@@ -442,53 +442,25 @@ STATION TRACKER
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
-%rescheduleLineBtn{
-    clear: both;
+
+%rescheduleBtn {
+	clear: both;
     position: absolute;
-    width: 5px;
-    background: #ee373d;
-    left: -10px;
-    top: -5px;
-    height: 105px;
     z-index: 999;
+    background: #ee373d;
     color: white;
     font-size: 12px;
     font-weight: 700;
     font-family: arial;
     overflow: hidden;
     @include transition(width , 0.3s);
-    &:hover {
-    	width: 200px;
-    	/*@include transition(width , 0.3s);*/
-    }
-    i {
-        margin-left: 10px;
-        width: 40px;
-        height: auto;
-    }
-    .rescheduleLineLabelBtn {
-        padding-left: 40px;
-        line-height:52px;
-    }
+}
+%rescheduleLineBtn{
+
 }
 %rescheduleAllBtn {
-    background: #ee373d;
-    position:absolute;
-    width: 5px;
-    height: 36px;
-    z-index: 999;
-    color: white;
-    font-size: 12px;
-    font-weight: 700;
-    font-family: arial;
-    overflow: hidden;
-    @include transition(width , 0.3s);
-    &:hover {
-        width:120px;
-    }
-    .rescheduleAllLabelBtn {
-    }
 }
+
 //BUTTONS
 %sapMsegStationTracker{
     height: 3rem;
