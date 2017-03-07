@@ -17,14 +17,14 @@
     border: 0;
     >img#globalNavView--logo {
         margin-right: 0;
-        padding: 0.5rem 20px;
+        padding: 0.5rem 5px;
         border-radius: 0.125rem;
         &:hover {
             background-color: $navy-blue-hover;
         }
     }
     >label.pageTitle {
-        margin-left: 20px;
+        margin-left: 5px;
     }
 }
 .pageHeader {
