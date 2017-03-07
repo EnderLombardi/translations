@@ -1,15 +1,15 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:u="sap.ui.unified">
 	<Dialog id="idAttachmentDialog" contentWidth="90%"
-		contentHeight="90%" showHeader="false">
-		<subHeader>
+		contentHeight="90%">
+		<customHeader>
 			<Toolbar>
 				<Button icon="sap-icon://nav-back" press="onNavPress"
 					class="sapUiSmallMarginBegin" />
 				<Label text="{i18nModel>SelectDocs}" design="Bold"
 					class="sapUiSmallMarginBegin" />
 			</Toolbar>
-		</subHeader>
+		</customHeader>
 		<content>
 			<Toolbar>
 				<Label text="{i18nModel>DisplayAttachments}" design="Bold" />
@@ -21,7 +21,7 @@
 				<RadioButton id="idCheckDesktop" text="{i18nModel>Desktop}"
 					select="" class="sapUiSmallMarginEnd" />
 				<u:FileUploader id="idfileUploader" buttonText="{i18nModel>AttachDoc}" tooltip="{i18nModel>Attach}"
-					icon="sap-icon://sys-monitor" uploadComplete="onUploadComplete"
+					icon="sap-icon://sys-monitor" 
 					class="attachIcon" change="onFileSelect"
 					buttonOnly="true"  style="Transparent"
 					visible="true">
@@ -35,7 +35,7 @@
 			
 			<List id="idList" noDataText="{i18nModel>NoData}" 
  			class="disruptionDetail sapUiSmallMarginBottom"> 
- 			<StandardListItem/>
+<!--  			<StandardListItem/> -->
 
 <!-- 					<CustomListItem>  -->
 <!--  					<Toolbar>  -->

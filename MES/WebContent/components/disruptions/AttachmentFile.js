@@ -66,8 +66,9 @@ airbus.mes.disruptions.AttachmentFile = {
 				text : '{i18nModel>OK}',
 				press : function() {
 					dialog.close();
-					var oFileUploader =sap.ui.getCore().byId("idfileUploader");
-					oFileUploader.upload();
+//					var oFileUploader = sap.ui.getCore().byId("idfileUploader");
+//					oFileUploader.upload();
+					airbus.mes.disruptions.AttachmentFile.onUploadComplete();
 				}
 			}),
 			endButton : new sap.m.Button({
