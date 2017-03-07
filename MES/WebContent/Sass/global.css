@@ -426,7 +426,7 @@ STATION TRACKER
   -moz-border-radius: 5px;
   border-radius: 5px; }
 
-.classNotConfirmedOperation {
+.rescheduleLineBtn {
   clear: both;
   position: absolute;
   width: 5px;
@@ -443,14 +443,14 @@ STATION TRACKER
   -webkit-transition: width 0.3s ease-in-out;
   -moz-transition: width 0.3s ease-in-out;
   transition: width 0.3s ease-in-out; }
-  .classNotConfirmedOperation:hover {
+  .rescheduleLineBtn:hover {
     width: 200px;
     /*@include transition(width , 0.3s);*/ }
-  .classNotConfirmedOperation i {
+  .rescheduleLineBtn i {
     margin-left: 10px;
     width: 40px;
     height: auto; }
-  .classNotConfirmedOperation .classNotConfirmedOpeButton {
+  .rescheduleLineBtn .rescheduleLineLabelBtn {
     padding-left: 40px;
     line-height: 52px; }
 
