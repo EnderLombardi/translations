@@ -6,7 +6,7 @@
 	<Page enableScrolling="false" showHeader="false" height="100%">
 
 
-		<FlexBox width="100%" height="100%" justifyContent="Center"
+		<FlexBox width="92%" hieght="100%" class="sapUiMediumMarginBegin"
 			backgroundDesign="Transparent" direction="Column">
 			<items>
 
@@ -16,7 +16,7 @@
 
 
 					<f:SimpleForm id="createDisruptionForm" backgroundDesign="Transparent"
-										maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3"
+										maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" columnsL="3"
 										columnsM="3" columnsS="3" class="sapUiSmallMargin" visible="true">
 									<f:content>
 								<core:Title text="" />		
@@ -143,8 +143,7 @@
 									
 									</f:content>
 						</f:SimpleForm>
-
-								<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Transparent" 	title="{i18nModel>additionalInfo}"
+								<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Transparent"
 										maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" columnsL="3"
 										columnsM="3" columnsS="3" class="sapUiSmallMargin" visible="true">	
 									<f:content>
@@ -160,7 +159,7 @@
 										</MultiInput>
 									
 									
-									<core:Title text="" />
+									<core:Title text="{i18nModel>additionalInfo}" />
 										<Label text="{i18nModel>ribs}" />
 										<Input id="ribs" value="{DisruptionDetailModel>ribs}" />
 										<Label text="{i18nModel>view}" />
@@ -185,18 +184,16 @@
 										maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" columnsL="1"
 										columnsM="1" columnsS="1" class="sapUiSmallMargin" visible="true">	
 									<f:content>
-										<core:Title text="" />
-											<Label text=" " />
 											<TextArea placeholder="{i18nModel>AddComment}" id="comment"
 											valueLiveUpdate="true" rows="10" value="">
 											<layoutData>
-												<l:GridData span="XL7 L7 M6 S12" />
+												<l:GridData span="Xl11 L11 M10 S10" />
 											</layoutData>
 										</TextArea>
 	
 										<VBox alignItems="Center">
 											<layoutData>
-												<l:GridData span="XL1 L1 M2 S12" />
+												<l:GridData span="XL1 L1 M2 S2" />
 											</layoutData>
 											
 											<HBox width="100%" justifyContent="End">
