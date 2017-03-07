@@ -9,7 +9,7 @@ airbus.mes.disruptions.AttachmentFile = {
 	onUploadComplete : function(oEvt){
 		var oFileUploader = sap.ui.getCore().byId("idfileUploader");
 		
-				var oModel = sap.ui.getCore().getModel("AttachmentList");
+				var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 				var oData = oModel.getData();
 				var sName = oFileUploader.oFilePath._lastValue;
 				
@@ -36,27 +36,6 @@ airbus.mes.disruptions.AttachmentFile = {
 	 					})
 				}
 				oModel.refresh();
-//				var list = sap.ui.getCore().byId("idList")
-//				list.refreshItems()
-//				list.bindItems({
-//				path : "AttachmentList>/", 
-//				template : new sap.m.CustomListItem({
-////					title:"Title: {AttachmentList>Title}",
-//					content : [
-//					new sap.m.Toolbar({
-//						content:[
-//									new sap.ui.core.Icon({src:"sap-icon://circle-task-2", size:"0.5rem"}),         
-//									new sap.m.Label({text:"{AttachmentList>Title}", design:"Bold"}),
-//									new sap.m.ToolbarSpacer({width:"90%"}),
-//									new sap.ui.core.Icon({src:"sap-icon://delete", size:"1rem" ,class:"sapUiMediumMarginEnd"}),
-//									
-//						         ]
-//					})
-//
-//					]
-//					
-//				}),
-//				});
 				oInput.destroy();
 		
 				// updates the attachment number on adding an attachment
@@ -70,11 +49,9 @@ airbus.mes.disruptions.AttachmentFile = {
 		// here the title is to be given
 		var dialog = new sap.m.Dialog({
 			customHeader : [ new sap.m.Toolbar({
-				content : [
-				           new sap.m.Title({
-						text : "{i18nModel>EntDesc}"
-					}).addStyleClass("sapUiSmallMarginBegin")
-				           ]
+				content : [ new sap.m.Title({
+					text : "{i18nModel>EntDesc}"
+				}).addStyleClass("sapUiSmallMarginBegin") ]
 			}) ],
 			content : [ new sap.m.Input("idTitleInput", {}) ],
 			beginButton : new sap.m.Button({
@@ -89,13 +66,24 @@ airbus.mes.disruptions.AttachmentFile = {
 				press : function() {
 					dialog.close();
 				}
-			}),
-		//			afterClose : function() {
-		//				dialog.destroy();
-		//			}
+			})
 		});
 
 		oEvt.getSource().getParent().getParent().addDependent(dialog);
 		dialog.open();
+	},
+	onDeletePress: function(oEvent){
+//		var list = sap.ui.getCore().byId("idList")
+		// calculating the index of the selected list item
+		var sPath = oEvent.mParameters.listItem.oBindingContexts.Model.sPath;
+		var iLength = sPath.length;
+		var iIndex = sPath.slice(iLength - 1);
+		// Removing the selected list item from the model based on the index
+		// calculated
+		var oModel = this.getView().getModel("Model");
+		var oData = oModel.oData;
+		var removed = oData.items.splice(iIndex, 1);
+		oModel.setData(oData);
+		
 	}
 }

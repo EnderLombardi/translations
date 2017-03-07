@@ -3631,6 +3631,13 @@ section #ViewDisruptionView .sapMLIBFocusable:focus {
   .viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon {
     color: #fff !important; }
 
+#createDisruptionView .heightZero .sapUiFormContainerTitle > .sapUiFormTitle {
+  height: 0px; }
+#createDisruptionView #createDisruptionView .textAlignLeft {
+  text-align: left !important; }
+#createDisruptionView .titleAdditionalInfo {
+  color: #777777; }
+
 .createDisruptionFooter {
   position: fixed;
   bottom: 0px;
@@ -3641,9 +3648,6 @@ section #ViewDisruptionView .sapMLIBFocusable:focus {
 .inputQty .sapMInputBaseInner {
   line-height: 1.9rem !important;
   height: 1.9rem !important; }
-
-.formBackgroundColor {
-  background: #d4f1f7 !important; }
 
 label#createDisruptionView--disruptLabel {
   font-size: 1.2rem !important;

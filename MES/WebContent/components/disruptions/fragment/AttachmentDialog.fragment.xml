@@ -20,11 +20,10 @@
 					select="" class="sapUiSmallMarginEnd" />
 				<RadioButton id="idCheckDesktop" text="{i18nModel>Desktop}"
 					select="" class="sapUiSmallMarginEnd" />
-				<u:FileUploader id="idfileUploader" buttonText="{i18nModel>AttachDoc}" tooltip="{i18nModel>Attach}"
-					icon="sap-icon://sys-monitor" sameFilenameAllowed="true" 
-					class="attachIcon" change="onFileSelect"
-					buttonOnly="true"  style="Transparent"
-					visible="true">
+				<u:FileUploader id="idfileUploader" buttonText="{i18nModel>AttachDoc}"
+					tooltip="{i18nModel>Attach}" icon="sap-icon://sys-monitor"
+					sameFilenameAllowed="true" class="attachIcon" change="onFileSelect"
+					buttonOnly="true" style="Transparent" visible="true">
 
 				</u:FileUploader>
 			</Toolbar>
@@ -32,22 +31,22 @@
 			<HBox>
 				<Label text="{i18nModel>ListDocuments}" class="sapUiMediumMargin"></Label>
 			</HBox>
-			
-			<List id="idList" class="sapUiSmallMarginBegin" items="{path: 'AttachmentList>/'}" > 
-<!--  			<StandardListItem/> -->
 
-					<CustomListItem> 
- 					<Toolbar> 
- 						<core:Icon size="0.5rem" src="sap-icon://circle-task-2" />
- 						<Label text="{AttachmentList>Title}" design="Bold" width="100%"/> 
- 						<ToolbarSpacer width="40%"/>
- 						<core:Icon size="1rem" src="sap-icon://delete" />
- 					</Toolbar>
-			
- 					</CustomListItem> 
-		</List> 
- 	
- 	
+			<List id="idList" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/'}">
+				<!-- <StandardListItem/> -->
+
+				<CustomListItem>
+					<Toolbar>
+						<core:Icon size="0.5rem" src="sap-icon://circle-task-2" />
+						<Label text="{DesktopFilesModel>Title}" design="Bold" width="100%" />
+						<ToolbarSpacer width="40%" />
+						<core:Icon size="1rem" src="sap-icon://delete" press="onDeletePress"/>
+					</Toolbar>
+
+				</CustomListItem>
+			</List>
+
+
 		</content>
 		<beginButton>
 			<Button text="{i18nModel>Attach}" />

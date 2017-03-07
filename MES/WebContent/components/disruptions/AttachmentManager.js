@@ -95,7 +95,7 @@ airbus.mes.disruptions.AttachmentManager = {
 		});
 		// Number of attachments is is set on the popover's table header
 		var AttachmentHeader = sap.ui.getCore().byId("idAttachmentHeader");
-		var loModel = sap.ui.getCore().getModel("AttachmentList");
+		var loModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		var iLength = loModel.oData.items.length;
 		var sAttachment = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Attachment");
 		AttachmentHeader.setText(sAttachment + " (" + iLength + ")");
@@ -109,12 +109,12 @@ airbus.mes.disruptions.AttachmentManager = {
 	onPressDeleteButton : function(oEvent) {
 		this.getView().byId("idAttachmentTable");
 		// calculating the index of the selected list item
-		var sPath = oEvent.mParameters.listItem.oBindingContexts.AttachmentList.sPath;
+		var sPath = oEvent.mParameters.listItem.oBindingContexts.DesktopFilesModel.sPath;
 		var iLength = sPath.length;
 		//var iIndex = sPath.slice(iLength - 1);
 		// Removing the selected list item from the model based on the index
 		// calculated
-		var oModel = sap.ui.getCore().getModel("AttachmentList")
+		var oModel = sap.ui.getCore().getModel("DesktopFilesModel")
 		var oData = oModel.oData;
 		//var removed = oData.items.splice(iIndex, 1);
 		oModel.setData(oData);
@@ -127,7 +127,7 @@ airbus.mes.disruptions.AttachmentManager = {
 		oLink.setText(iCount + " " + sAttachment);
 		// Updates Number of attachment on the popover's table header on delete
 		var oAttachmentHeader = sap.ui.getCore().byId("idAttachmentHeader");
-		var oModel = sap.ui.getCore().getModel("AttachmentList");
+		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		var iLength = oModel.getData().items.length;
 		oAttachmentHeader.setText(sAttachment + " (" + iLength + ")");
 	},

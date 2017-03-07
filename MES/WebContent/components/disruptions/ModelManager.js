@@ -15,7 +15,7 @@ airbus.mes.disruptions.ModelManager = {
         if(this.core) return; 
 		
         this.core = core;
-		core.setModel(new sap.ui.model.json.JSONModel(), "AttachmentList");
+		core.setModel(new sap.ui.model.json.JSONModel(), "DesktopFilesModel");
 
 		airbus.mes.shell.ModelManager.createJsonModel(core, [ "operationDisruptionsModel", "DisruptionDetailModel", "disruptionCategoryModel",
 			"MaterialListModel", // Material List Model
@@ -990,7 +990,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 
 	AttachmentListModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("AttachmentList");
+		var oViewModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		oViewModel.loadData(this.urlModel.getProperty("ListOfAttachment"), null, false);
 	},
 	
