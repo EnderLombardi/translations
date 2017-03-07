@@ -1464,13 +1464,14 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 	},
 	confirmRescheduleLinePopUp: function (oEvent) {
 		// Get and Format required line data for the request
-		var lineData = this.reschedulePop.getModel("RescheduleLineData").oData;
+		var lineData = this.rescheduleLinePop.getModel("RescheduleLineData").oData;
 		var lineArray = [{
 			"skill": 		 lineData.skill,
 			"avlLineNumber": lineData.nLine
 		}];  
 		
 		// Debug
+		//console.log("====openRescheduleLinePopUp=======================")
 		//console.log("Line Data  : " + lineData);
 		//console.log("Line Array : " + lineArray);
 
