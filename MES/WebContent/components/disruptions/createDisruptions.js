@@ -152,16 +152,10 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			// fill select boxes on edit screen
 			var oModel = oView.getModel("DisruptionDetailModel");
 
-			// Set Time Lost
-			//oView.byId("timeLost").setValue(airbus.mes.disruptions.Formatter.timeMillisecondsToConfig(oModel.getProperty("/TimeLost")));
-
-			// Set Status and Description
-			//oView.byId("status").setValue(oModel.getProperty("/Status"));
-
 			// Empty Comment
 			oView.byId("comment").setValue();
 
-			/*var oMatInp = oView.byId("materials");
+			var oMatInp = oView.byId("materials");
 			var oJiginp = oView.byId("jigtools");
 
 			var aMatArray = oModel.oData.materials.split(",");
@@ -207,7 +201,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 				this.jigToolSelectDialog.close()
 
-			}*/
+			}
 
 			/*******************************************************************
 			 * Disable/Enable inputs according to  Originator/Resolution Group *
@@ -536,23 +530,10 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("selectResolver").setEnabled(false);
 	},
 
-	/**
-	 * Called when the View has been rendered (so its HTML is part of the
-	 * document). Post-rendering manipulations of the HTML could be done here.
-	 * This hook is the same one that SAPUI5 controls get after being rendered.
-	 * 
-	 * @memberOf airbus.mes.components.disruptions.CreateDisruption
-	 */
-	/*
-	 * onAfterRendering : function() { },
-	 */
 
-	/*
-	 * onCloseCreateDisruption : function() {
-	 * airbus.mes.stationtracker.operationDetailPopup.close();
-	 * airbus.mes.shell.oView.getController() .renderStationTracker(); },
+	/*****************************
+	 * Close create disruption screen
 	 */
-
 	onCancelCreateDisruption : function() {
 
 		var currentPage = nav.getCurrentPage().getId();
@@ -608,23 +589,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	addNewMaterialToList : function() {
 
 		if (sap.ui.getCore().byId("customMaterial").getValue() != "") {
-
-			/*
-			 * var oNewMaterial = { "Material" : sap.ui.getCore().byId(
-			 * "customMaterial").getValue() }
-			 * 
-			 * oModelData.push(oNewMaterial); oModelData.splice(0, 0,
-			 * oNewMaterial); sap.ui.getCore().getModel("MaterialListModel")
-			 * .refresh();
-			 * 
-			 * var oNewMaterialItem = sap.ui.getCore().byId(
-			 * "materialList").getItems()[0];
-			 * oNewMaterialItem.getContent()[0].getContent()[0]
-			 * .getItems()[1].getItems()[1] .setValue(sap.ui.getCore().byId(
-			 * "customMaterialQty").getValue());
-			 * sap.ui.getCore().byId("materialList")
-			 * .setSelectedItem(oNewMaterialItem, true);
-			 */
 
 			// make an Item to add in the list. var
 			var oMaterialItem = new sap.m.CustomListItem({
@@ -697,13 +661,8 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	},
 
 	/***************************************************************************
-	 * On token change in MultiInput field directly, we need to restrict it
+	 * F4 help for material list
 	 **************************************************************************/
-
-	/*onMaterialTokenChange : function() {
-		this.onMaterialValueHelpRequest();
-	},*/
-
 	handleCancelMaterialList : function() {
 		this._materialListDialog.close();
 	},
@@ -732,10 +691,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * Adds new free jig tool along with quantity to the list
 	 */
 	addNewJigToolToList : function() {
-
-		// var oModelData = sap.ui.getCore().getModel(
-		// "MaterialListModel").getProperty(
-		// "/MaterialList");
 
 		if (sap.ui.getCore().byId("customJigTool").getValue() != "") {
 
@@ -821,9 +776,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		this.jigToolSelectDialog.close();
 	},
-	/*onJigToolTokenChange : function() {
-		this.onJigToolValueHelpRequest();
-	},*/
+
 	onCreateAndCloseDisruption:function(){
 		
 
@@ -879,10 +832,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 				}, {
 					"attribute" : "STATUS",
 					"value" : airbus.mes.disruptions.Formatter.status.pending
-				}, /*
-					 * { "attribute" : "ROOT_CAUSE", "value" :
-					 * oView.byId("selectRootCause").getSelectedKey() },
-					 */{
+				}, {
 					"attribute" : "MSN",
 					"value" : airbus.mes.settings.ModelManager.msn
 				}, {

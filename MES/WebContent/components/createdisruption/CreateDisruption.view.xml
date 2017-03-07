@@ -154,8 +154,7 @@
 										<Label text="{i18nModel>plan}" class="textAlignLeft"/>
 										<Input id="plan" value="{DisruptionDetailModel>plan}" />
 										<Label text="{i18nModel>material}" class="textAlignLeft"/>									
-										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
-											 valueHelpOnly="true">		
+										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" valueHelpOnly="true">		
 										</MultiInput>
 									
 									
