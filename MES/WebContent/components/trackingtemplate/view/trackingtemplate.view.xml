@@ -62,6 +62,8 @@
 								<VBox class="wo-items-left-container">
 									<Label class="wo-items-title" text="{WONotes>User_First_Name}.{WONotes>User_Last_Name}"/>
 									<Text class="wo-items-comments" text="{WONotes>Comments}"/>
+									<Text class="wo-items-attachedDocument" text="{i18n>won_attached_document} : {WONotes>attachedDocument/length}" 
+									visible="{path:'WONotes>attachedDocument/length', formatter: 'airbus.mes.trackingtemplate.util.Formatter.isEmpty'}"/>
 									<HBox class="wo-items-documents-container" items= "{path:'WONotes>attachedDocument', templateShareable:false}">
 										<Link class="wo-items-document" text="{WONotes>FILE_NAME}" href="{WONotes>FILE_URL}"/>
 									</HBox>
