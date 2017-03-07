@@ -301,7 +301,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		}
 				
 		// Create a JSON for Payload attributes and make a call in ModelManager
-		this.createDisruption("");	
+		oController.createDisruption("");	
 		
 	},
 	createDisruption:function(reportAndCloseFlag){
@@ -798,6 +798,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			return;
 		}
 		
-		this.createDisruption( "X");		
+		oView.oController.createDisruption( "X");		
 }
 });
