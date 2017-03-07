@@ -31,7 +31,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		if (sMode == "Create") {	
 			// Set Data
 			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-			oModel.setData();
+			oModel.setData({});
 			oModel.refresh();
 			
             this.createDisruptionSettings();

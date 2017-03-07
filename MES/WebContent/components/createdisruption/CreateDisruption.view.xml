@@ -23,14 +23,14 @@
 								<!-- SD-SP1604983-CDP-010 -->
 										<Label required="true" text="{i18nModel>CategoryClass}" class="textAlignLeft"/>
 										<Select id="selectFivemCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}" 
-											forceSelection="false" change="onSelectionChange" selectedKey="{DisruptionDetailModel>categoryClass}" >
+											forceSelection="false" change="onSelectionChange" selectedKey="{DisruptionDetailModel>/categoryClass}" >
 											<items>
 												<core:Item text="{disruptionCategoryModel>CATEGORY_CLASS}" key="{disruptionCategoryModel>CATEGORY_CLASS}" />
 											</items>
 										</Select>
 										<Label required="true" text="{i18nModel>Category}" class="textAlignLeft"/>									
 										<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-											change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>messageType}">
+											change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>/messageType}">
 											<items>
 												<core:Item text="{disruptionCategoryModel>DESCRIPTION}"
 													key="{disruptionCategoryModel>MESSAGE_TYPE}" />
@@ -38,7 +38,7 @@
 										</Select>
 										<Label required="true" text="{i18nModel>reason}" class="textAlignLeft"/>
 										<Select id="selectAttribute" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
-										  forceSelection="false" selectedKey="{DisruptionDetailModel>reason}">
+										  forceSelection="false" selectedKey="{DisruptionDetailModel>/reason}">
 											<items>
 												<core:Item text="{disruptionRsnRespGrp>REASON}"
 													key="{disruptionRsnRespGrp>REASON}" />
@@ -46,7 +46,7 @@
 										</Select>
 										
 										<Label text="{i18nModel>bomItem}" class="textAlignLeft" />
-										<Input value="{DisruptionDetailModel>bomItem}" />
+										<Input value="{DisruptionDetailModel>/bomItem}" />
 										
 									
 									<core:Title />
@@ -62,14 +62,14 @@
 										
 											<Label required="true" text="{i18nModel>resGroup}" class="textAlignLeft"/>
 											<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
-												forceSelection="false" selectedKey="{DisruptionDetailModel>responsibleGroup}">
+												forceSelection="false" selectedKey="{DisruptionDetailModel>/responsibleGroup}">
 												<items>
 													<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
 														key="{disruptionRsnRespGrp>ResponsibleGroup}" />
 												</items>
 											</Select>
 											<Label text="{i18nModel>TimeLost}" class="textAlignLeft"/>	
-											<Input placeholder="" id="timeLost" type="Number" value="{path: 'DisruptionDetailModel>timeLost', formatter: 'airbus.mes.disruptions.Formatter.timeMillisecondsToConfig'}">
+											<Input placeholder="" id="timeLost" type="Number" value="{path: 'DisruptionDetailModel>/timeLost', formatter: 'airbus.mes.disruptions.Formatter.timeMillisecondsToConfig'}">
 											</Input>
 									
 										
@@ -77,27 +77,27 @@
 										<Label text="{i18nModel>OpenDate}" class="textAlignLeft"/>											
 										<DatePicker enabled="false" id="openDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>openingTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											value="{path: 'DisruptionDetailModel>/openingTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 										</DatePicker>
 										<TimePicker enabled="false" id="openTime"
 											displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>openingTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+											value="{path: 'DisruptionDetailModel>/openingTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 										</TimePicker>
 										<Label required="true" text="{i18nModel>Expected}" class="textAlignLeft"/>										
 										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											value="{path: 'DisruptionDetailModel>/requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 										</DatePicker>
 										<TimePicker id="expectedTime" displayFormat="HH:mm:ss"
 											valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+											value="{path: 'DisruptionDetailModel>/requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 										</TimePicker>
 		
 									<!-- 	<VBox visible="true">
 										<Label text="{i18nModel>Resolver}" />	
 										<Select id="selectResolver"
 											items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
-											forceSelection="false" selectedKey="{DisruptionDetailModel>resolverID}">
+											forceSelection="false" selectedKey="{DisruptionDetailModel>/resolverID}">
 											<items>
 												<core:Item
 													text="{disruptionResolverModel>Name}"
@@ -109,18 +109,18 @@
 									
 										<Label text="{i18nModel>status}" />
 										<Input id="status" enabled="false"
-											value="{path: 'DisruptionDetailModel>status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}">
+											value="{path: 'DisruptionDetailModel>/status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}">
 										</Input>										
 									
 										<Label id="promisedDateLabel"  text="{i18nModel>promisedDateTime}" />
 										<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
-											enabled="{parts: [  {path: 'DisruptionDetailModel>responsibleFlag'}, {path: 'DisruptionDetailModel>status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
+											value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+											enabled="{parts: [  {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
 										</DatePicker>
 										<TimePicker id="promisedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
-											enabled="{parts: [  {path: 'DisruptionDetailModel>responsibleFlag'}, {path: 'DisruptionDetailModel>status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">	
+											value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+											enabled="{parts: [  {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">	
 										</TimePicker>
 										
 										<Select id="selectRootCause" selectedKey=""
@@ -133,7 +133,7 @@
 											</Select>
 										<Label  text="{i18nModel>OriginatorGroup}" />									
 										<Select id="selectOriginator" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}"
-											 forceSelection="false" selectedKey="{DisruptionDetailModel>originatorGroup}" >
+											 forceSelection="false" selectedKey="{DisruptionDetailModel>/originatorGroup}" >
 											<items>
 												<core:Item text="{disruptionCategoryModel>group_desc}"
 													key="{disruptionCategoryModel>group_name}" />
@@ -150,9 +150,9 @@
 									<f:content>
 									<core:Title  />
 										<Label text="{i18nModel>area}" class="textAlignLeft" />
-										<Input id="area" value="{DisruptionDetailModel>area}" />
+										<Input id="area" value="{DisruptionDetailModel>/area}" />
 										<Label text="{i18nModel>plan}" class="textAlignLeft"/>
-										<Input id="plan" value="{DisruptionDetailModel>plan}" />
+										<Input id="plan" value="{DisruptionDetailModel>/plan}" />
 										<Label text="{i18nModel>material}" class="textAlignLeft"/>									
 										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" valueHelpOnly="true">		
 										</MultiInput>
@@ -160,18 +160,18 @@
 									
 									<core:Title  />
 										<Label text="{i18nModel>ribs}" class="textAlignLeft"/>
-										<Input id="ribs" value="{DisruptionDetailModel>ribs}" />
+										<Input id="ribs" value="{DisruptionDetailModel>/ribs}" />
 										<Label text="{i18nModel>view}" class="textAlignLeft"/>
-										<Input id="view" value="{DisruptionDetailModel>view}" />
+										<Input id="view" value="{DisruptionDetailModel>/view}" />
 										<Label text="{i18nModel>Jigtool}" class="textAlignLeft"/>
 										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"  valueHelpOnly="true">
 										</MultiInput>
 									
 									<core:Title   />
 										<Label text="{i18nModel>stringer}" class="textAlignLeft"/>
-										<Input id="stringer" value="{DisruptionDetailModel>stringer}" />
+										<Input id="stringer" value="{DisruptionDetailModel>/stringer}" />
 										<Label text="{i18nModel>stringer_rail}" class="textAlignLeft"/>
-										<Input id="stringer_rail" value="{DisruptionDetailModel>stringer_rail}" />
+										<Input id="stringer_rail" value="{DisruptionDetailModel>/stringer_rail}" />
 									</f:content>
 									</f:SimpleForm>
 									
