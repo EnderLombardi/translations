@@ -35,18 +35,28 @@ airbus.mes.disruptions.AttachmentFile = {
 	 					"icon" : sIcon
 	 					})
 				}
-				var list = sap.ui.getCore().byId("idList")
+				oModel.refresh();
+//				var list = sap.ui.getCore().byId("idList")
 //				list.refreshItems()
-				list.bindItems({
-				path : "AttachmentList>/", 
-				template : new sap.m.StandardListItem({
-					title:"Title: {AttachmentList>Title}",
+//				list.bindItems({
+//				path : "AttachmentList>/", 
+//				template : new sap.m.CustomListItem({
+////					title:"Title: {AttachmentList>Title}",
 //					content : [
-//					new sap.m.Label({text:"Title: {AttachmentList>Title}"})
+//					new sap.m.Toolbar({
+//						content:[
+//									new sap.ui.core.Icon({src:"sap-icon://circle-task-2", size:"0.5rem"}),         
+//									new sap.m.Label({text:"{AttachmentList>Title}", design:"Bold"}),
+//									new sap.m.ToolbarSpacer({width:"90%"}),
+//									new sap.ui.core.Icon({src:"sap-icon://delete", size:"1rem" ,class:"sapUiMediumMarginEnd"}),
+//									
+//						         ]
+//					})
+//
 //					]
-					
-				}),
-				});
+//					
+//				}),
+//				});
 				oInput.destroy();
 		
 				// updates the attachment number on adding an attachment
@@ -55,35 +65,37 @@ airbus.mes.disruptions.AttachmentFile = {
 //				var sAttachment = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Attachment");
 //				loLink.setText(loCount + " " + sAttachment);
 	},
-	onFileSelect : function(oEvt){
+	onFileSelect : function(oEvt) {
 		// When user selects a file, a popup is displayed
 		// here the title is to be given
 		var dialog = new sap.m.Dialog({
-			content : [ new sap.m.Label({
-				text : "{i18nModel>Title}"
-			}), new sap.m.Input("idTitleInput",{}) ],
+			customHeader : [ new sap.m.Toolbar({
+				content : [
+				           new sap.m.Title({
+						text : "{i18nModel>EntDesc}"
+					}).addStyleClass("sapUiSmallMarginBegin")
+				           ]
+			}) ],
+			content : [ new sap.m.Input("idTitleInput", {}) ],
 			beginButton : new sap.m.Button({
 				text : '{i18nModel>OK}',
 				press : function() {
 					dialog.close();
-//					var oFileUploader = sap.ui.getCore().byId("idfileUploader");
-//					oFileUploader.upload();
 					airbus.mes.disruptions.AttachmentFile.onUploadComplete();
 				}
 			}),
 			endButton : new sap.m.Button({
 				text : '{i18nModel>cancel}',
-				press : function(){
+				press : function() {
 					dialog.close();
 				}
 			}),
-//			afterClose : function() {
-//				dialog.destroy();
-//			}
+		//			afterClose : function() {
+		//				dialog.destroy();
+		//			}
 		});
 
-
-		oEvt.getSource().getParent().getParent().addDependent(dialog);		
+		oEvt.getSource().getParent().getParent().addDependent(dialog);
 		dialog.open();
 	}
 }
