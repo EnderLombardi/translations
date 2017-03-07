@@ -574,8 +574,8 @@ airbus.mes.stationtracker.util.Formatter = {
 			var paramsRescheduleLine = '\'' + oSection.avlLine + '\',' + countNotConfirmedOps;
 			var labelRescheduleBtn   = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("RescheduleLineButton");
 			
-			sNotConfirmedOpLS = '<span class="classNotConfirmedOperation" onclick="airbus.mes.stationtracker.util.ModelManager.rescheduleLine(' + paramsRescheduleLine + ')">' +
-								  	'<span class="classNotConfirmedOpeButton">' + labelRescheduleBtn + '</span>' +
+			sNotConfirmedOpLS = '<span class="rescheduleLineBtn" onclick="airbus.mes.stationtracker.util.ModelManager.rescheduleLine(' + paramsRescheduleLine + ')">' +
+								  	'<span class="rescheduleLineLabelBtn">' + labelRescheduleBtn + '</span>' +
 								  	'<i class="fa fa-clock-o" aria-hidden="true"></i>' +
 							  	'</span>';
 		}

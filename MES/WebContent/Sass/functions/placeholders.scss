@@ -442,7 +442,7 @@ STATION TRACKER
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
-%classNotConfirmedOperation{
+%rescheduleLineBtn{
     clear: both;
     position: absolute;
     width: 5px;
@@ -466,12 +466,12 @@ STATION TRACKER
         width: 40px;
         height: auto;
     }
-    .classNotConfirmedOpeButton {
+    .rescheduleLineLabelBtn {
         padding-left: 40px;
         line-height:52px;
     }
 }
-%classRescheduleAllButton {
+%rescheduleAllBtn {
     background: #ee373d;
     position:absolute;
     width: 5px;
@@ -485,6 +485,8 @@ STATION TRACKER
     @include transition(width , 0.3s);
     &:hover {
         width:120px;
+    }
+    .rescheduleAllLabelBtn {
     }
 }
 //BUTTONS
