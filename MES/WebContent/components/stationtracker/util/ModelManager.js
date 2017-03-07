@@ -1287,8 +1287,7 @@ airbus.mes.stationtracker.util.ModelManager = {
                     sStatus = "IN_QUEUE";
                 else if (aModel[0].status === "1")
                     sStatus = "NOT_STARTED";
-                else if (aModel[0].status === "4" || aModel[0].status === "5"
-                    || aModel[0].status === "6" || aModel[0].status === "7")
+                else if (aModel[0].status === "4")
                     sStatus = "Blocked";
 
 

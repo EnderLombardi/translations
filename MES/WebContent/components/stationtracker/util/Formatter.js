@@ -296,190 +296,138 @@ airbus.mes.stationtracker.util.Formatter = {
 		if (oBox.isUnplanned === 1) { //Unplanned
 			sLeftIcon3 = boxDisplayManager.leftOswIcon_Constructor(sUNPD);
 		}
-		switch (oBox.status) {
-			// box is active
-			case 2:
-				sColorProgress = boxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
-
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play");
-				break;
-			// box is paused
-			case 3:
-				sColorProgress = boxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
-
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-pause");
-				break;
-			// box not started
-			case 1:
-				sRightIcon = "";
-				break;
-			// box Completed
-			case 0:
-				sColorProgress = boxDisplayManager.colorProgress_Constructor("teal-blue-back");
-
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-check");
-
-				if (oBox.rmaStatus === 1) { //rma
-					sLeftIcon = boxDisplayManager.leftTriangleIcon;
-				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sOSW);
-//				}
-				if (oBox.isUnplanned === 1) { //Unplanned
-					sLeftIcon3 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sUNPD);
-				}
-				
-
-				break;
-				
-			// Operation not started but disruption exists
-			case 4:
-				sColorProgress = boxDisplayManager.colorProgress_OpenBlocked;
-
-				if (oBox.rmaStatus === 1) { //rma
-					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
-				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
-				if (oBox.isUnplanned === 1) { //Unplanned
-					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-				}
-				
-				break;
-
-			// Opened Escalated disruption = andon raised
-			case 5:
-				sColorProgress = boxDisplayManager.colorProgress_Escalated;
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop");
-
-				if (oBox.rmaStatus === 1) { //rma
-					sLeftIcon = boxDisplayManager.leftTriangleIcon;
-				}
-				
-				if (dispatch) {
+		
+		if(oBox.disrupttion === "---"){
+			switch (oBox.status) {
+				// box is active
+				case 2:
+					sColorProgress = boxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
+	
+					sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play");
+					break;
+				// box is paused
+				case 3:
+					sColorProgress = boxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
+	
+					sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-pause");
+					break;
+				// box not started
+				case 1:
+					sRightIcon = "";
+					break;
+				// box Completed
+				case 0:
+					sColorProgress = boxDisplayManager.colorProgress_Constructor("teal-blue-back");
+	
+					sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-check");
+	
+					if (oBox.rmaStatus === 1) { //rma
+						sLeftIcon = boxDisplayManager.leftTriangleIcon;
+					}
+	//				if (oBox.OSW === 3) { //OSW
+	//					sLeftIcon2 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sOSW);
+	//				}
+					if (oBox.isUnplanned === 1) { //Unplanned
+						sLeftIcon3 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sUNPD);
+					}
 					
-					dispatchWhite = true;
-				}
-				
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
-				if (oBox.isUnplanned === 1) { //Unplanned
-					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-				}
-				
-				break;
-
-			// Opened Blocking disruption
-			case 6:
-				sColorProgress = boxDisplayManager.colorProgress_OpenBlocked;
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
-
-				if (oBox.rmaStatus === 1) { //rma
-					sLeftIcon = boxDisplayManager.leftTriangleIcon;
-				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
-				if (oBox.isUnplanned === 1) { //Unplanned
-					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-				}
-				
-				if (dispatch) {
+	
+					break;
 					
-					dispatchWhite = true;
-				}
-				
-				break;
-
-			// Answered Blocking
-			case 7:
-				sColorProgress = boxDisplayManager.colorProgress_AnsweredBlocked;
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
-
-				if (oBox.rmaStatus === 1) { //rma
-					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
-				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
-
-				if (oBox.isUnplanned === 1) { //Unplanned
-					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-				}
-				break;
-
-			// Answered escalated = andon answered
-			case 8:
-				sColorProgress = boxDisplayManager.colorProgress_AnsweredBlockedExcalated;
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop");
-
-				if (oBox.rmaStatus === 1) { //rma
-					sLeftIcon = boxDisplayManager.leftTriangleIcon;
-				}
-				
-				if (dispatch) {
-					
-					dispatchWhite = true;
-				}
-				
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
-				if (oBox.isUnplanned === 1) { //Unplanned
-					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-				}
-				break;
-				
-
-			// Solved Escalated disruption
-			case 9:
-				sColorProgress = boxDisplayManager.colorProgress_SolvedBlocked;
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
-
-				if (oBox.rmaStatus === 1) { //rma
-					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
-				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
-
-				if (oBox.isUnplanned === 1) { //Unplanned
-					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-				}
-				break;
+				default:
+			}
 			
-			// Solved Blocking disruption
-			case 10:
-				sColorProgress = boxDisplayManager.colorProgress_SolvedBlockedExcalated;
-				sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop");
-
-				if (oBox.rmaStatus === 1) { //rma
-					sLeftIcon = boxDisplayManager.leftTriangleIcon;
-				}
-				
-				if (dispatch) {
+		}else{
+			var sIconColor= undefined;
+			
+			// Check for disruptions
+			switch(oBox.disruption){
+			
+				// An open escalated disruption exists
+				case "D1":
+					sColorProgress = boxDisplayManager.colorProgress_Escalated;
 					
-					dispatchWhite = true;
-				}
+					if (dispatch) {
+						dispatchWhite = true;
+					}
+					break;
+					
+				// An open non-escalated disruption exists
+				case "D2":
+					sColorProgress = boxDisplayManager.colorProgress_OpenBlocked;
+					sIconColor = "petrol";
+					break;
+	
+				// Answered Escalated disruption exists
+				case "D3":
+					sColorProgress = boxDisplayManager.colorProgress_AnsweredBlockedExcalated;
+					
+					if (dispatch) {
+						dispatchWhite = true;
+					}
+					break;
+	
+				// Answered non - escalated disruption exists
+				case "D4":
+					sColorProgress = boxDisplayManager.colorProgress_AnsweredBlocked;
+					sIconColor = "petrol";
+					break;
+					
+	
+				// Solved Escalated disruption
+				case "D5":
+					sColorProgress = boxDisplayManager.colorProgress_SolvedBlockedExcalated;
+					
+					if (dispatch) {
+						dispatchWhite = true;
+					}
+					break;
 				
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
-				if (oBox.isUnplanned === 1) { //Unplanned
-					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
-				}
-				break;
+				// Solved Non-Escalated disruption
+				case "D6":
+					sColorProgress = boxDisplayManager.colorProgress_SolvedBlocked;
+					break;
+					
+				default:
+			}
+			
+			// Compute Right Icon - If any disruption and operation previously started
+			if(oBox.disruption != "---"){
+				switch(oBox.status){
 				
-			default:
+					case 4:  // Operation is blocked
+						sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", sIconColor);
+						
+					case 3:	// Operation is paused
+						sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-pause");
+						break;
+						
+					case 2:	// Operation is active
+						sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play");
+						break;
+		
+					case 1: // Operation not started
+						sRightIcon = "";
+						break;
+					default:
+				
+				};
+			}
+			
+			// Left icons
+			if (oBox.rmaStatus === 1) { //rma
+				sLeftIcon = boxDisplayManager.leftTriangleIcon;
+			}
+			if (oBox.isUnplanned === 1) { //Unplanned
+				sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+			}
 		}
+		// End of calculation of colors based on disruptions
 		
 		if (dispatch) {
 			if (dispatchWhite){
 				sLeftIcon = boxDisplayManager.leftStopIcon_White;
-			}
-			else {
+			} else{
 				sLeftIcon = boxDisplayManager.leftStopIcon;
 			}
 		}
