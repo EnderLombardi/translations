@@ -371,20 +371,10 @@ airbus.mes.stationtracker.util.Formatter = {
 					sColorProgress = boxDisplayManager.colorProgress_AnsweredBlocked;
 					sIconColor = "petrol";
 					break;
-					
-	
-				// Solved Escalated disruption
-				case "D5":
-					sColorProgress = boxDisplayManager.colorProgress_SolvedBlockedExcalated;
-					
-					if (dispatch) {
-						dispatchWhite = true;
-					}
-					break;
 				
 				// Solved Non-Escalated disruption
-				case "D6":
-					sColorProgress = boxDisplayManager.colorProgress_SolvedBlocked;
+				case "D5":
+					sColorProgress = boxDisplayManager.colorProgress_SolvedDisruption;
 					break;
 					
 				default:
