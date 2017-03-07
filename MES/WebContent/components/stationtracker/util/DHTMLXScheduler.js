@@ -8,6 +8,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
     byPassOnDrag: "boolean",
     id: "",
     renderer: function (oRm, oControl) {
+    	
+    	var rescheduleAllLabelButton = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("RescheduleAllButton");
 
         oRm.write("<div ");
         oRm.writeControlData(oControl);
@@ -15,7 +17,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
         //oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
         // with splitter
         oRm.write(" class='dhx_cal_container'  style='width:100%; height:inherit;'>");
-        oRm.write("    <div class='dhx_cal_navline'style=''>");
+        oRm.write("     <div class='dhx_cal_navline'style=''>");
+        // Begin Reschedule All button
+        oRm.write("		<span class='rescheduleAllBtn' style='display:none'>");
+        oRm.write("			<span class='rescheduleAllLabelBtn'>" + rescheduleAllLabelButton + "</span>");
+        oRm.write("     	<i class='fa fa-clock-o' aria-hidden='true'></i>");
+        oRm.write("     </span>");
+        // End Reschedule All button
         oRm.write("        <div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%;'></div>");
         oRm.write("    </div>");
         oRm.write("    <div class='dhx_cal_header' Style='text-align:left;'>");
@@ -83,6 +91,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
         scheduler.date.add_timeline_old = scheduler.date.add_timeline;
         scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
         scheduler._click.dhx_cal_next_button = ShiftManager.bounded("next");
+        
+        scheduler._click.rescheduleAllBtn = function () {
+            //console.log("section: " + section);
+        }
+        
+        scheduler.eventId.push(scheduler.attachEvent("addRescheduleAllButton", function (ev, e, is_new, original) {
+        	console.log("section: " + ev);
+        }));
 
 
         /************************************************************************/
