@@ -454,6 +454,7 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					var sPaused = "";
 					var sPreviouslyStarted = "";
 					var sRouterStepBo = "";
+					var sDisruption = "";
 				
 					
 					oModel[key][key1][key2].forEach( function( el ) { 
