@@ -23,7 +23,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		// Reset All fields
 		this.resetAllFields();
-
+		
 		this.loadDisruptionCategory();
 		ModelManager.loadMaterialList();
 		ModelManager.loadJigtoolList();
@@ -33,7 +33,9 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 			oModel.setData({});
 			oModel.refresh();
-            
+
+			sap.ui.getCore().byId("createDisruptionView--selectCategory").setEnabled(false);
+			
             this.createDisruptionSettings();
             
 		} else if (sMode == "Edit") {
@@ -96,6 +98,10 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			this.getView().byId("selectCategory").getBinding("items").filter(aFilters);
 			this.getView().byId("selectCategory").setSelectedKey();
 
+			sap.ui.getCore().byId("createDisruptionView--selectCategory").setEnabled(true);
+			
+			break;
+			
 		case "selectCategory":
 
 			oView.byId("selectreason").setSelectedKey();

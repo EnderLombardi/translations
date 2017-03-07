@@ -41,13 +41,11 @@ airbus.mes.disruptiontracker.ModelManager = {
 				"operationNo" : "",
 				"sfcStepBO": "",
 				"msnNumber": msnNumber,
-				"forMobile": true
+				"forMobile": false
 			}),
 
 			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
+				
 				var aDisruptions = [];
 				if (data.disruptionListDetails) {
 					if (data.disruptionListDetails && !data.disruptionListDetails[0]) {

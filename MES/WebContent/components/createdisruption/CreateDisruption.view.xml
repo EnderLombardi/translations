@@ -51,7 +51,7 @@
 									
 									<core:Title />
 										<Label required="true" text="{i18nModel>gravity}" class="textAlignLeft"/>			
-											<Select id="gravity" selectedKey="{DisruptionDetailModel>/Gravity}">
+											<Select id="gravity" selectedKey="{DisruptionDetailModel>/severity}">
 											<!-- selectedKey="{= ( typeof ${DisruptionDetailModel>/Gravity} == undefined ) ||  ${DisruptionDetailModel>/Gravity} == '' || ${DisruptionDetailModel>/Gravity} =null ? '3' : ${DisruptionDetailModel>/Gravity}}"> -->
 												<items>
 													<core:Item text="{i18nModel>Blocked}" key="3" />

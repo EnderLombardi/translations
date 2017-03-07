@@ -63,13 +63,12 @@ airbus.mes.disruptions.ModelManager = {
 			}),
 
 			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
 				var aDisruptions = [];
 				if (data.disruptionListDetails) {
 					if (data.disruptionsListDetails && !data.disruptionListDetails[0]) {
 						aDisruptions = [ data.disruptionListDetails ];
+					} else{
+						aDisruptions = data;
 					}
 				}
 				
@@ -993,6 +992,32 @@ airbus.mes.disruptions.ModelManager = {
 	AttachmentListModel : function() {
 		var oViewModel = sap.ui.getCore().getModel("AttachmentList");
 		oViewModel.loadData(this.urlModel.getProperty("ListOfAttachment"), null, false);
-	}	
+	},
+	
+	/***************************************************************************
+	 * Load disruptions detail from message reference
+	 **************************************************************************/
+	loadDisruptionDetail: function(msgRef){
+		jQuery.ajax({
+			type : 'post',
+			url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDisruptionDetailsURL"),
+			contentType : 'application/json',
+			cache : false,
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"messageRef" : msgRef,
+				"forMobile" : false
+			}),
+			success : function(data) {			
+				sap.ui.getCore().getModel("DisruptionDetailModel").setData(data);
+				airbus.mes.disruptiondetail.oView.setBusy(false);
+			},
+
+			error : function(error, jQXHR) {
+				airbus.mes.disruptiondetail.oView.setBusy(false);
+			}
+
+		});
+	}
 	
 };
