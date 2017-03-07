@@ -93,7 +93,7 @@
 											value="{path: 'DisruptionDetailModel>requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 										</TimePicker>
 		
-										<VBox visible="false">
+									<!-- 	<VBox visible="true">
 										<Label text="{i18nModel>Resolver}" />	
 										<Select id="selectResolver"
 											items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
@@ -139,10 +139,11 @@
 													key="{disruptionCategoryModel>group_name}" />
 											</items>
 										</Select>
-										</VBox>
+										</VBox> -->
 									
 									</f:content>
 						</f:SimpleForm>
+						<HBox><Text text='{i18nModel>additionalInfo}' /></HBox>
 								<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Transparent"
 										maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" columnsL="3"
 										columnsM="3" columnsS="3" class="sapUiSmallMargin" visible="true">	
@@ -159,7 +160,7 @@
 										</MultiInput>
 									
 									
-									<core:Title text="{i18nModel>additionalInfo}" />
+									<core:Title text="" />
 										<Label text="{i18nModel>ribs}" />
 										<Input id="ribs" value="{DisruptionDetailModel>ribs}" />
 										<Label text="{i18nModel>view}" />
