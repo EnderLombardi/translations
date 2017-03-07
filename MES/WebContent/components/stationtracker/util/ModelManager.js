@@ -1028,27 +1028,33 @@ airbus.mes.stationtracker.util.ModelManager = {
         
         // Get current shift id
 		var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
-		console.log("Current shift ID: " + oShift.shiftID);
 		var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
 		
 		// Get previous shift id
 		if ( fIndexShift != -1 && fIndexShift != 0 ) {
 			var prevShiftID = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1].shiftID;
 			var currentDate = new Date();
-			console.log("Prev shift ID : " + prevShiftID);
-			console.log("Current Date  : " + currentDate);
-		
+			
+			/*
+			console.log("Current  shift ID : " + oShift.shiftID);
+			console.log("Previous shift ID : " + prevShiftID);
+			console.log("Current Date      : " + currentDate);
+			*/
+			
 			// TODO Ajouter username ou handle si possible
 			var data = JSON.stringify({
-				"site": 		oData.site,
-				"phStation": 	oData.station,
-				"msn": 			oData.msn,
-				"currShiftID":  oShift.shiftID,
-				"prevShiftID": 	prevShiftID,
-				"curentDate": 	currentDate,
-				"lines": 		lines
+				"site": 			oData.site,
+				"physicalStation": 	oData.station,
+				"msn": 				oData.msn,
+				"lines": 			lines,
+				"actualDate": 		currentDate,
+				"previousShift": 	oShift.shiftID,
+				"currentShift": 	prevShiftID,
+				"userName":         userName
             });
-	        
+			
+			console.log("Reschedule line: Data sent: " + data);
+	        /*
 	        jQuery.ajax({
 	            type: 'post',
 	            url: urlReschedulingLineService,
@@ -1064,6 +1070,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 	                jQuery.sap.log.info(error);
 	            }
 	        });
+	        */
 		}
     },
     

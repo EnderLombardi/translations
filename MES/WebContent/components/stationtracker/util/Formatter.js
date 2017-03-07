@@ -172,9 +172,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	date2jsDate: function (day) {
 
 		if (day != undefined) {
-
 			return new Date(day.split(' '));
-
 		}
 	},
 	date2Hour: function (day) {
@@ -284,8 +282,9 @@ airbus.mes.stationtracker.util.Formatter = {
 			trackerTextClass = "trackerText";
 		}
 
-		if (oBox.status == 6 || oBox.status == 4)
+		if (oBox.status == 6 || oBox.status == 4) {
 			trackerTextClass = "trackerTextBlock";
+		}
 
 		if (oBox.rmaStatus === 1) { //rma
 			sLeftIcon = boxDisplayManager.leftTriangleIcon_Dandelion;
@@ -427,7 +426,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		if (dispatch) {
 			if (dispatchWhite){
 				sLeftIcon = boxDisplayManager.leftStopIcon_White;
-			} else{
+			} else {
 				sLeftIcon = boxDisplayManager.leftStopIcon;
 			}
 		}
@@ -570,10 +569,15 @@ airbus.mes.stationtracker.util.Formatter = {
 
 		if (bNotConfirmedOpLS) {
 			// Count number of not confirmed operation
-			var countNoConf = airbus.mes.stationtracker.util.ShiftManager.countNoTotalConfLastShif(oSection);
-			sNotConfirmedOpLS = '<span class="classNotConfirmedOperation" onclick="airbus.mes.stationtracker.util.ModelManager.rescheduleLine(\''
-				+ oSection.avlLine + '\',' + countNoConf + ')"><span class="classNotConfirmedOpeButton">'
-			+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("RescheduleLineButton") +'</span><i class="fa fa-clock-o" aria-hidden="true"></i></span>';
+			var countNotConfirmedOps = airbus.mes.stationtracker.util.ShiftManager.countNoTotalConfLastShif(oSection);
+			// Format params for onclick rescheduleLine method
+			var paramsRescheduleLine = '\'' + oSection.avlLine + '\',' + countNotConfirmedOps;
+			var labelRescheduleBtn   = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("RescheduleLineButton");
+			
+			sNotConfirmedOpLS = '<span class="classNotConfirmedOperation" onclick="airbus.mes.stationtracker.util.ModelManager.rescheduleLine(' + paramsRescheduleLine + ')">' +
+								  	'<span class="classNotConfirmedOpeButton">' + labelRescheduleBtn + '</span>' +
+								  	'<i class="fa fa-clock-o" aria-hidden="true"></i>' +
+							  	'</span>';
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
@@ -872,10 +876,12 @@ airbus.mes.stationtracker.util.Formatter = {
 					dir = -1;
 					o = o.substring(1);
 				}
-				if (a[o] > b[o])
+				if (a[o] > b[o]) {
 					return dir;
-				if (a[o] < b[o])
+				}
+				if (a[o] < b[o]) {
 					return -(dir);
+				}
 				return 0;
 			}).reduce(function firstNonZeroValue(p, n) {
 				return p ? p : n;
@@ -894,26 +900,30 @@ airbus.mes.stationtracker.util.Formatter = {
 		var toXml = function (v, name, ind) {
 			var xml = "";
 			if (v instanceof Array) {
-				for (var i = 0, n = v.length; i < n; i++)
+				for (var i = 0, n = v.length; i < n; i++) {
 					xml += ind + toXml(v[i], name, ind + "\t") + "\n";
+				}
 			} else if (typeof (v) == "object") {
 				var hasChild = false;
 				xml += ind + "<" + name;
 				for (var m in v) {
-					if (m.charAt(0) == "@")
+					if (m.charAt(0) == "@") {
 						xml += " " + m.substr(1) + "=\"" + v[m].toString() + "\"";
-					else
+					} else {
 						hasChild = true;
+					}
+						
 				}
 				xml += hasChild ? ">" : "/>";
 				if (hasChild) {
 					for (var m in v) {
-						if (m == "#text")
+						if (m == "#text") {
 							xml += v[m];
-						else if (m == "#cdata")
+						} else if (m == "#cdata") {
 							xml += "<![CDATA[" + v[m] + "]]>";
-						else if (m.charAt(0) != "@")
+						} else if (m.charAt(0) != "@") {
 							xml += toXml(v[m], m, ind + "\t");
+						}
 					}
 					xml += (xml.charAt(xml.length - 1) == "\n" ? ind : "") + "</" + name + ">";
 				}
@@ -922,8 +932,9 @@ airbus.mes.stationtracker.util.Formatter = {
 			}
 			return xml;
 		}, xml = "";
-		for (var m in o)
+		for (var m in o) {
 			xml += toXml(o[m], m, "");
+		}
 		return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
 	},
 
@@ -944,12 +955,16 @@ airbus.mes.stationtracker.util.Formatter = {
 		var mins = s % 60;
 		var hrs = (s - mins) / 60;
 
-		if (hrs == 0)
+		if (hrs == 0) {
 			hrs = "00";
-		if (mins == 0)
+		}
+		if (mins == 0) {
 			mins = "00";
-		if (secs == 0)
+		}
+		if (secs == 0) {
 			secs = "00";
+		}
+			
 		return hrs + ':' + mins + ':' + secs;
 	},
 
