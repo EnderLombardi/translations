@@ -50,9 +50,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
             document.createEvent("TouchEvent");
             // cant drag & drop verticaly if set to force when scrolling
             scheduler.config.touch = "force";
-            console.log("you are on touchpad")
+            //console.log("you are on touchpad")
         } catch (e) {
-            console.log("you are on destop")
+            //console.log("you are on destop")
         }
 
         scheduler.createTimelineView({

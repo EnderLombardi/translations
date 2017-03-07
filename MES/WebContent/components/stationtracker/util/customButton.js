@@ -31,7 +31,7 @@ sap.m.Button.extend("airbus.mes.stationtracker.util.customButton", {
 	renderer : function(oRm,oControl) {
 		
 		var fEnable = oControl.getEnabled();
-		console.log(fEnable);
+		//console.log(fEnable);
 		
 		oRm.write("<button");
 		oRm.writeControlData(oControl);
