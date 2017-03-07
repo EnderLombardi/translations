@@ -11,5 +11,9 @@ airbus.mes.ncdisplay.util.Formatter = {
 //		} else {
 //			return false;
 //		}
-//	}
+//	},
+    
+    translateStatus : function(sValue) {
+    	return airbus.mes.ncdisplay.oView.getModel("i18ncdisplaylinksModel").getProperty(sValue);
+    }
 };

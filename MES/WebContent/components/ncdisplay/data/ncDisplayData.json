@@ -21,7 +21,7 @@
          "operationNumber":"0030",
          "ncReference":"0000858621",
          "description":"  22.04.2004 09:51:22 U. QUALITE FUS AV WB LR A380 (FNZQU4L) Tél. 54834..  EQUIPEMENT SOUS DEROGATION:D9893-001097 R/FW",
-         "acpStatus":"C",
+         "acpStatus":"O",
          "ncType":"IR"
       },
       {  
@@ -29,7 +29,7 @@
          "operationNumber":"0020",
          "ncReference":"0000858621",
          "description":"  27.04.2004 16:51:39 AMENAGEMENT SAINT-NAZAIRE A380 (LMGG6)  Sur ferrure d'accrochage moteur volets au C66 manque perçage  pour passage fil frein sur flasque interne D et sur les 2 flasques G  MORICE 12955 .  28.04.2004 14:43:45 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  SUPPORTS SITUES DANS LE WP 12223.  ETABLIR LITIGE AUPRES DU BE POUR FAIRE MODIFIER LES INTERFACES.  29.04.2004 11:32:15 FREDERICK DAVID (NZ71807) Tél. 544344 544344  Litige 300031464  03.06.2004 15:32:44 SEBASTIEN BEAUDREMONT (NZ20402) Tél. 544340 544340  LE LITIGE 300031464 EST REPONDU, POURRIEZ-VOUS CLOTURER L'AM SVP? (CR)  25.08.2004 14:45:07 David BRECQ (ST05870) Tél. 598504  Les trous étant percés trop pres de l'axe, attendons solution de  réparation, changement de la ferrure ou acceptable dans l'état (voir  avec derogation).  Si defaut acceptable, merci de nous communiquer l'information pour  montage du fil frein.  11.09.2004 10:33:47 CEDRIC VAILLANT (NZ32466)  <H><U>Réponse SABCA :</></>    Il manquait effectivement un trou sur chaque ferrure. D'après David  DEFLANDRE, le trou supplémentaire à été rajouté sur chaque ferrure  cette nuit. Le trou déjà présent est un peu décalé par rapport au plan  mais cela ne gène pas pour le passage d'un fil frein.   Cordialement,   Christophe Caudéran  Coordinateur production A380 & A340-500/600   Tel: 00 32 (0) 2 729 56 74  GSM: 00 32 (0) 478 76 97 38  E-mail: christophe.cauderan@sabca.be",
-         "acpStatus":"C",
+         "acpStatus":"O",
          "ncType":"AM"
       },
       {  
@@ -53,7 +53,7 @@
          "operationNumber":"0020",
          "ncReference":"0000858621",
          "description":"  28.04.2004 20:38:12 AMENAGEMENT SAINT-NAZAIRE A380 (LMGG6)  Dans case de train G et D les vis de fixation des renvois d'arbre de  volets sont trop longues ( ABS 0114 V4D13) .  Il y a également discordence entre les longueurs des pions de centrage  et les épaisseurs des ferrures .  MORICE 12955 .  30.04.2004 15:26:45 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  ETABLIR LITIGE POUR FAIRE MODIFIER LA LONGUEUR DES VIS.SUR MSN 0001 LES  OPERATEURS ONT MONTE LES RENVOIS AVEC DES VIS (ABS 0114 V4D11).  30.04.2004 15:29:31 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  DEPLUS LE PROBLEME POUR LES PIONS DE CENTRAGE A ETE RESOLU SUR  MSN0001.A VOIR SUR LES PROCHAINS AVIONS.  04.05.2004 10:03:00 FREDERICK DAVID (NZ71807) Tél. 544344 544344  Litige 300031710",
-         "acpStatus":"C",
+         "acpStatus":"O",
          "ncType":"AM"
       },
       {  
@@ -69,7 +69,7 @@
          "operationNumber":"0030",
          "ncReference":"0000858621",
          "description":"  03.05.2004 13:52:53 U. QUALITE FUS AV WB LR A380 (FNZQU4L) Tél. 54834..  EQUIPEMENT SOUS DEROGATION:D9893-001145 R-FW  Unit to be retrofitted prior to flight test campaign",
-         "acpStatus":"C",
+         "acpStatus":"O",
          "ncType":"AM"
       },
       {  
@@ -85,7 +85,7 @@
          "operationNumber":"0020",
          "ncReference":"0000858621",
          "description":"  11.05.2004 16:55:56 AMENAGEMENT SAINT-NAZAIRE A380 (LMGG6)  Pour la fixation de l'équipement 5006CV est préconisé des goupilles  MS24665-153 trop menue par rapport au trou de l'axe .  Je propose des goupilles MS24665-300 ( CMS5787461300 ) .  MORICE 12955 .  12.05.2004 08:25:28 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  ETABLIR LITIGE AUPRES DU BE POUR FAIRE MODIFIER LES GOUPILLES.  13.05.2004 11:21:16 FREDERICK DAVID (NZ71807) Tél. 544344 544344  Litige 300032582.",
-         "acpStatus":"C",
+         "acpStatus":"O",
          "ncType":"AM"
       },
       {  

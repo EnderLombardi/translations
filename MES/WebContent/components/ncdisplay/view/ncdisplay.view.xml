@@ -35,7 +35,7 @@
 					<table:Column width="10%">
 						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayACPStatus}" />
 						<table:template>
-							<Text text="{ncdisplaydata>acpStatus}" />
+							<Text text="{path : 'ncdisplaydata>acpStatus', formatter : 'airbus.mes.ncdisplay.util.Formatter.translateStatus'}" />
 						</table:template>
 					</table:Column>
 					<table:Column width="10%">
