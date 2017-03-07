@@ -672,15 +672,15 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
        */
       seeMoreMesssages : function(oEvt) {
 
+    	  var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
     	  var oCommentList = oEvt.getSource().getParent().getContent()[4];
     	  var oBinding = oCommentList.getBinding("items");
 
     	  // Show all comments to the current disruption
-    	  var messageRef = oEvt.getSource().getCustomData()[0].getValue();
+    	  var messageRef = this.getView().getModel("operationDisruptionsModel").getProperty(sPath + "/messageRef");
     	  oBinding.filter(new sap.ui.model.Filter("messageRef", "EQ", messageRef));
 
     	  // Update binding inorder to hide the see more button
-    	  var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
     	  this.getView().getModel("operationDisruptionsModel").setProperty(sPath + "/prevCommentsLoaded", "true");
     	  this.getView().getModel("operationDisruptionsModel").refresh();
       },
@@ -690,11 +690,12 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
        */
       seeLessMesssages : function(oEvt) {
 
+    	  var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
     	  var oCommentList = oEvt.getSource().getParent().getContent()[4];
     	  var oBinding = oCommentList.getBinding("items");
     	  
     	  // Show all comments to the current disruption
-    	  var messageRef = oEvt.getSource().getCustomData()[0].getValue();
+    	  var messageRef = this.getView().getModel("operationDisruptionsModel").getProperty(sPath + "/messageRef");
     	  var firstRowFlag = true;
     	  oBinding.filter(new sap.ui.model.Filter({
     		  path : "messageRef",

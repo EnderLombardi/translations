@@ -22,7 +22,7 @@
 								<core:Title text="" />		
 								<!-- SD-SP1604983-CDP-010 -->
 										<Label required="true" text="{i18nModel>CategoryClass}" />
-										<Select id="selectFivemCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/2/Row}" 
+										<Select id="selectFivemCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}" 
 											forceSelection="false" change="onSelectionChange" selectedKey="{DisruptionDetailModel>categoryClass}" >
 											<items>
 												<core:Item text="{disruptionCategoryModel>CATEGORY_CLASS}" key="{disruptionCategoryModel>CATEGORY_CLASS}" />
