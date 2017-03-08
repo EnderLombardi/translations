@@ -9,6 +9,7 @@ airbus.mes.disruptions.Formatter = {
 		"pending" : "Pending",
 		"closed" : "Closed",
 		"acknowledged" : "Acknowledged",
+		"answered" : "Answered",
 		"solved" : "Solved",
 		"rejected" : "Rejected",
 		"deleted" : "Deleted"
@@ -188,7 +189,7 @@ airbus.mes.disruptions.Formatter = {
 		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)
 			return false;
 
-		else if (originatorFlag == "X" && responsibleFlag != "X" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
+		else if (originatorFlag == "X" && responsibleFlag != "X" && (status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered) )
 			return false;
 
 		else if ((status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
@@ -253,7 +254,7 @@ airbus.mes.disruptions.Formatter = {
 		if(commentBoxOpened === "true")
 			return false;
 		
-		if(status == airbus.mes.disruptions.Formatter.status.acknowledged){
+		if( status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered){
 			if (responsibleFlag == "X" && 
 				resolverID == sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"))
 				return true;
@@ -299,7 +300,7 @@ airbus.mes.disruptions.Formatter = {
 		// if (originatorFlag != "X" && responsibleFlag == "X") {
 		if (responsibleFlag == "X") {
 
-			if (status == airbus.mes.disruptions.Formatter.status.acknowledged) {
+			if ( status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered) {
 
 				return true;
 			}
