@@ -364,7 +364,8 @@ airbus.mes.disruptions.ModelManager = {
 							sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
 
 						} else if (currentPage == "disruptiontrackerView") {
-							airbus.mes.disruptions.ModelManager.updateDisruptionModel();
+							//airbus.mes.disruptions.ModelManager.updateDisruptionModel();
+							airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(sMessageRef, "/0");
 							airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 							sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer").back();
 
@@ -620,7 +621,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Add Comment service
 	 **************************************************************************/
-	addComment : function(sComment, msgRef, i18nModel) {
+	addComment : function(sComment, msgRef, sPath, i18nModel) {
 
 		// Set Busy
 		airbus.mes.operationdetail.oView.setBusyIndicatorDelay(0);
@@ -649,23 +650,8 @@ airbus.mes.disruptions.ModelManager = {
 				} else {					
 					var sMessageSuccess = i18nModel.getProperty("commentSuccessful");
 					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
-/*
-					// Add Comment to Model
-					var currDate = new Date();
-					var date = currDate.getFullYear() + "-" + ('0' + (currDate.getMonth() + 1)).slice(-2) + "-" + ('0' + currDate.getDate()).slice(-2);
-					var oComment = {
-						"Action" : i18nModel.getProperty("comment"),
-						"Comments" : sComment,
-						"Counter" : "",
-						"Date" : date,
-						"MessageRef" : msgRef,
-						"UserFullName" : (sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase()
-							+ " " + sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
-					};
-
-					var oModel = sap.ui.getCore().getModel("operationDisruptionsModel");
-					oModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
-					oModel.refresh();*/
+					
+					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
 				}
 
 			}

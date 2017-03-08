@@ -404,7 +404,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 
 		// Call Add comment Service
 		var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
-		airbus.mes.disruptions.ModelManager.addComment(sComment, msgRef, i18nModel);
+		airbus.mes.disruptions.ModelManager.addComment(sComment, msgRef, sPath, i18nModel);
 
 		this.getView().getModel("operationDisruptionsModel").setProperty(sPath + "/disruptionNewComment", "");
 		this.getView().getModel("operationDisruptionsModel").refresh();
