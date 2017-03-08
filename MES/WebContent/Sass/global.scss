@@ -489,3 +489,12 @@ label.headerText {
     background:transparent !important;
     color:#fff;
 }
+
+//background of the hompepage
+//placed here so the path is the same for the scss and css (so it works on local, test and prod environment)
+.panelbgImg {
+    background-color: white;
+    background-image: url(../components/homepage/images/dottedCarbon.png);
+    display: block;
+    background-size: 100% 100%;
+}
