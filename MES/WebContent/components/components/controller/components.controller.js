@@ -339,6 +339,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
 //    	Refresh Profile Model to relaunch formatter on View
     	sap.ui.getCore().getModel("Profile").refresh(true);
+    	sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].frozen_fitted_parts = this.freeze;
+    	sap.ui.getCore().getModel("operationDetailModel").refresh();
+    
     },
     
 //  SD-PPC-WT-1760

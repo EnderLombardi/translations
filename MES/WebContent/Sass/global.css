@@ -1822,6 +1822,10 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 .MissingPartsNotifIcon { color: #fe5000; }
 
+#operationDetailsView--idComponents.operationDetailTabSelected #operationDetailsView--idComponents-count::before { content: ""; height: 4px; position: absolute; top: 20px; bottom: 0; left: 0; right: 0; background: #fe5000; }
+
+#operationDetailsView--idComponents[data-idcomponentsho="true"] #operationDetailsView--idComponents-count::after { height: 4px; position: relative; top: 0; background: transparent; content: " ⇧HO  "; color: #4CBB17; font-size: 80%; font-weight: bold; vertical-align: sub; }
+
 #ViewDisruptionView--disrptlist { width: 95% !important; margin: 50px auto !important; padding: 0; }
 
 .classFormHint { font-size: 80% !important; font-style: italic !important; }
@@ -2342,10 +2346,7 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*!
-*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
-*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-*/
+/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }

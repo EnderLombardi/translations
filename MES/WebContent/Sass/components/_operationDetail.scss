@@ -548,3 +548,37 @@
 .MissingPartsNotifIcon{
     color: #fe5000;
 }
+
+#operationDetailsView--idComponents{
+// When selected, we use the after to write HO icon so, we apply the orange underline as ::before
+	&.operationDetailTabSelected{
+		#operationDetailsView--idComponents-count{
+			&::before{ 
+			    content: "";
+			    height: 4px;
+			    position: absolute;
+			    top: 20px;
+			    bottom: 0;
+			    left: 0;
+			    right: 0;
+			    background: #fe5000;
+			}
+		}
+	}
+// If component is freeze, data-idcomponentsho = true, display HO
+	&[data-idcomponentsho="true"]{
+		#operationDetailsView--idComponents-count{
+			&::after{
+			    height: 4px;
+			    position: relative;
+			    top : 0;
+			    background: transparent;	
+				content: " ⇧HO  ";
+				color : $kelly-green;
+				font-size : 80%;
+				font-weight : bold;
+				vertical-align : sub;
+			}
+		}
+	}
+}
