@@ -13,7 +13,7 @@
 				<CustomListItem>
 
 					<Panel class="disruptionExpandablePanel" expandable="true" expanded="{=${operationDisruptionsModel>expanded} === 'true'}" 
-						busy="{=${operationDisruptionsModel>itemBusy} === 'true'}">
+						busy="{=${operationDisruptionsModel>itemBusy} === 'true'}" busyIndicatorDelay="0">
 						<headerToolbar>
 							<Toolbar class="disrptListToolbar" >
 								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>severity','operationDisruptionsModel>escalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
@@ -181,7 +181,7 @@
 							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
 
 						<List showNoData="false" class="sapUiSmallMarginBeginEnd"
-							items="{path: 'operationDisruptionsModel>/disruptionComments'}">
+							items="{path: 'operationDisruptionsModel>disruptionComments'}">
 
 							<CustomListItem class="msgColor">
 								<HBox
