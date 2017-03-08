@@ -464,7 +464,6 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 		//close the popups
 		airbus.mes.shell.doaPopup.close();
-		airbus.mes.stationtracker.operationDetailPopup.close();
 	},
 
 	/////////////////////////////////
