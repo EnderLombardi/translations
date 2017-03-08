@@ -69,7 +69,7 @@
 												</items>
 											</Select>
 											<Label text="{i18nModel>TimeLost}" class="textAlignLeft"/>	
-											<Input placeholder="" id="timeLost" type="Number" value="{path: 'DisruptionDetailModel>/timeLost', formatter: 'airbus.mes.disruptions.Formatter.timeMillisecondsToConfig'}">
+											<Input   placeholder="" id="timeLost" type="Number" liveChange="liveChangeTimeLost" value="{path: 'DisruptionDetailModel>/timeLost', formatter: 'airbus.mes.disruptions.Formatter.timeMillisecondsToConfig'}">
 											</Input>
 									
 										

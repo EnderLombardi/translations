@@ -187,7 +187,22 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		});
 		return result;
 	},
-
+	/***********************
+	 * value in time lost should't be greater than four
+	 * Mesv1.5 defect correction
+	 */
+	liveChangeTimeLost:function(oEvt){
+		
+		if(oEvt.getParameters().value.length == 4){
+			this.sValue = oEvt.getSource().getValue();
+			return;
+		}
+		if(oEvt.getParameters().value.length >4){
+			airbus.mes.shell.ModelManager.messageShow(this.getView().getModel("i18nModel").getProperty("fourDigitsOnly"));
+			oEvt.getSource().setValue(this.sValue);
+			return;
+		}
+	},
 	onCreateDisruption : function() {
 		
 		var oView = airbus.mes.createdisruption.oView;
