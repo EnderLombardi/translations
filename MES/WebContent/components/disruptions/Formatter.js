@@ -324,7 +324,8 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	textCaseFormat : function(text) {
-		text = text.toLowerCase();
+		if(text)
+			text = text.toLowerCase();
 		return text;
 	},
 	formatCommentAction : function(action, comment) {
