@@ -14,22 +14,23 @@
 			<Toolbar>
 				<Label text="{i18nModel>DisplayAttachments}" design="Bold" />
 				<ToolbarSpacer></ToolbarSpacer>
-				<RadioButton id="idCheckCurrOp" selected="true" text="{i18nModel>CurrOP}"
-					select="" class="sapUiSmallMarginEnd" />
+				<RadioButton id="idCheckCurrOp" selected="true"
+					text="{i18nModel>CurrOP}" select="" class="sapUiSmallMarginEnd" />
 				<RadioButton id="idCheckCurrWO" text="{i18nModel>CurrWO}"
 					select="" class="sapUiSmallMarginEnd" />
 				<RadioButton id="idCheckDesktop" text="{i18nModel>Desktop}"
 					select="" class="sapUiSmallMarginEnd" />
 				<u:FileUploader id="idfileUploader" buttonText="{i18nModel>AttachDoc}"
 					tooltip="{i18nModel>Attach}" icon="sap-icon://sys-monitor"
-					sameFilenameAllowed="true" class="attachIcon" change="onFileSelect"
+					sameFilenameAllowed="true" class="attachIcon" change="onPressAttachBttn"
 					buttonOnly="true" style="Transparent">
 
 				</u:FileUploader>
 			</Toolbar>
 
 			<HBox>
-				<Label text="{i18nModel>ListDocuments}" class="sapUiMediumMargin" design="Bold"></Label>
+				<Label text="{i18nModel>ListDocuments}" class="sapUiMediumMargin"
+					design="Bold"></Label>
 			</HBox>
 
 			<List id="idList" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/'}">
@@ -38,9 +39,9 @@
 				<CustomListItem>
 					<Toolbar>
 						<core:Icon size="0.5rem" src="sap-icon://circle-task-2" />
-						<Label text="{DesktopFilesModel>Title}" width="30%"/>
+						<Label text="{DesktopFilesModel>Title}" width="30%" />
 						<ToolbarSpacer width="65%" />
-						<core:Icon size="1rem" src="sap-icon://delete" press="onDeletePress"/>
+						<core:Icon size="1rem" src="sap-icon://delete" press="onDeletePress" />
 					</Toolbar>
 
 				</CustomListItem>
