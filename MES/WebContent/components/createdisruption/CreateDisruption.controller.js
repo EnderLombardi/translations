@@ -41,7 +41,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		airbus.mes.disruptions.ModelManager.createViewMode = sMode;
 		
 		var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-		oModel.setData(evt.data.oData);
+		oModel.setData(oData);
 		oModel.refresh();
 		
 

@@ -156,7 +156,7 @@
 										<Label text="{i18nModel>material}" class="textAlignLeft"/>									
 										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" valueHelpOnly="true" tokens="{DisruptionDetailModel>/materials}">
 											<tokens>
-										    	<Token key="{DisruptionDetailModel>/}" text="{DisruptionDetailModel>/}" />
+										    	<Token key="{DisruptionDetailModel>/materials/}" text="{DisruptionDetailModel>/materials/}" />
 										    </tokens>
 										</MultiInput>
 									
