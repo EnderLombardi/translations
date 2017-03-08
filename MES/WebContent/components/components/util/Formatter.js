@@ -78,6 +78,6 @@ airbus.mes.components.util.Formatter = {
         } else {
             return '0';
         }
-    },
+    }
 
 };

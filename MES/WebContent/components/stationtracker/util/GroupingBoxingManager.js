@@ -245,6 +245,8 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 			var sStop = "0";
 			var fRMA = "0";
 			var sUnplanned = "0";
+			var FREEZE_TRACKING_TEMPLATE = false;
+			var FROZEN_FITTED_PARTS = false;			
 			var sBlock = "0";
 			var sStatus2 = airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(el.STATE, el.PAUSED, el.PREVIOUSLY_STARTED );			
 
@@ -299,6 +301,18 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 			if ( el.STOP === "true") {
 				sStop = "1";				
 			}
+
+			if(el.FREEZE_TRACKING_TEMPLATE === true) {
+				FREEZE_TRACKING_TEMPLATE = true;
+			} else {
+				FREEZE_TRACKING_TEMPLATE = false;
+			}
+
+			if(el.FROZEN_FITTED_PARTS === true) {
+				FROZEN_FITTED_PARTS = true;
+			} else {
+				FROZEN_FITTED_PARTS = false;
+			}			
 			
 			var oOperation = {		
 					
@@ -343,6 +357,8 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					"ROUTERSTEPBO" : el.ROUTER_STEP_BO,
 					"ACPNG_STATUS" : el.ACPNG_STATUS,
 					"STOP" : sStop
+					"FREEZE_TRACKING_TEMPLATE" : FREEZE_TRACKING_TEMPLATE,
+					"FROZEN_FITTED_PARTS" : FROZEN_FITTED_PARTS					
 										
 			};
 			

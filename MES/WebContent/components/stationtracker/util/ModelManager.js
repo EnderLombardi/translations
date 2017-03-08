@@ -1345,6 +1345,8 @@ airbus.mes.stationtracker.util.ModelManager = {
                                 "noOfEmp": aModel[0].NUMBER_OF_EMPLOYEES,
                                 "duration": aModel[0].DURATION,
                                 "routerStepBo": aModel[0].ROUTERSTEPBO,
+                                "freeze_tracking_template" : aModel[0].FREEZE_TRACKING_TEMPLATE,
+                                "frozen_fitted_parts" : aModel[0].FROZEN_FITTED_PARTS
                             }]
                         }]
                     }

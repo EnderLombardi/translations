@@ -7,6 +7,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     oFilterRB: undefined,
     sSet: undefined,
     committedFittedView: false,
+    freeze : false,
 
     //is called after view is rendered.
     onAfterRendering: function () {
@@ -23,6 +24,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
         // Init value of SearchField
         sap.ui.getCore().byId("componentsView--idSearchComponent").setValue("");
+        
+//      Load freeze state
+        this.computeFreeze();
+        this.manageFreezeButton(this.freeze);
     },
 
     //checks operation or work order mode
@@ -291,12 +296,39 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     },
 
+    manageFreezeButton: function(bFreeze) {
+//		Retrieve button freeze
+    	var oButton = sap.ui.getCore().byId("operationDetailPopup--btnFreeze");
+    	var sText;
+
+//    	If component is freeze
+    	if(this.freeze = true) {
+    		sText = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("unfreeze");
+    	} else {
+//    		If component is unfreeze
+    		sText = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("freeze");
+    	}
+    	
+    	oButton.setText(sText);
+    },
+    
+    computeFreeze: function(){
+    	this.freeze = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].frozen_fitted_parts;
+    },
+    
     //freeze not available now
     //is called when the save button is clicked
     onbtnComponentsFreeze: function (oEvent) {
         var buttonText = oEvent.getSource().getText();
         var freeze = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("freeze");
         var unfreeze = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("unfreeze");
+        
+//        var url = airbus.mes.components.util.ModelManager.urlModel.getProperty("componentsSaveFittedComponent");
+//        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
+//        url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", airbus.mes.components.oView.getController().getOwnerComponent().getWorkOrder());
+//        url = airbus.mes.shell.ModelManager.replaceURI(url, "$freeze", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
+//        
+        
         if (buttonText === freeze) {
             oEvent.getSource().setText(unfreeze);
         } else {
