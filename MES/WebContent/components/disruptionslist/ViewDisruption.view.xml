@@ -17,27 +17,27 @@
 						<headerToolbar>
 							<Toolbar class="disrptListToolbar" >
 								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>severity','operationDisruptionsModel>escalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
-								<Label text="DIS-{operationDisruptionsModel>disruptionNumber} - {path: 'operationDisruptionsModel>category'} {operationDisruptionsModel>reason}" design="Bold" />
+								<Label text="DIS-{operationDisruptionsModel>disruptionNumber} - {path: 'operationDisruptionsModel>category'} {operationDisruptionsModel>reason}" design="Bold" width="30%" />
 								
 								<ToolbarSpacer />
-								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" design="Bold" />
+								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" design="Bold" width="7%"/>
 								
 								<ToolbarSpacer />
-								<Label text="{i18nModel>opensince}: " />
-								<Label text=" {path:'operationDisruptionsModel>openingTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" design="Bold"/>
+								<Label text="{i18nModel>opensince}: "/>
+								<Label text=" {path:'operationDisruptionsModel>openingTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" design="Bold" width="5%"/>
 								
 								<ToolbarSpacer />
-								<Label text="{i18nModel>level}{operationDisruptionsModel>escalationLevel}" class="disrptlistdesc" design="Bold"/>
+								<Label text="{i18nModel>level}{operationDisruptionsModel>escalationLevel}" class="disrptlistdesc" design="Bold" width="5%"/>
 								
 								<ToolbarSpacer />
-								<Label text="{operationDisruptionsModel>responsibleGroupDesc}" design="Bold" />
+								<Label text="{operationDisruptionsModel>responsibleGroupDesc}" design="Bold" width="10%"/>
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>solutionin}: " />
-								<Label text="{path:'operationDisruptionsModel>promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}"  design="Bold" />
+								<Label text="{path:'operationDisruptionsModel>promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}" width="5%" design="Bold" />
 								
 								<ToolbarSpacer />
-								<core:Icon id="disrptListEnvelop" src="sap-icon://email" visible="{= ${operationDisruptionsModel>lastUpdated} === 'true' ? true: false}" />
+								<core:Icon id="disrptListEnvelop" src="sap-icon://email" visible="{= ${operationDisruptionsModel>lastUpdated} === 'true' ? true: false}"/>
 								
 								<Label
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>closureDate}"
@@ -175,7 +175,7 @@
 							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
 
 						<List showNoData="false" class="sapUiSmallMarginBeginEnd"
-							items="{path: 'operationDisruptionsModel>disruptionComments/'}">
+							items="{path: 'operationDisruptionsModel>/disruptionComments'}">
 
 							<CustomListItem class="msgColor">
 								<HBox
