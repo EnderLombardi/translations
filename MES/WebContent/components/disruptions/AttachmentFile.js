@@ -80,7 +80,7 @@ airbus.mes.disruptions.AttachmentFile = {
 		var iIndex = sPath.slice(iLength - 1);
 		// Removing the selected list item from the model based on the index
 		// calculated
-		var oModel = this.getView().getModel("Model");
+		var oModel = this.getView().getModel("DesktopFilesModel");
 		var oData = oModel.oData;
 		var removed = oData.items.splice(iIndex, 1);
 		oModel.setData(oData);
