@@ -129,28 +129,29 @@
 					</f:SimpleForm>
 					
 					<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Translucent"
-							maxContainerCols="3" editable="false" columnsL="3" columnsM="3">
+							maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3">
 						<f:content>
 							<core:Title text="" />
-							<Label text="{i18nModel>area}" />
+							<Label text="{i18nModel>area}" class="detailLabels sapUiMediumMarginBottom" />
 							<Text text="{operationDisruptionsModel>area}" />
-							<Label text="{i18nModel>plan}" />
+							<Label text="{i18nModel>plan}"  class="detailLabels sapUiMediumMarginBottom"/>
 							<Text text="{operationDisruptionsModel>plan}" />
-							<Label text="{i18nModel>material}" />
-							<Text text="{operationDisruptionsModel>material}" />
+							<Label text="{i18nModel>materiall}" class="detailLabels sapUiMediumMarginBottom" />
+							<Text text="{operationDisruptionsModel>materiall}" />
+
 							
 							<core:Title text="" />
-							<Label text="{i18nModel>ribs}" />
+							<Label text="{i18nModel>ribs}" class="detailLabels sapUiMediumMarginBottom" />
 							<Text text="{operationDisruptionsModel>ribs}" />
-							<Label text="{i18nModel>view}" />
+							<Label text="{i18nModel>view}" class="detailLabels sapUiMediumMarginBottom"/>
 							<Text text="{operationDisruptionsModel>view}" />
-							<Label text="{i18nModel>tools}" />
+							<Label text="{i18nModel>tools}" class="detailLabels sapUiMediumMarginBottom" />
 							<Text text="{operationDisruptionsModel>tools}" />
 							
 							<core:Title text="" />
-							<Label text="{i18nModel>stringer}" />
-							<Text text="{operationDisruptionsModel>stringer}" />
-							<Label text="{i18nModel>stringer_rail}" />
+							<Label text="{i18nModel>stringer}" class="detailLabels sapUiMediumMarginBottom" />
+							<Text text="{operationDisruptionsModel>stringer}"  />
+							<Label text="{i18nModel>stringer_rail}" class="detailLabels sapUiMediumMarginBottom" />
 							<Text text="{operationDisruptionsModel>stringer_rail}" />
 						</f:content>	
 					</f:SimpleForm>
