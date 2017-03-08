@@ -333,7 +333,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				break;
 				
 				//Opened disruption Escalated red
-			case 4:
+			case 8:
 				sColorProgress = boxDisplayManager.colorProgress_Escalated;
 				trackerTextClass = "whiteColor"
 				sRightIcon = this.computeStatus(oBox.status2,"whiteColor");
@@ -360,7 +360,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				break;
 
 				//Open disruption yellow
-			case 5:
+			case 7:
 				sColorProgress = boxDisplayManager.colorProgress_OpenBlocked;
 				trackerTextClass = "petrol"
 				sRightIcon = this.computeStatus(oBox.status2,"petrol");
@@ -379,12 +379,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
-				
-				if (dispatch) {
-					
-					dispatchWhite = true;
-				}
-				
+							
 				break;
 
 				//Answered Escalated red Hatch
@@ -416,7 +411,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				break;
 
 				//Answered yellow hatch
-			case 7:
+			case 5:
 				sColorProgress = boxDisplayManager.colorProgress_AnsweredBlocked;
 				trackerTextClass = "petrol";
 				sRightIcon = this.computeStatus(oBox.status2,"petrol");
@@ -437,13 +432,14 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 				break;
 				//All disruptions are solved green hatch
-			case 8:
+			case 4:
 				sColorProgress = boxDisplayManager.colorProgress_SolvedDisruption;
 				//sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
-				sRightIcon = this.computeStatus(oBox.status2);
+				trackerTextClass = "whiteColor";
+				sRightIcon = this.computeStatus(oBox.status2,"whiteColor");
 				
 				if (oBox.rmaStatus === 1) { //rma
-					sRightIcon = boxDisplayManager.leftTriangleIcon;
+					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
 				
 				if ( oBox.isBlocked === 1 ) {

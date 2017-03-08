@@ -85,7 +85,7 @@ TOOLBAR
     padding: 4px 0 0 0px;
     position: absolute;
     height: 45%;
-    width: 98.2% !important;
+    width: 100% !important;
 }
 
 .sapMPIText2 {
@@ -104,6 +104,7 @@ WORK LIST POP OVER
 *********************/
 
 .classWorklistPopover {
+    width: 60%;
     .fa {
         position: relative;
         z-index: 1;
@@ -247,12 +248,13 @@ BOX MANAGEMENT
         }
         &.stopIcon { 
             padding-left: 6px;
-            float: left;
             color: $cherry-red;
             &.white-two {
               color: $white-two;
             }
-   
+            &.left {
+                float: left;                
+            }
         }
         &.oswIcon {
             position: relative;
@@ -318,6 +320,12 @@ BOX MANAGEMENT
     .pink {
         background-color: $pink;
         color: $white-two;
+    }
+    .whiteColor  {
+        color: $white-two;
+        :hover {
+           color: $white-two;
+        }
     }
 }
 

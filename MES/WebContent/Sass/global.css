@@ -156,7 +156,7 @@ TOOLBAR
 *********************/
 #mes .sapMPopover .sapMBtnIcon { color: rgba(0, 86, 112, 0.94); }
 
-.sapMPIText1 { padding: 4px 0 0 0px; position: absolute; height: 45%; width: 98.2% !important; }
+.sapMPIText1 { padding: 4px 0 0 0px; position: absolute; height: 45%; width: 100% !important; }
 
 .sapMPIText2 { margin: 20px 0 0 8px; position: absolute; }
 
@@ -165,6 +165,8 @@ TOOLBAR
 /********************
 WORK LIST POP OVER
 *********************/
+.classWorklistPopover { width: 60%; }
+
 .classWorklistPopover .fa { position: relative; z-index: 1; line-height: 20px; height: 20px; color: #ffffff; overflow: hidden; padding-right: 6px; }
 
 .classWorklistPopover .fa.rightIcon { float: right; }
@@ -217,9 +219,11 @@ BOX MANAGEMENT
 
 .trackerBox .fa.triangleIcon { padding-left: 6px; float: left; }
 
-.trackerBox .fa.stopIcon { padding-left: 6px; float: left; color: #e4002b; }
+.trackerBox .fa.stopIcon { padding-left: 6px; color: #e4002b; }
 
 .trackerBox .fa.stopIcon.white-two { color: #ffffff; }
+
+.trackerBox .fa.stopIcon.left { float: left; }
 
 .trackerBox .fa.oswIcon { position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; overflow: hidden; line-height: 14px; height: auto; float: left; margin-left: 6px; margin-bottom: 10px; min-width: 45px; }
 
@@ -250,6 +254,10 @@ BOX MANAGEMENT
 .trackerBox .blue { background-color: #0085ad; color: #ffffff; }
 
 .trackerBox .pink { background-color: #E08283; color: #ffffff; }
+
+.trackerBox .whiteColor { color: #ffffff; }
+
+.trackerBox .whiteColor :hover { color: #ffffff; }
 
 .trackerBox:hover .dark-lime-green-back { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #536f12 !important; }
 

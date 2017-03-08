@@ -255,11 +255,11 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 				
 			//Opened disruption Escalated red
 			if ( el.DISRUPTION === "D1") {
-				sStatus = "4";
+				sStatus = "8";
 			}
 			//Open disruption yellow
 			if ( el.DISRUPTION === "D2") {
-				sStatus = "5";
+				sStatus = "7";
 			}
 			//Answered Escalated red Hatch
 			if ( el.DISRUPTION === "D3") {
@@ -267,16 +267,16 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 			}
 			//Answered yellow hatch
 			if ( el.DISRUPTION === "D4") {
-				sStatus = "7";
+				sStatus = "5";
 			}
 			//All disruptions are solved green hatch
 			if ( el.DISRUPTION === "D5") {
-				sStatus = "8";
+				sStatus = "4";
 			}
 			// if operation is not active and add disruption it should be display in yellow even if the disruption is escalated
 			if ( sStatus2 === "1" && sStatus >= "4" ) {
 				
-				sStatus = "4";
+				sStatus = "5";
 			}
 			// Operation is from OSW
 			if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {

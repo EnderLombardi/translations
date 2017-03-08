@@ -6,7 +6,7 @@
 	xmlns:custom="airbus.mes.stationtracker"
 	xmlns:f="sap.ui.layout.form" 
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page showHeader="false" enableScrolling="false" class="classWorklistPopover">
+	<Page showHeader="false" enableScrolling="false">
 		<VBox id="StatusCheck" class="StatusCheck">
 			<RadioButtonGroup columns="2" select="onSelectLevel">
 				<buttons>
