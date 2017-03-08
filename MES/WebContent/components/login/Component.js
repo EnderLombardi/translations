@@ -8,9 +8,7 @@ jQuery.sap.declare("airbus.mes.login.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.login.Component", {
 
 metadata : {
-//		manifest: "json",
-		properties : {},
-		includes : [ "../homepage/css/margin.css" ] //array of css and/or javascript files that should be used in the component  
+		properties : {}
 	},
 	oView:undefined,
 });
@@ -22,8 +20,8 @@ airbus.mes.login.Component.prototype.createContent = function() {
 			id : "login",
 			viewName : "airbus.mes.login.login",
 			type : "XML",
-			height:"100%"	
-		}).addStyleClass("absolutePosition");
+			height:"100%"
+		});
 		airbus.mes.login.oView = this.oView;
 		this.oView.setModel(sap.ui.getCore().getModel("ResourceUrl"), "ResourceUrl");
 	}

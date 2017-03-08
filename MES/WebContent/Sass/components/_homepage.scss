@@ -1,3 +1,5 @@
+//TILES
+
 .customTiles {
     height: 15rem;
     border: none;
@@ -16,24 +18,90 @@
             cursor:pointer;
         }
     }
+    &[data-enabled="false"] {
+        opacity: 0.6;
+    }
+    .tileBox {
+        position:absolute;
+        top: 1rem;
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        .headerTileText {
+            font-size: 18px;
+            color: #ffffff;
+        }
+        .customTileText {
+            opacity: 0.6;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            margin-top: 1rem;
+        }
+        .iconTile {
+            font-size: 5em;
+            color: rgba(95, 137, 174, 1);
+        }
+    }
 }
 
-.headerTileText {
-    font-size: 18px;
-    color: #ffffff;
+.sapMSlt>.sapMSltLabel, .sapMSlt, .sapMSltArrow {
+    line-height: 1.9rem;
+    height: 1.9rem
 }
 
-.customTileText {
-    opacity: 0.6;
-    font-size: 16px;
-    color: #ffffff;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    margin-top: 1rem;
+.panelbgImg {
+    background-color: white;
+    background-image: url(../../components/homepage/images/dottedCarbon.png);
+    display: block;
+    background-size: 100% 100%;
 }
 
-.iconTile {
-    font-size: 5em;
-    color: rgba(95, 137, 174, 1);
+.tiffanyColor .sapMBtnInner.sapMBtnText {
+    font-family: "Arial", Sans-serif !important;
+    font-size: 14px !important;
+}
+
+.sapMTC div[data-enabled^="true"]:hover, div[data-enabled^="true"]:focus {
+    background-color: rgba(12, 75, 131, 1);
+    box-shadow: 0 0 0 rgba(12, 75, 131, 1);
+}
+
+
+div[data-enabled^="true"] .sapMCustomTileContent:after {
+    content:"";
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+
+@media (min-width: 952px) and (max-width: 1229px) {
+    #homePageView .sapMTC {
+        width: 80%!important;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 1230px) and (max-width: 1589px) {
+    #homePageView .sapMTC {
+        width: 62%!important;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 1590px) and (max-width: 1895px) {
+    #homePageView .sapMTC {
+        width: 52%!important;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 1895px) {
+    #homePageView .sapMTC {
+        width: 42%!important;
+        margin: 0 auto;
+    }
 }

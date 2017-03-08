@@ -110,19 +110,8 @@ html
 }
 #mes{
     #content{
-    	.sapUiComponentContainer{
-			#login{	
-				.sapMPage{
-					section{
-						#login--logblock{
-							margin: 3% auto !important;
-						}
-					}
-				}
-			}
-		}
-
 	  #globalNavView{
+          position: absolute;
             #globalNavView--refreshTime-inner {
                 color: $tiffany-blue !important;
                 text-shadow: none;
@@ -494,4 +483,9 @@ label.headerText {
 			margin:0 10px;
 		}
 	}
+}
+
+.pageHeader .sapMSltArrow{
+    background:transparent !important;
+    color:#fff;
 }

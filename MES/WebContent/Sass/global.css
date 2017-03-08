@@ -103,7 +103,7 @@ STATION TRACKER
 
 .rescheduleLineBtn, .rescheduleAllBtn { clear: both; position: absolute; z-index: 999; background: #ee373d; color: white; font-size: 12px; font-weight: 700; font-family: arial; overflow: hidden; -webkit-transition: width 0.3s ease-in-out; -moz-transition: width 0.3s ease-in-out; transition: width 0.3s ease-in-out; }
 
-#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #calendar--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #calendar--buttonViewMode .sapMSegBBtnDis { height: 3rem; border: none; border-right: 1px solid #8db9ca; background-color: transparent; color: #0D5D76; text-transform: uppercase; line-height: 3rem; }
+#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #calendar--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #calendar--buttonViewMode .sapMSegBBtnDis { height: 3rem; border: none; border-right: 1px solid #8db9ca; background-color: transparent; color: #0D5D76; text-transform: uppercase; line-height: 3rem; min-width: 75px; }
 
 #stationTrackerView--buttonViewMode, #calendar--buttonViewMode { height: 3rem; margin: 0; }
 
@@ -630,6 +630,8 @@ SHIFT STAFFING
 /***********************************
 STATION TRACKER TOOLBAR
 ************************************/
+#stationTrackerView--buttonViewMode > :nth-child(1) { border-left: 1px solid #8db9ca; }
+
 #stationTrackerView--toolbarstationtracker { background-color: #d5f5f8 !important; }
 
 #stationTrackerView--toolbarstationtracker label { color: #0D5D76; padding: 0 0 0 0.625rem; }
@@ -2332,7 +2334,10 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
+/*!
+*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
+*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+*/
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -4089,13 +4094,15 @@ DATE PICKER
 /********************
 MES Document Viewer
 *********************/
+#docviewerView { position: absolute !important; }
+
 .docviewerView .pageHeader { border-top: 0.6rem solid #ffffff; }
 
 #docviewerView--docHeaderInfo { color: white; font-size: 1.2rem; }
 
 #docviewerView--pdfViewer { font-size: 10px; height: 30px; background: #eee; padding: 5px 3px 2px 3px; min-width: 650px; margin-top: 2px !important; }
 
-#docviewerView--pdfViewer .customButton { cursor: pointer; margin: 0 5px 0 0; /* font: 24px/1em 'Glyphicons Regular'; */ /* font-style: normal; */ font-weight: normal; font-size: 20px; /* padding: 2px 4px 0 6px; */ color: #21578a !important; }
+#docviewerView--pdfViewer .customButton { cursor: pointer; margin: 0 5px 0 0; font-weight: normal; font-size: 20px; color: #21578a !important; }
 
 /************************
 DISRUPTIONTRACKER
@@ -4376,11 +4383,33 @@ DISRUPTIONTRACKER
 
 .customTiles:not([data-enabled^="false"]) * { cursor: pointer; }
 
-.headerTileText { font-size: 18px; color: #ffffff; }
+.customTiles[data-enabled="false"] { opacity: 0.6; }
 
-.customTileText { opacity: 0.6; font-size: 16px; color: #ffffff; font-weight: normal; font-style: normal; font-stretch: normal; margin-top: 1rem; }
+.customTiles .tileBox { position: absolute; top: 1rem; bottom: 1rem; right: 1rem; left: 1rem; }
 
-.iconTile { font-size: 5em; color: #5f89ae; }
+.customTiles .tileBox .headerTileText { font-size: 18px; color: #ffffff; }
+
+.customTiles .tileBox .customTileText { opacity: 0.6; font-size: 16px; color: #ffffff; font-weight: normal; font-style: normal; font-stretch: normal; margin-top: 1rem; }
+
+.customTiles .tileBox .iconTile { font-size: 5em; color: #5f89ae; }
+
+.sapMSlt > .sapMSltLabel, .sapMSlt, .sapMSltArrow { line-height: 1.9rem; height: 1.9rem; }
+
+.panelbgImg { background-color: white; background-image: url(../../components/homepage/images/dottedCarbon.png); display: block; background-size: 100% 100%; }
+
+.tiffanyColor .sapMBtnInner.sapMBtnText { font-family: "Arial", Sans-serif !important; font-size: 14px !important; }
+
+.sapMTC div[data-enabled^="true"]:hover, div[data-enabled^="true"]:focus { background-color: #0c4b83; box-shadow: 0 0 0 #0c4b83; }
+
+div[data-enabled^="true"] .sapMCustomTileContent:after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; left: 0; cursor: pointer; }
+
+@media (min-width: 952px) and (max-width: 1229px) { #homePageView .sapMTC { width: 80% !important; margin: 0 auto; } }
+
+@media (min-width: 1230px) and (max-width: 1589px) { #homePageView .sapMTC { width: 62% !important; margin: 0 auto; } }
+
+@media (min-width: 1590px) and (max-width: 1895px) { #homePageView .sapMTC { width: 52% !important; margin: 0 auto; } }
+
+@media (min-width: 1895px) { #homePageView .sapMTC { width: 42% !important; margin: 0 auto; } }
 
 /******************
 LINETRACKER
@@ -4911,7 +4940,7 @@ html { -ms-content-zooming: none; /* Disables zooming */ touch-action: none; /* 
 
 #mes *:hover { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
 
-#mes #content .sapUiComponentContainer #login .sapMPage section #login--logblock { margin: 3% auto !important; }
+#mes #content #globalNavView { position: absolute; }
 
 #mes #content #globalNavView #globalNavView--refreshTime-inner { color: #74d2e7 !important; text-shadow: none; font-size: 12px; }
 
@@ -5078,3 +5107,5 @@ label.headerText { color: #74d2e7 !important; text-shadow: none !important; }
 #doaPopup-scrollCont > div.sapMFlexBox { justify-content: center; }
 
 #doaPopup-scrollCont > div.sapMFlexBox > div { margin: 0 10px; }
+
+.pageHeader .sapMSltArrow { background: transparent !important; color: #fff; }

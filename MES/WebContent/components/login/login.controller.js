@@ -1,8 +1,12 @@
 "use strict";
 
 sap.ui.controller("airbus.mes.login.login", {
+
 	
 	onAfterRendering : function() {		
+		//position absolute to display login box
+		$("#login").css('position', 'absolute');
+
 		if ( Cookies.getJSON("login") != undefined ) {
 			airbus.mes.login.oView.byId("login").setValue(Cookies.getJSON("login").user);
 			airbus.mes.login.oView.byId("password").setValue(Cookies.getJSON("login").mdp);

@@ -40,8 +40,7 @@ airbus.mes.docviewer.Component.prototype.createContent = function() {
             viewName : "airbus.mes.docviewer.display",
             type : "XML",
             height : "100%"
-
-        }).addStyleClass("absolutePosition");
+        });
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({
             bundleUrl : "../components/docviewer/i18n/i18n.properties"

@@ -1252,6 +1252,9 @@ STATION TRACKER TOOLBAR
 
 #stationTrackerView--buttonViewMode {
     @extend %segmentedButton;
+    >:nth-child(1) {
+        border-left: 1px solid #8db9ca;
+    }
 }
 
 #stationTrackerView--toolbarstationtracker {

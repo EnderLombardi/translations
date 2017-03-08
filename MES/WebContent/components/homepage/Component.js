@@ -16,11 +16,8 @@ jQuery.sap.require("airbus.mes.homepage.util.Formatter");
  */
 sap.ui.core.UIComponent.extend("airbus.mes.homepage.Component", {
 	metadata : {
-		properties : {},
-		includes : [ "./css/margin.css" ]
-
+		properties : {}
 	},
-// manifestUrl : "component.json",
 });
 
 /**
@@ -32,8 +29,7 @@ airbus.mes.homepage.Component.prototype.createContent = function() {
 
 	// get tiles of the homepage view
 	var oModel1 = new sap.ui.model.json.JSONModel();
-	oModel1.loadData("../components/homepage/data/1TileLineHome.json", null,
-			false);
+	oModel1.loadData("../components/homepage/data/1TileLineHome.json", null, false);
 
 	if (airbus.mes.homepage.oView === undefined) {
 		// View on XML
@@ -43,7 +39,7 @@ airbus.mes.homepage.Component.prototype.createContent = function() {
 			type : "XML",
 			height : "100%"
 
-		}).addStyleClass("absolutePosition");
+		});
 		airbus.mes.homepage.oView = this.oView;
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({

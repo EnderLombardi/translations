@@ -51,7 +51,7 @@ airbus.mes.resourcepool.Component.prototype.createContent = function() {
             type : "XML",
             height : "100%"
 
-        }).addStyleClass("absolutePosition");
+        });
         airbus.mes.resourcepool.oView = this.oView;
 
 

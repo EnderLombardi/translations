@@ -49,7 +49,7 @@ airbus.mes.shell.Component.prototype.createContent = function() {
             type : "XML",
             height:"100%"
 
-        }).addStyleClass("absolutePosition");
+        });
 
         if (window.location.hostname != "localhost") {
 
