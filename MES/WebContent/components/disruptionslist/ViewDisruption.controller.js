@@ -716,7 +716,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
   	 * Load disruptions detail from message reference
   	 **************************************************************************/
   	loadDisruptionDetail: function(msgRef, sPath){
-  		sap.ui.getCore().getModel("DisruptionDetailModel").setProperty(sPath+"/itemBusy","true");
+  		sap.ui.getCore().getModel("operationDisruptionsModel").setProperty(sPath+"/itemBusy","true");
   		jQuery.ajax({
   			type : 'post',
   			url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDisruptionDetailsURL"),
@@ -731,16 +731,16 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
   				
   				// No need to keep the panel expanded after closing the disruption
   				if(data.status != airbus.mes.disruptions.Formatter.status.closed){
-  					data.expanded = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/expanded");
-  	  				data.prevCommentsLoaded = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/prevCommentsLoaded");
-  	  				data.lastUpdated = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/lastUpdated");	
+  					data.expanded = sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/expanded");
+  	  				data.prevCommentsLoaded = sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/prevCommentsLoaded");
+  	  				data.lastUpdated = sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/lastUpdated");	
   				}
   				
-  				sap.ui.getCore().getModel("DisruptionDetailModel").setProperty(sPath,data);
+  				sap.ui.getCore().getModel("operationDisruptionsModel").setProperty(sPath,data);
   			},
 
   			error : function(error, jQXHR) {
-  				sap.ui.getCore().getModel("DisruptionDetailModel").setProperty(sPath+"/itemBusy","false");
+  				sap.ui.getCore().getModel("operationDisruptionsModel").setProperty(sPath+"/itemBusy","false");
   			}
 
   		});
