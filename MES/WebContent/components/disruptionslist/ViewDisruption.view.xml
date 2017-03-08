@@ -136,8 +136,8 @@
 							<Text text="{operationDisruptionsModel>area}" />
 							<Label text="{i18nModel>plan}" />
 							<Text text="{operationDisruptionsModel>plan}" />
-							<Label text="{i18nModel>materiall}" />
-							<Text text="{operationDisruptionsModel>materiall}" />
+							<Label text="{i18nModel>material}" />
+							<Text text="{operationDisruptionsModel>material}" />
 							
 							<core:Title text="" />
 							<Label text="{i18nModel>ribs}" />
@@ -174,7 +174,7 @@
 							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
 
 						<List showNoData="false" class="sapUiSmallMarginBeginEnd"
-							items="{path: 'operationDisruptionsModel>disruptionComments'}">
+							items="{path: 'operationDisruptionsModel>disruptionComments/'}">
 
 							<CustomListItem class="msgColor">
 								<HBox
