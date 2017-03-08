@@ -662,6 +662,8 @@ airbus.mes.disruptions.Formatter = {
 		if (openingTime == undefined || openingTime =="")
 			return 0;
 		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
+		/*to avoid T*/
+		openingTime = openingTime.replace("T"," ");
 		var aOpenDate = reggie.exec(openingTime);
 		var oOpenDate = new Date((+aOpenDate[1]), (+aOpenDate[2]) - 1, // Careful
 		// month
@@ -692,6 +694,8 @@ airbus.mes.disruptions.Formatter = {
 		if (promisedTime == undefined || promisedTime =="")
 			return "---";
 		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
+		/*to avoid T*/
+		promisedTime = promisedTime.replace("T"," ");
 		var aPromisedTime = reggie.exec(promisedTime);
 		var oPromisedTime = new Date((+aPromisedTime[1]), (+aPromisedTime[2]) - 1, // Careful
 		// month
