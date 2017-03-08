@@ -11,7 +11,7 @@ airbus.mes.disruptions.AttachmentFile = {
 	 * Local json model is maintained to store the list of attachments 
 	 * attached from the desktop
 	 */
-	onUploadComplete : function(oEvt) {
+	onUploadComplete : function(filesListBase64) {
 		//		var oFileUploader = sap.ui.getCore().byId("idfileUploader");
 
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
@@ -32,7 +32,7 @@ airbus.mes.disruptions.AttachmentFile = {
 		var iLen = oData.length;
 		if (iLen === undefined) {
 			item["Title"] = sTitle,
-			//				item ["type"] = sName,
+			item ["File"] = filesListBase64[0],
 			//				item ["icon"] = sIcon
 
 			jsonObj.push(item);
@@ -40,7 +40,7 @@ airbus.mes.disruptions.AttachmentFile = {
 		} else {
 			oData.unshift({
 				"Title" : sTitle,
-			//	 					"type" : sName,
+				"File" : filesListBase64[0],
 			//	 					"icon" : sIcon
 			})
 		}
@@ -58,6 +58,21 @@ airbus.mes.disruptions.AttachmentFile = {
 	onPressAttachBttn : function(oEvt) {
 		// When user selects a file, a popup is displayed
 		// here the title is to be given
+        var files = oEvt.getParameters().files;
+        var file = files[0];
+        var reader = new FileReader();
+        var filesListBase64 = [];
+        reader.onload = function (readerEvt) {
+            var binaryString = readerEvt.target.result;
+            var oBase64 = {};
+            oBase64.fileName = file.name;
+            oBase64.type = file.type;
+            oBase64.fileBase64 = btoa(binaryString);
+            filesListBase64.push(oBase64);
+        }
+        reader.readAsBinaryString(files[0]);
+        
+        
 		var dialog = new sap.m.Dialog({
 			customHeader : [ new sap.m.Toolbar({
 				content : [ new sap.m.Title({
@@ -79,7 +94,7 @@ airbus.mes.disruptions.AttachmentFile = {
 				text : '{i18nModel>OK}',
 				press : function() {
 					dialog.close();
-					airbus.mes.disruptions.AttachmentFile.onUploadComplete();
+					airbus.mes.disruptions.AttachmentFile.onUploadComplete(filesListBase64);
 				}
 			}),
 			endButton : new sap.m.Button({
