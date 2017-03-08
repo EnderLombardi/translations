@@ -356,7 +356,7 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					"FAMILY_AVL_BOXING" : el.FAMILY_AVL_BOXING,
 					"ROUTERSTEPBO" : el.ROUTER_STEP_BO,
 					"ACPNG_STATUS" : el.ACPNG_STATUS,
-					"STOP" : sStop
+					"STOP" : sStop,
 					"FREEZE_TRACKING_TEMPLATE" : FREEZE_TRACKING_TEMPLATE,
 					"FROZEN_FITTED_PARTS" : FROZEN_FITTED_PARTS					
 										
