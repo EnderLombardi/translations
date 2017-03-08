@@ -1198,6 +1198,8 @@ airbus.mes.stationtracker.util.ModelManager = {
         elOverallModel.PROGRESS = fAllProgress.toFixed(0);
         elOverallModel.ISUNPLANNED = oEvent.isUnplanned;
         elOverallModel.RMA_STATUS_COLOR = oEvent.rmaStatus;
+        elOverallModel.BLOCKING_DISRUPTION = oEvent.isBlocked;
+        elOverallModel.STOP = oEvent.stop;
         elOverallModel.EXECUTION_STATION_SOURCE = oEvent.OSW;
 
         switch (oEvent.status) {
@@ -1215,19 +1217,26 @@ airbus.mes.stationtracker.util.ModelManager = {
                 elOverallModel.PREVIOUSLY_STARTED = "true";
                 break;
             case 4:
-                elOverallModel.DISRUPTION = "D1";
+                elOverallModel.DISRUPTION = "D5";
                 break;
             case 5:
-                elOverallModel.DISRUPTION = "D2";
+                elOverallModel.DISRUPTION = "D4";
                 break;
             case 6:
                 elOverallModel.DISRUPTION = "D3";
                 break;
             case 7:
-                elOverallModel.DISRUPTION = "D4";
+                elOverallModel.DISRUPTION = "D2";
+                break;
+            case 8:
+                elOverallModel.DISRUPTION = "D1";
                 break;
         }
-
+    	// if operation is not active and disruption it should be display in yellow even if the disruption is escalated
+		if ( oEvent.status2 === "1" && oEvent.status >= "4" ) {
+			
+			 elOverallModel.DISRUPTION = "D2";
+		}
         aOverallModel.push(elOverallModel);
 
         airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(aOverallModel), "WorkListOverallModel");

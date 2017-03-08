@@ -330,7 +330,7 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					"RMA_STATUS_COLOR": fRMA,
 					"status" : sStatus,
 					"status2" : sStatus2,
-					"isBlocked" : sBlock,
+					"BLOCKING_DISRUPTION" : sBlock,
 					"ISUNPLANNED" : sUnplanned,
 					"CPP_CLUSTER" : el.CPP_CLUSTER,
 					"WORK_PACKAGE" : el.WORK_PACKAGE,
@@ -499,7 +499,7 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 						aUnplanned.push(el.ISUNPLANNED);
 						aAcpngStatus.push(el.ACPNG_STATUS);
 						aStatus2.push(el.status2);
-						aIsBlocked.push(el.isBlocked);
+						aIsBlocked.push(el.BLOCKING_DISRUPTION);
 						aStop.push(el.STOP);
 						
 						fProgress += parseFloat(el.PROGRESS);

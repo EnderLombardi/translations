@@ -8,6 +8,8 @@
 			<VBox class="sapMFooter-CTX classWorklistPopoverHeader">
 				<custom:util.customProgressIndicator id="overallProgress"
 					visible="false" width="auto" state="sap.ui.core.ValueState.Success"
+					blockingDisruption="{WorkListOverallModel>/0/BLOCKING_DISRUPTION}"
+					stop="{WorkListOverallModel>/0/STOP}"
 					unplanned="{WorkListOverallModel>/0/ISUNPLANNED}" disruption="{WorkListOverallModel>/0/DISRUPTION}"
 					paused="{WorkListOverallModel>/0/PAUSED}" progress="{WorkListOverallModel>/0/PROGRESS}"
 					rmastatus="{WorkListOverallModel>/0/RMA_STATUS_COLOR}" osw="{WorkListOverallModel>/0/EXECUTION_STATION_SOURCE}"
@@ -46,6 +48,8 @@
 									<items>
 										<custom:util.customProgressIndicator
 											width="auto" state="sap.ui.core.ValueState.Success" click="operationWorkListClick"
+											blockingDisruption="{WorkListModel>BLOCKING_DISRUPTION}"
+											stop="{WorkListModel>STOP}"
 											unplanned="{WorkListModel>ISUNPLANNED}" disruption="{WorkListModel>DISRUPTION}"
 											paused="{WorkListModel>PAUSED}" progress="{WorkListModel>PROGRESS}"
 											rmastatus="{WorkListModel>RMA_STATUS_COLOR}" osw="{WorkListModel>EXECUTION_STATION_SOURCE}"

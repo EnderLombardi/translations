@@ -103,8 +103,19 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 				type : 'string',
 				group : 'Appearance',
 				defaultValue : ''
+			},
+			stop: {
+				type : 'string',
+				group : 'Appearance',
+				defaultValue : ''
+			},
+			blockingDisruption: {
+				type : 'string',
+				group : 'Appearance',
+				defaultValue : ''
 			}
-		}
+			
+		}			  
 	},
 
 	onclick : function() {   // is called when the Button is hovered - no event registration required
@@ -122,6 +133,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 			return;
 		}
 		
+		var sBlockingDisruption = c.getBlockingDisruption();
+		var sStop = c.getStop();
 		var PercValue = c.getPercentValue();
 		var Status = c.getStatus();
 		var sUnplanned = c.getUnplanned();
@@ -141,9 +154,21 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 		var sLeftIcon3 = "";
 		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 		
-		var dispatch = false; //only for test waiting MII service
-		var dispatchWhite = false;
+		//Stop icon
+		if (sStop === "1" || sStop === "true") {
+			var dispatch = true;
+		} else {
+			var dispatch = false;			
+		};
 		
+		//Stop Icon for disurption
+		if (sBlockingDisruption === "1" || sBlockingDisruption === "true") {
+			var fBlockingDisruption = true;
+		} else {
+			var fBlockingDisruption = false;			
+		};
+		
+		var dispatchWhite = false;
 		
 		r.write('<div');
 				r.writeControlData(c);
@@ -181,6 +206,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 					case "false" :
 					// Operation is active sStatus = "2";
 							sRightIcon = boxDisplayManager.rightPlay;
+							if ( DisruptionStatus === "D2" || DisruptionStatus === "D4") {
+								sRightIcon = boxDisplayManager.rightPlay_Petrol;
+							}
 							r.addClass('sapMPIBarGreen');
 							r.writeClasses();
 							r.writeAttribute('style', 'width:' + PercValue + '%');
@@ -189,6 +217,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 					// Operation is not started sStatus = "1" Operation is pause	
 							if ( paused === "---" && prevstarted === "true" && Status != "C" ) {
 								sRightIcon = boxDisplayManager.rightPaused;
+								if ( DisruptionStatus === "D2" || DisruptionStatus === "D4") {
+									sRightIcon = boxDisplayManager.rightPaused_Petrol;
+								}
 								r.addClass('sapMPIBarGreen');
 								r.writeClasses();
 								r.writeAttribute('style', 'width:' + PercValue + '%');
@@ -212,14 +243,12 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 				 //{ if it's not unplanned it's osw because this code is only used for osw and unplanned pop-up
 				//	sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
 				//}
-				
-											
+								
 				switch ( DisruptionStatus ) {		
-					case "D1" :
-					// Opened Blocking and disruption ( Status === "D1") sStatus = "4";
+					case "D2" :
+						//Open disruption yellow( Status === "D2") sStatus = "7"; #fbec00
 							r.addStyle('background-color','#fbec00');
 							r.addStyle('color','rgba(0, 86, 112, 0.94)');
-							sRightIcon = boxDisplayManager.rightStop_Petrol;
 							
 							if ( rmastatus === "1" ){	//rma
 								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
@@ -230,14 +259,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 							if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
 								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
-							//}
-							
 						
 					break;
-					case "D2" :
-					// Opened Blocking disruption ( Status === "D2") sStatus = "5";
+					case "D1" :
+						//Opened disruption Escalated red ( Status === "D1") sStatus = "8";
 							r.addStyle('background-color','#e4002b');
-							sRightIcon = boxDisplayManager.rightStop;
 							
 							if ( rmastatus === "1" ){	//rma
 								sLeftIcon = boxDisplayManager.leftTriangleIcon;
@@ -254,10 +280,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 								dispatchWhite = true;
 							} 
 					break;
-					case "D3" :
-					//Solved Blocking and Escalated disruption ( Status === "D3") sStatus = "6";
+					case "D4" :
+					//Answered yellow hatch ( Status === "D4") sStatus = "5";
 							r.addStyle('background', 'repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px)');
-							sRightIcon = boxDisplayManager.rightPlay_Petrol;
 							
 							if ( rmastatus === "1" ){	//rma
 								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
@@ -271,10 +296,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 							
 					
 					break;
-					case "D4" :
-					//Solved Blocking disruption ( Status === "D4") sStatus = "7";
+					case "D3" :
+					//Answered Escalated red Hatch ( Status === "D3") sStatus = "6";
 							r.addStyle('background', 'repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px)');
-							sRightIcon = boxDisplayManager.rightPlay;
 							
 							if ( rmastatus === "1" ){	//rma
 								sLeftIcon = boxDisplayManager.leftTriangleIcon;
@@ -291,6 +315,25 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 								dispatchWhite = true;
 							} 
 					break;
+					case "D5" :
+						//All disruptions are solved green hatch ( Status === "D5") sStatus = "4";
+								r.addStyle('background', 'repeating-linear-gradient(135deg, #37b36c, #37b36c 10px, #16dc6b 10px, #16dc6b 20px)');
+								
+								if ( rmastatus === "1" ){	//rma
+									sLeftIcon = boxDisplayManager.leftTriangleIcon;
+								}
+								if (osw[0] === "3" ){ //OSW
+									sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
+								}
+								if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
+									sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
+								}
+								
+								if (dispatch) {
+
+									dispatchWhite = true;
+								} 
+						break;
 					default:		
 				}
 					
@@ -323,7 +366,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 					}
 				}
 				
-
+				if (fBlockingDisruption) {
+					if (dispatchWhite){
+						sRightIcon = boxDisplayManager.rightStopWhite;
+					}
+					else {
+						sRightIcon = boxDisplayManager.rightStop;
+					}
+				}
 				//------------------------------------------------------------
 
 				r.write('>');
@@ -345,7 +395,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 					} else {
 						r.write("<span class='sapMPIText1'");
 								r.addStyle('width', W);
-								if ( DisruptionStatus === "D3" || DisruptionStatus === "D1") {
+								if ( DisruptionStatus === "D2" || DisruptionStatus === "D4") {
 									r.addStyle('color','rgba(0, 86, 112, 0.94)');
 								}
 								r.writeStyles();
@@ -354,7 +404,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 						r.write("</span>");
 						r.write("<span class='sapMPIText2'");
 								r.addStyle('width', W);
-								if ( DisruptionStatus === "D3" || DisruptionStatus === "D1") {
+								if ( DisruptionStatus === "D2" || DisruptionStatus === "D4") {
 									r.addStyle('color','rgba(0, 86, 112, 0.94)');
 								}
 								r.writeStyles();

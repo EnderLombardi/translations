@@ -40,7 +40,7 @@
 		</VBox>
 
 
-		<List id="operationList" growing="true" growingThreshold="20" visible="false"
+		<List id="operationList" growing="true" growingThreshold="20" visible="false" class="classWorklistPopover"
 					growingScrollToLoad="true" items="{ path: 'StatusWorkTracker>/Rowsets/Rowset/0/Row' }">
 					<items>
 						<InputListItem id="sorterList">
@@ -49,12 +49,14 @@
 									<items>
 										<custom:util.customProgressIndicator
 											width="auto" state="sap.ui.core.ValueState.Success" click="operationWorkListClick"
-											disruption="{StatusWorkTracker>DISRUPTION}"
+											blockingDisruption="{StatusWorkTracker>BLOCKING_DISRUPTION}"
+											stop="{StatusWorkTracker>STOP}"
+											unplanned="{StatusWorkTracker>ISUNPLANNED}" disruption="{StatusWorkTracker>DISRUPTION}"
 											paused="{StatusWorkTracker>PAUSED}" progress="{StatusWorkTracker>PROGRESS}"
 											rmastatus="{StatusWorkTracker>RMA_STATUS_COLOR}" osw="{StatusWorkTracker>EXECUTION_STATION_SOURCE}"
 											status="{StatusWorkTracker>STATE}" prevstarted="{StatusWorkTracker>PREVIOUSLY_STARTED}"
 											displayValue="{ parts: [ 'StatusWorkTracker>WORKORDER_ID','StatusWorkTracker>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
-											displayValue2="{ parts: [ 'StatusWorkTracker>OPERATION_ID','StatusWorkTracker>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
+											displayValue2="{ parts: [ 'StatusWorkTracker>OPERATION_ID','StatusWorkTracker>OPERATION_DESCRIPTION','StatusWorkTracker>PROGRESS','StatusWorkTracker>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
 											percentValue="{ parts: [ 'StatusWorkTracker>PROGRESS','StatusWorkTracker>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
 											<custom:layoutData>
 												<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>

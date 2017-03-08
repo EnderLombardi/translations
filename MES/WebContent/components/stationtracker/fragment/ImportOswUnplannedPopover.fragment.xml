@@ -54,7 +54,9 @@
 									<items>
 										<custom:util.customProgressIndicator
 											width="auto" 
-											state="sap.ui.core.ValueState.Success" 
+											state="sap.ui.core.ValueState.Success"
+											blockingDisruption="{WorkListModel>BLOCKING_DISRUPTION}"
+											stop="{WorkListModel>STOP}" 
 											disruption="{WorkListModel>DISRUPTION}"
 											paused="{WorkListModel>PAUSED}"
 											progress="{WorkListModel>PROGRESS}"
