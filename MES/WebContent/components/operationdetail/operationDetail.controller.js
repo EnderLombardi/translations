@@ -99,16 +99,16 @@ sap.ui
          * @param oEvent
          */
         switchMode: function (oEvent) {
-         
-         
+
+
             var oSwitchButton = oEvent.getSource();
-            
+
             if (airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status") == airbus.mes.operationdetail.Formatter.status.blocked) {
-				oSwitchButton.setState(false);
-				sap.m.MessageToast.show(this.getView().getModel("i18n").getProperty("BlockedOperation"));
-				return;
+                oSwitchButton.setState(false);
+                sap.m.MessageToast.show(this.getView().getModel("i18n").getProperty("BlockedOperation"));
+                return;
             }
-            
+
             if (oSwitchButton.getState() == true) {
                 this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("Execution"));
 
@@ -122,9 +122,9 @@ sap.ui
                      * set the buttons according to the status of operation mode
                      */
                     airbus.mes.operationstatus.oView.oController.setOperationActionButtons();
-                    
-                    if (jQuery.sap.getObject("airbus.mes.qdc.oView") != undefined){
-                    	airbus.mes.qdc.oView.getController().enableButtons();
+
+                    if (jQuery.sap.getObject("airbus.mes.qdc.oView") != undefined) {
+                        airbus.mes.qdc.oView.getController().enableButtons();
                     }
 
 
@@ -162,7 +162,7 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailsView--idtouchngo").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idJignTools").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(true);
-//                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(airbus.mes.acpnglinks.model.ModelManager.checkExistingChildrentData());
                 sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idTrackingTemplate").setVisible(true);
             }
@@ -194,9 +194,9 @@ sap.ui
                     break;
 
                 case "disruption":
-                	this.goToDisruptionListView();
+                    this.goToDisruptionListView();
                     break;
-                    
+
                 case "displayOpeAttachments":
                     //tabselection
                     $(this.tabSelected).removeClass("operationDetailTabSelected");
@@ -281,8 +281,8 @@ sap.ui
                     this.nav.to(airbus.mes.components.oView.getId());
 
                     sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(true);
-                    airbus.mes.components.oView.getController().setBtnCommittedFittedValue(sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted"),airbus.mes.components.oView.getController().committedFittedView);
-                    
+                    airbus.mes.components.oView.getController().setBtnCommittedFittedValue(sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted"), airbus.mes.components.oView.getController().committedFittedView);
+
                     break;
                 case "ACPnGLinks":
                     //tabselection
@@ -344,7 +344,7 @@ sap.ui
             sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption").setVisible(false);
-            
+
 
             //case "reschedulePage--reschedulePage":
             // Hide buttons
@@ -360,19 +360,19 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailPopup--btnFreezeComponent").setVisible(false);
             }
             if (oEvent.mParameters.toId == "ncdisplayView") {
-					var oButtonNc = sap.ui.getCore().byId("operationDetailPopup--createNC");
-					oButtonNc.setVisible(true);
-					var oButtonPnc = sap.ui.getCore().byId("operationDetailPopup--createPNC");
-					oButtonPnc.setVisible(true);
-					oButtonNc.detachPress(airbus.mes.ncdisplay.oView.oController.onCreateNC);
-					oButtonNc.attachPress(airbus.mes.ncdisplay.oView.oController.onCreateNC);
-					oButtonPnc.detachPress(airbus.mes.ncdisplay.oView.oController.onCreatePNC);
-					oButtonPnc.attachPress(airbus.mes.ncdisplay.oView.oController.onCreatePNC);
-					
-				} else {
-					sap.ui.getCore().byId("operationDetailPopup--createNC").setVisible(false);
-					sap.ui.getCore().byId("operationDetailPopup--createPNC").setVisible(false);
-				}
+                var oButtonNc = sap.ui.getCore().byId("operationDetailPopup--createNC");
+                oButtonNc.setVisible(true);
+                var oButtonPnc = sap.ui.getCore().byId("operationDetailPopup--createPNC");
+                oButtonPnc.setVisible(true);
+                oButtonNc.detachPress(airbus.mes.ncdisplay.oView.oController.onCreateNC);
+                oButtonNc.attachPress(airbus.mes.ncdisplay.oView.oController.onCreateNC);
+                oButtonPnc.detachPress(airbus.mes.ncdisplay.oView.oController.onCreatePNC);
+                oButtonPnc.attachPress(airbus.mes.ncdisplay.oView.oController.onCreatePNC);
+
+            } else {
+                sap.ui.getCore().byId("operationDetailPopup--createNC").setVisible(false);
+                sap.ui.getCore().byId("operationDetailPopup--createPNC").setVisible(false);
+            }
 
         },
 
@@ -444,7 +444,7 @@ sap.ui
             if (airbus.mes.components.selectFilter === undefined) {
                 airbus.mes.components.oView.oController.createSelectFilterPopoverFragment();
             }
-            
+
             //select the good filter
             var missingPartsFilter = sap.ui.getCore().byId("selectFilter--selectFilterComponents").getItems()[3];
             sap.ui.getCore().byId("selectFilter--selectFilterComponents").removeSelections(true)
@@ -452,22 +452,22 @@ sap.ui
             airbus.mes.components.oView.oController.onSelectFilterFinish();
 
         },
-        
+
         /***********************************************************
          * Open disruption list view screen
          */
-        goToDisruptionListView: function() {
+        goToDisruptionListView: function () {
             airbus.mes.shell.util.navFunctions.viewDisruptionsList(this.nav,
                 sap.ui.getCore().byId("operationDetailPopup--reportDisruption") // Report Disruption Button
             );
-            
+
 
             /***************************************************
             * Load Disruption Data
             **************************************************/
             airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation();
-           
-            
+
+
             //tabselection
             $(this.tabSelected).removeClass("operationDetailTabSelected");
             this.tabSelected = "#operationDetailsView--idDisruption";
