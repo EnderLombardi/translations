@@ -15,16 +15,38 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 	onInit : function() {
 		this.getView().byId("timeLost").setPlaceholder(airbus.mes.disruptions.Formatter.getConfigTimeFullUnit());
 	},
-
 	
-	initializeScreen: function(sMode, msgRef, sMsgType, sResolverGroup){
+	/***************************************************************************
+	 * Load Category and custom Data
+	 * @param {string} sMode tells it is edit disruption page or new disruption page
+	 */
+	loadData : function(msgRef, sMsgType, sResolverGroup) {
+
+		var ModelManager = airbus.mes.disruptions.ModelManager;
+		ModelManager.createViewMode = "Edit";
+
+		// Get View
+		var oView = this.getView();
+		ModelManager.sCurrentViewId = oView.sId;
+
+		// Set Busy's
+		oView.setBusyIndicatorDelay(0);
+		oView.setBusy(true);
+	
+
+		// Reset All fields
+		this.resetAllFields();
 		
-		this.loadData(sMode, msgRef, sMsgType);
+		this.loadDisruptionCategory();
+		ModelManager.loadMaterialList();
+		ModelManager.loadJigtoolList();
+
+		
+		this.loadDisruptionDetail(msgRef);
+		this.loadRsnResponsibleGrp(sMsgType);
 		this.loadResolverModel(sResolverGroup);
-		
+
 	},
-
-
 
 	/***************************************************************************
 	 * Load disruptions detail from message reference

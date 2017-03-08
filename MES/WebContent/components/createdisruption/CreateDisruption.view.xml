@@ -154,7 +154,11 @@
 										<Label text="{i18nModel>plan}" class="textAlignLeft"/>
 										<Input id="plan" value="{DisruptionDetailModel>/plan}" />
 										<Label text="{i18nModel>material}" class="textAlignLeft"/>									
-										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" valueHelpOnly="true" tokens="{DisruptionDetailModel>/materials}"/>
+										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" valueHelpOnly="true" tokens="{DisruptionDetailModel>/materials}">
+											<tokens>
+										    	<Token key="{DisruptionDetailModel>/}" text="{DisruptionDetailModel>/}" />
+										    </tokens>
+										</MultiInput>
 									
 									
 									<core:Title  />
@@ -163,7 +167,11 @@
 										<Label text="{i18nModel>view}" class="textAlignLeft"/>
 										<Input id="view" value="{DisruptionDetailModel>/view}" />
 										<Label text="{i18nModel>Jigtool}" class="textAlignLeft"/>
-										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"  valueHelpOnly="true" tokens="{DisruptionDetailModel>/jigTools}"/>
+										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"  valueHelpOnly="true" tokens="{DisruptionDetailModel>/jigTools}">
+											<tokens>
+										    	<Token key="{DisruptionDetailModel>/}" text="{DisruptionDetailModel>/}" />
+										    </tokens>
+										</MultiInput>
 									
 									<core:Title   />
 										<Label text="{i18nModel>stringer}" class="textAlignLeft"/>

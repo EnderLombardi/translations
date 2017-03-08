@@ -261,11 +261,12 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 					var sMessageSuccess = i18nModel.getProperty("successDelete");
 					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
 
-					var operationDisruptionsModel = airbus.mes.disruptionslist.oView.getModel("operationDisruptionsModel");
-
-					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
+					var operationDisruptionsModel = sap.ui.getCore().getModel("operationDisruptionsModel");
 
 					if (nav.getCurrentPage().sId == "stationTrackerView") {
+						var deletedRowIndex = sPath.split("/").slice(-1).pop();
+						operationDisruptionsModel.oData.splice(deletedRowIndex, 1);
+						operationDisruptionsModel.refresh();
 						airbus.mes.disruptions.ModelManager.checkDisruptionStatus(operationDisruptionsModel);
 
 						// Refresh station tracker
@@ -273,6 +274,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 
 					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView")
 						airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
+						airbus.mes.disruptiontracker.detailPopUp.close();
 
 				}
 
@@ -627,6 +629,11 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
           oView.getModel("operationDisruptionsModel").refresh();
           this.sExpandedPanelPath = sPath;
           
+          var messageRef = oView.getModel("operationDisruptionsModel").getProperty(sPath+"/messageRef");
+          
+          // Load detailed data
+          loadDisruptionDetail(messageRef, sPath);
+          
           
           //Mark message as read
           if(oView.getModel("operationDisruptionsModel").getProperty(sPath+"/lastUpdated") == "true"){
@@ -637,7 +644,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
       				type : 'POST',
       				data : {
       					"Param.1" : airbus.mes.settings.ModelManager.site,
-      					"Param.2" : oView.getModel("operationDisruptionsModel").getProperty(sPath+"/messageRef"),
+      					"Param.2" : messageRef,
       					"Param.3" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
       					"Param.4" : "READ",
       				}      			
@@ -720,9 +727,15 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
   				"messageRef" : msgRef,
   				"forMobile" : false
   			}),
-  			success : function(data) {			
-  				data.expanded = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/expanded");
-  				data.prevCommentsLoaded = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/prevCommentsLoaded");
+  			success : function(data) {
+  				
+  				// No need to keep the panel expanded after closing the disruption
+  				if(data.status != airbus.mes.disruptions.Formatter.status.closed){
+  					data.expanded = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/expanded");
+  	  				data.prevCommentsLoaded = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/prevCommentsLoaded");
+  	  				data.lastUpdated = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/lastUpdated");	
+  				}
+  				
   				sap.ui.getCore().getModel("DisruptionDetailModel").setProperty(sPath,data);
   			},
 

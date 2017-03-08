@@ -340,7 +340,7 @@ airbus.mes.disruptions.Formatter = {
 		}
 		
 		if (comment.indexOf("\$\$") > -1) {
-			comment =  comment.split("\$\$")[1];
+			comment =  comment.split("\$\$").shift().join();
 		}
 		if(comment == "" || comment == " ")
 			this.setVisible(false);

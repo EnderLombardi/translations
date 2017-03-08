@@ -2,49 +2,6 @@
 sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 	/***************************************************************************
-	 * Load Category and custom Data
-	 * @param {string} sMode tells it is edit disruption page or new disruption page
-	 * @param {object} oData data to be set on the Model
-	 */
-	loadData : function(sMode, msgRef, sMsgType) {
-
-		airbus.mes.disruptions.ModelManager.createViewMode = sMode;
-
-		// Get View
-		var oView = this.getView();
-		airbus.mes.disruptions.ModelManager.sCurrentViewId = oView.sId;
-
-		// Set Busy's
-		oView.setBusyIndicatorDelay(0);
-		oView.setBusy(true);
-		
-		var ModelManager = airbus.mes.disruptions.ModelManager;
-		ModelManager.createViewMode = sMode;
-
-		// Reset All fields
-		this.resetAllFields();
-		
-		this.loadDisruptionCategory();
-		ModelManager.loadMaterialList();
-		ModelManager.loadJigtoolList();
-
-		if (sMode == "Create") {
-            this.createDisruptionSettings();
-            
-		} else if (sMode == "Edit") {
-			
-			// Load data if Edit Mode
-			if(typeof this.loadDisruptionDetail !== "undefined"){
-				this.loadDisruptionDetail(msgRef);
-			}
-
-			this.loadRsnResponsibleGrp(sMsgType);
-
-		}
-
-	},
-
-	/***************************************************************************
 	 * Set the Models for Category of Disruption Creation
 	 **************************************************************************/
 	loadDisruptionCategory : function() {
@@ -510,14 +467,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * Reset all the fields of Form create disruption
 	 */
 	resetAllFields : function() {
-		var oView = this.getView();
-
-		oView.byId("selectCategory").getBinding("items").filter();
-		
-		oView.byId("comment").setValue();
-
-		//oView.byId("materials").destroyTokens();
-		oView.byId("jigtools").destroyTokens();
+		this.getView().byId("selectCategory").getBinding("items").filter();
 	},
 
 	/***************************************************************************

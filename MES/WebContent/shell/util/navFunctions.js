@@ -245,15 +245,7 @@ airbus.mes.shell.util.navFunctions = {
             // Add event delegate
             airbus.mes.createdisruption.oView.addEventDelegate({
                 onBeforeShow: function (evt) {
-                	var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-        			oModel.setData(evt.data.oData);
-        			oModel.refresh();
-        			if(evt.data.mode == "Edit"){
-        				airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode, evt.data.oData.messageRef, evt.data.oData.messageType);
-        				airbus.mes.createdisruption.oView.oController.editPreSettings();
-        			} else{
-        				airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode);
-        			}
+                	airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode, evt.data.oData);
                 }
             });
         }
@@ -523,13 +515,13 @@ airbus.mes.shell.util.navFunctions = {
             // Add event delegate to pass the data and load the services
             airbus.mes.disruptiondetail.oView.addEventDelegate({
                 onBeforeShow: function (evt) {
-                	airbus.mes.disruptiondetail.oView.getController().initializeScreen(evt.data.mode, evt.data.messageRef, evt.data.messageType, evt.data.responsibleGroup);
+                	airbus.mes.disruptiondetail.oView.getController().loadData(evt.data.messageRef, evt.data.messageType, evt.data.responsibleGroup);
                 }
             });
         }
 
         // Navigate
-        nav.to(airbus.mes.disruptiondetail.oView.getId(), { mode: "Edit", msgRef: msgRef, msgType: messageType, resolverGroup: resolverGroup });
+        nav.to(airbus.mes.disruptiondetail.oView.getId(), { msgRef: msgRef, msgType: messageType, resolverGroup: resolverGroup });
 
     },
 

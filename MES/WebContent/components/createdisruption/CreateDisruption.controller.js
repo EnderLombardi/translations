@@ -29,5 +29,49 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 	onInit : function() {
 		this.getView().byId("timeLost").setPlaceholder(airbus.mes.disruptions.Formatter.getConfigTimeFullUnit());
 	},
+	
+
+
+	/***************************************************************************
+	 * Load Category and custom Data
+	 * @param {string} sMode tells it is edit disruption page or new disruption page
+	 */
+	loadData : function(sMode, oData) {
+
+		airbus.mes.disruptions.ModelManager.createViewMode = sMode;
+		
+		var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+		oModel.setData(evt.data.oData);
+		oModel.refresh();
+		
+
+		// Get View
+		var oView = this.getView();
+		airbus.mes.disruptions.ModelManager.sCurrentViewId = oView.sId;
+
+		// Set Busy's
+		oView.setBusyIndicatorDelay(0);
+		oView.setBusy(true);
+		
+		var ModelManager = airbus.mes.disruptions.ModelManager;
+		ModelManager.createViewMode = sMode;
+
+		// Reset All fields
+		this.resetAllFields();
+		
+		this.loadDisruptionCategory();
+		ModelManager.loadMaterialList();
+		ModelManager.loadJigtoolList();
+
+		if (sMode == "Create") {
+            this.createDisruptionSettings();
+            
+		} else if (sMode == "Edit") {
+			this.loadRsnResponsibleGrp(oData.messageType);
+			this.editPreSettings();
+
+		}
+
+	}
 
 });
