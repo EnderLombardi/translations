@@ -342,7 +342,7 @@ airbus.mes.shell.util.navFunctions = {
         //set buttons visible if we are on the fitted/committed view
         if (airbus.mes.components !== undefined && airbus.mes.components.oView !== undefined && airbus.mes.components.oView.oController.committedFittedView) {
             sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(true);
-            sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(true);
+            sap.ui.getCore().byId("operationDetailPopup--btnFreezeComponent").setVisible(true);
         }
 
         //fill the container

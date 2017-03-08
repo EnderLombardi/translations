@@ -298,7 +298,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
     manageFreezeButton: function(bFreeze) {
 //		Retrieve button freeze
-    	var oButton = sap.ui.getCore().byId("operationDetailPopup--btnFreeze");
+    	var oButton = sap.ui.getCore().byId("operationDetailPopup--btnFreezeComponent");
     	var sText;
 
 //    	If component is freeze
@@ -354,11 +354,11 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         if (bValue) {
             oButton.setText(committedFitted);
             sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(true);
-            sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(true);
+            sap.ui.getCore().byId("operationDetailPopup--btnFreezeComponent").setVisible(true);
         } else {
             oButton.setText(components);
             sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(false);
-            sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(false);
+            sap.ui.getCore().byId("operationDetailPopup--btnFreezeComponent").setVisible(false);
         }
 
         this.changeColVisibility(bValue);

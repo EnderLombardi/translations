@@ -357,7 +357,7 @@ sap.ui
             if (oEvent.mParameters.toId !== "componentsView") {
                 sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(false);
                 sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(false);
-                sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(false);
+                sap.ui.getCore().byId("operationDetailPopup--btnFreezeComponent").setVisible(false);
             }
             if (oEvent.mParameters.toId == "ncdisplayView") {
 					var oButtonNc = sap.ui.getCore().byId("operationDetailPopup--createNC");
@@ -436,7 +436,7 @@ sap.ui
             sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(true);
             if (airbus.mes.components !== undefined && airbus.mes.components.oView !== undefined && airbus.mes.components.oView.oController.committedFittedView) {
                 sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(true);
-                sap.ui.getCore().byId("operationDetailPopup--btnFreeze").setVisible(true);
+                sap.ui.getCore().byId("operationDetailPopup--btnFreezeComponent").setVisible(true);
             }
 
             //navigate and create the filter fragment
