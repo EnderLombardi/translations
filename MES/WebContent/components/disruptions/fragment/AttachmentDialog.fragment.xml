@@ -14,7 +14,7 @@
 			<Toolbar>
 				<Label text="{i18nModel>DisplayAttachments}" design="Bold" />
 				<ToolbarSpacer></ToolbarSpacer>
-				<RadioButton id="idCheckCurrOp" text="{i18nModel>CurrOP}"
+				<RadioButton id="idCheckCurrOp" selected="true" text="{i18nModel>CurrOP}"
 					select="" class="sapUiSmallMarginEnd" />
 				<RadioButton id="idCheckCurrWO" text="{i18nModel>CurrWO}"
 					select="" class="sapUiSmallMarginEnd" />
@@ -23,13 +23,13 @@
 				<u:FileUploader id="idfileUploader" buttonText="{i18nModel>AttachDoc}"
 					tooltip="{i18nModel>Attach}" icon="sap-icon://sys-monitor"
 					sameFilenameAllowed="true" class="attachIcon" change="onFileSelect"
-					buttonOnly="true" style="Transparent" visible="true">
+					buttonOnly="true" style="Transparent">
 
 				</u:FileUploader>
 			</Toolbar>
 
 			<HBox>
-				<Label text="{i18nModel>ListDocuments}" class="sapUiMediumMargin"></Label>
+				<Label text="{i18nModel>ListDocuments}" class="sapUiMediumMargin" design="Bold"></Label>
 			</HBox>
 
 			<List id="idList" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/'}">
@@ -38,8 +38,8 @@
 				<CustomListItem>
 					<Toolbar>
 						<core:Icon size="0.5rem" src="sap-icon://circle-task-2" />
-						<Label text="{DesktopFilesModel>Title}" design="Bold" width="100%" />
-						<ToolbarSpacer width="40%" />
+						<Label text="{DesktopFilesModel>Title}" width="30%"/>
+						<ToolbarSpacer width="65%" />
 						<core:Icon size="1rem" src="sap-icon://delete" press="onDeletePress"/>
 					</Toolbar>
 

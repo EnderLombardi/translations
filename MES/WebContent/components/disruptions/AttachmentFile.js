@@ -7,35 +7,42 @@ airbus.mes.disruptions.AttachmentFile = {
 		oEvt.getSource().getParent().getParent().close();
 	},
 	onUploadComplete : function(oEvt){
-		var oFileUploader = sap.ui.getCore().byId("idfileUploader");
+//		var oFileUploader = sap.ui.getCore().byId("idfileUploader");
 		
 				var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 				var oData = oModel.getData();
-				var sName = oFileUploader.oFilePath._lastValue;
+//				var sName = oFileUploader.oFilePath._lastValue;
 				
 				var oInput = sap.ui.getCore().byId("idTitleInput");
 				var sTitle = oInput.getValue();
 		
-				var sType = oFileUploader.oFilePath._lastValue.split(".")[1];
-				var sIcon = airbus.mes.disruptions.AttachmentManager.getFileIcon(sType);
+//				var sType = oFileUploader.oFilePath._lastValue.split(".")[1];
+//				var sIcon = airbus.mes.disruptions.AttachmentManager.getFileIcon(sType);
+				var oCurrOpRadioBtt = sap.ui.getCore().byId("idCheckCurrOp");
+				var oCurrWORadioBtt = sap.ui.getCore().byId("idCheckCurrWO");
+				var oDesktpRadioBtt = sap.ui.getCore().byId("idCheckDesktop");
+				
 				var jsonObj = [];
 				var item={};
 				var iLen = oData.length;
 				if(iLen === undefined){
 				item ["Title"] = sTitle,
-				item ["type"] = sName,
-				item ["icon"] = sIcon
+//				item ["type"] = sName,
+//				item ["icon"] = sIcon
 
 				jsonObj.push(item);
 				oModel.setData(jsonObj);
 				} else {
 					oData.unshift({
 	     				"Title": sTitle,
-	 					"type" : sName,
-	 					"icon" : sIcon
+//	 					"type" : sName,
+//	 					"icon" : sIcon
 	 					})
 				}
 				oModel.refresh();
+				oCurrOpRadioBtt.setSelected(false);
+				oCurrWORadioBtt.setSelected(false);
+				oDesktpRadioBtt.setSelected(true);
 				oInput.destroy();
 		
 				// updates the attachment number on adding an attachment
@@ -53,8 +60,16 @@ airbus.mes.disruptions.AttachmentFile = {
 					text : "{i18nModel>EntDesc}"
 				}).addStyleClass("sapUiSmallMarginBegin") ]
 			}) ],
-			content : [ new sap.m.Input("idTitleInput", {}) ],
+			content : [ new sap.m.Input("idTitleInput", {liveChange: function(oEvt){
+				var iLen =  oEvt.getParameters().value.length;
+				if(iLen===0){
+					oEvt.getSource().oParent.mAggregations.beginButton.setEnabled(false);
+				} else{
+					oEvt.getSource().oParent.mAggregations.beginButton.setEnabled(true)
+				}
+			}}) ],
 			beginButton : new sap.m.Button({
+				enabled:false,
 				text : '{i18nModel>OK}',
 				press : function() {
 					dialog.close();
@@ -65,6 +80,8 @@ airbus.mes.disruptions.AttachmentFile = {
 				text : '{i18nModel>cancel}',
 				press : function() {
 					dialog.close();
+					var oInput = sap.ui.getCore().byId("idTitleInput");
+					oInput.destroy();
 				}
 			})
 		});
@@ -75,15 +92,13 @@ airbus.mes.disruptions.AttachmentFile = {
 	onDeletePress: function(oEvent){
 //		var list = sap.ui.getCore().byId("idList")
 		// calculating the index of the selected list item
-		var sPath = oEvent.mParameters.listItem.oBindingContexts.Model.sPath;
-		var iLength = sPath.length;
-		var iIndex = sPath.slice(iLength - 1);
+		var sPath = oEvent.oSource.oParent.oPropagatedProperties.oBindingContexts.DesktopFilesModel.sPath;
+		var iIndex = sPath.split("/")[1];
 		// Removing the selected list item from the model based on the index
 		// calculated
-		var oModel = this.getView().getModel("DesktopFilesModel");
-		var oData = oModel.oData;
-		var removed = oData.items.splice(iIndex, 1);
-		oModel.setData(oData);
+		var oModel=sap.ui.getCore().getModel("DesktopFilesModel");
+		oModel.oData.splice(iIndex,1);
+		oModel.refresh();
 		
 	}
 }

@@ -70,7 +70,7 @@ airbus.mes.disruptions.AttachmentManager = {
 //		dialog.open();
 //	},
 	
-	onFileSelect : function(oEvt) {
+	onAttachPress : function(oEvt) {
     	if(!this.AttachmentDialog){
      	   this.AttachmentDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.AttachmentDialog", airbus.mes.disruptions.AttachmentFile);
             this.getView().addDependent(this.AttachmentDialog);
