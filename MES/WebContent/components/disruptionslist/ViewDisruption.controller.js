@@ -632,7 +632,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
           var messageRef = oView.getModel("operationDisruptionsModel").getProperty(sPath+"/messageRef");
           
           // Load detailed data
-          loadDisruptionDetail(messageRef, sPath);
+          this.loadDisruptionDetail(messageRef, sPath);
           
           
           //Mark message as read
