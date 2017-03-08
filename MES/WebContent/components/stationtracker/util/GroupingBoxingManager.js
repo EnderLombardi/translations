@@ -276,7 +276,7 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 			// if operation is not active and add disruption it should be display in yellow even if the disruption is escalated
 			if ( sStatus2 === "1" && sStatus >= "4" ) {
 				
-				sStatus = "5";
+				sStatus = "7";
 			}
 			// Operation is from OSW
 			if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {

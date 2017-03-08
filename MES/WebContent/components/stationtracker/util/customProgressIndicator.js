@@ -213,8 +213,15 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 							r.writeClasses();
 							r.writeAttribute('style', 'width:' + PercValue + '%');
 					break;
-					case "---" :				
-					// Operation is not started sStatus = "1" Operation is pause	
+					case "---" :
+							//// Operation is not started sStatus = "1"
+							if ( paused === "---" && prevstarted === "false" && Status != "C" ){
+								// if operation is not started and has disruption it should be show in yellow
+								if ( DisruptionStatus === "D5" || DisruptionStatus === "D4" || DisruptionStatus === "D1" || DisruptionStatus === "D3") {
+									DisruptionStatus = "D2";						
+								}
+							}
+							//Operation is pause sStatus = "3"
 							if ( paused === "---" && prevstarted === "true" && Status != "C" ) {
 								sRightIcon = boxDisplayManager.rightPaused;
 								if ( DisruptionStatus === "D2" || DisruptionStatus === "D4") {
