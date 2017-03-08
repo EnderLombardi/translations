@@ -4,7 +4,7 @@
 		contentHeight="90%">
 		<customHeader>
 			<Toolbar>
-				<Button icon="sap-icon://nav-back" press="onNavPress"
+				<Button icon="sap-icon://nav-back" press="airbus.mes.createdisruption.oView.oController.onExit"
 					class="sapUiSmallMarginBegin" />
 				<Label text="{i18nModel>SelectDocs}" design="Bold"
 					class="sapUiSmallMarginBegin" />
@@ -50,10 +50,10 @@
 
 		</content>
 		<beginButton>
-			<Button text="{i18nModel>Attach}" />
+			<Button text="{i18nModel>Attach}"  press="airbus.mes.createdisruption.oView.oController.onAttachPress"/>
 		</beginButton>
 		<endButton>
-			<Button text="{i18nModel>cancel}" />
+			<Button text="{i18nModel>cancel}"  press="airbus.mes.createdisruption.oView.oController.onExit"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

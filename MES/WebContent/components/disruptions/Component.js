@@ -4,7 +4,6 @@ jQuery.sap.registerModulePath("airbus.mes.disruptions.i18n.i18n", "../components
 jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 jQuery.sap.require("airbus.mes.disruptions.Formatter");
 jQuery.sap.require("airbus.mes.disruptions.func");
-jQuery.sap.require("airbus.mes.disruptions.AttachmentManager");
 jQuery.sap.require("airbus.mes.disruptions.AttachmentFile");
 jQuery.sap.declare("airbus.mes.disruptions.Component");
 

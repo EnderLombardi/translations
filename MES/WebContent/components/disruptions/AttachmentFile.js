@@ -3,26 +3,36 @@
 jQuery.sap.declare("airbus.mes.disruptions.AttachmentFile");
 
 airbus.mes.disruptions.AttachmentFile = {
-	onNavPress : function(oEvt) {
-		oEvt.getSource().getParent().getParent().close();
+	
+	init: function(core){
+		
+	    if(this.core){ return;} 
+		
+	    this.core = core;
+	
+		airbus.mes.shell.ModelManager.createJsonModel(core, [ "DesktopFilesModel" ]);
 	},
-
+	
+	onAttachPress : function(oEvt) {
+    	if(!this.AttachmentDialog){
+     	   this.AttachmentDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.AttachmentDialog", airbus.mes.disruptions.AttachmentFile);
+            this.getView().addDependent(this.AttachmentDialog);
+        }
+    	
+         this.AttachmentDialog.open();
+	},
+	
 	/*
 	 * Local json model is maintained to store the list of attachments 
 	 * attached from the desktop
 	 */
 	onUploadComplete : function(filesListBase64) {
-		//		var oFileUploader = sap.ui.getCore().byId("idfileUploader");
 
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		var oData = oModel.getData();
-		//				var sName = oFileUploader.oFilePath._lastValue;
 
 		var oInput = sap.ui.getCore().byId("idTitleInput");
 		var sTitle = oInput.getValue();
-
-		//				var sType = oFileUploader.oFilePath._lastValue.split(".")[1];
-		//				var sIcon = airbus.mes.disruptions.AttachmentManager.getFileIcon(sType);
 		var oCurrOpRadioBtt = sap.ui.getCore().byId("idCheckCurrOp");
 		var oCurrWORadioBtt = sap.ui.getCore().byId("idCheckCurrWO");
 		var oDesktpRadioBtt = sap.ui.getCore().byId("idCheckDesktop");
@@ -32,16 +42,14 @@ airbus.mes.disruptions.AttachmentFile = {
 		var iLen = oData.length;
 		if (iLen === undefined) {
 			item["Title"] = sTitle,
-			item ["File"] = filesListBase64[0],
-			//				item ["icon"] = sIcon
+			item ["File"] = filesListBase64[0]
 
 			jsonObj.push(item);
 			oModel.setData(jsonObj);
 		} else {
 			oData.unshift({
 				"Title" : sTitle,
-				"File" : filesListBase64[0],
-			//	 					"icon" : sIcon
+				"File" : filesListBase64[0] 
 			})
 		}
 		oModel.refresh();
