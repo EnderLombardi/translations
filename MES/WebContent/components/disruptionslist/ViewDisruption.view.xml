@@ -17,7 +17,7 @@
 						<headerToolbar>
 							<Toolbar class="disrptListToolbar" >
 								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>severity','operationDisruptionsModel>escalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
-								<Label text="DIS-{operationDisruptionsModel>disruptionNumber} - {path: 'operationDisruptionsModel>category'} {operationDisruptionsModel>reason}" design="Bold" width="30%" />
+								<Label text="DIS-{operationDisruptionsModel>disruptionNumber} - {path: 'operationDisruptionsModel>messageType'} {operationDisruptionsModel>reason}" design="Bold" width="30%" />
 								
 								<ToolbarSpacer />
 								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" design="Bold" width="7%"/>
@@ -136,7 +136,7 @@
 							<Text text="{operationDisruptionsModel>area}" />
 							<Label text="{i18nModel>plan}"  class="detailLabels sapUiMediumMarginBottom"/>
 							<Text text="{operationDisruptionsModel>plan}" />
-							<Label text="{i18nModel>materiall}" class="detailLabels sapUiMediumMarginBottom" />
+							<Label text="{i18nModel>material}" class="detailLabels sapUiMediumMarginBottom" />
 							<Text text="{operationDisruptionsModel>materiall}" />
 
 							
