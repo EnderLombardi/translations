@@ -78,6 +78,19 @@ airbus.mes.components.util.Formatter = {
         } else {
             return '0';
         }
+    },
+    
+//  Formatter to view
+    checkEnabledFitted : function(bValue) {
+    	
+//    	If component is freeze
+    	if (airbus.mes.components.oView.getController().freeze === true ) {
+//    		Block the control
+    		return false;
+    	} else {
+    		return bValue;
+    	}
+    	
     }
 
 };

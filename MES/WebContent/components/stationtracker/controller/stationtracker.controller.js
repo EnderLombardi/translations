@@ -1442,7 +1442,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         airbus.mes.components.oView.oController.onbtnComponentsSave();
     },
 
-    onFreeze: function () {
+    onFreezeComponent: function () {
         airbus.mes.components.oView.oController.onbtnComponentsFreeze();
     },
 	test : function() {

@@ -86,6 +86,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         }
         //Apply all filter
         this.applyFilters();
+        
+//      Manage freeze button
+        this.manageFreezeButton();
     },
 
     //filters on search in the searchbar
@@ -299,10 +302,12 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     manageFreezeButton: function(bFreeze) {
 //		Retrieve button freeze
     	var oButton = sap.ui.getCore().byId("operationDetailPopup--btnFreezeComponent");
+    	
+//    	Manage text
     	var sText;
 
 //    	If component is freeze
-    	if(this.freeze = true) {
+    	if(this.freeze === true) {
     		sText = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("unfreeze");
     	} else {
 //    		If component is unfreeze
@@ -310,30 +315,68 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     	}
     	
     	oButton.setText(sText);
+    	
+//    	Manage enable
+    	var bEnabled;
+    	
+//    	SD-PPC-WT-1760
+//    	This button shall be greyed out if the check box ‘show for operation’ is clicked in the ‘components’ tab
+    	if (this.sSet === airbus.mes.components.util.ModelManager.operation ){
+    		bEnabled = false;
+    	} else {
+    		bEnabled = true;
+    	}
+    	
+    	oButton.setEnabled(bEnabled);
+    	
     },
     
     computeFreeze: function(){
     	this.freeze = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].frozen_fitted_parts;
     },
     
-    //freeze not available now
+    manageFreezeAction: function() {
+
+//    	Refresh Profile Model to relaunch formatter on View
+    	sap.ui.getCore().getModel("Profile").refresh(true);
+    },
+    
+//  SD-PPC-WT-1760
+//  The status freezed components should be saved on operation operation  level for all operations of this WO
     //is called when the save button is clicked
     onbtnComponentsFreeze: function (oEvent) {
-        var buttonText = oEvent.getSource().getText();
-        var freeze = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("freeze");
-        var unfreeze = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("unfreeze");
         
-//        var url = airbus.mes.components.util.ModelManager.urlModel.getProperty("componentsSaveFittedComponent");
-//        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
-//        url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", airbus.mes.components.oView.getController().getOwnerComponent().getWorkOrder());
-//        url = airbus.mes.shell.ModelManager.replaceURI(url, "$freeze", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
-//        
+        var url = airbus.mes.components.util.ModelManager.urlModel.getProperty("componentsSaveFreeze");
+//		We inverse the freeze status
+        this.freeze = !this.freeze
+
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", airbus.mes.components.oView.getController().getOwnerComponent().getWorkOrder());
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$freeze", this.freeze);
         
-        if (buttonText === freeze) {
-            oEvent.getSource().setText(unfreeze);
-        } else {
-            oEvent.getSource().setText(freeze);
-        }
+//      call service
+        jQuery.ajax({
+            type: 'get',
+            async: false,
+            url: url,
+            contentType: 'application/json',
+            
+            success: function (data) {
+                console.log("sucess");
+            },
+
+            error: function (error, jQXHR) {
+                console.log(error);
+            }
+        });        
+        
+//      We update the freeze button display
+//      The ‘freeze components’ button will become an ‘unfreeze components’ button
+        this.manageFreezeButton(this.freeze);
+        
+//      We update display of column
+        this.manageFreezeAction();
+
     },
 
     //change the view between components and fitted/committed

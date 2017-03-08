@@ -113,7 +113,7 @@
 						<Label textAlign="Center" text="{i18nComponentsModel>committed}" />
 						<table:template>
 							<HBox id="Committed" modelContextChange="onModelContextChange">
-								<Button icon="sap-icon://synchronize" type="Default" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}"
+								<Button icon="sap-icon://synchronize" type="Default" enabled="{path : 'Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE' , formatter : 'airbus.mes.components.util.Formatter.checkEnabledFitted'}"
 									press="synchronizeField" class="committedFittedButton">
 									<customData>
 										<core:CustomData key="equal" 
@@ -125,7 +125,7 @@
 								<StepInput id="stepInputCommitted" type="Number" class="stepInputComponent"
                                     value="{componentsWorkOrderDetail>Checked_Components}" width="{width}"
 									min="0"
-									enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE}"/>
+									enabled="{path : 'Profile>/identifiedUser/permissions/WORK_TRACKER_OSW_CAPTURE' , formatter : 'airbus.mes.components.util.Formatter.checkEnabledFitted'}"/>
 							</HBox>
 						</table:template>
 					</table:Column>
@@ -135,6 +135,7 @@
 						<table:template>
 							<HBox id="Fitted" modelContextChange="onModelContextChange">
 								<Button icon="sap-icon://synchronize" type="Default"
+									enabled="{path : 'Profile>/identifiedUser/permissions/FITTED_COMPONENTS' , formatter : 'airbus.mes.components.util.Formatter.checkEnabledFitted'}"
 									press="synchronizeField" class="committedFittedButton">
 									<customData>
 										<core:CustomData key="equal" 
@@ -146,7 +147,7 @@
 								<StepInput id="stepInputFitted" type="Number" class="stepInputComponent"
 									min="0"
                                     value="{componentsWorkOrderDetail>Fitted_Components}" width="{width}"
-									enabled="{Profile>/identifiedUser/permissions/FITTED_COMPONENTS}"/>
+									enabled="{path : 'Profile>/identifiedUser/permissions/FITTED_COMPONENTS' , formatter : 'airbus.mes.components.util.Formatter.checkEnabledFitted'}"/>
 							</HBox>
 						</table:template>
 					</table:Column>

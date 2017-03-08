@@ -302,13 +302,13 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 				sStop = "1";				
 			}
 
-			if(el.FREEZE_TRACKING_TEMPLATE === true) {
+			if(el.FREEZE_TRACKING_TEMPLATE === "true") {
 				FREEZE_TRACKING_TEMPLATE = true;
 			} else {
 				FREEZE_TRACKING_TEMPLATE = false;
 			}
 
-			if(el.FROZEN_FITTED_PARTS === true) {
+			if(el.FROZEN_FITTED_PARTS === "true") {
 				FROZEN_FITTED_PARTS = true;
 			} else {
 				FROZEN_FITTED_PARTS = false;
