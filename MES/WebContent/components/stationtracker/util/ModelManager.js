@@ -21,6 +21,10 @@ airbus.mes.stationtracker.util.ModelManager = {
         SFC: undefined,
         OPERATION_BO: undefined
     },
+    
+    // List of AVL Line to reschedule
+    // for Reschule All button
+    toRescheduleList: undefined,
 
     //     parameters from the settings component
     settings: undefined,
@@ -54,7 +58,6 @@ airbus.mes.stationtracker.util.ModelManager = {
             "SplitDetailModel", // Model for Split Model
             "dispatchFromAcpngModel", //Model for ACPGN status
             "dispatchFromMesModel", //Model for MES status
-            "datas"
         ]
 
         airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
@@ -74,6 +77,8 @@ airbus.mes.stationtracker.util.ModelManager = {
 
         // Load Data
         this.loadFilterUnplanned();
+        
+        this.toRescheduleList = [];
 
     },
 
@@ -1021,6 +1026,22 @@ airbus.mes.stationtracker.util.ModelManager = {
         });
     },
     
+    getUserID : function() {
+		// Check if generic User, "Generic users are starting with SH*."
+		var sUser =	((sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")).substring(0,2) == "SH")?
+		//then send operator of operation as issuer
+		(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1]):
+		//Else Current logged in user for a real user as Issuer
+		(sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"));  
+		   
+		 // If generic user and no operator assigned, prompt for username
+		if	(sUser==undefined) {
+			sUser=airbus.mes.shell.oView.getController().goToMyProfile();
+		} else {
+			return sUser;
+		}
+	},
+    
     // Reschedule AVL Line(s)
     sendRescheduleLineRequest: function (lines) {
         // get Url of the service
@@ -1032,17 +1053,11 @@ airbus.mes.stationtracker.util.ModelManager = {
 		var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
 		
 		// Get previous shift id
-		if ( fIndexShift != -1 && fIndexShift != 0 ) {
+		if (fIndexShift != -1 && fIndexShift != 0) {
 			var prevShiftID = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1].shiftID;
 			var currentDate = new Date();
+			var userName = this.getUserID();
 			
-			/*
-			console.log("Current  shift ID : " + oShift.shiftID);
-			console.log("Previous shift ID : " + prevShiftID);
-			console.log("Current Date      : " + currentDate);
-			*/
-			
-			// TODO Ajouter username ou handle si possible
 			var data = JSON.stringify({
 				"site": 			oData.site,
 				"physicalStation": 	oData.station,
@@ -1053,8 +1068,16 @@ airbus.mes.stationtracker.util.ModelManager = {
 				"currentShift": 	prevShiftID,
 				"userName":         userName
             });
+
+			// Debug
+			//console.log("====sendRescheduleLineRequest=====================");
+			//console.log("User : " + this.getUserID());
+			//console.log("oData             : " + oData);
+			//console.log("Current  shift ID : " + oShift.shiftID);
+			//console.log("Previous shift ID : " + prevShiftID);
+			//console.log("Current Date      : " + currentDate);
+			//console.log("Data to sent      : " + data);
 			
-			console.log("Reschedule line: Data sent: " + data);
 	        /*
 	        jQuery.ajax({
 	            type: 'post',
@@ -1075,27 +1098,19 @@ airbus.mes.stationtracker.util.ModelManager = {
 		}
     },
     
+    emptyToRescheduleList: function () {
+    	this.toRescheduleList = [];
+    },
+    
     /**
      * Reschedule not confirmed operations on a avl line
      * @PARAM {String} AVL Line
      * @PARAM {Int} number of not confirmed operation
      */
 	rescheduleLine: function (avlLine, count) {
-		
 		window.event.stopPropagation();
-		
-		// Get AVL Line number and skill from avlLine string
-		var avlline  = avlLine.split("_");
-		var nLine  = avlline[0];
-		var skill = avlline[1];
-
-		var objLine = {
-			"avlLine": avlLine,
-			"nLine":   nLine,
-			"skill":   skill,
-			"count":   count
-		};
-		
+		var objLine = airbus.mes.stationtracker.util.Formatter.getFormatedObjLine(avlLine, count);
+		console.log("objLine: " + objLine);
 		// Open confirm popup
 		airbus.mes.stationtracker.oView.getController().openRescheduleLinePopUp(objLine);
 	},

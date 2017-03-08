@@ -575,13 +575,26 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 	},
 	
-	rescheduleLine: function (avlLine, skill) {
-		window.event.stopPropagation();
-		
-		console.log("reScheduleLine");
-		alert("Test");
-	},
+	/**
+	 * Formate and return an object with AVL Line informations fo Reschedule Line
+	 * @PARAM {String} AvlLine
+	 * @PARAM {Int}    Count 
+	 * @RETURN {OBJECT} objLine
+	 */
+	getFormatedObjLine: function (avlLine, count) {
+		// Get AVL "Line number" and "skill" from avlLine string
+		var nLine = avlLine.split("_")[0];
+		var skill = avlLine.split("_")[1];
 
+		var objLine = {
+			"avlLine" : avlLine,
+			"nLine"   : nLine,
+			"skill"   : skill,
+			"count"   : count
+		};
+		return objLine;
+	},
+	
 	/*----------------------------------------------------------------------------
 	 * Permit to display the different case to the left y-axis of scheduler
 	 * display the case of user affected
@@ -636,6 +649,10 @@ airbus.mes.stationtracker.util.Formatter = {
 								  	'<span class="rescheduleLineLabelBtn">' + labelRescheduleBtn + '</span>' +
 								  	'<i class="fa fa-clock-o" aria-hidden="true"></i>' +
 							  	'</span>';
+			var objLine = airbus.mes.stationtracker.util.Formatter.getFormatedObjLine(oSection.avlLine, countNotConfirmedOps);
+			var toRescheduleList = airbus.mes.stationtracker.util.ModelManager.toRescheduleList;
+			//toRescheduleList.push(objLine);
+			//console.log("toRescheduleList: " + JSON.stringify(toRescheduleList));
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
