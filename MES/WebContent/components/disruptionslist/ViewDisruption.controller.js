@@ -731,9 +731,11 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
   				
   				// No need to keep the panel expanded after closing the disruption
   				if(data.status != airbus.mes.disruptions.Formatter.status.closed){
-  					data.expanded = sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/expanded");
-  	  				data.prevCommentsLoaded = sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/prevCommentsLoaded");
-  	  				data.lastUpdated = sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/lastUpdated");	
+  					data.expanded 				= sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/expanded");
+  	  				data.prevCommentsLoaded		= sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/prevCommentsLoaded");
+  	  				//data.internalPanelExpanded  = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/internalPanelExpanded");	
+  	  				data.lastUpdated 			= sap.ui.getCore().getModel("DisruptionDetailModel").getProperty(sPath+"/lastUpdated");	
+
   				}
   				
   				sap.ui.getCore().getModel("operationDisruptionsModel").setProperty(sPath,data);
