@@ -128,7 +128,7 @@
 							</f:content>
 					</f:SimpleForm>
 					
-					<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Translucent"
+					<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Translucent" visible="false"
 							maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3">
 						<f:content>
 							<core:Title text="" />
@@ -155,6 +155,12 @@
 							<Text text="{operationDisruptionsModel>stringer_rail}" />
 						</f:content>	
 					</f:SimpleForm>
+					<VBox alignItems="Center" justifyContent="Center">
+					<Button press="onInternalPanelexpand"   design="Transparent" icon="sap-icon://slim-arrow-down" 
+									visible="{=${operationDisruptionsModel>internalPanelexpanded} !== 'true'}" />
+					<Button press="onInternalPanelCollapse" design="Transparent" icon="sap-icon://slim-arrow-up"
+									visible="{=${operationDisruptionsModel>internalPanelexpanded} === 'true'}" />
+					</VBox>
 
 						<!-- <Text text="{i18nModel>status} : {path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}"
 							class="sapUiMediumMarginBegin statusText" /> -->
