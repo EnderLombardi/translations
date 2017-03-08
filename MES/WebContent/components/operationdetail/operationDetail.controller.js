@@ -268,6 +268,9 @@ sap.ui
 
                     /** Navigate **/
                     this.nav.to(airbus.mes.jigtools.oView.getId());
+
+                    //rerender the table to get the good row number
+                    this.refreshMesTable("jigtoolsView--jigToolList");
                     break;
                 case "components":
                     //tabselection
@@ -283,6 +286,8 @@ sap.ui
                     sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(true);
                     airbus.mes.components.oView.getController().setBtnCommittedFittedValue(sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted"), airbus.mes.components.oView.getController().committedFittedView);
 
+                    //rerender the table to get the good row number
+                    this.refreshMesTable("componentsView--ComponentsList");
                     break;
                 case "ACPnGLinks":
                     //tabselection
@@ -301,8 +306,10 @@ sap.ui
 
                     airbus.mes.shell.util.navFunctions.ncDisplayLink(this.nav);
                     this.nav.to(airbus.mes.ncdisplay.oView.getId());
-                    break;
 
+                    //rerender the table to get the good row number
+                    this.refreshMesTable("ncdisplayView--ncDisplay");
+                    break;
                 case "tckTemplate":
                     //tabselection
                     $(this.tabSelected).removeClass("operationDetailTabSelected");
@@ -474,4 +481,14 @@ sap.ui
             $(this.tabSelected).addClass("operationDetailTabSelected");
 
         },
+
+        refreshMesTable: function(id) {
+            //rerender the table to get the good row number
+            if (sap.ui.getCore().byId(id)) {
+                setTimeout(function() {
+                    sap.ui.getCore().byId(id).rerender(true);
+                }, 0);
+            }
+        }
+
     });
