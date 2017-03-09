@@ -318,6 +318,7 @@ sap.ui
                     airbus.mes.shell.util.navFunctions.tckTemplateLink(this.nav);
                     this.nav.to(airbus.mes.trackingtemplate.oView.getId());
                     sap.ui.getCore().byId("operationDetailPopup--btnPrintTckTmplt").setVisible(true);
+                    sap.ui.getCore().byId("operationDetailPopup--btnFreezeTT").setVisible(true);
                     break;
 
                 default:
@@ -359,6 +360,7 @@ sap.ui
 
             //case tracking template
             sap.ui.getCore().byId("operationDetailPopup--btnPrintTckTmplt").setVisible(false);
+            sap.ui.getCore().byId("operationDetailPopup--btnFreezeTT").setVisible(false);
 
             //set visible false if the view isn't components one
             if (oEvent.mParameters.toId !== "componentsView") {
@@ -366,6 +368,10 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailPopup--btnSave").setVisible(false);
                 sap.ui.getCore().byId("operationDetailPopup--btnFreezeComponent").setVisible(false);
             }
+            //set visible false if the view isn't components one
+            if (oEvent.mParameters.toId !== "TrackingTemplateView") {
+                sap.ui.getCore().byId("operationDetailPopup--btnFreezeTT").setVisible(false);
+            }            
             if (oEvent.mParameters.toId == "ncdisplayView") {
                 var oButtonNc = sap.ui.getCore().byId("operationDetailPopup--createNC");
                 oButtonNc.setVisible(true);

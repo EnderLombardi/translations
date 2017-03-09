@@ -4,7 +4,8 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     attachDocument: [],
     userConfirmationFragmentIsInitialised: undefined,
     isRendered: undefined,
-
+    freeze : false,
+    
     /**
     * Apply a filter on the confirmation Notes List and the WO Notes List
     * depending on the Production_Context_GBO name
@@ -35,8 +36,70 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         setTimeout(function () { //setTimeout is a trick to permit setBusy to be effective, without it's not working
             airbus.mes.trackingtemplate.oView.oController.isRendered = true;
         }, 0);
+        
+        
+//      Manage freeze action
+        this.computeFreeze();
+        this.manageFreezeButton(this.freeze);
+        
     },
 
+    computeFreeze: function(){
+    	this.freeze = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].freeze_tracking_template;
+    },
+    
+    manageFreezeButton: function(bFreeze) {
+//		Retrieve button freeze
+    	var oButton = sap.ui.getCore().byId("operationDetailPopup--btnFreezeTT");
+    	
+//    	Manage text
+    	var sText;
+
+//    	If TT is freeze
+    	if(this.freeze === true) {
+    		sText = airbus.mes.trackingtemplate.oView.getModel("i18n").getProperty("unFreezeTT");
+    	} else {
+//    		If TT is unfreeze
+    		sText = airbus.mes.trackingtemplate.oView.getModel("i18n").getProperty("freezeTT");
+    	}
+    	
+    	oButton.setText(sText);
+    },    
+
+//  The status freezed components should be saved on operation operation  level for all operations of this WO
+    //is called when the save button is clicked
+    onbtnTrackingTemplateFreeze: function (oEvent) {
+        
+        var url = airbus.mes.trackingtemplate.util.ModelManager.urlModel.getProperty("TTSaveFreeze");
+//		We inverse the freeze status
+        this.freeze = !this.freeze
+
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$freeze", this.freeze);
+        
+//      call service
+        jQuery.ajax({
+            type: 'get',
+            async: false,
+            url: url,
+            contentType: 'application/json',
+            
+            success: function (data) {
+                console.log("sucess");
+            },
+
+            error: function (error, jQXHR) {
+                console.log(error);
+            }
+        });        
+        
+//      We update the freeze button display
+//      The ‘freeze components’ button will become an ‘unfreeze components’ button
+        this.manageFreezeButton(this.freeze);
+
+    },    
+    
     /**
     * Apply a filter on the confirmation Notes List depending 
     * on the state of the checkbox 

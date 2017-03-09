@@ -26,7 +26,7 @@
             <Button id="btnCommittedFitted" text="{StationTrackerI18n>Components}" icon="sap-icon://wrench" type="Transparent" press="onCommittedFitted" visible="false" />
             <Button id="btnSave" text="{StationTrackerI18n>Save}" icon="sap-icon://save" type="Transparent" press="onSave" enabled="true" visible="false" />
             <Button id="btnFreezeComponent" text="{StationTrackerI18n>Freeze}" icon="sap-icon://stop" type="Transparent" press="onFreezeComponent" enabled="true" visible="false" />
-            <Button id="btnFreezeTT" text="{StationTrackerI18n>Freeze}" icon="sap-icon://stop" type="Transparent" press="onFreeze" enabled="false" visible="false" />
+            <Button id="btnFreezeTT" text="{StationTrackerI18n>FreezeTT}" icon="sap-icon://stop" type="Transparent" press="onFreezeTT" enabled="true" visible="false" />
 
             <Button id = "createNC" text="{StationTrackerI18n>Create NC}"  icon="sap-icon://add" press="" visible="false" />
             <Button id = "createPNC" text="{StationTrackerI18n>Create Pnc}"  icon="sap-icon://add" press="" visible="false" />
