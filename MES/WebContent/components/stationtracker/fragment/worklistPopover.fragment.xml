@@ -16,7 +16,8 @@
 					status="{WorkListOverallModel>/0/STATE}" prevstarted="{WorkListOverallModel>/0/PREVIOUSLY_STARTED}"
 					displayValue="{ parts: [ 'WorkListOverallModel>/0/WORKORDER_ID','WorkListOverallModel>/0/WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 					displayValue2="{ parts: [ 'WorkListOverallModel>/0/OPERATION_ID','WorkListOverallModel>/0/OPERATION_DESCRIPTION','WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
-					percentValue="{ parts: [ 'WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
+					percentValue="{ parts: [ 'WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}"
+					ttFreezeTrackingTemplate="{WorkListOverallModel>/0/FREEZE_TRACKING_TEMPLATE}">
 				</custom:util.customProgressIndicator>
 			</VBox>
 
@@ -56,7 +57,8 @@
 											status="{WorkListModel>STATE}" prevstarted="{WorkListModel>PREVIOUSLY_STARTED}"
 											displayValue="{ parts: [ 'WorkListModel>WORKORDER_ID','WorkListModel>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 											displayValue2="{ parts: [ 'WorkListModel>OPERATION_ID','WorkListModel>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
-											percentValue="{ parts: [ 'WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
+											percentValue="{ parts: [ 'WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}"
+											ttFreezeTrackingTemplate="{WorkListModel>FREEZE_TRACKING_TEMPLATE}">
 											<custom:layoutData>
 												<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>
 											</custom:layoutData>

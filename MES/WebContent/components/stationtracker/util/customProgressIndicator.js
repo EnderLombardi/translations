@@ -114,7 +114,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 				group : 'Appearance',
 				defaultValue : ''
 			},
-			ttFreeze: {
+			ttFreezeTrackingTemplate: {
 				type : 'string',
 				group : 'Appearance',
 				defaultValue : ''
@@ -153,11 +153,15 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 		var osw = c.getOsw();
 		var W = c.getWidth();
 		var H = c.getHeight();
-		var sRightIcon = "";	
+		var sRightIcon = "";
+		var sRightIcon2 = "";	
 		var sLeftIcon = "";
 		var sLeftIcon2 = "";
+		var sLeftIcon2bis = "";
 		var sLeftIcon3 = "";
 		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
+		
+		var ttFreezeTrackingTemplate = c.getTtFreezeTrackingTemplate()
 		
 		//Stop icon
 		if (sStop === "1" || sStop === "true") {
@@ -247,13 +251,16 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 				//OSW
 				if (osw[0] === "3" || airbus.mes.stationtracker.CheckQa === "OSW"){ 
 					sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
-				} 
 				//unplanned
+				} 
 				if (osw[0] === "1"  || sUnplanned === "1" ){
 					sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 				} 
 				
-				sLeftIcon3 = boxDisplayManager.rightTTFreeze;
+				
+				if(ttFreezeTrackingTemplate === "true"){
+					sLeftIcon2bis = boxDisplayManager.leftTTFreeze;
+				}
 				
 				 //{ if it's not unplanned it's osw because this code is only used for osw and unplanned pop-up
 				//	sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
@@ -428,8 +435,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 								r.write(">");
 								r.write(sLeftIcon);
 								r.write(sLeftIcon2);
+								r.write(sLeftIcon2bis);
 								r.write(sLeftIcon3);
 								r.write(sRightIcon);
+								r.write(sRightIcon2);
 						r.write("</span>");
 					} 
 				}

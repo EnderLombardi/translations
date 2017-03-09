@@ -187,6 +187,8 @@ WORK LIST POP OVER
 
 .classWorklistPopover header.sapMIBar.sapMHeader-CTX label { color: #434343; font-size: 1rem; }
 
+.classWorklistPopover .colorBlue { color: #0085ad; }
+
 #mes .sapMDialog:not(.theme-disabled) .classWorklistPopoverHeader { box-shadow: 0 0 5px #333; overflow: visible; background-color: #d4f1f7; color: #434343; margin: -1rem -1rem 1rem -1rem; padding: 1rem; }
 
 /********************

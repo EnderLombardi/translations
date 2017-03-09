@@ -1254,6 +1254,8 @@ airbus.mes.stationtracker.util.ModelManager = {
         elOverallModel.BLOCKING_DISRUPTION = oEvent.isBlocked;
         elOverallModel.STOP = oEvent.stop;
         elOverallModel.EXECUTION_STATION_SOURCE = oEvent.OSW;
+        
+        elOverallModel.FREEZE_TRACKING_TEMPLATE = aModel[0].FREEZE_TRACKING_TEMPLATE;
 
         switch (oEvent.status) {
             case 0:
@@ -1364,27 +1366,28 @@ airbus.mes.stationtracker.util.ModelManager = {
 
                 // calculate status of operation
                 var sStatus;
-                if (aModel[0].status == "0")
+                if (aModel[0].status == "0") {
                     sStatus = "COMPLETED";
-                else if (aModel[0].status == "2")
+                } else if (aModel[0].status == "2") {
                     sStatus = "IN_WORK";
-                else if (aModel[0].status === "3")
+                } else if (aModel[0].status === "3") {
                     sStatus = "IN_QUEUE";
-                else if (aModel[0].status === "1")
+                } else if (aModel[0].status === "1") {
                     sStatus = "NOT_STARTED";
-                else if (aModel[0].status === "4")
+                } else if (aModel[0].status === "4") {
                     sStatus = "Blocked";
+                }
 
 
                 // progress calculation
                 var progress;
-                if (sStatus == "COMPLETED")
+                if (sStatus == "COMPLETED") {
                     progress = 100;
-                else if (parseInt(aModel[0].DURATION, 10) === 0)
+                } else if (parseInt(aModel[0].DURATION, 10) === 0) {
                     progress = 0;
-                else
-                    progress = aModel[0].PROGRESS / parseInt(aModel[0].DURATION, 10)
-                        * 100;
+                } else {
+                    progress = aModel[0].PROGRESS / parseInt(aModel[0].DURATION, 10) * 100;
+                }
                 var oOperModel = {
                     "Rowsets": {
                         "Rowset": [{
@@ -1592,8 +1595,6 @@ airbus.mes.stationtracker.util.ModelManager = {
 
 
         if (airbus.mes.stationtracker.ImportOswUnplannedPopover != undefined) {
-
-            if (airbus.mes.stationtracker.CheckQa === "OSW");
 
             var aValueSelected = [];
 
