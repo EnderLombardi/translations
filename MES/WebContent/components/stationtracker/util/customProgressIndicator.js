@@ -113,6 +113,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 				type : 'string',
 				group : 'Appearance',
 				defaultValue : ''
+			},
+			ttFreeze: {
+				type : 'string',
+				group : 'Appearance',
+				defaultValue : ''
 			}
 			
 		}			  
@@ -247,6 +252,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 				if (osw[0] === "1"  || sUnplanned === "1" ){
 					sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 				} 
+				
+				sLeftIcon3 = boxDisplayManager.rightTTFreeze;
+				
 				 //{ if it's not unplanned it's osw because this code is only used for osw and unplanned pop-up
 				//	sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
 				//}
@@ -367,8 +375,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 				if (dispatch) {
 					if (dispatchWhite){
 						sLeftIcon = boxDisplayManager.leftStopIcon_White;
-					}
-					else {
+					} else {
 						sLeftIcon = boxDisplayManager.leftStopIcon;
 					}
 				}
@@ -376,8 +383,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 				if (fBlockingDisruption) {
 					if (dispatchWhite){
 						sRightIcon = boxDisplayManager.rightStopWhite;
-					}
-					else {
+					} else {
 						sRightIcon = boxDisplayManager.rightStop;
 					}
 				}

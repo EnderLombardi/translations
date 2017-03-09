@@ -483,7 +483,7 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 					var sPreviouslyStarted = "";
 					var sRouterStepBo = "";
 					var sDisruption = "";
-				
+					var bFreezeTrackingTemplate = false;
 					
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
@@ -534,6 +534,8 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 						
 						sOperationId = el.OPERATION_ID;
 						
+						bFreezeTrackingTemplate = el.FREEZE_TRACKING_TEMPLATE;
+						
 					} );
 					
 					if (  key1.slice(0,2) === "I_" &&  airbus.mes.stationtracker.util.GroupingBoxingManager.showInitial ) {
@@ -565,7 +567,8 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 								"paused" : sPaused,
 								"previouslyStarted" : sPreviouslyStarted,
 								"routerStepBo": sRouterStepBo,
-								"disruption": sDisruption
+								"disruption": sDisruption,
+								"freezeTrackingTemplate" : bFreezeTrackingTemplate
 								//"isUnplanned" :  Math.max.apply(null,aUnplanned),
 								//"andon" : Math.max.apply(null,aAndons),
 								//"blocked" : Math.max.apply(null,aDisruptions),
@@ -617,7 +620,8 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 							"aAcpngStatus": Math.max.apply(null,aAcpngStatus),
 							"status2" : Math.max.apply(null,aStatus2),
 							"isBlocked" : Math.max.apply(null,aIsBlocked),
-							"stop" : Math.max.apply(null,aStop)
+							"stop" : Math.max.apply(null,aStop),
+							"freezeTrackingTemplate" : bFreezeTrackingTemplate
 						};
 					
 					aBox.push(oOperationRescheduling);

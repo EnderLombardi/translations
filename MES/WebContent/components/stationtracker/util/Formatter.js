@@ -247,6 +247,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		var sDivForLeftDisplay = '<div  class="trackerBox">';
 		var sDivForLeftDisplayInitial = '<div class="tracker-item-initial" >';
 		var sRightIcon = "";
+		var sRightIcon2 = "";
 		var sLeftIcon = "";
 		var sLeftIcon2 = "";
 		var sLeftIcon3 = "";
@@ -285,9 +286,10 @@ airbus.mes.stationtracker.util.Formatter = {
 			trackerTextClass = "trackerText";
 		}
 
-		if (oBox.status == 6 || oBox.status == 4)
+		if (oBox.status == 6 || oBox.status == 4) {
 			trackerTextClass = "trackerTextBlock";
-
+		}
+			
 		if (oBox.rmaStatus === 1) { //rma
 			sLeftIcon = boxDisplayManager.leftTriangleIcon_Dandelion;
 		}
@@ -465,15 +467,18 @@ airbus.mes.stationtracker.util.Formatter = {
 		if (dispatch) {
 			if (dispatchWhite){
 				sLeftIcon = boxDisplayManager.leftStopIcon_White;
-			}
-			else {
+			} else {
 				sLeftIcon = boxDisplayManager.leftStopIcon;
 			}
 		}
 		
+		if(oBox.freezeTrackingTemplate) {
+			sRightIcon2 = boxDisplayManager.rightTTFreeze;
+		}
+		
 
 		//
-		var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon);
+		var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon, sRightIcon2);
 
 		//description text + progress in IM (industrial minutes)
 		var sSpanText = '<span class=" ' + trackerTextClass + ' "style="float: left; overflow: hidden;text-overflow: ellipsis;'
@@ -486,7 +491,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			trackerTextClass = ""
 			html = sDivForLeftDisplayInitial + sLeftIcon + sRightIcon + sLeftIcon2 + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
 		} else {
-			html = sDivForLeftDisplay + sLeftIcon + sRightIcon + sLeftIcon2 + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
+			html = sDivForLeftDisplay + sLeftIcon + sRightIcon + sRightIcon2  +sLeftIcon2 + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
 		}
 		//html += '<span class="trackerBoxtooltiptext">'+ sSpanText +'</span>' ;
 

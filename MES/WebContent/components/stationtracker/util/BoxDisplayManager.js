@@ -23,24 +23,25 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    leftOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon yellow petrol"><b style="padding-left:1px">',
 		    leftOswIcon_TealBlueWhite: '<i class="fa fa-refresh oswIcon teal-blue white">',
 		
-
+		    leftTTFreeze : '<i class="fa  fa-long-arrow-up blue leftIcon"></i>',
+		    
 			leftOswIcon_Constructor : function(elt, sStatus) {
 			    						
-					switch(sStatus) {
-				    case "1":
-				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon1 + elt + "1" + '</b></i>';
-				        break;
-				    case "2":
-				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon2 + elt + "2" + '</b></i>';
-				        break;
-				    case "3":
-				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon3 + elt + "3" + '</b></i>';
-				        break;
-				    default:
-				    	//return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon3 + elt + '</b></i>';
-				    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon1 + elt + '</b></i>';
+				switch(sStatus) {
+			    case "1":
+			    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon1 + elt + "1" + '</b></i>';
+			        break;
+			    case "2":
+			    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon2 + elt + "2" + '</b></i>';
+			        break;
+			    case "3":
+			    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon3 + elt + "3" + '</b></i>';
+			        break;
+			    default:
+			    	//return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon3 + elt + '</b></i>';
+			    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon1 + elt + '</b></i>';
 
-					}			
+				}			
 			},
 		
 		    leftOswIcon_Dandelion_Constructor: function(elt) {
@@ -66,6 +67,8 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    rightCheck : '<i class="fa fa-check rightIcon"></i>',
 		    rightStop : '<i class="fa  fa-exclamation stopIcon rightIcon"></i>',
 		    rightStopWhite : '<i class="fa  fa-exclamation stopIcon white-two rightIcon"></i>',
+		    
+		    rightTTFreeze : '<i class="fa  fa-long-arrow-up rightIcon colorvrtvrtrvBlue"></i>',
 		    
 		    rightOswIcon_Constructor: function(elt) {
 		        return airbus.mes.stationtracker.util.BoxDisplayManager.rightOswIcon + elt + '</b></i>';
@@ -110,7 +113,7 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
     //---------------------
 
 		    //calculate the width unavailable for the text
-		    getWidthUnavailableForText: function(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon) {
+		    getWidthUnavailableForText: function(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon, sRightIcon2) {
 		        var widthUnavailableForText = 10;
 		
 		        //we add the size in px of the several icons to determinate the width used by the icons (and not available for the text)
@@ -126,6 +129,10 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		        if(sRightIcon) {
 		            widthUnavailableForText += 18;
 		        }
+		        if(sRightIcon2) {
+		            widthUnavailableForText += 18;
+		        }
+		        
 		        return widthUnavailableForText;
 		    }
 		
