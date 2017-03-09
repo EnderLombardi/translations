@@ -400,6 +400,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
             return false;
 
         }));
+        
+        /**
+         * Called when scheduler is reloaded
+         */
+        scheduler.eventId.push(scheduler.attachEvent("onViewChange", function (){
+        	// Empty list of not confirmed operations to reschedule
+        	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("DHTMLXscheduler onViewChange");
+        }));
 
         /************************************************************************/
         /************************************************************************/

@@ -27,7 +27,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      * @memberOf components.stationtracker.stationtracker
      */
     onBeforeRendering: function () {
-
         // change title
         //TODO : translate
         if (airbus.mes.shell.util.navFunctions.splitMode == "WorkTracker") {
@@ -112,6 +111,9 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      *
      ****************************************************************************/
     onShiftPress: function () {
+    	
+    	// Empty list of to reschedule not confirmed operations
+    	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.controler.onShiftPress");
 
         airbus.mes.stationtracker.util.ShiftManager.shiftDisplay = true;
         airbus.mes.stationtracker.util.ShiftManager.dayDisplay = false;
@@ -142,6 +144,9 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      *
      ****************************************************************************/
     onDayPress: function () {
+    	
+    	// Empty list of to reschedule not confirmed operations
+    	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.controller.onDayPress");
 
         airbus.mes.stationtracker.util.ShiftManager.shiftDisplay = false;
         airbus.mes.stationtracker.util.ShiftManager.dayDisplay = true;
@@ -1066,7 +1071,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      * Change the date of scheduler
      */
     changeDay: function (oEvt) {
-
         scheduler.updateView(oEvt.getSource().getDateValue());
         airbus.mes.stationtracker.util.ModelManager.selectMyShift();
     },
@@ -1075,7 +1079,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      * Collapse or display KPI
      */
     toggleKPI: function () {
-
         var oPanel = airbus.mes.stationtracker.oView.byId("kpi_header");
         var bIsExpanded = oPanel.getExpanded();
 
@@ -1091,29 +1094,24 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         }
 
         oPanel.setExpanded(!bIsExpanded);
-
     },
 
-
     hideKPI: function () {
-
         var oPanel = airbus.mes.stationtracker.oView.byId("kpi_header");
         airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://show");
         airbus.mes.stationtracker.oView.byId("hideKPI").setText(airbus.mes.stationtracker.oView.getController().getI18nValue("ShowKPIS"));
         $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
         oPanel.setExpanded(false);
-
     },
 
     showKPI: function () {
-
         var oPanel = airbus.mes.stationtracker.oView.byId("kpi_header");
         airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://hide");
         airbus.mes.stationtracker.oView.byId("hideKPI").setText(airbus.mes.stationtracker.oView.getController().getI18nValue("HideKPIS"));
         $("#stationTrackerView--splitWorkTra").removeClass("withoutKPI");
         oPanel.setExpanded(true);
-
     },
+    
     /**
      * Action on fragment worklist
      */
@@ -1147,6 +1145,10 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
     //Fired when Calendar Button is clicked
     //Open datePicker XML fragment
     datePick: function () {
+    	
+    	// Empty list of to reschedule not confirmed operations
+    	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.controller.dateSelected()");
+    	
         if (airbus.mes.stationtracker.datePicker === undefined) {
             airbus.mes.stationtracker.datePicker = sap.ui.xmlfragment("datePickerFragment", "airbus.mes.stationtracker.fragment.datePickerFragment", airbus.mes.stationtracker.oView.getController());
             airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.datePicker);
@@ -1164,6 +1166,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
     },
 
     dateSelected: function () {
+    	
         // Check if current selected date corresponds to range of shift date
         var dSeletectedDate = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
         if (dSeletectedDate < airbus.mes.stationtracker.util.GroupingBoxingManager.minDate || dSeletectedDate > airbus.mes.stationtracker.util.GroupingBoxingManager.maxDate) {

@@ -662,15 +662,14 @@ airbus.mes.stationtracker.util.Formatter = {
 			
 			// Add Obj AVL Line datas to global toRescheduleList
 			toRescheduleList.push(objLine);
-			//console.log("objLine: " + JSON.stringify(objLine));
-			//console.log("toRescheduleList length: " + toRescheduleList.length);
+			//console.log("====yDisplayRules============");
+			//console.log("objLine  : " + JSON.stringify(objLine));
 			//console.log("toRescheduleList: " + JSON.stringify(toRescheduleList));
 			
 			// Display Reschedule all button if at least one late operation in toRescheduleList
 			if(toRescheduleList.length > 0) {
 				$(".rescheduleAllBtn").css({'display' : 'block'});
 			}
-			
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {

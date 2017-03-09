@@ -841,6 +841,9 @@ airbus.mes.stationtracker.util.ModelManager = {
         oView.getModel("stationTrackerShift").setData(modelarray);
         oView.getModel("stationTrackerShift").refresh();
 
+        // Empty list of to reschedule not confirmed operations
+    	//airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.modeManager.selectMyShift");
+
         if (airbus.mes.stationtracker.util.ShiftManager.dayDisplay) {
 
             if (airbus.mes.stationtracker.util.ShiftManager.selectFirstShift) {
@@ -884,6 +887,8 @@ airbus.mes.stationtracker.util.ModelManager = {
         this.loadKPIshiftStaffing();
     },
     onStationTrackerLoad: function () {
+    	// Empty list of to reschedule not confirmed operations
+    	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.ModelManager.onStationTrackerLoad");
 
         var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
 
@@ -898,7 +903,9 @@ airbus.mes.stationtracker.util.ModelManager = {
     },
 
     onStationTrackerLoadInitial: function () {
-
+    	// Empty list of to reschedule not confirmed operations
+    	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.ModelManager.onStationTrackerLoad");
+    	
         var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
         airbus.mes.stationtracker.util.ModelManager.fIsLoad++;
         // initial model and rescheduled model are load in same time it permit to redenrer stationtracker only one time
@@ -910,6 +917,9 @@ airbus.mes.stationtracker.util.ModelManager = {
     },
 
     loadShifts: function () {
+    	
+    	// Empty list of to reschedule not confirmed operations
+    	//airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.ModelManager.loadShifts");
 
         var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
         var getUrlShifts = this.urlModel.getProperty("urlshifts");
@@ -1094,11 +1104,16 @@ airbus.mes.stationtracker.util.ModelManager = {
             }
         });
     },
-    
-    emptyToRescheduleList: function () {
+
+    /*----------------------------------------------------------------------------
+     * Empty list of to reschedule AVL Line (ToRescheduleList)
+     * Used for refresh
+    ----------------------------------------------------------------------------*/
+    emptyToRescheduleList: function (fromWhere) {
     	this.toRescheduleList = [];
+    	//console.log("Empty toRescheduleList FROM => " + fromWhere);
     },
-    
+
     /*----------------------------------------------------------------------------
      * Reschedule not confirmed operation(s) on selected avl line.
      * Called when onclick on red button at left of AVL Line
@@ -1121,7 +1136,7 @@ airbus.mes.stationtracker.util.ModelManager = {
     ----------------------------------------------------------------------------*/
 	rescheduleAll: function () {
 		window.event.stopPropagation();
-        console.log("RescheduleAllBtn click");
+        console.log("====RescheduleAllBtn click============");
         
         var allCount    = 0;
         var arrayLength = this.toRescheduleList.length;
@@ -1129,7 +1144,8 @@ airbus.mes.stationtracker.util.ModelManager = {
         for (var i = 0; i < arrayLength; i++) {
         	allCount += this.toRescheduleList[i].count;
         }
-        //console.log("allCount: " + allCount);
+        console.log("Number of all operation in all AVL Line to Reschedule: " + allCount);
+        console.log("Number of AVL Line to Reschedule: " + arrayLength);
         
         // Open confirm popup
 		airbus.mes.stationtracker.oView.getController().openRescheduleAllPopUp(allCount);

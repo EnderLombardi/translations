@@ -752,8 +752,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 						if ( airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(aOpration[index].START_TIME) <  oPreviousShift.EndDate ) {
 						
 							if ( el.STATE != "C" )
-						
-							return bResult = true;	
+								return bResult = true;	
 							
 						
 						}
