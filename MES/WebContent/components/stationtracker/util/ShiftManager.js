@@ -659,49 +659,43 @@ airbus.mes.stationtracker.util.ShiftManager = {
 	},
 	
 	/**
-	 * Update view of scheduler with the previous selected Date or rescheduling
-	 * Date
+	 * Update view of scheduler with the previous selected Date or rescheduling Date
 	 * 
-	 * @param {STRING}
-	 *            sPreviousDate, date to pass to the function,
+	 * @param {STRING} sPreviousDate, date to pass to the function,
 	 */
 	updateMyGanttPreviousShift : function(sPreviousDate) {
-		
 		scheduler.updateView(new Date(sPreviousDate));
-		
 	},
 	
 	/**
-	 * Count the number of nt confirmed operations
+	 * Search and Count in last shift the number of not confirmed operations
 	 * 
 	 * @param 	{OBJECT} a section (AVL Line informations)
 	 * @returns {Number} Number of not confirmed operations
 	 */
 	countNoTotalConfLastShif: function (oSection) { 
+		
 		var count = 0;
 		
-		var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
-		var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
-		
+		var oShift       = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
+		var fIndexShift  = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
+		var opeHierarchy = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy;
+
 		// Selectet only previous shift
-		if ( fIndexShift != -1 && fIndexShift != 0 ) {
-						
+		if ( fIndexShift != -1 && fIndexShift != 0) {
 			var oPreviousShift = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1] ;
-			// Check if the avl to parse exist , when we add new avl Line by press + it not exist in the airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy 
-			if ( airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group] != undefined ) {
-				
-				if ( airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine] != undefined ) {
+			// Check if the avl to parse exist , when we add new avl Line by press
+			// + it not exist in the airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy 
+			if (opeHierarchy[oSection.group] != undefined) {
+				if (opeHierarchy[oSection.group][oSection.avlLine] != undefined) {
 					
-					var oOperation = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine];			
-	
-					for ( var aBox in oOperation ) {
-							
+					var oOperation = opeHierarchy[oSection.group][oSection.avlLine];			
+					for (var aBox in oOperation) {
 						var aOpration = oOperation[aBox];
-						
 						//Parse all opration in corresponding group avlLine
 						aOpration.forEach(function(el,index){
 							// check if operation start date is less than the end date of prevous shift.
-							if ( airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(aOpration[index].START_TIME) <  oPreviousShift.EndDate ) {
+							if (airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(aOpration[index].START_TIME) < oPreviousShift.EndDate) {
 								if ( el.STATE != "C" ) {
 									count++;
 								}
@@ -713,84 +707,19 @@ airbus.mes.stationtracker.util.ShiftManager = {
 		}
 		return count;
 	},
-	
-	/**
-	 * Search in last shift if there is an operation not confirmed 
-	 * 
-	 * @param {OBJECT} oSection, AVL line wich is currently rendering
-	 * @returns  {Boolean} True if an operation is not confirmed on the 
-	 */
-	noTotalConfLastShift : function (oSection) {
-		
-		var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
-		var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
-		var bResult = false;
-		
-		// Selectet only previous shift
-		if ( fIndexShift != -1 && fIndexShift != 0 ) {
-						
-			var oPreviousShift = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1] ;
-			// Check if the avl to parse exist , when we add new avl Line by press + it not exist in the airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy 
-			if ( airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group] != undefined ) {
-				
-				if ( airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine] != undefined ) {
-					
-					var oOperation = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine];			
-	
-					for ( var aBox in oOperation ) {
-					
-						if ( bResult ) {
-							
-							return true;
-							
-						} 
-							
-					var aOpration = oOperation[aBox];
-					//Parse all opration in corresponding group avlLine return true if one is not completed
-					aOpration.forEach(function(el,index){
-						// check if operation start date is less than the end date of prevous shift.
-						if ( airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(aOpration[index].START_TIME) <  oPreviousShift.EndDate ) {
-						
-							if ( el.STATE != "C" )
-								return bResult = true;	
-							
-						
-						}
-													
-					})	
-					
-				}
-				if ( bResult ) {
-					
-					return true;
-				} 
-			// All operation are completed
-			return false;
-				
-		}
-		// First shift reach no operation before the shift selected
-		return false;
-			}
-			
-		}
-		return false;
-	},
 
 	/**
 	 * Add update of shift selection when swiping in scheduler of the initial event of scheduler
 	 */
 	next : function(e, t) {
-		
         scheduler.setCurrentView(scheduler.date.add(scheduler.date[scheduler._mode + "_start"](scheduler._date), t || 1, scheduler._mode));
         airbus.mes.stationtracker.util.ModelManager.selectMyShift();
-        
     },
+    
 	/**
-	 * 
-	 * 
-	 *  
+	 * Swipe function
+	 * @PARAM {OBJECT} Swipe function
 	 */
-	// Swipe function 
 	timelineSwip : function (side) {
 //		XXX : keep needed later
 //		var oFormatter = airbus.mes.stationtracker.util.Formatter;
