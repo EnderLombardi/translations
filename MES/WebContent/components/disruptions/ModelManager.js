@@ -844,7 +844,7 @@ airbus.mes.disruptions.ModelManager = {
        
 	 // If generic user and no operator assigned, prompt for username
 		if	(sUser==undefined) 
-			sUser=airbus.mes.shell.oView.getController().goToMyProfile();
+			sUser=airbus.mes.shell.oView.getController().userLogin();
 		    
 		else
 		return sUser;
