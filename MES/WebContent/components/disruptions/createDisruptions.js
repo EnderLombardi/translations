@@ -178,7 +178,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		});
 		return result;
 	},
-	// get selected jig Tools
+	// get selected materials
 	getSelectedMaterials : function() {
 		var getTokens = sap.ui.getCore().byId("createDisruptionView--materials").getTokens();
 		var result;
@@ -317,17 +317,14 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"attribute" : "PLAN",
 					"value" : oView.byId("plan").getValue()
 				}, {
-					"attribute" : "MATERIAL",
-					"value" : oView.byId("materials").getValue()
+					"attribute" : "BOM_ITEM",
+					"value" : oView.byId("bomItem").getValue()
 				}, {
 					"attribute" : "RIBS",
 					"value" : oView.byId("ribs").getValue()
 				}, {
 					"attribute" : "VIEW",
 					"value" : oView.byId("view").getValue()
-				}, {
-					"attribute" : "TOOLS",
-					"value" : oView.byId("jigtools").getValue()
 				}, {
 					"attribute" : "STRINGER",
 					"value" : oView.byId("stringer").getValue()
@@ -571,30 +568,23 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		var aSelectedItems = sap.ui.getCore().byId("materialList").getSelectedItems();
 
-		/*
-		 * remove all token already present in the MultiInput the already
-		 * selected tokens will be selected in the MaterialList Dialog already
-		 * so there will be no chance of data loss
-		 */
-		sap.ui.getCore().byId("createDisruptionView--materials").removeAllTokens();
-		sap.ui.getCore().byId("createDisruptionView--materials").setValue();
-
 		// for each Item add token to MaterialInput
+		var aToken = [];
 		aSelectedItems.forEach(function(item, index) {
 			// if any selected item doesnt contain qty
 			// set it to 1.
 			if (item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].getValue() == "") {
 				item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].setValue(1);
 			}
-			var oToken = new sap.m.Token({
-				key : item.getContent()[0].getContent()[0].getItems()[0].getText(),
-				text : item.getContent()[0].getContent()[0].getItems()[0].getText() + "("
+			aToken.push(
+				item.getContent()[0].getContent()[0].getItems()[0].getText() + "("
 					+ item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].getValue() + ")"
-
-			});
-			sap.ui.getCore().byId("createDisruptionView--materials").addToken(oToken);
+			);
+			
 		});
-
+		
+		sap.ui.getCore().getModel("DisruptionDetailModel").oData.materials= aToken;
+		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
 		this._materialListDialog.close();
 	},
 
@@ -691,30 +681,21 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	onjigToolValueHelpOk : function(oEvt) {
 		var aSelectedItems = sap.ui.getCore().byId("jigToolList").getSelectedItems();
 
-		/*
-		 * remove all token already present in the MultiInput the already
-		 * selected tokens will be selected in the MaterialList Dialog already
-		 * so there will be no chance of data loss
-		 */
-		sap.ui.getCore().byId("createDisruptionView--jigtools").removeAllTokens();
-		sap.ui.getCore().byId("createDisruptionView--jigtools").setValue();
-
 		// for each Item add token to MaterialInput
+		var aToken = [];
 		aSelectedItems.forEach(function(item, index) {
 			// if any selected item doesnt contain qty
 			// set it to 1.
 			if (item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].getValue() == ""){
 				item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].setValue(1);
 			}
-			var oToken = new sap.m.Token({
-				key : item.getContent()[0].getContent()[0].getItems()[0].getText(),
-				text : item.getContent()[0].getContent()[0].getItems()[0].getText() + "("
+			aToken.push(item.getContent()[0].getContent()[0].getItems()[0].getText() + "("
 					+ item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].getValue() + ")"
-
-			});
-			sap.ui.getCore().byId("createDisruptionView--jigtools").addToken(oToken);
+			);
+			
 		});
-
+		sap.ui.getCore().getModel("DisruptionDetailModel").oData.jigTools= aToken;
+		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
 		this.jigToolSelectDialog.close();
 	},
 

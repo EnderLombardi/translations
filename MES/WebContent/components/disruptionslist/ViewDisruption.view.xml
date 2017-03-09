@@ -74,9 +74,8 @@
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>reason}" design="Bold"/>
 									<Text text="{operationDisruptionsModel>reason}">
 									</Text>
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Jigtool}" design="Bold"/>
-									<Text text="{path: 'operationDisruptionsModel>jigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
-									</Text>
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>bomItem}" />
+									<Text id="bomItem" text="{operationDisruptionsModel>bomItem}" />
 											
 												
 								<core:Title text="" />				
@@ -136,18 +135,17 @@
 							<Text text="{operationDisruptionsModel>area}" />
 							<Label text="{i18nModel>plan}"  class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>plan}" />
-							<Label text="{i18nModel>material}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
-							<Text text="{operationDisruptionsModel>materiall}" />
+							<Label text="{i18nModel>material}" class="detailLabels sapUiMediumMarginBottom" />
+							<Text text="{path: 'operationDisruptionsModel>material', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}" />
 
-							
 							<core:Title text="" />
 							<Label text="{i18nModel>ribs}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>ribs}" />
 							<Label text="{i18nModel>view}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>view}" />
-							<Label text="{i18nModel>tools}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
-							<Text text="{operationDisruptionsModel>tools}" />
-							
+							<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Jigtool}"  design="Bold"/>
+							<Text text="{path: 'operationDisruptionsModel>jigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}" />
+
 							<core:Title text="" />
 							<Label text="{i18nModel>stringer}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>stringer}"  />

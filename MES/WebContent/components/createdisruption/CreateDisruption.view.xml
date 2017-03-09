@@ -47,7 +47,7 @@
 										</Select>
 										
 										<Label text="{i18nModel>bomItem}" class="textAlignLeft" />
-										<Input value="{DisruptionDetailModel>/bomItem}" />
+										<Input id="bomItem" value="{DisruptionDetailModel>/bomItem}" />
 										
 									
 									<core:Title />
@@ -159,7 +159,7 @@
 										<Label text="{i18nModel>material}" class="textAlignLeft"/>									
 										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" valueHelpOnly="true" tokens="{DisruptionDetailModel>/materials}">
 											<tokens>
-										    	<Token key="{DisruptionDetailModel>/materials/}" text="{DisruptionDetailModel>/materials/}" />
+										    	<Token key="{DisruptionDetailModel>}" text="{DisruptionDetailModel>}" />
 										    </tokens>
 										</MultiInput>
 									
@@ -172,7 +172,7 @@
 										<Label text="{i18nModel>Jigtool}" class="textAlignLeft"/>
 										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"  valueHelpOnly="true" tokens="{DisruptionDetailModel>/jigTools}">
 											<tokens>
-										    	<Token key="{DisruptionDetailModel>/}" text="{DisruptionDetailModel>/}" />
+										    	<Token key="{DisruptionDetailModel>}" text="{DisruptionDetailModel>}" />
 										    </tokens>
 										</MultiInput>
 									
