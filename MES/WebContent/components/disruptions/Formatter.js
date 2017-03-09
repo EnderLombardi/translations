@@ -52,8 +52,9 @@ airbus.mes.disruptions.Formatter = {
 			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY1");
 			break;
 		case "2":
-			if (airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2") === "Amber")
+			if (airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2") === "Amber"){
 				return "#FFC200";
+			}
 			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2");
 			break;
 		case "3":
@@ -97,12 +98,13 @@ airbus.mes.disruptions.Formatter = {
 	},
 	
 	formatTimeBeforeEsc: function(sEscLEvel, sTime){
-		if(sEscLEvel == "3")
+		if(sEscLEvel == "3"){
 			return 'Escalated';
-		else if(sTime == '')
+		} else if(sTime == '') {
 			return '-';
-		else
+		} else {
 			return sTime;
+		}
 	},
 	
 	/*getDate : function(datetime) {
@@ -212,8 +214,9 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	setCloseButtonVisibility : function(originatorFlag, status ,expanded) {
-		if(expanded != "true")
+		if(expanded != "true") {
 			return false;
+		}
 		if (originatorFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.rejected
@@ -251,8 +254,9 @@ airbus.mes.disruptions.Formatter = {
 
 	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, resolverID, status, commentBoxOpened) {
 		
-		if(commentBoxOpened === "true")
+		if(commentBoxOpened === "true") {
 			return false;
+		}
 		
 		if( status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered){
 			if (responsibleFlag == "X" && 
@@ -289,10 +293,11 @@ airbus.mes.disruptions.Formatter = {
 		if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.deleted
 			|| status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
-		} else if (originatorFlag == "X" && escalation < 3)
+		} else if (originatorFlag == "X" && escalation < 3) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	},
 
 	setMarkSolvedButtonVisibility : function(responsibleFlag, status) {
@@ -312,21 +317,24 @@ airbus.mes.disruptions.Formatter = {
 	setRefuseButtonVisibility : function(originatorFlag, status) {
 		// if (originatorFlag == "X" && responsibleFlag != "X" && status ==
 		// airbus.mes.disruptions.Formatter.status.solved)
-		if (originatorFlag == "X" && status == airbus.mes.disruptions.Formatter.status.solved)
+		if (originatorFlag == "X" && status == airbus.mes.disruptions.Formatter.status.solved) {
 			return true;
+		}
 
 		return false;
 	},
 
 	setEmptyPromisedDateTimeText : function(dateTime) {
-		if (dateTime == "")
+		if (dateTime == "") {
 			return "--:--:--";
+		}
 		return dateTime;
 	},
 
 	textCaseFormat : function(text) {
-		if(text)
+		if(text) {
 			text = text.toLowerCase();
+		}
 		return text;
 	},
 	formatCommentAction : function(action, comment) {
@@ -340,14 +348,16 @@ airbus.mes.disruptions.Formatter = {
 		if (comment && comment.indexOf("\$\$") > -1) {
 			comment =  comment.split("\$\$").shift().join();
 		}
-		if(comment == "" || comment == " ")
+		if(comment == "" || comment == " ") {
 			this.setVisible(false);
+		}
 		return comment;
 	},
 
 	setClosureDateVisibility : function(status) {
-		if (status == airbus.mes.disruptions.Formatter.status.closed)
+		if (status == airbus.mes.disruptions.Formatter.status.closed) {
 			return true;
+		}
 
 		return false;
 	},
@@ -359,8 +369,9 @@ airbus.mes.disruptions.Formatter = {
 	 * this.setText(sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("escalated")); },
 	 */
 	setSolutionVisibility : function(solution) {
-		if (solution == "")
+		if (solution == "") {
 			return false;
+		}
 
 		return true;
 	},
@@ -383,16 +394,18 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	setOpeningTimeVisibility : function(closureDate) {
-		if (closureDate != "")
+		if (closureDate != "") {
 			return true;
+		}
 
 		return false;
 	},
 
 	formatOpeningTime : function(openDate, closureDate) {
 
-		if (closureDate == undefined || closureDate == "")
+		if (closureDate == undefined || closureDate == "") {
 			return 0;
+		}
 
 		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
 		var aOpenDate = reggie.exec(openDate);
@@ -453,8 +466,9 @@ airbus.mes.disruptions.Formatter = {
 
 	timeMillisecondsToConfig : function(time) {
 		
-		if(time == undefined || time == null || time == "")
+		if(time == undefined || time == null || time == "") {
 			return 0;
+		}
 
 		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
@@ -497,17 +511,19 @@ airbus.mes.disruptions.Formatter = {
 
 		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
-		if (timeUnit == "H")
+		if (timeUnit == "H") {
 			return "Hours";
-
-		else if (timeUnit == "IM")
+		
+		} else if (timeUnit == "IM") {
 			return "Industrial Minutes";
-
-		else if (timeUnit == "M")
+		
+		} else if (timeUnit == "M") {
 			return "Minutes";
-
-		else if (timeUnit == "D")
+			
+		} else if (timeUnit == "D") {
 			return "Days";
+			
+		}
 
 		return "";
 
@@ -516,15 +532,17 @@ airbus.mes.disruptions.Formatter = {
 	removeDecimal : function(num) {
 		var iNum = parseInt(num, 10);
 
-		if (num - iNum == 0)
+		if (num - iNum == 0) {
 			return iNum;
+		}
 
 		return num;
 	},
 
 	setDisruptionStatus : function(status) {
-		if(status == undefined || status == null || status == "")
+		if(status == undefined || status == null || status == "") {
 			return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("Pending");
+		}
 		return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty(status);
 	},
 	isStatusFinal : function(status) {
@@ -548,8 +566,9 @@ airbus.mes.disruptions.Formatter = {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return true;
 
-		} else
+		} else {
 			return false;
+		}
 
 	},
 	setReasonEnable : function(originatorFlag, status) {
@@ -558,52 +577,58 @@ airbus.mes.disruptions.Formatter = {
 
 		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X" ){
 			return true;
-		} else
+		} else {
 			return false;
+		}
 	},
 	setResponsibleGrpEnable : function( responsibleFlag, status) {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return true;
-		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && responsibleFlag == "X")
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && responsibleFlag == "X") {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	},
 	selectResolverEnable : function(responsibleFlag, status) {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return false;
 
-		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && responsibleFlag == "X")
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && responsibleFlag == "X") {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	},
 	
 	
 	promisedDateEnable : function(responsibleFlag, status){
-		if (responsibleFlag == "X"  && status == airbus.mes.disruptions.Formatter.status.pending)
+		if (responsibleFlag == "X"  && status == airbus.mes.disruptions.Formatter.status.pending) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	},
 	
 	expectedDateEnable : function(originatorFlag, status){
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return true;
 		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X"
-			&& status == airbus.mes.disruptions.Formatter.status.pending)
+			&& status == airbus.mes.disruptions.Formatter.status.pending) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	},
 	expectedTimeEnable : function(originatorFlag, status){
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return true;
 		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X"
-			&& status == airbus.mes.disruptions.Formatter.status.pending)
+			&& status == airbus.mes.disruptions.Formatter.status.pending) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	},
 	setGravityEnable : function(originatorFlag, status){
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create")
@@ -647,13 +672,15 @@ airbus.mes.disruptions.Formatter = {
 		if (sStatus == airbus.mes.disruptions.Formatter.status.pending) {
 			this.addStyleClass("statusPendingColor");
 			return sStatus;
-		} else
+		} else {
 			return sStatus;
+		}
 	},
 	
 	setOpenSince:function(openingTime){
-		if (openingTime == undefined || openingTime =="")
+		if (openingTime == undefined || openingTime =="") {
 			return 0;
+		}
 		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
 		/*to avoid T*/
 		openingTime = openingTime.replace("T"," ");
@@ -684,8 +711,9 @@ airbus.mes.disruptions.Formatter = {
 	},
 	
 	setSolutionIn: function(promisedTime){
-		if (promisedTime == undefined || promisedTime =="")
+		if (promisedTime == undefined || promisedTime =="") {
 			return "---";
+		}
 		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
 		/*to avoid T*/
 		promisedTime = promisedTime.replace("T"," ");

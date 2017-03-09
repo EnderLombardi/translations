@@ -76,10 +76,11 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 			oView.byId("selectResolver").setSelectedKey();
 
-			if (oView.byId("selectResponsibleGrp").getSelectedKey() == "")
+			if (oView.byId("selectResponsibleGrp").getSelectedKey() == ""){
 				oView.byId("selectResolver").setEnabled(false);
-			else
+			} else {
 				oView.byId("selectResolver").setEnabled(true);
+			}
 			
 			// Avoid un-necessary ajax call
 			if (oView.byId("selectResponsibleGrp").getSelectedKey() == "") {
@@ -169,10 +170,11 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		var getTokens = sap.ui.getCore().byId("createDisruptionView--jigtools").getTokens();
 		var result;
 		getTokens.forEach(function(entry) {
-			if (result == undefined)
+			if (result == undefined){
 				result = entry.getText();
-			else
+			} else {
 				result = result + "," + entry.getText();
+			}
 		});
 		return result;
 	},
@@ -181,10 +183,11 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		var getTokens = sap.ui.getCore().byId("createDisruptionView--materials").getTokens();
 		var result;
 		getTokens.forEach(function(entry) {
-			if (result == undefined)
+			if (result == undefined) {
 				result = entry.getText();
-			else
+			} else {
 				result = result + "," + entry.getText();
+			}
 		});
 		return result;
 	},
@@ -477,11 +480,13 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		var oOperDetailNavContainer;
 
-		if (currentPage == "stationTrackerView")
+		if (currentPage == "stationTrackerView"){
 			oOperDetailNavContainer = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer");
+		}
 
-		else if (currentPage == "disruptiontrackerView")
+		else if (currentPage == "disruptiontrackerView"){
 			oOperDetailNavContainer = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
+		}
 
 		oOperDetailNavContainer.back();
 	},
@@ -498,12 +503,14 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 **************************************************************************/
 	onMaterialValueHelpRequest : function() {
 			
-		if(this._materialListDialog)
+		if(this._materialListDialog){
 			this.getView().removeDependent(this.jigToolSelectDialog);
+		}
 		
 		var id = sap.ui.getCore().byId("materialListSelectDialog");
-		if(id)
+		if(id){
 			id.destroy();
+		}
 
 		this._materialListDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.MaterialList", this);
 
@@ -576,8 +583,9 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		aSelectedItems.forEach(function(item, index) {
 			// if any selected item doesnt contain qty
 			// set it to 1.
-			if (item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].getValue() == "")
+			if (item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].getValue() == "") {
 				item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].setValue(1);
+			}
 			var oToken = new sap.m.Token({
 				key : item.getContent()[0].getContent()[0].getItems()[0].getText(),
 				text : item.getContent()[0].getContent()[0].getItems()[0].getText() + "("
@@ -603,12 +611,14 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 */
 	onJigToolValueHelpRequest : function() {
 			
-		if(this._materialListDialog)
+		if(this._materialListDialog){
 			this.getView().removeDependent(this.jigToolSelectDialog);
+		}
 			
 		var id = sap.ui.getCore().byId("jigToolSelectDialog");
-		if(id)
-			id.destroy(); 
+		if(id){
+			id.destroy();
+		}
 			
 		this.jigToolSelectDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.Jigtool", this);
 
@@ -693,8 +703,9 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		aSelectedItems.forEach(function(item, index) {
 			// if any selected item doesnt contain qty
 			// set it to 1.
-			if (item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].getValue() == "")
+			if (item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].getValue() == ""){
 				item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].setValue(1);
+			}
 			var oToken = new sap.m.Token({
 				key : item.getContent()[0].getContent()[0].getItems()[0].getText(),
 				text : item.getContent()[0].getContent()[0].getItems()[0].getText() + "("

@@ -54,7 +54,7 @@ airbus.mes.disruptions.ModelManager = {
 
 		jQuery.ajax({
 			type : 'post',
-			url : this.urlModel.getProperty("getDiruptionsURL"),
+			url : this.urlModel.getProperty("getDisruptionsURL"),
 			contentType : 'application/json',
 			cache : false,
 			data : JSON.stringify({
@@ -125,8 +125,9 @@ airbus.mes.disruptions.ModelManager = {
 		// Un-Set Busy Indicator
 		oView.byId("selectCategory").setBusy(false);
 		
-		if(airbus.mes.disruptions.ModelManager.sCurrentViewId == "createDisruptionView")
+		if(airbus.mes.disruptions.ModelManager.sCurrentViewId == "createDisruptionView") {
 			oView.setBusy(false);
+		}
 	},
 
 	/***************************************************************************
@@ -278,11 +279,14 @@ airbus.mes.disruptions.ModelManager = {
 						}
 
 					} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-						if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
+						if (data.Rowsets.Rowset[0].Row[0].Message === undefined) {
+							
 							airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("DisruptionNotSaved"));
-
-						else
+						
+						} else {
+							
 							airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+						}
 					}
 				} else if (data.Rowsets.FatalError) {
 					airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
