@@ -223,9 +223,10 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionslist" });
         }
         
-        if(container.getPage(airbus.mes.disruptionslist.oView.sId) == null)
+        if(container.getPage(airbus.mes.disruptionslist.oView.sId) == null) {
             container.addPage(airbus.mes.disruptionslist.oView);
-        
+        }
+            
         container.to(airbus.mes.disruptionslist.oView.getId());        
 
         // Set click event on report disruption button
@@ -251,9 +252,9 @@ airbus.mes.shell.util.navFunctions = {
         }
         
         // Add Page to navigation container
-        if(container.getPage(airbus.mes.createdisruption.oView.sId) == null)
+        if(container.getPage(airbus.mes.createdisruption.oView.sId) == null) {
             container.addPage(airbus.mes.createdisruption.oView);
-        
+        }
 
         container.to(airbus.mes.createdisruption.oView.getId(), oParams);
 
@@ -380,6 +381,7 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({ name: "airbus.mes.ncdisplay" });
         } else { // or load data
             airbus.mes.ncdisplay.util.ModelManager.loadNcDisplayData();
+            airbus.mes.ncdisplay.util.ModelManager.operationData = airbus.mes.ncdisplay.util.ModelManager.getOperationData();
         }
         if (container.getPage("ncdisplayView") === null) {
             container.addPage(airbus.mes.ncdisplay.oView);
@@ -606,9 +608,10 @@ airbus.mes.shell.util.navFunctions = {
         }
 
         // Set Current Operator
-        if (typeof airbus.mes.worktracker.util.ModelManager.currentOperator.fname == "undefined")
+        if (typeof airbus.mes.worktracker.util.ModelManager.currentOperator.fname == "undefined") {
             airbus.mes.worktracker.util.ModelManager.setCurrentOperator();
-
+        }
+            
         // Load Operations Data
         airbus.mes.worktracker.util.ModelManager.loadUserOperationsModel();
 
