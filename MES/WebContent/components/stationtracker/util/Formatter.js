@@ -29,10 +29,12 @@ airbus.mes.stationtracker.util.Formatter = {
 		var endTime = new Date(endDate);
 		var returnValue;
 
-		returnValue = ("0" + startTime.getHours()).substr(-2) + ':' + ("0" + startTime.getMinutes()).substr(-2) + ' - ' + ("0" + endTime.getHours()).substr(-2) + ':' + ("0" + endTime.getMinutes()).substr(-2);
+		returnValue = ("0" + startTime.getHours()).substr(-2) + ':'
+					+ ("0" + startTime.getMinutes()).substr(-2) + ' - '
+					+ ("0" + endTime.getHours()).substr(-2) + ':'
+					+ ("0" + endTime.getMinutes()).substr(-2);
 
 		return returnValue;
-
 	},
 
 
@@ -48,7 +50,6 @@ airbus.mes.stationtracker.util.Formatter = {
 			returnValue = ' (+' + diffDate + ')';
 		}
 		return returnValue;
-
 	},
 
 	KPIiconTrendSrc: function (bTrend) {
@@ -138,7 +139,6 @@ airbus.mes.stationtracker.util.Formatter = {
 		} else {
 			return new Date();
 		}
-
 	},
 
 	// Transform object Date to date (without hour)
@@ -154,16 +154,12 @@ airbus.mes.stationtracker.util.Formatter = {
 		var aLoop = [sMounth, sDay, sHours, sMinutes, sSeconds]
 
 		aLoop.forEach(function (el, index) {
-
 			if (el < 10) {
-
 				aLoop[index] = "0" + aLoop[index];
-
 			}
 		})
 
 		return dDate.getFullYear() + "-" + aLoop[0] + "-" + aLoop[1] + "T" + aLoop[2] + ":" + aLoop[3] + ":" + aLoop[4];
-
 	},
 
 	date2date: function (day) {
@@ -223,9 +219,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	isDayTimeline: function () {
 		if (airbus.mes.stationtracker.util.ShiftManager.dayDisplay) {
 			return airbus.mes.stationtracker.util.ShiftManager.dayDisplay;
-
 		} else {
-
 			return false;
 		}
 
@@ -289,7 +283,6 @@ airbus.mes.stationtracker.util.Formatter = {
 		if (oBox.status == 6 || oBox.status == 4) {
 			trackerTextClass = "trackerTextBlock";
 		}
-			
 		if (oBox.rmaStatus === 1) { //rma
 			sLeftIcon = boxDisplayManager.leftTriangleIcon_Dandelion;
 		}
@@ -443,16 +436,13 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
-				
 				if ( oBox.isBlocked === 1 ) {
-					
 					sRightIcon = boxDisplayManager.rightStopWhite;
 				}	
 //				if (oBox.OSW === 3) { //OSW
 //					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
 //				}
 				if (dispatch) {
-					
 					dispatchWhite = true;
 				}
 
@@ -643,16 +633,14 @@ airbus.mes.stationtracker.util.Formatter = {
 			return html;
 		}
 
-		// user affected
 		var sshiftID = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID;
-		// Check if there is one operation not totally confirmed in previous shift
 		var sNotConfirmedOpLS = "";
-		var bNotConfirmedOpLS = airbus.mes.stationtracker.util.ShiftManager.noTotalConfLastShift(oSection);
-
-		if (bNotConfirmedOpLS) {
-			// Count number of not confirmed operation
-			var countNotConfirmedOps = airbus.mes.stationtracker.util.ShiftManager.countNoTotalConfLastShif(oSection);
-			// Format params for onclick rescheduleLine method
+		
+		// Count number of not totally confirmed in previous shift
+		var countNotConfirmedOps = airbus.mes.stationtracker.util.ShiftManager.countNoTotalConfLastShif(oSection);
+		
+		if (countNotConfirmedOps !== 0) {
+			
 			var paramsRescheduleLine = '\'' + oSection.avlLine + '\',' + countNotConfirmedOps;
 			var labelRescheduleBtn   = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("RescheduleLineButton");
 			
@@ -661,20 +649,21 @@ airbus.mes.stationtracker.util.Formatter = {
 								  	'<i class="fa fa-clock-o" aria-hidden="true"></i>' +
 							  	'</span>';
 			
-			// Format AVL Line datas
+			// Get Object with AVL Line datas
 			var objLine = airbus.mes.stationtracker.util.Formatter.getFormatedObjLine(oSection.avlLine, countNotConfirmedOps);
-			var toRescheduleList = airbus.mes.stationtracker.util.ModelManager.toRescheduleList;
 			
 			// Add Obj AVL Line datas to global toRescheduleList
+			var toRescheduleList = airbus.mes.stationtracker.util.ModelManager.toRescheduleList;
 			toRescheduleList.push(objLine);
-			//console.log("====yDisplayRules============");
-			//console.log("objLine  : " + JSON.stringify(objLine));
-			//console.log("toRescheduleList: " + JSON.stringify(toRescheduleList));
 			
 			// Display Reschedule all button if at least one late operation in toRescheduleList
 			if(toRescheduleList.length > 0) {
 				$(".rescheduleAllBtn").css({'display' : 'block'});
 			}
+			
+			//console.log("====yDisplayRules============");
+			//console.log("objLine  : " + JSON.stringify(objLine));
+			//console.log("toRescheduleList: " + JSON.stringify(toRescheduleList));
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
