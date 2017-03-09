@@ -337,7 +337,7 @@ airbus.mes.disruptions.Formatter = {
 		return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
 	},
 	formatComment : function(comment) {
-		if (comment.indexOf("\$\$") > -1) {
+		if (comment && comment.indexOf("\$\$") > -1) {
 			comment =  comment.split("\$\$").shift().join();
 		}
 		if(comment == "" || comment == " ")

@@ -260,7 +260,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		/***************************
 		 * MES V1.5 Navigate to disruption Detail Page if opened from Desktop/Laptop [Begin]
 		 */
-		if (sap.ui.Device.system.desktop && disruptionData.responsibleFlag == "X") {
+		if (sap.ui.Device.system.desktop ) {
 			airbus.mes.shell.util.navFunctions.disruptionsDetailScreen(sCurrMessageRef,sMessageType, sResolverGroup);
 			
 			 
