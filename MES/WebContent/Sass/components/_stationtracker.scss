@@ -239,9 +239,6 @@ BOX MANAGEMENT
             &.white-two {
               color: $white-two;
             }
-            &.left {
-                float: left;                
-            }
         }
         &.oswIcon {
             position: relative;
@@ -268,6 +265,9 @@ BOX MANAGEMENT
             }
         }
        
+    }
+    .left {
+    	float: left;                
     }
     .dandelion-back {
         background-color: $dandelion;

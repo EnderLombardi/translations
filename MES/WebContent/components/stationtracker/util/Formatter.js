@@ -244,6 +244,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		var sRightIcon2 = "";
 		var sLeftIcon = "";
 		var sLeftIcon2 = "";
+		var sLeftIcon2bis = "";
 		var sLeftIcon3 = "";
 		var sColorProgress = "";
 		var sText = "";
@@ -462,13 +463,19 @@ airbus.mes.stationtracker.util.Formatter = {
 			}
 		}
 		
+//		SD-PPC-WT-1250
+//		Case of Tracking Template freeze
 		if(oBox.freezeTrackingTemplate) {
-			sRightIcon2 = boxDisplayManager.rightTTFreeze;
+			if (oBox.OSW === 3 ||oBox.OSW === 4) {
+				sLeftIcon2bis = boxDisplayManager.leftTTFreeze;
+			} else {
+				sRightIcon2 = boxDisplayManager.rightTTFreeze;
+			}
 		}
 		
 
 		//
-		var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon, sRightIcon2);
+		var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon2bis, sLeftIcon3, sRightIcon, sRightIcon2);
 
 		//description text + progress in IM (industrial minutes)
 		var sSpanText = '<span class=" ' + trackerTextClass + ' "style="float: left; overflow: hidden;text-overflow: ellipsis;'
@@ -479,9 +486,9 @@ airbus.mes.stationtracker.util.Formatter = {
 		//construction of the html
 		if (oBox.type === "I") {
 			trackerTextClass = ""
-			html = sDivForLeftDisplayInitial + sLeftIcon + sRightIcon + sLeftIcon2 + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
+			html = sDivForLeftDisplayInitial + sLeftIcon + sRightIcon + sRightIcon2 + sLeftIcon2 + sLeftIcon2bis  + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
 		} else {
-			html = sDivForLeftDisplay + sLeftIcon + sRightIcon + sRightIcon2  +sLeftIcon2 + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
+			html = sDivForLeftDisplay + sLeftIcon + sRightIcon + sRightIcon2  + sLeftIcon2 + sLeftIcon2bis + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
 		}
 		//html += '<span class="trackerBoxtooltiptext">'+ sSpanText +'</span>' ;
 

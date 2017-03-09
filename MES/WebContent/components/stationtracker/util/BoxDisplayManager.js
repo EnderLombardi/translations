@@ -23,7 +23,7 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    leftOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon yellow petrol"><b style="padding-left:1px">',
 		    leftOswIcon_TealBlueWhite: '<i class="fa fa-refresh oswIcon teal-blue white">',
 		
-		    leftTTFreeze : '<i class="fa  fa-long-arrow-up blue leftIcon"></i>',
+		    leftTTFreeze : '<i class="fa  fa-long-arrow-up colorBlue left"></i>',
 		    
 			leftOswIcon_Constructor : function(elt, sStatus) {
 			    						
@@ -113,7 +113,7 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
     //---------------------
 
 		    //calculate the width unavailable for the text
-		    getWidthUnavailableForText: function(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon, sRightIcon2) {
+		    getWidthUnavailableForText: function(sLeftIcon, sLeftIcon2, sLeftIcon2bis, sLeftIcon3, sRightIcon, sRightIcon2) {
 		        var widthUnavailableForText = 10;
 		
 		        //we add the size in px of the several icons to determinate the width used by the icons (and not available for the text)
@@ -123,6 +123,9 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		        if(sLeftIcon2) {
 		            widthUnavailableForText += 65;
 		        }
+		        if(sLeftIcon2bis) {
+		            widthUnavailableForText += 18;
+		        }		        
 		        if(sLeftIcon3) {
 		            widthUnavailableForText += 65;
 		        }
