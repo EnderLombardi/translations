@@ -216,7 +216,7 @@ BOX MANAGEMENT
 
 .trackerBox .fa.stopIcon.white-two { color: #ffffff; }
 
-.trackerBox .fa.oswIcon { position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; overflow: hidden; line-height: 14px; height: auto; float: left; border: 1px solid; margin-left: 6px; margin-bottom: 10px; min-width: 45px; }
+.trackerBox .fa.oswIcon { position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 4px; overflow: hidden; line-height: 14px; height: auto; float: left; border: 1px solid; margin-left: 6px; margin-bottom: 10px; min-width: 45px; }
 
 .trackerBox .fa.oswIcon b { font-family: arial; }
 
