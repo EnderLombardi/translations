@@ -189,20 +189,21 @@
 				<VBox>
 					
 					<List showNoData="false"
-						class="sapUiSmallMarginBeginEnd" items="{path: 'DisruptionDetailModel>/comments'}">
+						class="sapUiSmallMarginBeginEnd" items="{path: 'DisruptionDetailModel>disruptionComments', 
+						filters: [{ path: 'action', operator: 'NE',value1: 'CREATE' } ]}">
 
 						<CustomListItem class="msgColor">
 							<HBox
 								class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
 								<items>
 									<Text
-										text="{i18nModel>from} : {path: 'DisruptionDetailModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
+										text="{i18nModel>from} : {path: 'DisruptionDetailModel>userFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
 									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 									<Text
-										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>Action'}, {path: 'DisruptionDetailModel>Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>action'}, {path: 'DisruptionDetailModel>comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
 									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 									<Text
-										text="{i18nModel>date/time} : {path: 'DisruptionDetailModel>Date'}"></Text>
+										text="{i18nModel>date/time} : {path: 'DisruptionDetailModel>date'}"></Text>
 								</items>
 							</HBox>
 
