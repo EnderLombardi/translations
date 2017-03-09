@@ -85,7 +85,7 @@ TOOLBAR
     padding: 4px 0 0 8px;
     position: absolute;
     height: 45%;
-    width: 100% !important;
+    width : calc(100% - 8px) !important;
 }
 
 .sapMPIText2 {
