@@ -282,7 +282,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
 							
-							if (dispatch) {
+							if (dispatch || fBlockingDisruption) {
 
 								dispatchWhite = true;
 							} 
@@ -317,7 +317,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
 							
-							if (dispatch) {
+							if (dispatch || fBlockingDisruption) {
 
 								dispatchWhite = true;
 							} 
@@ -336,10 +336,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 									sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 								}
 								
-								if (dispatch) {
-
-									dispatchWhite = true;
-								} 
 						break;
 					default:		
 				}
