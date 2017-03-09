@@ -750,6 +750,9 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
   					data.disruptionComments = [data.disruptionComments];
   				}
   				
+  				// Subtract 1 for comment related CREATE Action and 1 for current comment being displayed (Total subtact 2)
+  				data.totalComments -= 2;
+  				
   				sap.ui.getCore().getModel("operationDisruptionsModel").setProperty(sPath,data);
   			},
 

@@ -62,7 +62,12 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 				"messageRef" : msgRef,
 				"forMobile" : false
 			}),
-			success : function(data) {			
+			success : function(data) {
+  				
+  				if(data.disruptionComments && data.disruptionComments[0] == undefined){
+  					data.disruptionComments = [data.disruptionComments];
+  				}
+  				
 				var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 				oModel.setData(data);
 				oModel.refresh();				

@@ -175,18 +175,30 @@
 								class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
 						</VBox>
 						
-						<Button text="{i18nModel>seeMoreMessages}" icon="sap-icon://email" press="seeMoreMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}"
+						<Button text="{i18nModel>seeMoreMessages} ({operationDisruptionsModel>totalComments})" icon="sap-icon://email" press="seeMoreMesssages" visible="{= ${operationDisruptionsModel>totalComments} > 0 ? (${operationDisruptionsModel>prevCommentsLoaded} !== 'true') : false}"
 							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />	
 						<Button text="{i18nModel>seeLessMessages}" icon="sap-icon://email" press="seeLessMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
 							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
+							
+							
+						<!--  For list of comments -->
+						<HBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}">
+							<items>
+								<Text
+									text="{i18nModel>from} : {path: 'operationDisruptionsModel>disruptionComments/0/userFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
+								<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+								<Text id="commentActionText"
+									text="{i18nModel>action} : {parts: [ {path: 'operationDisruptionsModel>disruptionComments/0/action'}, {path: 'operationDisruptionsModel>disruptionComments/0/comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+								<Text
+									text="{i18nModel>date/time} : {path: 'operationDisruptionsModel>disruptionComments/0/date'}"></Text>
+							</items>
+						</HBox>
 
-						<List showNoData="false" class="sapUiSmallMarginBeginEnd"
+						<List showNoData="false" class="sapUiSmallMarginBeginEnd" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
 							items="{path: 'operationDisruptionsModel>disruptionComments', 
-								    filters: [
-								    	{ path: 'action', operator: 'NE',value1: 'CREATE' },
-								    	{ parts: [ {path: 'operationDisruptionsModel>prevCommentsLoaded'}, {path: 'operationDisruptionsModel>totalComments'}, {path: 'counter'} ], formatter: 'airbus.mes.disruptions.Formatter.setFilterForComments'}
-								    ]}">
-
+								    filters: [ { path: 'action', operator: 'NE',value1: 'CREATE' } ]}">
+								    <!-- { parts: [ {path: 'operationDisruptionsModel>prevCommentsLoaded'}, {path: 'operationDisruptionsModel>totalComments'}, {path: 'counter'} ], formatter: 'airbus.mes.disruptions.Formatter.setFilterForComments'} -->
 							<CustomListItem class="msgColor">
 								<HBox
 									class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
