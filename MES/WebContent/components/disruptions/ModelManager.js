@@ -125,7 +125,7 @@ airbus.mes.disruptions.ModelManager = {
 		// Un-Set Busy Indicator
 		oView.byId("selectCategory").setBusy(false);
 		
-		if(airbus.mes.disruptions.ModelManager.createViewMode == "Create")
+		if(airbus.mes.disruptions.ModelManager.sCurrentViewId == "createDisruptionView")
 			oView.setBusy(false);
 	},
 
