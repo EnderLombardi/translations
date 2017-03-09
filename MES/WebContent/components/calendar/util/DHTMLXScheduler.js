@@ -176,7 +176,15 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler", {
 		/*      Custom Hour display display  */
 		calendar.templates.timeline_scalex_class = function(date) {
 			if (airbus.mes.calendar.util.ShiftManager.taktDisplay) {
-				return "customTakt";
+				
+				var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart);
+				   
+		        // Takt is over one day
+		        if ( Math.abs(sTime) > 86400000 ) {
+					return "customTakt";        		
+		        } else {
+					return "customHour";
+		        }
 			} else {
 				return "customHour";
 			}
