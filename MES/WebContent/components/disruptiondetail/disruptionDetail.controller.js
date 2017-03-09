@@ -63,7 +63,9 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 				"forMobile" : false
 			}),
 			success : function(data) {			
-				sap.ui.getCore().getModel("DisruptionDetailModel").setData(data);
+				var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+				oModel.setData(data);
+				oModel.refresh();				
 				airbus.mes.disruptiondetail.oView.oController.editPreSettings();
 				airbus.mes.disruptiondetail.oView.setBusy(false);
 			},

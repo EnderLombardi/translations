@@ -20,7 +20,7 @@
 
 						<contentMiddle>
 							<Text
-								text="{DisruptionDetailModel>/workOrder} / {path: '{DisruptionDetailModel>/operation}', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}"
+								text="{DisruptionDetailModel>/workOrder} / {path: 'DisruptionDetailModel>/operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}"
 								class="textSize" />
 							<Text
 								text="{DisruptionDetailModel>/operationDescription}--{DisruptionDetailModel>/disruptionNumber}"

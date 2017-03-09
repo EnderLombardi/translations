@@ -517,7 +517,7 @@ airbus.mes.shell.util.navFunctions = {
             // Add event delegate to pass the data and load the services
             airbus.mes.disruptiondetail.oView.addEventDelegate({
                 onBeforeShow: function (evt) {
-                	airbus.mes.disruptiondetail.oView.getController().loadData(evt.data.messageRef, evt.data.messageType, evt.data.responsibleGroup);
+                	airbus.mes.disruptiondetail.oView.getController().loadData(evt.data.msgRef, evt.data.msgType, evt.data.resolverGroup);
                 }
             });
         }
