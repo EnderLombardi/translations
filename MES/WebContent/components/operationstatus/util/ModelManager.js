@@ -62,6 +62,9 @@ airbus.mes.operationstatus.util.ModelManager = {
             operationstatusUrl, "$Site", site);
         operationstatusUrl = airbus.mes.shell.ModelManager.replaceURI(
             operationstatusUrl, "$ShopOrderNumber", ShopOrderNumber);
+        operationstatusUrl = airbus.mes.shell.ModelManager.replaceURI(
+            operationstatusUrl, "$program", airbus.mes.settings.ModelManager.program);
+        
 
         return operationstatusUrl;
     },

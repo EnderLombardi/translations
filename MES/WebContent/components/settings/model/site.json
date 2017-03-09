@@ -1,31 +1,7 @@
 {
 	"SiteCollection": [
 		{
-			"Site": "Saint Nazaire",
-			"LineCollection": [
-				{
-					"Line": "PA-SYST",
-					"StationCollection": [
-						{
-							"Station": "FG2210",
-							"MSNCollection": [
-								{
-									"MSN": "7452"
-								},
-								{
-									"MSN": "5412"
-								}
-							]
-						},
-						{
-							"Station": "FG2220"
-						}
-					]
-				},
-				{
-					"Line": "TC-SYST"
-				}
-			]
+			"Site": "Saint Nazaire"
 		},
 		{
 			"Site": "Chester"
@@ -37,7 +13,7 @@
 			"Site": "Getafe"
 		},
 		{
-			"Site": "Hambourg"
+			"Site": "Hamburg"
 		},
 		{
 			"Site": "Illescas"
@@ -56,6 +32,9 @@
 		},
 		{
 			"Site": "FAL France"
+		},
+		{
+			"Site": "SA FAL Hamburg"
 		}
 	]
 }
