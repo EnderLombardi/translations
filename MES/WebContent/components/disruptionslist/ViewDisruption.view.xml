@@ -157,7 +157,7 @@
 					</f:SimpleForm>
 					<VBox alignItems="Center" justifyContent="Center">
 					<Button press="onInternalPanelexpand"   design="Transparent" icon="sap-icon://slim-arrow-down" 
-									visible="{=${operationDisruptionsModel>internalPanelexpanded} !== 'true'}" />
+									visible="{=${operationDisruptionsModel>internalPanelexpanded} !== 'true'}" class="RoundBttn" />
 					<Button press="onInternalPanelCollapse" design="Transparent" icon="sap-icon://slim-arrow-up"
 									visible="{=${operationDisruptionsModel>internalPanelexpanded} === 'true'}" />
 					</VBox>
