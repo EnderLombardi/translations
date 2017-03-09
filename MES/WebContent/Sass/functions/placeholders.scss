@@ -444,15 +444,20 @@ STATION TRACKER
 }
 
 %rescheduleBtn {
+	display: inline-block;
 	clear: both;
     position: absolute;
     z-index: 999;
     background: #ee373d;
     color: white;
+    text-rendering: auto;
     font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-weight: 700;
     font-family: arial;
     overflow: hidden;
+    float: none !important;
     @include transition(width , 0.3s);
 }
 %rescheduleLineBtn{
