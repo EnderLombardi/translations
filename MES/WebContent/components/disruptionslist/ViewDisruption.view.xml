@@ -65,47 +65,47 @@
 							maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3">
 							<f:content>
 								<core:Title text="" />								    
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>CategoryClass}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>CategoryClass}" design="Bold"/>
 									<Text text="{=${operationDisruptionsModel>categoryClass} === '' ? '-' : ${operationDisruptionsModel>categoryClass}}">
 									</Text>											
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Category}"/>
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Category}" design="Bold"/>
 									<Text text="{path: 'operationDisruptionsModel>category'}">
 									</Text>
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>reason}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>reason}" design="Bold"/>
 									<Text text="{operationDisruptionsModel>reason}">
 									</Text>
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Jigtool}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Jigtool}" design="Bold"/>
 									<Text text="{path: 'operationDisruptionsModel>jigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
 									</Text>
 											
 												
 								<core:Title text="" />				
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>gravity}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>gravity}" design="Bold"/>
 									<Text id="gravityText"
 										text="{path: 'operationDisruptionsModel>gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
 									</Text>
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>resGroup}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>resGroup}" design="Bold" />
 									<Text text="{operationDisruptionsModel>responsibleGroupDesc}">	
 									</Text>
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>TimeLost}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>TimeLost}" design="Bold"/>
 									<Text text="{path: 'operationDisruptionsModel>timeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}">
 									</Text>
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>escalation}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>escalation}" design="Bold"/>
 									<Text id="escalationText"
 										text="{path: 'operationDisruptionsModel>escalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
 									</Text>										
 								<core:Title text="" />					
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OpenDate}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OpenDate}" design="Bold"/>
 									<Text text="{operationDisruptionsModel>openingTime}">
 									</Text>
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Expected}" />		
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Expected}" design="Bold"/>		
 									<Text text="{operationDisruptionsModel>requiredFixBy}">	
 									</Text>
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>promisedDateTime}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>promisedDateTime}" design="Bold"/>
 									<Text text="{=${operationDisruptionsModel>promisedDateTime} === '' ? '-' : ${operationDisruptionsModel>promisedDateTime}}">
 									</Text>
 									
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OriginatorGroup}"/>										
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OriginatorGroup}" design="Bold"/>										
 									<Text text="{operationDisruptionsModel>originatorGroupDesc}">
 									</Text>
 								
@@ -132,26 +132,26 @@
 							maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3">
 						<f:content>
 							<core:Title text="" />
-							<Label text="{i18nModel>area}" class="detailLabels sapUiMediumMarginBottom" />
+							<Label text="{i18nModel>area}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>area}" />
-							<Label text="{i18nModel>plan}"  class="detailLabels sapUiMediumMarginBottom"/>
+							<Label text="{i18nModel>plan}"  class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>plan}" />
-							<Label text="{i18nModel>material}" class="detailLabels sapUiMediumMarginBottom" />
+							<Label text="{i18nModel>material}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>materiall}" />
 
 							
 							<core:Title text="" />
-							<Label text="{i18nModel>ribs}" class="detailLabels sapUiMediumMarginBottom" />
+							<Label text="{i18nModel>ribs}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>ribs}" />
-							<Label text="{i18nModel>view}" class="detailLabels sapUiMediumMarginBottom"/>
+							<Label text="{i18nModel>view}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>view}" />
-							<Label text="{i18nModel>tools}" class="detailLabels sapUiMediumMarginBottom" />
+							<Label text="{i18nModel>tools}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>tools}" />
 							
 							<core:Title text="" />
-							<Label text="{i18nModel>stringer}" class="detailLabels sapUiMediumMarginBottom" />
+							<Label text="{i18nModel>stringer}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>stringer}"  />
-							<Label text="{i18nModel>stringer_rail}" class="detailLabels sapUiMediumMarginBottom" />
+							<Label text="{i18nModel>stringer_rail}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>stringer_rail}" />
 						</f:content>	
 					</f:SimpleForm>
