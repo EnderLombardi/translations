@@ -717,9 +717,20 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		var oView = airbus.mes.createdisruption.oView;
 		if(!oView.byId("timeLost").getValue()){
 			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsarytimeLost"));
-			return;
+			return false;
+		} else if (oView.byId("selectFivemCategory").getSelectedKey() == "") {
+			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("Compulsary5M"));
+			return false;
+		} else if (oView.byId("selectCategory").getSelectedKey() == "") {
+			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryCategory"));
+			return false;
+		} else if (oView.byId("selectAttribute").getSelectedKey() == "") {
+			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryReason"));
+			return false;
 		}
 		
-		oView.oController.createDisruption( "X");		
+		oView.oController.createDisruption( "X");
+		
+		return true;
 }
 });
