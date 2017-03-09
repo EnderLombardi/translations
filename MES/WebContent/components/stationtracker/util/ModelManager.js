@@ -873,7 +873,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 
         }
 
-        var oDate = new Date($("#stationTrackerView--stationtracker")[0].children[0].children[0].textContent.split("-")[0]);
+        var oDate = new Date($("#stationTrackerView--stationtracker")[0].children[0].children[1].textContent.split("-")[0]);
         var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({
             pattern: "dd MMM yyyy",
             calendarType: sap.ui.core.CalendarType.Gregorian
@@ -1284,7 +1284,6 @@ airbus.mes.stationtracker.util.ModelManager = {
     OpenWorkList: function (id) {
         airbus.mes.stationtracker.util.ModelManager.openWorkListPopover(id);
     },
-
     /***************************************************************************
      * open operation detail popup containing progress slider
      **************************************************************************/
