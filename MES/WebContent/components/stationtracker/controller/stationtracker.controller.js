@@ -1483,12 +1483,18 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 		this.onCloseDialog(oEvent);
 	},
 	
-	/*
-	openRescheduleAllPopUp: function (objLine) {
+	
+	
+	
+	
+	
+	openRescheduleAllPopUp: function () {
 		if (!this.rescheduleAllPop) {
 			this.rescheduleAllPop = sap.ui.xmlfragment("airbus.mes.stationtracker.fragment.rescheduleAllPopUp", this);
 			this.getView().addDependent(this.reschedulePop);
 		}
+		
+			
 		//this.rescheduleAllPop.setModel(new sap.ui.model.json.JSONModel( objLine ), "RescheduleAllData");
 		this.rescheduleAllPop.open();
 	},
@@ -1500,5 +1506,4 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 	closeRescheduleAllPopUp: function (oEvent) {
 		this.onCloseDialog(oEvent);
 	}
- 	*/
 });

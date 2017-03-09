@@ -579,12 +579,14 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 	},
 	
-	/**
-	 * Formate and return an object with AVL Line informations fo Reschedule Line
-	 * @PARAM {String} AvlLine
-	 * @PARAM {Int}    Count 
+	/*----------------------------------------------------------------------------
+	 * Formate and return an object with some AVL Line informations
+	 * for Reschedule Line
+	 * 
+	 * @PARAM  {String} AvlLine
+	 * @PARAM  {Int}    Count 
 	 * @RETURN {OBJECT} objLine
-	 */
+	----------------------------------------------------------------------------*/
 	getFormatedObjLine: function (avlLine, count) {
 		// Get AVL "Line number" and "skill" from avlLine string
 		var nLine = avlLine.split("_")[0];
@@ -653,10 +655,22 @@ airbus.mes.stationtracker.util.Formatter = {
 								  	'<span class="rescheduleLineLabelBtn">' + labelRescheduleBtn + '</span>' +
 								  	'<i class="fa fa-clock-o" aria-hidden="true"></i>' +
 							  	'</span>';
+			
+			// Format AVL Line datas
 			var objLine = airbus.mes.stationtracker.util.Formatter.getFormatedObjLine(oSection.avlLine, countNotConfirmedOps);
 			var toRescheduleList = airbus.mes.stationtracker.util.ModelManager.toRescheduleList;
-			//toRescheduleList.push(objLine);
+			
+			// Add Obj AVL Line datas to global toRescheduleList
+			toRescheduleList.push(objLine);
+			//console.log("objLine: " + JSON.stringify(objLine));
+			//console.log("toRescheduleList length: " + toRescheduleList.length);
 			//console.log("toRescheduleList: " + JSON.stringify(toRescheduleList));
+			
+			// Display Reschedule all button if at least one late operation in toRescheduleList
+			if(toRescheduleList.length > 0) {
+				$(".rescheduleAllBtn").css({'display' : 'block'});
+			}
+			
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {

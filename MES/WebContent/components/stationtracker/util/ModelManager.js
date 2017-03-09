@@ -1026,24 +1026,18 @@ airbus.mes.stationtracker.util.ModelManager = {
         });
     },
     
-    getUserName : function() {
-		// Check if generic User
-		var sUser =	sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
-		if	(sUser==undefined) {
-			sUser=airbus.mes.shell.oView.getController().goToMyProfile();
-		} else {
-			return sUser;
-		}
-	},
-    
-    // Reschedule AVL Line(s)
+	/*----------------------------------------------------------------------------
+	 * Reschedule AVL Line(s) Request 
+	 * 
+	 * @PARAM {OBJECT} Array of object line (skill + avlLineNumber)
+	----------------------------------------------------------------------------*/
     sendRescheduleLineRequest: function (lines) {
         // Get Url of the service
         var urlReschedulingLineService = this.urlModel.getProperty("urlReschedulingLinesService");
-        
+
         // Get generic stationTracker information
         var oData = airbus.mes.stationtracker.util.ModelManager.settings;
-        
+
         // Get current and previous shift id
 		var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
 		var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
@@ -1051,30 +1045,18 @@ airbus.mes.stationtracker.util.ModelManager = {
 		if (fIndexShift != -1 && fIndexShift != 0) {
 			prevShiftName = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1].shiftName;
 		}
-			
+
 		// Get formated current date
         var dateFormat = sap.ui.core.format.DateFormat.getInstance({
         	pattern: "yyyyMMdd",
             calendarType: sap.ui.core.CalendarType.Gregorian
         });
 		var currentDate = dateFormat.format(new Date());
-			
+
 		// Get current user
 		var userName = this.getUserName();
-		
-		/*
-		// Prepare request data in a JSON  
-		var data = {
-			"site": 			oData.site,
-			"physicalStation": 	oData.station,
-			"msn": 				oData.msn,
-			"avlLineList": 		lines,
-			"actualDate": 		currentDate,
-			"previousShift": 	oShift.shiftName,
-			"currentShift": 	prevShiftName,
-			"userName":         userName
-        };
-*/
+
+
 		// Debug
 		//console.log("====sendRescheduleLineRequest=====================");
 		//console.log("User : " + this.getUserID());
@@ -1082,11 +1064,10 @@ airbus.mes.stationtracker.util.ModelManager = {
 		//console.log("Current  shift ID : " + oShift.shiftID);
 		//console.log("Previous shift ID : " + prevShiftID);
 		//console.log("Current Date      : " + currentDate);
-		//console.log("Data to sent : " + JSON.stringify(data));
 		//console.log("urlReschedulingLineService : " + urlReschedulingLineService);
-			
+
 		console.log("URL: " + urlReschedulingLineService);
-		
+
         jQuery.ajax({
             type: 'post',
             url: urlReschedulingLineService,
@@ -1105,37 +1086,69 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
-                console.log("Request Debug => success : " + JSON.stringify(data));
+                //console.log("Request Debug => success : " + JSON.stringify(data));
             },
             error: function (error, jQXHR) {
                 jQuery.sap.log.info(error);
-                console.log("Request Debug => error : " + JSON.stringify(error) + ", " + jQXHR);
+                //console.log("Request Debug => error : " + JSON.stringify(error) + ", " + jQXHR);
             }
         });
-    },
-    
-    getCurrentDate : function(transform) {
-        //var today = new Date();
-        //var isotoday = moment(new Date().format('YYYYMMDD');
-        //return isotoday;
-
     },
     
     emptyToRescheduleList: function () {
     	this.toRescheduleList = [];
     },
     
-    /**
-     * Reschedule not confirmed operations on a avl line
+    /*----------------------------------------------------------------------------
+     * Reschedule not confirmed operation(s) on selected avl line.
+     * Called when onclick on red button at left of AVL Line
+     * (button appears only if a late operation is detected on the line)
+     * 
      * @PARAM {String} AVL Line
      * @PARAM {Int} number of not confirmed operation
-     */
+    ----------------------------------------------------------------------------*/
 	rescheduleLine: function (avlLine, count) {
 		window.event.stopPropagation();
 		var objLine = airbus.mes.stationtracker.util.Formatter.getFormatedObjLine(avlLine, count);
-		console.log("objLine: " + objLine);
 		// Open confirm popup
 		airbus.mes.stationtracker.oView.getController().openRescheduleLinePopUp(objLine);
+	},
+	
+    /*----------------------------------------------------------------------------
+	 * Reschedule not confirmed operation(s) on all avl lines.
+	 * Called when onclick on red button at left of x axis (header of scheduler)
+     * (button appears only if a late operation is detected on one a all line)
+    ----------------------------------------------------------------------------*/
+	rescheduleAll: function () {
+		window.event.stopPropagation();
+        console.log("RescheduleAllBtn click");
+        
+        var allCount    = 0;
+        var arrayLength = this.toRescheduleList.length;
+        
+        for (var i = 0; i < arrayLength; i++) {
+        	allCount += this.toRescheduleList[i].count;
+        }
+        //console.log("allCount: " + allCount);
+        
+        // Open confirm popup
+		airbus.mes.stationtracker.oView.getController().openRescheduleAllPopUp(allCount);
+    },
+	
+	/*----------------------------------------------------------------------------
+	 * Get current user name
+	 * 
+	 * @RETURN {String} an user name
+	----------------------------------------------------------------------------*/
+    getUserName : function() {
+		// Check if generic User
+		var sUser =	sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+		if	(sUser==undefined) {
+			sUser=airbus.mes.shell.oView.getController().goToMyProfile();
+		} else {
+			return sUser;
+		}
+		return sUser;
 	},
 
     openWorkListPopover: function (id) {

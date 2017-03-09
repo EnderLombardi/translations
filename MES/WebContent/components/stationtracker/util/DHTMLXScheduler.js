@@ -19,7 +19,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
         oRm.write(" class='dhx_cal_container'  style='width:100%; height:inherit;'>");
         oRm.write("     <div class='dhx_cal_navline'style=''>");
         // Begin Reschedule All button
-        oRm.write("		<span class='rescheduleAllBtn' style='display:none'>");
+        oRm.write("		<span class='rescheduleAllBtn' style='display:none' onclick='airbus.mes.stationtracker.util.ModelManager.rescheduleAll()'>");
         oRm.write("			<span class='rescheduleAllLabelBtn'>" + rescheduleAllLabelButton + "</span>");
         oRm.write("     	<i class='fa fa-clock-o' aria-hidden='true'></i>");
         oRm.write("     </span>");
@@ -84,22 +84,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
         //Shift Management
         airbus.mes.stationtracker.util.ShiftManager.init(airbus.mes.stationtracker.util.GroupingBoxingManager.shiftNoBreakHierarchy);
         var ShiftManager = airbus.mes.stationtracker.util.ShiftManager;
-
+        
         scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
         scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
         scheduler.date.timeline_start = ShiftManager.bounded("adjustSchedulerXStart");
         scheduler.date.add_timeline_old = scheduler.date.add_timeline;
         scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
         scheduler._click.dhx_cal_next_button = ShiftManager.bounded("next");
-        
-        scheduler._click.rescheduleAllBtn = function () {
-            //console.log("section: " + section);
-        }
-        
-        scheduler.eventId.push(scheduler.attachEvent("addRescheduleAllButton", function (ev, e, is_new, original) {
-        	console.log("section: " + ev);
-        }));
-
 
         /************************************************************************/
         /************************************************************************/
