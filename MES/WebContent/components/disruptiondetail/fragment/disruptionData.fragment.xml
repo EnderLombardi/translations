@@ -133,7 +133,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>EscalationLevel}" />
 				<Input id="escalationLevel" enabled="false"
-					text="{path: 'DisruptionDetailModel>escalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
+					text="{path: 'DisruptionDetailModel>/escalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
 				</Input>
 
 
@@ -206,7 +206,7 @@
 							</HBox>
 
 							<Text
-								text="{path: 'DisruptionDetailModel>Comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
+								text="{path: 'DisruptionDetailModel>comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
 								class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom"></Text>
 						</CustomListItem>
 					</List>
