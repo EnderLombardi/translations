@@ -330,9 +330,6 @@ airbus.mes.disruptions.Formatter = {
 		return text;
 	},
 	formatCommentAction : function(action, comment) {
-		if(!comment){
-			return;
-		}
 		if (comment.indexOf("\$\$") > -1) {
 			action = comment.split("\$\$")[0];
 		}
@@ -340,10 +337,6 @@ airbus.mes.disruptions.Formatter = {
 		return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
 	},
 	formatComment : function(comment) {
-		if(!comment){
-			return "";
-		}
-		
 		if (comment.indexOf("\$\$") > -1) {
 			comment =  comment.split("\$\$").shift().join();
 		}
@@ -719,5 +712,18 @@ airbus.mes.disruptions.Formatter = {
 			solutionIn = (Math.round((oPromisedTime - dPresent) / (1000 * 60 * 60 * 24) * 100) / 100) + " Days";
 
 		return solutionIn;
+	},
+	
+	
+	setFilterForComments: function(showAllFlag, totalComments, counter){
+		if(showAllFlag == "true"){
+			return true;
+			
+			// Show only latest comment
+		} else if(totalComments == counter){
+			return true;
+		} else{
+			return false;
+		}
 	}
 };

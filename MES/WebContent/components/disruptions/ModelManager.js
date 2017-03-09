@@ -222,7 +222,7 @@ airbus.mes.disruptions.ModelManager = {
 		return urlCreateDisruption;
 	},
 
-	createDisruption : function(messageHandle, messageType, messageBody, payloadData,reportAndCloseFlag) {
+	createDisruption : function(messageHandle, messageType, sComment, payloadData,reportAndCloseFlag) {
 
 		// Set Busy Indicator
 		sap.ui.core.BusyIndicator.show(0);
@@ -237,7 +237,7 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"Param.3" : messageType,
 				/* "Param.4" : "abc", */
-				"Param.5" : messageBody,
+				"Param.5" : sComment,
 				"Param.6" : airbus.mes.shell.ModelManager.json2xml({
 					payloadAttributelist : payloadData
 				}),

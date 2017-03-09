@@ -10,9 +10,10 @@
 			backgroundDesign="Transparent" direction="Column">
 			<items>
 
-				<Label id="disruptLabel"
-					class="sapUiMediumMarginBeginEnd sapUiMediumMarginTop sapUiSmallMarginBottom"
-					text="{i18nModel>Disruption}"></Label>
+				<HBox justifyContent="SpaceBetween">
+					<Label id="disruptLabel" class="sapUiMediumMarginBeginEnd sapUiMediumMarginTop sapUiSmallMarginBottom" text="{i18nModel>Disruption}"></Label>
+					<Label class="sapUiMediumMarginBeginEnd sapUiMediumMarginTop sapUiSmallMarginBottom requiredInfo" text="{i18nModel>RequiredInfo}"></Label>
+				</HBox>
 
 
 					<f:SimpleForm id="createDisruptionForm" backgroundDesign="Transparent"

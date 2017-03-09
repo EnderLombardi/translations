@@ -180,8 +180,12 @@
 						<Button text="{i18nModel>seeLessMessages}" icon="sap-icon://email" press="seeLessMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
 							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
 
-						<List showNoData="false" class="sapUiSmallMarginBeginEnd" growingThreshold="1"
-							items="{path: 'operationDisruptionsModel>disruptionComments'}">
+						<List showNoData="false" class="sapUiSmallMarginBeginEnd"
+							items="{path: 'operationDisruptionsModel>disruptionComments', 
+								    filters: [
+								    	{ path: 'action', operator: 'NE',value1: 'CREATE' },
+								    	{ parts: [ {path: 'operationDisruptionsModel>prevCommentsLoaded'}, {path: 'operationDisruptionsModel>totalComments'}, {path: 'counter'} ], formatter: 'airbus.mes.disruptions.Formatter.setFilterForComments'}
+								    ]}">
 
 							<CustomListItem class="msgColor">
 								<HBox
