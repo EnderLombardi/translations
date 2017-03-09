@@ -45,8 +45,9 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			var aFilters = [];
 			var sCateoryKey = this.getView().byId("selectFivemCategory").getSelectedKey();
 			aFilters.push(new sap.ui.model.Filter("CATEGORY_CLASS", sap.ui.model.FilterOperator.EQ, sCateoryKey));
-			this.getView().byId("selectCategory").getBinding("items").filter(aFilters);
-			this.getView().byId("selectCategory").setSelectedKey();
+			oView.byId("selectCategory").getBinding("items").filter(aFilters);
+			oView.byId("selectCategory").setSelectedKey();
+			oView.byId("selectCategory").setEnabled(true);
 			
 			break;
 			
@@ -137,7 +138,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		var oView = this.getView();
 
 		oView.byId("selectFivemCategory").setEnabled(true);
-		oView.byId("selectCategory").setEnabled(true);
+		oView.byId("selectCategory").setEnabled(false);
 		oView.byId("selectAttribute").setEnabled(false);
 		// oView.byId("selectRootCause").setEnabled(false); //-V1.5
 		oView.byId("selectResponsibleGrp").setEnabled(false);

@@ -27,8 +27,8 @@
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>status}" />
 				<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
-				<core:Item key="Acknowledged"
-					text="{disruptiontrackerI18n>status.acknowledged}" />
+				<core:Item key="Acknowledged" text="{disruptiontrackerI18n>status.acknowledged}" />
+				<core:Item key="Answered" text="{disruptiontrackerI18n>status.answered}" />
 				<core:Item key="Solved" text="{disruptiontrackerI18n>status.solved}" />
 				<core:Item key="Closed" text="{disruptiontrackerI18n>status.closed}" />
 				<core:Item key="Rejected" text="{disruptiontrackerI18n>status.rejected}" />
@@ -100,7 +100,7 @@
 				
 				<ui:Column id="categoryCol" filterProperty="category"
 					sortProperty="category">
-					<Label text="{disruptiontrackerI18n>category}" />
+					<Label text="{disruptiontrackerI18n>object}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>category}" />						
 					</ui:template>
@@ -108,7 +108,7 @@
 				
 				<ui:Column id="reasonCol" filterProperty="reason"
 					sortProperty="reason">
-					<Label text="{disruptiontrackerI18n>reason}" />
+					<Label text="{disruptiontrackerI18n>attribute}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>reason}" />
 					</ui:template>
@@ -132,7 +132,7 @@
 					
 				<ui:Column id="gravityCol" filterProperty="severity"
 					sortProperty="severity">
-					<Label text="{disruptiontrackerI18n>gravity}" />
+					<Label text="{disruptiontrackerI18n>severity}" />
 					<ui:template>
 						<HBox>
 							<core:Icon
