@@ -175,7 +175,7 @@
 								class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
 						</VBox>
 						
-						<Button text="{i18nModel>seeMoreMessages} ({operationDisruptionsModel>totalComments})" icon="sap-icon://email" press="seeMoreMesssages" visible="{= ${operationDisruptionsModel>totalComments} > 0 ? (${operationDisruptionsModel>prevCommentsLoaded} !== 'true') : false}"
+						<Button text="{i18nModel>seeMoreMessages} ({operationDisruptionsModel>totalComments})" icon="sap-icon://email" press="seeMoreMesssages" visible="{parts: [ {path: 'operationDisruptionsModel>totalComments'}, {path:'operationDisruptionsModel>prevCommentsLoaded'} ], formatter: 'airbus.mes.disruptions.Formatter.setVisibilityShowCommentsButton'}"
 							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />	
 						<Button text="{i18nModel>seeLessMessages}" icon="sap-icon://email" press="seeLessMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
 							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
@@ -187,7 +187,7 @@
 								<Text
 									text="{i18nModel>from} : {path: 'operationDisruptionsModel>disruptionComments/0/userFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
 								<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
-								<Text id="commentActionText"
+								<Text 
 									text="{i18nModel>action} : {parts: [ {path: 'operationDisruptionsModel>disruptionComments/0/action'}, {path: 'operationDisruptionsModel>disruptionComments/0/comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
 									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 								<Text

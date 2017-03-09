@@ -338,6 +338,9 @@ airbus.mes.disruptions.Formatter = {
 		return text;
 	},
 	formatCommentAction : function(action, comment) {
+		if(!comment)
+			return action;
+		
 		if (comment.indexOf("\$\$") > -1) {
 			action = comment.split("\$\$")[0];
 		}
@@ -744,6 +747,11 @@ airbus.mes.disruptions.Formatter = {
 		return solutionIn;
 	},
 	
+	setVisibilityShowCommentsButton: function(totalComments, showPrevComment){
+		if(totalComments == 0 || showPrevComment == "true")
+			return false;
+		else return true;
+	}
 	
 	/*setFilterForComments: function(showAllFlag, totalComments, counter){
 		if(showAllFlag == "true"){
