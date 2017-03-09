@@ -56,8 +56,8 @@ airbus.mes.acpnglinks.model.ModelManager = {
 			async: false,
 			data: JSON.stringify({
 				"site": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSite(),
-				//"sfcStep": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSfcstep(),
-				"sfcStep": "step",
+				"sfcStep": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSfcstep(),
+				"phStationBO": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getPhStation()
 			}),
 
 			success: function (data) {

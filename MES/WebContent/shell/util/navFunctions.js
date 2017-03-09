@@ -163,15 +163,15 @@ airbus.mes.shell.util.navFunctions = {
         nav.to(airbus.mes.linetracker.oView.getId());
     },
 
-    factoryView : function() {
-       if (airbus.mes.factoryView === undefined) {
+    factoryView: function () {
+        if (airbus.mes.factoryView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.factoryView", "../components/factoryView");
             sap.ui.getCore().createComponent({ name: "airbus.mes.factoryView" });
             nav.addPage(airbus.mes.factoryView.oView);
         }
         nav.to(airbus.mes.factoryView.oView.getId());
     },
-    
+
     operationstatus: function (oNavContainer, navigate) {
         if (airbus.mes.operationstatus === undefined || airbus.mes.operationstatus.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.operationstatus", "../components/operationstatus");
@@ -193,7 +193,7 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({ name: "airbus.mes.qdc" });
             oNavContainer.addPage(airbus.mes.qdc.oView);
         }
-        
+
         //Load data
         airbus.mes.qdc.ModelManager.loadQDCModel();
         airbus.mes.qdc.ModelManager.loadQDCData();
@@ -206,17 +206,17 @@ airbus.mes.shell.util.navFunctions = {
 
     viewDisruptionsList: function (container, reportDisruptButton) {
 
-        if(airbus.mes.disruptionslist === undefined || airbus.mes.disruptionslist.oView === undefined){
-        	      	
-        	jQuery.sap.registerModulePath("airbus.mes.disruptionslist", "../components/disruptionslist");
+        if (airbus.mes.disruptionslist === undefined || airbus.mes.disruptionslist.oView === undefined) {
+
+            jQuery.sap.registerModulePath("airbus.mes.disruptionslist", "../components/disruptionslist");
             sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionslist" });
         }
-        
-        if(container.getPage(airbus.mes.disruptionslist.oView.sId) == null) {
+
+        if (container.getPage(airbus.mes.disruptionslist.oView.sId) == null) {
             container.addPage(airbus.mes.disruptionslist.oView);
         }
-            
-        container.to(airbus.mes.disruptionslist.oView.getId());        
+
+        container.to(airbus.mes.disruptionslist.oView.getId());
 
         // Set click event on report disruption button
         if (reportDisruptButton) {
@@ -226,22 +226,22 @@ airbus.mes.shell.util.navFunctions = {
     },
 
 
-    createDisruptionScreen: function (container, oParams, createButton, updateButton, cancelButton ,createAndCloseButton) {
+    createDisruptionScreen: function (container, oParams, createButton, updateButton, cancelButton, createAndCloseButton) {
 
-        if(airbus.mes.createdisruption === undefined || airbus.mes.createdisruption.oView === undefined){
+        if (airbus.mes.createdisruption === undefined || airbus.mes.createdisruption.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.createdisruption", "../components/createdisruption");
             sap.ui.getCore().createComponent({ name: "airbus.mes.createdisruption" });
 
             // Add event delegate
             airbus.mes.createdisruption.oView.addEventDelegate({
                 onBeforeShow: function (evt) {
-                	airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode, evt.data.oData);
+                    airbus.mes.createdisruption.oView.oController.loadData(evt.data.mode, evt.data.oData);
                 }
             });
         }
-        
+
         // Add Page to navigation container
-        if(container.getPage(airbus.mes.createdisruption.oView.sId) == null) {
+        if (container.getPage(airbus.mes.createdisruption.oView.sId) == null) {
             container.addPage(airbus.mes.createdisruption.oView);
         }
 
@@ -263,8 +263,8 @@ airbus.mes.shell.util.navFunctions = {
             cancelButton.attachPress(airbus.mes.createdisruption.oView.oController.onCancelCreateDisruption);
         }
         if (createAndCloseButton) {
-        	createAndCloseButton.detachPress(airbus.mes.createdisruption.oView.oController.onCreateAndCloseDisruption);
-        	createAndCloseButton.attachPress(airbus.mes.createdisruption.oView.oController.onCreateAndCloseDisruption);
+            createAndCloseButton.detachPress(airbus.mes.createdisruption.oView.oController.onCreateAndCloseDisruption);
+            createAndCloseButton.attachPress(airbus.mes.createdisruption.oView.oController.onCreateAndCloseDisruption);
         }
     },
 
@@ -342,20 +342,23 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     acpnglinksDetail: function (container) {
-    	 //    	Retrieve current workOrder Display
+        //    	Retrieve current workOrder Display
         var sCurrentWorkOrder = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
+        var oData = airbus.mes.settings.ModelManager;
 
         if (airbus.mes.acpnglinks === undefined || airbus.mes.acpnglinks.oView === undefined) {
-        	 jQuery.sap.registerModulePath("airbus.mes.acpnglinks", "../components/acpnglinks");
-             sap.ui.getCore().createComponent({ name: "airbus.mes.acpnglinks" });
-             airbus.mes.acpnglinks.model.ModelManager.loadacpnglinksWorkOrderDetail();
+            jQuery.sap.registerModulePath("airbus.mes.acpnglinks", "../components/acpnglinks");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.acpnglinks" });
+            airbus.mes.acpnglinks.model.ModelManager.loadacpnglinksWorkOrderDetail();
         } else if (airbus.mes.acpnglinks.oView.oController.workOrder !== sCurrentWorkOrder) {
             // If WorkdOrder changed, need to reload data in the model
-        	airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
+            airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
             airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setWorkOrder(airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
+            airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setSfcstep(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref);
+            airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setPhStation("WorkCenterBO:" + oData.site + "," + oData.station);
             airbus.mes.acpnglinks.model.ModelManager.loadacpnglinksWorkOrderDetail();
         }
-        airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setPhStation(airbus.mes.settings.ModelManager.station);
+        airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setPhStation("WorkCenterBO:" + oData.site + "," + oData.station);
         airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no);
         airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setSfcstep(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref);
         if (container.getPage("acpnglinksView") === null) {
@@ -506,7 +509,7 @@ airbus.mes.shell.util.navFunctions = {
             // Add event delegate to pass the data and load the services
             airbus.mes.disruptiondetail.oView.addEventDelegate({
                 onBeforeShow: function (evt) {
-                	airbus.mes.disruptiondetail.oView.getController().loadData(evt.data.msgRef, evt.data.msgType, evt.data.resolverGroup);
+                    airbus.mes.disruptiondetail.oView.getController().loadData(evt.data.msgRef, evt.data.msgType, evt.data.resolverGroup);
                 }
             });
         }
@@ -520,19 +523,19 @@ airbus.mes.shell.util.navFunctions = {
         if (airbus.mes.disruptionkpi === undefined || airbus.mes.disruptionkpi.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.disruptionkpi", "../components/disruptionkpi");
             sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionkpi", });
-	     
-	        // Add event delegate
-	        airbus.mes.disruptionkpi.oView.addEventDelegate({
-	        	onBeforeShow: function(evt){
-	        		//Get start date time of current TAKT
-	        		airbus.mes.disruptionkpi.ModelManager.setTaktStartTime();
-	        		// Sequence is important !!!
-	        		airbus.mes.disruptionkpi.ModelManager.oFilters.line= airbus.mes.settings.ModelManager.line;
-	                airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
-	                airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
-	        		airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
-	    	   }
-	        });
+
+            // Add event delegate
+            airbus.mes.disruptionkpi.oView.addEventDelegate({
+                onBeforeShow: function (evt) {
+                    //Get start date time of current TAKT
+                    airbus.mes.disruptionkpi.ModelManager.setTaktStartTime();
+                    // Sequence is important !!!
+                    airbus.mes.disruptionkpi.ModelManager.oFilters.line = airbus.mes.settings.ModelManager.line;
+                    airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
+                    airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
+                    airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
+                }
+            });
 
 
             nav.addPage(airbus.mes.disruptionkpi.oView);
@@ -600,7 +603,7 @@ airbus.mes.shell.util.navFunctions = {
         if (typeof airbus.mes.worktracker.util.ModelManager.currentOperator.fname == "undefined") {
             airbus.mes.worktracker.util.ModelManager.setCurrentOperator();
         }
-            
+
         // Load Operations Data
         airbus.mes.worktracker.util.ModelManager.loadUserOperationsModel();
 
