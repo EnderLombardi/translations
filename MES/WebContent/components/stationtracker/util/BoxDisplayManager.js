@@ -68,7 +68,7 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    rightStop : '<i class="fa  fa-exclamation stopIcon rightIcon"></i>',
 		    rightStopWhite : '<i class="fa  fa-exclamation stopIcon white-two rightIcon"></i>',
 		    
-		    rightTTFreeze : '<i class="fa  fa-long-arrow-up rightIcon colorvrtvrtrvBlue"></i>',
+		    rightTTFreeze : '<i class="fa  fa-long-arrow-up colorBlue rightIcon"></i>',
 		    
 		    rightOswIcon_Constructor: function(elt) {
 		        return airbus.mes.stationtracker.util.BoxDisplayManager.rightOswIcon + elt + '</b></i>';

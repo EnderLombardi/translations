@@ -154,7 +154,7 @@ TOOLBAR
 *********************/
 #mes .sapMPopover .sapMBtnIcon { color: rgba(0, 86, 112, 0.94); }
 
-.sapMPIText1 { padding: 4px 0 0 8px; position: absolute; height: 45%; width: calc(100% - 8px) !important; }
+.sapMPIText1 { padding: 4px 0 0 8px; position: absolute; height: 45%; width: 100% !important; }
 
 .sapMPIText2 { margin: 20px 0 0 8px; position: absolute; }
 
@@ -245,6 +245,8 @@ BOX MANAGEMENT
 .trackerBox .green { background-color: #049372; color: #ffffff; }
 
 .trackerBox .blue { background-color: #0085ad; color: #ffffff; }
+
+.trackerBox .colorBlue { color: #0085ad; }
 
 .trackerBox .pink { background-color: #E08283; color: #ffffff; }
 
