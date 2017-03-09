@@ -584,6 +584,105 @@ sap.ui.controller(
             sap.ui.getCore().byId("pinCodeMyProfile").setValue("");
         },
         
+        onCanceluserLoginDailog: function () {
+            sap.ui.getCore().getElementById("userNameMyProfile").setValueState(sap.ui.core.ValueState.None);
+            sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);
+
+
+            // Reset Fields Edit Mode
+            sap.ui.getCore().byId("uIdMyProfile").setEnabled(false);
+            sap.ui.getCore().byId("badgeIdMyProfile").setEnabled(false);
+            sap.ui.getCore().byId("editMyProfile").setVisible(true);
+
+
+            this.userLoginDailog.close();
+        },
+        
+        onLogin: function (oEvent) {
+            sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
+            var badgeID = sap.ui.getCore().getElementById("badgeIdMyProfile").getValue();
+            var uID = sap.ui.getCore().getElementById("uIdMyProfile").getValue();
+            var user = sap.ui.getCore().getElementById("userNameMyProfile").getValue();
+            var pass = sap.ui.getCore().getElementById("passwordMyProfile").getValue();
+            var pinCode = sap.ui.getCore().getElementById("pinCodeMyProfile").getValue();
+            if (pinCode == "")
+                pinCode = "0000"; // Set Pin Code default to 0
+
+            if (user == "" || pass == "") {
+                sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
+                sap.ui.getCore().byId("msgstrpMyProfile").setType("Error");
+                sap.ui.getCore().byId("msgstrpMyProfile").setText(
+                    sap.ui.getCore().getModel("ShellI18n").getProperty("CompulsaryCredentials")
+                );
+
+                if (user === "") {
+                    sap.ui.getCore().getElementById("userNameMyProfile").setValueState(sap.ui.core.ValueState.Error);
+                } else {
+                    sap.ui.getCore().getElementById("userNameMyProfile").setValueState(sap.ui.core.ValueState.None);
+                };
+
+                if (pass === "") {
+                    sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.Error);
+                } else {
+                    sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);
+                };
+
+            } else {
+                if (user != "" || user != undefined) {
+                    sap.ui.getCore().getElementById("userNameMyProfile").setValueState(sap.ui.core.ValueState.None);
+                };
+                if (pass != "" || pass != undefined) {
+                    sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);
+                };
+
+
+                // Call service for ARP User validation
+                sap.ui.getCore().byId("badgeMngMyProfile").setBusyIndicatorDelay(0);
+                sap.ui.getCore().byId("badgeMngMyProfile").setBusy(true);
+
+                jQuery.ajax({
+                    url: airbus.mes.shell.ModelManager
+                        .getuserLoginUrl(badgeID, user, pass, pinCode, uID),
+                    async: true,
+                    error: function (xhr, status, error) {
+
+                        sap.ui.getCore().byId("badgeMngMyProfile").setBusy(false);
+
+                        var sMessageError = sap.ui.getCore().getModel("ShellI18n").getProperty("errorMsgwhileSavingProfile");
+
+                        airbus.mes.shell.ModelManager.messageShow(sMessageError);
+
+                    },
+                    success: function (result, status, xhr) {
+
+                        sap.ui.getCore().byId("badgeMngMyProfile").setBusy(false);
+
+                        if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined &&
+                            result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+                            airbus.mes.shell.ModelManager
+                                .messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+
+                        } else {
+
+                            airbus.mes.shell.oView.oController.myProfileDailog.close();
+
+                            var sMessageSuccess = sap.ui.getCore().getModel("ShellI18n").getProperty("successMsgwhileSavingProfile");
+
+                            airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+                        }
+
+
+                        // Reset Fields edit mode
+                        sap.ui.getCore().byId("uIdMyProfile").setEnabled(false);
+                        sap.ui.getCore().byId("badgeIdMyProfile").setEnabled(false);
+                        sap.ui.getCore().byId("editMyProfile").setVisible(true);
+
+                    }
+                });
+            }
+
+        },
+        
 
         /***********************************************************
          * My Profile PopUp
