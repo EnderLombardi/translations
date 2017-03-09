@@ -180,9 +180,9 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		var i18nModel = oView.getModel("i18nModel");
 		var sPromisedDateTime = "";
 
-		var date = sap.ui.getCore().byId("promiseDate").getValue();
-		var time = sap.ui.getCore().byId("promisedTime").getValue();
-		if(date != ""){
+		var date = this.getView().byId("promisedDate").getValue();
+		var time = this.getView().byId("promisedTime").getValue();
+		if(date == ""){
 
 			if (time == ""){time = "00:00:00";}
 			
@@ -231,22 +231,20 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
 
 					// load again disruptions data
-					oView.getModel("DisruptionDetailModel").setProperty("/Status", airbus.mes.disruptions.Formatter.status.acknowledged);
+					oView.getModel("DisruptionDetailModel").setProperty("/status", airbus.mes.disruptions.Formatter.status.acknowledged);
 
 					var currDate = new Date();
 					var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 					var oUserDetailModel = sap.ui.getCore().getModel("userDetailModel")
 					var oComment = {
-						"Action" : i18nModel.getProperty("acknowledge"),
-						"Comments" : comment,
-						"Counter" : "",
-						"Date" : commentDate,
-						"MessageRef" : sMessageRef,
-						"UserFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
+						"action" : i18nModel.getProperty("acknowledge"),
+						"comments" : comment,
+						"date" : commentDate,
+						"userFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
 							.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
 					};
-					oView.getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);
-					oView.getModel("DisruptionDetailModel").setProperty("/PromisedDateTime", dateTime);
+					oView.getModel("DisruptionDetailModel").getProperty("/disruptionComments").push(oComment);
+					oView.getModel("DisruptionDetailModel").setProperty("/promisedDateTime", dateTime);
 					//oView.getModel("DisruptionDetailModel").setProperty("/ResolverName",oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/last_name") + " "	+ oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name"));
 					oView.getModel("DisruptionDetailModel").refresh();
 					sap.ui.getCore().byId("disruptionDetailView--comment").setValue();
