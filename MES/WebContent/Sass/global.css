@@ -4891,6 +4891,18 @@ QUARANTINE USELESS CODE
 /*******************
 END OF QUARANTINE
 ********************/
+#idListDocument .document-item { padding: 1rem; display: flex; min-height: 3rem; padding-bottom: .375rem; }
+
+#idListDocument .document-item .document-title { font-weight: bold; font-size: 1rem; }
+
+#idListDocument .document-item .document-description { font-size: 1rem; }
+
+#idListDocument .document-item .document-size { font-size: 1rem; }
+
+#idListDocument .document-item .document-edit { font-size: 1rem; text-align: right; -webkit-box-flex: 0; flex: none; }
+
+#idListDocument .document-item .document-delete { font-size: 1rem; text-align: right; -webkit-box-flex: 0; flex: none; }
+
 /*************
 GENERALE RULES
 **************/

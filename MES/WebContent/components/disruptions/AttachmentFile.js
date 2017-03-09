@@ -3,59 +3,49 @@
 jQuery.sap.declare("airbus.mes.disruptions.AttachmentFile");
 
 airbus.mes.disruptions.AttachmentFile = {
-	
-	init: function(core){
-		
-	    if(this.core){ return;} 
-		
-	    this.core = core;
-	
-		airbus.mes.shell.ModelManager.createJsonModel(core, [ "DesktopFilesModel" ]);
+
+	init: function (core) {
+
+		if (this.core) { return; }
+
+		this.core = core;
+
+		airbus.mes.shell.ModelManager.createJsonModel(core, ["DesktopFilesModel"]);
 	},
-	
-	onAttachPress : function(oEvt) {
-    	if(!this.AttachmentDialog){
-     	   this.AttachmentDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.AttachmentDialog", airbus.mes.disruptions.AttachmentFile);
-            this.getView().addDependent(this.AttachmentDialog);
-        }
-    	
-         this.AttachmentDialog.open();
+
+	onAttachPress: function (oEvt) {
+		if (!this.AttachmentDialog) {
+			this.AttachmentDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.AttachmentDialog", airbus.mes.disruptions.AttachmentFile);
+			this.getView().addDependent(this.AttachmentDialog);
+		}
+
+		this.AttachmentDialog.open();
 	},
-	
+
 	/*
 	 * Local json model is maintained to store the list of attachments 
 	 * attached from the desktop
 	 */
-	onUploadComplete : function(filesListBase64) {
+	onUploadComplete: function (filesListBase64) {
 
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		var oData = oModel.getData();
 
 		var oInput = sap.ui.getCore().byId("idTitleInput");
-		var sTitle = oInput.getValue();
-		var oCurrOpRadioBtt = sap.ui.getCore().byId("idCheckCurrOp");
-		var oCurrWORadioBtt = sap.ui.getCore().byId("idCheckCurrWO");
-		var oDesktpRadioBtt = sap.ui.getCore().byId("idCheckDesktop");
-
-		var jsonObj = [];
+		var description = oInput.getValue();
 		var item = {};
 		var iLen = oData.length;
+		item.Title = filesListBase64.fileName;
+		item.Description = description;
+		item.File = filesListBase64.fileBase64;
+		item.Size = filesListBase64.size;
 		if (iLen === undefined) {
-			item["Title"] = sTitle,
-			item ["File"] = filesListBase64[0]
-
-			jsonObj.push(item);
+			var jsonObj = [item];
 			oModel.setData(jsonObj);
 		} else {
-			oData.unshift({
-				"Title" : sTitle,
-				"File" : filesListBase64[0] 
-			})
+			oData.unshift(item);
 		}
 		oModel.refresh();
-		oCurrOpRadioBtt.setSelected(false);
-		oCurrWORadioBtt.setSelected(false);
-		oDesktpRadioBtt.setSelected(true);
 		oInput.destroy();
 	},
 
@@ -63,32 +53,31 @@ airbus.mes.disruptions.AttachmentFile = {
 	 * A Dialog Appears on press of attach button,
 	 * to enter the title of the attached file
 	 */
-	onPressAttachBttn : function(oEvt) {
+	onPressAttachBttn: function (oEvt) {
 		// When user selects a file, a popup is displayed
 		// here the title is to be given
-        var files = oEvt.getParameters().files;
-        var file = files[0];
-        var reader = new FileReader();
-        var filesListBase64 = [];
-        reader.onload = function (readerEvt) {
-            var binaryString = readerEvt.target.result;
-            var oBase64 = {};
-            oBase64.fileName = file.name;
-            oBase64.type = file.type;
-            oBase64.fileBase64 = btoa(binaryString);
-            filesListBase64.push(oBase64);
-        }
-        reader.readAsBinaryString(files[0]);
-        
-        
+		var files = oEvt.getParameters().files;
+		var file = files[0];
+		var reader = new FileReader();
+		var filesListBase64 = {};
+		reader.onload = function (readerEvt) {
+			var binaryString = readerEvt.target.result;
+			filesListBase64.fileName = file.name;
+			filesListBase64.type = file.type;
+			filesListBase64.fileBase64 = btoa(binaryString);
+			filesListBase64.size = file.size;
+		}
+		reader.readAsBinaryString(files[0]);
+
+
 		var dialog = new sap.m.Dialog({
-			customHeader : [ new sap.m.Toolbar({
-				content : [ new sap.m.Title({
-					text : "{i18nModel>EntDesc}"
-				}).addStyleClass("sapUiSmallMarginBegin") ]
-			}) ],
-			content : [ new sap.m.Input("idTitleInput", {
-				liveChange : function(oEvt) {
+			customHeader: [new sap.m.Toolbar({
+				content: [new sap.m.Title({
+					text: "{i18nModel>EntDesc}"
+				}).addStyleClass("sapUiSmallMarginBegin")]
+			})],
+			content: [new sap.m.Input("idTitleInput", {
+				liveChange: function (oEvt) {
 					var iLen = oEvt.getParameters().value.length;
 					if (iLen === 0) {
 						oEvt.getSource().oParent.mAggregations.beginButton.setEnabled(false);
@@ -96,18 +85,18 @@ airbus.mes.disruptions.AttachmentFile = {
 						oEvt.getSource().oParent.mAggregations.beginButton.setEnabled(true)
 					}
 				}
-			}) ],
-			beginButton : new sap.m.Button({
-				enabled : false,
-				text : '{i18nModel>OK}',
-				press : function() {
+			})],
+			beginButton: new sap.m.Button({
+				enabled: false,
+				text: '{i18nModel>OK}',
+				press: function () {
 					dialog.close();
 					airbus.mes.disruptions.AttachmentFile.onUploadComplete(filesListBase64);
 				}
 			}),
-			endButton : new sap.m.Button({
-				text : '{i18nModel>cancel}',
-				press : function() {
+			endButton: new sap.m.Button({
+				text: '{i18nModel>cancel}',
+				press: function () {
 					dialog.close();
 					var oInput = sap.ui.getCore().byId("idTitleInput");
 					oInput.destroy();
@@ -122,7 +111,7 @@ airbus.mes.disruptions.AttachmentFile = {
 	/*
 	 * Deleting the Attachment Title from the List of Documents
 	 */
-	onDeletePress : function(oEvent) {
+	onDeletePress: function (oEvent) {
 		// calculating the index of the selected list item
 		var sPath = oEvent.oSource.oParent.oPropagatedProperties.oBindingContexts.DesktopFilesModel.sPath;
 		var iIndex = sPath.split("/")[1];

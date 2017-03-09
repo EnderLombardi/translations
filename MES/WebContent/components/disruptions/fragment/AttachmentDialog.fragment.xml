@@ -14,12 +14,6 @@
 			<Toolbar>
 				<Label text="{i18nModel>DisplayAttachments}" design="Bold" />
 				<ToolbarSpacer></ToolbarSpacer>
-				<RadioButton id="idCheckCurrOp" selected="true"
-					text="{i18nModel>CurrOP}" select="" class="sapUiSmallMarginEnd" />
-				<RadioButton id="idCheckCurrWO" text="{i18nModel>CurrWO}"
-					select="" class="sapUiSmallMarginEnd" />
-				<RadioButton id="idCheckDesktop" text="{i18nModel>Desktop}"
-					select="" class="sapUiSmallMarginEnd" />
 				<u:FileUploader id="idfileUploader" buttonText="{i18nModel>AttachDoc}"
 					tooltip="{i18nModel>Attach}" icon="sap-icon://sys-monitor"
 					sameFilenameAllowed="true" class="attachIcon" change="onPressAttachBttn"
@@ -33,17 +27,16 @@
 					design="Bold"></Label>
 			</HBox>
 
-			<List id="idList" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/'}">
+			<List id="idListDocument" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/'}">
 				<!-- <StandardListItem/> -->
-
 				<CustomListItem>
-					<Toolbar>
-						<core:Icon size="0.5rem" src="sap-icon://circle-task-2" />
-						<Label text="{DesktopFilesModel>Title}" width="30%" />
-						<ToolbarSpacer width="65%" />
-						<core:Icon size="1rem" src="sap-icon://delete" press="onDeletePress" />
-					</Toolbar>
-
+					<HBox class="document-item">
+						<Label class="document-title" text="{DesktopFilesModel>Title}" />
+						<Label class="document-description" text="{DesktopFilesModel>Description}" />
+						<Label class="document-size" text="{DesktopFilesModel>Size}" />
+						<core:Icon size="1rem" class="document-edit" src="sap-icon://edit" press="onEditPress" />
+						<core:Icon size="1rem" class="document-delete" src="sap-icon://delete" press="onDeletePress" />
+					</HBox>
 				</CustomListItem>
 			</List>
 
@@ -56,4 +49,4 @@
 			<Button text="{i18nModel>cancel}"  press="airbus.mes.createdisruption.oView.oController.onExit"/>
 		</endButton>
 	</Dialog>
-</core:FragmentDefinition>
+</core:FragmentDefinition>		
