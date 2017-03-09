@@ -65,7 +65,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             type: 'get',
             url: this.getConfirmationsNotesUrl(model),
             contentType: 'application/json',
-
+            async: false,
             success: function (data) {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
@@ -95,18 +95,18 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             type: 'get',
             url: this.getConfirmationsNotesUrl(model),
             contentType: 'application/json',
-
+            async: false,
             success: function (data) {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
                 if (data.Rowsets.Rowset) {
                     var wonotes = data.Rowsets.Rowset[0].Row;
-                    if (data.Rowsets.Rowset[1]) {
+                    if (data.Rowsets.Rowset[1].Row && wonotes) {
                         airbus.mes.trackingtemplate.util.ModelManager.attachedDocumentToWoNotes(wonotes, data.Rowsets.Rowset[1].Row);
+                        wonotes = wonotes.sort(airbus.mes.shell.util.Formatter.fieldComparator(['-Created_Date_Time']));
+                        wonotes[0].lastOperationNote = true;
                     }
-                    wonotes = wonotes.sort(airbus.mes.shell.util.Formatter.fieldComparator(['-Created_Date_Time']));
-                    wonotes[0].lastOperationNote = true;
                 }
                 woNotesModel.setData(data);
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--wo_notes_panel");
@@ -208,7 +208,6 @@ airbus.mes.trackingtemplate.util.ModelManager = {
             type: 'get',
             url: this.getReasonCodeUrl(model),
             contentType: 'application/json',
-
             success: function (data) {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
