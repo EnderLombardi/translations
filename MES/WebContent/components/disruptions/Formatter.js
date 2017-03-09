@@ -346,7 +346,9 @@ airbus.mes.disruptions.Formatter = {
 	},
 	formatComment : function(comment) {
 		if (comment && comment.indexOf("\$\$") > -1) {
-			comment =  comment.split("\$\$").shift().join();
+			comment =  comment.split("\$\$");
+			comment.shift();
+			comment = comment.join();
 		}
 		if(comment == "" || comment == " ") {
 			this.setVisible(false);
