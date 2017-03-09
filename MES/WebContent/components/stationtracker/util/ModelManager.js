@@ -1026,15 +1026,9 @@ airbus.mes.stationtracker.util.ModelManager = {
         });
     },
     
-    getUserID : function() {
-		// Check if generic User, "Generic users are starting with SH*."
-		var sUser =	((sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")).substring(0,2) == "SH")?
-		//then send operator of operation as issuer
-		(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1]):
-		//Else Current logged in user for a real user as Issuer
-		(sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"));  
-		   
-		 // If generic user and no operator assigned, prompt for username
+    getUserName : function() {
+		// Check if generic User
+		var sUser =	sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
 		if	(sUser==undefined) {
 			sUser=airbus.mes.shell.oView.getController().goToMyProfile();
 		} else {
@@ -1044,58 +1038,87 @@ airbus.mes.stationtracker.util.ModelManager = {
     
     // Reschedule AVL Line(s)
     sendRescheduleLineRequest: function (lines) {
-        // get Url of the service
-        var urlReschedulingLineService = this.urlModel.getProperty("urlReschedulLinesService");
+        // Get Url of the service
+        var urlReschedulingLineService = this.urlModel.getProperty("urlReschedulingLinesService");
+        
+        // Get generic stationTracker information
         var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         
-        // Get current shift id
+        // Get current and previous shift id
 		var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
 		var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
-		
-		// Get previous shift id
+		var prevShiftName = undefined;
 		if (fIndexShift != -1 && fIndexShift != 0) {
-			var prevShiftID = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1].shiftID;
-			var currentDate = new Date();
-			var userName = this.getUserID();
-			
-			var data = JSON.stringify({
-				"site": 			oData.site,
-				"physicalStation": 	oData.station,
-				"msn": 				oData.msn,
-				"lines": 			lines,
-				"actualDate": 		currentDate,
-				"previousShift": 	oShift.shiftID,
-				"currentShift": 	prevShiftID,
-				"userName":         userName
-            });
-
-			// Debug
-			//console.log("====sendRescheduleLineRequest=====================");
-			//console.log("User : " + this.getUserID());
-			//console.log("oData             : " + oData);
-			//console.log("Current  shift ID : " + oShift.shiftID);
-			//console.log("Previous shift ID : " + prevShiftID);
-			//console.log("Current Date      : " + currentDate);
-			//console.log("Data to sent      : " + data);
-			
-	        /*
-	        jQuery.ajax({
-	            type: 'post',
-	            url: urlReschedulingLineService,
-	            async: false,
-	            contentType: 'application/json',
-	            data: data,
-	            success: function (data) {
-	                if (typeof data == "string") {
-	                    data = JSON.parse(data);
-	                }
-	            },
-	            error: function (error, jQXHR) {
-	                jQuery.sap.log.info(error);
-	            }
-	        });
-	        */
+			prevShiftName = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1].shiftName;
 		}
+			
+		// Get formated current date
+        var dateFormat = sap.ui.core.format.DateFormat.getInstance({
+        	pattern: "yyyyMMdd",
+            calendarType: sap.ui.core.CalendarType.Gregorian
+        });
+		var currentDate = dateFormat.format(new Date());
+			
+		// Get current user
+		var userName = this.getUserName();
+		
+		/*
+		// Prepare request data in a JSON  
+		var data = {
+			"site": 			oData.site,
+			"physicalStation": 	oData.station,
+			"msn": 				oData.msn,
+			"avlLineList": 		lines,
+			"actualDate": 		currentDate,
+			"previousShift": 	oShift.shiftName,
+			"currentShift": 	prevShiftName,
+			"userName":         userName
+        };
+*/
+		// Debug
+		//console.log("====sendRescheduleLineRequest=====================");
+		//console.log("User : " + this.getUserID());
+		//console.log("oData             : " + oData);
+		//console.log("Current  shift ID : " + oShift.shiftID);
+		//console.log("Previous shift ID : " + prevShiftID);
+		//console.log("Current Date      : " + currentDate);
+		//console.log("Data to sent : " + JSON.stringify(data));
+		//console.log("urlReschedulingLineService : " + urlReschedulingLineService);
+			
+		console.log("URL: " + urlReschedulingLineService);
+		
+        jQuery.ajax({
+            type: 'post',
+            url: urlReschedulingLineService,
+            contentType: 'application/json',
+            data: JSON.stringify({
+    			"site": 			oData.site,
+    			"physicalStation": 	oData.station,
+    			"msn": 				oData.msn,
+    			"avlLineList": 		lines,
+    			"actualDate": 		currentDate,
+    			"previousShift": 	oShift.shiftName,
+    			"currentShift": 	prevShiftName,
+    			"userName":         userName
+            }),
+            success: function (data) {
+                if (typeof data == "string") {
+                    data = JSON.parse(data);
+                }
+                console.log("Request Debug => success : " + JSON.stringify(data));
+            },
+            error: function (error, jQXHR) {
+                jQuery.sap.log.info(error);
+                console.log("Request Debug => error : " + JSON.stringify(error) + ", " + jQXHR);
+            }
+        });
+    },
+    
+    getCurrentDate : function(transform) {
+        //var today = new Date();
+        //var isotoday = moment(new Date().format('YYYYMMDD');
+        //return isotoday;
+
     },
     
     emptyToRescheduleList: function () {
