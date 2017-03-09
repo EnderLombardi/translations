@@ -24,7 +24,7 @@
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>opensince}: "/>
-								<Label text=" {path:'operationDisruptionsModel>openingTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" design="Bold" width="5%"/>
+								<Label text=" {path:'operationDisruptionsModel>openDateTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" design="Bold" width="5%"/>
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>level}{operationDisruptionsModel>escalationLevel}" class="disrptlistdesc" design="Bold" width="5%"/>
@@ -180,7 +180,7 @@
 						<Button text="{i18nModel>seeLessMessages}" icon="sap-icon://email" press="seeLessMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
 							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
 
-						<List showNoData="false" class="sapUiSmallMarginBeginEnd"
+						<List showNoData="false" class="sapUiSmallMarginBeginEnd" growingThreshold="1"
 							items="{path: 'operationDisruptionsModel>disruptionComments'}">
 
 							<CustomListItem class="msgColor">

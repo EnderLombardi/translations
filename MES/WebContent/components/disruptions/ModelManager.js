@@ -69,7 +69,7 @@ airbus.mes.disruptions.ModelManager = {
 			success : function(data) {
 				var aDisruptions = [];
 				if (data.disruptionListDetails) {
-					if (data.disruptionsListDetails && !data.disruptionListDetails[0]) {
+					if (data.disruptionListDetails[0] == undefined) {
 						aDisruptions = [ data.disruptionListDetails ];
 					} else{
 						aDisruptions = data.disruptionListDetails;

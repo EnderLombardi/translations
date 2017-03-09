@@ -747,6 +747,10 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 
   				}
   				
+  				if(data.disruptionComments && data.disruptionComments[0] == undefined){
+  					data.disruptionComments = [data.disruptionComments];
+  				}
+  				
   				sap.ui.getCore().getModel("operationDisruptionsModel").setProperty(sPath,data);
   			},
 
