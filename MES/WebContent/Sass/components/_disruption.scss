@@ -21,6 +21,26 @@
 	.disrptListToolbar[role=toolbar]{
 		margin-left: 1rem !important;
 	}
+	
+	.disruptionDetailForm .sapUiFormResGrid.sapUiFormBackgrTranslucent>div{
+		background:transparent !important;
+	}
+	
+    .RoundBttn{
+   		background-color:#ebeef2;
+   		border-radius: 50%;
+   		height:48px;
+   		width:48px;
+   		
+   		span.sapUiIcon{
+	    	color:#2f758a !important;
+   		}
+   		div.sapMBtnInner {
+   		border-radius: 50%;
+   		height:48px;
+   		width:48px;
+   		}
+   	}
 }
 
 //Disruption title bar buttons

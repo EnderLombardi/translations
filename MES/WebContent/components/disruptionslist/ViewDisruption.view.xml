@@ -61,7 +61,7 @@
 						</headerToolbar>
 
 
-						<f:SimpleForm id="SimpleFormDisplay"
+						<f:SimpleForm id="SimpleFormDisplay" class="disruptionDetailForm"
 							maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3">
 							<f:content>
 								<core:Title text="" />								    
@@ -128,7 +128,7 @@
 							</f:content>
 					</f:SimpleForm>
 					
-					<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Translucent" visible="{=${operationDisruptionsModel>internalPanelexpanded} === 'true'}"
+					<f:SimpleForm id="extraFieldDisruption" class="disruptionDetailForm" visible="{=${operationDisruptionsModel>internalPanelexpanded} === 'true'}"
 							maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3">
 						<f:content>
 							<core:Title text="" />
@@ -155,12 +155,12 @@
 							<Text text="{operationDisruptionsModel>stringer_rail}" />
 						</f:content>	
 					</f:SimpleForm>
-					<VBox alignItems="Center" justifyContent="Center">
-					<Button press="onInternalPanelexpand"   design="Transparent" icon="sap-icon://slim-arrow-down" 
+					<HBox alignItems="Center" justifyContent="Center" width="100%">
+						<Button press="onInternalPanelexpand"   type="Transparent" icon="sap-icon://slim-arrow-down" 
 									visible="{=${operationDisruptionsModel>internalPanelexpanded} !== 'true'}" class="RoundBttn" />
-					<Button press="onInternalPanelCollapse" design="Transparent" icon="sap-icon://slim-arrow-up"
-									visible="{=${operationDisruptionsModel>internalPanelexpanded} === 'true'}" />
-					</VBox>
+						<Button press="onInternalPanelCollapse" type="Transparent" icon="sap-icon://slim-arrow-up" 
+									visible="{=${operationDisruptionsModel>internalPanelexpanded} === 'true'}" class="RoundBttn"/>
+					</HBox>
 
 						<!-- <Text text="{i18nModel>status} : {path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}"
 							class="sapUiMediumMarginBegin statusText" /> -->
