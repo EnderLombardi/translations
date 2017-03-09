@@ -128,7 +128,7 @@
 							</f:content>
 					</f:SimpleForm>
 					
-					<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Translucent" visible="false"
+					<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Translucent" visible="{=${operationDisruptionsModel>internalPanelexpanded} === 'true'}"
 							maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3">
 						<f:content>
 							<core:Title text="" />

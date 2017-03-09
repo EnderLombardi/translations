@@ -657,7 +657,8 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
     	  this.sExpandedPanelPath = undefined;
       },
       onInternalPanelexpand:function(oEvt){
-    	  this.getView().byId("extraFieldDisruption").setVisible(true);
+    	  var sPath = oEvt.getSource().getParent().getParent().getBindingContext("operationDisruptionsModel").sPath;
+    	  this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/internalPanelexpanded", "true");
       },
       onInternalPanelCollapse:function(oEvt){
     	  
