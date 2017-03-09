@@ -507,48 +507,55 @@ airbus.mes.calendar.util.ShiftManager = {
 	 * @returns {Boolean}
 	 */
 	isDateIgnored : function (date) {
-
-		if (this.shifts.length === 0)
-			return false;
 		
-		var iMin = 0,
-			iMax = this.shifts.length - 1,
-			iMed;
+		if( !airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
 		
-		var d1, d2;
-		
-		// this is for dichotomic search
-		while (true) {
-			
-			iMed = Math.floor(iMin + ((iMax-iMin) / 2));
-			
-			// Round date to the previous bound (based on x_step)
-			// This means, if d1 = 16:18 and step = 15 min, d1 => 16:15
-			d1 = this.roundDate(this.shifts[iMed].StartDate, 0);
-			// Round date to the next bound (based on x_step)
-			// This means, if d2 = 16:18 and step = 15 min, d2 => 16:30
-			d2 = this.roundDate(this.shifts[iMed].EndDate, 1);
-			
-			if (d1 > date) {
-				if (iMin === iMed) {
-			//		 calendar.matrix.timeline.x_size += 1; 
-					return true;
-				} else {
-					iMax = iMed - 1;
-				}
-			} else if (d2 <= date) {
-				// Very important, condition is less than *or equal*
-				// to not show the next 15 minutes in case a shift
-				// ends at 19:15 for example.
-				if (iMed === iMax) {
-				//	calendar.matrix.timeline.x_size += 1; 
-					return true;
-				} else {
-					iMin = iMed + 1;
-				}
-			} else {
+			if (this.shifts.length === 0)
 				return false;
-			}			
+			
+			var iMin = 0,
+				iMax = this.shifts.length - 1,
+				iMed;
+			
+			var d1, d2;
+			
+			// this is for dichotomic search
+			while (true) {
+				
+				iMed = Math.floor(iMin + ((iMax-iMin) / 2));
+				
+				// Round date to the previous bound (based on x_step)
+				// This means, if d1 = 16:18 and step = 15 min, d1 => 16:15
+				d1 = this.roundDate(this.shifts[iMed].StartDate, 0);
+				// Round date to the next bound (based on x_step)
+				// This means, if d2 = 16:18 and step = 15 min, d2 => 16:30
+				d2 = this.roundDate(this.shifts[iMed].EndDate, 1);
+				
+				if (d1 > date) {
+					if (iMin === iMed) {
+				//		 calendar.matrix.timeline.x_size += 1; 
+						return true;
+					} else {
+						iMax = iMed - 1;
+					}
+				} else if (d2 <= date) {
+					// Very important, condition is less than *or equal*
+					// to not show the next 15 minutes in case a shift
+					// ends at 19:15 for example.
+					if (iMed === iMax) {
+					//	calendar.matrix.timeline.x_size += 1; 
+						return true;
+					} else {
+						iMin = iMed + 1;
+					}
+				} else {
+					return false;
+				}			
+				
+			}
+		} else {
+			
+			return false;	
 			
 		}
 		
