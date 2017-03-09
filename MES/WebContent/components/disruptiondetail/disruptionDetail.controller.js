@@ -327,12 +327,10 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 					var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 					var oUserDetailModel = sap.ui.getCore().getModel("userDetailModel")
 					var oComment = {
-						"Action" : i18nModel.getProperty("solve"),
-						"Comments" : sComment,
-						"Counter" : "",
-						"Date" : commentDate,
-						"MessageRef" : sMessageRef,
-						"UserFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
+						"action" : i18nModel.getProperty("acknowledge"),
+						"comments" : comment,
+						"date" : commentDate,
+						"userFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
 							.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
 					};
 					oView.getModel("DisruptionDetailModel").getProperty("/disruptionComments").push(oComment);
@@ -395,15 +393,13 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 					var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 					var oUserDetailModel = sap.ui.getCore().getModel("userDetailModel")
 					var oComment = {
-						"Action" : i18nModel.getProperty("refuse"),
-						"Comments" : sComment,
-						"Counter" : "",
-						"Date" : commentDate,
-						"MessageRef" : sMessageRef,
-						"UserFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
+						"action" : i18nModel.getProperty("acknowledge"),
+						"comments" : comment,
+						"date" : commentDate,
+						"userFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
 							.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
 					};
-					oView.getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);					
+					oView.getModel("DisruptionDetailModel").getProperty("/disruptionComments").push(oComment);					
 					oView.getModel("DisruptionDetailModel").refresh();
 					sap.ui.getCore().byId("disruptionDetailView--comment").setValue();				
 				}
@@ -450,19 +446,17 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
                                  
                                  oView.getModel("DisruptionDetailModel").setProperty("/status", airbus.mes.disruptions.Formatter.status.closed);
 
-             					var currDate = new Date();
+                                var currDate = new Date();
              					var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
              					var oUserDetailModel = sap.ui.getCore().getModel("userDetailModel")
              					var oComment = {
-             						"Action" : i18nModel.getProperty("close"),
-             						"Comments" : sComment,
-             						"Counter" : "",
-             						"Date" : commentDate,
-             						"MessageRef" : sMessageRef,
-             						"UserFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
+             						"action" : i18nModel.getProperty("acknowledge"),
+             						"comments" : comment,
+             						"date" : commentDate,
+             						"userFullName" : (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + oUserDetailModel
              							.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
              					};
-             					oView.getModel("DisruptionDetailModel").getProperty("/comments").push(oComment);					
+             					oView.getModel("DisruptionDetailModel").getProperty("/disruptionComments").push(oComment);					
              					oView.getModel("DisruptionDetailModel").refresh();
              					sap.ui.getCore().byId("disruptionDetailView--comment").setValue();	
                                  
