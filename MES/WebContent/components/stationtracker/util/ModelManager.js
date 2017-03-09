@@ -818,8 +818,9 @@ airbus.mes.stationtracker.util.ModelManager = {
         // var i = 0; not used
         for (var prop in options) {
             // skip loop if the property is from prototype
-            if (!options.hasOwnProperty(prop))
-                continue;
+            if (!options.hasOwnProperty(prop)) {
+            	continue;
+            }
 
             airbus.mes.stationtracker.util.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.util.ShiftManager.current_day][prop]
                 .forEach(function (key1, index) {
@@ -1283,6 +1284,7 @@ airbus.mes.stationtracker.util.ModelManager = {
             case 8:
                 elOverallModel.DISRUPTION = "D1";
                 break;
+            default:
         }
     	// if operation is not active and disruption it should be display in yellow even if the disruption is escalated
 		if ( oEvent.status2 === "1" && oEvent.status >= "4" ) {
@@ -1697,8 +1699,9 @@ airbus.mes.stationtracker.util.ModelManager = {
                 }
                 if (data.success) {
                     spentTime = data.spentTime;
-                } else
-                    return 0;
+                } else {
+                	return 0;
+                }
             },
 
             error: function (error, jQXHR) {
