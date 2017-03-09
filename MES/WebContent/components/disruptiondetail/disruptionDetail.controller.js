@@ -184,30 +184,26 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		var oView = this.getView();
 		var i18nModel = oView.getModel("i18nModel");
 		var sPromisedDateTime = "";
-
+		var oPromisedDateTime
 		var date = this.getView().byId("promisedDate").getValue();
 		var time = this.getView().byId("promisedTime").getValue();
 		if(date == ""){
-
+				airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("invalidDateError"));
+				return;
+		}else{
 			if (time == ""){time = "00:00:00";}
-			
 			sPromisedDateTime = date + " " + time;
-			
-			var oPromisedDateTime = new Date(sPromisedDateTime);
-
-			// Validate Promised Date Time
+			oPromisedDateTime = new Date(sPromisedDateTime);
 			if (oPromisedDateTime == "Invalid Date"){
 				airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("invalidDateError"));
 				return;
 			}
-			
 			//Check - User can't enter old date time
 			if(new Date().getTime() > oPromisedDateTime.getTime()){
 				airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("errorPrevPromisedDateTime"));
 				return;
 			}
 		}
-
 		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/messageRef");
 
 		var comment = airbus.mes.disruptions.Formatter.actions.acknowledge + oView.byId("comment").getValue();
@@ -249,7 +245,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 							.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
 					};
 					oView.getModel("DisruptionDetailModel").getProperty("/disruptionComments").push(oComment);
-					oView.getModel("DisruptionDetailModel").setProperty("/promisedDateTime", dateTime);
+					oView.getModel("DisruptionDetailModel").setProperty("/promisedDateTime", sPromisedDateTime);
 					//oView.getModel("DisruptionDetailModel").setProperty("/ResolverName",oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/last_name") + " "	+ oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name"));
 					oView.getModel("DisruptionDetailModel").refresh();
 					sap.ui.getCore().byId("disruptionDetailView--comment").setValue();
