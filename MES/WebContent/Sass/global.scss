@@ -466,9 +466,53 @@ FROM HOMEPAGE
 /*************************
 For Page title in headers
 **************************/
-label.headerText {
-    color: $tiffany-blue !important;
-    text-shadow: none !important;
+div.pageHeader {
+    color: white !important;
+    background: $teal-blue-hover !important;
+    border: 0;
+    >label:first-child {
+        color: $tiffany-blue !important;
+    }
+    >label:not(:first-child) {
+        color: white;
+    }
+    >label {
+        display: inline-block !important;
+        text-shadow: none !important;
+        margin: 0 !important;
+        padding: 0px 0.75rem 0px 0.75rem !important;
+        height: 3rem;
+        line-height: 3rem;
+        border-radius: 0.125rem;
+        border-right: 1px solid $tiffany-blue;
+        border-left: 0;
+    }
+}
+
+header.pageHeader {
+    color: white !important;
+    background: $teal-blue-hover !important;
+    border: 0;
+    >div {
+        background-color: rgb(15, 45, 101);
+        >label:first-child {
+            color: $tiffany-blue !important;
+        }
+        >label:not(:first-child) {
+            color: white;
+        }
+        >label {
+            display: inline-block !important;
+            text-shadow: none !important;
+            margin: 0 !important;
+            padding: 0px 0.75rem 0px 0.75rem !important;
+            height: 3rem;
+            line-height: 3rem;
+            border-radius: 0.125rem;
+            border-right: 1px solid $tiffany-blue;
+            border-left: 0;
+        }
+    }
 }
 
 

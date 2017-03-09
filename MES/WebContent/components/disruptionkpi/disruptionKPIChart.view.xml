@@ -4,11 +4,6 @@
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:commons="sap.ui.commons">
 
 	<Page id="disruptionKPIPage" showHeader="false" class="disruptionKPI">
-		<!-- <Bar id="disruptionKPITitleSubheader" class="pageHeader"> <contentLeft> 
-			<Button id="navBack" icon="sap-icon://arrow-left" text="{i18nModel>back}" press="onNavBack" 
-			type="Transparent" /> </contentLeft> <contentMiddle> <Label id="disruptionKPITitle" 
-			text="{i18nModel>disruptionKPITitle}" class="lineTrackerName" /> </contentMiddle> 
-			</Bar> -->
 		<Toolbar class="pageHeader">
 			<Label text="{i18nModel>disruptionKPITitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
 			
@@ -22,20 +17,13 @@
 				selectedKey="" selectionFinish="onChangeSelection" >
 				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 			</MultiComboBox>
-			
-			<!-- <Text text="{i18nModel>PeriodOfTime}:" class="sapUiTinyMarginBegin" />
-			<DateRangeSelection id="timePeriod" dateValue="{path:'/dateValueDRS2'}" 
-				secondDateValue="{path:'/secondDateValueDRS2'}" minDate="{path:'/dateMinDRS2'}"
-				maxDate="{path:'/dateMaxDRS2'}" change="onChangeSelection" /> -->
 
 			<Text text="{i18nModel>timeUnit}:" class="sapUiTinyMarginBegin" />
 			<Select id="timeUnit" forceSelection="true" selectedKey="Minutes" change="onChangeSelection" >
 				<core:Item key="Minutes" text="{i18nModel>Minutes}" />
 				<core:Item key="Hours" text="{i18nModel>Hours}" />
 			</Select>
-
 		</Toolbar>
-
 
 		<content>
 			<OverflowToolbar class="Subheader"
@@ -50,76 +38,17 @@
 					<DateTimePicker id="endDateTime" placeholder="{i18nModel>EnterEndDateTime}" change="onChangeSelection" displayFormat="medium" valueFormat="yyyy-MM-ddThh:mm:ss"/>
 					
 					<ToolbarSpacer />
-					
 					<Label text='{i18nModel>ToggleDisruptions}' design="Bold"></Label>
 					<Switch customTextOn="{i18nModel>On}" customTextOff="{i18nModel>Off}" change='onToggleDisruptions' state="true" />
-					
 				</content>
 			</OverflowToolbar>
 
 			
-			<viz:VizFrame id="idParettoCategoryReason" width="100%" height="80%" uiConfig="{applicationSet:'fiori'}" />
-						
+			<viz:VizFrame id="idParettoCategoryReason" width="100%" height="80%" uiConfig="{applicationSet:'fiori'}" />	
 			<commons:HorizontalDivider class="sapUiSmallMarginTopBottom" />
-
-						
+	
 			<l:Grid hSpacing="1" vSpacing="1" defaultSpan="L6 M12 S12">
 				<l:content>
-
-					<!-- <viz:VizFrame id="vizFrame" width="100%" class="chart"
-						uiConfig="{applicationSet:'fiori'}" legendVisible="false">
-						<viz:dataset>
-							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/category}">
-								<viz.data:dimensions>
-									<viz.data:DimensionDefinition
-										axis="1" name="{i18nModel>Category}" value="{TimeLostperAttribute>name}" />
-								</viz.data:dimensions>
-								<viz.data:measures>
-									<viz.data:MeasureDefinition name="{i18nModel>TimeLost}"
-										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToUnitConverter'}" />
-								</viz.data:measures>
-							</viz.data:FlattenedDataset>
-						</viz:dataset>
-						<viz:feeds>
-							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="{i18nModel>Category}" />
-							<viz.feeds:FeedItem id='valueAxisFeed1' uid="primaryValues"
-								type="Measure" values="{i18nModel>TimeLost}" />
-						</viz:feeds>
-					</viz:VizFrame>
-
-					<commons:HorizontalDivider id="divider1"
-						class="sapUiSmallMarginTopBottom" visible=""></commons:HorizontalDivider>
-
-
-
-					<viz:VizFrame id="vizFrame2" width="100%" class="chart"
-						uiConfig="{applicationSet:'fiori'}" legendVisible="false">
-						<viz:dataset width="50%">
-							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/reason}">
-								<viz.data:dimensions>
-									<viz.data:DimensionDefinition
-										axis="1" name="{i18nModel>Reason}" value="{TimeLostperAttribute>name}" />
-								</viz.data:dimensions>
-								<viz.data:measures>
-									<viz.data:MeasureDefinition name="{i18nModel>TimeLost}"
-										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToUnitConverter'}" />
-								</viz.data:measures>
-							</viz.data:FlattenedDataset>
-						</viz:dataset>
-						<viz:feeds>
-							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="{i18nModel>Reason}" />
-							<viz.feeds:FeedItem id='valueAxisFeed2' uid="primaryValues"
-								type="Measure" values="{i18nModel>TimeLost}" />
-						</viz:feeds>
-					</viz:VizFrame>
-
-					<commons:HorizontalDivider id="divider2"
-						class="sapUiSmallMarginTopBottom" visible="true"></commons:HorizontalDivider>
-					<commons:HorizontalDivider id="divider3"
-						class="sapUiSmallMarginTopBottom"></commons:HorizontalDivider> -->
-
 					<viz:VizFrame id="vizFrame3" width="100%" class="chart"
 						vizType="bar" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset width="50%">
@@ -143,10 +72,7 @@
 						</viz:feeds>
 					</viz:VizFrame>
 
-					<commons:HorizontalDivider id="divider4"
-						class="sapUiSmallMarginTopBottom" visible=""></commons:HorizontalDivider>
-
-
+					<commons:HorizontalDivider id="divider4" class="sapUiSmallMarginTopBottom" visible=""></commons:HorizontalDivider>
 
 					<viz:VizFrame id="vizFrame4" width="100%" class="chart"
 						vizType="bar" uiConfig="{applicationSet:'fiori'}" legendVisible="false">

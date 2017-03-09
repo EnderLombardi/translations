@@ -108,16 +108,12 @@ DISRUPTIONTRACKER
 
 
 // CSS for Header selection boxes
-#disruptiontrackerView--stationComboBox{
-	border-left: solid 1px $tiffany-blue !important;
-}
 #disruptiontrackerView--stationComboBox,
 #disruptiontrackerView--msnComboBox,
 #disruptiontrackerView--statusComboBox,
 #disruptiontrackerView--resolutionGroupBox{
     @extend %headerFilterBoxes;
 }
-
 
 #disruptiontrackerView--headerText-inner{
     color: $tiffany-blue;

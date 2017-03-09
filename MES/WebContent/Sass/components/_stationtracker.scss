@@ -94,11 +94,6 @@ TOOLBAR
     position: absolute;
 }
 
-#stationTrackerView--dateButton {
-    border-left: 1px solid #8db9ca;
-    margin: 0;
-}
-
 /********************
 WORK LIST POP OVER
 *********************/
@@ -241,11 +236,6 @@ TOOLBAR
     @extend %sapMPIText;
     margin: 20px 0 0 8px;
     position: absolute;
-}
-
-#stationTrackerView--dateButton {
-    border-left: 1px solid #8db9ca;
-    margin: 0;
 }
 
 
@@ -2575,20 +2565,12 @@ BOX MANAGEMENT
 	}
 }
 
-.grey2 {
-    background-color: #dddddd;
-}
-
 .grey {
     background-color: $cool-grey;
     &:hover {
         background-color: $cool-grey-hover;
         color: black;
     }
-}
-
-.trackerTextBlack {
-    color: #000;
 }
 
 .answeredBlockedExcalated {
@@ -3759,10 +3741,12 @@ FROM CUSTOM CSS
     color: orange;
 }
 
-.contentNoPad .sapMPanelContent {
-    padding: 0rem;
-    background-color: $teal-blue-hover;
-    border-bottom: 1px solid $white-two;
+.contentNoPad {
+    .sapMPanelContent {
+        padding: 0rem;
+        background-color: $teal-blue-hover;
+        border-bottom: 1px solid $white-two;
+    }
 }
 
 .overallProgresstitle {

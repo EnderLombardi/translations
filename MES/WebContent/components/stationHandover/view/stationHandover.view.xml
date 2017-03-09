@@ -12,7 +12,7 @@
 				<extension>
 
 					<m:Toolbar id="kpiHeaderToolbar"
-						class="classKpiheaderToolbar pageHeader kpiPageHeader contentNoPad">
+						class="pageHeader kpiPageHeader contentNoPad">
 						<m:Label text="{stationHandoverI18n>stationHandover}" id="headerText"
 							class="headerText sapUiSmallMarginBeginEnd" />
 

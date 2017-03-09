@@ -1,37 +1,7 @@
-
-/********************
-Tcalendar--kpiHeaderToolbar
-*********************/
-
-#calendar--kpiHeaderToolbar{
-    >label {
-            color: $tiffany-blue;
-		    text-shadow: none;
-		    padding: 0px 30px;
-    }
-    #calendar--calendardateButton {
-        margin-left: 5px;
-    }
-    #calendar--dateLabel {
-        padding: 18px 35px 17px 0px;
-	    color: white;
-        border-right: 1px solid #74d2e7;
-    }         
-}
-
-#calendar--teamAvaibility {
-    height: 100%;
-    line-height: 3rem;
-    border-radius: 0.125rem;
-    border-right: 1px solid $tiffany-blue;
-    margin-right: 0!important;
-}
-
 /********************
 TABLE
 *********************/
 .dhx_matrix_scell{
-
     &.folder {
         max-width:199px;
         .ylabelfolder {
@@ -41,10 +11,6 @@ TABLE
     &>div{
         padding-left: 10px !important;
     }
-}
-
-.trackerTextBlack{
-    color: #000;
 }
 
 #calendar--DatePicker-inner {
@@ -531,17 +497,6 @@ DATE PICKER
             }
             &:hover{
                 background-color: $petrol-20;
-            }
-        }
-    }
-}
-.classDatePickerButton{
-    color: $white-two;
-    text-shadow: none;
-    &.sapMBarChild{
-        &.sapMBtn{
-            &.sapMBtnBase{
-                margin: 0 auto;
             }
         }
     }

@@ -12,7 +12,6 @@ sap.ui.core.UIComponent.extend("airbus.mes.polypoly.Component", {
     metadata : {
         properties : {}
     },
-    //manifestUrl : "component.json",
 });
 
 airbus.mes.polypoly.Component.prototype.createContent = function() {

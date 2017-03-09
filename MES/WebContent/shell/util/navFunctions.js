@@ -124,18 +124,7 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.util.AssignmentManager.polypolyAffectation;
 
         if (!nav.getPage("polypolyPage")) {
-            oPolypolyPage = new sap.m.Page({
-                content: airbus.mes.polypoly.oView,
-                title: "POLYPOLY",
-                id: "polypolyPage",
-                customHeader: new sap.m.Bar({
-                    height: "3rem",
-                    design: 'SubHeader',
-                    contentLeft: [new sap.m.Label("polypolytitle").addStyleClass("headerText sapUiSmallMarginBeginEnd")],
-                }).addStyleClass("pageHeader contentNoPad"),
-            }).addStyleClass("classPolypolyPage");
-
-            nav.addPage(oPolypolyPage);
+            nav.addPage(airbus.mes.polypoly.oView);
         } else {
             oPolypolyPage = nav.getPage("polypolyPage");
             if (oPolypolyPage.getContent().length == 0) {
@@ -144,11 +133,11 @@ airbus.mes.shell.util.navFunctions = {
         }
 
         if (nav.getPreviousPage() == undefined) {
-            nav.to(oPolypolyPage);
+            nav.to(airbus.mes.polypoly.oView.getId());
         } else if (nav.getPreviousPage().getId() == "polypolyPage") {
             nav.back();
         } else {
-            nav.to(oPolypolyPage);
+            nav.to(airbus.mes.polypoly.oView.getId());
         }
 
         airbus.mes.polypoly.PolypolyManager.firstVisibleRow = 0;

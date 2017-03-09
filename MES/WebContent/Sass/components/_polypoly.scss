@@ -12,13 +12,6 @@ POLYPOLY
 	}
 }
 
-#polypolyPage{
-    #polypolytitle.headerText{
-        border-right: solid 1px $tiffany-blue !important;
-        padding: 16px 30px 16px 10px;
-    }
-}
-
 #polypoly--polypolyimg{
 	 border-left: 1px solid #8db9ca;
 }
@@ -353,13 +346,6 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
         .sapMTB{
             background: #d4f1f7;
             padding:0;
-        }
-    }
-    .sapUiTable{
-        &>.sapUiTableTbr{
-            &.sapUiTableMTbr{
-               // margin-bottom:10px;
-            }
         }
     }
     .sapUiIcon{

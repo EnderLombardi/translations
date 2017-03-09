@@ -5,6 +5,10 @@ LINETRACKER
 LineTracker Header
 ****************************/
 
+#idLinetracker--linetrackerDateButton {
+    opacity: 1;
+}
+
 #idLinetracker--linetrackerHeaderKPI-CollapsedImg{
     visibility: hidden;
 }
@@ -14,13 +18,6 @@ LineTracker Header
             border-bottom: none;
         }
     }
-}
-
-.headerIcons{
-    font-family: 'SAP-icons';
-    color: #FFFFFF;
-    border-left: solid 1px $tiffany-blue !important;
-    padding: 12px 0px 12px 25px;
 }
 
 #idLinetracker--linetracker_dateLabel{
@@ -38,18 +35,10 @@ LineTracker Header
     font-size: 1.1rem !important;
 }
 
-.headerIcons{
-    color: #FFFFFF;
-    font-size: 1.5rem;
-}
-
 #idLinetracker--hideKPI-content, #idLinetracker--hideKPI-img{
     color: $tiffany-blue !important;
     text-shadow: none;
 }
-#idLinetracker .sapMBtnTransparent > .sapMBtnIcon {
-    color: #0D5D76 !important;
-   }
 
 /************************
 Linetracker View (Main Table)
@@ -709,18 +698,8 @@ KPI Header Content
   vertical-align: top !important;
   max-height: 42px; }
 
-.kpiBody {
-  height: 139px; }
-
 .kpiBodyWithoutMargin {
   height: 144px; }
-
-.kpiDeltaMicroChart {
-  margin: 10px 0;
-  height: 119px; }
-
-.marginTopKpiBody {
-  margin-top: 5px; }
 
 .openDisruptionTotal {
   justify-content: inherit !important;
