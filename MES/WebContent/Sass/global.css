@@ -33,6 +33,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 /*********************
 STATION TRACKER
 *********************/
+<<<<<<< Upstream, based on origin/MESv1.5
 .trackerBox .fa { position: relative; z-index: 1; line-height: 24px; color: #ffffff; overflow: hidden; }
 
 .trackerBox .trackerText, .trackerBox .trackerTextBlock { padding-left: 10px; position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; }
@@ -110,6 +111,85 @@ STATION TRACKER
 #stationTrackerView--buttonViewMode .sapMSegBBtnFocusable:hover:not(.sapMSegBBtnSel), #calendar--buttonViewMode .sapMSegBBtnFocusable:hover:not(.sapMSegBBtnSel) { background-color: rgba(0, 86, 112, 0.2); }
 
 #stationTrackerView--buttonViewMode .sapMSegBBtnSel, #calendar--buttonViewMode .sapMSegBBtnSel { background-color: #74d2e7; color: white; }
+=======
+.classWorklistPopover .sapMPIText3 .trackerBox .fa, .trackerBox .fa { position: relative; z-index: 1; line-height: 24px; color: #ffffff; overflow: hidden; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .trackerText, .classWorklistPopover .sapMPIText3 .trackerBox .trackerTextBlock, .trackerBox .trackerText, .trackerBox .trackerTextBlock { padding-left: 10px; position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; }
+
+.sapMPIText1, .sapMPIText2, .classWorklistPopover .sapMPIText3 .sapMPIText1, .classWorklistPopover .sapMPIText3 .sapMPIText2 { float: left; font-family: Arial, Helvetica, sans-serif; line-height: normal !important; text-overflow: clip; display: inline-block; overflow: hidden; height: 100%; line-height: 1.2em; color: #ffffff; font-size: 100%; word-break: break-all; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--kpi_header .sapMPanelExpandableIcon, #stationTrackerView--kpi_header .sapMPanelExpandableIcon { -webkit-transform: translateY(-50%) rotate(180deg); -ms-transform: translateY(-50%) rotate(180deg); transform: translateY(-50%) rotate(180deg); }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--kpi_header .sapMPanelExpandableIconExpanded, #stationTrackerView--kpi_header .sapMPanelExpandableIconExpanded { -webkit-transform: translateY(-50%) rotate(90deg); -ms-transform: translateY(-50%) rotate(90deg); transform: translateY(-50%) rotate(90deg); }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--DatePicker-inner, #stationTrackerView--DatePicker-inner, #calendar--DatePicker-inner { border: none; background-color: transparent; color: #F5F5F5; font-size: 16px; text-transform: uppercase; padding-left: 2.375rem; padding-right: 0; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--selectShift, .classWorklistPopover .sapMPIText3 #stationTrackerView--selectUser, #stationTrackerView--selectShift, #stationTrackerView--selectUser { color: #F5F5F5; font-size: 16px; width: auto; height: 3rem; margin: 0; max-width: 100%; line-height: 3rem; text-transform: capitalize; margin-right: 0px !important; border-right: solid 1px #74d2e7 !important; background: #0f2d65 !important; border: 0; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker, #stationTrackerView--stationtracker, #calendar--calendar { width: auto; top: 0; bottom: 0; left: 0; right: 0; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .customHour, #stationTrackerView--stationtracker .customHour, #calendar--calendar .customHour { text-align: left; text-indent: -15px; border-left: none !important; background-color: transparent !important; color: #5e696e; font-size: 14px; line-height: 25px; }
+
+#calendar--calendar .customTakt { text-align: left; text-indent: -30px; border-left: none !important; background-color: transparent !important; color: #5e696e; font-size: 14px; line-height: 25px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .customHour:before, #stationTrackerView--stationtracker .customHour:before, #calendar--calendar .customTakt:before, #calendar--calendar .customHour:before { content: ''; display: block; position: absolute; bottom: 0; width: 1px; height: 7px; background-color: #5e696e; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_next_button, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_prev_button, #stationTrackerView--stationtracker .dhx_cal_next_button, #stationTrackerView--stationtracker .dhx_cal_prev_button, #calendar--calendar .dhx_cal_next_button, #calendar--calendar .dhx_cal_prev_button { position: absolute; width: auto; color: #52aec8; text-align: center; display: inline-block; font: normal normal normal 30px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: transparent; font-size: 30px; float: none !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_matrix_scell.folder, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_matrix_scell.item, #stationTrackerView--stationtracker .dhx_matrix_scell.folder, #stationTrackerView--stationtracker .dhx_matrix_scell.item, #calendar--calendar .dhx_matrix_scell.folder, #calendar--calendar .dhx_matrix_scell.item { border-right: solid 3px white; cursor: pointer; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-plus, #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-plus, #calendar--calendar .dhx_row_folder .dhx_scell_name .fa-plus { position: absolute; left: 0; margin-left: 10px; margin-right: 10px; color: #0F5F78; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-down, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-right, #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-down, #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-right, #calendar--calendar .dhx_row_folder .dhx_scell_name .fa-chevron-down, #calendar--calendar .dhx_row_folder .dhx_scell_name .fa-chevron-right { position: absolute; right: 0; margin-left: 10px; margin-right: 10px; color: #0F5F78; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.begin_shifht, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.end_shifht, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.taktMarker, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.begin_shifht, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.end_shifht, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.taktMarker, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.begin_shifht, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.end_shifht, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.taktMarker, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.begin_shifht, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.end_shifht, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.taktMarker, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.begin_shifht, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.end_shifht, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.taktMarker, #calendar--calendar .dhx_row_item .dhx_marked_timespan.begin_shifht, #calendar--calendar .dhx_row_item .dhx_marked_timespan.end_shifht, #calendar--calendar .dhx_row_item .dhx_marked_timespan.taktMarker { width: 3px !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .ylabelEditIcon, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .ylabelUserImage, #stationTrackerView--stationtracker .ylabelEditIcon, #stationTrackerView--stationtracker .ylabelUserImage, #calendar--calendar .ylabelEditIcon, #calendar--calendar .ylabelUserImage { width: 30px; height: 30px; line-height: 30px; vertical-align: middle; font-size: 16px; text-align: center; color: #0D5D76; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .ylabelUser, #stationTrackerView--stationtracker .ylabelUser, #calendar--calendar .ylabelUser { vertical-align: middle; margin-left: 10px; color: #0D5D76; font-size: 14px; font-weight: bold; }
+
+.classWorklistPopover .sapMPIText3 .yHrLabel, .yHrLabel { float: right; margin-right: 5px; font-weight: normal; font-style: normal; font-stretch: normal; text-align: right; color: #8db9ca; line-height: 25px; max-width: 25%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+
+.classWorklistPopover .sapMPIText3 .ylabelUser, .ylabelUser { max-width: 75px; white-space: nowrap; position: relative; display: inline-block; overflow: hidden; text-overflow: ellipsis; line-height: 25px; font-size: 18px; font-weight: bold; font-style: normal; font-stretch: normal; color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .tracker-item-initial, #stationTrackerView--stationtracker .tracker-item-initial, #calendar--calendar .tracker-item-initial { color: #BBBCBC; padding-left: 10px; width: 100%; height: 100%; position: absolute; z-index: 1; left: 0px; right: 0; top: 0; bottom: 0; box-sizing: border-box; text-overflow: ellipsis; border: solid 2px #BBBCBC; background-color: #F5F5F5; overflow: hidden; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .comboBoxStyle, #stationTrackerView--toolbarstationtracker .comboBoxStyle, #calendar--toolbarcalendar .comboBoxStyle { width: auto; max-width: 100%; background-color: transparent; margin: 0 !important; border-right: 1px solid #8db9ca; height: 3rem; }
+
+.classWorklistPopover .sapMPIText3 .kpiPageHeader, .kpiPageHeader, #resourcePool header.sapMSubHeader-CTX, .classPolypolyPage header { -webkit-box-shadow: 0px 2px 15px -5px #0F2D65; -moz-box-shadow: 0px 2px 15px -5px #0F2D65; box-shadow: 0px 2px 15px -5px #0F2D65; border: none; position: relative; z-index: 10; margin-top: 0.6rem; }
+
+.classWorklistPopover .sapMPIText3 .tooltip, .tooltip { visibility: hidden; position: absolute; width: 120px; background-color: #555; color: #fff; text-align: center; padding: 5px 0; border-radius: 6px; z-index: 1; bottom: 115%; left: 50%; margin-left: -60px; }
+
+.classWorklistPopover .sapMPIText3 .dhx_scell_expand, .dhx_scell_expand { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+.classWorklistPopover .sapMPIText3 .rond, .rond { color: white; display: inline-table; width: 20px !important; height: 20px !important; background: #3498db; -webkit-border-radius: 100px; -moz-border-radius: 100px; -o-border-radius: 100px; border-radius: 100px; float: left !important; }
+
+.dhx_matrix_scell.folder .ylabelfolder, .classWorklistPopover .sapMPIText3 .dhx_matrix_scell.folder .ylabelfolder { padding: 0 30px; margin: 0; font-size: 12px; color: #0F5F78; font-weight: normal; box-sizing: border-box; width: 100%; display: inline-block; position: relative; overflow: hidden !important; text-overflow: ellipsis; white-space: nowrap; }
+
+.classWorklistPopover .fa.oswIcon2, .classWorklistPopover .sapMPIText3 .classWorklistPopover .fa.oswIcon2 { position: relative; z-index: 1; line-height: 20px; height: auto; padding-left: 5px; padding-right: 5px; border-radius: 10px; float: right; top: 0px; margin-left: 0px; margin-right: 0px; color: rgba(0, 86, 112, 0.94); overflow: hidden; background-color: #fbec00; }
+
+.classWorklistPopover .sapMPIText3 .dhx_cal_event_line .trackerBoxtooltiptext, .dhx_cal_event_line .trackerBoxtooltiptext { display: none; min-width: 430px; padding: 5px 2px; border-radius: 6px; position: absolute; z-index: 3; text-align: left; }
+
+.classWorklistPopover .sapMPIText3 .dhx_cal_event_line .trackerBoxtooltiptext > .trackerText, .dhx_cal_event_line .trackerBoxtooltiptext > .trackerText { padding-left: 10px; }
+
+.classWorklistPopover .sapMPIText3 .overallProgresstitle span, .overallProgresstitle span { margin-top: -25px; float: left; font-family: Arial, Helvetica, sans-serif; line-height: normal !important; text-overflow: clip; display: inline-block; overflow: hidden; height: 1.2em; line-height: 1.2em; color: #004990; padding-left: 0.5rem; font-size: 100%; word-break: break-all; }
+
+.classWorklistPopover .sapMPIText3 .triangle, .triangle { width: 0; height: 0; border-style: solid; border-width: 10px 5px 0 5px; border-color: #000000 transparent transparent transparent; float: right; margin: 6px; }
+
+.classWorklistPopover .sapMPIText3 #hammer_swipe, #hammer_swipe { width: 100%; height: 5%; border: 1px dashed grey; bottom: 0px; background-position: top center; background-repeat: no-repeat; background-size: contain; }
+
+.classWorklistPopover .sapMPIText3 .Save_reschedule, .Save_reschedule { color: #747473; border: 1px solid #CECECE; background: 0 0; text-decoration: none; height: 30px; line-height: 30px; text-align: center; width: auto; font-size: 12px; font-weight: 700; font-family: arial; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+
+.classWorklistPopover .sapMPIText3 .rescheduleLineBtn, .classWorklistPopover .sapMPIText3 .rescheduleAllBtn, .rescheduleLineBtn, .rescheduleAllBtn { clear: both; position: absolute; z-index: 999; background: #ee373d; color: white; font-size: 12px; font-weight: 700; font-family: arial; overflow: hidden; -webkit-transition: width 0.3s ease-in-out; -moz-transition: width 0.3s ease-in-out; transition: width 0.3s ease-in-out; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #calendar--buttonViewMode .sapMSegBBtnFocusable, .classWorklistPopover .sapMPIText3 #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #calendar--buttonViewMode .sapMSegBBtnDis { height: 3rem; border: none; border-right: 1px solid #8db9ca; background-color: transparent; color: #0D5D76; text-transform: uppercase; line-height: 3rem; min-width: 75px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--buttonViewMode, #stationTrackerView--buttonViewMode, #calendar--buttonViewMode { height: 3rem; margin: 0; }
+
+#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable:hover:not(.sapMSegBBtnSel), #calendar--buttonViewMode .sapMSegBBtnFocusable:hover:not(.sapMSegBBtnSel) { background-color: rgba(0, 86, 112, 0.2); }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--buttonViewMode .sapMSegBBtnSel, #stationTrackerView--buttonViewMode .sapMSegBBtnSel, #calendar--buttonViewMode .sapMSegBBtnSel { background-color: #74d2e7; color: white; }
+>>>>>>> bcf554b [stationTracker] color box
 
 #stationTrackerView--buttonViewMode .sapMSegBBtnSel:hover, #calendar--buttonViewMode .sapMSegBBtnSel:hover { background-color: #0085ad; }
 
@@ -156,7 +236,11 @@ TOOLBAR
 *********************/
 #mes .sapMPopover .sapMBtnIcon { color: rgba(0, 86, 112, 0.94); }
 
+<<<<<<< Upstream, based on origin/MESv1.5
 .sapMPIText1 { padding: 4px 0 0 0px; position: absolute; height: 45%; width: 100% !important; }
+=======
+.sapMPIText1 { padding: 4px 0 0 8px; position: absolute; height: 45%; width: 100% !important; }
+>>>>>>> bcf554b [stationTracker] color box
 
 .sapMPIText2 { margin: 20px 0 0 8px; position: absolute; }
 
@@ -175,6 +259,7 @@ WORK LIST POP OVER
 
 .classWorklistPopover .fa.dandelion { color: #fbec00; padding-right: 6px; }
 
+<<<<<<< Upstream, based on origin/MESv1.5
 .classWorklistPopover .fa.oswIcon2 { padding-right: 6px; }
 
 .classWorklistPopover .fa.oswIcon2 b { font-family: arial; }
@@ -186,6 +271,829 @@ WORK LIST POP OVER
 .classWorklistPopover .fa.fa-ban.stopIcon.white-two { color: #ffffff; }
 
 .classWorklistPopover .sapMPIText3 { position: absolute; display: block; right: 0px; height: 20px; margin-right: 6px; top: 50%; margin-top: calc(-20px/2); width: auto; }
+=======
+.classWorklistPopover .fa.oswIcon2 { border: 1px solid; padding-right: 6px; }
+
+.classWorklistPopover .fa.oswIcon2 b { font-family: arial; }
+
+.classWorklistPopover .fa.fa-exclamation-triangle.triangleIcon.petrol { color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .fa.stopIcon { color: #e4002b; }
+
+.classWorklistPopover .fa.stopIcon.white-two { color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 { position: absolute; /************************************
+Défilement text tooltip
+************************************/ /********************
+TABLE
+*********************/ /********************
+TOOLBAR
+*********************/ /********************
+WORK LIST POP OVER
+*********************/ /********************
+SCHEDULAR TASK STYLE
+*********************/ /********************
+BOX MANAGEMENT
+*********************/ /***********************
+KPI HEADER
+************************/ /******************************************
+STATIONTRACKERVIEW ID AND DHX AND CONTENT
+******************************************/ /***********************
+WORKLIST
+************************/ /* Reschedule one line button */ /* Reschedule all line button */ /***********************
+TASK ADHERENCE
+************************/ /*************
+ARE CHART
+**************/ /*******************************
+SHIFT STAFFING
+********************************/ /***********************************
+STATION TRACKER TOOLBAR
+************************************/ /********************************
+POP UP POLYPOLY
+*********************************/ /**********************
+DATE PICKER
+***********************/ /************************
+PRODUCTION GROUP POPOVER
+*************************/ /****************************
+TOOLTIP TEXT
+****************************/ /****************************
+FROM CUSTOM CSS
+*****************************/ /************************
+OTHER
+*************************/ /* oswPopover */ /*********
+reschedule
+**********/ display: block; right: 0px; height: 20px; margin-right: 6px; top: 50%; margin-top: calc(-20px/2); width: auto; }
+
+@-webkit-keyframes marqueelike { 0%, 100% { margin-left: 0; }
+  99.99% { margin-left: -100%; } }
+
+@-moz-keyframes marqueelike { 0%, 100% { margin-left: 0; }
+  99.99% { margin-left: -100%; } }
+
+@-o-keyframes marqueelike { 0%, 100% { margin-left: 0; }
+  99.99% { margin-left: -100%; } }
+
+@-ms-keyframes marqueelike { .classWorklistPopover .sapMPIText3 0%, .classWorklistPopover .sapMPIText3 100% { margin-left: 0; }
+  .classWorklistPopover .sapMPIText3 99.99% { margin-left: -100%; } }
+
+@keyframes marqueelike { 0%, 100% { margin-left: 0; }
+  99.99% { margin-left: -100%; } }
+
+.classWorklistPopover .sapMPIText3 .dhx_matrix_scell.folder { max-width: 199px; }
+
+.classWorklistPopover .sapMPIText3 .dhx_matrix_scell > div { padding-left: 10px !important; }
+
+.classWorklistPopover .sapMPIText3 #mes .sapMPopover .sapMBtnIcon { color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .sapMPIText3 .sapMPIText1 { padding: 4px 0 0 8px; position: absolute; height: 45%; width: 100% !important; }
+
+.classWorklistPopover .sapMPIText3 .sapMPIText2 { margin: 20px 0 0 8px; position: absolute; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--dateButton { border-left: 1px solid #8db9ca; margin: 0; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover { width: 60%; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover .fa { position: relative; z-index: 1; line-height: 20px; height: 20px; color: #ffffff; overflow: hidden; padding-right: 6px; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover .fa.rightIcon { float: right; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover .fa.rightIcon.petrol { color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover .fa.dandelion { color: #fbec00; padding-right: 6px; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover .fa.oswIcon2 { padding-right: 6px; border: 1px solid; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover .fa.oswIcon2 b { font-family: arial; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover .fa.fa-exclamation-triangle.triangleIcon.petrol { color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover .fa.stopIcon { color: #e4002b; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover .fa.stopIcon.white-two { color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover .sapMPIText3 { position: absolute; display: block; right: 0px; height: 20px; margin-right: 6px; top: 50%; margin-top: calc(-20px/2); width: auto; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover header.sapMIBar.sapMHeader-CTX { background: #d4f1f7; box-shadow: 0 0 5px #333; z-index: 1000; }
+
+.classWorklistPopover .sapMPIText3 .classWorklistPopover header.sapMIBar.sapMHeader-CTX label { color: #434343; font-size: 1rem; }
+
+.classWorklistPopover .sapMPIText3 #mes .sapMDialog:not(.theme-disabled) .classWorklistPopoverHeader { box-shadow: 0 0 5px #333; overflow: visible; background-color: #d4f1f7; color: #434343; margin: -1rem -1rem 1rem -1rem; padding: 1rem; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox { width: 100%; height: inherit; position: absolute; z-index: 0; line-height: 23px; left: 0px; overflow: hidden; text-overflow: ellipsis; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .trackerText { max-width: calc(100% - 20px); white-space: nowrap; color: white; overflow: hidden; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .trackerTextBlock { white-space: nowrap; color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .colorProgress { height: inherit; position: absolute; z-index: 0; left: 0px; overflow: hidden; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .openBlockedEscalated { height: inherit; width: 100%; background-color: #e4002b; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .openBlocked { height: inherit; width: 100%; background-color: #fbec00; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .fa { height: 24px; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .fa.rightIcon { padding-right: 6px; float: right; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .fa.rightIcon.petrol { color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .fa.triangleIcon { padding-left: 6px; float: left; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .fa.stopIcon { padding-left: 6px; color: #e4002b; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .fa.stopIcon.white-two { color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .fa.stopIcon.left { float: left; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .fa.oswIcon { position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; overflow: hidden; line-height: 14px; height: auto; float: left; border: 1px solid; margin-left: 6px; margin-bottom: 10px; min-width: 45px; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .fa.oswIcon b { font-family: arial; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .fa.oswIcon.cherry-red { color: #e4002b; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .dandelion-back { background-color: #fbec00; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .teal-blue { color: #0085ad; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .petrol { color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .petrol-back { background-color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .cherry-red-back { background-color: #e4002b; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .dark-lime-green-back { background-color: #84bd00; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .teal-blue-back { background-color: #0085ad; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .dandelion { color: #fbec00; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .yellow { background-color: #fbec00; color: rgba(0, 86, 112, 0.94); }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .green { background-color: #049372; color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .blue { background-color: #0085ad; color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .pink { background-color: #E08283; color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .whiteColor { color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox .whiteColor :hover { color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox:hover .dark-lime-green-back { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #536f12 !important; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox:hover .teal-blue-back { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #0f2d65 !important; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox:hover .cherry-red-back { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #9e001e !important; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox:hover .openBlockedEscalated { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #9e001e !important; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox:hover .openBlocked { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #ffbf00 !important; }
+
+.classWorklistPopover .sapMPIText3 .trackerBox:hover .answeredBlocked { background: repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px); background-size: 56px 56px; -webkit-animation: slide 20s infinite linear forwards; -moz-animation: slide 20s infinite linear forwards; animation: slide 20s infinite linear forwards; -webkit-transition: background 0.2s ease-in-out; -moz-transition: background 0.2s ease-in-out; transition: background 0.2s ease-in-out; }
+
+@-webkit-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@-moz-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@-o-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+.classWorklistPopover .sapMPIText3 .trackerBox:hover .answeredBlockedExcalated { background: repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px); background-size: 56px 56px; -webkit-animation: slide 20s infinite linear forwards; -moz-animation: slide 20s infinite linear forwards; animation: slide 20s infinite linear forwards; }
+
+@-webkit-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@-moz-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@-o-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+.classWorklistPopover .sapMPIText3 .trackerBox:hover .solvedDisruption { height: inherit; width: 100%; background: repeating-linear-gradient(135deg, #37b36c, #37b36c 10px, #16dc6b 10px, #16dc6b 20px); background-size: 56px 56px; -webkit-animation: slide 20s infinite linear forwards; -moz-animation: slide 20s infinite linear forwards; animation: slide 20s infinite linear forwards; }
+
+@-webkit-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@-moz-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@-o-keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+@keyframes slide { 0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; } }
+
+.classWorklistPopover .sapMPIText3 .grey2 { background-color: #dddddd; }
+
+.classWorklistPopover .sapMPIText3 .grey { background-color: #97999b; }
+
+.classWorklistPopover .sapMPIText3 .grey:hover { background-color: #767879; color: black; }
+
+.classWorklistPopover .sapMPIText3 .trackerTextBlack { color: #000; }
+
+.classWorklistPopover .sapMPIText3 .answeredBlockedExcalated { height: inherit; width: 100%; background: repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px); background-position: 14px 0; background-size: 56px 56px; }
+
+.classWorklistPopover .sapMPIText3 .answeredBlocked { height: inherit; width: 100%; background: repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px); background-position: 14px 0; background-size: 56px 56px; }
+
+.classWorklistPopover .sapMPIText3 .solvedDisruption { height: inherit; width: 100%; background: repeating-linear-gradient(135deg, #37b36c, #37b36c 10px, #16dc6b 10px, #16dc6b 20px); background-position: 14px 0; background-size: 56px 56px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--kpi_header .hiddenRefBar { display: none; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--kpi_header .sapMPanelWrappingDivTb { border-bottom: none; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--kpiHeaderToolbar { margin-left: 0; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--kpiHeaderToolbar .sapMBtnContent, .classWorklistPopover .sapMPIText3 #stationTrackerView--kpiHeaderToolbar .sapMSltLabel, .classWorklistPopover .sapMPIText3 #stationTrackerView--kpiHeaderToolbar .sapMInputBaseInner, .classWorklistPopover .sapMPIText3 #stationTrackerView--kpiHeaderToolbar .sapMSltArrow { color: #F5F5F5; font-size: 12px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--kpi_header-CollapsedImg { right: 0; color: #74d2e7; display: none; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--ProductionButton, .classWorklistPopover .sapMPIText3 #stationTrackerView--DisruptionButton { border-right: solid 1px #74d2e7; margin-right: 0; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--DatePicker { border-right: solid 1px #74d2e7; margin-right: 0; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--DatePicker .sapMInputValHelp { right: auto; left: 0; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--DatePicker .sapMInputValHelpInner { color: #F5F5F5; font-size: 24px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--selectShift { border-left: solid 1px #74d2e7 !important; opacity: 1; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--selectShift.sapMSltDisabled .sapMSltLabel, .classWorklistPopover .sapMPIText3 #stationTrackerView--selectShift.sapMSltDisabled .sapMSltArrow { opacity: 0.5; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--selectUser:hover > label { background-color: rgba(222, 222, 222, 0.5); }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--selectUser #stationTrackerView--selectUser-label, .classWorklistPopover .sapMPIText3 #stationTrackerView--selectUser #stationTrackerView--selectUser-arrow { height: calc(100% - 8px); top: 4px; line-height: 2.6rem; border-radius: 0.125rem; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--selectShift-label, .classWorklistPopover .sapMPIText3 #stationTrackerView--selectShift-arrow { top: 0; bottom: 0; line-height: 3rem; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner, .classWorklistPopover .sapMPIText3 #stationTrackerView--selectUser:hover, .classWorklistPopover .sapMPIText3 #stationTrackerView--DisruptionButton-inner:hover, .classWorklistPopover .sapMPIText3 #stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner { background-color: rgba(222, 222, 222, 0.5); }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--hideKPI > div { width: 125px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--TeamButton-img, .classWorklistPopover .sapMPIText3 #stationTrackerView--TeamButton-content, .classWorklistPopover .sapMPIText3 #stationTrackerView--hideKPI-img, .classWorklistPopover .sapMPIText3 #stationTrackerView--hideKPI-content { color: #74d2e7 !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView .dhx_matrix_scell div { overflow: visible; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .offtime { background-image: url("../components/stationtracker/css/img/fat_lines.png"); }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_data { overflow-y: scroll; bottom: 0; height: auto !important; border-top: solid 1px #979797; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_header { border: none; width: 100% !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_next_button { right: 0px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_prev_button { right: 30px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_next_button:before { content: "\f105"; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_prev_button:before { content: "\f104"; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_matrix_scell.folder { background-color: #d5f5f8; border-bottom: solid 1px #EAFCFE; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_matrix_scell.item { border-bottom: solid 1px #d5f5f8; color: #0D5D76; background-color: #EAFBFD; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_matrix_scell.item.initial { cursor: default; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_matrix_cell { background-color: #F3F5F6; border-bottom: 1px solid #dddddd; border-right: 1px solid #dddddd; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_matrix_cell div, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_matrix_scell div { text-align: left; white-space: nowrap; margin-top: 2px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_event { border: none; overflow: visible; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_event.late div { border-color: Red; border-width: 2px; min-width: 40px !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_event.min-width div { min-width: 40px !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_event.lateI div { border-color: red; border-width: 2px; background-color: #969696; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_event_line { border: none; overflow: visible; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_event_line.late { border-color: Red; border-width: 2px; min-width: 40px !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_event_line.min-width { min-width: 40px !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_event_line.lateI { border-color: red; border-width: 2px; background-color: #969696; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_cal_event_line .dhx_event_resize { background-image: none; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_scell_name { float: none; text-align: left; position: relative; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_matrix_scell.folder { background-color: white; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.begin_shifht { background-color: blue; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.end_shifht { background-color: #0f2d65; margin-left: -5px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.taktMarker { background-color: green; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.shiftCss, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.offtime { display: none; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.dhx_matrix_now_time { min-height: 24px; border-left-color: purple; opacity: 1; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_matrix_cell, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.shiftCss { border-right: none; border-bottom: none; background-color: #ECEEEF !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_folder .folderAxisColor { background-color: #ECEEEF !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.begin_shifht { background-color: blue; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.end_shifht { background-color: #0f2d65; margin-left: -5px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.taktMarker { background-color: green; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_row_item .dhx_scell_name { white-space: nowrap; padding: 0px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_data_table.folder td { border-bottom: 2px solid #dddddd; background-color: #ECEEEF; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_data_table .dhx_matrix_cell { background-color: white; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_data_table { overflow: visible; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .dhx_matrix_line { overflow: visible; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .yText { width: 100px; float: left; height: 40px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .avlLine { overflow: hidden; text-overflow: ellipsis; max-width: 120px; white-space: nowrap; white-space: nowrap; color: #0D5D76; vertical-align: middle; text-overflow: ellipsis; display: inline-block; overflow: hidden; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .ylabel { white-space: nowrap; color: #0D5D76; vertical-align: middle; text-overflow: ellipsis; display: inline-block; overflow: hidden; max-width: 80px; height: 15px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .ylabelEditIcon { float: left; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .ylabelUserImage { background-color: #d5f5f8; border-radius: 999px; float: left; margin-right: 10px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .ylabelUser { margin-left: 0px; max-width: 130px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .yMoreLabel { position: absolute; right: 2px; color: #8db9ca; top: 2px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .yMoreLabel .fa-pencil { width: 30px; text-align: center; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .ylabelAvlLineSection { display: inline-block; overflow: hidden; text-overflow: ellipsis; max-width: 75px; margin-left: 10px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .tracker-item-initial .fa-exclamation-triangle { color: #BBBCBC !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .shiftCss { background-color: #DDDDDD; opacity: 0.8; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .operationCP { background-color: #97999b; border: 2px solid #0D2C63; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .operationCP:hover { background-color: #767879; color: black; border: 2px solid #74d2e7; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker .customTable table tr th, .classWorklistPopover .sapMPIText3 #stationTrackerView--stationtracker td { border-left: none !important; }
+
+.classWorklistPopover .sapMPIText3 .dhx_event_resize_start { background-image: none; }
+
+.classWorklistPopover .sapMPIText3 .dhx_event_resize_end { background-image: none; }
+
+.classWorklistPopover .sapMPIText3 div#iconTabBar--header { background-color: #E0F2F4; }
+
+.classWorklistPopover .sapMPIText3 .dhx_cal_event_line:hover .trackerBoxtooltiptext { display: block !important; }
+
+.classWorklistPopover .sapMPIText3 .dhx_cal_event_line:hover .tooltipTextTrackerBox1 { z-index: 99; top: 50%; left: 50%; transform: translate(-50%, -130%); position: absolute; display: block; overflow: hidden; table-layout: fixed; width: 200px; border-radius: 5px; }
+
+.classWorklistPopover .sapMPIText3 .dhx_cal_event_line:hover .tooltipTextTrackerBox2 { display: block; -webkit-animation: linear marqueelike 10s infinite; -moz-animation: linear marqueelike 10s infinite; -o-animation: linear marqueelike 10s infinite; -ms-animation: linear marqueelike 10s infinite; animation: linear marqueelike 10s infinite; margin-left: -100%; padding: 0 5px; text-align: left; height: 20px; background-color: black; color: #fff !important; }
+
+.classWorklistPopover .sapMPIText3 .dhx_cal_event_line:hover .tooltipTextTrackerBox2:after { content: attr(data-text); position: absolute; white-space: nowrap; padding-left: 10px; }
+
+.classWorklistPopover .sapMPIText3 .dhx_cal_event_line:hover div { background: none; }
+
+.classWorklistPopover .sapMPIText3 .dhx_cal_event_line div:not(.trackerBox) { overflow: visible; }
+
+.classWorklistPopover .sapMPIText3 .test { background: red !important; }
+
+.classWorklistPopover .sapMPIText3 .ganttBar { height: 2rem !important; }
+
+.classWorklistPopover .sapMPIText3 .sapMILIDiv { text-align: left !important; margin-left: 0px !important; }
+
+.classWorklistPopover .sapMPIText3 .sapUiRespGrid.sapUiRespGridHSpace1 > div { margin-bottom: 0px !important; }
+
+.classWorklistPopover .sapMPIText3 .sapUiRespGrid.sapUiRespGridVSpace1 > div { margin-bottom: 0px !important; }
+
+.classWorklistPopover .sapMPIText3 button.menuBtn { margin-right: 10px; margin-left: 10px; }
+
+.classWorklistPopover .sapMPIText3 button.textRed div.sapMBtnInner { color: #FF0000; font-weight: bold; }
+
+.classWorklistPopover .sapMPIText3 .allowWrapping { flex-wrap: wrap; }
+
+.classWorklistPopover .sapMPIText3 label.teamLabel { font-size: 2rem; font-weight: bold; }
+
+.classWorklistPopover .sapMPIText3 .ComboBoxProdGroup { width: 50% !important; }
+
+.classWorklistPopover .sapMPIText3 .ComboBoxInitial { width: 18% !important; }
+
+.classWorklistPopover .sapMPIText3 .ComboBoxProdGroupMobile { width: 90% !important; }
+
+.classWorklistPopover .sapMPIText3 .setFullResponsiveWidth { width: 100% !important; }
+
+.classWorklistPopover .sapMPIText3 .topMargin { margin-top: 1.2em; }
+
+.classWorklistPopover .sapMPIText3 .shrinkArea { padding: 0rem !important; }
+
+.classWorklistPopover .sapMPIText3 .sapUiFormM .sapUiFormResGridCont { padding: 0rem !important; }
+
+.classWorklistPopover .sapMPIText3 .fullWidth { width: 100%; }
+
+.classWorklistPopover .sapMPIText3 .homeHeaderBox { background-color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 .DialogWidth { width: 50%; }
+
+.classWorklistPopover .sapMPIText3 .noBorderToolbar { background-color: #ffffff !important; box-shadow: none !important; border: 0px !important; border-bottom: 0px !important; }
+
+.classWorklistPopover .sapMPIText3 .customTileBox { padding: 0.5rem; height: 10.5rem; }
+
+.classWorklistPopover .sapMPIText3 .textInfoGreen { color: green; }
+
+.classWorklistPopover .sapMPIText3 .textInfoRed { color: red; }
+
+.classWorklistPopover .sapMPIText3 .rescheduleLineBtn { width: 5px; height: 105px; top: -5px; left: -10px; }
+
+.classWorklistPopover .sapMPIText3 .rescheduleLineBtn:hover { width: 200px; /*@include transition(width , 0.3s);*/ }
+
+.classWorklistPopover .sapMPIText3 .rescheduleLineBtn .rescheduleLineLabelBtn { padding-left: 40px; line-height: 52px; }
+
+.classWorklistPopover .sapMPIText3 .rescheduleLineBtn i { margin-left: 10px; width: 40px; height: auto; }
+
+.classWorklistPopover .sapMPIText3 .rescheduleAllBtn { width: 5px; height: 37px; top: 0; /*left: -10px;*/ }
+
+.classWorklistPopover .sapMPIText3 .rescheduleAllBtn:hover { width: 200px; }
+
+.classWorklistPopover .sapMPIText3 .rescheduleAllBtn .rescheduleAllLabelBtn { padding-left: 40px; line-height: 40px; }
+
+.classWorklistPopover .sapMPIText3 .rescheduleAllBtn i { margin-left: 10px; width: 40px; height: auto; }
+
+.classWorklistPopover .sapMPIText3 .taktAdherenceTrend { height: 100%; padding-right: 0 !important; }
+
+.classWorklistPopover .sapMPIText3 .taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > div { margin: 0 0.5rem 0 0; line-height: 1rem; }
+
+.classWorklistPopover .sapMPIText3 .taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > .sapUiRespGridSpanL4 { margin: 0; width: auto; }
+
+.classWorklistPopover .sapMPIText3 .classKpiHeaderContent .taktAdherenceTrend .TrendGree { margin-bottom: 0.5rem; }
+
+.classWorklistPopover .sapMPIText3 .classKpiHeaderContent .taktAdherenceTrend .TrendRed { margin-bottom: 0.5rem; }
+
+.classWorklistPopover .sapMPIText3 .classKpiHeaderContent .taktAdherenceTrend .taktKpiName.takt_kpi_trend { font-size: 1vw; }
+
+.classWorklistPopover .sapMPIText3 .classKpiHeaderContent .taktKpiName { height: 25px; text-align: right !important; font-size: 0.85vw; vertical-align: middle; display: baseline; }
+
+.classWorklistPopover .sapMPIText3 .classKpiHeaderContent .taktKpiValue { height: 25px; display: inline-block; vertical-align: baseline; }
+
+.classWorklistPopover .sapMPIText3 .classKpiHeaderContent .KPITaktChartBlueText { color: #74d2e7; }
+
+.classWorklistPopover .sapMPIText3 .classKpiHeaderContent .KPITaktChartRightText { text-align: right !important; width: 100%; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_adherence_value { font-size: 15px; }
+
+.classWorklistPopover .sapMPIText3 svg#stationTrackerView--takt_adherence_area_chart { border: none; }
+
+.classWorklistPopover .sapMPIText3 .classTaktAdherenceAreaChart div:nth-child(2) { position: absolute; top: 0; left: 20px; }
+
+.classWorklistPopover .sapMPIText3 .classTaktAdherenceAreaChart div:nth-child(3) { position: absolute; top: 0; right: 15px; }
+
+.classWorklistPopover .sapMPIText3 .takt_adherence_area_chart_svg-container { display: inline-block; position: relative; width: 100%; padding-bottom: 100%; /* aspect ratio */ vertical-align: top; overflow: hidden; }
+
+.classWorklistPopover .sapMPIText3 .takt_adherence_area_chart_svg-content-responsive { display: inline-block; position: absolute; top: 10px; left: 0; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_area_chart .yaxis { fill: white; font-size: 7px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_area_chart .yaxelabel { fill: white; font-size: 7px; margin-bottom: 2px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_area_chart .axis path, .classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_area_chart .axis line { fill: none; stroke: grey; shape-rendering: crispEdges; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_area_chart .area { fill: #E5002B; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_area_chart .line { fill: none; stroke: #0D2C63; stroke-width: 2; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_area_chart .realLine { fill: none; stroke: white; stroke-width: 2; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_area_chart .estimateLine { fill: none; stroke: white; stroke-width: 1; stroke-dasharray: 10; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_area_chart .ygrid .tick { stroke: rgba(109, 147, 194, 0.39); opacity: 0.7; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--takt_adherence_area_chart .ygrid path { stroke-width: 0; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader-dmc-chart .sapSuiteDMCBar1 { background-color: #84bd00; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader-dmc-bar-delta { max-width: calc(100% - 3px); }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader-dmc-bar-delta .sapSuiteDMCBarDeltaInt { background: #fe5000; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader-dmc-bar-delta .sapSuiteDMCBarDeltaStripe { background-color: #74d2e7 !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader { width: 100%; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader .sapSuiteDMCTitle, .classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader .sapSuiteDMCLbls { font-size: 0.8vw; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader .sapSuiteDMCCnt { right: 2rem; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader .sapSuiteDMCSemanticColorNeutral { color: white; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader .sapSuiteDMCDirectionLeft { background-color: #84bd00; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--shifStaffingHeader .sapSuiteDMCDirectionLeft { background-color: #84bd00; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--buttonViewMode > :nth-child(1) { border-left: 1px solid #8db9ca; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker { background-color: #d5f5f8 !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker label { color: #0D5D76; padding: 0 0 0 0.625rem; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .comboBoxStyle label, .classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .comboBoxStyle .sapMSltArrow { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .comboBoxStyle.sapMSltPressed .sapMSltArrow { background-color: #74d2e7; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .sapMBtnIconLeft, .classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .sapMBtnContent { color: #0D5D76; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .sapMBtn:hover:not(.sapMBtnDisabled) { background-color: rgba(0, 86, 112, 0.2); }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .sapMBtn:hover:not(.sapMBtnDisabled) > .sapMBtnTransparent.sapMBtnHoverable { background-color: transparent; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .sapMSlt { border: none; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .circle { color: #fe5000; margin-left: 1rem; padding: 5px; border: 1px solid #fe5000; -webkit-border-radius: 90px; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker #stationTrackerView--selectGroup:hover:not(.sapMSltPressed), .classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker #stationTrackerView--selectBox:hover:not(.sapMSltPressed) { background-color: rgba(0, 86, 112, 0.2); }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .disable { text-shadow: none; cursor: default; opacity: 0.5; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker .disable:hover { background-color: transparent !important; }
+
+.classWorklistPopover .sapMPIText3 .sapMPopoverScroll .sapMSelectListItemBaseSelected { background-color: #d5f5f8 !important; }
+
+.classWorklistPopover .sapMPIText3 #pop-up-polypoly { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+
+.classWorklistPopover .sapMPIText3 #pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel { border: none; color: #468497; font-size: 0.7rem; }
+
+.classWorklistPopover .sapMPIText3 #pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel { color: #468497; font-size: 0.975rem; padding-top: 4px; }
+
+.classWorklistPopover .sapMPIText3 #pop-up-polypoly-header-BarPH { background: #d4f1f7; }
+
+.classWorklistPopover .sapMPIText3 #pop-up-polypoly-header { box-shadow: 0 0 5px #333; }
+
+.classWorklistPopover .sapMPIText3 #pop-up-polypoly-title { color: #434343; }
+
+.classWorklistPopover .sapMPIText3 #pop-up-polypoly-scrollCont { padding: 0; }
+
+.classWorklistPopover .sapMPIText3 #pop-up-polypoly-cont { border-top: 3px solid #ffffff; }
+
+.classWorklistPopover .sapMPIText3 #pop-up-polypoly-footer { background-color: #0f2d65; }
+
+.classWorklistPopover .sapMPIText3 .sap-desktop .classDateButton .sapMBtnTransparent { border: none; }
+
+.classWorklistPopover .sapMPIText3 .sap-desktop .classDateButton .sapMBtnTransparent > .sapMBtnIcon { color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 .sap-desktop .classDatePickerPop .sapMIBar.sapMHeader-CTX { background: #d4f1f7; border: none; z-index: 9; position: relative; }
+
+.classWorklistPopover .sapMPIText3 .sap-desktop .classDatePickerPop .sapMPopoverArrUp:after { border-bottom-color: #d4f1f7; }
+
+.classWorklistPopover .sapMPIText3 .sap-desktop .classDatePickerPop .sapMBtn { background-color: #74d2e7; }
+
+.classWorklistPopover .sapMPIText3 .sap-desktop .classDatePickerPop .sapMBtn:hover > .sapMBtnHoverable, .classWorklistPopover .sapMPIText3 .sap-desktop .classDatePickerPop .sapMBtn > .sapMBtnHoverable { background-color: transparent; background: transparent; border: none; color: whitesmoke; font-weight: 400; }
+
+.classWorklistPopover .sapMPIText3 .sap-desktop .classDatePickerPop .sapMBtn:hover { background-color: rgba(0, 86, 112, 0.2); }
+
+.classWorklistPopover .sapMPIText3 .classDatePickerButton { color: #ffffff; text-shadow: none; }
+
+.classWorklistPopover .sapMPIText3 .classDatePickerButton.sapMBarChild.sapMBtn.sapMBtnBase { margin: 0 auto; }
+
+.classWorklistPopover .sapMPIText3 .sapMTB-Transparent-CTX .classDateButton + .sapMLabel { text-shadow: none; color: #ffffff; }
+
+.classWorklistPopover .sapMPIText3 #mes .MyproductionGroupPopoverList { font-size: 0.875rem; margin: 0; height: inherit; border-bottom: none; }
+
+.classWorklistPopover .sapMPIText3 #mes .MyproductionGroupPopover .sapMSLITitleOnly { font-size: 0.875rem; color: #333333; line-height: 1rem; }
+
+.classWorklistPopover .sapMPIText3 #mes .MyproductionGroupPopover .sapMSLIIconThumb > .sapMLIBContent { padding: 0.5rem 0 0.5rem 0; }
+
+.classWorklistPopover .sapMPIText3 #mes .MyproductionGroupPopover .sapMTB-Info-CTX.sapMTB { background: #74d2e7; border-bottom: 1px solid #ffffff; }
+
+.classWorklistPopover .sapMPIText3 #mes .MyproductionGroupPopover .sapMLIB.sapMLIBSelected { background: #d5f5f8; }
+
+.classWorklistPopover .sapMPIText3 #mes .MyproductionGroupPopover .sapMCbBg.sapMCbMarkChecked:before { color: rgba(0, 32, 91, 0.94); }
+
+.classWorklistPopover .sapMPIText3 #mes .MyproductionGroupPopover .sapMCbBg { border: solid 0.125rem #74d2e7; }
+
+.classWorklistPopover .sapMPIText3 #mes .MyproductionGroupPopover .sapMCbBg:hover { border-color: rgba(0, 32, 91, 0.94); }
+
+.classWorklistPopover .sapMPIText3 #mes .ClassProductionButton { margin-left: 0; max-width: 30vw; }
+
+.classWorklistPopover .sapMPIText3 #mes .sapMPopover { border: none; box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.5); margin-left: -5px; margin-top: -1px; }
+
+.classWorklistPopover .sapMPIText3 .sapMPIAndon { background: #DB5550 !important; }
+
+.classWorklistPopover .sapMPIText3 .sapMPITextRight { color: white; display: block; float: left; padding-left: 0.5rem; }
+
+.classWorklistPopover .sapMPIText3 .gray_section { background-color: grey; }
+
+.classWorklistPopover .sapMPIText3 .sapMPIText3 { float: right; margin-top: -29px; margin-right: 8px; width: 24px; height: 24px; }
+
+.classWorklistPopover .sapMPIText3 .sapMPIBarYellow { background: -moz-linear-gradient(top, #f1c40f 0, #f39c12 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f1c40f), color-stop(100%, #f39c12)); background: -webkit-linear-gradient(top, #00923e 0, #f39c12 100%); background: -ms-linear-gradient(top, #f1c40f 0, #f39c12 100%); background: linear-gradient(to bottom, #f1c40f 0, #f39c12 100%); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f1c40f, endColorstr=#f39c12), GradientType=0); }
+
+.classWorklistPopover .sapMPIText3 .sapMPIBarBlue { background: -moz-linear-gradient(top, #008cda 0, #006ca7 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #008cda), color-stop(100%, #006ca7)); background: -webkit-linear-gradient(top, #008cda 0, #006ca7 100%); background: -ms-linear-gradient(top, #008cda 0, #006ca7 100%); background: linear-gradient(to bottom, #008cda 0, #006ca7 100%); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#008cda, endColorstr=#006ca7), GradientType=0); }
+
+.classWorklistPopover .sapMPIText3 .sapMPIBarGreen { background: #7ED320 !important; -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00923e, endColorstr=#005f28), GradientType=0); }
+
+.classWorklistPopover .sapMPIText3 .sapMPIBarRed { background: -moz-linear-gradient(top, #e31c1c 0, #b51616 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e31c1c), color-stop(100%, #b51616)); background: -webkit-linear-gradient(top, #e31c1c 0, #b51616 100%); background: -ms-linear-gradient(top, #e31c1c 0, #b51616 100%); background: linear-gradient(to bottom, #e31c1c 0, #b51616 100%); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#e31c1c, endColorstr=#b51616), GradientType=0); }
+
+.classWorklistPopover .sapMPIText3 .sapMPIBarOrange { background: -moz-linear-gradient(top, #eb5200 0, #b84000 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eb5200), color-stop(100%, #b84000)); background: -webkit-linear-gradient(top, #eb5200 0, #b84000 100%); background: -ms-linear-gradient(top, #eb5200 0, #b84000 100%); background: linear-gradient(to bottom, #eb5200 0, #b84000 100%); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#eb5200, endColorstr=#b84000), GradientType=0); }
+
+.classWorklistPopover .sapMPIText3 .sapMPIBarDarkGrey { background: -moz-linear-gradient(top, #616161 0, #4d4d4d 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #616161), color-stop(100%, #4d4d4d)); background: -webkit-linear-gradient(top, #616161 0, #4d4d4d 100%); background: -ms-linear-gradient(top, #616161 0, #4d4d4d 100%); background: linear-gradient(to bottom, #616161 0, #4d4d4d 100%); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#616161, endColorstr=#4d4d4d), GradientType=0); }
+
+.classWorklistPopover .sapMPIText3 .sapMPIBarDarkGreen { background: -moz-linear-gradient(top, #005524 0, #003c19 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #005524), color-stop(100%, #003c19)); background: -webkit-linear-gradient(top, #005524 0, #003c19 100%); background: -ms-linear-gradient(top, #005524 0, #003c19 100%); background: linear-gradient(to bottom, #005524 0, #003c19 100%); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#005524, endColorstr=#003c19), GradientType=0); }
+
+.classWorklistPopover .sapMPIText3 .sapMPIBarGrey { background: #97999b !important; -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#008cda, endColorstr=#006ca7), GradientType=0); }
+
+.classWorklistPopover .sapMPIText3 .orange { color: orange; }
+
+.classWorklistPopover .sapMPIText3 .contentNoPad .sapMPanelContent { padding: 0rem; background-color: #0f2d65; border-bottom: 1px solid #ffffff; }
+
+.classWorklistPopover .sapMPIText3 .sectionusers button { padding: 0; }
+
+.classWorklistPopover .sapMPIText3 .operatorList .sapMListHdr { text-align: left; font-size: small; font-weight: bold; border-bottom: 0px; }
+
+.classWorklistPopover .sapMPIText3 .initialCell { background-color: rgba(255, 255, 204, 0.5); }
+
+.classWorklistPopover .sapMPIText3 .margin { margin-left: 5px; margin-right: 5px; }
+
+.classWorklistPopover .sapMPIText3 .borderCell { background-color: rgba(242, 180, 87, 0.2); }
+
+.classWorklistPopover .sapMPIText3 .borderX { border-left: none !important; border-right: none !important; background-color: rgba(242, 180, 87, 0.2); }
+
+.classWorklistPopover .sapMPIText3 .borderY { border-top: none !important; border-bottom: none !important; }
+
+.classWorklistPopover .sapMPIText3 .boxColor { background-color: #ecf0f1; margin: 1px; border: 1px solid #bdc3c7; }
+
+.classWorklistPopover .sapMPIText3 .boxColorInitial { background-color: transparent; margin: 1px; border: 1px solid #bdc3c7; }
+
+.classWorklistPopover .sapMPIText3 .user { margin-left: 5px; margin-right: 5px; }
+
+.classWorklistPopover .sapMPIText3 .task { height: 50px !important; }
+
+.classWorklistPopover .sapMPIText3 .padding { padding: 5px; }
+
+.classWorklistPopover .sapMPIText3 .one_line { white-space: nowrap; overflow: hidden; padding-top: 5px; padding-left: 5px; text-align: left !important; }
+
+.classWorklistPopover .sapMPIText3 .progressIndicator { padding: 0px; margin: 0px; height: 1.5rem; }
+
+.classWorklistPopover .sapMPIText3 .spTitle { font-size: 20px; }
+
+.classWorklistPopover .sapMPIText3 .commentConfirmCss { border-right: 1px solid black; padding-right: 17px; }
+
+.classWorklistPopover .sapMPIText3 div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI { border: none; }
+
+.classWorklistPopover .sapMPIText3 .pageHeaderDialog.sapMDialog > footer { background-color: rgba(0, 32, 91, 0.94) !important; }
+
+.classWorklistPopover .sapMPIText3 .noFooterDialog .sapMDialogStretchContent { height: 100% !important; }
+
+.classWorklistPopover .sapMPIText3 .closeWorklistCss .sapUxAPObjectPageHeaderActionButtonHideText .sapMBtnInner.sapMBtnIconFirst { color: white; padding-left: 0rem; }
+
+.classWorklistPopover .sapMPIText3 .toolbarSeparatorWhite { background: white !important; }
+
+.classWorklistPopover .sapMPIText3 .italicText { font-style: italic; }
+
+.classWorklistPopover .sapMPIText3 .smallIconButton .sapMBtnIcon { width: 10%; }
+
+.classWorklistPopover .sapMPIText3 #operationDetailPopup--operationDetailPopUp-scrollCont { padding: 0rem !important; }
+
+.classWorklistPopover .sapMPIText3 .initialSection { background-color: gray; color: white; }
+
+.classWorklistPopover .sapMPIText3 .scalebar { background-color: white; color: black; text-align: left; }
+
+.classWorklistPopover .sapMPIText3 .upperCaseConversion input { text-transform: uppercase; }
+
+.classWorklistPopover .sapMPIText3 #team-popover button { display: block; width: 100%; }
+
+.classWorklistPopover .sapMPIText3 .div.Left.sapSuiteDmcBarInternal { background: #006CA7; }
+
+.classWorklistPopover .sapMPIText3 .selectBoxStation { height: 30px; padding-left: 10px; width: 100px; position: relative; }
+
+.classWorklistPopover .sapMPIText3 .marginLeft0 { margin-left: 0 !important; }
+
+.classWorklistPopover .sapMPIText3 .partialConfirmCss .sapUxAPObjectPageSectionTitle { color: #006CA7 !important; border-bottom: 0px solid #999999 !important; }
+
+.classWorklistPopover .sapMPIText3 .partialConfirmCss2 .sapUxAPObjectPageSectionHeader { border-bottom: 0px solid #f2f2f2 !important; }
+
+.classWorklistPopover .sapMPIText3 .partialConfirmCss3 .sapUxAPObjectPageSectionHeader { height: 0rem; }
+
+.classWorklistPopover .sapMPIText3 .partialConfHeader .sapUxAPObjectPageHeaderIdentifier { background-color: #0085ad !important; }
+
+.classWorklistPopover .sapMPIText3 .whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle, .classWorklistPopover .sapMPIText3 .whitePartialConfHeader2 .sapUxAPObjectPageHeaderIdentifierDescription { color: white !important; }
+
+.classWorklistPopover .sapMPIText3 .lockCss .sapUxAPObjectPageHeaderLockBtn .sapMBtnTransparent > .sapMBtnIcon { color: #ED8E01; }
+
+.classWorklistPopover .sapMPIText3 .ylabel:hover .tolltip { visibility: visible; }
+
+.classWorklistPopover .sapMPIText3 .dhx_cal_date { visibility: hidden; z-index: -1; }
+
+.classWorklistPopover .sapMPIText3 .otherStations { background-color: #515456; }
+
+.classWorklistPopover .sapMPIText3 .Blue { background-color: #006CA7 !important; z-index: 1 !important; }
+
+.classWorklistPopover .sapMPIText3 .white { background-color: white !important; }
+
+.classWorklistPopover .sapMPIText3 .centerItems.NS.sapSuiteHdrCellNorth { text-align: center !important; }
+
+.classWorklistPopover .sapMPIText3 .whiteTextButton .sapMBtnTransparent { color: white !important; text-align: left; }
+
+.classWorklistPopover .sapMPIText3 .blackTextButton .sapMBtnTransparent { color: black !important; text-align: left; }
+
+.classWorklistPopover .sapMPIText3 .blackTextButton2 .sapMBtn { border-bottom-style: inset; border-top: none; border-left: none; border-right: none; }
+
+.classWorklistPopover .sapMPIText3 .blackTextButton2 .sapMBtnIcon { width: 3rem; font-size: 1rem; }
+
+.classWorklistPopover .sapMPIText3 .blackTextButton2 .sapMBtnContent { padding-left: 9px; }
+
+.classWorklistPopover .sapMPIText3 .alignTextLeft .sapMIBar-CTX .sapMTitle { font-family: "Verdana"; font-weight: bold; font-size: medium; padding-right: 75%; }
+
+.classWorklistPopover .sapMPIText3 .hachure { background-image: url("../../components/stationtracker/css/img/fat_lines.png"); }
+
+.classWorklistPopover .sapMPIText3 .panelContent .sapMPanelContent { padding: 0rem; background-color: #CCE6EE; }
+
+.classWorklistPopover .sapMPIText3 .panelContentList .sapMListBGSolid .sapMLIB { background-color: #CCE6EE; }
+
+.classWorklistPopover .sapMPIText3 .textBlackPanel .sapMTB-Transparent-CTX .sapMLabel { color: black; }
+
+.classWorklistPopover .sapMPIText3 .pageStation { background: #006CA7 !important; }
+
+.classWorklistPopover .sapMPIText3 .pageWelcome2 { font-family: "Arial" !important; font-weight: bold; font-size: 14px !important; text-align: center !important; color: white !important; }
+
+.classWorklistPopover .sapMPIText3 .stationTitle { color: #006CA7 !important; font-family: "Arial" !important; font-weight: 400; font-size: 24px !important; }
+
+.classWorklistPopover .sapMPIText3 .blueTitle { color: #006CA7; }
+
+.classWorklistPopover .sapMPIText3 .stationWelcome { color: #006CA7 !important; font-family: "Arial" !important; font-weight: 400; font-size: 14px !important; }
+
+.classWorklistPopover .sapMPIText3 .pageUsername { font-family: "Arial" !important; font-weight: 400; font-size: 14px; color: white !important; }
+
+.classWorklistPopover .sapMPIText3 .greenBottom { box-shadow: 0 5px 0 green; }
+
+.classWorklistPopover .sapMPIText3 .redBottom { color: red; box-shadow: 0 5px 0 red; }
+
+.classWorklistPopover .sapMPIText3 .duck-egg-blue { background-color: #d5f5f8 !important; }
+
+.classWorklistPopover .sapMPIText3 .eventOrange { background-color: #F9DAAB; color: black; }
+
+.classWorklistPopover .sapMPIText3 .Hour { background-color: grey; opacity: 0.5; filter: alpha(opacity=25); }
+
+.classWorklistPopover .sapMPIText3 .buttonNotif .sapMBtnContent { color: orange; font-weight: Bold; padding-top: 10px !important; }
+
+.classWorklistPopover .sapMPIText3 .notifDetails { font-size: smaller !important; }
+
+.classWorklistPopover .sapMPIText3 #operationDetailPopup--operationDetailPopUp-scrollCont { padding: 0rem !important; height: 100%; }
+
+.classWorklistPopover .sapMPIText3 .dhx_marked_timespan, .classWorklistPopover .sapMPIText3 .dhx_matrix_now_time { border-left-color: purple !important; opacity: 1; border-width: 3px !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker-popover-scroll { color: #000000; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker-popover-scroll > button > div { color: inherit !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed { background-color: #005483 !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed:hover { opacity: 0.8; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed > * { color: #ffffff !important; background-color: #005483 !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--toolbarstationtracker-popover-scroll > button:hover > div:not(.sapMToggleBtnPressed) { background-color: rgba(222, 222, 222, 0.5); }
+
+.classWorklistPopover .sapMPIText3 #ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed { color: #ffffff !important; background-color: #005483 !important; }
+
+.classWorklistPopover .sapMPIText3 #ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed:hover { opacity: 0.8; }
+
+.classWorklistPopover .sapMPIText3 .sidenav { height: 0; /* height - change this with JavaScript*/ width: 100%; /*100% Full-width */ position: fixed; /* Stay in place */ z-index: 101; /* Stay on top */ bottom: 0; left: 0; background-color: #4a4b4b; /* Black*/ overflow-y: hidden; /* Disable horizontal scroll */ margin-top: -1rem !important; transition: 0.10s; transition-delay: 1s; /*transition effect to slide in the sidenav */ }
+
+.classWorklistPopover .sapMPIText3 #main { transition: margin-right .5s; }
+
+@media screen and (max-height: 450px) { .classWorklistPopover .sapMPIText3 .sidenav { padding-top: 15px; }
+  .classWorklistPopover .sapMPIText3 .sidenav a { font-size: 18px; } }
+
+.classWorklistPopover .sapMPIText3 .sidebarContentMargin { margin: 0 1rem 1rem 1rem; }
+
+.classWorklistPopover .sapMPIText3 .slidingUpDownPanel { height: 100%; /* height - change this with JavaScript*/ width: 100%; /*100% Full-width */ position: fixed; /* Stay in place */ z-index: 101; /* Stay on top */ overflow-y: hidden; /* Disable horizontal scroll */ display: none; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--disruptNotifications > .sapMFlexItem { width: 100% !important; height: 100% !important; }
+
+.classWorklistPopover .sapMPIText3 .wrap .sapMLabel { white-space: normal !important; }
+
+.classWorklistPopover .sapMPIText3 .disruptionTextSize .sapSuiteCmpChartItemTitle { font-size: 0.8vw !important; padding-right: 2vw; padding-bottom: 0.25vw; }
+
+.classWorklistPopover .sapMPIText3 .spaceBetweenCharts .sapSuiteCmpChartItem.Normal.Auto { margin-top: 0.5rem !important; }
+
+.classWorklistPopover .sapMPIText3 .oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] { margin: 0 !important; }
+
+.classWorklistPopover .sapMPIText3 .oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] .sapMCbBg { top: 0.5125rem; }
+
+.classWorklistPopover .sapMPIText3 .oswPopover .sapUiSizeCompact .sapMTokenizer .sapMToken { margin-top: 0.23rem; }
+
+.classWorklistPopover .sapMPIText3 #reschedulePage--rescheduleLabel.rescheduleLabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; }
+
+.classWorklistPopover .sapMPIText3 #reschedulePage--reschedulefield.sapUiMediumMarginTop { width: 95% !important; margin: 30px auto !important; padding: 0; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--splitWorkTra { height: calc(100% - 18rem) !important; }
+
+.classWorklistPopover .sapMPIText3 #stationTrackerView--splitWorkTra.withoutKPI { height: calc(100% - 6rem) !important; }
+>>>>>>> bcf554b [stationTracker] color box
 
 .classWorklistPopover header.sapMIBar.sapMHeader-CTX { background: #d4f1f7; box-shadow: 0 0 5px #333; z-index: 1000; }
 
@@ -225,6 +1133,7 @@ BOX MANAGEMENT
 
 .trackerBox .fa.stopIcon.left { float: left; }
 
+<<<<<<< Upstream, based on origin/MESv1.5
 .trackerBox .fa.oswIcon { position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; overflow: hidden; line-height: 14px; height: auto; float: left; margin-left: 6px; margin-bottom: 10px; min-width: 45px; }
 
 .trackerBox .fa.oswIcon b { font-family: arial; }
@@ -258,6 +1167,43 @@ BOX MANAGEMENT
 .trackerBox .whiteColor { color: #ffffff; }
 
 .trackerBox .whiteColor :hover { color: #ffffff; }
+=======
+.trackerBox .fa.oswIcon { position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; overflow: hidden; line-height: 14px; height: auto; float: left; border: 1px solid; margin-left: 6px; margin-bottom: 10px; min-width: 45px; }
+
+.trackerBox .fa.oswIcon b { font-family: arial; }
+
+.trackerBox .fa.oswIcon.cherry-red { color: #e4002b; }
+
+.trackerBox .dandelion-back { background-color: #fbec00; }
+
+.trackerBox .teal-blue { color: #0085ad; }
+
+.trackerBox .petrol { color: rgba(0, 86, 112, 0.94); }
+
+.trackerBox .petrol-back { background-color: rgba(0, 86, 112, 0.94); }
+
+.trackerBox .cherry-red-back { background-color: #e4002b; }
+
+.trackerBox .dark-lime-green-back { background-color: #84bd00; }
+
+.trackerBox .teal-blue-back { background-color: #0085ad; }
+
+.trackerBox .dandelion { color: #fbec00; }
+
+.trackerBox .yellow { background-color: #fbec00; color: rgba(0, 86, 112, 0.94); }
+
+.trackerBox .green { background-color: #049372; color: #ffffff; }
+
+.trackerBox .blue { background-color: #0085ad; color: #ffffff; }
+
+.trackerBox .pink { background-color: #E08283; color: #ffffff; }
+
+.trackerBox .whiteColor { color: #ffffff; }
+
+.trackerBox .whiteColor :hover { color: #ffffff; }
+
+.trackerBox .red { color: #e4002b; }
+>>>>>>> bcf554b [stationTracker] color box
 
 .trackerBox:hover .dark-lime-green-back { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #536f12 !important; }
 

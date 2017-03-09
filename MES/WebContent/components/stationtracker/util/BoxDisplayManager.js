@@ -62,11 +62,10 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    rightPaused_Petrol : '<i class="fa fa-pause rightIcon petrol" ></i>',
 		    rightPlay : '<i class="fa fa-play rightIcon"></i>',
 		    rightPlay_Petrol : '<i class="fa fa-play rightIcon petrol"></i>',
-		    rightStop : '<i class="fa fa-stop rightIcon" ></i>',
 		    rightStop_Petrol :'<i class="fa fa-stop rightIcon petrol" ></i>',
 		    rightCheck : '<i class="fa fa-check rightIcon"></i>',
-		    rightStop : '<i class="fa fa-ban stopIcon rightIcon"></i>',
-		    rightStopWhite : '<i class="fa fa-ban stopIcon white-two rightIcon"></i>',
+		    rightStop : '<i class="fa  fa-exclamation stopIcon rightIcon"></i>',
+		    rightStopWhite : '<i class="fa  fa-exclamation stopIcon white-two rightIcon"></i>',
 		    
 		    rightOswIcon_Constructor: function(elt) {
 		        return airbus.mes.stationtracker.util.BoxDisplayManager.rightOswIcon + elt + '</b></i>';

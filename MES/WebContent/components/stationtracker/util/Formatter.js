@@ -444,11 +444,15 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				if ( oBox.isBlocked === 1 ) {
 					
-					sRightIcon = boxDisplayManager.rightStop;
+					sRightIcon = boxDisplayManager.rightStopWhite;
 				}	
 //				if (oBox.OSW === 3) { //OSW
 //					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
 //				}
+				if (dispatch) {
+					
+					dispatchWhite = true;
+				}
 
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);

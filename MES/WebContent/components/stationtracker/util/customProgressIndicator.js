@@ -336,6 +336,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 									sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 								}
 								
+								if (dispatch || fBlockingDisruption) {
+
+									dispatchWhite = true;
+								} 
 						break;
 					default:		
 				}
@@ -347,7 +351,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 					PercValue = 0;
 					sRightIcon = boxDisplayManager.rightCheck;
 					
-					if ( rmastatus === "1" ){	//rma
+					if ( rmastatus === "1" && DisruptionStatus != "D4" ){	//rma
 						sLeftIcon = boxDisplayManager.leftTriangleIcon;
 					}
 					if (osw[0] === "3" ){ //OSW
