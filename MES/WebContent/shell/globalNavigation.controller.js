@@ -566,6 +566,24 @@ sap.ui.controller(
         	oEvt.getSource().getParent().close();
         	airbus.mes.shell.oView.getController().onCloseInformation();
         },
+        /***********************************************************
+         * User login Popup
+         */
+        userLogin: function () {
+        	if (!this.userLoginDailog) {
+                this.userLoginDailog = sap.ui.xmlfragment("airbus.mes.shell.userLogin", this);
+                this.getView().addDependent(this._userLoginDailog);
+            }
+        	
+        	this.userLoginDailog.open();
+            sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
+            sap.ui.getCore().byId("uIdMyProfile").setValue("");
+            sap.ui.getCore().byId("badgeIdMyProfile").setValue("");
+            sap.ui.getCore().byId("userNameMyProfile").setValue("");
+            sap.ui.getCore().byId("passwordMyProfile").setValue("");
+            sap.ui.getCore().byId("pinCodeMyProfile").setValue("");
+        },
+        
 
         /***********************************************************
          * My Profile PopUp
