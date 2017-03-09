@@ -31,7 +31,7 @@
                         <RadioButton
                             enabled="{ path : 'program>prog', formatter : 'airbus.mes.settings.util.Formatter.enabledProgram' }"
                             select="onProgramSelect" class="classListProgramRadioBtn" text="{program>prog}" />
-                        <Image src="{program>picture}" width="75%" press ="onImagePress" />
+                        <Image src="{program>picture}" width="75%" press="onImagePress" />
                     </HBox>
                 </CustomListItem>
                 <layoutData>
@@ -68,20 +68,6 @@
                 </vbm:Spots>
             </vbm:AnalyticMap>
 
-<!--             <vbm:AnalyticMap id="vbi" width="100%" height="100%"
-                regions="{region>/Regions}" regionClick="onRegionClick">
-                <vbm:regions>
-                    <vbm:Region code="{region>code}" color="{region>color}"
-                        tooltip="{region>country}" />
-                </vbm:regions>
-                <vbm:Spots items="{region>/Spots}" click="onClickItem"
-                    contextMenu="onContextMenuItem">
-                    <vbm:Spot position="{region>pos}" tooltip="{region>tooltip}"
-                        type="{region>type}" text="{region>text}" click="onClickSpot"
-                        contextMenu="onContextMenuSpot" />
-                </vbm:Spots>
-            </vbm:AnalyticMap> -->
-
             <VBox class="sapUiTinyMargin classOtherSetting">
                 <f:SimpleForm id="headTextForm" minWidth="1024"
                     visible="true" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
@@ -89,21 +75,24 @@
                     columnsL="1" columnsM="1" class="editableForm" title="{i18n>OtherSettings}">
                     <f:content>
                         <Label id="lblLine" text="{i18n>Line}" design="Bold" />
-                        <ComboBox id="selectLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
+                        <ComboBox id="selectLine" items="{path : 'plantModel>/Rowsets/Rowset/0/Row', 
+                            sorter: { path : 'plantModel>line'} }"
                             visible="true" selectionChange="onSelectionChange" class="customComboBox">
                             <items>
                                 <core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
                             </items>
                         </ComboBox>
                         <Label id="lblStation" text="{i18n>Station}" design="Bold" />
-                        <ComboBox id="selectStation" items="{plantModel>/Rowsets/Rowset/0/Row}"
+                        <ComboBox id="selectStation" items="{path : 'plantModel>/Rowsets/Rowset/0/Row', 
+                            sorter: { path : 'plantModel>station'} }"
                             visible="true" selectionChange="onSelectionChange" class="customComboBox">
                             <items>
                                 <core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
                             </items>
                         </ComboBox>
                         <Label id="lblMSN" text="{i18n>MSN}" design="Bold" />
-                        <ComboBox id="selectMSN" items="{plantModel>/Rowsets/Rowset/0/Row}"
+                        <ComboBox id="selectMSN" items="{path : 'plantModel>/Rowsets/Rowset/0/Row', 
+                            sorter: { path : 'plantModel>msn'} }"
                             visible="true" selectionChange="onSelectionChange" enabled="false">
                             <items>
                                 <core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
@@ -117,10 +106,6 @@
                     <l:SplitterLayoutData size="30%" resizable="true" />
                 </layoutData>
             </VBox>
-
         </l:Splitter>
-
     </Page>
-
-
 </core:View>

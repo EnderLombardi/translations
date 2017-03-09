@@ -14,8 +14,7 @@
 		</Toolbar>
 
 		<content width="100%" height="100%">
-			<OverflowToolbar id="toolbarcalendar" class="Subheader"
-				width="100%">
+			<OverflowToolbar id="toolbarcalendar" class="Subheader" width="100%">
 				<content>
 					<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
 					<SegmentedButton id="buttonViewMode">
@@ -23,9 +22,9 @@
 							<OverflowToolbarLayoutData priority="NeverOverflow" />
 						</layoutData>
 						<items>
-							<SegmentedButtonItem text="{calendarI18n>ButtonShift}"	press="onShiftPress" key="shift" />
-							<SegmentedButtonItem text="{calendarI18n>ButtonDay}"	press="onDayPress" key="day" />
-							<SegmentedButtonItem text="{calendarI18n>ButtonTAKT}"	press="onTaktPress" key="takt" />
+							<SegmentedButtonItem text="{calendarI18n>ButtonShift}" press="onShiftPress" key="shift" />
+							<SegmentedButtonItem text="{calendarI18n>ButtonDay}" press="onDayPress" key="day" />
+							<SegmentedButtonItem text="{calendarI18n>ButtonTAKT}" press="onTaktPress" key="takt" />
 						</items>
 					</SegmentedButton>
 					<Label text="{calendarI18n>teamavaibility}" class="sapUiSmallMarginBegin" />
