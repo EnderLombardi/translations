@@ -155,7 +155,7 @@
 							<Text text="{operationDisruptionsModel>stringer_rail}" />
 						</f:content>	
 					</f:SimpleForm>
-					<HBox alignItems="Center" justifyContent="Center" width="100%">
+					<HBox alignItems="Center" justifyContent="Center" width="100%" class="HorizontalLine">
 						<Button press="onInternalPanelexpand"   type="Transparent" icon="sap-icon://slim-arrow-down" 
 									visible="{=${operationDisruptionsModel>internalPanelexpanded} !== 'true'}" class="RoundBttn" />
 						<Button press="onInternalPanelCollapse" type="Transparent" icon="sap-icon://slim-arrow-up" 

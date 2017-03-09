@@ -41,6 +41,15 @@
    		width:48px;
    		}
    	}
+   	
+   	.HorizontalLine:before,.HorizontalLine:after{
+		  content:" "!important;
+		  width: 50% !important;
+		  height: 1px !important;
+		  margin: 0 10px !important;
+		  vertical-align: super !important;
+		  background-color:#dcd7d7 !important;
+   	}
 }
 
 //Disruption title bar buttons
