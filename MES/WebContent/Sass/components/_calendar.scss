@@ -310,13 +310,6 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
             text-align: center;
         }
     }
-    .ylabelAvlLineSection{
-        display: inline-block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 75px;
-        margin-left: 10px;
-    }
     .tracker-item-initial{
         @extend %tracker-item-initial;
         .fa-exclamation-triangle{
@@ -327,7 +320,6 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         background-color: #DDDDDD;
         opacity: 0.8;
     }
-
     .operationCP{
         background-color: $cool-grey;
         border: 2px solid #0D2C63;
