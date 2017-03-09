@@ -425,7 +425,10 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		this.getView().byId("timeLost").setEnabled(false);
 		this.getView().byId("materials").setEnabled(false);
 		this.getView().byId("jigtools").setEnabled(false);
-		this.getView().byId("selectResolver").setEnabled(true);
+		if(this.getView().byId("selectResolver")){
+			this.getView().byId("selectResolver").setEnabled(true);
+		}
+		
 	},
 	resolutionGroupSettings : function() {
 		var oView = this.getView();
@@ -440,7 +443,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("timeLost").setEnabled(false);
 		oView.byId("materials").setEnabled(false);
 		oView.byId("jigtools").setEnabled(false);
-		this.getView().byId("selectResolver").setEnabled(true);
+		//this.getView().byId("selectResolver").setEnabled(true);
 	},
 
 	originatorGroupSettings : function() {
