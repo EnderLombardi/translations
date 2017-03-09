@@ -33,85 +33,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 /*********************
 STATION TRACKER
 *********************/
-<<<<<<< Upstream, based on origin/MESv1.5
-.trackerBox .fa { position: relative; z-index: 1; line-height: 24px; color: #ffffff; overflow: hidden; }
-
-.trackerBox .trackerText, .trackerBox .trackerTextBlock { padding-left: 10px; position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; }
-
-.sapMPIText1, .sapMPIText2 { float: left; font-family: Arial, Helvetica, sans-serif; line-height: normal !important; text-overflow: clip; display: inline-block; overflow: hidden; height: 100%; line-height: 1.2em; color: #ffffff; font-size: 100%; word-break: break-all; }
-
-#stationTrackerView--kpi_header .sapMPanelExpandableIcon { -webkit-transform: translateY(-50%) rotate(180deg); -ms-transform: translateY(-50%) rotate(180deg); transform: translateY(-50%) rotate(180deg); }
-
-#stationTrackerView--kpi_header .sapMPanelExpandableIconExpanded { -webkit-transform: translateY(-50%) rotate(90deg); -ms-transform: translateY(-50%) rotate(90deg); transform: translateY(-50%) rotate(90deg); }
-
-#stationTrackerView--DatePicker-inner, #calendar--DatePicker-inner { border: none; background-color: transparent; color: #F5F5F5; font-size: 16px; text-transform: uppercase; padding-left: 2.375rem; padding-right: 0; }
-
-#stationTrackerView--selectShift, #stationTrackerView--selectUser { color: #F5F5F5; font-size: 16px; width: auto; height: 3rem; margin: 0; max-width: 100%; line-height: 3rem; text-transform: capitalize; margin-right: 0px !important; border-right: solid 1px #74d2e7 !important; background: #0f2d65 !important; border: 0; }
-
-#stationTrackerView--stationtracker, #calendar--calendar { width: auto; top: 0; bottom: 0; left: 0; right: 0; }
-
-#stationTrackerView--stationtracker .customHour, #calendar--calendar .customHour { text-align: left; text-indent: -15px; border-left: none !important; background-color: transparent !important; color: #5e696e; font-size: 14px; line-height: 25px; }
-
-#calendar--calendar .customTakt { text-align: left; text-indent: -30px; border-left: none !important; background-color: transparent !important; color: #5e696e; font-size: 14px; line-height: 25px; }
-
-#stationTrackerView--stationtracker .customHour:before, #calendar--calendar .customTakt:before, #calendar--calendar .customHour:before { content: ''; display: block; position: absolute; bottom: 0; width: 1px; height: 7px; background-color: #5e696e; }
-
-#stationTrackerView--stationtracker .dhx_cal_next_button, #stationTrackerView--stationtracker .dhx_cal_prev_button, #calendar--calendar .dhx_cal_next_button, #calendar--calendar .dhx_cal_prev_button { position: absolute; width: auto; color: #52aec8; text-align: center; display: inline-block; font: normal normal normal 30px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: transparent; font-size: 30px; float: none !important; }
-
-#stationTrackerView--stationtracker .dhx_matrix_scell.folder, #stationTrackerView--stationtracker .dhx_matrix_scell.item, #calendar--calendar .dhx_matrix_scell.folder, #calendar--calendar .dhx_matrix_scell.item { border-right: solid 3px white; cursor: pointer; }
-
-#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-plus, #calendar--calendar .dhx_row_folder .dhx_scell_name .fa-plus { position: absolute; left: 0; margin-left: 10px; margin-right: 10px; color: #0F5F78; }
-
-#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-down, #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-right, #calendar--calendar .dhx_row_folder .dhx_scell_name .fa-chevron-down, #calendar--calendar .dhx_row_folder .dhx_scell_name .fa-chevron-right { position: absolute; right: 0; margin-left: 10px; margin-right: 10px; color: #0F5F78; }
-
-#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.begin_shifht, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.end_shifht, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.taktMarker, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.begin_shifht, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.end_shifht, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.taktMarker, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.begin_shifht, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.end_shifht, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.taktMarker, #calendar--calendar .dhx_row_item .dhx_marked_timespan.begin_shifht, #calendar--calendar .dhx_row_item .dhx_marked_timespan.end_shifht, #calendar--calendar .dhx_row_item .dhx_marked_timespan.taktMarker { width: 3px !important; }
-
-#stationTrackerView--stationtracker .ylabelEditIcon, #stationTrackerView--stationtracker .ylabelUserImage, #calendar--calendar .ylabelEditIcon, #calendar--calendar .ylabelUserImage { width: 30px; height: 30px; line-height: 30px; vertical-align: middle; font-size: 16px; text-align: center; color: #0D5D76; }
-
-#stationTrackerView--stationtracker .ylabelUser, #calendar--calendar .ylabelUser { vertical-align: middle; margin-left: 10px; color: #0D5D76; font-size: 14px; font-weight: bold; }
-
-.yHrLabel { float: right; margin-right: 5px; font-weight: normal; font-style: normal; font-stretch: normal; text-align: right; color: #8db9ca; line-height: 25px; max-width: 25%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
-
-.ylabelUser { max-width: 75px; white-space: nowrap; position: relative; display: inline-block; overflow: hidden; text-overflow: ellipsis; line-height: 25px; font-size: 18px; font-weight: bold; font-style: normal; font-stretch: normal; color: rgba(0, 86, 112, 0.94); }
-
-#stationTrackerView--stationtracker .tracker-item-initial, #calendar--calendar .tracker-item-initial { color: #BBBCBC; padding-left: 10px; width: 100%; height: 100%; position: absolute; z-index: 1; left: 0px; right: 0; top: 0; bottom: 0; box-sizing: border-box; text-overflow: ellipsis; border: solid 2px #BBBCBC; background-color: #F5F5F5; overflow: hidden; }
-
-#stationTrackerView--toolbarstationtracker .comboBoxStyle, #calendar--toolbarcalendar .comboBoxStyle { width: auto; max-width: 100%; background-color: transparent; margin: 0 !important; border-right: 1px solid #8db9ca; height: 3rem; }
-
-.kpiPageHeader, #resourcePool header.sapMSubHeader-CTX, .classPolypolyPage header { -webkit-box-shadow: 0px 2px 15px -5px #0F2D65; -moz-box-shadow: 0px 2px 15px -5px #0F2D65; box-shadow: 0px 2px 15px -5px #0F2D65; border: none; position: relative; z-index: 10; margin-top: 0.6rem; }
-
-.tooltip { visibility: hidden; position: absolute; width: 120px; background-color: #555; color: #fff; text-align: center; padding: 5px 0; border-radius: 6px; z-index: 1; bottom: 115%; left: 50%; margin-left: -60px; }
-
-.dhx_scell_expand { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-.rond { color: white; display: inline-table; width: 20px !important; height: 20px !important; background: #3498db; -webkit-border-radius: 100px; -moz-border-radius: 100px; -o-border-radius: 100px; border-radius: 100px; float: left !important; }
-
-.dhx_matrix_scell.folder .ylabelfolder { padding: 0 30px; margin: 0; font-size: 12px; color: #0F5F78; font-weight: normal; box-sizing: border-box; width: 100%; display: inline-block; position: relative; overflow: hidden !important; text-overflow: ellipsis; white-space: nowrap; }
-
-.classWorklistPopover .fa.oswIcon2 { position: relative; z-index: 1; line-height: 20px; height: auto; padding-left: 5px; padding-right: 5px; border-radius: 10px; float: right; top: 0px; margin-left: 0px; margin-right: 0px; color: rgba(0, 86, 112, 0.94); overflow: hidden; background-color: #fbec00; }
-
-.dhx_cal_event_line .trackerBoxtooltiptext { display: none; min-width: 430px; padding: 5px 2px; border-radius: 6px; position: absolute; z-index: 3; text-align: left; }
-
-.dhx_cal_event_line .trackerBoxtooltiptext > .trackerText { padding-left: 10px; }
-
-.overallProgresstitle span { margin-top: -25px; float: left; font-family: Arial, Helvetica, sans-serif; line-height: normal !important; text-overflow: clip; display: inline-block; overflow: hidden; height: 1.2em; line-height: 1.2em; color: #004990; padding-left: 0.5rem; font-size: 100%; word-break: break-all; }
-
-.triangle { width: 0; height: 0; border-style: solid; border-width: 10px 5px 0 5px; border-color: #000000 transparent transparent transparent; float: right; margin: 6px; }
-
-#hammer_swipe { width: 100%; height: 5%; border: 1px dashed grey; bottom: 0px; background-position: top center; background-repeat: no-repeat; background-size: contain; }
-
-.Save_reschedule { color: #747473; border: 1px solid #CECECE; background: 0 0; text-decoration: none; height: 30px; line-height: 30px; text-align: center; width: auto; font-size: 12px; font-weight: 700; font-family: arial; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
-
-.rescheduleLineBtn, .rescheduleAllBtn { clear: both; position: absolute; z-index: 999; background: #ee373d; color: white; font-size: 12px; font-weight: 700; font-family: arial; overflow: hidden; -webkit-transition: width 0.3s ease-in-out; -moz-transition: width 0.3s ease-in-out; transition: width 0.3s ease-in-out; }
-
-#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #calendar--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #calendar--buttonViewMode .sapMSegBBtnDis { height: 3rem; border: none; border-right: 1px solid #8db9ca; background-color: transparent; color: #0D5D76; text-transform: uppercase; line-height: 3rem; min-width: 75px; }
-
-#stationTrackerView--buttonViewMode, #calendar--buttonViewMode { height: 3rem; margin: 0; }
-
-#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable:hover:not(.sapMSegBBtnSel), #calendar--buttonViewMode .sapMSegBBtnFocusable:hover:not(.sapMSegBBtnSel) { background-color: rgba(0, 86, 112, 0.2); }
-
-#stationTrackerView--buttonViewMode .sapMSegBBtnSel, #calendar--buttonViewMode .sapMSegBBtnSel { background-color: #74d2e7; color: white; }
-=======
 .classWorklistPopover .sapMPIText3 .trackerBox .fa, .trackerBox .fa { position: relative; z-index: 1; line-height: 24px; color: #ffffff; overflow: hidden; }
 
 .classWorklistPopover .sapMPIText3 .trackerBox .trackerText, .classWorklistPopover .sapMPIText3 .trackerBox .trackerTextBlock, .trackerBox .trackerText, .trackerBox .trackerTextBlock { padding-left: 10px; position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; }
@@ -180,7 +101,7 @@ STATION TRACKER
 
 .classWorklistPopover .sapMPIText3 .Save_reschedule, .Save_reschedule { color: #747473; border: 1px solid #CECECE; background: 0 0; text-decoration: none; height: 30px; line-height: 30px; text-align: center; width: auto; font-size: 12px; font-weight: 700; font-family: arial; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 
-.classWorklistPopover .sapMPIText3 .rescheduleLineBtn, .classWorklistPopover .sapMPIText3 .rescheduleAllBtn, .rescheduleLineBtn, .rescheduleAllBtn { clear: both; position: absolute; z-index: 999; background: #ee373d; color: white; font-size: 12px; font-weight: 700; font-family: arial; overflow: hidden; -webkit-transition: width 0.3s ease-in-out; -moz-transition: width 0.3s ease-in-out; transition: width 0.3s ease-in-out; }
+.classWorklistPopover .sapMPIText3 .rescheduleLineBtn, .classWorklistPopover .sapMPIText3 .rescheduleAllBtn, .rescheduleLineBtn, .rescheduleAllBtn { display: inline-block; clear: both; position: absolute; z-index: 999; background: #ee373d; color: white; text-rendering: auto; font-size: 12px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-weight: 700; font-family: arial; overflow: hidden; float: none !important; -webkit-transition: width 0.3s ease-in-out; -moz-transition: width 0.3s ease-in-out; transition: width 0.3s ease-in-out; }
 
 .classWorklistPopover .sapMPIText3 #stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #calendar--buttonViewMode .sapMSegBBtnFocusable, .classWorklistPopover .sapMPIText3 #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #calendar--buttonViewMode .sapMSegBBtnDis { height: 3rem; border: none; border-right: 1px solid #8db9ca; background-color: transparent; color: #0D5D76; text-transform: uppercase; line-height: 3rem; min-width: 75px; }
 
@@ -189,7 +110,6 @@ STATION TRACKER
 #stationTrackerView--buttonViewMode .sapMSegBBtnFocusable:hover:not(.sapMSegBBtnSel), #calendar--buttonViewMode .sapMSegBBtnFocusable:hover:not(.sapMSegBBtnSel) { background-color: rgba(0, 86, 112, 0.2); }
 
 .classWorklistPopover .sapMPIText3 #stationTrackerView--buttonViewMode .sapMSegBBtnSel, #stationTrackerView--buttonViewMode .sapMSegBBtnSel, #calendar--buttonViewMode .sapMSegBBtnSel { background-color: #74d2e7; color: white; }
->>>>>>> bcf554b [stationTracker] color box
 
 #stationTrackerView--buttonViewMode .sapMSegBBtnSel:hover, #calendar--buttonViewMode .sapMSegBBtnSel:hover { background-color: #0085ad; }
 
@@ -236,11 +156,7 @@ TOOLBAR
 *********************/
 #mes .sapMPopover .sapMBtnIcon { color: rgba(0, 86, 112, 0.94); }
 
-<<<<<<< Upstream, based on origin/MESv1.5
-.sapMPIText1 { padding: 4px 0 0 0px; position: absolute; height: 45%; width: 100% !important; }
-=======
 .sapMPIText1 { padding: 4px 0 0 8px; position: absolute; height: 45%; width: 100% !important; }
->>>>>>> bcf554b [stationTracker] color box
 
 .sapMPIText2 { margin: 20px 0 0 8px; position: absolute; }
 
@@ -259,19 +175,6 @@ WORK LIST POP OVER
 
 .classWorklistPopover .fa.dandelion { color: #fbec00; padding-right: 6px; }
 
-<<<<<<< Upstream, based on origin/MESv1.5
-.classWorklistPopover .fa.oswIcon2 { padding-right: 6px; }
-
-.classWorklistPopover .fa.oswIcon2 b { font-family: arial; }
-
-.classWorklistPopover .fa.fa-exclamation-triangle.triangleIcon.petrol { color: rgba(0, 86, 112, 0.94); }
-
-.classWorklistPopover .fa.fa-ban.stopIcon { color: #e4002b; }
-
-.classWorklistPopover .fa.fa-ban.stopIcon.white-two { color: #ffffff; }
-
-.classWorklistPopover .sapMPIText3 { position: absolute; display: block; right: 0px; height: 20px; margin-right: 6px; top: 50%; margin-top: calc(-20px/2); width: auto; }
-=======
 .classWorklistPopover .fa.oswIcon2 { border: 1px solid; padding-right: 6px; }
 
 .classWorklistPopover .fa.oswIcon2 b { font-family: arial; }
@@ -1093,7 +996,6 @@ reschedule
 .classWorklistPopover .sapMPIText3 #stationTrackerView--splitWorkTra { height: calc(100% - 18rem) !important; }
 
 .classWorklistPopover .sapMPIText3 #stationTrackerView--splitWorkTra.withoutKPI { height: calc(100% - 6rem) !important; }
->>>>>>> bcf554b [stationTracker] color box
 
 .classWorklistPopover header.sapMIBar.sapMHeader-CTX { background: #d4f1f7; box-shadow: 0 0 5px #333; z-index: 1000; }
 
@@ -1133,41 +1035,6 @@ BOX MANAGEMENT
 
 .trackerBox .fa.stopIcon.left { float: left; }
 
-<<<<<<< Upstream, based on origin/MESv1.5
-.trackerBox .fa.oswIcon { position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; overflow: hidden; line-height: 14px; height: auto; float: left; margin-left: 6px; margin-bottom: 10px; min-width: 45px; }
-
-.trackerBox .fa.oswIcon b { font-family: arial; }
-
-.trackerBox .fa.oswIcon.cherry-red { color: #e4002b; }
-
-.trackerBox .dandelion-back { background-color: #fbec00; }
-
-.trackerBox .teal-blue { color: #0085ad; }
-
-.trackerBox .petrol { color: rgba(0, 86, 112, 0.94); }
-
-.trackerBox .petrol-back { background-color: rgba(0, 86, 112, 0.94); }
-
-.trackerBox .cherry-red-back { background-color: #e4002b; }
-
-.trackerBox .dark-lime-green-back { background-color: #84bd00; }
-
-.trackerBox .teal-blue-back { background-color: #0085ad; }
-
-.trackerBox .dandelion { color: #fbec00; }
-
-.trackerBox .yellow { background-color: #fbec00; color: rgba(0, 86, 112, 0.94); }
-
-.trackerBox .green { background-color: #049372; color: #ffffff; }
-
-.trackerBox .blue { background-color: #0085ad; color: #ffffff; }
-
-.trackerBox .pink { background-color: #E08283; color: #ffffff; }
-
-.trackerBox .whiteColor { color: #ffffff; }
-
-.trackerBox .whiteColor :hover { color: #ffffff; }
-=======
 .trackerBox .fa.oswIcon { position: relative; z-index: 1; padding-left: 5px; padding-right: 5px; border-radius: 10px; top: 5px; overflow: hidden; line-height: 14px; height: auto; float: left; border: 1px solid; margin-left: 6px; margin-bottom: 10px; min-width: 45px; }
 
 .trackerBox .fa.oswIcon b { font-family: arial; }
@@ -1203,7 +1070,6 @@ BOX MANAGEMENT
 .trackerBox .whiteColor :hover { color: #ffffff; }
 
 .trackerBox .red { color: #e4002b; }
->>>>>>> bcf554b [stationTracker] color box
 
 .trackerBox:hover .dark-lime-green-back { -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; background-color: #536f12 !important; }
 
@@ -1494,7 +1360,7 @@ label.teamLabel { font-size: 2rem; font-weight: bold; }
 .rescheduleLineBtn i { margin-left: 10px; width: 40px; height: auto; }
 
 /* Reschedule all line button */
-.rescheduleAllBtn { width: 5px; height: 37px; top: 0; /*left: -10px;*/ }
+.rescheduleAllBtn { width: 5px; height: 37px; top: 0; cursor: pointer; /*left: -10px;*/ }
 
 .rescheduleAllBtn:hover { width: 200px; }
 
@@ -2771,6 +2637,10 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 #operationDetailsView--idComponents.operationDetailTabSelected #operationDetailsView--idComponents-count::before { content: ""; height: 4px; position: absolute; top: 20px; bottom: 0; left: 0; right: 0; background: #fe5000; }
 
 #operationDetailsView--idComponents[data-idcomponentsho="true"] #operationDetailsView--idComponents-count::after { height: 4px; position: relative; top: 0; background: transparent; content: " ⇧HO  "; color: #4CBB17; font-size: 80%; font-weight: bold; vertical-align: sub; }
+
+#operationDetailsView--idTrackingTemplate.operationDetailTabSelected #operationDetailsView--idTrackingTemplate-count::before { content: ""; height: 4px; position: absolute; top: 20px; bottom: 0; left: 0; right: 0; background: #fe5000; }
+
+#operationDetailsView--idTrackingTemplate[data-idtrackingtemplateho="true"] #operationDetailsView--idTrackingTemplate-count::after { height: 4px; position: relative; top: 0; background: transparent; content: " ⇧HO  "; color: #4CBB17; font-size: 80%; font-weight: bold; vertical-align: sub; }
 
 #ViewDisruptionView--disrptlist { width: 95% !important; margin: 50px auto !important; padding: 0; }
 

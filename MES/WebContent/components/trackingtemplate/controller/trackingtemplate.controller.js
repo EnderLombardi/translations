@@ -66,6 +66,15 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     	oButton.setText(sText);
     },    
 
+    manageFreezeAction: function() {
+
+//    	Refresh Profile Model to relaunch formatter on View
+    	sap.ui.getCore().getModel("Profile").refresh(true);
+    	sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].freeze_tracking_template = this.freeze;
+    	sap.ui.getCore().getModel("operationDetailModel").refresh(true);
+    
+    },    
+    
 //  The status freezed components should be saved on operation operation  level for all operations of this WO
     //is called when the save button is clicked
     onbtnTrackingTemplateFreeze: function (oEvent) {
@@ -98,6 +107,9 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
 //      The ‘freeze components’ button will become an ‘unfreeze components’ button
         this.manageFreezeButton(this.freeze);
 
+        
+//      We update display of column
+        this.manageFreezeAction();        
     },    
     
     /**

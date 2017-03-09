@@ -140,7 +140,11 @@
                         </IconTabFilter>
                         <IconTabFilter id="idJignTools"  enabled="{Profile>/identifiedUser/permissions/operationDetailsJigNTool}" count="{i18n>JignTools}" tooltip="{i18n>JignTools}" key="jigntools"></IconTabFilter>
                         <IconTabFilter id="idACPnGLinks"  count="{i18n>ACPnGLinks}" tooltip="{i18n>ACPnGLinks}" key="ACPnGLinks"></IconTabFilter>
-                        <IconTabFilter id="idTrackingTemplate" count="{i18n>tckTemplate}" tooltip="{i18n>tckTemplate}" key="tckTemplate"></IconTabFilter>
+                        <IconTabFilter id="idTrackingTemplate" count="{i18n>tckTemplate}" tooltip="{i18n>tckTemplate}" key="tckTemplate">
+							<customData>
+								<core:CustomData key="idTrackingTemplateHO" value="{path : 'operationDetailModel>/Rowsets/Rowset/0/Row/0/freeze_tracking_template', formatter:'airbus.mes.stationtracker.util.Formatter.checkDisplayHOComponents'}" writeToDom="true" />
+							</customData>                         
+                        </IconTabFilter>
                     </items>
                 </IconTabBar>
             </Toolbar>
