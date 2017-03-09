@@ -7,7 +7,7 @@
 
 				<HBox>
 					<Label text="{i18nModel>start}:" class= "sapUiSmallMarginBegin" />
-					<Text text="{DisruptionDetailModel>/openingTime}"  />
+					<Text text="{DisruptionDetailModel>/openDateTime}"  />
 					</HBox>
 					<HBox>
 					<Label text="{i18nModel>end}:" class="sapUiSmallMarginBegin" />

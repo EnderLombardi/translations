@@ -9,7 +9,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>Category}" />
 				<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-					change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>/MessageType}">
+					change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>/messageType}">
 					<items>
 						<core:Item text="{disruptionCategoryModel>DESCRIPTION}"
 							key="{disruptionCategoryModel>MESSAGE_TYPE}" />
@@ -34,7 +34,7 @@
 				</TimePicker>
 				<Label text="{i18nModel>resGroup}" />
 				<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
-					change="onSelectionChange" forceSelection="false"  selectedKey="{DisruptionDetailModel>/ResponsibleGroup}">
+					change="onSelectionChange" forceSelection="false"  selectedKey="{DisruptionDetailModel>/responsibleGroup}">
 					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setResponsibleGrpEnable'}"> -->
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
@@ -45,7 +45,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>reason}" />
 				<Select id="selectAttribute" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
-					forceSelection="false" selectedKey="{DisruptionDetailModel>/Reason}">
+					forceSelection="false" selectedKey="{DisruptionDetailModel>/reason}">
 					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}"> -->
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>REASON}" key="{disruptionRsnRespGrp>REASON}" />
@@ -61,7 +61,7 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>gravity}" />
-				<Select id="gravity" selectedKey="{DisruptionDetailModel>/Gravity}">
+				<Select id="gravity" selectedKey="{DisruptionDetailModel>/severity}">
 				<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setGravityEnable'}"> -->
 					<items>
 						<core:Item text="{i18nModel>NotBlocked}" key="1" />
@@ -80,20 +80,20 @@
             	<core:Title text="" />				
 				<Label text="{i18nModel>OpenDate}" />
 				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
-					value="{path:'DisruptionDetailModel>/OpeningTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
+					value="{path:'DisruptionDetailModel>/openDateTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker enabled="false" id="openTime" displayFormat="HH:mm"
 					valueFormat="HH:mm"
-					value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+					value="{path: 'DisruptionDetailModel>/openDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
 				</TimePicker>
 				<Label text="{i18nModel>TimeLost}" />
-				<Input placeholder="" id="timeLost"  value="{path: 'DisruptionDetailModel>/TimeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}"
+				<Input placeholder="" id="timeLost"  value="{path: 'DisruptionDetailModel>/timeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}"
 					enabled="false">
 				</Input>
 
@@ -108,22 +108,22 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>status}" />
 				<Input id="status" enabled="false"
-					value="{path: 'DisruptionDetailModel>/Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}">
+					value="{path: 'DisruptionDetailModel>/status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}">
 				</Input>
 				
 				<Label text="{i18nModel>promisedDateTime}" id="promisedDateLabel" />
 				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 					displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
-					enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
+					value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					enabled="{parts: [  {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker id="promisedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm:ss"
-					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
-					enabled="{parts: [  {path: 'DisruptionDetailModel>/ResponsibleFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
+					value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					enabled="{parts: [  {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -133,7 +133,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>EscalationLevel}" />
 				<Input id="escalationLevel" enabled="false"
-					text="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
+					text="{path: 'DisruptionDetailModel>escalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
 				</Input>
 
 
@@ -142,14 +142,14 @@
 
 				<Label text="{i18nModel>dateOfEscalation}" />
 				<DatePicker displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					value="{path: 'DisruptionDetailModel>/escalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
 					enabled="false">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker valueFormat="HH:mm" enabled="false"
-					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					value="{path: 'DisruptionDetailModel>/escalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					displayFormat="HH:mm">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
@@ -162,7 +162,7 @@
 				<Label text="{i18nModel>Resolver}" />
 				<Select id="selectResolver"
 					items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
-					forceSelection="false" selectedKey="{DisruptionDetailModel>/ResolverID}">
+					forceSelection="false" selectedKey="{DisruptionDetailModel>/resolverID}">
 					<items>
 						<core:Item
 							text="{disruptionResolverModel>Name}"
