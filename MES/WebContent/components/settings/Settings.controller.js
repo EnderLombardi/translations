@@ -348,7 +348,10 @@ sap.ui.controller("airbus.mes.settings.Settings",
              * Get data from usersetting and reuse previous settings input.
              */
             getUserSettings : function() {
-                var oModel = airbus.mes.settings.ModelManager.core.getModel("userSettingModel").getData();
+                var oModel = sap.ui.getCore().getModel("userSettingModel").getData();
+                // User
+                airbus.mes.settings.ModelManager.user = oModel.Rowsets.Rowset[0].Row[0].user;
+                // Location
                 airbus.mes.settings.ModelManager.site = oModel.Rowsets.Rowset[0].Row[0].site;
                 airbus.mes.settings.ModelManager.program = oModel.Rowsets.Rowset[0].Row[0].program;
                 airbus.mes.settings.ModelManager.line = oModel.Rowsets.Rowset[0].Row[0].line;
@@ -385,49 +388,53 @@ sap.ui.controller("airbus.mes.settings.Settings",
                                 el.getContent()[0].getItems()[0].setSelected(true);
 
                     }});
-                        // Fire event to refilter plant
-                        airbus.mes.settings.oView.getController().onProgramSelect();
+                    
+                    // Fire event to refilter plant
+                    airbus.mes.settings.oView.getController().onProgramSelect();
 
+                    this.getView().byId("selectLine").setSelectedKey(airbus.mes.settings.ModelManager.line);
+                    this.getView().getController().onSelectionChange("selectLine");
 
-                        this.getView().byId("selectLine").setSelectedKey(airbus.mes.settings.ModelManager.line);
-                        this.getView().getController().onSelectionChange("selectLine");
+                    this.getView().byId("selectStation").setSelectedKey(airbus.mes.settings.ModelManager.station);
 
-                        this.getView().byId("selectStation").setSelectedKey(airbus.mes.settings.ModelManager.station);
+                    if ( airbus.mes.settings.ModelManager.msn != "---" ){
 
-                        if ( airbus.mes.settings.ModelManager.msn != "---" ){
+                    	airbus.mes.settings.ModelManager.currentMsnSelected = false;
+                    	this.getView().getController().onSelectionChange("selectStation");
+                        this.getView().byId("selectMSN").setSelectedKey(airbus.mes.settings.ModelManager.msn);
+                        this.getView().byId("currMSN").setSelected(false);
+                        
+                    } /* else {
 
-                        	airbus.mes.settings.ModelManager.currentMsnSelected = false;
-                        	this.getView().getController().onSelectionChange("selectStation");
-                            this.getView().byId("selectMSN").setSelectedKey(airbus.mes.settings.ModelManager.msn);
-                            this.getView().byId("currMSN").setSelected(false);
-                            
-                        } else {
+                        this.getView().getController().onSelectionChange("selectStation");
+                        airbus.mes.settings.ModelManager.msn = this.getView().byId("selectMSN").getValue();
+                        this.getView().byId("currMSN").setSelected(true);
+                        // When current msn is selected we save in user setting "" for the value msn
+                        // To redisplay the real value of ms we reuse currentMsnValue variable wich is set during the filtering of combobox STATION.
+                        airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
+                        "MSN") + " " + airbus.mes.settings.ModelManager.currentMsnValue);
+                    } */
 
-                            this.getView().getController().onSelectionChange("selectStation");
-                            airbus.mes.settings.ModelManager.msn = this.getView().byId("selectMSN").getValue();
-                            this.getView().byId("currMSN").setSelected(true);
-                            // When current msn is selected we save in user setting "" for the value msn
-                            // To redisplay the real value of ms we reuse currentMsnValue variable wich is set during the filtering of combobox STATION.
-                            airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
-                            "MSN") + " " + airbus.mes.settings.ModelManager.currentMsnValue);
+                    // if no msn go by default on user settings.
+                    if ( airbus.mes.settings.ModelManager.msn == "---" ||
+                    		this.getView().byId("selectMSN").getKeys().indexOf(airbus.mes.settings.ModelManager.msn) === -1 ) {
+                        airbus.mes.shell.oView.getController().navigate();
+                        //if !localhost stop user on setting
+                        switch (window.location.hostname) {
+                            case "localhost":
+                                break;
+                            default:
+                                break;
                         }
 
-                        // if no msn go by default on user settings.
-                        if ( this.getView().byId("selectMSN").getKeys().indexOf(airbus.mes.settings.ModelManager.msn) === -1 ) {
-                            airbus.mes.shell.oView.getController().navigate();
-                            //if !localhost stop user on setting
-                            switch (window.location.hostname) {
-                                case "localhost":
-                                    break;
-                                default:
-                                    break;
-                            }
+                    }
 
-                        }
-
-                        this.setEnabledCombobox(true, true, true, true);
+                    this.setEnabledCombobox(true, true, true, true);
+                    
                 } else {
+                	
                     this.setEnabledCombobox(true, false, false, false);
+                    
                 }
             },
             /**
@@ -483,10 +490,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     return;
                     // check if one combobox of program is selected
                 } else if ( !this.getView().byId("headTextProgram").getItems().some(function(el){
-
-                    return el.getContent()[0].getItems()[0].getSelected();
-
-                })) {
+		                    	return el.getContent()[0].getItems()[0].getSelected();
+		                	}) ) {
                     airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectProgram"));
                     return;
                 } else if (!this.getView().byId("selectLine").getValue()) {
@@ -495,10 +500,10 @@ sap.ui.controller("airbus.mes.settings.Settings",
                 } else if (!this.getView().byId("selectStation").getValue()) {
                     airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectStation"));
                     return;
-                }else if (!this.getView().byId("selectMSN").getValue()) {
+                } else if (!this.getView().byId("selectMSN").getValue()) {
                     airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectMSN"));
                     return;
-                }else {
+                } else {
 
                     // Save value selected.
                     var aModel = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
@@ -525,30 +530,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
 
                     //Refresh label in header.
-                    var oModel = sap.ui.getCore().getModel("userSettingModel")
-
-                    if ( oModel.getProperty("/Rowsets/Rowset/0/Row")) {
-
-                    var oModelData = sap.ui.getCore().getModel("userSettingModel").getData().Rowsets.Rowset[0].Row[0]
-
-                    oModelData.lineDescription = airbus.mes.settings.ModelManager.lineDesc;
-                    oModelData.siteDescription = airbus.mes.settings.ModelManager.siteDesc;
-                    oModelData.stationDescription = airbus.mes.settings.ModelManager.stationDesc;
-
-                    oModel.refresh( true );
-
-                    airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
-                    "MSN") + " " + airbus.mes.settings.ModelManager.msn);
-
-                    //Update settings on others components
-                    if(airbus.mes.stationtracker !== undefined) {
-                        airbus.mes.stationtracker.util.ModelManager.settings = airbus.mes.settings.ModelManager;
-                    }
-                    //Update filter of lineCalendar if we change the setting
-                    if ( airbus.mes.calendar !== undefined) {
-                    	airbus.mes.calendar.util.ShiftManager.shiftIdSelected = "ALL";
-                      }
-                 }
+                    airbus.mes.settings.ModelManager.loadUserSettingsModel();
               } 
             },
             /**

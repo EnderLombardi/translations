@@ -61,10 +61,10 @@ airbus.mes.settings.Component.prototype.createContent = function() {
 			viewName : "airbus.mes.settings.Settings",
 			type : "XML",
 		})
-	
-		return this.oView;
-
 	}
+	
+	return this.oView;
+	
 };
 
 // override the setTextButtonTo function to return user interface

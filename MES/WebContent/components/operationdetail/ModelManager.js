@@ -72,12 +72,11 @@ airbus.mes.operationdetail.ModelManager = {
      * Set the Models for Dispatch to Observer
      **************************************************************************/
     loadDispatchModel: function () {
-        var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         var oViewModel = sap.ui.getCore().getModel("dispatchModel");
         var oOperationModel =airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0");
         var geturlDispatchToObserver = this.urlModel.getProperty("urlDispatchToObserver");
 
-        geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlDispatchToObserver, "$site", oData.site);
+        geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlDispatchToObserver, "$site", airbus.mes.settings.ModelManager.site);
         geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlDispatchToObserver, "$erpSystem", oOperationModel.erp_system);
         geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlDispatchToObserver, "$language", sap.ui.getCore().getConfiguration().getLanguage());
         

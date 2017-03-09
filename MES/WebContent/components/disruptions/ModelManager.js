@@ -62,7 +62,7 @@ airbus.mes.disruptions.ModelManager = {
 				"workCenterBO": workCenterBO,
 				"operationNo": operation,
 				"sfcStepBO": sSfcStepRef,
-				"userBO": "UserBO:" + airbus.mes.settings.ModelManager.site + "," + sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"userBO": "UserBO:" + airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.user,
 				"msnNumber": ""
 			}),
 
@@ -240,7 +240,7 @@ airbus.mes.disruptions.ModelManager = {
 			type: 'POST',
 			data: {
 				"Param.1": airbus.mes.settings.ModelManager.site,
-				"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.2": airbus.mes.settings.ModelManager.user,
 				"Param.3": messageType,
 				/* "Param.4" : "abc", */
 				"Param.5": sComment,
@@ -341,7 +341,7 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.7": dFixedByTime,
 				"Param.8": sComment,
 				"Param.9": iGravity,
-				"Param.10": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.10": airbus.mes.settings.ModelManager.user,
 				"Param.11": dPromisedDate,
 				"Param.12": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc"),
 				"Param.13": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo").split(",")[1], // Operation
@@ -393,11 +393,12 @@ airbus.mes.disruptions.ModelManager = {
 						}
 
 					} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-						if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
+						if (data.Rowsets.Rowset[0].Row[0].Message === undefined) {
 							airbus.mes.shell.ModelManager.messageShow(airbus.mes.createdisruption.oView.getModel("i18nModel").getProperty(
 								"DisruptionNotUpdated"));
-						else
-							airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message)
+						} else {
+							airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+						}
 					}
 				} else if (data.Rowsets.FatalError) {
 					airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
@@ -482,7 +483,7 @@ airbus.mes.disruptions.ModelManager = {
 			data: {
 				"Param.1": airbus.mes.settings.ModelManager.site,
 				"Param.2": msgRef,
-				"Param.3": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.3": airbus.mes.settings.ModelManager.user,
 				"Param.4": sComment
 			},
 			type: 'POST',
@@ -505,12 +506,12 @@ airbus.mes.disruptions.ModelManager = {
 					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
 
 					// Refresh station tracker
-					if (nav.getCurrentPage().getId() == "stationtrackerView")
+					if (nav.getCurrentPage().getId() == "stationtrackerView") {
 						airbus.mes.shell.oView.getController().renderStationTracker();
-
-					// Set Refresh disruption tracker flag
-					else if (nav.getCurrentPage().getId() == "disruptiontrackerView")
+					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
+						// Set Refresh disruption tracker flag
 						airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
+					}
 
 				}
 			}
@@ -536,7 +537,7 @@ airbus.mes.disruptions.ModelManager = {
 				url: this.getUrlToAckDisruption(),
 				data: {
 					"Param.1": airbus.mes.settings.ModelManager.site,
-					"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+					"Param.2": airbus.mes.settings.ModelManager.user,
 					"Param.3": msgRef,
 					"Param.4": comment,
 					"Param.5": dateTime
@@ -561,8 +562,9 @@ airbus.mes.disruptions.ModelManager = {
 						airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
 
 						// Set Refresh disruption tracker flag
-						if (nav.getCurrentPage().getId() == "disruptiontrackerView")
+						if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
 							airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
+						}
 					}
 
 				}
@@ -587,7 +589,7 @@ airbus.mes.disruptions.ModelManager = {
 			url: this.getUrlToMarkSolvedDisruption(),
 			data: {
 				"Param.1": airbus.mes.settings.ModelManager.site,
-				"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.2": airbus.mes.settings.ModelManager.user,
 				"Param.3": msgRef,
 				"Param.4": comment
 			},
@@ -612,12 +614,12 @@ airbus.mes.disruptions.ModelManager = {
 					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
 
 					// Refresh station tracker
-					if (nav.getCurrentPage().getId() == "stationtrackerView")
+					if (nav.getCurrentPage().getId() == "stationtrackerView") {
 						airbus.mes.shell.oView.getController().renderStationTracker();
-
-					// Set Refresh disruption tracker flag
-					else if (nav.getCurrentPage().getId() == "disruptiontrackerView")
+					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
+						// Set Refresh disruption tracker flag
 						airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
+					}
 
 				}
 			}
@@ -646,7 +648,7 @@ airbus.mes.disruptions.ModelManager = {
 			data: {
 				"Param.1": airbus.mes.settings.ModelManager.site,
 				"Param.2": sComment,
-				"Param.3": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.3": airbus.mes.settings.ModelManager.user,
 				"Param.4": msgRef
 
 			},
@@ -699,7 +701,7 @@ airbus.mes.disruptions.ModelManager = {
 			url: this.getUrlToRejectDisruption(),
 			data: {
 				"Param.1": airbus.mes.settings.ModelManager.site,
-				"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.2": airbus.mes.settings.ModelManager.user,
 				"Param.3": msgref,
 				"Param.4": comment,
 				"Param.5": sStatus
@@ -725,13 +727,13 @@ airbus.mes.disruptions.ModelManager = {
 					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
 
 					// Refresh station tracker
-					if (nav.getCurrentPage().getId() == "stationtrackerView")
+					if (nav.getCurrentPage().getId() == "stationtrackerView") {
 						airbus.mes.shell.oView.getController().renderStationTracker();
-
-					// Set Refresh disruption tracker flag
-					else if (nav.getCurrentPage().getId() == "disruptiontrackerView")
+					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
+						// Set Refresh disruption tracker flag
 						airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
-
+					}
+					
 				}
 			}
 		});
@@ -764,7 +766,7 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.1": airbus.mes.settings.ModelManager.site,
 				"Param.2": msgref,
 				"Param.3": comment,
-				"Param.4": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+				"Param.4": airbus.mes.settings.ModelManager.user
 			},
 			error: function (xhr, status, error) {
 				airbus.mes.disruptions.func.tryAgainError(i18nModel);
@@ -782,12 +784,12 @@ airbus.mes.disruptions.ModelManager = {
 					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
 
 					// Refresh station tracker
-					if (nav.getCurrentPage().getId() == "stationtrackerView")
+					if (nav.getCurrentPage().getId() == "stationtrackerView") {
 						airbus.mes.shell.oView.getController().renderStationTracker();
-
-					// Set Refresh disruption tracker flag
-					else if (nav.getCurrentPage().getId() == "disruptiontrackerView")
+					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
+						// Set Refresh disruption tracker flag
 						airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
+					}
 
 				}
 
@@ -826,37 +828,38 @@ airbus.mes.disruptions.ModelManager = {
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].previously_start);
 
 			// calculate status of operation
-			if (sStatus == "0")
+			if (sStatus == "0") {
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = airbus.mes.disruptions.Formatter.opStatus.completed;
-			else if (sStatus == "2")
+			} else if (sStatus == "2") {
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = airbus.mes.disruptions.Formatter.opStatus.active;
-			else if (sStatus === "3")
+			} else if (sStatus === "3") {
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = airbus.mes.disruptions.Formatter.opStatus.paused;
-			else if (sStatus === "1")
+			} else if (sStatus === "1") {
 				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = airbus.mes.disruptions.Formatter.opStatus.notStarted;
+			}
 		}
 
 		// Refresh model
 		sap.ui.getCore().getModel("operationDetailModel").refresh();
 	},
 
-	/***************************************************************************
+	/**
 	 * Get the issuer of the disruption
 	 */
 	getIssuer: function () {
 		// Check if generic User, "Generic users are starting with SH*."
-		var sUser = ((sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")).substring(0, 2) == "SH") ?
-			//then send operator of operation as issuer
+		var sUser = (airbus.mes.settings.ModelManager.user.substring(0, 2) == "SH") ?
+			// then send operator of operation as issuer
 			(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1]) :
-			//Else Current logged in user for a real user as Issuer
-			(sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"));
+			// else Current logged in user for a real user as Issuer
+			airbus.mes.settings.ModelManager.user;
 
 		// If generic user and no operator assigned, prompt for username
-		if (sUser == undefined)
+		if (sUser == undefined) {
 			sUser = airbus.mes.shell.oView.getController().userLogin();
-
-		else
+		} else {
 			return sUser;
+		}
 	},
 
 	/***************************************************************************
@@ -945,35 +948,6 @@ airbus.mes.disruptions.ModelManager = {
 		return this.urlModel.getProperty('postRetrieveDocument');
 	},
 
-	/***************************************************************************
-     * Send POST update attached document request
-     **************************************************************************/
-	updateAttachDocument: function (site, reference, fileCount, descript, userName) {
-		jQuery.ajax({
-			async: false,
-			url: this.getPostUpdateAttachedDocumentUrl(),
-			dataType: "json",
-			cache: false,
-			contentType: 'application/json',
-			type: 'post',
-			data: JSON.stringify({
-				"site": site,
-				"type": "DA",
-				"ref": reference,
-				"fileCount": fileCount,
-				"fileDescription": descript,
-				"userName": userName
-			})
-			,
-			success: function (data, textStatus, jqXHR) {
-				console.log(data);
-			},
-			error: function (data, textStatus, jqXHR) {
-				airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
-			}
-		});
-	},
-
 	/*
 	 * Get Url for the Post Attached document 
 	 */
@@ -982,8 +956,8 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	/***************************************************************************
- * Send POST delete document request
- **************************************************************************/
+	 * Send POST delete document request
+	 ***************************************************************************/
 	updateAttachDocument: function (site, reference, fileCount, userName) {
 		jQuery.ajax({
 			async: false,

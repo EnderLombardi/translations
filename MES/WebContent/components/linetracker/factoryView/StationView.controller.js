@@ -50,9 +50,8 @@ sap.ui.controller("airbus.mes.factoryView.StationView", {
         var sStationNumber = airbus.mes.factoryView.util.ModelManager.station_number;
         var sFactory = airbus.mes.factoryView.util.ModelManager.factory_name;
         var sSite = airbus.mes.factoryView.util.ModelManager.site;
-
-        airbus.mes.settings.ModelManager.msn = sMsn;
-        airbus.mes.factoryView.util.ModelManager.getTranscoStation(sSite, sFactory, sLineNumber, sStationNumber);
+        
+        airbus.mes.factoryView.util.ModelManager.getTranscoStation(sSite, sFactory, sLineNumber, sStationNumber, sMsn);
     },
     /*onAfterRendering: function(){
     }*/

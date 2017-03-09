@@ -163,7 +163,7 @@ airbus.mes.factoryView.util.ModelManager = {
 
     },
 
-    getTranscoStation : function(sSite, sFactory, sLineNumber, sStationNumber) {
+    getTranscoStation : function(sSite, sFactory, sLineNumber, sStationNumber, sMSN) {
         var geturltranscostation = this.urlModel.getProperty('urltranscostation');
         geturltranscostation = this.replaceURI(geturltranscostation, "$site", sSite);
         geturltranscostation = this.replaceURI(geturltranscostation, "$factory", sFactory);
@@ -180,8 +180,9 @@ airbus.mes.factoryView.util.ModelManager = {
                 }else{
                     airbus.mes.settings.ModelManager.site = data.Rowsets.Rowset[0].Row[0].Site;
                     airbus.mes.settings.ModelManager.program = data.Rowsets.Rowset[0].Row[0].Program;
-                    airbus.mes.settings.ModelManager.station = data.Rowsets.Rowset[0].Row[0].Physical_Station;
                     airbus.mes.settings.ModelManager.line = data.Rowsets.Rowset[0].Row[0].Line;
+                    airbus.mes.settings.ModelManager.station = data.Rowsets.Rowset[0].Row[0].Physical_Station;
+                    airbus.mes.settings.ModelManager.msn = sMSN;
                     airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
                     airbus.mes.settings.ModelManager.loadUserSettingsModel();
                     airbus.mes.settings.oView.getController().saveUserSettings();

@@ -54,12 +54,10 @@ sap.ui.controller("airbus.mes.factoryView.StationView", {
         
         // Transform msn on 5 digit with 0 first
         for (var a = 0; a < 5 - sLength; a++) {
-        	
         	sMsn = "0" + sMsn;
         }
         
-        airbus.mes.settings.ModelManager.msn = sMsn + "_" + sHand;
-        airbus.mes.factoryView.util.ModelManager.getTranscoStation(sSite, sFactory, sLineNumber, sStationNumber);
+        airbus.mes.factoryView.util.ModelManager.getTranscoStation(sSite, sFactory, sLineNumber, sStationNumber, sMsn + "_" + sHand);
        
     },
     /*onAfterRendering: function(){
