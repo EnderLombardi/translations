@@ -285,8 +285,8 @@ airbus.mes.settings.ModelManager = {
 		var sSite = airbus.mes.settings.ModelManager.site;
 		var sMSN = airbus.mes.settings.ModelManager.msn;
 				
-		if (sSite || sSite == "" || sSite == "---" || sSite == "undefined"
-			|| sMSN || sMSN == "" || sMSN == "---" || sMSN == "undefined") {
+		if (!sSite || sSite == "---" || sSite == "undefined"
+			|| !sMSN || sMSN == "---" || sMSN == "undefined") {
 			airbus.mes.shell.oView.getController().navigate();
 		}
 

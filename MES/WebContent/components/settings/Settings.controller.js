@@ -353,7 +353,6 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
                 // Replace with current new element in UI
                 if (airbus.mes.settings.ModelManager.site
-                		&& airbus.mes.settings.ModelManager.site != ""
                 	    && airbus.mes.settings.ModelManager.site != "---"
                 		&& airbus.mes.settings.ModelManager.site != "undefined") {
 
@@ -400,8 +399,9 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     } */
 
                     // if no msn go by default on user settings.
-                    if ( airbus.mes.settings.ModelManager.msn == "---" ||
-                    		this.getView().byId("selectMSN").getKeys().indexOf(airbus.mes.settings.ModelManager.msn) === -1 ) {
+                    if ( !airbus.mes.settings.ModelManager.msn || airbus.mes.settings.ModelManager.msn == "---"
+                    	   || airbus.mes.settings.ModelManager.msn == "undefined"
+                    	   || this.getView().byId("selectMSN").getKeys().indexOf(airbus.mes.settings.ModelManager.msn) === -1 ) {
                         airbus.mes.shell.oView.getController().navigate();
                     }
 
