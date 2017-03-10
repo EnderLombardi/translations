@@ -60,7 +60,6 @@ airbus.mes.ncdisplay.util.ModelManager = {
 
 					 data.count = data.ncDetailList.length;
 	                 oViewModel.setData(data);
-	                 oViewModel.setData(data);
 
 				} catch (e) {
 					console.log("NO NC Display data load");

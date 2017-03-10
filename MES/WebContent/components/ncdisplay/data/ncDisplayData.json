@@ -1,125 +1,61 @@
-{  
-   "ncDetailList":[  
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0020",
-         "ncReference":"0000858621",
-         "description":"  09.04.2004 10:01:10 U. QUALITE FUS AV WB LR A380 (FNZQU4L) Tél. 54834..   BELLY FAIRING C63 Y1730~ CD ET CG  Impossibilité de monter 2 vis pour maintenir les gearbox .Les pions de  centrage des gearbox L-5011CV ET L-5111CV dépassent de 0,8mm sur les  supports L539.15620.200 et L539.15620.202 .  13.04.2004 09:11:45 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  UNE ACTION EST EN COURS AU NIVEAU DU BE (LITIGE 300029360).DEMANDONS  REMISE EN CONFORMITE PAR RAPPORT A LA DEMANDE D'INTERFACE L27F15205200.  06.05.2004 15:54:20 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  PROBLEME RESOLU SUR MSN 0001 CAR LE MONTAGE ETAIT POSSIBLE.",
-         "acpStatus":"C",
-         "ncType":"NC"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0020",
-         "ncReference":"0000858621",
-         "description":"  13.04.2004 10:59:56 AMENAGEMENT SAINT-NAZAIRE A380 (LMGG5)  LES 4  TROUS DE GOUPILLES DES 4 AXES DE FIXATION DE EQ5006CV TOMBENT    EN DEHORS DES GEORGES DES ECROUS.HERVOUET.J.  14.04.2004 15:24:24 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  ETABLIR LITIGE AUPRES DU BE POUR TROUVER UNE SOLUTION.  16.04.2004 10:07:39 FREDERICK DAVID (NZ71807) Tél. 544344 544344  Litige 300030664",
-         "acpStatus":"C",
-         "ncType":"PNC"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0030",
-         "ncReference":"0000858621",
-         "description":"  22.04.2004 09:51:22 U. QUALITE FUS AV WB LR A380 (FNZQU4L) Tél. 54834..  EQUIPEMENT SOUS DEROGATION:D9893-001097 R/FW",
-         "acpStatus":"O",
-         "ncType":"IR"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0020",
-         "ncReference":"0000858621",
-         "description":"  27.04.2004 16:51:39 AMENAGEMENT SAINT-NAZAIRE A380 (LMGG6)  Sur ferrure d'accrochage moteur volets au C66 manque perçage  pour passage fil frein sur flasque interne D et sur les 2 flasques G  MORICE 12955 .  28.04.2004 14:43:45 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  SUPPORTS SITUES DANS LE WP 12223.  ETABLIR LITIGE AUPRES DU BE POUR FAIRE MODIFIER LES INTERFACES.  29.04.2004 11:32:15 FREDERICK DAVID (NZ71807) Tél. 544344 544344  Litige 300031464  03.06.2004 15:32:44 SEBASTIEN BEAUDREMONT (NZ20402) Tél. 544340 544340  LE LITIGE 300031464 EST REPONDU, POURRIEZ-VOUS CLOTURER L'AM SVP? (CR)  25.08.2004 14:45:07 David BRECQ (ST05870) Tél. 598504  Les trous étant percés trop pres de l'axe, attendons solution de  réparation, changement de la ferrure ou acceptable dans l'état (voir  avec derogation).  Si defaut acceptable, merci de nous communiquer l'information pour  montage du fil frein.  11.09.2004 10:33:47 CEDRIC VAILLANT (NZ32466)  <H><U>Réponse SABCA :</></>    Il manquait effectivement un trou sur chaque ferrure. D'après David  DEFLANDRE, le trou supplémentaire à été rajouté sur chaque ferrure  cette nuit. Le trou déjà présent est un peu décalé par rapport au plan  mais cela ne gène pas pour le passage d'un fil frein.   Cordialement,   Christophe Caudéran  Coordinateur production A380 & A340-500/600   Tel: 00 32 (0) 2 729 56 74  GSM: 00 32 (0) 478 76 97 38  E-mail: christophe.cauderan@sabca.be",
-         "acpStatus":"O",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0030",
-         "ncReference":"0000858621",
-         "description":"  28.04.2004 13:13:16 U. QUALITE FUS AV WB LR A380 (FNZQU4L) Tél. 54834..  EQUIPEMENT SOUS DEROGATION :D9893-000966 R-FW  FOR GROUND TEST ONLY",
-         "acpStatus":"C",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0020",
-         "ncReference":"0000858621",
-         "description":"  28.04.2004 15:11:03 AMENAGEMENT SAINT-NAZAIRE A380 (LMGG6)  Sur les axes de fixation des bielles ( Becs et Volets ) le trou de  goupille se situe à la limite de l'écrou .  Axe rep n°:116 (NSA 5042V07-296) .  MORICE 12955 .  30.04.2004 15:24:51 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  ETABLIR LITIGE AUPRES DU BE POUR TROUVER UNE SOLUTION.  03.05.2004 16:15:10 FREDERICK DAVID (NZ71807) Tél. 544344 544344  Litige 300031674 pour le plan L275.10010.000(volets)  Litige 300031676 pour le plan L278.10010.000(becs)",
-         "acpStatus":"C",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0020",
-         "ncReference":"0000858621",
-         "description":"  28.04.2004 20:38:12 AMENAGEMENT SAINT-NAZAIRE A380 (LMGG6)  Dans case de train G et D les vis de fixation des renvois d'arbre de  volets sont trop longues ( ABS 0114 V4D13) .  Il y a également discordence entre les longueurs des pions de centrage  et les épaisseurs des ferrures .  MORICE 12955 .  30.04.2004 15:26:45 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  ETABLIR LITIGE POUR FAIRE MODIFIER LA LONGUEUR DES VIS.SUR MSN 0001 LES  OPERATEURS ONT MONTE LES RENVOIS AVEC DES VIS (ABS 0114 V4D11).  30.04.2004 15:29:31 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  DEPLUS LE PROBLEME POUR LES PIONS DE CENTRAGE A ETE RESOLU SUR  MSN0001.A VOIR SUR LES PROCHAINS AVIONS.  04.05.2004 10:03:00 FREDERICK DAVID (NZ71807) Tél. 544344 544344  Litige 300031710",
-         "acpStatus":"O",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0030",
-         "ncReference":"0000858621",
-         "description":"  03.05.2004 13:30:10 U. QUALITE FUS AV WB LR A380 (FNZQU4L) Tél. 54834..  EQUIPEMENT SOUS DEROGATION :D9893-001146 R-FW",
-         "acpStatus":"C",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0030",
-         "ncReference":"0000858621",
-         "description":"  03.05.2004 13:52:53 U. QUALITE FUS AV WB LR A380 (FNZQU4L) Tél. 54834..  EQUIPEMENT SOUS DEROGATION:D9893-001145 R-FW  Unit to be retrofitted prior to flight test campaign",
-         "acpStatus":"O",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0020",
-         "ncReference":"0000858621",
-         "description":"  04.05.2004 13:54:01 AMENAGEMENT SAINT-NAZAIRE A380 (LMGG6)  MANQUENT DEUX SUPPORTS L539 15017 000 POUR FIXATIONS DE L EQ5010CV ET  L EQ5110CV AU C63D ET G.HERVOUET.J.  04.05.2004 14:54:06 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  DEMANDONS REMISE EN CONFORMITE C'EST A DIRE MONTAGE DES 2 SUPPORTS  L539.15017.000  17.05.2004 08:46:22 BENOIT CHAMPAGNE (ME33993)  Les supports L539.15110; l539.15111; L539.15112 ont été montés par le  détachament ME suivant la gamme L539.15017.000.P30.",
-         "acpStatus":"C",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0020",
-         "ncReference":"0000858621",
-         "description":"  11.05.2004 16:55:56 AMENAGEMENT SAINT-NAZAIRE A380 (LMGG6)  Pour la fixation de l'équipement 5006CV est préconisé des goupilles  MS24665-153 trop menue par rapport au trou de l'axe .  Je propose des goupilles MS24665-300 ( CMS5787461300 ) .  MORICE 12955 .  12.05.2004 08:25:28 FREDERIC ALLAIN (NZ21541) Tél. 0228545467 545467  ETABLIR LITIGE AUPRES DU BE POUR FAIRE MODIFIER LES GOUPILLES.  13.05.2004 11:21:16 FREDERICK DAVID (NZ71807) Tél. 544344 544344  Litige 300032582.",
-         "acpStatus":"O",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0030",
-         "ncReference":"0000858621",
-         "description":"  14.05.2004 09:23:00 U. QUALITE FUS AV WB LR A380 (FNZQU4L) Tél. 54834..  EQUIPEMENT SOUS DEROGATION :D9893-001102 R-FW  FOR INSTALATION ONLY",
-         "acpStatus":"C",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0030",
-         "ncReference":"0000858621",
-         "description":"  14.05.2004 12:01:23 U. QUALITE FUS AV WB LR A380 (FNZQU4L) Tél. 54834..  EQUIPEMENT SOUS DEROGATION :D9893-001101 R-FW  RELEASED FOR INSTALLATION ONLY",
-         "acpStatus":"C",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0030",
-         "ncReference":"0000858621",
-         "description":"  29.06.2004 15:08:46 GILBERT SEBILO (NZ13393)     AU C.63 G/D    MANQUE DE JEU ENTRE LE SUPPORT ET LA PATTE DE REPRISE DES EQ. 5115CV      ET 5015CV  (GEARBOX).    VOIR LITIGE 300035278 DU  MSN 2...AM.1067830 + PHOTO   13.07.2004 16:08:00 GILBERT SEBILO (NZ13393)  DER. A FAIRE PAR NZ   M ALLAIN FRE.  14.09.2004 10:10:18 FREDERICK DAVID (NZ71807) Tél. 544344 544344  Suite à reponse du niveau1 (voir litige 300035278) le montage de cet  equipement est acceptable si pas de contact.",
-         "acpStatus":"C",
-         "ncType":"AM"
-      },
-      {  
-         "shopOrder":"5097075",
-         "operationNumber":"0020",
-         "ncReference":"0000858621",
-         "description":"  10.11.2004 14:28:22 PATRICE ADAM (NZ12359)  Sur gearbox EQ 5006CV:  Suite a l'application du litige 300030664 ,les lamages ne correspondent  plus au diamètre (trop faible)des nouvelles rondelles NSA 5305-6 REP130  22.11.2004 12:31:28 DAVID JEHANNO (NZ34228)  NZ-003084823",
-         "acpStatus":"C",
-         "ncType":"AM"
-      }
-   ],
-   "success":"true"
+{
+    "ncDetailList": [
+        {
+            "shopOrder": "5097075",
+            "operationNumber": "0030",
+            "ncReference": "0000858621",
+            "description": "ASN-002011/DH500\n 07.03.2017 14:38:14 AR",
+            "acpStatus": "C",
+            "ncType": "AM"
+        },
+        {
+            "shopOrder": "5097075",
+            "operationNumber": "0030",
+            "ncReference": "0000858621",
+            "description": " ASN-002011/DH500\n 07.03.2017 14:48:14 AR",
+            "acpStatus": "O",
+            "ncType": "IR"
+        },
+        {
+            "shopOrder": "5097075",
+            "operationNumber": "0020",
+            "ncReference": "0000858621",
+            "description": "ASN-002011/DH500\n 07.03.2017 15:47:48 AR",
+            "acpStatus": "C",
+            "ncType": "AM"
+        },
+        {
+            "shopOrder": "5097075",
+            "operationNumber": "0030",
+            "ncReference": "0000858621",
+            "description": " ASN-002011/DH500\n 07.03.2017 14:48:14 AR",
+            "acpStatus": "O",
+            "ncType": "IR"
+        },
+        {
+            "shopOrder": "5097075",
+            "operationNumber": "0020",
+            "ncReference": "0000858621",
+            "description": "ASN-002011/DH500\n 07.03.2017 15:47:48 AR",
+            "acpStatus": "C",
+            "ncType": "AM"
+        },
+        {
+            "shopOrder": "5097075",
+            "operationNumber": "0030",
+            "ncReference": "0000858621",
+            "description": " ASN-002011/DH500\n 07.03.2017 14:48:14 AR",
+            "acpStatus": "O",
+            "ncType": "IR"
+        },
+        {
+            "shopOrder": "5097075",
+            "operationNumber": "0020",
+            "ncReference": "0000858621",
+            "description": "ASN-002011/DH500\n 07.03.2017 15:47:48 AR",
+            "acpStatus": "C",
+            "ncType": "AM"
+        }
+    ],
+    "success": "true"
 }
