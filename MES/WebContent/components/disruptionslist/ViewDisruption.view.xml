@@ -81,11 +81,11 @@
 								<core:Title text="" />				
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>gravity}" design="Bold"/>
 									<Text id="gravityText"
-										text="{path: 'operationDisruptionsModel>gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
+										text="{path: 'operationDisruptionsModel>severity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
 									</Text>
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>resGroup}" design="Bold" />
-									<Text text="{operationDisruptionsModel>responsibleGroupDesc}">	
-									</Text>
+									<Text text="{operationDisruptionsModel>responsibleGroupDesc}" />
+									
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>TimeLost}" design="Bold"/>
 									<Text text="{path: 'operationDisruptionsModel>timeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}">
 									</Text>
@@ -195,7 +195,7 @@
 
 						<List showNoData="false" class="sapUiSmallMarginBeginEnd" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
 							items="{path: 'operationDisruptionsModel>disruptionComments', 
-								    filters: [ { path: 'action', operator: 'NE',value1: 'CREATE' } ]}">
+								    filters: [ { path: 'operationDisruptionsModel>action', operator: 'NE',value1: 'CREATE' } ]}">
 								    <!-- { parts: [ {path: 'operationDisruptionsModel>prevCommentsLoaded'}, {path: 'operationDisruptionsModel>totalComments'}, {path: 'counter'} ], formatter: 'airbus.mes.disruptions.Formatter.setFilterForComments'} -->
 							<CustomListItem class="msgColor">
 								<HBox
