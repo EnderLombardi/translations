@@ -73,6 +73,8 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		}
 
 	},
+	
+	
 	onExit : function(oEvt) {
 		sap.ui.getCore().byId("idAttachmentDialog").close()
 	},

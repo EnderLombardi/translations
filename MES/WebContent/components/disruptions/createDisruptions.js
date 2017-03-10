@@ -133,6 +133,18 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("promisedDateLabel").setVisible(true);
 		oView.byId("promisedDate").setVisible(true);
 		oView.byId("promisedTime").setVisible(true);
+		
+		// Make un-editabe new fields
+//		if(this.getView().sId == "createDisruptionView"){
+//			this.getView().byId("bomItem").setEnabled(false);
+//			this.getView().byId("area").setEnabled(false);
+//			this.getView().byId("plan").setEnabled(false);
+//			this.getView().byId("ribs").setEnabled(false);
+//			this.getView().byId("view").setEnabled(false);
+//			this.getView().byId("stringer").setEnabled(false);
+//			this.getView().byId("stringer_rail").setEnabled(false);
+//			
+//		}
 	},
 
 	createDisruptionSettings : function() {
@@ -158,7 +170,73 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("expectedTime").setDateValue(oDate);
 
 		oView.byId("timeLost").setValue("");
+		
+		// Make editabe new fields
+//		if(this.getView().sId == "createDisruptionView"){
+//			this.getView().byId("bomItem").setEnabled(true);
+//			this.getView().byId("area").setEnabled(true);
+//			this.getView().byId("plan").setEnabled(true);
+//			this.getView().byId("ribs").setEnabled(true);
+//			this.getView().byId("view").setEnabled(true);
+//			this.getView().byId("stringer").setEnabled(true);
+//			this.getView().byId("stringer_rail").setEnabled(true);
+//		}
 
+	},
+	
+	/**
+	 * MES V1.5 when user belong to Both originator and resolver group
+	 */
+	bothGroupSettings : function() {
+		this.getView().byId("selectFivemCategory").setEnabled(false);
+		this.getView().byId("selectCategory").setEnabled(false);
+		this.getView().byId("selectAttribute").setEnabled(true);
+		this.getView().byId("selectResponsibleGrp").setEnabled(true);
+		this.getView().byId("expectedDate").setEnabled(true);
+		this.getView().byId("expectedTime").setEnabled(true);
+		this.getView().byId("gravity").setEnabled(true);
+		this.getView().byId("timeLost").setEnabled(false);
+		this.getView().byId("materials").setEnabled(false);
+		this.getView().byId("jigtools").setEnabled(false);
+
+		if(this.getView().byId("selectResolver")){
+			this.getView().byId("selectResolver").setEnabled(true);
+		}
+	},
+	resolutionGroupSettings : function() {
+		var oView = this.getView();
+
+		oView.byId("selectFivemCategory").setEnabled(false);
+		oView.byId("selectCategory").setEnabled(false);
+		oView.byId("selectAttribute").setEnabled(false);
+		oView.byId("selectResponsibleGrp").setEnabled(true);
+		oView.byId("expectedDate").setEnabled(false);
+		oView.byId("expectedTime").setEnabled(false);
+		oView.byId("gravity").setEnabled(false);
+		oView.byId("timeLost").setEnabled(false);
+		oView.byId("materials").setEnabled(false);
+		oView.byId("jigtools").setEnabled(false);
+		if(this.getView().byId("selectResolver")){
+			this.getView().byId("selectResolver").setEnabled(true);
+		}
+	},
+
+	originatorGroupSettings : function() {
+		var oView = this.getView();
+
+		oView.byId("selectFivemCategory").setEnabled(false);
+		oView.byId("selectCategory").setEnabled(false);
+		oView.byId("selectAttribute").setEnabled(true);
+		oView.byId("selectResponsibleGrp").setEnabled(true);
+		oView.byId("expectedDate").setEnabled(true);
+		oView.byId("expectedTime").setEnabled(true);
+		oView.byId("gravity").setEnabled(true);
+		oView.byId("timeLost").setEnabled(false);
+		oView.byId("materials").setEnabled(false);
+		oView.byId("jigtools").setEnabled(false);
+		if(this.getView().byId("selectResolver")){
+			this.getView().byId("selectResolver").setEnabled(true);
+		}
 	},
 
 
@@ -411,60 +489,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		airbus.mes.disruptions.ModelManager.updateDisruption(sMessageRef, sReason, sResponsibleGroup, iTimeLost, dFixedByTime, sComment, iGravity,
 			dPromisedTime);// [MES V1.5]root cause removed
 
-	},
-	/**
-	 * MES V1.5 when user belong to Both originator and resolver group
-	 */
-	bothGroupSettings : function() {
-		this.getView().byId("selectFivemCategory").setEnabled(false);
-		this.getView().byId("selectCategory").setEnabled(false);
-		this.getView().byId("selectAttribute").setEnabled(true);
-		this.getView().byId("selectResponsibleGrp").setEnabled(true);
-		this.getView().byId("expectedDate").setEnabled(true);
-		this.getView().byId("expectedTime").setEnabled(true);
-		this.getView().byId("gravity").setEnabled(true);
-		this.getView().byId("timeLost").setEnabled(false);
-		this.getView().byId("materials").setEnabled(false);
-		this.getView().byId("jigtools").setEnabled(false);
-
-		if(this.getView().byId("selectResolver")){
-			this.getView().byId("selectResolver").setEnabled(true);
-		}
-	},
-	resolutionGroupSettings : function() {
-		var oView = this.getView();
-
-		oView.byId("selectFivemCategory").setEnabled(false);
-		oView.byId("selectCategory").setEnabled(false);
-		oView.byId("selectAttribute").setEnabled(false);
-		oView.byId("selectResponsibleGrp").setEnabled(true);
-		oView.byId("expectedDate").setEnabled(false);
-		oView.byId("expectedTime").setEnabled(false);
-		oView.byId("gravity").setEnabled(false);
-		oView.byId("timeLost").setEnabled(false);
-		oView.byId("materials").setEnabled(false);
-		oView.byId("jigtools").setEnabled(false);
-		if(this.getView().byId("selectResolver")){
-			this.getView().byId("selectResolver").setEnabled(true);
-		}
-	},
-
-	originatorGroupSettings : function() {
-		var oView = this.getView();
-
-		oView.byId("selectFivemCategory").setEnabled(false);
-		oView.byId("selectCategory").setEnabled(false);
-		oView.byId("selectAttribute").setEnabled(true);
-		oView.byId("selectResponsibleGrp").setEnabled(true);
-		oView.byId("expectedDate").setEnabled(true);
-		oView.byId("expectedTime").setEnabled(true);
-		oView.byId("gravity").setEnabled(true);
-		oView.byId("timeLost").setEnabled(false);
-		oView.byId("materials").setEnabled(false);
-		oView.byId("jigtools").setEnabled(false);
-		if(this.getView().byId("selectResolver")){
-			this.getView().byId("selectResolver").setEnabled(true);
-		}
 	},
 
 
