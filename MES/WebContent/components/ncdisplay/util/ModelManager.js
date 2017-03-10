@@ -57,9 +57,10 @@ airbus.mes.ncdisplay.util.ModelManager = {
 //		 				 In case the tool list contain one element, we receive an object
 	                	 data.ncDetailList = [ data.ncDetailList ];
 		             }
+
+					 data.count = data.ncDetailList.length;
 	                 oViewModel.setData(data);
-	                 oViewModel.getData().ncDetailList.count = oViewModel.getData().ncDetailList.length;
-	                 oViewModel.refresh(true);
+	                 oViewModel.setData(data);
 
 				} catch (e) {
 					console.log("NO NC Display data load");
