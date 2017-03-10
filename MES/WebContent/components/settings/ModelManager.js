@@ -69,26 +69,23 @@ airbus.mes.settings.ModelManager = {
 		oViewModel.loadData(airbus.mes.settings.ModelManager.getUrlSite(),
 				null, false);
 	},
-	// ********************************************************************************
-	getUrlPlant : function() {
+	
+	getUrlPlant : function(sSite) {
 		var urlSite = this.urlModel.getProperty("urlplantmodel");
-		urlSite = urlSite.replace("$site",
-				airbus.mes.settings.ModelManager.site)
+		urlSite = urlSite.replace("$site", sSite)
 		return urlSite;
 	},
 
-	loadPlantModel : function() {
+	loadPlantModel : function(sSite) {
 		var oViewModel = sap.ui.getCore().getModel("plantModel");
-		oViewModel.loadData(airbus.mes.settings.ModelManager.getUrlPlant(),
-				null, false);
+		oViewModel.loadData(airbus.mes.settings.ModelManager.getUrlPlant(sSite), null, false);
 	},
-	// ********************************************************************************
+	
 	getUrlLang : function() {
 		var langUrl = this.urlModel.getProperty("urlLanguage");
 		return langUrl;
 	},
-	// ********************************************************************************
-
+	
 	loadLangModel : function() {
 		var oLangModel = this.core.getModel("langModel");
 		oLangModel.loadData(airbus.mes.settings.ModelManager.getUrlLang(),
@@ -284,15 +281,13 @@ airbus.mes.settings.ModelManager = {
 	},
 
 	checkDisplayFirstSetting : function() {
-
-		var oModel = sap.ui.getCore().getModel("userSettingModel");
-
-		if (oModel.getProperty("/Rowsets/Rowset/0/Row")) {
-
-			if (airbus.mes.shell.oView.byId("labelMSN").getText() === "") {
-				airbus.mes.shell.oView.getController().navigate();
-			}
-
+		
+		var sSite = airbus.mes.settings.ModelManager.site;
+		var sMSN = airbus.mes.settings.ModelManager.msn;
+				
+		if (sSite || sSite == "" || sSite == "---" || sSite == "undefined"
+			|| sMSN || sMSN == "" || sMSN == "---" || sMSN == "undefined") {
+			airbus.mes.shell.oView.getController().navigate();
 		}
 
 	},
