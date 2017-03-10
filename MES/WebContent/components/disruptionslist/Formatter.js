@@ -46,7 +46,7 @@ airbus.mes.disruptionslist.Formatter = {
 	},
 	
 	setSolutionIn: function(promisedTime, status){
-		if(status == 'Closed' || status == 'Solved'){
+		if(status == airbus.mes.disruptions.Formatter.status.closed || status == airbus.mes.disruptions.Formatter.status.solved){
 			return "";
 		}
 		
@@ -80,4 +80,12 @@ airbus.mes.disruptionslist.Formatter = {
 
 		return solutionIn;
 	},
+	
+	setSolutionInText: function(status){
+		if(status == airbus.mes.disruptions.Formatter.status.closed || status == airbus.mes.disruptions.Formatter.status.solved){
+			return "";
+		} else{
+			return airbus.mes.disruptionslist.oView.getModel("i18nModel").getProperty("solutionin");			
+		}
+	}
 };

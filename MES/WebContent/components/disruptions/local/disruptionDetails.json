@@ -3,7 +3,7 @@
    "message":"Success",
    "messageRef":"MessageDO:FNZ1,1427-49869d7:15ab6ef233f:-5b26",
    "messageType":"DISRUPT-0112",
-   "status":"Acknowledged",
+   "status":"Solved",
    "severity":"1",
    "workOrder":"11016488",
    "operation":"OperationBO:FNZ1,11016488-50001575-1-0-0050,#",

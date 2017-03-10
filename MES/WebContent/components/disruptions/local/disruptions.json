@@ -3,7 +3,7 @@
       {
          "messageRef":"MessageDO:FNZ1,4453cc385a0:15ab491869d:7be0",
          "messageType":"DISRUPT-0113",
-         "status":"Pending",
+         "status":"Closed",
          "severity":"3",
          "workOrder":"11016488",
          "operation":"OperationBO:FNZ1,11016488-50001575-1-0-0050,#",

@@ -722,6 +722,9 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
   				"forMobile" : false
   			}),
   			success : function(data) {
+				if (typeof data == "string") {
+					data = JSON.parse(data);
+				}
   				
   				// No need to keep the panel expanded after closing the disruption
   				data.expanded 				= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/expanded");

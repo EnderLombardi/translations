@@ -63,7 +63,10 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 				"forMobile" : false
 			}),
 			success : function(data) {
-  				
+
+				if (typeof data == "string") {
+					data = JSON.parse(data);
+				}
   				if(data.disruptionComments && data.disruptionComments[0] == undefined){
   					data.disruptionComments = [data.disruptionComments];
   				}

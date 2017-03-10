@@ -201,11 +201,11 @@ airbus.mes.disruptions.Formatter = {
 			return "-----"; 	
 	},*/
 
-	setEditButtonVisibility : function(originatorFlag, responsibleFlag, status, expanded) {
+	setEditButtonVisibility: function(originatorFlag, responsibleFlag, status, expanded){
 		if(expanded != "true")
 			return false;
 			
-		else if (originatorFlag != "X" && responsibleFlag != "X")
+		else if(originatorFlag != "X" && responsibleFlag != "X")
 			return false;
 
 		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)
@@ -214,10 +214,12 @@ airbus.mes.disruptions.Formatter = {
 		else if (originatorFlag == "X" && responsibleFlag != "X" && (status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered) )
 			return false;
 
-		else if ((status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
+		/*else if ((status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
 			&& responsibleFlag == "X" && originatorFlag != "X")
+			return false;*/
+		else if ((status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
+			&& responsibleFlag == "X")
 			return false;
-		 
 			
 		return true;
 	},
