@@ -20,7 +20,10 @@
 								<Label text="DIS-{operationDisruptionsModel>disruptionNumber} - {path: 'operationDisruptionsModel>category'} {operationDisruptionsModel>reason}" design="Bold" width="30%" />
 								
 								<ToolbarSpacer />
-								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" visible="" design="Bold" width="7%"/>
+
+								<Label class="disrptlistdesc pendingStatusColor" id="headerStatusPending" text="{path: 'operationDisruptionsModel>status'}" visible="{=${operationDisruptionsModel>status} === 'Pending' ? true: false}" design="Bold" width="7%"/>
+								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" visible="{=${operationDisruptionsModel>status} === 'Pending' ? false: true}" design="Bold" width="7%"/>
+
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>opensince}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}"/>
@@ -74,7 +77,7 @@
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>reason}" design="Bold"/>
 									<Text text="{operationDisruptionsModel>reason}">
 									</Text>
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>bomItem}" design="Bold" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>bomItem}" design="Bold"/>
 									<Text id="bomItem" text="{operationDisruptionsModel>bomItem}" />
 											
 												
@@ -135,7 +138,7 @@
 							<Text text="{operationDisruptionsModel>area}" />
 							<Label text="{i18nModel>plan}"  class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>plan}" />
-							<Label text="{i18nModel>material}" class="detailLabels sapUiMediumMarginBottom" />
+							<Label text="{i18nModel>material}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{path: 'operationDisruptionsModel>materials', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}" />
 
 							<core:Title text="" />
