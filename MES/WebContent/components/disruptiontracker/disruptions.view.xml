@@ -193,7 +193,7 @@
 					<Label text="{disruptiontrackerI18n>escalation}" />
 					<ui:template>
 						<Text
-							text="{path: 'disruptionsTrackerModel>escalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
+							text="{disruptiontrackerI18n>level} {disruptionsTrackerModel>/escalationLevel}" />
 					</ui:template>
 				</ui:Column>
 				

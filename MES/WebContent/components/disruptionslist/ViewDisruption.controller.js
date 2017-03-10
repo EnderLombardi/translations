@@ -141,7 +141,15 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 					airbus.mes.shell.ModelManager.messageShow(message);
 
 					var operationDisruptionsModel = airbus.mes.disruptionslist.oView.getModel("operationDisruptionsModel");
-
+					
+					// No need to keep the panel expanded after closing the disruption
+					var oData = sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath);
+					oData.expanded 				= "false";
+					oData.prevCommentsLoaded	= "false";
+					oData.internalPanelExpanded = "false";	
+					oData.lastUpdated 			= "false";
+					sap.ui.getCore().getModel("operationDisruptionsModel").setProperty(sPath, oData);
+	  	  				
 					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(sMsgRef, sPath);
 
 					if (nav.getCurrentPage().sId == "stationTrackerView") {
@@ -658,11 +666,11 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
       },
       onInternalPanelexpand:function(oEvt){
     	  var sPath = oEvt.getSource().getParent().getParent().getBindingContext("operationDisruptionsModel").sPath;
-    	  this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/internalPanelexpanded", "true");
+    	  this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/internalPanelExpanded", "true");
       },
       onInternalPanelCollapse:function(oEvt){
     	  var sPath = oEvt.getSource().getParent().getParent().getBindingContext("operationDisruptionsModel").sPath;
-    	  this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/internalPanelexpanded", "false");
+    	  this.getView().getModel("operationDisruptionsModel").setProperty(sPath+"/internalPanelExpanded", "false");
     	  
       },
       
@@ -738,13 +746,10 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
   			success : function(data) {
   				
   				// No need to keep the panel expanded after closing the disruption
-  				if(data.status != airbus.mes.disruptions.Formatter.status.closed){
-  					data.expanded 				= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/expanded");
-  	  				data.prevCommentsLoaded		= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/prevCommentsLoaded");
-  	  				//data.internalPanelExpanded  = sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/internalPanelExpanded");	
-  	  				data.lastUpdated 			= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/lastUpdated");	
-
-  				}
+  				data.expanded 				= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/expanded");
+  				data.prevCommentsLoaded		= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/prevCommentsLoaded");
+  				data.internalPanelExpanded  = sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/internalPanelExpanded");	
+  				data.lastUpdated 			= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/lastUpdated");	
   				
   				if(data.disruptionComments && data.disruptionComments[0] == undefined){
   					data.disruptionComments = [data.disruptionComments];

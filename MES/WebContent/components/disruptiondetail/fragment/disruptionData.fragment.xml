@@ -133,7 +133,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>EscalationLevel}" />
 				<Input id="escalationLevel" enabled="false"
-					text="{path: 'DisruptionDetailModel>/escalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
+					text="{i18nModel>level} {DisruptionDetailModel>/escalationLevel}">
 				</Input>
 
 

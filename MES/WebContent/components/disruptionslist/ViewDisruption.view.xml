@@ -16,7 +16,7 @@
 						busy="{=${operationDisruptionsModel>itemBusy} === 'true'}" busyIndicatorDelay="0">
 						<headerToolbar>
 							<Toolbar class="disrptListToolbar" >
-								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>severity','operationDisruptionsModel>escalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
+								<core:Icon src="sap-icon://alert" color="{path: 'operationDisruptionsModel>severity', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
 								<Label text="DIS-{operationDisruptionsModel>disruptionNumber} - {path: 'operationDisruptionsModel>category'} {operationDisruptionsModel>reason}" design="Bold" width="30%" />
 								
 								<ToolbarSpacer />
@@ -30,7 +30,7 @@
 								<Label text=" {path:'operationDisruptionsModel>openDateTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="5%"/>
 								
 								<ToolbarSpacer />
-								<Label text="{i18nModel>level}{operationDisruptionsModel>escalationLevel}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" class="disrptlistdesc" design="Bold" width="5%"/>
+								<Label text="{i18nModel>level} {operationDisruptionsModel>escalationLevel}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" class="disrptlistdesc" design="Bold" width="5%"/>
 								
 								<ToolbarSpacer />
 								<Label text="{operationDisruptionsModel>responsibleGroupDesc}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="10%"/>
@@ -94,7 +94,7 @@
 									</Text>
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>escalation}" design="Bold"/>
 									<Text id="escalationText"
-										text="{path: 'operationDisruptionsModel>escalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
+										text="{i18nModel>level} {operationDisruptionsModel>escalationLevel}">
 									</Text>										
 								<core:Title text="" />					
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OpenDate}" design="Bold"/>
@@ -130,7 +130,7 @@
 							</f:content>
 					</f:SimpleForm>
 					
-					<f:SimpleForm id="extraFieldDisruption" class="disruptionDetailForm" visible="{=${operationDisruptionsModel>internalPanelexpanded} === 'true'}"
+					<f:SimpleForm id="extraFieldDisruption" class="disruptionDetailForm" visible="{=${operationDisruptionsModel>internalPanelExpanded} === 'true'}"
 							maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3">
 						<f:content>
 							<core:Title text="" />
@@ -158,9 +158,9 @@
 					</f:SimpleForm>
 					<HBox alignItems="Center" justifyContent="Center" width="100%" class="HorizontalLine">
 						<Button press="onInternalPanelexpand"   type="Transparent" icon="sap-icon://slim-arrow-down" 
-									visible="{=${operationDisruptionsModel>internalPanelexpanded} !== 'true'}" class="RoundBttn" />
+									visible="{=${operationDisruptionsModel>internalPanelExpanded} !== 'true'}" class="RoundBttn" />
 						<Button press="onInternalPanelCollapse" type="Transparent" icon="sap-icon://slim-arrow-up" 
-									visible="{=${operationDisruptionsModel>internalPanelexpanded} === 'true'}" class="RoundBttn"/>
+									visible="{=${operationDisruptionsModel>internalPanelExpanded} === 'true'}" class="RoundBttn"/>
 					</HBox>
 
 						<!-- <Text text="{i18nModel>status} : {path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}"

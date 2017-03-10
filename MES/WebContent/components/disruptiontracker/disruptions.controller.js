@@ -437,7 +437,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				+ ',' + arrData[i].reason + ',' + arrData[i].originatorGroup + ',' + arrData[i].originatorName + ',' + arrData[i].openingTime + ','
 				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].severity) + ',' + arrData[i].status + ',' + arrData[i].responsibleGroup + ','
 				+ arrData[i].resolverName + ',' + arrData[i].requiredFixBy + ','
-				+ airbus.mes.disruptiontracker.Formatter.setEscalationText(arrData[i].escalationLevel) + ',' + arrData[i].escalationDateTime + ','
+				+ sap.ui.getCore().getModel("disruptiontrackerI18n").getProperty("level") + " " + arrData[i].escalationLevel + ',' + arrData[i].escalationDateTime + ','
 				+ arrData[i].dateOfAnswer + ',' + airbus.mes.disruptions.Formatter.formatComment(arrData[i].solution);
 
 			// add a line break after each row

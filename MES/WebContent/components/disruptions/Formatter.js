@@ -46,7 +46,7 @@ airbus.mes.disruptions.Formatter = {
 		return defaultDate.getFullYear() + "-" + defaultDate.getMonth() + "-" + defaultDate.getDate();
 	},
 
-	setDisruptionTitle : function(iGravity, escalationLevel) {
+	setDisruptionTitle : function(iGravity) {
 
 		switch (iGravity) {
 		case "1":
@@ -168,19 +168,38 @@ airbus.mes.disruptions.Formatter = {
 
 		}
 	},
+	getDateNoDefault : function(datetime) {
 
-	setEscalationText : function(escalationLevel) {
-		if (escalationLevel == 1)
+		if (datetime == null || datetime === undefined) {
+			return "";
+		} else {
+			return datetime.split(" ")[0];
+		}
+
+	},
+
+	getTimeNoDefault : function(datetime) {
+
+		if (datetime == null || datetime === undefined) {	
+			return "";
+		} else {
+			return datetime.split(" ")[1];
+
+		}
+	},
+
+	/*setEscalationText : function(escalationLevel) {
+		if (escalationLevel == 0)
 			return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("NotEscalated");
 
-		else if (escalationLevel == 2)
+		else if (escalationLevel == 1)
 			return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("FirstEscalation");
 
-		else if (escalationLevel == 3)
+		else if (escalationLevel == 2)
 			return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("FinalEscalation");
 		else
 			return "-----"; 	
-	},
+	},*/
 
 	setEditButtonVisibility : function(originatorFlag, responsibleFlag, status, expanded) {
 		if(expanded != "true")
@@ -611,7 +630,10 @@ airbus.mes.disruptions.Formatter = {
 	
 	
 	promisedDateEnable : function(responsibleFlag, status){
-		if (responsibleFlag == "X"  && status == airbus.mes.disruptions.Formatter.status.pending) {
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
+			return false;
+
+		} else if (responsibleFlag == "X"  && ( status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.acknowledged)) {
 			return true;
 		} else {
 			return false;

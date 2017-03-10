@@ -72,14 +72,14 @@
 											<Label text="{i18nModel>TimeLost}" class="textAlignLeft"/>	
 											<Input   placeholder="" id="timeLost" type="Number" liveChange="liveChangeTimeLost" value="{path: 'DisruptionDetailModel>/timeLost', formatter: 'airbus.mes.disruptions.Formatter.timeMillisecondsToConfig'}">
 											</Input>
-											<Label id="promisedDateLabel"  text="{i18nModel>promisedDateTime}" />
+											<Label id="promisedDateLabel"  text="{i18nModel>promisedDateTime}" class="textAlignLeft"/>
 										<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+											value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDateNoDefault'}"
 											enabled="{parts: [  {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">
 										</DatePicker>
 										<TimePicker id="promisedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+											value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTimeNoDefault'}"
 											enabled="{parts: [  {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}">	
 										</TimePicker>
 									
