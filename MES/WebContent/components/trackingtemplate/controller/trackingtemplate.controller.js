@@ -5,6 +5,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     userConfirmationFragmentIsInitialised: undefined,
     isRendered: undefined,
     freeze : false,
+    sFreeze : "",
     
     /**
     * Apply a filter on the confirmation Notes List and the WO Notes List
@@ -44,6 +45,22 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         
     },
 
+    //checks settings tracking template
+    checkSettingTrackingTemplate: function () {
+        // confirm if we have already check the ME settings
+        if (this.sFreeze === undefined) {
+            //Application manager configuration is setting to physical station level, we concatenate the ID TT_FREEZE_ACTION_ with the physical station
+            var sFreeze = airbus.mes.settings.AppConfManager.getConfiguration("TT_FREEZE_ACTION_" + airbus.mes.settings.ModelManager.station);
+
+            if (sFreeze === null) {
+//            	Default value : warning message
+                this.sFreeze = 'W';
+            } else {
+                this.sFreeze = sFreeze;
+            }
+        }
+    },    
+    
     computeFreeze: function(){
     	this.freeze = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].freeze_tracking_template;
     },
@@ -79,6 +96,36 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     //is called when the save button is clicked
     onbtnTrackingTemplateFreeze: function (oEvent) {
         
+//    	Check to do before action
+//    	If components for the same WO are not in frozen state for handover and we want to freeze tracking template
+    	if(!this.freeze && !sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].frozen_fitted_parts) {
+	    	switch(this.sFreeze) {
+	    	
+		    	case 'N' :
+//					Warning is not displayed	    		
+		    		break;
+		    	case 'W' : 
+//	    			Warning is displayed but does not block the move to the frozen state
+		    		sap.m.MessageToast.show(airbus.mes.trackingtemplate.oView.getModel("i18n").getProperty("warningMessageFreeze"));
+//		    		Continue the process
+		    		break;	    		
+		    	case 'E' : 
+		    		sap.m.MessageToast.show(airbus.mes.trackingtemplate.oView.getModel("i18n").getProperty("errorMessageFreeze"));
+//		    		Stop the process
+		    		return;    		
+	    		default:
+//    				Corresponds to W
+//	    			Warning is displayed but does not block the move to the frozen state
+		    		sap.m.MessageToast.show(airbus.mes.trackingtemplate.oView.getModel("i18n").getProperty("warningMessageFreeze"));
+//		    		Continue the process
+	    	}
+    	}
+    	
+    	
+    	
+    	
+    	
+    	
         var url = airbus.mes.trackingtemplate.util.ModelManager.urlModel.getProperty("TTSaveFreeze");
 //		We inverse the freeze status
         this.freeze = !this.freeze
@@ -264,8 +311,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
      * Confirm the request
      */
     onOKConfirmation: function () {
-        var uID = sap.ui.getCore().byId("UIDTckTmpltForConfirmation").getValue();
-        var pin = sap.ui.getCore().byId("pinTckTmpltForConfirmation").getValue();
 
         airbus.mes.trackingtemplate.util.ModelManager.sendWONotes(
             //work order number Param.1 SHopOrderNumber
@@ -500,7 +545,6 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         var i = 0;
         var len = attachmentFilesCollection.getItems().length;
         for (; i < len; i += 1) {
-            var namelist = attachmentFilesCollection.getItems()[i].getFileName();
             if (attachmentFilesCollection.getItems()[i].getFileName() === name) {
                 return attachmentFilesCollection.removeItem(i);
             }

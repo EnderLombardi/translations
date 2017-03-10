@@ -432,6 +432,9 @@ sap.ui
                 case "componentsView":
                     airbus.mes.components.oView.oController.checkSettingComponents();
                     break;
+                case "trackingTemplateView":
+                	airbus.mes.trackingtemplate.oView.oController.checkSettingTrackingTemplate();
+                	break;
                 default:
             };
         },

@@ -384,9 +384,11 @@ airbus.mes.shell.util.navFunctions = {
         if (airbus.mes.trackingtemplate === undefined || airbus.mes.trackingtemplate.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.trackingtemplate", "../components/trackingtemplate");
             sap.ui.getCore().createComponent({ name: "airbus.mes.trackingtemplate" });
+            airbus.mes.trackingtemplate.oView.oController.checkSettingTrackingTemplate();
         }
         if (container.getPage("trackingtemplateView") === null) {
-            container.addPage(airbus.mes.trackingtemplate.oView);
+            airbus.mes.trackingtemplate.oView.oController.checkSettingTrackingTemplate();
+        	container.addPage(airbus.mes.trackingtemplate.oView);
         }
         airbus.mes.trackingtemplate.util.ModelManager.loadTrackingTemplateModel();
     },
