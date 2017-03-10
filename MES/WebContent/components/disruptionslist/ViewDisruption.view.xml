@@ -183,7 +183,7 @@
 							
 							
 						<!--  For list of comments -->
-						<HBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}">
+						<!-- <HBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}">
 							<items>
 								<Text
 									text="{i18nModel>from} : {path: 'operationDisruptionsModel>disruptionComments/0/userFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
@@ -195,11 +195,13 @@
 									text="{i18nModel>date/time} : {path: 'operationDisruptionsModel>disruptionComments/0/date'}"></Text>
 							</items>
 						</HBox>
-
-						<List showNoData="false" class="sapUiSmallMarginBeginEnd" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
+ -->
+						<List showNoData="false" class="sapUiSmallMarginBeginEnd" 
+						
 							items="{path: 'operationDisruptionsModel>disruptionComments', 
-								    filters: [ { path: 'operationDisruptionsModel>action', operator: 'NE',value1: 'CREATE' } ]}">
-								    <!-- { parts: [ {path: 'operationDisruptionsModel>prevCommentsLoaded'}, {path: 'operationDisruptionsModel>totalComments'}, {path: 'counter'} ], formatter: 'airbus.mes.disruptions.Formatter.setFilterForComments'} -->
+								    filters: [ { parts: [ {path: 'operationDisruptionsModel>prevCommentsLoaded'}, {path: 'operationDisruptionsModel>totalComments'}, {path: 'counter'} ], formatter: 'airbus.mes.disruptions.Formatter.setFilterForComments'} ]}">
+						<!-- visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}" -->
+								    
 							<CustomListItem class="msgColor">
 								<HBox
 									class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">

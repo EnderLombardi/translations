@@ -750,7 +750,7 @@ airbus.mes.disruptions.Formatter = {
 	},
 	
 	setVisibilityShowCommentsButton: function(totalComments, showPrevComment){
-		if(totalComments == 0 || showPrevComment == "true")
+		if(totalComments <= 1 || showPrevComment == "true")
 			return false;
 		else return true;
 	}

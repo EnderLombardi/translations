@@ -247,7 +247,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		 var sHandle = "";
 		if(oView.byId("selectAttribute").getSelectedItem()){
 			var sPathReason = oView.byId("selectAttribute").getSelectedItem().getBindingInfo("key").binding.getContext().sPath
-			var sHandle = oView.getModel("disruptionRsnRespGrp").getProperty(sPathReason).HANDLE;
+			sHandle = oView.getModel("disruptionRsnRespGrp").getProperty(sPathReason).HANDLE;
 		}
 		
 		var sCategory = oView.byId("selectCategory").getSelectedKey();
