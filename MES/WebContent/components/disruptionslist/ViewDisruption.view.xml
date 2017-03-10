@@ -37,7 +37,7 @@
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>solutionin}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" />
-								<Label text="{path:'operationDisruptionsModel>promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" width="5%" design="Bold" />
+								<Label text="{path:'operationDisruptionsModel>promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}" visible="{=${operationDisruptionsModel>status} === 'Closed' || ${operationDisruptionsModel>status} ===  'Solved'  ? false: true}" width="5%" design="Bold" />
 								
 								<ToolbarSpacer />
 								<core:Icon id="disrptListEnvelop" src="sap-icon://email" visible="{= ${operationDisruptionsModel>lastUpdated} === 'true' ? true: false}"/>
