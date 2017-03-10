@@ -4300,9 +4300,9 @@ DISRUPTIONTRACKER
 
 .trackingTemplate .customWOListItem .wo-items-documents-container .wo-items-document { margin-right: 1rem; overflow: visible; }
 
-#missingPartsView--SearchBar { background-color: #d5f1f8; border-top: 1px solid #8db9ca; }
+#missingPartsView--SearchBar { background-color: #d5f1f8; border: 1px solid #8db9ca; }
 
-#missingPartsView--SearchBar label { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; padding: 0 2rem  0 2rem; }
+#missingPartsView--SearchBar label { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; padding: 0 2rem  0 2rem; }
 
 #missingPartsView--SearchBar .sapMSltArrow { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; }
 

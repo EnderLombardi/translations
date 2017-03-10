@@ -32,6 +32,7 @@ airbus.mes.missingParts.Component.prototype.createContent = function () {
 		airbus.mes.missingParts.oView = this.oView;
 		//Bind directly on the view avoid to set in the model in the core
 		airbus.mes.missingParts.util.ModelManager.init(airbus.mes.missingParts.oView);
+		airbus.mes.missingParts.oView.setModel(sap.ui.getCore().getModel("getMissingParts"),"getMissingParts");
 		return this.oView;
 	} else {
 		return airbus.mes.missingParts.oView;

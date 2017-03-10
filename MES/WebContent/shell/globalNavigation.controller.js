@@ -453,11 +453,11 @@ sap.ui.controller(
                     //if already exist remove content
                     if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
                        //Check if Missing Parts is open in case of yes we let it displayed and update it
-                    	if ( !airbus.mes.shell.util.navFunctions.splitMissingPart ) {
+                    	//if ( !airbus.mes.shell.util.navFunctions.splitMissingPart ) {
                     		airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1)
-                       } else {
-                    	   airbus.mes.missingParts.util.ModelManager.loadMPDetail();              	   
-                       }
+//                       } else {
+//                    	   airbus.mes.missingParts.util.ModelManager.loadMPDetail();              	   
+//                       }
                     }
                  }
 
@@ -522,24 +522,24 @@ sap.ui.controller(
             oModule.getPhStation();
             oModule.loadTimeMinRModel();
             
-            //set mode missing part off when on workTracker
-            if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
-            	airbus.mes.shell.util.navFunctions.splitMissingPart = false;
-             }
-
-			//Set disabled missing part button
-			if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_DRILL_MISSING") ) {
-				
-				if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
-					
-					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(false);
-
-				} else {
-					
-					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(true);
-
-				}
-			} 
+//            //set mode missing part off when on workTracker
+//            if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
+//            	airbus.mes.shell.util.navFunctions.splitMissingPart = false;
+//             }
+//
+//			//Set disabled missing part button
+//			if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_DRILL_MISSING") ) {
+//				
+//				if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
+//					
+//					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(false);
+//
+//				} else {
+//					
+//					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(true);
+//
+//				}
+//			} 
         },
 
         setInformationVisibility: function (bSet) {

@@ -4,14 +4,13 @@
 
 #missingPartsView--SearchBar {
     background-color: rgb(213, 241, 248);
-    border-top: 1px solid rgb(141, 185, 202);
-    
+    border: 1px solid #8db9ca;
+
     label {
         background-color: transparent;
         color: #0D5D76;
         height: 3rem;
         line-height: 3rem;
-        border-right: 1px solid #8db9ca;
         padding: 0 2rem  0 2rem;
     }
     .sapMSltArrow {
@@ -20,6 +19,7 @@
         height: 3rem;
         line-height: 3rem;
         border-right: 1px solid #8db9ca;
+
     }
     &.sapMSltPressed {
         .sapMSltArrow {

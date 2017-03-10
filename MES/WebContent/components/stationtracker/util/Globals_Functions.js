@@ -13,7 +13,7 @@ airbus.mes.stationtracker.util.Globals_Functions = {
 	 * @param {string} [sWorkOrder=""] 
 	 * @returns 
 	 */
-	getMissingPartsData : function (sSite, sSation, sMsn, sWorkOrder = "") {
+	getMissingPartsData : function (sSite, sSation, sMsn ) {
             // Handle URL Model
             var urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.stationtracker.config.url_config");
 		var missingPartsData = {};
@@ -29,7 +29,6 @@ airbus.mes.stationtracker.util.Globals_Functions = {
 				"site": sSite,
 				"physicalStation": sSation,
 				"msn": sMsn,
-				"workOrder": sWorkOrder
 				}),
 				success: function (data) {
 					try {
