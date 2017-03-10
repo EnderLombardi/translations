@@ -108,8 +108,8 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			
 			var oModel = oView.getModel("DisruptionDetailModel");
 
-			oModel.jigTools = oModel.oData.materials.split(",");
-			oModel.materials = oModel.oData.jigTools.split(",");
+			oModel.oData.jigTools = oModel.oData.jigTools.split(",");
+			oModel.oData.materials = oModel.oData.materials.split(",");
 			oModel.refresh();
 			
 			
