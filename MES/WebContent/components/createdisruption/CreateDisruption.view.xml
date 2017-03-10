@@ -191,7 +191,7 @@
 										maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" columnsL="1"
 										columnsM="1" columnsS="1" class="sapUiSmallMargin" visible="true">	
 									<f:content>
-											<TextArea placeholder="{i18nModel>AddComment}" id="comment"
+											<TextArea placeholder="{i18nModel>addComment}" id="comment"
 												valueLiveUpdate="true" rows="10" value="{DisruptionDetailModel>/comment}">
 											<layoutData>
 												<l:GridData span="Xl11 L11 M10 S10" />

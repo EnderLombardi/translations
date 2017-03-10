@@ -6,7 +6,7 @@
 
             <VBox alignItems="Center" width="100%">
 
-                <TextArea id="disruptionCommentBox" placeholder="{i18nModel>AddComment}"
+                <TextArea id="disruptionCommentBox" placeholder="{i18nModel>addComment}"
                     rows="10" cols="50" />
             </VBox>
 
