@@ -378,7 +378,11 @@ airbus.mes.disruptions.Formatter = {
 			comment = comment.join();
 		}
 		if(comment == "" || comment == " ") {
+			try{
 			this.setVisible(false);
+			} catch(err){
+				
+			}
 		}
 		return comment;
 	},

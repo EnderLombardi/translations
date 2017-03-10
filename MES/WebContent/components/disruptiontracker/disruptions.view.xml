@@ -58,10 +58,9 @@
 						type="Transparent" />
 
 
-					<!--[MES V1.5] [Beg]SD-SP1604983-DT-040 -->
-					<SearchField id="disruptionSearchField" width="40%"
-						placeholder="search for..." enableSuggestions="true" search="onSearchDisruption"
-						suggest="onDisruptionSuggestions">
+					<!--[MES V1.5] [Beg]SD-SP1604983-DT-040 --><!-- TODO: removed because its not working -->
+					<SearchField id="disruptionSearchField" width="40%" visible="false"
+						placeholder="{disruptiontrackerI18n>searchForWoOpe}" search="filterDisruptions" >
 					</SearchField>
 					<!--[MES V1.5] [End]SD-SP1604983-DT-040 -->
 

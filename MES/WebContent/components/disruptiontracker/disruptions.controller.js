@@ -142,21 +142,21 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
 
 		if (sStatus != "")
-			aFilters.push(new sap.ui.model.Filter("Status", "EQ", sStatus));
+			aFilters.push(new sap.ui.model.Filter("status", "EQ", sStatus));
 		if (sResoGroup != "")
-			aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
+			aFilters.push(new sap.ui.model.Filter("responsibleGroup", "EQ", sResoGroup));
 
 				if (this.mFilterParams) {
 			jQuery.each(this.mFilterParams.filterItems, function(i, oItem) {
 				var sFilterPath;
 				if (oItem.getParent().getId() == "categoryFilter")
-					sFilterPath = "Category";
+					sFilterPath = "category";
 				else if (oItem.getParent().getId() == "reasonFilter")
-					sFilterPath = "Reason";
+					sFilterPath = "reason";
 				else if (oItem.getParent().getId() == "escalationFilter")
-					sFilterPath = "EscalationLevel";
+					sFilterPath = "escalationLevel";
 				else if (oItem.getParent().getId() == "gravityFilter")
-					sFilterPath = "Gravity";
+					sFilterPath = "severity";
 
 				var sOperator = "EQ";
 				var sValue1 = oItem.getKey();
@@ -166,7 +166,15 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				}
 			});
 		}
+				
 
+		var searchBox = this.getView().byId("disruptionSearchField").getValue();
+		if(searchBox != ""){
+			var filter1 = new sap.ui.model.Filter("operation", sap.ui.model.FilterOperator.Contains, searchBox)
+			aFilters.push(filter1);
+			var filter2 = new sap.ui.model.Filter("workOrder", sap.ui.model.FilterOperator.Contains, searchBox)
+			aFilters.push(filter2);;
+		}
 		oBinding.filter(aFilters);
 
 	},
@@ -362,17 +370,17 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * @param {object}
 	 *            oEvt take control as an object
 	 */
-	onSearchDisruption : function(oEvt) {
+	/*onSearchDisruption : function(oEvt) {
 		var sQuery = oEvt.getSource().getValue();
 		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
 		var aFilters = [];
-		var filter1 = new sap.ui.model.Filter("Operation", sap.ui.model.FilterOperator.Contains, sQuery)
+		var filter1 = new sap.ui.model.Filter("operation", sap.ui.model.FilterOperator.Contains, sQuery)
 		aFilters.push(filter1);
-		var filter2 = new sap.ui.model.Filter("WorkOrder", sap.ui.model.FilterOperator.Contains, sQuery)
+		var filter2 = new sap.ui.model.Filter("workOrder", sap.ui.model.FilterOperator.Contains, sQuery)
 		aFilters.push(filter2);
 		oBinding.filter(new sap.ui.model.Filter(aFilters, false), "Control");
 
-	},
+	},*/
 	/**
 	 * Export Disruption Data to excel [MES V1.5] [SD-SP1604983-EXT-005]
 	 */
@@ -437,7 +445,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				+ ',' + arrData[i].reason + ',' + arrData[i].originatorGroup + ',' + arrData[i].originatorName + ',' + arrData[i].openingTime + ','
 				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].severity) + ',' + arrData[i].status + ',' + arrData[i].responsibleGroup + ','
 				+ arrData[i].resolverName + ',' + arrData[i].requiredFixBy + ','
-				+ sap.ui.getCore().getModel("disruptiontrackerI18n").getProperty("level") + " " + arrData[i].escalationLevel + ',' + arrData[i].escalationDateTime + ','
+				+ this.getView().getModel("disruptiontrackerI18n").getProperty("level") + " " + arrData[i].escalationLevel + ',' + arrData[i].escalationDateTime + ','
 				+ arrData[i].dateOfAnswer + ',' + airbus.mes.disruptions.Formatter.formatComment(arrData[i].solution);
 
 			// add a line break after each row

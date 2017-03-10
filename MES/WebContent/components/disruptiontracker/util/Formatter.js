@@ -59,13 +59,13 @@ airbus.mes.disruptiontracker.Formatter = {
 
 		switch (gravity) {
 		case "1":
-			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotBlocked");
+			property = airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("NotBlocked");
 			break;
 		case "2":
-			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Disturbed");
+			property = airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("Disturbed");
 			break;
 		case "3":
-			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Blocked");
+			property = airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("Blocked");
 			break;
 		default:
 			break;
