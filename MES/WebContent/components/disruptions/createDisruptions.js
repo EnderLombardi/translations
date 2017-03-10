@@ -485,9 +485,45 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		var iGravity = oView.byId("gravity").getSelectedKey();
 		var dPromisedTime = oView.byId("promisedDate").getValue() === "" ? "" : oView.byId("promisedDate").getValue() + " "
 			+ oView.byId("promisedTime").getValue();
+		
+		var oJson = {
+			"payload" : [
+				{
+					"attribute" : "AREA",
+					"value" : oView.byId("area").getValue()
+				},
+				 {
+					"attribute" : "PLAN",
+					"value" : oView.byId("plan").getValue()
+				}, {
+					"attribute" : "BOM_ITEM",
+					"value" : oView.byId("bomItem").getValue()
+				}, {
+					"attribute" : "RIBS",
+					"value" : oView.byId("ribs").getValue()
+				}, {
+					"attribute" : "VIEW",
+					"value" : oView.byId("view").getValue()
+				}, {
+					"attribute" : "STRINGER",
+					"value" : oView.byId("stringer").getValue()
+				}, {
+					"attribute" : "STRINGER_RAIL",
+					"value" : oView.byId("stringer_rail").getValue()
+				} ]
+
+		}
+		
+		
+		
 		// call update service
 		airbus.mes.disruptions.ModelManager.updateDisruption(sMessageRef, sReason, sResponsibleGroup, iTimeLost, dFixedByTime, sComment, iGravity,
-			dPromisedTime);// [MES V1.5]root cause removed
+			dPromisedTime,oJson);// [MES V1.5]root cause removed
+
+		
+
+
+		
 
 	},
 

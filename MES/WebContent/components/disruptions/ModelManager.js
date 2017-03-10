@@ -316,7 +316,7 @@ airbus.mes.disruptions.ModelManager = {
 		return urlUpdateDisruption;
 	},
 
-	updateDisruption : function(sMessageRef, sReason, sResponsibleGroup, iTimeLost, dFixedByTime, sComment, iGravity, dPromisedDate) {
+	updateDisruption : function(sMessageRef, sReason, sResponsibleGroup, iTimeLost, dFixedByTime, sComment, iGravity, dPromisedDate, oJson) {
 
 		// Set Busy Indicator
 		sap.ui.core.BusyIndicator.show(0);
@@ -341,7 +341,10 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.12" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc"),
 				"Param.13" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo").split(",")[1], // Operation
 				// number
-				"Param.14" : "DEFAULT"
+				"Param.14" : "DEFAULT",
+				"Param.15" : airbus.mes.shell.ModelManager.json2xml({
+					payloadAttributelist : oJson
+				}),
 			},
 			success : function(data, textStatus, jqXHR) {
 
