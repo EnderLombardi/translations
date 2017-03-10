@@ -140,6 +140,9 @@ WORK LIST POP OVER
                 color: $white-two;
             }
         }
+        &.colorBlue {
+    	color: $teal-blue; 
+    	}
     }
     .sapMPIText3 {
         position: absolute;
@@ -159,9 +162,6 @@ WORK LIST POP OVER
     header.sapMIBar.sapMHeader-CTX label {
         color: #434343;
         font-size: 1rem;
-    }
-    .colorBlue {
-    	color: $teal-blue; 
     }
 }
 
