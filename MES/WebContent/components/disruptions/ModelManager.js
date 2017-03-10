@@ -248,7 +248,8 @@ airbus.mes.disruptions.ModelManager = {
 				// Operation number
 				"Param.10" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo").split(",")[1],
 				"Param.11" : "DEFAULT",
-				"Param.12" : reportAndCloseFlag
+				"Param.12" : "A",
+				"Param.13" : reportAndCloseFlag
 
 			},
 			success : function(data, textStatus, jqXHR) {
