@@ -20,11 +20,12 @@
 								<Label text="DIS-{operationDisruptionsModel>disruptionNumber} - {path: 'operationDisruptionsModel>category'} {operationDisruptionsModel>reason}" design="Bold" width="30%" />
 								
 								<ToolbarSpacer />
-								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="7%"/>
+								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" visible="" design="Bold" width="7%"/>
+								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" visible="" design="Bold" width="7%"/>
 								
 								<ToolbarSpacer />
-								<Label text="{i18nModel>opensince}: "/>
-								<Label text=" {path:'operationDisruptionsModel>openDateTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" design="Bold" width="5%"/>
+								<Label text="{i18nModel>opensince}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}"/>
+								<Label text=" {path:'operationDisruptionsModel>openDateTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="5%"/>
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>level}{operationDisruptionsModel>escalationLevel}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" class="disrptlistdesc" design="Bold" width="5%"/>
@@ -136,7 +137,7 @@
 							<Label text="{i18nModel>plan}"  class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
 							<Text text="{operationDisruptionsModel>plan}" />
 							<Label text="{i18nModel>material}" class="detailLabels sapUiMediumMarginBottom" />
-							<Text text="{path: 'operationDisruptionsModel>material', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}" />
+							<Text text="{path: 'operationDisruptionsModel>materials', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}" />
 
 							<core:Title text="" />
 							<Label text="{i18nModel>ribs}" class="detailLabels sapUiMediumMarginBottom" design="Bold"/>
