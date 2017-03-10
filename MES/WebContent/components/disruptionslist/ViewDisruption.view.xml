@@ -21,7 +21,6 @@
 								
 								<ToolbarSpacer />
 								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" visible="" design="Bold" width="7%"/>
-								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" visible="" design="Bold" width="7%"/>
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>opensince}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}"/>
@@ -75,7 +74,7 @@
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>reason}" design="Bold"/>
 									<Text text="{operationDisruptionsModel>reason}">
 									</Text>
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>bomItem}" />
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>bomItem}" design="Bold" />
 									<Text id="bomItem" text="{operationDisruptionsModel>bomItem}" />
 											
 												
@@ -96,7 +95,7 @@
 									</Text>										
 								<core:Title text="" />					
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OpenDate}" design="Bold"/>
-									<Text text="{operationDisruptionsModel>openingTime}">
+									<Text text="{operationDisruptionsModel>openDateTime}">
 									</Text>
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>Expected}" design="Bold"/>		
 									<Text text="{operationDisruptionsModel>requiredFixBy}">	
