@@ -193,7 +193,7 @@
 					<Label text="{disruptiontrackerI18n>escalation}" />
 					<ui:template>
 						<Text
-							text="{disruptiontrackerI18n>level} {disruptionsTrackerModel>/escalationLevel}" />
+							text="{disruptiontrackerI18n>level} {disruptionsTrackerModel>escalationLevel}" />
 					</ui:template>
 				</ui:Column>
 				
