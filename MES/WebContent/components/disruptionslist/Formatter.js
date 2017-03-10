@@ -12,21 +12,6 @@ airbus.mes.disruptionslist.Formatter = {
 		return false;
 	},
 	
-	/**
-	 * MES v1.5 
-	 * when status is pending it should be dispalyed in Red Colour
-	 * @param {string} sStatus take status as an input
-	 * @return {string} returns status
-	 */
-	statusColour : function(sStatus) {
-		if (sStatus == airbus.mes.disruptions.Formatter.status.pending) {
-			this.addStyleClass("statusPendingColor");
-			return sStatus;
-		} else {
-			return sStatus;
-		}
-	},
-	
 	setOpenSince:function(openingTime){
 		if (openingTime == undefined || openingTime =="") {
 			return 0;
