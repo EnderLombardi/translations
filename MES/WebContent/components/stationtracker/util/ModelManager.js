@@ -1481,6 +1481,11 @@ airbus.mes.stationtracker.util.ModelManager = {
                 //Load components model
                 airbus.mes.stationtracker.util.ModelManager.loadComponentsTabs();
 
+//            	If already opens, reload data to update number of blockers
+                if (jQuery.sap.getObject("airbus.mes.ncdisplay.Component") !== undefined) {
+                	airbus.mes.ncdisplay.util.ModelManager.loadNcDisplayData();
+                }
+                
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
 
             }, 0);
