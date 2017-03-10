@@ -8,6 +8,8 @@ sap.ui.getCore().createComponent({ name: "airbus.mes.disruptions" });
 
 jQuery.sap.declare("airbus.mes.disruptionslist.Component");
 
+jQuery.sap.require("airbus.mes.disruptionslist.Formatter");
+
 sap.ui.core.UIComponent.extend("airbus.mes.disruptionslist.Component", {
     metadata : {
         properties : {},

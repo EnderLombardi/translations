@@ -26,25 +26,25 @@
 
 								
 								<ToolbarSpacer />
-								<Label text="{i18nModel>opensince}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}"/>
-								<Label text=" {path:'operationDisruptionsModel>openDateTime', formatter: 'airbus.mes.disruptions.Formatter.setOpenSince'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="5%"/>
+								<Label text="{parts:[{path:'i18nModel>opensince',  formatter: 'airbus.mes.disruptionslist.Formatter.setSolutionIn'}]}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}"/>
+								<Label text=" {path:'operationDisruptionsModel>openDateTime', formatter: 'airbus.mes.disruptionslist.Formatter.setOpenSince'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="5%"/>
 								
 								<ToolbarSpacer />
 								<Label text="{i18nModel>level} {operationDisruptionsModel>escalationLevel}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" class="disrptlistdesc" design="Bold" width="5%"/>
 								
 								<ToolbarSpacer />
-								<Label text="{operationDisruptionsModel>responsibleGroupDesc}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="10%"/>
+								<Label text="{parts:[{path:'operationDisruptionsModel>responsibleGroupDesc'}, {path:'operationDisruptionsModel>status', formatter: 'airbus.mes.disruptionslist.Formatter.setSolutionIn'}]}" design="Bold" width="10%"/>
 								
 								<ToolbarSpacer />
-								<Label text="{i18nModel>solutionin}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" />
-								<Label text="{path:'operationDisruptionsModel>promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.setSolutionIn'}" visible="{=${operationDisruptionsModel>status} === 'Closed' || ${operationDisruptionsModel>status} ===  'Solved'  ? false: true}" width="5%" design="Bold" />
+								<Label text="{path:'operationDisruptionsModel>status', formatter: 'airbus.mes.disruptionslist.Formatter.setSolutionIn'}" />
+								<Label text="{parts: [{path:'operationDisruptionsModel>promisedDateTime'}, {path:'operationDisruptionsModel>status', formatter: 'airbus.mes.disruptionslist.Formatter.setSolutionIn'}]}"  width="5%" design="Bold" />
 								
 								<ToolbarSpacer />
 								<core:Icon id="disrptListEnvelop" src="sap-icon://email" visible="{= ${operationDisruptionsModel>lastUpdated} === 'true' ? true: false}"/>
 								
 								<Label
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>closureDate}"
-									visible="{path: 'operationDisruptionsModel>status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"
+									visible="{path: 'operationDisruptionsModel>status', formatter: 'airbus.mes.disruptionslist.Formatter.setClosureDateVisibility'}"
 									class="disrptlistdesc" />
 								
 								
