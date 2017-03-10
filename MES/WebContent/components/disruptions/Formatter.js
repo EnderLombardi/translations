@@ -750,7 +750,7 @@ airbus.mes.disruptions.Formatter = {
 	},
 	
 	setVisibilityShowCommentsButton: function(totalComments, showPrevComment){
-		if(totalComments <= 1 || showPrevComment == "true")
+		if(totalComments == "" || totalComments <= 1 || showPrevComment == "true")
 			return false;
 		else return true;
 	},
@@ -760,7 +760,7 @@ airbus.mes.disruptions.Formatter = {
 			return true;
 			
 			// Show only latest comment
-		} else if(totalComments == counter){
+		} else if((totalComments + 1) == counter){
 			return true;
 		} else{
 			return false;
