@@ -1,4 +1,58 @@
 ////////////////////////////
+//Header tablz
+///////////////////////////
+
+#missingPartsView--SearchBar {
+    background-color: rgb(213, 241, 248);
+    border-top: 1px solid rgb(141, 185, 202);
+    
+    label {
+        background-color: transparent;
+        color: #0D5D76;
+        height: 3rem;
+        line-height: 3rem;
+        border-right: 1px solid #8db9ca;
+        padding: 0 2rem  0 2rem;
+    }
+    .sapMSltArrow {
+        background-color: transparent;
+        color: #0D5D76;
+        height: 3rem;
+        line-height: 3rem;
+        border-right: 1px solid #8db9ca;
+    }
+    &.sapMSltPressed {
+        .sapMSltArrow {
+            background-color: $tiffany-blue;
+        }
+    }
+    .sapMSlt {
+        margin: 0 0 0 0;
+        border: none;
+        height: 3rem;
+        background-color: $duck-egg-blue !important;
+    }
+    .sapMBtnDefault {
+        background: transparent;
+        border: none;
+        color: #0D5D76;
+    }
+}
+
+#missingPartsView--searchField {
+    padding: 4px 10px 4px 0;
+    border-right: 1px solid #8db9ca;
+    .sapMSFF {
+        border-radius: 1em;
+        border: 2px solid $tiffany-blue;
+        color: $tiffany-blue;
+        overflow: hidden;
+    }
+    .sapMSFB.sapMSFS {
+        color: $tiffany-blue;
+    }
+}
+////////////////////////////
 //table
 ///////////////////////////
 #missingPartsView--MPTable-table{
@@ -26,15 +80,3 @@
     padding-left: inherit;
 }
 
-
-#missingPartsView--mpPage-title-inner{
-	color:black;
-}
-
-#missingPartsView--searchField-F{
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-	width: 280px
-}
