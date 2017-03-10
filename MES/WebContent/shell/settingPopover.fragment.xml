@@ -3,7 +3,7 @@
 	<Popover id="settingPopOver" showHeader="false" placement="Bottom" showArrow="false">
 		<VBox justifyContent="start">
 			<items>
-				<Button id="popupSettingsButton" width="100%" type="Transparent" text="{ShellI18n>ChangeStation}"
+				<Button id="popupSettingsButton" enabled= "{Profile>/identifiededUser/permissions/PROFILE_PREF_HOME}" width="100%" type="Transparent" text="{ShellI18n>ChangeStation}"
 					icon="sap-icon://repost" press="navigate" class="blackButton">
 				</Button>
 				<Button id="idMyprofileSetting" type="Transparent" width="100%" text="{ShellI18n>myProfileTitle}"

@@ -7,10 +7,11 @@ airbus.mes.shell.util.Formatter = {
 	checkCurrentView : function() {
 	},
 	checkToEnableProfile : function(){
-		if(airbus.mes.settings.ModelManager.site)
+		if(airbus.mes.settings.ModelManager.site) {
 			return true;
-		else 
+		} else { 
 			return false;
+		}
 	},
 	setInformationVisibility : function() {
 		if (!airbus.mes.stationtracker.isVisible) {
@@ -114,10 +115,12 @@ airbus.mes.shell.util.Formatter = {
 					dir = -1;
 					o = o.substring(1);
 				}
-				if (a[o] > b[o])
+				if (a[o] > b[o]) {
 					return dir;
-				if (a[o] < b[o])
+				}
+				if (a[o] < b[o]) {
 					return -(dir);
+				}
 				return 0;
 			}).reduce(function firstNonZeroValue(p, n) {
 				return p ? p : n;

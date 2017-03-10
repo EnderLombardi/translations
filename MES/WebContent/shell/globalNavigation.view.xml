@@ -27,8 +27,8 @@
 	                        	   		<core:Item text="Espa&#241;ol" key="sp" enabled="false"/> <!-- same here, escape "ñ" character - do not change -->
 		                           	</Select>
 		                           	<Button id="informationButton" 	type="Transparent"  								icon="sap-icon://message-information" press="onInformation" visible="false"  class="whiteColor whiteButton" />
-		                           	<Button id="homeButton" 		enabled = "{Profile>/identifiededUser/permissions/PROFILE_PREF_HOME}" type="Transparent" tooltip="{ShellI18n>Home}" 		icon="sap-icon://home"  press="goToHome" visible="false"  class="whiteColor whiteButton" />
-		                            <Button id="settingsButton" 	visible="{Profile>/identifiedUser/permissions/MES_ADMIN_SETTING}" type="Transparent" tooltip="{ShellI18n>Settings}" 	icon="sap-icon://action-settings" class="whiteColor whiteButton" press="openSettingPopup"></Button>
+		                           	<Button id="homeButton" 		enabled = "{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/stationDescription', formatter : 'airbus.mes.shell.util.Formatter.setEnable'}" type="Transparent" tooltip="{ShellI18n>Home}" 		icon="sap-icon://home"  press="goToHome" visible="false"  class="whiteColor whiteButton" />
+		                            <Button id="settingsButton" 	visible="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/stationDescription', formatter : 'airbus.mes.shell.util.Formatter.setVisible'}" type="Transparent" tooltip="{ShellI18n>Settings}" 	icon="sap-icon://action-settings" class="whiteColor whiteButton" press="openSettingPopup"></Button>
 		                   </content>
 		             </Toolbar>
 				</customHeader>
