@@ -334,7 +334,7 @@
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
 					<ToolbarSpacer />
-					<Button text="{StationTrackerI18n>missingParts}" enabled="true"
+					<Button text="{StationTrackerI18n>missingParts}" enabled="true" id="showMissingPart"
 						type="Transparent" icon="sap-icon://task" class="sapUiTinyMarginBeginEnd" visible="{Profile>/identifiedUser/permissions/STATION_DRILL_MISSING}"
 						press="onMPPress"></Button>
 					<ToggleButton text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
@@ -354,7 +354,7 @@
 				</content>
 			</OverflowToolbar>
 			
-			<layout:Splitter orientation="Vertical" id="splitWorkTra">
+			<layout:Splitter orientation="Vertical" id="splitWorkTra" height="auto">
 						<custom:util.DHTMLXScheduler id="stationtracker"></custom:util.DHTMLXScheduler>
 			</layout:Splitter>
 			

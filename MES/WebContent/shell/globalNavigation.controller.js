@@ -444,7 +444,7 @@ sap.ui.controller(
                 airbus.mes.stationtracker.util.ShiftManager.updateShift = false;
                 var oModule = airbus.mes.stationtracker.util.ModelManager;
                 airbus.mes.shell.oView.getController().setInformationVisibility(true);
-
+                	
                 //show split worktracker
                 var MyModele = airbus.mes.shell.util.navFunctions.splitMode;
                 if (MyModele == "WorkTracker") {
@@ -452,9 +452,14 @@ sap.ui.controller(
                 } else if (MyModele == "StationTracker") {
                     //if already exist remove content
                     if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
-                        airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1)
+                       //Check if Missing Parts is open in case of yes we let it displayed and update it
+                    	if ( !airbus.mes.shell.util.navFunctions.splitMissingPart ) {
+                    		airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1)
+                       } else {
+                    	   airbus.mes.missingParts.util.ModelManager.loadMPDetail();              	   
+                       }
                     }
-                }
+                 }
 
                 // ** synchrone call **//
                 oModule.loadShifts();
@@ -470,7 +475,7 @@ sap.ui.controller(
 
 
         renderWorkTracker: function () {
-
+        	
             //get spliter
             var oSpliter = airbus.mes.stationtracker.oView.byId("splitWorkTra");
 
@@ -516,6 +521,25 @@ sap.ui.controller(
             oModule.loadKPI();
             oModule.getPhStation();
             oModule.loadTimeMinRModel();
+            
+            //set mode missing part off when on workTracker
+            if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
+            	airbus.mes.shell.util.navFunctions.splitMissingPart = false;
+             }
+
+			//Set disabled missing part button
+			if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_DRILL_MISSING") ) {
+				
+				if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
+					
+					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(false);
+
+				} else {
+					
+					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(true);
+
+				}
+			} 
         },
 
         setInformationVisibility: function (bSet) {

@@ -30,7 +30,8 @@ airbus.mes.shell.RoleManager = {
 		this.profile.identifiedUser = this.profile.connectedUser;
 		
 		// Share profile in Profile
-		airbus.mes.shell.ModelManager.createJsonModel(core, ["Profile"])
+		airbus.mes.shell.ModelManager.createJsonModel(core, ["Profile"]);
+		core.getModel("Profile").setDefaultBindingMode(sap.ui.model.BindingMode.OneWay); 
 		core.getModel("Profile").setData(this.profile);
 		core.getModel("Profile").refresh(true);
 	},
