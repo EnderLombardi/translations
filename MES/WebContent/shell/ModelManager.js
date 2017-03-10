@@ -225,20 +225,20 @@ airbus.mes.shell.ModelManager = {
 	   * Get URL for Login popup      *
 	   * **************************** */
 	  getuserLoginUrl: function(bID,user,pass,pinCode,uID) {
-		  var userLoginUrl = this.urlModel.getProperty("urlMyProfileSave");
+		  var userLoginUrl = this.urlModel.getProperty("userLoginUrl");
 		  
 		  var erpSystem = airbus.mes.operationstatus.oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system;
-		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
-				  myProfileUrl, "$badgeID", bID);
-		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
-				  myProfileUrl, "$userID", user);
-		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
-				  myProfileUrl, "$password", pass);
-		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
-				  myProfileUrl, "$pinCode", pinCode);
-		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
-				  myProfileUrl, "$UID", uID);
-		  return myProfileUrl;		  
+		  
+		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
+			  userLoginUrl, "$bid", bID);
+		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
+			  userLoginUrl, "$userid", user);		  
+		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
+			  userLoginUrl, "$pin", pinCode);
+		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
+			  userLoginUrl, "$erpsystem", erpSystem);
+		  
+		  return userLoginUrl;		  
 	  },
 	  
 		/* *********************** *
