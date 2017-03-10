@@ -149,7 +149,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
 				var sGetExternalUrl = data.Rowsets.Rowset[0].Row[0].str_output;
 		    	sGetExternalUrl = sGetExternalUrl.replace("p_workorder", workOrder);
 		    	sGetExternalUrl = sGetExternalUrl.replace("p_operation", operation);
-		    	window.location.href = sUrl;
+		    	window.open(sGetExternalUrl); 
 		    	
 			},
 			error : function(error, jQXHR) {

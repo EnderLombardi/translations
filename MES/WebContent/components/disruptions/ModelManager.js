@@ -856,6 +856,13 @@ airbus.mes.disruptions.ModelManager = {
 	AttachmentListModel : function() {
 		var oViewModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		oViewModel.loadData(this.urlModel.getProperty("ListOfAttachment"), null, false);
+	},
+	/********************
+	 * get url to update resolver on disruption detail Page
+	 */
+	getUrlupdateDisruption:function(){
+		var urlToUpdateResolver = this.urlModel.getProperty("urlToUpdateResolver");
+		return urlToUpdateResolver;
 	}
 	
 };

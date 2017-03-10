@@ -29,7 +29,8 @@ airbus.mes.disruptions.Formatter = {
 		"create" : "create\$\$",
 		"escalation" : "escalation\$\$",
 		"escalationLevel1" : "escalationLevel1\$\$",
-		"escalationLevel2" : "escalationLevel2\$\$"
+		"escalationLevel2" : "escalationLevel2\$\$",
+		"update":"update\$\$"
 	},
 
 	opStatus : {
