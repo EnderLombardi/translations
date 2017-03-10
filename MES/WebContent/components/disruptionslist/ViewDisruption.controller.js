@@ -557,7 +557,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 	onEscalateDisruption : function(oEvent) {
 
 		var msgRef = sap.ui.getCore().byId("disruptionCommentMsgRef").getText();
-		var sPath = sap.ui.getCore().byId("disruptionCommentSPath").getText();
+		var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();
 
 		var comment = airbus.mes.disruptions.Formatter.actions.escalation + sap.ui.getCore().byId("disruptionCommentBox").getValue();
 
