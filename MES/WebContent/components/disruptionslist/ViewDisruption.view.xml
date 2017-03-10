@@ -196,10 +196,10 @@
 							</items>
 						</HBox>
  -->
-						<List showNoData="false" class="sapUiSmallMarginBeginEnd" 
+						<List showNoData="false" class="sapUiSmallMarginBeginEnd" items="{path: 'operationDisruptionsModel>disruptionComments'}" >
 						
-							items="{path: 'operationDisruptionsModel>disruptionComments', 
-								    filters: [ { parts: [ {path: 'operationDisruptionsModel>prevCommentsLoaded'}, {path: 'operationDisruptionsModel>totalComments'}, {path: 'counter'} ], formatter: 'airbus.mes.disruptions.Formatter.setFilterForComments'} ]}">
+						<!-- 	items="{path: 'operationDisruptionsModel>disruptionComments', 
+								    filters: [ { parts: [ {path: 'operationDisruptionsModel>prevCommentsLoaded'}, {path: 'operationDisruptionsModel>totalComments'}, {path: 'counter'} ], formatter: 'airbus.mes.disruptions.Formatter.setFilterForComments'} ]}"> -->
 						<!-- visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}" -->
 								    
 							<CustomListItem class="msgColor">

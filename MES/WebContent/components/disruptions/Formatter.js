@@ -753,9 +753,9 @@ airbus.mes.disruptions.Formatter = {
 		if(totalComments <= 1 || showPrevComment == "true")
 			return false;
 		else return true;
-	}
+	},
 	
-	/*setFilterForComments: function(showAllFlag, totalComments, counter){
+	setFilterForComments: function(showAllFlag, totalComments, counter){
 		if(showAllFlag == "true"){
 			return true;
 			
@@ -765,5 +765,5 @@ airbus.mes.disruptions.Formatter = {
 		} else{
 			return false;
 		}
-	}*/
+	}
 };
