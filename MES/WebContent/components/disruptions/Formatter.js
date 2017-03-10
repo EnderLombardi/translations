@@ -344,8 +344,10 @@ airbus.mes.disruptions.Formatter = {
 		if (comment.indexOf("\$\$") > -1) {
 			action = comment.split("\$\$")[0];
 		}
-
-		return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
+		/*sometimes the id constants-text1-[viewId] to remove that we add another split*/
+		var sId= this.sId.split("--")[0];
+		var viewId = sId.split("-")[1]?sId.split("-")[1]:sId.split("-")[0];
+		return sap.ui.getCore().byId(viewId).getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
 	},
 	formatComment : function(comment) {
 		if (comment && comment.indexOf("\$\$") > -1) {
