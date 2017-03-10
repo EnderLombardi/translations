@@ -543,3 +543,6 @@ header.pageHeader {
     display: block;
     background-size: 100% 100%;
 }
+@keyframes blinker {  
+  50% { opacity: 0; }
+}

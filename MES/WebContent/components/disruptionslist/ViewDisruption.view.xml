@@ -40,7 +40,7 @@
 								<Label text="{parts: [{path:'operationDisruptionsModel>promisedDateTime'}, {path:'operationDisruptionsModel>status'}], formatter: 'airbus.mes.disruptionslist.Formatter.setSolutionIn'}"  width="5%" design="Bold" />
 								
 								<ToolbarSpacer />
-								<core:Icon id="disrptListEnvelop" src="sap-icon://email" visible="{= ${operationDisruptionsModel>lastUpdated} === 'true' ? true: false}"/>
+								<core:Icon id="disrptListEnvelop" src="sap-icon://email" class="blinkingIcon" visible="{= ${operationDisruptionsModel>isCommentsLastUpdated} === 'true' ? true: false}"/>
 								
 								<Label
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>closureDate}"

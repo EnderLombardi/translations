@@ -64,7 +64,7 @@
    ],
    "area":"Area",
    "plan":"plan",
-   "bomItem":"",
+   "bomItem":"bom",
    "ribs":"Ribs",
    "view":"View",
    "tools":"",

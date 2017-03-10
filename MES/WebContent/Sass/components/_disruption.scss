@@ -55,6 +55,11 @@ color:#e4042f !important;
 		  vertical-align: super !important;
 		  background-color:#dcd7d7 !important;
    	}
+   	
+   	.blinkingIcon{
+   	    animation: blinker 1s linear infinite;
+    	color: #e4042f;
+    }
 }
 
 //Disruption title bar buttons

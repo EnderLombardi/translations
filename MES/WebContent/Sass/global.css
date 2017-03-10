@@ -5120,3 +5120,10 @@ header.pageHeader > div > label { display: inline-block !important; text-shadow:
 .pageHeader .sapMSltArrow { background: transparent !important; color: #fff; }
 
 .panelbgImg { background-color: white; background-image: url(../components/homepage/images/dottedCarbon.png); display: block; background-size: 100% 100%; }
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+	.blinkingIcon{
+   	    animation: blinker 1s linear infinite;
+    	color: #e4042f;
+    }

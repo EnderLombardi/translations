@@ -147,7 +147,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 					oData.expanded 				= "false";
 					oData.prevCommentsLoaded	= "false";
 					oData.internalPanelExpanded = "false";	
-					oData.lastUpdated 			= "false";
+					oData.isCommentsLastUpdated 			= "false";
 					sap.ui.getCore().getModel("operationDisruptionsModel").setProperty(sPath, oData);
 	  	  				
 					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(sMsgRef, sPath);
@@ -644,9 +644,9 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
           
           
           //Mark message as read
-          if(oView.getModel("operationDisruptionsModel").getProperty(sPath+"/lastUpdated") == "true"){
-        	  	var urlToCreateMsgLogCode = airbus.mes.disruptions.urlModel.getProperty("urlCreateMsgLogCode");
-      			JQuery.ajax({
+          if(oView.getModel("operationDisruptionsModel").getProperty(sPath+"/isCommentsLastUpdated") == "true"){
+        	  	var urlToCreateMsgLogCode = airbus.mes.disruptions.ModelManager.urlModel.getProperty("urlCreateMsgLogCode");
+      			jQuery.ajax({
       				cache : false,
       				url : urlToCreateMsgLogCode,
       				type : 'POST',
@@ -657,7 +657,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
       					"Param.4" : "READ",
       				}      			
       			});	
-      			oView.getModel("operationDisruptionsModel").setProperty(sPath+"/lastUpdated", "false");
+      			oView.getModel("operationDisruptionsModel").setProperty(sPath+"/isCommentsLastUpdated", "false");
           }
       },
       handleDisruptionPanelCollapse: function(){
@@ -730,7 +730,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
   				data.expanded 				= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/expanded");
   				data.prevCommentsLoaded		= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/prevCommentsLoaded");
   				data.internalPanelExpanded  = sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/internalPanelExpanded");	
-  				data.lastUpdated 			= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/lastUpdated");	
+  				data.isCommentsLastUpdated 			= sap.ui.getCore().getModel("operationDisruptionsModel").getProperty(sPath+"/isCommentsLastUpdated");	
   				
   				if(data.disruptionComments && data.disruptionComments[0] == undefined){
   					data.disruptionComments = [data.disruptionComments];
