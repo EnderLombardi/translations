@@ -1,35 +1,6 @@
 ////////////////////////////
 //table
 ///////////////////////////
-
-#missingPartsView--MPTable{
-	width:100% !important;
-	height: inherit !important;
-	margin: 0 auto;
-	padding:0;
-	.sapUiTableCnt{
-		height: calc(100% - 10px);
-		border-bottom: 1px solid #767879;
-		.sapUiTableColHdrCnt{
-			height:46px !important;
-			background-color : $teal-blue;
-			.sapUiTableColHdrScr {
-				border: solid 1px $cool-grey;
-				background-color : $teal-blue;
-				>div {
-					height: 100%;
-					>div.sapUiTableCol {
-						border-right:1px solid white;
-					}
-				}	
-			}
-		}
-		.sapUiTableCCnt {
-			border-right: 1px solid #767879;
-		}
-	}
-}
-
 #missingPartsView--MPTable-table{
 	>tbody {
 		tr:nth-child(even) {background: #fff}
