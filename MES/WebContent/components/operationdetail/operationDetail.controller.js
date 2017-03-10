@@ -192,7 +192,17 @@ sap.ui
 
                     airbus.mes.shell.util.navFunctions.qdc(this.nav);
                     break;
+                case "ncDisplay":
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idNCDisplay";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
 
+                    airbus.mes.shell.util.navFunctions.ncDisplayLink(this.nav);
+                    this.nav.to(airbus.mes.ncdisplay.oView.getId());
+
+                    //rerender the table to get the good row number
+                    this.refreshMesTable("ncdisplayView--ncDisplay");
+                    break;
                 case "disruption":
                     this.goToDisruptionListView();
                     break;
@@ -297,18 +307,6 @@ sap.ui
 
                     airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
                     this.nav.to(airbus.mes.acpnglinks.oView.getId());
-                    break;
-                case "ncDisplay":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idNCDisplay";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
-                    airbus.mes.shell.util.navFunctions.ncDisplayLink(this.nav);
-                    this.nav.to(airbus.mes.ncdisplay.oView.getId());
-
-                    //rerender the table to get the good row number
-                    this.refreshMesTable("ncdisplayView--ncDisplay");
                     break;
                 case "tckTemplate":
                     //tabselection
@@ -496,5 +494,5 @@ sap.ui
                 }, 0);
             }
         }
-
+        
     });
