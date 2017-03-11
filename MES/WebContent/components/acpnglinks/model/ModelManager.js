@@ -206,8 +206,8 @@ airbus.mes.acpnglinks.model.ModelManager = {
 					oModel.refresh();
 
 					//Local
-					//oModel.setData(data);
-					//oModel.refresh();
+//					oModel.setData(data);
+//					oModel.refresh();
 
 				} catch (e) {
 					oModel.setData(undefined);

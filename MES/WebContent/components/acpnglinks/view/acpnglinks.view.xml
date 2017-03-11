@@ -164,9 +164,9 @@
 						<tab:Column id="materialDescription"
 							visible="{path:'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column/17/Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"
 							sortProperty="MaterialDescription">
-							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>MaterialDescription}" />
+							<Label class="ACPnGtLabel" text="{i18nAcpngLinksModel>materialDescription}" />
 							<tab:template>
-								<Label text="{acpnglinksWorkOrderDetail>materialDescription}"
+								<Label text="{acpnglinksWorkOrderDetail>MaterialDescription}"
 									class="AllignItem" />
 							</tab:template>
 						</tab:Column>
