@@ -24,7 +24,7 @@ airbus.mes.shell.busyManager =  {
                     view.byId(id).setBusy(false);
                 }
 //                console.log("unsetBusy" + id);
-		    }, 0);
+		    }, 100); // delay of 100 ms comparing to setBusy to be sure the unsetBusy run after the set
         },
 
 }
