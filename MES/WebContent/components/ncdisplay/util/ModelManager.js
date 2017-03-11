@@ -62,6 +62,11 @@ airbus.mes.ncdisplay.util.ModelManager = {
 	                 oViewModel.setData(data);
 
 				} catch (e) {
+//					In case the tool list is empty, we receive "null"
+					var data = { ncDetailList : [] };
+					data.count = 0;
+	                oViewModel.setData(data);
+	                
 					console.log("NO NC Display data load");
 					
 				}
@@ -69,6 +74,10 @@ airbus.mes.ncdisplay.util.ModelManager = {
 			},
 
 			error : function(error, jQXHR) {
+//				In case the tool list is empty, we receive "null"
+				var data = { ncDetailList : [] };
+				data.count = 0;
+                oViewModel.setData(data);				
 				console.log("NO NC Display data load");
 
 			}

@@ -46,7 +46,12 @@ airbus.mes.components.util.ModelManager = {
         }
     },
     saveOldValue : function(oModel) {    	
-        var count = oModel.getData().Rowsets.Rowset[0].Row.length;
+    	var count;
+    	if (jQuery.sap.getObject("oModel.getData().Rowsets.Rowset[0].Row.length") === undefined) {
+    		count = 0;
+    	} else {
+    		count = oModel.getData().Rowsets.Rowset[0].Row.length;
+    	}
 //      Keep old value
         for (var i = 0; i < count; i++) {
         	oModel.getData().Rowsets.Rowset[0].Row[i].Checked_Components_old = oModel.getData().Rowsets.Rowset[0].Row[i].Checked_Components;

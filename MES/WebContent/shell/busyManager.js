@@ -12,6 +12,7 @@ airbus.mes.shell.busyManager =  {
                 } else {
                     view.byId(id).setBusy(true);
                 }
+//                console.log("setBusy" + id);
 		    }, 0);
         },
 
@@ -22,6 +23,7 @@ airbus.mes.shell.busyManager =  {
                 } else {
                     view.byId(id).setBusy(false);
                 }
+//                console.log("unsetBusy" + id);
 		    }, 0);
         },
 

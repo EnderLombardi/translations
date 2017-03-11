@@ -316,8 +316,9 @@ airbus.mes.trackingtemplate.util.ModelManager = {
      * Show Message Toast
      **************************************************************************/
     messageShow: function (text, duration) {
-        if (typeof duration == "undefined")
+        if (typeof duration == "undefined") {
             duration = 3000;
+        }
 
         sap.m.MessageToast.show(text, {
             duration: duration,
