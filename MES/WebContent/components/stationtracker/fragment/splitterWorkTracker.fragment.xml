@@ -5,8 +5,9 @@
 	xmlns:l="sap.ui.layout" 
 	xmlns:u="sap.ui.unified" 
 	xmlns:table="sap.ui.table">
-		<Table id="splitWorTra" class="splitWorTra" items="{path: 'SplitDetailModel>/Rowsets/Rowset/0/Row', sorter:{
-            path : 'PH_STATION_DESCRIPTION' , descending : false , group: true}}">
+		<Table id="splitWorTra" class="splitWorTra" items="{path: 'SplitDetailModel>/Rowsets/Rowset/0/Row', sorter:[{
+            path : 'PH_STATION_DESCRIPTION' , descending : false , group: true} , {
+            path : 'START_TIME' , descending : false }]}">
 			<columns>
 				<Column>
 				</Column>
