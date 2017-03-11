@@ -100,6 +100,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		var getUrlShifts = this.urlModel.getProperty("urlosw");
+		var sPhysicalStationBo =  "WorkCenterBO:" +  airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station;
 		
 		jQuery.ajax({
 			type : 'post',
@@ -108,10 +109,10 @@ airbus.mes.stationHandover.util.ModelManager = {
 			async : 'false',
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
-				"physicalStationBO" : airbus.mes.settings.ModelManager.station,
+				"physicalStationBO" : sPhysicalStationBo,
 				"msn" : airbus.mes.settings.ModelManager.msn,
-				"calculateOWWithResponsibility" : false,
-				"calculateOWWithoutResponsibility" : false,
+				"calculateOWWithResponsibility" : true,
+				"calculateOWWithoutResponsibility" : true,
 				"calculateLocalOW" : true
 			}),
 
