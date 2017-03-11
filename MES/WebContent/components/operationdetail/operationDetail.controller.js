@@ -129,9 +129,9 @@ sap.ui
 
 
                 } else {
-                    this.setToolbarVisible();
                     oSwitchButton.setEnabled(true);
                     oSwitchButton.setState(false);
+                    this.setToolbarVisible();
                     this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("ReadOnly"));
                 }
 

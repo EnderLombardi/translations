@@ -81,7 +81,7 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 			}
 			// Model update
 			airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getData().Rowsets.Rowset[0].Columns.Column = model;
-			airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").refresh();
+			airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").refresh(true);
 		} catch (err) {
 			// do nothing
 		}

@@ -1075,7 +1075,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
                 $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
             }
-
         } else {
             airbus.mes.stationtracker.util.AssignmentManager.userSelected = oSelected.key;
 

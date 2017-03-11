@@ -203,15 +203,15 @@ airbus.mes.acpnglinks.model.ModelManager = {
 					};
 					jsonFormat.Rowsets.Rowset[0].Row = data.elementList
 					oModel.setData(jsonFormat);
-					oModel.refresh();
+					oModel.refresh(true);
 
 					//Local
 //					oModel.setData(data);
-//					oModel.refresh();
+//					oModel.refresh(true);
 
 				} catch (e) {
 					oModel.setData(undefined);
-					oModel.refresh()
+					oModel.refresh(true)
 					return;
 				}
 
@@ -225,7 +225,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 		if (oModel.getData().Rowsets.Rowset[0].Row != undefined){
 			var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row);
 			oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
-			oModel.refresh();
+			oModel.refresh(true);
 		}
 		}catch(error){
 // do nothing no model			
