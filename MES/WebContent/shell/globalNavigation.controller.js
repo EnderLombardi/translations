@@ -453,11 +453,12 @@ sap.ui.controller(
                     //if already exist remove content
                     if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
                        //Check if Missing Parts is open in case of yes we let it displayed and update it
-                    	//if ( !airbus.mes.shell.util.navFunctions.splitMissingPart ) {
-                    		airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1)
-//                       } else {
-//                    	   airbus.mes.missingParts.util.ModelManager.loadMPDetail();              	   
-//                       }
+                    	if ( !airbus.mes.shell.util.navFunctions.splitMissingPart ) {
+                    		airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+            airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                    		
+                       } else {
+                    	   airbus.mes.missingParts.util.ModelManager.loadMPDetail();              	   
+                       }
                     }
                  }
 
@@ -482,6 +483,7 @@ sap.ui.controller(
             //if already exist remove content
             if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
                 oSpliter.removeContentArea(1);
+                airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");
 
                 //force gantt 100% height
                 //$("#stationTrackerView--splitWorkTra").children().css('height', '100%');
@@ -522,24 +524,24 @@ sap.ui.controller(
             oModule.getPhStation();
             oModule.loadTimeMinRModel();
             
-//            //set mode missing part off when on workTracker
-//            if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
-//            	airbus.mes.shell.util.navFunctions.splitMissingPart = false;
-//             }
-//
-//			//Set disabled missing part button
-//			if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_DRILL_MISSING") ) {
-//				
-//				if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
-//					
-//					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(false);
-//
-//				} else {
-//					
-//					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(true);
-//
-//				}
-//			} 
+            //set mode missing part off when on workTracker
+            if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
+            	airbus.mes.shell.util.navFunctions.splitMissingPart = false;
+             }
+
+			//Set disabled missing part button
+			if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_DRILL_MISSING") ) {
+				
+				if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
+					
+					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(false);
+
+				} else {
+					
+					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(true);
+
+				}
+			} 
         },
 
         setInformationVisibility: function (bSet) {
@@ -629,9 +631,10 @@ sap.ui.controller(
             var user = sap.ui.getCore().getElementById("userNameMyProfile").getValue();
             var pass = sap.ui.getCore().getElementById("passwordMyProfile").getValue();
             var pinCode = sap.ui.getCore().getElementById("pinCodeMyProfile").getValue();
-            if (pinCode == "")
+            if (pinCode == "") {
                 pinCode = "0000"; // Set Pin Code default to 0
-
+            }
+                
             if (user == "" || pass == "") {
                 sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
                 sap.ui.getCore().byId("msgstrpMyProfile").setType("Error");
@@ -871,9 +874,10 @@ sap.ui.controller(
             var user = sap.ui.getCore().getElementById("userNameMyProfile").getValue();
             var pass = sap.ui.getCore().getElementById("passwordMyProfile").getValue();
             var pinCode = sap.ui.getCore().getElementById("pinCodeMyProfile").getValue();
-            if (pinCode == "")
+            if (pinCode == "") {
                 pinCode = "0000"; // Set Pin Code default to 0
-
+            }
+                
             if (user == "" || pass == "") {
                 sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
                 sap.ui.getCore().byId("msgstrpMyProfile").setType("Error");

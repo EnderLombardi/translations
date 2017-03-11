@@ -1065,10 +1065,13 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
                 airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
                 //hide split screen if select user
                 airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+                airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                
             }
             sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
+            
             airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(airbus.mes.stationtracker.splitterWorkTracker);
-
+            airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");
+            
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
             airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
 

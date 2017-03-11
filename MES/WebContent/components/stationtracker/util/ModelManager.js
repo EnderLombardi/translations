@@ -524,8 +524,10 @@ airbus.mes.stationtracker.util.ModelManager = {
                     airbus.mes.stationtracker.util.AssignmentManager.userSelected = '%';
                     sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey("ALL");
                     airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+                    airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                    
                     sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
                     airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(airbus.mes.stationtracker.splitterWorkTracker);
+                    airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                    
                     if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
                         $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
                     }
