@@ -70,13 +70,22 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
-
+                if (typeof data != "object" || data === null) {
+                    /* In case the tool list is empty, we receive "null" */
+                    data = { Rowsets: [] };
+                }    
                 if (data.Rowsets.Rowset[0] && data.Rowsets.Rowset[0].Row) {
+//                	If Row doesn't exist                	
+                	if (jQuery.sap.getObject("data.Rowsets.Rowset[0].Row") === undefined) {
+//						Initialize to empty array  
+                		data.Rowsets.Rowset[0].Row = [];
+                	}  
+                	
                     data.Rowsets.Rowset[0].Row = airbus.mes.trackingtemplate.util.ModelManager.sortArrayByOperationAndDate(data.Rowsets.Rowset[0].Row);
                 }
 
                 oViewModel.setData(data);
-                airbus.mes.trackingtemplate.oView.oController.initNotesList();
+                airbus.mes.trackingtemplate.oView.getController().initNotesList();
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.trackingtemplate.oView, "trackingtemplateView--confirmation_notes_panel");
             },
 
@@ -100,12 +109,31 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
+                if (typeof data != "object" || data === null) {
+                    /* In case the tool list is empty, we receive "null" */
+                    data = { Rowsets: [] };
+                }                
                 if (data.Rowsets.Rowset) {
+//					Case of no data
+//                	If Row doesn't exist
+                	if (jQuery.sap.getObject("data.Rowsets.Rowset[0].Row") === undefined) {
+//						Initialize to empty array                	
+                		data.Rowsets.Rowset[0].Row = [];
+                	}
+//                	If Row doesn't exist                	
+                	if (jQuery.sap.getObject("data.Rowsets.Rowset[1].Row") === undefined) {
+//						Initialize to empty array  
+                		data.Rowsets.Rowset[1].Row = [];
+                	}                	
+                	
                     var wonotes = data.Rowsets.Rowset[0].Row;
                     if (data.Rowsets.Rowset[1].Row && wonotes) {
                         airbus.mes.trackingtemplate.util.ModelManager.attachedDocumentToWoNotes(wonotes, data.Rowsets.Rowset[1].Row);
                         wonotes = wonotes.sort(airbus.mes.shell.util.Formatter.fieldComparator(['-Created_Date_Time']));
-                        wonotes[0].lastOperationNote = true;
+                    	if (jQuery.sap.getObject("wonotes[0].lastOperationNote") !== undefined) {
+                    		wonotes[0].lastOperationNote = true;
+                    	}                        
+                        
                     }
                 }
                 woNotesModel.setData(data);
@@ -166,6 +194,10 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     sortArrayByOperationAndDate: function (array) {
 
         var index, len, previousRow;
+        if (array.length === 0) {
+        	return;
+        }
+        
         array = array.sort(airbus.mes.shell.util.Formatter.fieldComparator(['OperationBO', '-Created_Date_Time']));
         index = 1;
         len = array.length;
