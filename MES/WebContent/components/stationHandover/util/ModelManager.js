@@ -8,36 +8,36 @@ airbus.mes.stationHandover.util.ModelManager = {
 	i18nModel : undefined,
 	filter : {
 		"search" : undefined,
-		"type" : new sap.ui.model.Filter({
-			path : "type",
-			test : function(oValue) {
-
-				if (airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1) {
-
-					return true;
-				} else {
-
-					return false;
-				}
-			}
-		}),
-		"noTime" : new sap.ui.model.Filter("NO_TIME", "EQ", "false"),
-		"selected" : new sap.ui.model.Filter("selected", "EQ", "false"),
-		"station" : new sap.ui.model.Filter({
-			path : "ORIGIN_STATION",
-			test : function(oValue) {
-										
-				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
-					
-					return true;
-				} else {
-					
-					return false;
-				}
-			}
-		}),
-		"aType" : [ "0" ],
-		"aStation" : [],
+//		"type" : new sap.ui.model.Filter({
+//			path : "type",
+//			test : function(oValue) {
+//
+//				if (airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1) {
+//
+//					return true;
+//				} else {
+//
+//					return false;
+//				}
+//			}
+//		}),
+//		"noTime" : new sap.ui.model.Filter("NO_TIME", "EQ", "false"),
+//		"selected" : new sap.ui.model.Filter("selected", "EQ", "false"),
+//		"station" : new sap.ui.model.Filter({
+//			path : "ORIGIN_STATION",
+//			test : function(oValue) {
+//										
+//				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
+//					
+//					return true;
+//				} else {
+//					
+//					return false;
+//				}
+//			}
+//		}),
+//		"aType" : [ "MO" ],
+//		"aStation" : [],
 	},
 
 	init : function(core) {
@@ -120,9 +120,20 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 				try {
 					
+					for (var a in data) { 
+						if ( a === "outstandingWorkOrderInfoList" ) {
+								data[a][a] = [data[a][a]];
+								data[a] = [data[a]];
+								
+							
+					    }
+					}
+					
 					oViewModel.setData(data);
 					//airbus.mes.calendar.oView.getModel("ressourcePoolModel").refresh(true);
 					airbus.mes.stationHandover.util.ModelManager.onOswLoad();
+					
+					
 				} catch (e) {
 
 					console.log("NO osw load problem");
