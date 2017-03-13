@@ -1,5 +1,5 @@
 "use strict";
-sap.ui.controller("airbus.mes.qdc.Checklist", {
+sap.ui.controller("airbus.mes.qdc.controller.Checklist", {
 	onAfterRendering : function() {
 		var oTTbl = airbus.mes.qdc.oView.byId("TabChecklistTable");
 		oTTbl.expandToLevel(1);

@@ -195,9 +195,9 @@ airbus.mes.shell.util.navFunctions = {
         }
 
         //Load data
-        airbus.mes.qdc.ModelManager.loadQDCModel();
-        airbus.mes.qdc.ModelManager.loadQDCData();
-        airbus.mes.qdc.ModelManager.loadQACheckModel();
+        airbus.mes.qdc.util.ModelManager.loadQDCModel();
+        airbus.mes.qdc.util.ModelManager.loadQDCData();
+        airbus.mes.qdc.util.ModelManager.loadQACheckModel();
 
         // Navigate
         oNavContainer.to(airbus.mes.qdc.oView.getId());

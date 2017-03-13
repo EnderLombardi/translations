@@ -1,6 +1,6 @@
 <core:View xmlns="sap.m" xmlns:core="sap.ui.core"
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tab="sap.ui.table"
-	controllerName="airbus.mes.qdc.Checklist">
+	controllerName="airbus.mes.qdc.controller.Checklist">
 
 	<Page id="idChecklistPage" showHeader="false" height="100%"
 		enableScrolling="false">

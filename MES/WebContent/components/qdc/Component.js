@@ -1,5 +1,5 @@
 "use strict";
-jQuery.sap.require("airbus.mes.qdc.ModelManager");
+jQuery.sap.require("airbus.mes.qdc.util.ModelManager");
 jQuery.sap.require("airbus.mes.qdc.util.Formatter");
 
 jQuery.sap.declare("airbus.mes.qdc.Component");
@@ -16,12 +16,12 @@ airbus.mes.qdc.Component.prototype.createContent = function() {
 
     if (airbus.mes.qdc.oView === undefined) {
         // Initialize ModelManager and load needed file
-        airbus.mes.qdc.ModelManager.init(sap.ui.getCore());
+        airbus.mes.qdc.util.ModelManager.init(sap.ui.getCore());
         
         // View on XML
         this.oView = sap.ui.view({
             id : "idCheckListView",
-            viewName : "airbus.mes.qdc.Checklist",
+            viewName : "airbus.mes.qdc.view.Checklist",
             type : "XML",
             height:"100%"
         })
