@@ -27,9 +27,9 @@
 					design="Bold"></Label>
 			</HBox>
 
-			<List id="idListDocument" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/'}">
+			<!--<List id="idListDocument" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/'}">
 				<!-- <StandardListItem/> -->
-				<CustomListItem>
+				<!--<CustomListItem>
 					<HBox class="document-item">
 						<Label class="document-title" text="{DesktopFilesModel>Title}" />
 						<Label class="document-description" text="{DesktopFilesModel>Description}" />
@@ -37,8 +37,8 @@
 						<core:Icon size="1rem" class="document-edit" src="sap-icon://edit" press="onEditPress" />
 						<core:Icon size="1rem" class="document-delete" src="sap-icon://delete" press="onDeletePress" />
 					</HBox>
-				</CustomListItem>
-			</List>
+				</CustomListItem>-->
+			<!--</List>-->
 
 
 		</content>
