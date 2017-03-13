@@ -36,7 +36,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 //				}
 //			}
 //		}),
-//		"aType" : [ "MO" ],
+//		"aType" : [ "Not_Fwd" ],
 //		"aStation" : [],
 	},
 
@@ -118,16 +118,27 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 			success : function(data) {
 
+				var sField = "outstandingWorkOrderInfoList";
+				var sFieldStep = "outstandingWorkStepInfoList"
+				
 				try {
 					
-					for (var a in data) { 
-						if ( a === "outstandingWorkOrderInfoList" ) {
-								data[a][a] = [data[a][a]];
-								data[a] = [data[a]];
-								
+					
+					if ( !Array.isArray(data[sField]) ) {
+						
+						data[sField] = [data[sField]];
+						
+					} 
+					
+					data[sField].forEach(function(el){
+					
+						if ( !Array.isArray(el[sFieldStep]) ) {
 							
-					    }
-					}
+							el[sFieldStep] = [el[sFieldStep]];
+							
+						} 					
+						
+					});
 					
 					oViewModel.setData(data);
 					//airbus.mes.calendar.oView.getModel("ressourcePoolModel").refresh(true);
@@ -135,7 +146,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 					
 					
 				} catch (e) {
-
+					oViewModel.setData({});
 					console.log("NO osw load problem");
 				}
 
