@@ -13,7 +13,7 @@
 				text="{StationTrackerI18n>confirm}" icon="sap-icon://history" type="Transparent"
 				press="onRescheduleConfirm" />
 			<Button text="{StationTrackerI18n>Close}" icon="sap-icon://decline"
-				press="onCloseOperationDetailPopup" />
+				press="onCloseWorklist" />
 		</buttons>
 	</Dialog>
 
