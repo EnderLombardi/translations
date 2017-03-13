@@ -1,4 +1,54 @@
-#stationHandoverView--kpiHeaderToolbar {
+// popup insert osw
+#insertOsw--insertHeader{
+        margin-top: 10px;
+        overflow: visible;
+        background-color: #d4f1f7;
+        color: #434343;
+        border : 1px solid #8db9ca ! important;
+        box-shadow: 0 0 0 ! important;
+    
+    label {
+        background-color: transparent;
+        color: #0D5D76;
+        height: 3rem;
+        line-height: 3rem;
+        border-right: 1px solid #8db9ca;
+        padding-right: 5px;
+    }
+    .sapMSltArrow {
+        background-color: transparent;
+        color: #0D5D76;
+        height: 3rem;
+        line-height: 3rem;
+        border-right: 1px solid #8db9ca;
+    }
+    &.sapMSltPressed {
+        .sapMSltArrow {
+            background-color: $tiffany-blue;
+        }
+    }
+    .sapMSlt {
+        border-left: none;
+        height: 3rem;
+        background-color: $duck-egg-blue !important;
+    }
+    .sapMBtnDefault {
+        background: transparent;
+       // border: none;
+        color: #0D5D76;
+    }
+    .borderRight {
+        border-right: 1px solid #8db9ca;
+    }
+    .sapMBtnIcon {
+        color: #0D5D76;
+    }
+        
+}
+
+
+// StationHandover screen
+#stationHandoverView--headerstationhandover {
     .comboStationHandover {
         color: #F5F5F5;
         font-size: 16px;
@@ -17,7 +67,6 @@
     }
     .sapMSltLabel {
         line-height: 3rem;
-        color: $tiffany-blue;
     }
     #stationHandoverView--selectMsnHandover-arrow,
     #stationHandoverView--selectStationHandover-arrow {
