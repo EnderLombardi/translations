@@ -72,15 +72,33 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 		}
 		mpTable_Binding.filter(oFilters);
 		mpTable_Binding.sort(oSorter);
+	},
+	
+	onRowSelect: function(oEvt) {
+		
+		var sPath = oEvt.getParameters().rowBindingContext.sPath;
+		var oModel =  airbus.mes.missingParts.oView.getModel("getMissingParts").getProperty(sPath);
+		
+		if ( oModel.workOrder != undefined ) {
+			
+			airbus.mes.missingParts.util.ModelManager.operation = oModel.operation;
+			airbus.mes.missingParts.util.ModelManager.workOrder = oModel.workOrder;
+			
+			if ( new Date(oModel.expectedDeliveryDate) !== "Invalid Date" ) {
+				
+				scheduler.updateView(oModel.expectedDeliveryDate)
+				
+			} else {
+				
+				console.log("missing part date error");
+				return;
+				
+			}
+		}
+		
+		console.log(fIndice);
 	}
 
-
-/**
-* Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-* @memberOf components.missingParts.view.missingParts
-*/
-//	onExit: function() {
-//
-//	}
+	
 
 });

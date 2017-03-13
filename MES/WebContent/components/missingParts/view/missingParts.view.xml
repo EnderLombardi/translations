@@ -2,16 +2,15 @@
 	xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.ui.table"
 	xmlns:l="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
 
-	<m:Dialog id="missingPartsPopUp" class="pageHeaderDialog"
+	<m:Page id="missingPartPage" class="pageHeaderDialog"
 		contentWidth="100%" contentHeight="100%" verticalScrolling="false"
-		showHeader="true" title="{i18nmissingPartsModel>title}"
-		afterClose="afterCloseMissingPartsPopup">
-		<m:endButton>
+		showHeader="true" title="{i18nmissingPartsModel>title}">
+	<!-- 	<m:endButton>
 			<m:Button text="{i18nmissingPartsModel>CloseButton}" icon="sap-icon://decline"
 				press="onCloseMPPopup" />
-		</m:endButton>
+		</m:endButton> -->
 		<m:content>
-				<Table id="MPTable" class="mesTable"
+				<Table id="MPTable" class="mesTable" cellClick="onRowSelect"
 					rows="{path:'getMissingParts>/Rowsets/Rowset/0/Row'}"
 					selectionMode="None" enableBusyIndicator="true"
 					enableColumnReordering="false" enableSelectAll="false"
@@ -79,8 +78,8 @@
 						</Column>
 					</columns>
 				</Table>
-			</m:content>
+			</m:content><!-- 
 		<m:buttons>
-		</m:buttons>
-	</m:Dialog>
+		</m:buttons> -->
+	</m:Page>
 </mvc:View>
