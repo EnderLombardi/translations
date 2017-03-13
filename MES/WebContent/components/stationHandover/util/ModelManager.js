@@ -21,7 +21,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 //				}
 //			}
 //		}),
-//		"noTime" : new sap.ui.model.Filter("NO_TIME", "EQ", "false"),
+		"noTime" : new sap.ui.model.Filter("duration", "NE", ""),
 //		"selected" : new sap.ui.model.Filter("selected", "EQ", "false"),
 //		"station" : new sap.ui.model.Filter({
 //			path : "ORIGIN_STATION",
@@ -36,7 +36,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 //				}
 //			}
 //		}),
-//		"aType" : [ "Not_Fwd" ],
+//		"aType" : [ "LOCAL" ],
 //		"aStation" : [],
 	},
 
