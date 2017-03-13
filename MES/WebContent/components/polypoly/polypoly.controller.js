@@ -776,7 +776,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //            var filterUA = new sap.ui.model.Filter("type", "Contains", "UA_");
 //            var aFilters = [filterLabels, filterUA];
 
-            if (nav.getCurrentPage().getId()!="polypolyPage"){
+            if (nav.getCurrentPage().getId()!="polypoly"){
 //                airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
                 airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(0);
                 airbus.mes.polypoly.oView.getController().setRowCountVisible(true);
