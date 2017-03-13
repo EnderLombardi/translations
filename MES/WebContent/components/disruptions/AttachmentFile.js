@@ -120,6 +120,5 @@ airbus.mes.disruptions.AttachmentFile = {
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		oModel.oData.splice(iIndex, 1);
 		oModel.refresh();
-
 	}
 }

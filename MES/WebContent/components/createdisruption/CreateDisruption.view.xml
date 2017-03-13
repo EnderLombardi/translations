@@ -138,12 +138,13 @@
 						<Label class="document-title" text="{DesktopFilesModel>Title}" />
 						<Label class="document-description" text="{DesktopFilesModel>Description}" />
 						<Label class="document-size" text="{DesktopFilesModel>Size}" />
-						<core:Icon size="1rem" class="document-edit" src="sap-icon://edit" press="airbus.mes.disruptions.AttachmentFile.onEditPress" />
-						<core:Icon size="1rem" class="document-delete" src="sap-icon://delete" press="airbus.mes.disruptions.AttachmentFile.onDeletePress" />
+						<HBox class= "document-button">
+							<core:Icon size="1rem" class="document-edit" src="sap-icon://edit" press="onEditPress" />
+							<core:Icon size="1rem" class="document-delete" src="sap-icon://delete" press="onDeletePress" />
+						</HBox>
 					</HBox>
 				</CustomListItem>
 			</List>
-
 			</items>
 		</FlexBox>
 	</Page>
