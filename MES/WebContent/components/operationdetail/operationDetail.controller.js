@@ -248,8 +248,9 @@ sap.ui
                     airbus.mes.stationtracker.ReschedulePopover.getModel();
 
                     this.nav.to(airbus.mes.stationtracker.ReschedulePopover.getId());
-
-                    if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() === true) {
+                    
+                    //we can rechedule if operation is different of confirmed
+                    if ( aModel[0].state != "C" ) {
                         sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(true);
                     } else {
                         sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
