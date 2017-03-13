@@ -1,32 +1,41 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
 
-	<Dialog id="insertOSW" class="pageHeaderDialog classWorklistPopover oswPopover"
+	<Dialog id="insertOSW" class="oswPopover" contentWidth = "50%"
 		verticalScrolling="false" title="{stationHandoverI18n>nameInsertOsw}">
-		<content>
-			<Select id="selectMode" class="comboStationHandover" items="{ path : 'optionInsertOsw>/' }" change="selectMode">
-				<core:Item key="{optionInsertOsw>key}"
-					text="{path:'optionInsertOsw>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}"/>
-			</Select>
-			<VBox>
-				<SegmentedButton selectedKey="invisible">
-					<items>
-						<SegmentedButtonItem id="jumpToStart" text="{stationHandoverI18n>jumpToStart}"
-							press="onPressJumpDate" key="shift" />
-						<SegmentedButtonItem id="jumpToEnd" text="{stationHandoverI18n>jumpToEnd}"
-							press="onPressJumpDate" key="day" />
-					</items>
 
-				</SegmentedButton>
+		<subHeader>
+
+			<OverflowToolbar class="insertHeaderStationHandover"
+				id="insertHeader">
+				<content>
+					<Select id="selectMode" class="comboStationHandover"
+						items="{ path : 'optionInsertOsw>/' }" change="selectMode">
+						<core:Item key="{optionInsertOsw>key}"
+							text="{path:'optionInsertOsw>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
+					</Select>
+
+					<ToolbarSpacer />
+
+					<Button id="jumpToStart" text="{stationHandoverI18n>jumpToStart}"
+						press="onPressJumpDate" key="shift" />
+					<Button id="jumpToEnd" text="{stationHandoverI18n>jumpToEnd}"
+						press="onPressJumpDate" key="day" />
+				</content>
+
+			</OverflowToolbar>
+
+		</subHeader>
+
+		<content>
 
 
 				<u:Calendar id="calendar" select="handleCalendarSelect"
-					class="center" enabled="false"/>
+					class="center" enabled="false" />
 
 				<TimePicker id="TimePicker" valueFormat="hh:mm a"
 					displayFormat="hh:mm a" change="handleChange" placeholder="Enter daily task deadline"
 					class="center" />
-			</VBox>
 		</content>
 
 		<buttons>

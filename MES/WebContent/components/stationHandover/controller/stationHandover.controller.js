@@ -382,8 +382,8 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			sap.ui.getCore().byId("insertOsw--calendar").addDisabledDate(new sap.ui.unified.DateRange({startDate : new Date(0), endDate: new Date(86400000000000)})) 
 			sap.ui.getCore().byId("insertOsw--calendar").destroySelectedDates();
 			sap.ui.getCore().byId("insertOsw--TimePicker").setEnabled(false);
-			sap.ui.getCore().byId("insertOsw--jumpToEnd-button").setEnabled(false);
-			sap.ui.getCore().byId("insertOsw--jumpToStart-button").setEnabled(false);
+			sap.ui.getCore().byId("insertOsw--jumpToEnd").setEnabled(false);
+			sap.ui.getCore().byId("insertOsw--jumpToStart").setEnabled(false);
 
 		} else {
 			
@@ -394,8 +394,8 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			sap.ui.getCore().byId("insertOsw--calendar").insertSelectedDate(new sap.ui.unified.DateRange({
 			startDate : new Date()
 			}));
-			sap.ui.getCore().byId("insertOsw--jumpToEnd-button").setEnabled(true);
-			sap.ui.getCore().byId("insertOsw--jumpToStart-button").setEnabled(true);
+			sap.ui.getCore().byId("insertOsw--jumpToEnd").setEnabled(true);
+			sap.ui.getCore().byId("insertOsw--jumpToStart").setEnabled(true);
 			
 		}		
 	},

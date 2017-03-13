@@ -4008,13 +4008,29 @@ DATE PICKER
 
 #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody .sapMGHLITitle { color: #0085ad; font-weight: 500; text-decoration-line: none; }
 
-#stationHandoverView--kpiHeaderToolbar .comboStationHandover { color: #F5F5F5; font-size: 16px; width: auto; height: 3rem; margin: 0; max-width: 100%; line-height: 3rem; text-transform: capitalize; margin-right: 0px !important; border-right: solid 1px #74d2e7 !important; background: #0f2d65 !important; border: 0; border-left: solid 1px #74d2e7 !important; opacity: 1; }
+#insertOsw--insertHeader { margin-top: 10px; overflow: visible; background-color: #d4f1f7; color: #434343; border: 1px solid #8db9ca !important; box-shadow: 0 0 0 !important; }
 
-#stationHandoverView--kpiHeaderToolbar .sapMSltLabel { line-height: 3rem; color: #74d2e7; }
+#insertOsw--insertHeader label { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; padding-right: 5px; }
 
-#stationHandoverView--kpiHeaderToolbar #stationHandoverView--selectMsnHandover-arrow, #stationHandoverView--kpiHeaderToolbar #stationHandoverView--selectStationHandover-arrow { padding-top: 8px; }
+#insertOsw--insertHeader .sapMSltArrow { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; }
 
-#stationHandoverView--kpiHeaderToolbar #stationHandoverView--headerText { height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; padding-right: 1rem; }
+#insertOsw--insertHeader.sapMSltPressed .sapMSltArrow { background-color: #74d2e7; }
+
+#insertOsw--insertHeader .sapMSlt { border-left: none; height: 3rem; background-color: #d5f5f8 !important; }
+
+#insertOsw--insertHeader .sapMBtnDefault { background: transparent; color: #0D5D76; }
+
+#insertOsw--insertHeader .borderRight { border-right: 1px solid #8db9ca; }
+
+#insertOsw--insertHeader .sapMBtnIcon { color: #0D5D76; }
+
+#stationHandoverView--headerstationhandover .comboStationHandover { color: #F5F5F5; font-size: 16px; width: auto; height: 3rem; margin: 0; max-width: 100%; line-height: 3rem; text-transform: capitalize; margin-right: 0px !important; border-right: solid 1px #74d2e7 !important; background: #0f2d65 !important; border: 0; border-left: solid 1px #74d2e7 !important; opacity: 1; }
+
+#stationHandoverView--headerstationhandover .sapMSltLabel { line-height: 3rem; }
+
+#stationHandoverView--headerstationhandover #stationHandoverView--selectMsnHandover-arrow, #stationHandoverView--headerstationhandover #stationHandoverView--selectStationHandover-arrow { padding-top: 8px; }
+
+#stationHandoverView--headerstationhandover #stationHandoverView--headerText { height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; padding-right: 1rem; }
 
 #oswDialog--oswDialog-scrollCont { padding: 0px; }
 
@@ -4895,17 +4911,19 @@ QUARANTINE USELESS CODE
 /*******************
 END OF QUARANTINE
 ********************/
-#createDisruptionView--idListDocument .document-item { padding: 1rem; display: flex; min-height: 3rem; padding-bottom: .375rem; }
+#createDisruptionView--idListDocument .document-item { padding: 1rem; display: inline-block; width: 100%; min-height: 3rem; padding-bottom: .375rem; }
 
-#createDisruptionView--idListDocument .document-item .document-title { font-weight: bold; font-size: 1rem; }
+#createDisruptionView--idListDocument .document-item .document-title { font-weight: bold; font-size: 1rem; width: 25%; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-description { font-size: 1rem; }
+#createDisruptionView--idListDocument .document-item .document-description { font-size: 1rem; width: 60%; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-size { font-size: 1rem; }
+#createDisruptionView--idListDocument .document-item .document-size { font-size: 1rem; width: 10%; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-edit { font-size: 1rem; text-align: right; -webkit-box-flex: 0; flex: none; }
+#createDisruptionView--idListDocument .document-item .document-button { width: 5%; float: right; }
 
-#createDisruptionView--idListDocument .document-item .document-delete { font-size: 1rem; text-align: right; -webkit-box-flex: 0; flex: none; }
+#createDisruptionView--idListDocument .document-item .document-button .document-edit { font-size: 1rem; width: 5%; float: left; }
+
+#createDisruptionView--idListDocument .document-item .document-button .document-delete { font-size: 1rem; width: 5%; float: right; }
 
 /*************
 GENERALE RULES
