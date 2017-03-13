@@ -31,14 +31,15 @@ airbus.mes.stationtracker.util.Globals_Functions = {
 				"msn": sMsn,
 				}),
 				success: function (data) {
-					try {
-						if (typeof data == "string") {
-							data = JSON.parse(data);
+					try {		
+							if ( !Array.isArray(data.missingPartList)) {
+								
+								data.missingPartList = [data.missingPartList];
+							} 						
 							//Get missing Parts data in Rowsets format from REST data 
-							missingPartsData = airbus.mes.settings.GlobalFunction.getRowsetsFromREST(
-							                                               					data.missingPartList, 
+							missingPartsData = airbus.mes.settings.GlobalFunction.getRowsetsFromREST(data.missingPartList, 
 														     					this.excludedFields);
-						}
+						
 					} catch (error) {
 						console.log(error);
 					};
