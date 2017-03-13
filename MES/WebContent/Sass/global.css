@@ -1839,6 +1839,8 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 #ViewDisruptionView--disrptlist .HorizontalLine:before, #ViewDisruptionView--disrptlist .HorizontalLine:after { content: " " !important; width: 50% !important; height: 1px !important; margin: 0 10px !important; vertical-align: super !important; background-color: #dcd7d7 !important; }
 
+#ViewDisruptionView--disrptlist .blinkingIcon { animation: blinker 1s linear infinite; color: #e4042f; }
+
 .disruptionTitleBarButtons > .sapMBtnReject { background-color: transparent !important; color: #cc1919 !important; border-color: transparent !important; text-shadow: none !important; }
 
 .disruptionTitleBarButtons > .sapMBtnReject > .sapMBtnIcon { color: #cc1919 !important; }
@@ -4893,17 +4895,17 @@ QUARANTINE USELESS CODE
 /*******************
 END OF QUARANTINE
 ********************/
-#idListDocument .document-item { padding: 1rem; display: flex; min-height: 3rem; padding-bottom: .375rem; }
+#createDisruptionView--idListDocument .document-item { padding: 1rem; display: flex; min-height: 3rem; padding-bottom: .375rem; }
 
-#idListDocument .document-item .document-title { font-weight: bold; font-size: 1rem; }
+#createDisruptionView--idListDocument .document-item .document-title { font-weight: bold; font-size: 1rem; }
 
-#idListDocument .document-item .document-description { font-size: 1rem; }
+#createDisruptionView--idListDocument .document-item .document-description { font-size: 1rem; }
 
-#idListDocument .document-item .document-size { font-size: 1rem; }
+#createDisruptionView--idListDocument .document-item .document-size { font-size: 1rem; }
 
-#idListDocument .document-item .document-edit { font-size: 1rem; text-align: right; -webkit-box-flex: 0; flex: none; }
+#createDisruptionView--idListDocument .document-item .document-edit { font-size: 1rem; text-align: right; -webkit-box-flex: 0; flex: none; }
 
-#idListDocument .document-item .document-delete { font-size: 1rem; text-align: right; -webkit-box-flex: 0; flex: none; }
+#createDisruptionView--idListDocument .document-item .document-delete { font-size: 1rem; text-align: right; -webkit-box-flex: 0; flex: none; }
 
 /*************
 GENERALE RULES
@@ -5120,10 +5122,5 @@ header.pageHeader > div > label { display: inline-block !important; text-shadow:
 .pageHeader .sapMSltArrow { background: transparent !important; color: #fff; }
 
 .panelbgImg { background-color: white; background-image: url(../components/homepage/images/dottedCarbon.png); display: block; background-size: 100% 100%; }
-@keyframes blinker {  
-  50% { opacity: 0; }
-}
-	.blinkingIcon{
-   	    animation: blinker 1s linear infinite;
-    	color: #e4042f;
-    }
+
+@keyframes blinker { 50% { opacity: 0; } }
