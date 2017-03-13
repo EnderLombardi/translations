@@ -719,7 +719,8 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
     findLinesNumber : function(iHeight){
         var iFloor=306;
         var iStep = 1;
-        var iWidth = 47;
+//        var iWidth = 47;
+        var iWidth = 52;
         var iLines = 1;
         var bFound = false;
         do{
