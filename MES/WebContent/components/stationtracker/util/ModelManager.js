@@ -1068,7 +1068,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 		//console.log("Previous shift ID : " + prevShiftID);
 		//console.log("Current Date      : " + currentDate);
 		//console.log("urlReschedulingLineService : " + urlReschedulingLineService);
-		console;log("lines: " + lines);
+		console.log("lines: " + lines);
 		
         jQuery.ajax({
             type: 'post',
