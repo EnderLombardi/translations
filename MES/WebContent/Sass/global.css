@@ -668,15 +668,13 @@ POP UP POLYPOLY
 
 #pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel { color: #468497; font-size: 0.975rem; padding-top: 4px; }
 
-#pop-up-polypoly-header-BarPH { background: #d4f1f7; }
+#pop-up-polypoly-header-BarPH { background: #d5f5f8; }
 
 #pop-up-polypoly-header { box-shadow: 0 0 5px #333; }
 
 #pop-up-polypoly-title { color: #434343; }
 
 #pop-up-polypoly-scrollCont { padding: 0; }
-
-#pop-up-polypoly-cont { border-top: 3px solid #ffffff; }
 
 #pop-up-polypoly-footer { background-color: #0f2d65; }
 
@@ -1458,6 +1456,8 @@ POLYPOLY
 .sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableCol:hover, .sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableColRowHdr:hover { background-color: transparent; }
 
 div[id^="polypoly--oTablePolypoly"] { padding: 0; }
+
+#polypoly--toolbarPolypoly { background-color: #d5f5f8; }
 
 #polypoly--toolbarPolypoly.sapMTB { border: none; }
 
@@ -2343,7 +2343,10 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
+/*!
+*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
+*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+*/
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
