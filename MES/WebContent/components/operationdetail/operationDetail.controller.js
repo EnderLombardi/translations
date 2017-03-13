@@ -145,9 +145,15 @@ sap.ui
 
         setToolbarVisible: function () {
             var state = sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState();
+            var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
             if (!state) {
-                sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(false);
-                sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(false);   
+                //It must be possible to reschedule an operation than has not started even when the operation is not in execution mode
+                if (airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start) === "1"){ 
+                	sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(true);
+                }else{
+                	sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(false);
+                }
                 sap.ui.getCore().byId("operationDetailsView--idtouchngo").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idJignTools").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(false);
