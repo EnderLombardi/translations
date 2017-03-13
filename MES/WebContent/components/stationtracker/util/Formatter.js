@@ -591,8 +591,17 @@ airbus.mes.stationtracker.util.Formatter = {
 	----------------------------------------------------------------------------*/
 	getFormatedObjLine: function (avlLine, count) {
 		// Get AVL "Line number" and "skill" from avlLine string
-		var nLine = avlLine.split("_")[0];
-		var skill = avlLine.split("_")[1];
+		var avlLineArray = avlLine.split("_");
+		var len = avlLineArray.length;
+
+		var nLine = avlLineArray[0];
+		var skill = avlLineArray[1];
+				
+		if(len >= 3) {
+			for (var i = 2; i <  len; i++) {
+				skill += "_" + avlLineArray[i];
+			}
+		}
 
 		var objLine = {
 			"avlLine" : avlLine,
@@ -667,11 +676,6 @@ airbus.mes.stationtracker.util.Formatter = {
 			if(toRescheduleList.length > 0) {
 				$(".rescheduleAllBtn").css({'display' : 'block'});
 			}
-			
-			// DEBUG
-			//console.log("====yDisplayRules============");
-			//console.log("objLine          : " + JSON.stringify(objLine));
-			//console.log("toRescheduleList : " + JSON.stringify(toRescheduleList));
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {

@@ -1492,8 +1492,11 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 		console.log("toto");
 	},
 	
-	/**
-	 * Open, Confirm and Close PopUp to reschedule not confirmed operation(s) on AVL Line
+	
+	/*----------------------------------------------------------------------------
+	 * Reschedule selected Line PopUp
+	 *
+	 * Open PopUp to reschedule not confirmed operation(s) on AVL Line
 	 * @PARAM {OBJECT} AVL Line information
 	 */
 	openRescheduleLinePopUp: function (objLine) {
@@ -1504,6 +1507,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 		this.rescheduleLinePop.setModel(new sap.ui.model.json.JSONModel(objLine), "RescheduleLineData");
 		this.rescheduleLinePop.open();
 	},
+	/* Confirm PopUp */
 	confirmRescheduleLinePopUp: function (oEvent) {
 		// Get and Format required line data for the request
 		var lineData = this.rescheduleLinePop.getModel("RescheduleLineData").oData;
@@ -1516,11 +1520,17 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 		airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest(lineArray);
 		this.onCloseDialog(oEvent);
 	},
+	/* Close PopUp */
 	closeRescheduleLinePopUp: function (oEvent) {
 		this.onCloseDialog(oEvent);
 	},
 	
-	
+	/*----------------------------------------------------------------------------
+	 * Reschedule All Line PopUp
+	 * 
+	 * Open PopUp to reschedule not confirmed operation(s) on All AVL Line
+	 * @PARAM {Number} Number of late operations
+	 */
 	openRescheduleAllPopUp: function (count) {
 		if (!this.rescheduleAllPop) {
 			this.rescheduleAllPop = sap.ui.xmlfragment("airbus.mes.stationtracker.fragment.rescheduleAllPopUp", this);
@@ -1530,11 +1540,13 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 		this.rescheduleAllPop.setModel(new sap.ui.model.json.JSONModel(count), "RescheduleAllData");
 		this.rescheduleAllPop.open();
 	},
+	/* Confirm PopUp */
 	confirmRescheduleAllPopUp: function (oEvent) {
-		// call request
-		//airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest(lineArray);
+		// call request (Send an empty array for reschedule all not confirmed operations)
+		airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest([]);
 		this.onCloseDialog(oEvent);
 	},
+	/* Close PopUp */
 	closeRescheduleAllPopUp: function (oEvent) {
 		this.onCloseDialog(oEvent);
 	}

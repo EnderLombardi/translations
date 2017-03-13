@@ -692,6 +692,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 					var oOperation = opeHierarchy[oSection.group][oSection.avlLine];			
 					for (var aBox in oOperation) {
 						var aOpration = oOperation[aBox];
+						console.log("aOpration: " + aOpration);
 						//Parse all opration in corresponding group avlLine
 						aOpration.forEach(function(el,index){
 							// check if operation start date is less than the end date of prevous shift.

@@ -1068,9 +1068,8 @@ airbus.mes.stationtracker.util.ModelManager = {
 		//console.log("Previous shift ID : " + prevShiftID);
 		//console.log("Current Date      : " + currentDate);
 		//console.log("urlReschedulingLineService : " + urlReschedulingLineService);
-
-		console.log("URL: " + urlReschedulingLineService);
-
+		console;log("lines: " + lines);
+		
         jQuery.ajax({
             type: 'post',
             url: urlReschedulingLineService,
@@ -1089,11 +1088,26 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
-                //console.log("Request Debug => success : " + JSON.stringify(data));
+                console.log("Request Debug => success : " + JSON.stringify(data));
+                console.log("data message : " + data.message)
+                 
+                if (data.message == "E") {
+                	console.log("Request reschedule Error");
+                	sap.m.MessageToast.show("An error has occured: " + JSON.stringify(data));
+                } else if (data.message == "W") {
+                	console.log("Request reschedule Warning");
+                	sap.m.MessageToast.show("An error has occured: " + JSON.stringify(data));
+                	
+                } else if (data.message == "S") {
+                	console.log("Request reschedule Success");
+                	airbus.mes.shell.oView.getController().renderStationTracker();
+                }
+                //we reload the work tracker
+                airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
             },
             error: function (error, jQXHR) {
                 jQuery.sap.log.info(error);
-                //console.log("Request Debug => error : " + JSON.stringify(error) + ", " + jQXHR);
+                console.log("Request Debug => error : " + JSON.stringify(error) + ", " + jQXHR);
             }
         });
     },
@@ -1132,21 +1146,12 @@ airbus.mes.stationtracker.util.ModelManager = {
 		window.event.stopPropagation();
         
         var count    = 0;
-        var arrayLength = this.toRescheduleList.length;
-        
-        for (var i = 0; i < arrayLength; i++) {
+        for (var i = 0; i < this.toRescheduleList.length; i++) {
         	count += this.toRescheduleList[i].count;
         }
-        
-        // Debug
-        //console.log("====RescheduleAllBtn click============");
-        //console.log("Number of all operation in all AVL Line to Reschedule: " + allCount);
-        //console.log("Number of AVL Line to Reschedule: " + arrayLength);
+        var objCount = { "count": count }
         
         // Open confirm popup
-        var objCount = {
-        	"count": count
-        }
 		airbus.mes.stationtracker.oView.getController().openRescheduleAllPopUp(objCount);
     },
 	
