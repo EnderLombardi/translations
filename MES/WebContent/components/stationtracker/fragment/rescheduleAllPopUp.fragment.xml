@@ -1,11 +1,9 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
 
     <Dialog id="rescheduleAllPopUp" class=""
-    		title="{ StationTrackerI18n>RescheduleAllPopUpTitle }" 
+    		title="{ parts : ['StationTrackerI18n>RescheduleAllPopUpTitle'] }" 
             state="Warning" type="Message"
             stretchOnPhone="true" verticalScrolling="false">
-            <!--title="{ parts : ['StationTrackerI18n>RescheduleAllPopUpTitle', 'RescheduleLineData>/avlLine' ], formatter: 'jQuery.sap.formatMessage' }" -->
-            <!-- width="70% !important" height="100%" contentWidth="60%" contentHeight="50%" showHeader="false" -->
         
         <content>
         	<Text text="{ parts : ['StationTrackerI18n>RescheduleAllPopUpContent', 'RescheduleAllData>/count' ], formatter: 'jQuery.sap.formatMessage' }" />

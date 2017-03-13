@@ -1179,9 +1179,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
     //Open datePicker XML fragment
     datePick: function () {
     	
-    	// Empty list of to reschedule not confirmed operations
-    	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.controller.dateSelected()");
-    	
         if (airbus.mes.stationtracker.datePicker === undefined) {
             airbus.mes.stationtracker.datePicker = sap.ui.xmlfragment("datePickerFragment", "airbus.mes.stationtracker.fragment.datePickerFragment", airbus.mes.stationtracker.oView.getController());
             airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.datePicker);
@@ -1236,6 +1233,10 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
             airbus.mes.stationtracker.util.ShiftManager.changeShift = false; //Airbus Defect #262 - Shift selection is not kept when changing date
             scheduler.updateView(dStartDate);
+            
+            // Empty list of to reschedule not confirmed operations
+        	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.controller.dateSelected()");
+        	
             //airbus.mes.stationtracker.util.ShiftManager.selectFirstShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date
             airbus.mes.stationtracker.util.ModelManager.selectMyShift();
             airbus.mes.stationtracker.util.ShiftManager.changeShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date

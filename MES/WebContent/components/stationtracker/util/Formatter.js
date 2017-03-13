@@ -668,9 +668,10 @@ airbus.mes.stationtracker.util.Formatter = {
 				$(".rescheduleAllBtn").css({'display' : 'block'});
 			}
 			
+			// DEBUG
 			//console.log("====yDisplayRules============");
-			//console.log("objLine  : " + JSON.stringify(objLine));
-			//console.log("toRescheduleList: " + JSON.stringify(toRescheduleList));
+			//console.log("objLine          : " + JSON.stringify(objLine));
+			//console.log("toRescheduleList : " + JSON.stringify(toRescheduleList));
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {

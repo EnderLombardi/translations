@@ -844,9 +844,6 @@ airbus.mes.stationtracker.util.ModelManager = {
         oView.getModel("stationTrackerShift").setData(modelarray);
         oView.getModel("stationTrackerShift").refresh();
 
-        // Empty list of to reschedule not confirmed operations
-    	//airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.modeManager.selectMyShift");
-
         if (airbus.mes.stationtracker.util.ShiftManager.dayDisplay) {
 
             if (airbus.mes.stationtracker.util.ShiftManager.selectFirstShift) {
@@ -890,8 +887,6 @@ airbus.mes.stationtracker.util.ModelManager = {
         this.loadKPIshiftStaffing();
     },
     onStationTrackerLoad: function () {
-    	// Empty list of to reschedule not confirmed operations
-    	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.ModelManager.onStationTrackerLoad");
 
         var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
 
@@ -906,8 +901,6 @@ airbus.mes.stationtracker.util.ModelManager = {
     },
 
     onStationTrackerLoadInitial: function () {
-    	// Empty list of to reschedule not confirmed operations
-    	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.ModelManager.onStationTrackerLoad");
     	
         var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
         airbus.mes.stationtracker.util.ModelManager.fIsLoad++;
@@ -921,9 +914,6 @@ airbus.mes.stationtracker.util.ModelManager = {
 
     loadShifts: function () {
     	
-    	// Empty list of to reschedule not confirmed operations
-    	//airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.ModelManager.loadShifts");
-
         var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
         var getUrlShifts = this.urlModel.getProperty("urlshifts");
         var oData = airbus.mes.stationtracker.util.ModelManager.settings;
@@ -1114,6 +1104,7 @@ airbus.mes.stationtracker.util.ModelManager = {
     ----------------------------------------------------------------------------*/
     emptyToRescheduleList: function (fromWhere) {
     	this.toRescheduleList = [];
+    	// DEBUG
     	//console.log("Empty toRescheduleList FROM => " + fromWhere);
     },
 

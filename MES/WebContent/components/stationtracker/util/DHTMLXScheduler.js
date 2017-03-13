@@ -408,6 +408,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
         	// Empty list of not confirmed operations to reschedule
         	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("DHTMLXscheduler onViewChange");
         }));
+        
+        scheduler.eventId.push(scheduler.attachEvent("onBeforeViewChange", function(old_mode,old_date,mode,date){
+            //any custom logic here
+        	// Empty list of not confirmed operations to reschedule
+        	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("DHTMLXscheduler onBeforeViewChange");
+            return true;
+        }));
 
         /************************************************************************/
         /************************************************************************/
