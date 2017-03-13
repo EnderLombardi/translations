@@ -1139,19 +1139,24 @@ airbus.mes.stationtracker.util.ModelManager = {
     ----------------------------------------------------------------------------*/
 	rescheduleAll: function () {
 		window.event.stopPropagation();
-        console.log("====RescheduleAllBtn click============");
         
-        var allCount    = 0;
+        var count    = 0;
         var arrayLength = this.toRescheduleList.length;
         
         for (var i = 0; i < arrayLength; i++) {
-        	allCount += this.toRescheduleList[i].count;
+        	count += this.toRescheduleList[i].count;
         }
-        console.log("Number of all operation in all AVL Line to Reschedule: " + allCount);
-        console.log("Number of AVL Line to Reschedule: " + arrayLength);
+        
+        // Debug
+        //console.log("====RescheduleAllBtn click============");
+        //console.log("Number of all operation in all AVL Line to Reschedule: " + allCount);
+        //console.log("Number of AVL Line to Reschedule: " + arrayLength);
         
         // Open confirm popup
-		airbus.mes.stationtracker.oView.getController().openRescheduleAllPopUp(allCount);
+        var objCount = {
+        	"count": count
+        }
+		airbus.mes.stationtracker.oView.getController().openRescheduleAllPopUp(objCount);
     },
 	
 	/*----------------------------------------------------------------------------
