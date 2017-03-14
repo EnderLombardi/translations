@@ -107,23 +107,25 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 	onUploadComplete: function (filesListBase64) {
 
 		this.removeEditMode();
-		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
-		var oData = oModel.getData();
 
 		var oInput = sap.ui.getCore().byId("idTitleInput");
 		var description = oInput.getValue();
-		var item = {};
+		
+		this.addFilesToList(filesListBase64.fileName, description, filesListBase64.fileBase64, filesListBase64.size);
+		oInput.destroy();
+	},
 
-		item.Title = filesListBase64.fileName;
+	addFilesToList: function (fileName, description, fileBase64, size) {
+		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
+		var oData = oModel.getData();
+		var item = {};
+		item.Title = fileName;
 		item.Description = description;
 		item.oldDescription = description;
-		item.File = filesListBase64.fileBase64;
-		item.Size = filesListBase64.size;
-		
+		item.File = fileBase64;
+		item.Size = size;
 		oData.unshift(item);
-		
 		oModel.refresh();
-		oInput.destroy();
 	},
 
 	/*
