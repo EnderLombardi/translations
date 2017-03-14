@@ -581,8 +581,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		var nextMsn = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).nextMsn;
 		var previousMsn = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).previousMsn;
 		var nextMsnImageUrl = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).nextMsnImageUrl;
-		
-		airbus.mes.linetracker.util.ModelManager.populateStatusActionModel(station,msn,nextMsn, status, previousMsn,nextMsnImageUrl);
+		var currentMsnModifydDate = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).modifyDateTime;
+		var nextMsnModifyDate = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).nextMsnModifyDate;
+		var previousMsnModifyDate = sap.ui.getCore().getModel("stationDataModel").getProperty(sPath).previousMsnModifyDate;
+		airbus.mes.linetracker.util.ModelManager.populateStatusActionModel(station,msn,nextMsn, status, previousMsn,nextMsnImageUrl,currentMsnModifydDate,nextMsnModifyDate,previousMsnModifyDate);
 		if (!this.oTaktActionPopover) {
 			this.oTaktActionPopover = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.taktOperation", this);
 			this.getView().addDependent(this.oTaktActionPopover);

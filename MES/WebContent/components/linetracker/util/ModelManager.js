@@ -184,11 +184,15 @@ airbus.mes.linetracker.util.ModelManager = {
 	 * perform takt action based on the chosen action and reload all the model
 	 */
 	performTaktAction : function(action){
-
+		var modifiedDateTime = sap.ui.getCore().getModel("statusActionModel").getProperty("/currentMsnModifydDate");
 		var msn = sap.ui.getCore().getModel("statusActionModel").getProperty("/msn");
 		var status = sap.ui.getCore().getModel("statusActionModel").getProperty("/status");
 		if(action===airbus.mes.linetracker.util.ModelManager.aTaktAction[4] && (status==="TO_BE_LOADED" || status==="UN_LOADED")){
-			var msn = sap.ui.getCore().getModel("statusActionModel").getProperty("/previousMsn");
+			msn = sap.ui.getCore().getModel("statusActionModel").getProperty("/previousMsn");
+			modifiedDateTime = sap.ui.getCore().getModel("statusActionModel").getProperty("/previousMsnModifyDate");
+		} else if(action===airbus.mes.linetracker.util.ModelManager.aTaktAction[0] && status==="TO_BE_LOADED"){
+			msn = sap.ui.getCore().getModel("statusActionModel").getProperty("/nextMsn");
+			modifiedDateTime = sap.ui.getCore().getModel("statusActionModel").getProperty("/nextMsnModifyDate");
 		}
 		jQuery.ajax({
 			type : 'post',
@@ -199,7 +203,8 @@ airbus.mes.linetracker.util.ModelManager = {
 				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey(),
 				"msn" : msn,
 				"station" : sap.ui.getCore().getModel("statusActionModel").getProperty("/station"),
-				"action" : action
+				"action" : action,
+				"modifiedDateTime" : modifiedDateTime
 			}),
 
 			success : function(data) {
@@ -208,7 +213,9 @@ airbus.mes.linetracker.util.ModelManager = {
 				}
 				if(data.success=="true"){
 					airbus.mes.linetracker.util.ModelManager.loadStationDataModel();
-					if(data.value && data.value=="ERROR")
+					if(data.value && (data.value=="ERROR" || data.value=="LOCKED"))
+						airbus.mes.shell.ModelManager.messageShow(data.message);
+				}else if(data.value && data.value=="LOCKED"){
 						airbus.mes.shell.ModelManager.messageShow(data.message);
 				}else{
 					airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("couldNotPerformRequestedAction"));
@@ -225,14 +232,17 @@ airbus.mes.linetracker.util.ModelManager = {
 	 * @param msn, status
 	 * to add the nextMsn and status from the chosen row to current popover model
 	 */
-	populateStatusActionModel : function(station, msn, nextMsn, status, previousMsn, nextMsnImageUrl){
+	populateStatusActionModel : function(station, msn, nextMsn, status, previousMsn, nextMsnImageUrl,currentMsnModifydDate,nextMsnModifyDate,previousMsnModifyDate){
 		var data = {
 			"station":station,
 			"msn":msn,
 			"nextMsn" : nextMsn,
 			"status" : status,
 			"previousMsn" : previousMsn,
-			"nextMsnImageUrl" : nextMsnImageUrl
+			"nextMsnImageUrl" : nextMsnImageUrl,
+			"currentMsnModifydDate" : currentMsnModifydDate,
+			"nextMsnModifyDate" : nextMsnModifyDate,
+			"previousMsnModifyDate" : previousMsnModifyDate
 		} 
 		sap.ui.getCore().getModel("statusActionModel").setData(data);
 		sap.ui.getCore().getModel("statusActionModel").refresh();
