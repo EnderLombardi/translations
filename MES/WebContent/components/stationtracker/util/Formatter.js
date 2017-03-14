@@ -483,6 +483,19 @@ airbus.mes.stationtracker.util.Formatter = {
 			+ sText + ' - [' + airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) + '/'
 			+ airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) + ' IM]</span>';
 
+    	//When missing part is open and we click on an operation it need to hide all operation in stationTracker and display only the selected one
+    	if ( airbus.mes.missingParts != undefined ) {
+    		   	
+			var oMissingPart = airbus.mes.missingParts.util.ModelManager;
+	
+	    	if ( airbus.mes.shell.util.navFunctions.splitMissingPart && oMissingPart.operation != "" ) {    		
+	    		if (oBox.operationId != oMissingPart.operation && oBox.shopOrder != oMissingPart.workOrder ) {
+	    			
+	    			sColorProgress = boxDisplayManager.colorMissingPart;
+	
+	    		}
+	    	}
+    	}
 		//construction of the html
 		if (oBox.type === "I") {
 			trackerTextClass = ""
@@ -490,15 +503,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		} else {
 			html = sDivForLeftDisplay + sLeftIcon + sRightIcon + sRightIcon2  + sLeftIcon2 + sLeftIcon2bis + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
 		}
-		//html += '<span class="trackerBoxtooltiptext">'+ sSpanText +'</span>' ;
-
-		/* var tooltipTextForBox = '<span class="tooltipTextTrackerBox"style="float: left; overflow: hidden;' +
-		'white-space: nowrap; margin-left:5px; margin-right:5px;' +
-		'padding-left: 0px;">' +
-		sText + ' - ['+
-		airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+
-		airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';*/
-
+    				
 		var tooltipTextForBox = '<div class="tooltipTextTrackerBox1"> ' + '<span class="tooltipTextTrackerBox2" data-text="' + sText + ' - ['
 			+ airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) + '/'
 			+ airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) + ' IM]"></span></div>';

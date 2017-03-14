@@ -141,8 +141,8 @@ WORK LIST POP OVER
             }
         }
         &.colorBlue {
-    	color: $teal-blue; 
-    	}
+            color: $teal-blue;
+        }
     }
     .sapMPIText3 {
         position: absolute;
@@ -179,6 +179,7 @@ WORK LIST POP OVER
         }
     }
 }
+
 
 /********************
 BOX MANAGEMENT
@@ -222,6 +223,16 @@ BOX MANAGEMENT
         width: 100%;
         background-color: $dandelion;
     }
+    .greyOut {
+         height: inherit;
+         width: 100%;
+         background-color: rgb(230, 230, 230);
+        opacity: 90%;
+         z-index: 1;
+        :hover{
+        background-color:rgb(230, 230, 230);        
+    }
+    }
     .fa {
         @extend %icon;
         height: 24px;
@@ -236,11 +247,11 @@ BOX MANAGEMENT
             padding-left: 6px;
             float: left;
         }
-        &.stopIcon { 
+        &.stopIcon {
             padding-left: 6px;
             color: $cherry-red;
             &.white-two {
-              color: $white-two;
+                color: $white-two;
             }
         }
         &.oswIcon {
@@ -267,14 +278,9 @@ BOX MANAGEMENT
                 color: $cherry-red;
             }
         }
-       
     }
-    .greyOut {
-         background-color: $ligth-grey !important;
-   
-    }        
     .left {
-    	float: left;                
+        float: left;
     }
     .dandelion-back {
         background-color: $dandelion;
@@ -313,16 +319,16 @@ BOX MANAGEMENT
         color: $white-two;
     }
     .colorBlue {
-        color: $teal-blue; 
+        color: $teal-blue;
     }
     .pink {
         background-color: $pink;
         color: $white-two;
     }
-    .whiteColor  {
+    .whiteColor {
         color: $white-two;
         :hover {
-           color: $white-two;
+            color: $white-two;
         }
     }
     .red {
@@ -378,9 +384,9 @@ BOX MANAGEMENT
         }
         ;
     }
-	.solvedDisruption{
-	    @include trackerSolvedBlock(repeating-linear-gradient(135deg, #37b36c, #37b36c 10px, #16dc6b 10px, #16dc6b 20px));
-	    @include animbackground(slide 20s infinite linear forwards);
+    .solvedDisruption {
+        @include trackerSolvedBlock(repeating-linear-gradient(135deg, #37b36c, #37b36c 10px, #16dc6b 10px, #16dc6b 20px));
+        @include animbackground(slide 20s infinite linear forwards);
         @include keyframes(slide) {
             0% {
                 background-position: 0% 0%
@@ -390,7 +396,7 @@ BOX MANAGEMENT
             }
         }
         ;
-	}
+    }
 }
 
 .grey {
@@ -400,7 +406,6 @@ BOX MANAGEMENT
         color: black;
     }
 }
-
 
 .answeredBlockedExcalated {
     @include trackerSolvedBlock(repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px));
@@ -413,11 +418,13 @@ BOX MANAGEMENT
     background-position: 14px 0;
     background-size: 56px 56px;
 }
-.solvedDisruption{
+
+.solvedDisruption {
     @include trackerSolvedBlock(repeating-linear-gradient(135deg, #37b36c, #37b36c 10px, #16dc6b 10px, #16dc6b 20px));
     background-position: 14px 0;
     background-size: 56px 56px;
 }
+
 
 /***********************
 KPI HEADER
@@ -501,7 +508,8 @@ KPI HEADER
             background-color: $navy-blue-hover;
         }
     }
-    #stationTrackerView--selectUser-label, #stationTrackerView--selectUser-arrow {
+    #stationTrackerView--selectUser-label,
+    #stationTrackerView--selectUser-arrow {
         height: calc(100% - 8px);
         top: 4px;
         line-height: 2.6rem;
@@ -510,7 +518,8 @@ KPI HEADER
 }
 
 #stationTrackerView--selectShift-label,
-#stationTrackerView--selectShift-arrow,{
+#stationTrackerView--selectShift-arrow,
+{
     top: 0;
     bottom: 0;
     line-height: 3rem;
@@ -693,7 +702,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
                 display: none;
             }
             &.dhx_matrix_now_time {
-                min-height: 24px;//width of ylabelfolder (line parent), dhtmlx fix, defect 2581
+                min-height: 24px; //width of ylabelfolder (line parent), dhtmlx fix, defect 2581
                 border-left-color: purple;
                 opacity: 1;
             }
@@ -1010,7 +1019,9 @@ label {
     color: red;
 }
 
+
 /* Reschedule one line button */
+
 .rescheduleLineBtn {
     @extend %rescheduleBtn;
     width: 5px;
@@ -1018,7 +1029,7 @@ label {
     top: -5px;
     left: -10px;
     &:hover {
-    	width: 200px;
+        width: 200px;
     }
     .rescheduleLineLabelBtn {
         padding-left: 40px;
@@ -1030,16 +1041,19 @@ label {
         height: auto;
     }
 }
+
+
 /* Reschedule all line button */
+
 .rescheduleAllBtn {
-	@extend %rescheduleBtn;
-	width: 5px;
-	height: 37px;
-	top: 0;
-	cursor: pointer;
+    @extend %rescheduleBtn;
+    width: 5px;
+    height: 37px;
+    top: 0;
+    cursor: pointer;
     /*left: -10px;*/
     &:hover {
-        width:200px;
+        width: 200px;
     }
     .rescheduleAllLabelBtn {
         padding-left: 40px;
@@ -1051,6 +1065,7 @@ label {
         height: auto;
     }
 }
+
 
 /***********************
 TASK ADHERENCE
@@ -1296,8 +1311,9 @@ STATION TRACKER TOOLBAR
         padding: 5px;
         border: 1px solid $blood-orange;
         -webkit-border-radius: 90px;
-    } 
-    #stationTrackerView--selectGroup, #stationTrackerView--selectBox {
+    }
+    #stationTrackerView--selectGroup,
+    #stationTrackerView--selectBox {
         &:hover:not(.sapMSltPressed) {
             background-color: $petrol-20;
         }
@@ -1306,11 +1322,11 @@ STATION TRACKER TOOLBAR
         text-shadow: none;
         cursor: default;
         opacity: 0.5;
-        &:hover{
-        background-color: transparent !important;   
+        &:hover {
+            background-color: transparent !important;
         }
     }
-    } 
+}
 
 .sapMPopoverScroll {
     .sapMSelectListItemBaseSelected {
@@ -2137,11 +2153,10 @@ reschedule
     padding: 0;
 }
 
-
 #stationTrackerView--splitWorkTra {
-  height: calc(100% - 18rem) !important;
+    height: calc(100% - 18rem) !important;
 }
 
 #stationTrackerView--splitWorkTra.withoutKPI {
-  height: calc(100% - 6rem) !important;
+    height: calc(100% - 6rem) !important;
 }

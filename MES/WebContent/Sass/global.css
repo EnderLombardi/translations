@@ -206,6 +206,10 @@ BOX MANAGEMENT
 
 .trackerBox .openBlocked { height: inherit; width: 100%; background-color: #fbec00; }
 
+.trackerBox .greyOut { height: inherit; width: 100%; background-color: #e6e6e6; opacity: 90%; z-index: 1; }
+
+.trackerBox .greyOut :hover { background-color: #e6e6e6; }
+
 .trackerBox .fa { height: 24px; }
 
 .trackerBox .fa.rightIcon { padding-right: 6px; float: right; }
@@ -223,8 +227,6 @@ BOX MANAGEMENT
 .trackerBox .fa.oswIcon b { font-family: arial; }
 
 .trackerBox .fa.oswIcon.cherry-red { color: #e4002b; }
-
-.trackerBox .greyOut { background-color: #ccc !important; }
 
 .trackerBox .left { float: left; }
 
@@ -4205,8 +4207,6 @@ DISRUPTIONTRACKER
 .disruptionKPI .pageHeader { -webkit-box-shadow: 0px 2px 15px -5px #0F2D65; -moz-box-shadow: 0px 2px 15px -5px #0F2D65; box-shadow: 0px 2px 15px -5px #0F2D65; border: none; border-top: 0.6rem solid #ffffff; position: relative; z-index: 10; color: white !important; background: #0F2D65 !important; height: 57px !important; line-height: 3rem !important; }
 
 .disruptionKPI .pageHeader span.sapMText { font-size: 12px; color: #F5F5F5; }
-
-#disruptionKPIView--lineComboBox { border-left: solid 1px #74d2e7 !important; }
 
 #disruptionKPIView--stationComboBox.sapMMultiComboBox { width: 18rem !important; height: 3rem; margin: 0; line-height: 3rem; border: 0px; border-right: solid 1px #74d2e7 !important; margin: 0px !important; }
 
