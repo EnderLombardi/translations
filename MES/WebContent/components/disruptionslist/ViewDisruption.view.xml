@@ -16,17 +16,17 @@
 						busy="{=${operationDisruptionsModel>itemBusy} === 'true'}" busyIndicatorDelay="0">
 						<headerToolbar>
 							<Toolbar class="disrptListToolbar" >
-								<core:Icon src="sap-icon://alert" color="{path: 'operationDisruptionsModel>severity', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
+								<core:Icon src="sap-icon://alert" color="{path: 'operationDisruptionsModel>severity', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" width="3%"/>
 								<Label text="DIS-{operationDisruptionsModel>disruptionNumber} - {path: 'operationDisruptionsModel>category'} {operationDisruptionsModel>reason}" design="Bold" width="30%" />
 								
-								<ToolbarSpacer />
+								<!-- <ToolbarSpacer /> -->
 
 								<Label class="disrptlistdesc pendingStatusColor" id="headerStatusPending" text="{path: 'operationDisruptionsModel>status'}" visible="{=${operationDisruptionsModel>status} === 'Pending' ? true: false}" design="Bold" width="7%"/>
 								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" visible="{=${operationDisruptionsModel>status} === 'Pending' ? false: true}" design="Bold" width="7%"/>
 
 								
 								<ToolbarSpacer />
-								<Label text="{i18nModel>opensince}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}"/>
+								<Label text="{i18nModel>opensince}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}"  width="5%"/>
 								<Label text=" {path:'operationDisruptionsModel>openDateTime', formatter: 'airbus.mes.disruptionslist.Formatter.setOpenSince'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="5%"/>
 								
 								<ToolbarSpacer />
@@ -36,16 +36,16 @@
 								<Label text="{operationDisruptionsModel>responsibleGroupDesc}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="10%"/>
 								
 								<ToolbarSpacer />
-								<Label text="{path:'operationDisruptionsModel>status', formatter: 'airbus.mes.disruptionslist.Formatter.setSolutionInText'}" />
+								<Label text="{i18nModel>solutionin}:" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false : ${operationDisruptionsModel>status} ==='Solved' ? false : true}" width="5%" />
 								<Label text="{parts: [{path:'operationDisruptionsModel>promisedDateTime'}, {path:'operationDisruptionsModel>status'}], formatter: 'airbus.mes.disruptionslist.Formatter.setSolutionIn'}"  width="5%" design="Bold" />
 								
 								<ToolbarSpacer />
-								<core:Icon id="disrptListEnvelop" src="sap-icon://email" class="blinkingIcon" visible="{= ${operationDisruptionsModel>isCommentsLastUpdated} === 'true' ? true: false}"/>
-								
+								<core:Icon id="disrptListEnvelop" src="sap-icon://email" class="blinkingIcon" visible="{= ${operationDisruptionsModel>isCommentsLastUpdated} === 'true' ? true: false}"  width="3%" />
+								 <ToolbarSpacer />
 								<Label
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>closureDate}"
 									visible="{path: 'operationDisruptionsModel>status', formatter: 'airbus.mes.disruptionslist.Formatter.setClosureDateVisibility'}"
-									class="disrptlistdesc" />
+									class="disrptlistdesc"  width="10%"/>
 								
 								
 								<Button text="{i18nModel>delete}" type="Reject"
