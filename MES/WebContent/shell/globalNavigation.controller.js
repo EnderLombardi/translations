@@ -508,6 +508,9 @@ sap.ui.controller(
 
         loadStationTrackerGantKPI: function () {
             var oModule = airbus.mes.stationtracker.util.ModelManager;
+            //active busy
+            airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
+
             console.log("LOADGANTKPI");
             // ** asynchrone call **//
             oModule.getTakt();
