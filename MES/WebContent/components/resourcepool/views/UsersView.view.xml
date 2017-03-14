@@ -37,7 +37,7 @@
 								growingThreshold="1000" class="sapUiSizeCozy">
 								<CustomListItem>
 									<content>
-										<ui:HorizontalLayout>
+										<ui:HorizontalLayout class="fixDsiplayRpImg">
 											<Image class="ylabelUserImage"
 												visible="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.shell.UserImageManager.displayImage' }"
 												error = "airbus.mes.shell.UserImageManager.getErrorUserImage"
