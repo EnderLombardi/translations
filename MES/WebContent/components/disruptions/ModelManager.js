@@ -347,7 +347,8 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.13" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo").split(",")[1], // Operation
 				// number
 				"Param.14" : "DEFAULT",
-				"Param.15" : airbus.mes.shell.ModelManager.json2xml({
+				"Param.15" : "A",
+				"Param.16" : airbus.mes.shell.ModelManager.json2xml({
 					payloadAttributelist : oJson
 				}),
 			},

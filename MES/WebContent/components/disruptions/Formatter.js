@@ -360,10 +360,10 @@ airbus.mes.disruptions.Formatter = {
 		return text;
 	},
 	formatCommentAction : function(action, comment) {
-		if(!comment)
-			return action;
+		if(!action)
+			return "";
 		
-		if (comment.indexOf("\$\$") > -1) {
+		if (comment && comment.indexOf("\$\$") > -1) {
 			action = comment.split("\$\$")[0];
 		}
 		/*sometimes the id constants-text1-[viewId] to remove that we add another split*/

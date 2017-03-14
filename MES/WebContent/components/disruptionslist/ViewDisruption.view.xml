@@ -51,10 +51,10 @@
 								<Button text="{i18nModel>delete}" type="Reject"
 									visible="{parts: [ {path: 'operationDisruptionsModel>originatorFlag'}, {path: 'operationDisruptionsModel>status'}, {path: 'operationDisruptionsModel>expanded'}], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
 									design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" class="disruptionTitleBarButtons"/>
-
 								<Button text="{i18nModel>editButton}" type="Emphasized"
 									visible="{parts: [ {path: 'operationDisruptionsModel>originatorFlag'}, {path: 'operationDisruptionsModel>responsibleFlag'}, {path: 'operationDisruptionsModel>status'} ,{path: 'operationDisruptionsModel>expanded'}], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
 									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" class="disruptionTitleBarButtons"/>
+								
 								<Button press="handleDisruptionPanelExpand"   design="Transparent" icon="sap-icon://slim-arrow-down" 
 									visible="{=${operationDisruptionsModel>expanded} !== 'true'}" />
 								<Button press="handleDisruptionPanelCollapse" design="Transparent" icon="sap-icon://slim-arrow-up"
@@ -183,18 +183,23 @@
 							
 							
 						<!--  For list of comments -->
-						 <HBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}">
-							<items>
-								<Text
-									text="{i18nModel>from} : {path: 'operationDisruptionsModel>disruptionComments/0/userFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
-								<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
-								<Text 
-									text="{i18nModel>action} : {parts: [ {path: 'operationDisruptionsModel>disruptionComments/0/action'}, {path: 'operationDisruptionsModel>disruptionComments/0/comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+						<VBox class="sapUiSmallMarginBeginEnd msgColor">
+							 <HBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}">
+								<items>
+									<Text
+										text="{i18nModel>from} : {path: 'operationDisruptionsModel>disruptionComments/0/userFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
 									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
-								<Text
-									text="{i18nModel>date/time} : {path: 'operationDisruptionsModel>disruptionComments/0/date'}"></Text>
-							</items>
-						</HBox>
+									<Text 
+										text="{i18nModel>action} : {parts: [ {path: 'operationDisruptionsModel>disruptionComments/0/action'}, {path: 'operationDisruptionsModel>disruptionComments/0/comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+									<Text
+										text="{i18nModel>date/time} : {path: 'operationDisruptionsModel>disruptionComments/0/date'}"></Text>
+								</items>
+							</HBox>
+							
+							<Text text="{path: 'operationDisruptionsModel>comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
+								class="sapUiSmallMarginBeginEnd sapUiTinyMarginBottom"></Text>
+						</VBox>
  
 						<List showNoData="false" class="sapUiSmallMarginBeginEnd" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
 								items="{path: 'operationDisruptionsModel>disruptionComments'}">
@@ -273,7 +278,7 @@
 								visible="{parts: [ {path: 'operationDisruptionsModel>originatorFlag'}, {path: 'operationDisruptionsModel>status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRefuseButtonVisibility'}"
 								press="onRefuseDisruption" design="Transparent"/>
 								
-							<Button text="{i18nModel>close}" type="Accept"
+							<Button text="{i18nModel>close}" type="Accept"  design="Transparent"
 								visible="{parts: [ {path: 'operationDisruptionsModel>originatorFlag'}, {path: 'operationDisruptionsModel>status'}, {path: 'operationDisruptionsModel>expanded'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
 								icon="sap-icon://accept" press="onCloseDisruption"  enabled="{Profile>/identifiedUser/permissions/WORK_DIS_CLOSE}"/>
 								
