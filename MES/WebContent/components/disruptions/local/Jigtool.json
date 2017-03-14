@@ -1,4 +1,4 @@
-{ "JigtoolList" : [{
+ [{
 	"MATNR"	   : "01",
 	"JigTool" : "JigTool ex1" 
 },
@@ -27,4 +27,3 @@
 	"JigTool" : "JigTool ex7" 
 }
 ]
-}

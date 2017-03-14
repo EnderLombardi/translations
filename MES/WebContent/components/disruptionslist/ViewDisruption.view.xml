@@ -45,7 +45,7 @@
 								<Label
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>closureDate}"
 									visible="{path: 'operationDisruptionsModel>status', formatter: 'airbus.mes.disruptionslist.Formatter.setClosureDateVisibility'}"
-									class="disrptlistdesc"  width="10%"/>
+									class="disrptlistdesc"/>
 								
 								
 								<Button text="{i18nModel>delete}" type="Reject"
@@ -89,13 +89,12 @@
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>resGroup}" design="Bold" />
 									<Text text="{operationDisruptionsModel>responsibleGroupDesc}" />
 									
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>TimeLost}" design="Bold"/>
-									<Text text="{path: 'operationDisruptionsModel>timeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}">
-									</Text>
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>escalation}" design="Bold"/>
-									<Text id="escalationText"
-										text="{i18nModel>level} {operationDisruptionsModel>escalationLevel}">
-									</Text>										
+									<Text id="escalationText" text="{i18nModel>level} {operationDisruptionsModel>escalationLevel}" />
+									
+									<Label class="detailLabels sapUiMediumMarginBottom" text="{path: 'i18nModel>TimeLost', formatter: 'airbus.mes.disruptionslist.Formatter.getTimeLostText'}" design="Bold"/>
+									<Text text="{path: 'operationDisruptionsModel>timeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}" />
+							
 								<core:Title text="" />					
 									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OpenDate}" design="Bold"/>
 									<Text text="{operationDisruptionsModel>openDateTime}">
@@ -107,9 +106,8 @@
 									<Text text="{=${operationDisruptionsModel>promisedDateTime} === '' ? '-' : ${operationDisruptionsModel>promisedDateTime}}">
 									</Text>
 									
-									<Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OriginatorGroup}" design="Bold"/>										
-									<Text text="{operationDisruptionsModel>originatorGroupDesc}">
-									</Text>
+									<!-- <Label class="detailLabels sapUiMediumMarginBottom" text="{i18nModel>OriginatorGroup}" design="Bold"/>										
+									<Text text="{operationDisruptionsModel>originatorGroupDesc}" /> -->
 								
 									<!-- 	<f:FormElement visible="{path: 'operationDisruptionsModel>ClosureDate', formatter: 'airbus.mes.disruptions.Formatter.setOpeningTimeVisibility'}">
 											<f:label>
@@ -171,20 +169,20 @@
 							class="msgColor sapUiSmallMarginBeginEnd sapUiTinyMarginTop">
 							<Text
 								class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText"
-								text="{i18nModel>solution}"></Text>
+								text="{i18nModel>solution}:"></Text>
 							<Text text="{path: 'operationDisruptionsModel>solution', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
-								class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
+								class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom"></Text>
 						</VBox>
 						
 						<Button text="{i18nModel>seeMoreMessages} ({operationDisruptionsModel>totalComments})" icon="sap-icon://email" press="seeMoreMesssages" visible="{parts: [ {path: 'operationDisruptionsModel>totalComments'}, {path:'operationDisruptionsModel>prevCommentsLoaded'} ], formatter: 'airbus.mes.disruptions.Formatter.setVisibilityShowCommentsButton'}"
-							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />	
+							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop"  />	
 						<Button text="{i18nModel>seeLessMessages}" icon="sap-icon://email" press="seeLessMesssages" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
-							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
+							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop"  />
 							
 							
 						<!--  For list of comments -->
-						<VBox class="sapUiSmallMarginBeginEnd msgColor">
-							 <HBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}">
+						<VBox class="sapUiSmallMarginBeginEnd msgColor" visible="{=${operationDisruptionsModel>prevCommentsLoaded} !== 'true'}">
+							 <HBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
 								<items>
 									<Text
 										text="{i18nModel>from} : {path: 'operationDisruptionsModel>disruptionComments/0/userFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
@@ -197,7 +195,7 @@
 								</items>
 							</HBox>
 							
-							<Text text="{path: 'operationDisruptionsModel>comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
+							<Text text="{path: 'operationDisruptionsModel>disruptionComments/0/comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
 								class="sapUiSmallMarginBeginEnd sapUiTinyMarginBottom"></Text>
 						</VBox>
  

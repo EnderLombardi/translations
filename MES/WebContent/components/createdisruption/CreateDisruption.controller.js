@@ -60,8 +60,8 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		this.resetAllFields();
 
 		this.loadDisruptionCategory();
-		ModelManager.loadMaterialList();
-		ModelManager.loadJigtoolList();
+		//ModelManager.loadMaterialList();
+		//ModelManager.loadJigtoolList();
 
 		if (sMode == "Create") {
 			this.createDisruptionSettings();

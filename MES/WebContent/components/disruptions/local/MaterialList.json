@@ -1,4 +1,4 @@
-{ "MaterialList" : [{
+[{
 	"MATNR"	   : "01",
 	"Material" : "Material ex1" 
 },
@@ -27,4 +27,3 @@
 	"Material" : "Material ex7" 
 }
 ]
-}

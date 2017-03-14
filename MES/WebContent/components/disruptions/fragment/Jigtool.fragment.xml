@@ -31,7 +31,7 @@
 				</f:content>
 			</f:SimpleForm>
 
-			<List id="jigToolList" mode="MultiSelect" items="{JigtoolListModel>/JigtoolList}">
+			<List id="jigToolList" mode="None" items="{JigtoolListModel>/}">
 				<items>
 					<CustomListItem class="customListItemPadding">
 						<l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 M12 S12">
@@ -40,15 +40,18 @@
 									alignItems="Center">
 									<items>
 										<Title textAlign="Center" level="H3"
-											text="{JigtoolListModel>JigTool}">
+											text="{JigtoolListModel>jigtool}">
 											<layoutData>
 												<l:GridData span="L6 M6 S12" />
 											</layoutData>
 										</Title>
-										<VBox width="20%">
-											<Label text="{i18nModel>Quantity}" />
-											<Input type="Number" width="80%" value="1" class="inputQty" />
-										</VBox>
+										<HBox width="30%">
+											<VBox>
+												<Label text="{i18nModel>quantity}" />
+												<Input type="Number" width="80%" value="1" class="inputQty" />
+											</VBox>
+											<Button icon="sap-icon://sys-cancel" type="Transparent" press="removeJigTool" />
+										</HBox>
 									</items>
 								</HBox>
 							</l:content>

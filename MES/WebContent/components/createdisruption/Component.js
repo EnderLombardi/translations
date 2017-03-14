@@ -68,6 +68,10 @@ airbus.mes.createdisruption.Component.prototype.createContent = function() {
           
         //Model for disruption resolver names
         this.oView.setModel(sap.ui.getCore().getModel("disruptionResolverModel"),"disruptionResolverModel");
+        
+
+        this.oView.setModel(sap.ui.getCore().getModel("JigtoolListModel"),"JigtoolListModel");
+        this.oView.setModel(sap.ui.getCore().getModel("MaterialListModel"),"MaterialListModel");
 
         return this.oView;
 

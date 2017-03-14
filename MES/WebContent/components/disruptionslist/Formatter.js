@@ -80,4 +80,8 @@ airbus.mes.disruptionslist.Formatter = {
 
 		return solutionIn;
 	},
+	
+	getTimeLostText: function(txt){
+		return txt + " " + airbus.mes.disruptions.Formatter.getConfigTimeFullUnit();
+	}
 };

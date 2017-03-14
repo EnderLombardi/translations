@@ -107,10 +107,31 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 			
 			var oModel = oView.getModel("DisruptionDetailModel");
-
-			oModel.oData.jigTools = oModel.oData.jigTools.split(",");
-			oModel.oData.materials = oModel.oData.materials.split(",");
-			oModel.refresh();
+			
+			var oData = [];
+			if(oModel.oData.jigTools != ""){
+				var aJigTools = oModel.oData.jigTools.split(",");
+				$.each(aJigTools, function(key, value){
+					var jigtool  = value.split("(")[0];
+					var quantity = value.split("(")[1].replace(")", "");
+					oData.push({"jigtool": jigtool, "quantity": quantity});
+				});
+			}
+			sap.ui.getCore().getModel("JigtoolListModel").setData(oData);
+			
+			oData = [];
+			if(oModel.oData.materials != ""){
+				var materials = oModel.oData.materials.split(",");
+				$.each(materials, function(key, value){
+					var material = value.split("(")[0];
+					var quantity = value.split("(")[1].replace(")", "");
+					oData.push({"material": material, "quantity": quantity});
+				});
+			}
+			sap.ui.getCore().getModel("MaterialListModel").setData(oData);
+			
+			sap.ui.getCore().getModel("JigtoolListModel").refresh();
+			sap.ui.getCore().getModel("MaterialListModel").refresh();
 			
 			
 
@@ -629,40 +650,10 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	addNewMaterialToList : function() {
 
 		if (sap.ui.getCore().byId("customMaterial").getValue() != "") {
-
-			// make an Item to add in the list. var
-			var oMaterialItem = new sap.m.CustomListItem({
-				content : new sap.ui.layout.Grid({
-					defaultSpan : "L12 M12 S12",
-					content : new sap.m.HBox({
-						justifyContent : "SpaceBetween",
-						alignContent : "SpaceBetween",
-						alignItems : "Center",
-						items : [ new sap.m.Title({
-							textAlign : "Center",
-							level : "H3",
-							text : sap.ui.getCore().byId("customMaterial").getValue()
-						}), new sap.m.VBox({
-							width : "20%",
-							items : [ new sap.m.Label({
-								text : this.getView().getModel("i18nModel").getProperty("Quantity")
-							}), new sap.m.Input({
-								type : "Number",
-								width : "80%",
-								value : sap.ui.getCore().byId("customMaterialQty").getValue()
-							}).addStyleClass("inputQty") ]
-						}) ]
-					})
-				})
-
-			}).addStyleClass("customListItemPadding")
-			// *
-			// add item in starting of the Material List
-			sap.ui.getCore().byId("materialList").insertItem(oMaterialItem, 0);
-
-			// by default select this item
-			sap.ui.getCore().byId("materialList").setSelectedItem(oMaterialItem, true);
-
+			var oData = {"material": sap.ui.getCore().byId("customMaterial").getValue(), "quantity": sap.ui.getCore().byId("customMaterialQty").getValue()};
+			sap.ui.getCore().getModel("MaterialListModel").oData.push(oData);
+			sap.ui.getCore().getModel("MaterialListModel").refresh();
+			sap.ui.getCore().byId("customMaterial").setValue("");
 		}
 
 	},
@@ -672,7 +663,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 **************************************************************************/
 	handleSelectMaterialList : function(oEvent) {
 
-		var aSelectedItems = sap.ui.getCore().byId("materialList").getSelectedItems();
+		/*var aSelectedItems = sap.ui.getCore().byId("materialList").getSelectedItems();
 
 		// for each Item add token to MaterialInput
 		var aToken = [];
@@ -690,7 +681,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		});
 		
 		sap.ui.getCore().getModel("DisruptionDetailModel").oData.materials= aToken;
-		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
+		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();*/
 		this._materialListDialog.close();
 	},
 
@@ -730,39 +721,10 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		if (sap.ui.getCore().byId("customJigTool").getValue() != "") {
 
-			// make an Item to add in the list.
-
-			var oJigToolItem = new sap.m.CustomListItem({
-				content : new sap.ui.layout.Grid({
-					defaultSpan : "L12 M12 S12",
-					content : new sap.m.HBox({
-						justifyContent : "SpaceBetween",
-						alignContent : "SpaceBetween",
-						alignItems : "Center",
-						items : [ new sap.m.Title({
-							textAlign : "Center",
-							level : "H3",
-							text : sap.ui.getCore().byId("customJigTool").getValue()
-						}), new sap.m.VBox({
-							width : "20%",
-							items : [ new sap.m.Label({
-								text : this.getView().getModel("i18nModel").getProperty("Quantity")
-							}), new sap.m.Input({
-								type : "Number",
-								width : "80%",
-								value : sap.ui.getCore().byId("jigToolQty").getValue()
-							}).addStyleClass("inputQty") ]
-						}) ]
-					})
-				})
-
-			}).addStyleClass("customListItemPadding")
-			// *
-			// add item in starting of the Material List
-			sap.ui.getCore().byId("jigToolList").insertItem(oJigToolItem, 0);
-
-			// by default select this item
-			sap.ui.getCore().byId("jigToolList").setSelectedItem(oJigToolItem, true);
+			var oData = {"jigtool": sap.ui.getCore().byId("customJigTool").getValue(), "quantity": sap.ui.getCore().byId("jigToolQty").getValue()};
+			sap.ui.getCore().getModel("JigtoolListModel").oData.push(oData);
+			sap.ui.getCore().getModel("JigtoolListModel").refresh();
+			sap.ui.getCore().byId("customJigTool").setValue("");
 
 		}
 
@@ -785,7 +747,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 *            oEvt take event triggering control as an input
 	 */
 	onjigToolValueHelpOk : function(oEvt) {
-		var aSelectedItems = sap.ui.getCore().byId("jigToolList").getSelectedItems();
+		/*var aSelectedItems = sap.ui.getCore().byId("jigToolList").getSelectedItems();
 
 		// for each Item add token to MaterialInput
 		var aToken = [];
@@ -801,13 +763,30 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			
 		});
 		sap.ui.getCore().getModel("DisruptionDetailModel").oData.jigTools= aToken;
-		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
+		sap.ui.getCore().getModel("DisruptionDetailModel").refresh();*/
 		this.jigToolSelectDialog.close();
 	},
 
 	onJigToolTokenChange : function() {
 		this.onJigToolValueHelpRequest();
 	},
+	
+	
+	removeJigTool: function(oEvt){
+		var sPath = oEvt.getSource().getBindingContext("JigtoolListModel").sPath;
+		var deletedRowIndex = sPath.split("/").slice(-1).pop();
+		sap.ui.getCore().getModel("JigtoolListModel").oData.splice(deletedRowIndex, 1);
+		sap.ui.getCore().getModel("JigtoolListModel").refresh();
+	},
+	
+	
+	removeMaterial: function(oEvt){
+		var sPath = oEvt.getSource().getBindingContext("MaterialListModel").sPath;
+		var deletedRowIndex = sPath.split("/").slice(-1).pop();
+		sap.ui.getCore().getModel("MaterialListModel").oData.splice(deletedRowIndex, 1);
+		sap.ui.getCore().getModel("MaterialListModel").refresh();
+	},
+	
 	/*************************
 	 * MES v1.5
 	 * On create and close button click

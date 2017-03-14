@@ -52,9 +52,9 @@
 					</items>
 				</Select>
 				<Label text="{i18nModel>bomItem}" />
-				<MultiInput id="materials" enabled="false"  tokens="{DisruptionDetailModel>/materials}" >
+				<MultiInput id="materials" enabled="false"  tokens="{MaterialListModel>/}" >
 					<tokens>
-				    	<Token key="{DisruptionDetailModel>}" text="{DisruptionDetailModel>}" />
+				    	<Token key="{MaterialListModel>material}" text="{MaterialListModel>material} ({MaterialListModel>quantity})" />
 				    </tokens>
 				</MultiInput>			
 
@@ -70,9 +70,9 @@
 					</items>
 				</Select>
 				<Label text="{i18nModel>Jigtool}" />
-				<MultiInput id="jigtools" enabled="false"  tokens="{DisruptionDetailModel>/jigTools}" >
+				<MultiInput id="jigtools" enabled="false"  tokens="{JigtoolListModel>/}" >
 					<tokens>
-				    	<Token key="{DisruptionDetailModel>}" text="{DisruptionDetailModel>}" />
+				    	<Token key="{JigtoolListModel>jigtool}" text="{JigtoolListModel>jigtool} ({JigtoolListModel>quantity})" />
 				    </tokens>
 				</MultiInput>
 				<Input id="selectFivemCategory" text="" visible="false"/>

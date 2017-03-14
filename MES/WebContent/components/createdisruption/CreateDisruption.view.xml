@@ -79,9 +79,9 @@
 						<Label text="{i18nModel>plan}" class="textAlignLeft"/>
 						<Input id="plan" value="{DisruptionDetailModel>/plan}" />
 						<Label text="{i18nModel>material}" class="textAlignLeft"/>
-						<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" valueHelpOnly="true" tokens="{DisruptionDetailModel>/materials}">
+						<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" valueHelpOnly="true" tokens="{MaterialListModel>/}">
 							<tokens>
-								<Token key="{DisruptionDetailModel>}" text="{DisruptionDetailModel>}" />
+								<Token key="{MaterialListModel>material}" text="{MaterialListModel>material} ({MaterialListModel>quantity})" />
 							</tokens>
 						</MultiInput>
 						<core:Title  />
@@ -90,9 +90,9 @@
 						<Label text="{i18nModel>view}" class="textAlignLeft"/>
 						<Input id="view" value="{DisruptionDetailModel>/view}" />
 						<Label text="{i18nModel>Jigtool}" class="textAlignLeft"/>
-						<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" valueHelpOnly="true" tokens="{DisruptionDetailModel>/jigTools}">
+						<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" valueHelpOnly="true" tokens="{JigtoolListModel>/}">
 							<tokens>
-								<Token key="{DisruptionDetailModel>}" text="{DisruptionDetailModel>}" />
+								<Token key="{JigtoolListModel>jigtool}" text="{JigtoolListModel>jigtool} ({JigtoolListModel>quantity})" />
 							</tokens>
 						</MultiInput>
 						<core:Title   />

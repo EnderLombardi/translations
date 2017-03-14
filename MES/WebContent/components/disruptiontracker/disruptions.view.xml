@@ -89,11 +89,18 @@
 			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick">
 
 			<ui:columns>
-				<ui:Column id="operationCol" >
+				<ui:Column id="workOrderCol" filterProperty="workOrder"
+					sortProperty="workOrder">
+					<Label text="{disruptiontrackerI18n>workOrder}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>workOrder}" />
+					</ui:template>
+				</ui:Column>
+				<ui:Column id="operationCol" filterProperty="operation"
+					sortProperty="operation">
 					<Label text="{disruptiontrackerI18n>operation}" />
 					<ui:template>
-						<Text
-							text="{disruptionsTrackerModel>workOrder} / {path: 'disruptionsTrackerModel>operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}" />
+						<Text text="{path: 'disruptionsTrackerModel>operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}" />
 					</ui:template>
 				</ui:Column>
 				
