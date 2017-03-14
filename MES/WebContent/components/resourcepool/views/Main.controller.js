@@ -803,6 +803,17 @@ sap.ui
                                     .getCore()
                                     .byId("searchResourcePool--description")
                                     .setValue();
+                            
+                            var oButton = sap.ui.getCore().byId(
+                            "searchResourcePool--createOrDeleteButton");
+                            var oSaveButton = sap.ui.getCore().byId(
+                            "searchResourcePool--saveButtonforRPDesc");
+                            oButton.setIcon("sap-icon://create");
+                            oButton.setTooltip(airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("CreateTeamButton"));
+                            if(airbus.mes.resourcepool.util.Formatter.isEnabled){
+                                oSaveButton.setEnabled(false);
+                            }
+                            
                             /* Attach focus out event to resource pool field */
                             var oInputResource = sap.ui.getCore().byId(
                                     "searchResourcePool--resourcePool");
