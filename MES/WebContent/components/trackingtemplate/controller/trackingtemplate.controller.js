@@ -7,6 +7,12 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
     freeze : false,
     sFreeze : "",
     
+    
+    onInit : function() {
+//      Manage freeze action
+        this.computeFreeze();    	
+    },
+    
     /**
     * Apply a filter on the confirmation Notes List and the WO Notes List
     * depending on the Production_Context_GBO name

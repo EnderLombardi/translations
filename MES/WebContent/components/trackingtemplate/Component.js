@@ -16,6 +16,9 @@ airbus.mes.trackingtemplate.Component.prototype.createContent = function() {
 
     if (airbus.mes.trackingtemplate.oView === undefined) {
 
+        // Initialize ModelManager and load needed file
+        airbus.mes.trackingtemplate.util.ModelManager.init(sap.ui.getCore());    	
+    	
         // View on XML
         this.oView = sap.ui.view({
             id : "trackingtemplateView",
@@ -29,9 +32,6 @@ airbus.mes.trackingtemplate.Component.prototype.createContent = function() {
             bundleName : "airbus.mes.trackingtemplate.i18n.i18n"
         });
         this.oView.setModel(i18nModel, "i18n");
-
-         // Initialize ModelManager and load needed file
-        airbus.mes.trackingtemplate.util.ModelManager.init(sap.ui.getCore());
         
         return this.oView;
     } else {

@@ -466,11 +466,7 @@ airbus.mes.stationtracker.util.Formatter = {
 //		SD-PPC-WT-1250
 //		Case of Tracking Template freeze
 		if(oBox.freezeTrackingTemplate) {
-			if (oBox.OSW === 3 ||oBox.OSW === 4) {
-				sLeftIcon2bis = boxDisplayManager.leftTTFreeze;
-			} else {
-				sRightIcon2 = boxDisplayManager.rightTTFreeze;
-			}
+			sRightIcon2 = boxDisplayManager.rightTTFreeze;
 		}
 		
 

@@ -14,6 +14,14 @@ airbus.mes.trackingtemplate.util.Formatter = {
             return false;
         }
         return true;
+    }, 
+    checkFreeze : function(sProfile) {
+//    	If Tracking Template is Freeze, the action is disabled
+    	if(airbus.mes.trackingtemplate.oView.getController().freeze === true) {
+    		return false;
+    	} else {
+    		return sProfile;
+    	}
     }
 
 }
