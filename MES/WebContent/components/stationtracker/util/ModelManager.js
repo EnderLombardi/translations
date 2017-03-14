@@ -1033,6 +1033,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 	 * Reschedule AVL Line(s) Request 
 	 * 
 	 * @PARAM {OBJECT} Array of object line (skill + avlLineNumber)
+     * @PARAM {Boolean} Check if request is for reschedule all
 	----------------------------------------------------------------------------*/
     sendRescheduleLineRequest: function (lines) {
         // Get Url of the service
@@ -1059,8 +1060,20 @@ airbus.mes.stationtracker.util.ModelManager = {
 		// Get current user
 		var userName = this.getUserName();
 
+        var data = {};
 
-		// Debug
+        data.site            = oData.site;
+        data.physicalStation = oData.station;
+        data.msn             = oData.msn;
+        if(lines) {
+            data.avlLineList     = lines;
+        }
+        data.actualDate      = currentDate;
+        data.previousShift   = oShift.shiftName;
+        data.currentShift    = prevShiftName;
+        data.userName        = userName;
+
+        // Debug
 		//console.log("====sendRescheduleLineRequest=====================");
 		//console.log("User : " + this.getUserID());
 		//console.log("oData             : " + oData);
@@ -1068,22 +1081,14 @@ airbus.mes.stationtracker.util.ModelManager = {
 		//console.log("Previous shift ID : " + prevShiftID);
 		//console.log("Current Date      : " + currentDate);
 		//console.log("urlReschedulingLineService : " + urlReschedulingLineService);
-		console.log("lines: " + lines);
-		
+		//console.log("lines: " + lines);
+        //console.log("Data obj = " + JSON.stringify(data));
+
         jQuery.ajax({
             type: 'post',
             url: urlReschedulingLineService,
             contentType: 'application/json',
-            data: JSON.stringify({
-    			"site": 			oData.site,
-    			"physicalStation": 	oData.station,
-    			"msn": 				oData.msn,
-    			"avlLineList": 		lines,
-    			"actualDate": 		currentDate,
-    			"previousShift": 	oShift.shiftName,
-    			"currentShift": 	prevShiftName,
-    			"userName":         userName
-            }),
+            data: JSON.stringify(data),
             success: function (data) {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
@@ -1091,14 +1096,13 @@ airbus.mes.stationtracker.util.ModelManager = {
                 console.log("Request Debug => success : " + JSON.stringify(data));
                 console.log("data message : " + data.message)
                  
-                if (data.message == "E") {
+                if (data.message.charAt(0) == "E") {
                 	console.log("Request reschedule Error");
-                	sap.m.MessageToast.show("An error has occured: " + JSON.stringify(data));
-                } else if (data.message == "W") {
+                	sap.m.MessageToast.show("An error has occured: no operation was rescheduled");
+                } else if (data.message.charAt(0) == "W") {
                 	console.log("Request reschedule Warning");
-                	sap.m.MessageToast.show("An error has occured: " + JSON.stringify(data));
-                	
-                } else if (data.message == "S") {
+                	sap.m.MessageToast.show("An error has occured");
+                } else if (data.message.charAt(0) == "S") {
                 	console.log("Request reschedule Success");
                 	airbus.mes.shell.oView.getController().renderStationTracker();
                 }

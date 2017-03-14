@@ -1546,8 +1546,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 	/* Confirm PopUp */
 	confirmRescheduleAllPopUp: function (oEvent) {
 		// call request (Send an empty array for reschedule all not confirmed operations)
-		var emptyArray = [];
-		airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest(emptyArray);
+		airbus.mes.stationtracker.util.ModelManager.sendRescheduleLineRequest();
 		this.onCloseDialog(oEvent);
 	},
 	/* Close PopUp */
