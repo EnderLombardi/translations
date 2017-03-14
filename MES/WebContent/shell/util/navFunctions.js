@@ -350,7 +350,7 @@ airbus.mes.shell.util.navFunctions = {
             jQuery.sap.registerModulePath("airbus.mes.acpnglinks", "../components/acpnglinks");
             sap.ui.getCore().createComponent({ name: "airbus.mes.acpnglinks" });
             airbus.mes.acpnglinks.model.ModelManager.loadacpnglinksWorkOrderDetail();
-        } else if (airbus.mes.acpnglinks.oView.oController.workOrder !== sCurrentWorkOrder) {
+        } else if (airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getWorkOrder() !== sCurrentWorkOrder) {
             // If WorkdOrder changed, need to reload data in the model
             airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
             airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setWorkOrder(airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);

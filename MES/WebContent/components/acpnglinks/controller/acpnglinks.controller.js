@@ -38,26 +38,12 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 	 * Clickable Cell management in Tree Table (unscoped for v1.5)
 	 */
 	OnSelectionChange : function(oEvt) {
-		// try {
-		// airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath);
-		// } catch (exception) {
-		// // do nothing
-		// }
-	},
-
-	/**
-	 * Search the value of an attribute in an array of objects Return the index
-	 * of the array
-	 */
-	findIndexObjectKey : function(arraytosearch, key, valuetosearch) {
-
-		for (var i = 0; i < arraytosearch.length; i++) {
-
-			if (arraytosearch[i][key] == valuetosearch) {
-				return i;
-			}
-		}
-		return null;
+//		 try {
+//		 airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath);
+//		 console.log(airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath));
+//		 } catch (exception) {
+//		 // do nothing
+//		 }
 	},
 
 	/**
@@ -74,7 +60,7 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 				index = oTTbl[i].sId.lastIndexOf("--"); // format:acpnglinksView--id
 				id = oTTbl[i].sId.slice([ index + 2 ], oTTbl[i].sId.length);
 				// find the column in the model
-				index = this.findIndexObjectKey(model, "Name", id); 
+				index = airbus.mes.acpnglinks.util.Formatter.findIndexObjectKey(model, "Name", id, 0); 
 				if (index != null){
 					model[index].Sort = i; // new sort value
 				}
@@ -150,7 +136,10 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 	onUnassignColumns : function(oEvt) {
 		var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAllocatedcolumns").getSelectedItem();
 		try {
+			if(airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(aColumnsToAssign.getBindingContextPath()+"/SourceColumn").toUpperCase() != "TYPE"){
+				
 			airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath() + "/Visible", "false");
+		}
 		} catch (err) {
 			// do nothing
 		}

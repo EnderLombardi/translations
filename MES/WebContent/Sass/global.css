@@ -1925,6 +1925,8 @@ section #ViewDisruptionView .sapMLIBFocusable:focus { outline: none; }
 
 .viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon { color: #fff !important; }
 
+.buttonBlack span { color: #666666 !important; }
+
 #createDisruptionView .heightZero .sapUiFormContainerTitle > .sapUiFormTitle { height: 0px; }
 
 #createDisruptionView .textAlignLeft { text-align: left !important; }

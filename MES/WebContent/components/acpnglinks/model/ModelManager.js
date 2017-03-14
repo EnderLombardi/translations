@@ -49,6 +49,16 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	loadacpnglinksWorkOrderDetail: function () {
 		try{
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
+		var sLinkType;
+		var hasColumns = false;
+		var jsonFormat;
+		try{
+			if ( oModel.getData().Rowsets.Rowset[0].Columns.Column[0] !== undefined ){
+				hasColumns = true;
+			}
+		}catch(error){
+			hasColumns = false;
+		}
 		jQuery.ajax({
 			type: 'post',
 			url: this.getacpnglinksWorkOrderDetail(),
@@ -65,7 +75,21 @@ airbus.mes.acpnglinks.model.ModelManager = {
 				try {
 					//DMI
 					// Rest response with only one list, need same schema
-					var jsonFormat = {
+					if (hasColumns && oModel.getData().Rowsets.Rowset[0].Row){
+						jsonFormat = {
+							"Rowsets": {
+								"Rowset": [{
+									"Columns": {
+										"Column": oModel.getData().Rowsets.Rowset[0].Columns.Column
+									}, 
+									"Row": []
+								}]
+							}
+						};
+								
+					}else{
+						
+					jsonFormat = {
 						"Rowsets": {
 							"Rowset": [{
 								"Columns": {
@@ -201,13 +225,11 @@ airbus.mes.acpnglinks.model.ModelManager = {
 							}]
 						}
 					};
-					jsonFormat.Rowsets.Rowset[0].Row = data.elementList
+					}
+					jsonFormat.Rowsets.Rowset[0].Row = data.elementList;
+					jsonFormat.linkTypeToDisplay = data.linkTypeToDisplay.toUpperCase();
 					oModel.setData(jsonFormat);
 					oModel.refresh(true);
-
-					//Local
-//					oModel.setData(data);
-//					oModel.refresh(true);
 
 				} catch (e) {
 					oModel.setData(undefined);
@@ -223,7 +245,18 @@ airbus.mes.acpnglinks.model.ModelManager = {
 
 		// If is temporary until airbus side create service to get data.
 		if (oModel.getData().Rowsets.Rowset[0].Row != undefined){
-			var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row);
+			switch (oModel.getData().linkTypeToDisplay){
+				case "MANUAL":
+					sLinkType = ""
+					break;
+				case "SAP":
+					sLinkType = "X"
+					break;
+				default: //BOTH or anything else
+					 sLinkType = "BOTH"
+					break;
+			}
+			var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row, sLinkType);
 			oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
 			oModel.refresh(true);
 		}
@@ -248,19 +281,23 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	/**
 	 * Transform a flat JSON model into a TreeTable friendly model using map
 	 */
-	transformTreeData: function (nodesIn) {
+	transformTreeData: function (nodesIn , sLink) {
 		var nodes = [];        // ’deep’ object structure
 		var nodeMap = {};      // ’map’, each node is an attribute
-
+		if (sLink === undefined){
+			sLink = "BOTH";
+		}
 		if (nodesIn) {
 			var nodeOut;
 			var parentId;
+			var lastParent;
 
 			for (var i = 0; i < nodesIn.length; i++) {
 				var nodeIn = nodesIn[i];
 				nodeOut = {
 					Type: nodeIn.type,
-					Reference: nodeIn.acpId,
+					acpid: nodeIn.acpId,
+					Reference: nodeIn.reference,
 					ReviewEnd: nodeIn.reviewEnd,
 					Note: nodeIn.note,
 					FamilyTarget: nodeIn.familyTarget,
@@ -281,23 +318,49 @@ airbus.mes.acpnglinks.model.ModelManager = {
 					Level: nodeIn.level,
 					Father_Type: nodeIn.father_Type,
 					Father_ID: nodeIn.predId,
+					linkType: nodeIn.linkType,
 					children: []
 				}
+				if( i == 0){
+					nodeIn.linkType = sLink;
+				}
 				parentId = nodeIn.predId;
-				if (parentId && parentId.length > 0 && parentId != '?') {
-					var parent = nodeMap[nodeIn.predId];
+				if (nodeIn.linkType == sLink || sLink == "BOTH"){
+					if (parentId && parentId.length > 0 && parentId != '?') {
+						var parent = nodeMap[parentId];
+						if (parent) {
+							parent.children.push(nodeOut);
+							lastParent = nodeIn.acpId;
+						}else{
+							parent = nodeMap[lastParent];
+							if (parent){
+								parent.children.push(nodeOut);
+								lastParent = nodeIn.acpId;
+							} else {
+								nodes.push(nodeOut);
+								lastParent = nodeIn.acpId
+								var index = airbus.mes.acpnglinks.util.Formatter.findIndexObjectKey(nodesIn,"predId",parentId,0);
+								while (index != null) {
+									var oldIndex = index;
+									nodesIn[index].predId = nodeIn.acpId;	
+									index = airbus.mes.acpnglinks.util.Formatter.findIndexObjectKey(nodesIn,"predId",parentId,oldIndex+1)
+								}
+							}
+						}
 
-					if (parent) {
-						parent.children.push(nodeOut);
+					} else { 
+						// there is no parent, must be top level
+						nodes.push(nodeOut);
+						lastParent = nodeIn.acpId
 					}
 
-				} else {
-					// there is no parent, must be top level
-					nodes.push(nodeOut);
+					if (nodeIn.linkType == sLink || sLink == "BOTH"){
+						// add the node to the node map
+						nodeMap[nodeOut.acpid] = nodeOut;
+					}
+				}else if (!parentId || parentId == 0  || parentId == '?'){
+					lastParent = "";
 				}
-
-				// add the node to the node map
-				nodeMap[nodeOut.Reference] = nodeOut;
 			}
 		}
 		this.setTreeLevel(nodes, 1);

@@ -1,138 +1,6 @@
 {
-	"Rowsets": {
-		"Rowset": [
-			{
-				"Columns": {
-					"Column": [
-										{
-											"Name": "Type",
-											"SourceColumn": "Type",
-											"Visible": "true",
-											"Sort": 0
-										},
-										{
-											"Name": "reference",
-											"SourceColumn": "reference",
-											"Visible": "true",
-											"Sort": 1
-										},
-										{
-											"Name": "reviewEnd",
-											"SourceColumn": "reviewEnd",
-											"Visible": "true",
-											"Sort": 2
-										},
-										{
-											"Name": "note",
-											"SourceColumn": "note",
-											"Visible": "true",
-											"Sort": 3
-										},
-										{
-											"Name": "familyTarget",
-											"SourceColumn": "familyTarget",
-											"Visible": "true",
-											"Sort": 4
-										},
-										{
-											"Name": "confirmedTime",
-											"SourceColumn": "confirmedTime",
-											"Visible": "false",
-											"Sort": 5
-										},
-										{
-											"Name": "stv",
-											"SourceColumn": "stv",
-											"Visible": "false",
-											"Sort": 6
-										},
-										{
-											"Name": "acpWorkstation",
-											"SourceColumn": "acpWorkstation",
-											"Visible": "false",
-											"Sort": 7
-										},
-										{
-											"Name": "ca",
-											"SourceColumn": "ca",
-											"Visible": "false",
-											"Sort": 8
-										},
-										{
-											"Name": "fatherLink",
-											"SourceColumn": "fatherLink",
-											"Visible": "false",
-											"Sort": 9
-										},
-										{
-											"Name": "blockingReason",
-											"SourceColumn": "blockingReason",
-											"Visible": "false",
-											"Sort": 10
-										},
-										{
-											"Name": "userStatus",
-											"SourceColumn": "userStatus",
-											"Visible": "false",
-											"Sort": 11
-										},
-										{
-											"Name": "executionStation",
-											"SourceColumn": "executionStation",
-											"Visible": "false",
-											"Sort": 12
-										},
-										{
-											"Name": "originWorkstation",
-											"SourceColumn": "originWorkstation",
-											"Visible": "false",
-											"Sort": 13
-										},
-										{
-											"Name": "tdl",
-											"SourceColumn": "tdl",
-											"Visible": "false",
-											"Sort": 14
-										},
-										{
-											"Name": "upperFamily",
-											"SourceColumn": "upperFamily",
-											"Visible": "false",
-											"Sort": 15
-										},
-										{
-											"Name": "zoning",
-											"SourceColumn": "zoning",
-											"Visible": "false",
-											"Sort": 16
-										},
-										{
-											"Name": "materialDescription",
-											"SourceColumn": "materialDescription",
-											"Visible": "false",
-											"Sort": 17
-										},
-										{
-											"Name": "ata",
-											"SourceColumn": "ata",
-											"Visible": "false",
-											"Sort": 18
-										},
-										{
-											"Name": "fatherType",
-											"SourceColumn": "fatherType",
-											"Visible": "never",
-											"Sort": 19
-										},
-										{
-											"Name": "predId",
-											"SourceColumn": "predId",
-											"Visible": "never",
-											"Sort": 20
-										}
-									]
-				},
-				"Row": [
+	"linkTypeToDisplay":"",
+	"elementList": [
 					{
 						"type": "SO1",
 						"acpId": "10003242224",
@@ -179,7 +47,8 @@
 						"materialDescription": "Broken bracket",
 						"ata": "",
 						"father_Type": "SO1",
-						"predId": "10003242224"
+						"predId": "10003242224",
+						"linkType": "X"
 					},
 					{
 						"type": "SO3",
@@ -203,12 +72,13 @@
 						"materialDescription": "INST-CLS",
 						"ata": "5720",
 						"father_Type": "NC",
-						"predId": "6789685"
+						"predId": "6789685",
+						"linkType": "X"
 					},
 					{
 						"type": "NC",
-						"acpId": "10003678688",
-						"reference": "10003678688",
+						"acpId": "1000367868800",
+						"reference": "1000367868800",
 						"reviewEnd": "28/11/2016",
 						"note": "note",
 						"familyTarget": "FAL-caRGO",
@@ -227,7 +97,8 @@
 						"materialDescription": "INST-CLS",
 						"ata": "5720",
 						"fatherType": "SO1",
-						"predId": "10003242224"
+						"predId": "10003678688",
+						"linkType": ""
 					},
 					{
 						"type": "SO1",
@@ -251,7 +122,8 @@
 						"materialDescription": "INST-FWD PWRF",
 						"ata": "5720",
 						"fatherType": "",
-						"predId": ""
+						"predId": "",
+						"linkType": "X"
 					},
 					{
 						"type": "NC",
@@ -275,7 +147,8 @@
 						"materialDescription": "Broken bracket",
 						"ata": "",
 						"fatherType": "SO1",
-						"predId": "10003242225"
+						"predId": "10003242225",
+						"linkType": ""
 					},
 					{
 						"type": "SO3",
@@ -299,7 +172,8 @@
 						"materialDescription": "INST-CLS",
 						"ata": "5720",
 						"fatherType": "NC",
-						"predId": "6789686"
+						"predId": "6789686",
+						"linkType": ""
 					},
 					{
 						"type": "NC",
@@ -323,7 +197,8 @@
 						"materialDescription": "INST-CLS",
 						"ata": "5720",
 						"fatherType": "SO1",
-						"predId": "10003242225"
+						"predId": "10003242225",
+						"linkType": ""
 					},
 					{
 						"type": "SO1",
@@ -347,7 +222,8 @@
 						"materialDescription": "INST-FWD PWRF",
 						"ata": "5720",
 						"fatherType": "",
-						"predId": ""
+						"predId": "",
+						"linkType": ""
 					},
 					{
 						"type": "NC",
@@ -371,7 +247,8 @@
 						"materialDescription": "Broken bracket",
 						"ata": "",
 						"fatherType": "SO1",
-						"predId": "10003242227"
+						"predId": "10003242227",
+						"linkType": ""
 					},
 					{
 						"type": "SO3",
@@ -395,7 +272,8 @@
 						"materialDescription": "INST-CLS",
 						"ata": "5720",
 						"fatherType": "NC",
-						"predId": "6789687"
+						"predId": "6789687",
+						"linkType": ""
 					},
 					{
 						"type": "NC",
@@ -419,7 +297,8 @@
 						"materialDescription": "INST-CLS",
 						"ata": "5720",
 						"fatherType": "SO1",
-						"predId": "10003242227"
+						"predId": "10003242227",
+						"linkType": ""
 					},
 					{
 						"type": "NC",
@@ -443,10 +322,8 @@
 						"materialDescription": "INST-CLS",
 						"ata": "5720",
 						"fatherType": "SO1",
-						"predId": "?"
+						"predId": "?",
+						"linkType": ""
 					}
 				]
-			}
-		]
-	}
-}
+}				

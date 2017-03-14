@@ -75,5 +75,22 @@ airbus.mes.acpnglinks.util.Formatter = {
 //do nothing			
 		}
 		return result;
+	},
+	
+	/**
+	 * Search the value of an attribute in an array of objects Return the index
+	 * of the array
+	 */
+	findIndexObjectKey : function(arraytosearch, key, valuetosearch, from) {
+		if(!from){
+			from = 0
+		}
+		for (var i = from; i < arraytosearch.length; i++) {
+
+			if (arraytosearch[i][key] == valuetosearch) {
+				return i;
+			}
+		}
+		return null;
 	}
 };
