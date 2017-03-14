@@ -112,8 +112,8 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      ****************************************************************************/
     onShiftPress: function () {
     	
-    	// Empty list of to reschedule not confirmed operations
-    	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.controler.onShiftPress");
+    	// Empty count of to reschedule not confirmed operations
+    	airbus.mes.stationtracker.util.ModelManager.initToRescheduleAllCount("StationTracker.controler.onShiftPress");
 
         airbus.mes.stationtracker.util.ShiftManager.shiftDisplay = true;
         airbus.mes.stationtracker.util.ShiftManager.dayDisplay = false;
@@ -145,8 +145,8 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      ****************************************************************************/
     onDayPress: function () {
     	
-    	// Empty list of to reschedule not confirmed operations
-    	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.controller.onDayPress");
+    	// Empty count of to reschedule not confirmed operations
+    	airbus.mes.stationtracker.util.ModelManager.initToRescheduleAllCount("StationTracker.controller.onDayPress");
 
         airbus.mes.stationtracker.util.ShiftManager.shiftDisplay = false;
         airbus.mes.stationtracker.util.ShiftManager.dayDisplay = true;
@@ -1237,8 +1237,8 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             airbus.mes.stationtracker.util.ShiftManager.changeShift = false; //Airbus Defect #262 - Shift selection is not kept when changing date
             scheduler.updateView(dStartDate);
             
-            // Empty list of to reschedule not confirmed operations
-        	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("StationTracker.controller.dateSelected()");
+            // Empty count of to reschedule not confirmed operations
+        	airbus.mes.stationtracker.util.ModelManager.initToRescheduleAllCount("StationTracker.controller.dateSelected()");
         	
             //airbus.mes.stationtracker.util.ShiftManager.selectFirstShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date
             airbus.mes.stationtracker.util.ModelManager.selectMyShift();

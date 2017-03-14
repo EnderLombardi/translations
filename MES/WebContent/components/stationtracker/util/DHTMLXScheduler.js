@@ -405,13 +405,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
          * Called when scheduler is reloaded
          */
         scheduler.eventId.push(scheduler.attachEvent("onViewChange", function (){
-        	// Empty list of not confirmed operations to reschedule
-        	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("DHTMLXscheduler onViewChange");
+        	// Empty count of not confirmed operations to reschedule
+        	airbus.mes.stationtracker.util.ModelManager.initToRescheduleAllCount("DHTMLXscheduler onViewChange");
         }));
         
         scheduler.eventId.push(scheduler.attachEvent("onBeforeViewChange", function(){
-        	// Empty list of not confirmed operations to reschedule
-        	airbus.mes.stationtracker.util.ModelManager.emptyToRescheduleList("DHTMLXscheduler onBeforeViewChange");
+        	// Empty count of not confirmed operations to reschedule
+        	airbus.mes.stationtracker.util.ModelManager.initToRescheduleAllCount("DHTMLXscheduler onBeforeViewChange");
             return true;
         }));
 

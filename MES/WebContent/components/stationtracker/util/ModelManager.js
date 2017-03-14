@@ -22,9 +22,9 @@ airbus.mes.stationtracker.util.ModelManager = {
         OPERATION_BO: undefined
     },
     
-    // List of AVL Line to reschedule
+    // Count of operation on AVL Line to reschedule
     // for Reschule All button
-    toRescheduleList: undefined,
+    toRescheduleAllCount: undefined,
 
     //     parameters from the settings component
     settings: undefined,
@@ -78,7 +78,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         // Load Data
         this.loadFilterUnplanned();
         
-        this.toRescheduleList = [];
+        this.toRescheduleAllCount = 0;
 
     },
 
@@ -1066,20 +1066,21 @@ airbus.mes.stationtracker.util.ModelManager = {
         data.physicalStation = oData.station;
         data.msn             = oData.msn;
         if(lines) {
-            data.avlLineList     = lines;
+            data.avlLineList = lines;
         }
         data.actualDate      = currentDate;
-        data.previousShift   = oShift.shiftName;
-        data.currentShift    = prevShiftName;
+        data.previousShift   = prevShiftName;
+        data.currentShift    = oShift.shiftName;
         data.userName        = userName;
 
         // Debug
 		//console.log("====sendRescheduleLineRequest=====================");
-		//console.log("User : " + this.getUserID());
+		//console.log("User              : " + this.getUserID());
 		//console.log("oData             : " + oData);
-		//console.log("Current  shift ID : " + oShift.shiftID);
-		//console.log("Previous shift ID : " + prevShiftID);
-		//console.log("Current Date      : " + currentDate);
+        //console.log("Site           : " + oData.site);
+		//console.log("Current  shift : " + oShift.shiftName);
+		//console.log("Previous shift : " + prevShiftName);
+		//console.log("Current Date   : " + currentDate);
 		//console.log("urlReschedulingLineService : " + urlReschedulingLineService);
 		//console.log("lines: " + lines);
         //console.log("Data obj = " + JSON.stringify(data));
@@ -1093,21 +1094,23 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (typeof data == "string") {
                     data = JSON.parse(data);
                 }
-                console.log("Request Debug => success : " + JSON.stringify(data));
-                console.log("data message : " + data.message)
+                //console.log("Request Debug => success : " + JSON.stringify(data));
+                //console.log("data message : " + data.message)
                  
                 if (data.message.charAt(0) == "E") {
                 	console.log("Request reschedule Error");
                 	sap.m.MessageToast.show("An error has occured: no operation was rescheduled");
                 } else if (data.message.charAt(0) == "W") {
                 	console.log("Request reschedule Warning");
-                	sap.m.MessageToast.show("An error has occured");
+                	sap.m.MessageToast.show("An warning has occured");
                 } else if (data.message.charAt(0) == "S") {
                 	console.log("Request reschedule Success");
                 	airbus.mes.shell.oView.getController().renderStationTracker();
                 }
                 //we reload the work tracker
                 airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
+				console.log("(toRescheduleAllCount === 0)");
+				$(".rescheduleAllBtn").css({'display' : 'none'});
             },
             error: function (error, jQXHR) {
                 jQuery.sap.log.info(error);
@@ -1117,13 +1120,13 @@ airbus.mes.stationtracker.util.ModelManager = {
     },
 
     /*----------------------------------------------------------------------------
-     * Empty list of to reschedule AVL Line (ToRescheduleList)
+     * Reinit count of operation AVL Line to reschedule (toRescheduleAllCount)
      * Used for refresh
     ----------------------------------------------------------------------------*/
-    emptyToRescheduleList: function (fromWhere) {
-    	this.toRescheduleList = [];
+    initToRescheduleAllCount: function (fromWhere) {
+    	this.toRescheduleAllCount = 0;
     	// DEBUG
-    	//console.log("Empty toRescheduleList FROM => " + fromWhere);
+    	//console.log("Reinit toRescheduleAllCount FROM => " + fromWhere);
     },
 
     /*----------------------------------------------------------------------------
@@ -1149,11 +1152,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 	rescheduleAll: function () {
 		window.event.stopPropagation();
         
-        var count    = 0;
-        for (var i = 0; i < this.toRescheduleList.length; i++) {
-        	count += this.toRescheduleList[i].count;
-        }
-        var objCount = { "count": count }
+        var objCount = { "count": this.toRescheduleAllCount }
         
         // Open confirm popup
 		airbus.mes.stationtracker.oView.getController().openRescheduleAllPopUp(objCount);

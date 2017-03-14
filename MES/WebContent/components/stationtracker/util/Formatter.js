@@ -666,15 +666,13 @@ airbus.mes.stationtracker.util.Formatter = {
 								  	'<i class="fa fa-clock-o" aria-hidden="true"></i>' +
 							  	'</span>';
 			
-			// Get Object with AVL Line datas
-			var objLine = airbus.mes.stationtracker.util.Formatter.getFormatedObjLine(oSection.avlLine, countNotConfirmedOps);
+			// Add count of operation on AVL Line to global toRescheduleAllCount
+			var toRescheduleAllCount = airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount;
+			toRescheduleAllCount += countNotConfirmedOps;
 			
-			// Add Obj AVL Line datas to global toRescheduleList
-			var toRescheduleList = airbus.mes.stationtracker.util.ModelManager.toRescheduleList;
-			toRescheduleList.push(objLine);
-			
-			// Display Reschedule all button if at least one late operation in toRescheduleList
-			if(toRescheduleList.length > 0) {
+			// Display Reschedule all button
+			if(toRescheduleAllCount > 0) {
+				console.log("(toRescheduleAllCount > 0)");
 				$(".rescheduleAllBtn").css({'display' : 'block'});
 			}
 		}
