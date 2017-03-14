@@ -202,7 +202,29 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 	},
 
 	onEditPress: function (oEvent) {
-		console.log('edit press');
+		var sPath = oEvent.oSource.oParent.oPropagatedProperties.oBindingContexts.DesktopFilesModel.sPath;
+		var iIndex = sPath.split("/")[1];
+		
+		this.onEditMode(iIndex,true);
+	},
+
+	onCancelPress: function (oEvent) {
+		var sPath = oEvent.oSource.oParent.oPropagatedProperties.oBindingContexts.DesktopFilesModel.sPath;
+		var iIndex = sPath.split("/")[1];
+		this.onEditMode(iIndex,false);
+	},
+
+	onSaveEditPress: function (oEvent) {
+		var sPath = oEvent.oSource.oParent.oPropagatedProperties.oBindingContexts.DesktopFilesModel.sPath;
+		var iIndex = sPath.split("/")[1];
+		this.onEditMode(iIndex,false);
+	},
+
+	onEditMode(iIndex, isEdit) {
+		this.getView().byId('createDisruptionView--document-button-createDisruptionView--idListDocument-' + iIndex).setVisible(!isEdit);
+		this.getView().byId('createDisruptionView--document-button-edit-createDisruptionView--idListDocument-' + iIndex).setVisible(isEdit);
+		this.getView().byId('createDisruptionView--document-description-createDisruptionView--idListDocument-' + iIndex).setVisible(!isEdit);
+		this.getView().byId('createDisruptionView--document-description-input-createDisruptionView--idListDocument-' + iIndex).setVisible(isEdit);
 	}
 
 });
