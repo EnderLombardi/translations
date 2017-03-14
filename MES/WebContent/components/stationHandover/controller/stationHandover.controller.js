@@ -378,7 +378,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		
 	var sSelected = sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey();
 		
-		if (sSelected === "P") {
+		if (sSelected != "M") {
 			sap.ui.getCore().byId("insertOsw--calendar").addDisabledDate(new sap.ui.unified.DateRange({startDate : new Date(0), endDate: new Date(86400000000000)})) 
 			sap.ui.getCore().byId("insertOsw--calendar").destroySelectedDates();
 			sap.ui.getCore().byId("insertOsw--TimePicker").setEnabled(false);
@@ -387,7 +387,6 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		} else {
 			
-
 			sap.ui.getCore().byId("insertOsw--calendar").destroyDisabledDates();
 			sap.ui.getCore().byId("insertOsw--calendar").destroySelectedDates();
 			sap.ui.getCore().byId("insertOsw--TimePicker").setEnabled(true);
@@ -468,7 +467,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var sSelectedType = sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey();
 		var sTime = sap.ui.getCore().byId("insertOsw--TimePicker");
 		// Check if time is Set
-		if ( sSelectedType != "P" && sTime.getValue() === "" ) {
+		if ( sSelectedType === "M" && sTime.getValue() === "" ) {
 			
 			jQuery.sap.require("sap.m.MessageBox");
 

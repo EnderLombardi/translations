@@ -149,6 +149,9 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
             
             success: function (data) {
                 console.log("sucess");
+                
+//              Refresh station tracker to display the arrow
+				airbus.mes.shell.oView.getController().renderStationTracker();                
             },
 
             error: function (error, jQXHR) {
