@@ -154,7 +154,7 @@ airbus.mes.operationdetail.ModelManager = {
         var getData;
         jQuery.ajax({
             url : airbus.mes.operationdetail.ModelManager.getUrlConfirmationCheckList(data),
-            async : false,
+            async : true,
             error : function(xhr, status, error) {
                 airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);
             },
@@ -163,6 +163,7 @@ airbus.mes.operationdetail.ModelManager = {
                     return;
                 }else{
                     getData = result.Rowsets.Rowset[0].Row[0];
+                    airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList = getData;
                 }
 
             }

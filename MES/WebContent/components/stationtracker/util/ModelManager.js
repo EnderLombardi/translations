@@ -1494,6 +1494,9 @@ airbus.mes.stationtracker.util.ModelManager = {
                 }
                 
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
+                
+                var dataRequest = airbus.mes.operationstatus.oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
+                airbus.mes.operationdetail.ModelManager.getDataConfirmationCheckList(dataRequest);                
 
             }, 0);
         }, 0);
