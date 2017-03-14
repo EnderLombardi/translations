@@ -15,7 +15,7 @@ airbus.mes.stationtracker.util.Globals_Functions = {
 	 */
 	getMissingPartsData : function (sSite, sSation, sMsn ) {
             // Handle URL Model
-            var urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.stationtracker.config.url_config");
+        var urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.missingParts.config.url_config");
 		var missingPartsData = {};
 		//Check for Local call to manage stub data source 
 		if (sessionStorage.loginType !== "local") {
@@ -23,7 +23,7 @@ airbus.mes.stationtracker.util.Globals_Functions = {
 			jQuery.ajax({
 				type: 'post',
 				async: false,
-				url: urlModel.getProperty("urlMissingParts"),
+				url:  urlModel.getProperty("urlMissingParts"),
 				contentType: 'application/json',
 				data: JSON.stringify({
 				"site": sSite,
@@ -53,7 +53,7 @@ airbus.mes.stationtracker.util.Globals_Functions = {
 			jQuery.ajax({
 				type: 'GET',
 				async: false,
-				url: urlModel.getProperty("getMissingParts"),
+				url: urlModel.getProperty("urlMissingParts"),
 				contentType: 'application/json',
 				data: JSON.stringify({}),
 				success: function (data) {

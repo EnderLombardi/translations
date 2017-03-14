@@ -86,7 +86,7 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 			
 			if ( new Date(oModel.expectedDeliveryDate) !== "Invalid Date" ) {
 				
-				scheduler.updateView(oModel.expectedDeliveryDate)
+				scheduler.updateView(oModel.expectedDeliveryDate);
 				
 			} else {
 				
@@ -96,7 +96,6 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 			}
 		}
 		
-		console.log(fIndice);
 	}
 
 	

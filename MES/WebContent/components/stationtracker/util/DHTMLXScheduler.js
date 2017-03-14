@@ -439,6 +439,20 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
 
         /*      Custom progress background display  */
         scheduler.templates.event_class = function (start, end, event) {
+        	
+        	var oMissingPart = airbus.mes.missingParts.util.ModelManager;
+        	//When missing part is open and we click on an operation it need to hide all operation in stationTracker and display only the selected one
+        	if ( airbus.mes.shell.util.navFunctions.splitMissingPart && oMissingPart.operation != "" ) {
+        		
+        		if (event.operationId === oMissingPart.operation && event.shopOrder === oMissingPart.workOrder ) {
+        			
+                    return "grey";
+        		} else {
+        			
+        			return "greyOut";
+        		}
+        	}
+        	
             return "grey";
         };
 

@@ -269,6 +269,10 @@ BOX MANAGEMENT
         }
        
     }
+    .greyOut {
+         background-color: $ligth-grey !important;
+   
+    }        
     .left {
     	float: left;                
     }
@@ -396,6 +400,7 @@ BOX MANAGEMENT
         color: black;
     }
 }
+
 
 .answeredBlockedExcalated {
     @include trackerSolvedBlock(repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px));

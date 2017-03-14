@@ -5,9 +5,8 @@ airbus.mes.missingParts.util.ModelManager = {
 	urlModel: undefined,
 	i18nModel: undefined,
 	excludedFields : ["sfcStepBO"],
-	operation : "";
-	workOrder : "";
-
+	operation : "",
+	workOrder : "",
 	/**
 	 * Initialize Model Manager
 	 * 
