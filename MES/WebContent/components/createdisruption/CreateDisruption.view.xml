@@ -121,7 +121,7 @@
 								<!-- iconOnly="true" style="Transparent" fileType="{path:'AttachmentList>/FileType/0/key', formatter: 'airbus.mes.disruptions.Formatter.setFileType'}" -->
 								<!-- visible="{Profile>/identifiedUser/permissions/WORK_DIS_ATTACH_DOC}"> -->
 								<!-- 											</u:FileUploader> -->
-								<u:FileUploader id="idfileUploader" tooltip="{i18nModel>Attach}" buttonText=" " icon="sap-icon://attachment" sameFilenameAllowed="true" class="attachIcon" change="airbus.mes.disruptions.AttachmentFile.onPressAttachBttn" buttonOnly="true" style="Transparent"></u:FileUploader>
+								<u:FileUploader id="idfileUploader" tooltip="{i18nModel>Attach}" buttonText=" " icon="sap-icon://attachment" sameFilenameAllowed="true" class="attachIcon" change="onPressAttachBttn" buttonOnly="true" style="Transparent"></u:FileUploader>
 								<!--<Button type="Transparent" icon="sap-icon://attachment" width="2rem" class="attachIcon"  press ="airbus.mes.disruptions.AttachmentFile.onAttachPress" visible="{Profile>/identifiedUser/permissions/WORK_DIS_ATTACH_DOC}"/>-->
 								<Button type="Transparent" icon="sap-icon://camera" width="2rem" class="attachIcon" visible="{Profile>/identifiedUser/permissions/WORK_DIS_PICTURE}"/>
 							</HBox>
@@ -132,7 +132,7 @@
 				</f:SimpleForm>
 				<List id="idListDocument" class="sapUiSmallMarginBegin" 
 					items="{path: 'DesktopFilesModel>/'}"
-					visible="{path:'DesktopFilesModel>/', formatter: 'airbus.mes.disruptions.Formatter.isEmpty'}">
+					visible="{path:'DesktopFilesModel>/length', formatter: 'airbus.mes.disruptions.Formatter.isEmpty'}">
 					<!-- <StandardListItem/> -->
 					<headerToolbar class="documnet-toolbar"  >
 						<Toolbar>

@@ -710,8 +710,8 @@ airbus.mes.disruptions.Formatter = {
 		}
 	},
 
-	isEmpty: function (obj) {
-		if (!obj || !obj.length) {
+	isEmpty: function (length) {
+		if (length === 0) {
 			return false;
 		}
 		return true;

@@ -74,7 +74,6 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 
 	},
 
-
 	onExit: function (oEvt) {
 		sap.ui.getCore().byId("idAttachmentDialog").close()
 	},
@@ -92,14 +91,14 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		airbus.mes.shell.ModelManager.createJsonModel(core, ["DesktopFilesModel"]);
 	},
 
-	onAttachPress: function (oEvt) {
-		if (!this.AttachmentDialog) {
-			this.AttachmentDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.AttachmentDialog", airbus.mes.disruptions.AttachmentFile);
-			this.getView().addDependent(this.AttachmentDialog);
-		}
+	// onAttachPress: function (oEvt) {
+	// 	if (!this.AttachmentDialog) {
+	// 		this.AttachmentDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.AttachmentDialog", airbus.mes.disruptions.AttachmentFile);
+	// 		this.getView().addDependent(this.AttachmentDialog);
+	// 	}
 
-		this.AttachmentDialog.open();
-	},
+	// 	this.AttachmentDialog.open();
+	// },
 
 	/*
 	 * Local json model is maintained to store the list of attachments 
@@ -107,23 +106,22 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 	 */
 	onUploadComplete: function (filesListBase64) {
 
+		this.removeEditMode();
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		var oData = oModel.getData();
 
 		var oInput = sap.ui.getCore().byId("idTitleInput");
 		var description = oInput.getValue();
 		var item = {};
-		var iLen = oData.length;
+
 		item.Title = filesListBase64.fileName;
 		item.Description = description;
+		item.oldDescription = description;
 		item.File = filesListBase64.fileBase64;
 		item.Size = filesListBase64.size;
-		if (iLen === undefined) {
-			var jsonObj = [item];
-			oModel.setData(jsonObj);
-		} else {
-			oData.unshift(item);
-		}
+		
+		oData.unshift(item);
+		
 		oModel.refresh();
 		oInput.destroy();
 	},
@@ -170,7 +168,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 				text: '{i18nModel>OK}',
 				press: function () {
 					dialog.close();
-					airbus.mes.disruptions.AttachmentFile.onUploadComplete(filesListBase64);
+					airbus.mes.createdisruption.oView.oController.onUploadComplete(filesListBase64);
 				}
 			}),
 			endButton: new sap.m.Button({
@@ -204,27 +202,45 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 	onEditPress: function (oEvent) {
 		var sPath = oEvent.oSource.oParent.oPropagatedProperties.oBindingContexts.DesktopFilesModel.sPath;
 		var iIndex = sPath.split("/")[1];
-		
 		this.onEditMode(iIndex,true);
 	},
 
 	onCancelPress: function (oEvent) {
 		var sPath = oEvent.oSource.oParent.oPropagatedProperties.oBindingContexts.DesktopFilesModel.sPath;
 		var iIndex = sPath.split("/")[1];
+		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
+		var oData = oModel.getData();
+		oData[iIndex].Description = oData[iIndex].oldDescription;
 		this.onEditMode(iIndex,false);
+		oModel.refresh();
 	},
 
 	onSaveEditPress: function (oEvent) {
 		var sPath = oEvent.oSource.oParent.oPropagatedProperties.oBindingContexts.DesktopFilesModel.sPath;
 		var iIndex = sPath.split("/")[1];
+		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
+		var oData = oModel.getData();
+		oData[iIndex].oldDescription = oData[iIndex].Description;
 		this.onEditMode(iIndex,false);
+		oModel.refresh();
 	},
 
-	onEditMode(iIndex, isEdit) {
+	onEditMode: function (iIndex, isEdit) {
 		this.getView().byId('createDisruptionView--document-button-createDisruptionView--idListDocument-' + iIndex).setVisible(!isEdit);
 		this.getView().byId('createDisruptionView--document-button-edit-createDisruptionView--idListDocument-' + iIndex).setVisible(isEdit);
 		this.getView().byId('createDisruptionView--document-description-createDisruptionView--idListDocument-' + iIndex).setVisible(!isEdit);
 		this.getView().byId('createDisruptionView--document-description-input-createDisruptionView--idListDocument-' + iIndex).setVisible(isEdit);
+	},
+
+	removeEditMode: function() {
+		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
+		var oData = oModel.getData();
+		var len = oData.length;
+		var i = 0;
+		for(; i<len; i+=1) {
+			oData[i].Description = oData[i].oldDescription;
+			this.onEditMode(i,false);
+		}
 	}
 
 });
