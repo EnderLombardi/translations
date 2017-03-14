@@ -210,17 +210,33 @@ airbus.mes.stationHandover.util.ModelManager = {
 		try {
 
 			var aModel = oViewModel.oData.outstandingWorkOrderInfoList;
+			var aSelected = [];
 			airbus.mes.stationHandover.util.ModelManager.copyOfModel = JSON.parse(JSON.stringify(oViewModel.oData));
 			//Create tree of for manage selection of tree
 			aModel.forEach(function(el, indice) {
 				
-				//Save in field selected the value selected to manage the selection/unselection of lines 
-				el.SELECED_UI = el.selected;
-
+				aSelected = [];
+				
 				aModel[indice].outstandingWorkStepInfoList.forEach(function(al, indice1) {
 					
 					al.SELECED_UI = al.selected;
+					aSelected.push(al.selected);
+					
 				})
+				
+				// That mean all child are not selected so the parent need to be unselect
+				if ( aSelected.indexOf("false") > -1 ) {
+					
+					el.SELECED_UI = "false";
+					el.selected = "false";
+					
+				} else {
+					
+					el.SELECED_UI = "true";
+					el.selected = "true";
+
+				}
+								
 			})
 
 		} catch (e) {

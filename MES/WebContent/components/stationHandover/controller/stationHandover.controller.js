@@ -481,6 +481,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		oModel.outstandingWorkOrderInfoList.forEach(function(el){
 			if ( el.SELECED_UI != el.selected ) {
 				
+				delete el["selected"];
 				delete el["SELECED_UI"];
 
 			}			
