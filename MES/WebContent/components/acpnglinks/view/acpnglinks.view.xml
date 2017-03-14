@@ -3,9 +3,9 @@
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:tab="sap.ui.table" xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<Page showHeader="false" height="100%" enableScrolling="false">
-		<content>
+		<content height="100%">
 			<Button id="modifyColumnsButton" text="{i18nAcpngLinksModel>ModifyColumns}" press="onColumnsChange" type="Transparent" />
-			<VBox id="ACPnGLinks" class="ACPnGLinkslist">
+			<VBox id="ACPnGLinks" class="ACPnGLinkslist" height="100%">
 				<tab:TreeTable id="ACPnGTreeTable" class="ACPnGTreeTable"
 					rows="{path : 'acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/'}"
 					cellClick="OnSelectionChange" visibleRowCountMode="Fixed" height="100%"

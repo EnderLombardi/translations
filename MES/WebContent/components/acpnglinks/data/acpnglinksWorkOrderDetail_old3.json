@@ -1,6 +1,138 @@
 {
-	"linkTypeToDisplay":"",
-	"elementList": [
+	"Rowsets": {
+		"Rowset": [
+			{
+				"Columns": {
+					"Column": [
+										{
+											"Name": "Type",
+											"SourceColumn": "Type",
+											"Visible": "true",
+											"Sort": 0
+										},
+										{
+											"Name": "reference",
+											"SourceColumn": "reference",
+											"Visible": "true",
+											"Sort": 1
+										},
+										{
+											"Name": "reviewEnd",
+											"SourceColumn": "reviewEnd",
+											"Visible": "true",
+											"Sort": 2
+										},
+										{
+											"Name": "note",
+											"SourceColumn": "note",
+											"Visible": "true",
+											"Sort": 3
+										},
+										{
+											"Name": "familyTarget",
+											"SourceColumn": "familyTarget",
+											"Visible": "true",
+											"Sort": 4
+										},
+										{
+											"Name": "confirmedTime",
+											"SourceColumn": "confirmedTime",
+											"Visible": "false",
+											"Sort": 5
+										},
+										{
+											"Name": "stv",
+											"SourceColumn": "stv",
+											"Visible": "false",
+											"Sort": 6
+										},
+										{
+											"Name": "acpWorkstation",
+											"SourceColumn": "acpWorkstation",
+											"Visible": "false",
+											"Sort": 7
+										},
+										{
+											"Name": "ca",
+											"SourceColumn": "ca",
+											"Visible": "false",
+											"Sort": 8
+										},
+										{
+											"Name": "fatherLink",
+											"SourceColumn": "fatherLink",
+											"Visible": "false",
+											"Sort": 9
+										},
+										{
+											"Name": "blockingReason",
+											"SourceColumn": "blockingReason",
+											"Visible": "false",
+											"Sort": 10
+										},
+										{
+											"Name": "userStatus",
+											"SourceColumn": "userStatus",
+											"Visible": "false",
+											"Sort": 11
+										},
+										{
+											"Name": "executionStation",
+											"SourceColumn": "executionStation",
+											"Visible": "false",
+											"Sort": 12
+										},
+										{
+											"Name": "originWorkstation",
+											"SourceColumn": "originWorkstation",
+											"Visible": "false",
+											"Sort": 13
+										},
+										{
+											"Name": "tdl",
+											"SourceColumn": "tdl",
+											"Visible": "false",
+											"Sort": 14
+										},
+										{
+											"Name": "upperFamily",
+											"SourceColumn": "upperFamily",
+											"Visible": "false",
+											"Sort": 15
+										},
+										{
+											"Name": "zoning",
+											"SourceColumn": "zoning",
+											"Visible": "false",
+											"Sort": 16
+										},
+										{
+											"Name": "materialDescription",
+											"SourceColumn": "materialDescription",
+											"Visible": "false",
+											"Sort": 17
+										},
+										{
+											"Name": "ata",
+											"SourceColumn": "ata",
+											"Visible": "false",
+											"Sort": 18
+										},
+										{
+											"Name": "fatherType",
+											"SourceColumn": "fatherType",
+											"Visible": "never",
+											"Sort": 19
+										},
+										{
+											"Name": "predId",
+											"SourceColumn": "predId",
+											"Visible": "never",
+											"Sort": 20
+										}
+									]
+				},
+				"Row": [
 					{
 						"type": "SO1",
 						"acpId": "10003242224",
@@ -326,4 +458,7 @@
 						"linkType": ""
 					}
 				]
-}				
+			}
+		]
+	}
+}
