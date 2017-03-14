@@ -90,9 +90,9 @@
 						<Text text="{i18n>trend}" class="taktHeading" />
 						<uiTable:template>
 							<core:Icon class="trendIconLinetracker"
-								src="{parts:['stationDataModel>trend', 'stationDataModel>status'], formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendSrc'}"
+								src="{parts:['stationDataModel>trend', 'stationDataModel>trendException'], formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendSrc'}"
 								tooltip=" "
-								color="{parts:['stationDataModel>trend', 'stationDataModel>status'], formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendColor'}" />
+								color="{parts:['stationDataModel>trend', 'stationDataModel>trendException'], formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendColor'}" />
 						</uiTable:template>
 					</uiTable:Column>
 

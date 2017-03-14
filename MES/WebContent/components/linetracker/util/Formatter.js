@@ -61,11 +61,11 @@ airbus.mes.linetracker.util.Formatter = {
 	 * 
 	 * @return trend symbol
 	 */
-	stationIconTrendSrc : function(bTrend, status) {
-		if (bTrend == "true" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
+	stationIconTrendSrc : function(bTrend, trendException) {
+		if (bTrend == "true" && trendException=="false") {
 			//this.color="#84bd00";
 			return "sap-icon://up"
-		} else if (bTrend == "false" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
+		} else if (bTrend == "false" && trendException=="false") {
 			//this.color="#e4002b";
 			return "sap-icon://down"
 		} else {
@@ -80,10 +80,10 @@ airbus.mes.linetracker.util.Formatter = {
 	 * 
 	 * @return trend color
 	 */
-	stationIconTrendColor : function(bTrend, status) {
-		if (bTrend == "true" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
+	stationIconTrendColor : function(bTrend, trendException) {
+		if (bTrend == "true" && trendException=="false") {
 			return "#84bd00"
-		} else if (bTrend == "false" && (status== "IN_PROGRESS" || status== "COMPLETE")) {
+		} else if (bTrend == "false" && trendException=="false") {
 			return "#e4002b"
 		} else {
 			return "#97999b"
