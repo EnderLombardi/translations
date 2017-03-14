@@ -14,7 +14,7 @@ airbus.mes.stationHandover.util.Formatter = {
 
 		if (oEvt != null) {
 
-			return String(oEvt.SELECED_UI) == "true";
+			return String(oEvt.selected) == "true";
 
 		}
 	},

@@ -2,14 +2,14 @@
 		
    {
       "type": "Local",
-      "key": "Not_Fwd"
+      "key": ""
    },
    {
       "type": "responsability",
-      "key": "Fwd_w_resp"
+      "key": "WITH"
    },
    {
       "type": "noResponsability",
-      "key": "Fwd_w/0_resp"
+      "key": "WITHOUT"
    }
 ]

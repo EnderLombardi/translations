@@ -8,21 +8,21 @@ airbus.mes.stationHandover.util.ModelManager = {
 	i18nModel : undefined,
 	filter : {
 		"search" : undefined,
-//		"type" : new sap.ui.model.Filter({
-//			path : "type",
-//			test : function(oValue) {
-//
-//				if (airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1) {
-//
-//					return true;
-//				} else {
-//
-//					return false;
-//				}
-//			}
-//		}),
+		"responsibilityTransferType" : new sap.ui.model.Filter({
+			path : "responsibilityTransferType",
+			test : function(oValue) {
+
+				if (airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1) {
+
+					return true;
+				} else {
+
+					return false;
+				}
+			}
+		}),
 		"noTime" : new sap.ui.model.Filter("duration", "NE", ""),
-//		"selected" : new sap.ui.model.Filter("selected", "EQ", "false"),
+		"selected" : new sap.ui.model.Filter("SELECED_UI", "EQ", "false"),
 //		"station" : new sap.ui.model.Filter({
 //			path : "ORIGIN_STATION",
 //			test : function(oValue) {
@@ -36,7 +36,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 //				}
 //			}
 //		}),
-//		"aType" : [ "LOCAL" ],
+		"aType" : [ "" ],
 //		"aStation" : [],
 	},
 
@@ -270,24 +270,42 @@ airbus.mes.stationHandover.util.ModelManager = {
 	
 	saveOsw : function() {
 		
-		var aData = airbus.mes.stationHandover.util.ModelManager.aSelected;
+		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").oData;
+		var urlsave  = this.urlModel.getProperty("urlsave");
+		var sPhysicalStationBo =  "WorkCenterBO:" +  airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station;
+		var sSelectedType = sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey();
+		var sTime = sap.ui.getCore().byId("insertOsw--TimePicker");
+		var sDate = "";
+		var dDate = "";
+		
+		if ( sSelectedType != "P" ) {
+			
+			dDate = sSelectedType[0].mProperties.startDate + sTime.getDateValue();
+			sDate = airbus.mes.shell.util.Formatter.dDate2sDate(dDate);
+			
+		}
 				
 		jQuery.ajax({
 			type : 'post',
-			url : geturlRessourcePool,
+			url : urlsave,
 			contentType : 'application/json',
 			async : 'false',
 			data : JSON.stringify({
-				"osw" : aData,					               
+				"site" : airbus.mes.settings.ModelManager.site,
+				"physicalStationBO" : sPhysicalStationBo,
+				"msn" : airbus.mes.settings.ModelManager.msn,
+				"productionGroup" : airbus.mes.settings.ModelManager.prodGroup,
+				"manualDate" : sDate,
+				'insertType' : sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey(),
+				'outstandingWorkOrderInfoList' : [oModel],
 			}),
 
 			success : function(data) {
 
 				try {
 					
-					oViewModel.setData(data);
-					airbus.mes.calendar.oView.getModel("ressourcePoolModel").refresh(true);
-
+					airbus.mes.shell.oView.getController().renderStationHandover();
+					airbus.mes.stationHandover.insertOsw.close();
 				} catch (e) {
 
 					console.log("NO ressource pool load");
@@ -300,6 +318,5 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 			}
 		});
-		
 	},
 };

@@ -138,6 +138,27 @@ airbus.mes.shell.util.Formatter = {
   	  } else {
   		  return true;
   	  }
-	}
+	},
+	/**
+	 Transform object Date to date (without hour)
+	**/
+	dDate2sDate: function (dDate) {
+
+		var sMounth = dDate.getMonth() + 1;
+		var sDay = dDate.getDate();
+		var sHours = dDate.getHours();
+		var sMinutes = dDate.getMinutes();
+		var sSeconds = dDate.getSeconds();
+
+		var aLoop = [sMounth, sDay, sHours, sMinutes, sSeconds]
+
+		aLoop.forEach(function (el, index) {
+			if (el < 10) {
+				aLoop[index] = "0" + aLoop[index];
+			}
+		})
+
+		return dDate.getFullYear() + "-" + aLoop[0] + "-" + aLoop[1] + "T" + aLoop[2] + ":" + aLoop[3] + ":" + aLoop[4];
+	},
 
 };

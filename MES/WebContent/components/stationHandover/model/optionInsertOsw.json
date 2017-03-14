@@ -1,16 +1,16 @@
 [
 	{
 		"type": "insertNextToParentOperation",
-		"key": "insertNextToParentOperation"
+		"key": "P"
 	},
 	{
 		"type": "insertUsingAcpngStart",
-		"key": "insertUsingAcpngStart"
+		"key": "S"
 	},{
 		"type": "insertUsingAcpngEnd",
-		"key": "insertUsingAcpngEnd"
+		"key": "E"
 	},{
 		"type": "insertManual",
-		"key": "insertManual"
+		"key": "M"
 	}
 ]

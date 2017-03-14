@@ -257,7 +257,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		} else {
 
-			airbus.mes.stationHandover.util.ModelManager.filter.selected = new sap.ui.model.Filter("selected", "EQ", "false");
+			airbus.mes.stationHandover.util.ModelManager.filter.selected = new sap.ui.model.Filter("SELECED_UI", "EQ", "false");
 
 		}
 
@@ -351,7 +351,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		}
 			
-			oToTest2.SELECED_UI = bValue;
+			oToTest2.selected = bValue;
 	
 	},
 	/************************************************************************/
@@ -378,7 +378,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		
 	var sSelected = sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey();
 		
-		if (sSelected === "insertNextToParentOperation") {
+		if (sSelected === "P") {
 			sap.ui.getCore().byId("insertOsw--calendar").addDisabledDate(new sap.ui.unified.DateRange({startDate : new Date(0), endDate: new Date(86400000000000)})) 
 			sap.ui.getCore().byId("insertOsw--calendar").destroySelectedDates();
 			sap.ui.getCore().byId("insertOsw--TimePicker").setEnabled(false);
@@ -416,26 +416,27 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").oData.outstandingWorkOrderInfoList;
 		
-		airbus.mes.stationHandover.util.ModelManager.aSelected = [];
+		var aSelected = [];
 		
 		oModel.forEach(function(el){
 			if ( el.SELECED_UI != el.selected ) {
 				
-				airbus.mes.stationHandover.util.ModelManager.aSelected.push(el);
+				aSelected.push(el);
+
 			}			
 			
 				el.outstandingWorkStepInfoList.forEach(function(al){
 				
 					if ( al.SELECED_UI != al.selected ) {
 						
-						airbus.mes.stationHandover.util.ModelManager.aSelected.push(al);
+						aSelected.push(al);
 					}	
 					
 				})
 		})		
 		
 		// Display a dialog to inform if at least one osw is selected or not
-		if (airbus.mes.stationHandover.util.ModelManager.aSelected.length === 0) {
+		if (aSelected.length === 0) {
 			jQuery.sap.require("sap.m.MessageBox");
 
 			sap.m.MessageBox.warning(airbus.mes.stationHandover.oView.getModel("stationHandoverI18n").getProperty("errorSelection"), {
@@ -452,7 +453,6 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		}
 		
-		console.log(airbus.mes.stationHandover.util.ModelManager.aSelected);
 		airbus.mes.stationHandover.insertOsw.open();
 		// Apply default selection of dialog
 		this.selectMode();
@@ -463,13 +463,37 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 * 
 	 **************************************************************************/
 	onInsertPress : function() {
-		var aData = airbus.mes.stationHandover.util.ModelManager.aSelected;
-
 		
-		console.log(JSON.stringify({
-				"osw" : aData,					               
-			}));
-		//airbus.mes.stationHandover.util.ModelManager.saveOsw();
+		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").oData;
+		var sSelectedType = sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey();
+		var sTime = sap.ui.getCore().byId("insertOsw--TimePicker");
+		// Check if time is Set
+		if ( sSelectedType != "P" && sTime.getValue() === "" ) {
+			
+			jQuery.sap.require("sap.m.MessageBox");
+
+			sap.m.MessageBox.warning(airbus.mes.stationHandover.oView.getModel("stationHandoverI18n").getProperty("erorTimeSelection"), {
+
+			});
+			return;
+			
+		}
+		
+		oModel.outstandingWorkOrderInfoList.forEach(function(el){
+			if ( el.SELECED_UI != el.selected ) {
+				
+				delete el["SELECED_UI"];
+
+			}			
+			
+				el.outstandingWorkStepInfoList.forEach(function(al){
+						
+					delete al["SELECED_UI"];
+					
+				})
+		})
+	
+		airbus.mes.stationHandover.util.ModelManager.saveOsw();
 	},
 	
 });
