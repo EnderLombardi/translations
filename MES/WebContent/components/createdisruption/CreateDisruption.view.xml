@@ -130,21 +130,33 @@
 						</VBox>
 					</f:content>
 				</f:SimpleForm>
-
-				<List id="idListDocument" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/'}">
-				<!-- <StandardListItem/> -->
-				<CustomListItem>
-					<HBox class="document-item">
-						<Label class="document-title" text="{DesktopFilesModel>Title}" />
-						<Label class="document-description" text="{DesktopFilesModel>Description}" />
-						<Label class="document-size" text="{DesktopFilesModel>Size}" />
-						<HBox class= "document-button">
-							<core:Icon size="1rem" class="document-edit" src="sap-icon://edit" press="onEditPress" />
-							<core:Icon size="1rem" class="document-delete" src="sap-icon://delete" press="onDeletePress" />
+				<List id="idListDocument" class="sapUiSmallMarginBegin" 
+					items="{path: 'DesktopFilesModel>/'}"
+					visible="{path:'DesktopFilesModel>/', formatter: 'airbus.mes.disruptions.Formatter.isEmpty'}">
+					<!-- <StandardListItem/> -->
+					<headerToolbar class="documnet-toolbar"  >
+						<Toolbar>
+							<Title text="Attached document" />
+							<!--<core:Icon id="document-edit" class="document-edit" src="sap-icon://edit" press="onEditPress" /><HBox id="document-button-edit" class= "document-button-edit" visible="false"><core:Icon id="document-accept" class="document-accept" src="sap-icon://accept" press="onSaveEditPress" /><core:Icon id="document-cancel" class="document-cancel" src="sap-icon://decline" press="onCancelPress" /></HBox><ToolbarSpacer></ToolbarSpacer>-->
+						</Toolbar>
+					</headerToolbar>
+					<CustomListItem id="document-list-item" >
+						<HBox class="document-item">
+							<Label id="document-title" class="document-title" text="{DesktopFilesModel>Title}" />
+							<Label id="document-description" class="document-description" text="{DesktopFilesModel>Description}" />
+							<Input width="60%" id="document-description-input" class="document-description" visible="false" value="{DesktopFilesModel>Description}" />
+							<Label class="document-size" text="{path:'DesktopFilesModel>Size', formatter: 'airbus.mes.disruptions.Formatter.getFileSize'}" />
+							<HBox id="document-button" class= "document-button">
+								<core:Icon id="document-edit-test" class="document-edit" src="sap-icon://edit" press="onEditPress" />
+								<core:Icon class="document-delete" src="sap-icon://delete" press="onDeletePress" />
+							</HBox>
+							<HBox id="document-button-edit" class= "document-button-edit" visible="false">
+								<core:Icon id="document-accept" class="document-accept" src="sap-icon://accept" press="onSaveEditPress" />
+								<core:Icon id="document-cancel" class="document-cancel" src="sap-icon://decline" press="onCancelPress" />
+							</HBox>
 						</HBox>
-					</HBox>
-				</CustomListItem>
-			</List>
+					</CustomListItem>
+				</List>
 			</items>
 		</FlexBox>
 	</Page>

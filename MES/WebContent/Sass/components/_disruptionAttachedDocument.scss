@@ -1,46 +1,92 @@
 #createDisruptionView--idListDocument {
   .document-item {
-    padding: 1rem;
+    // display: flex;
     display: inline-block;
-    width: 100%;
+    text-align: center;
+    vertical-align: middle;
     min-height: 3rem;
-    padding-bottom: .375rem;
+    width: 100%;
+
+
 
     .document-title {
+      padding: 1rem 0;
       font-weight: bold;
       font-size: 1rem;
-      width: 25%;
+      width: 20%;
       float: left;
     }
 
     .document-description {
+      padding: 1rem 0;
       font-size: 1rem;
       width: 60%;
+      margin: 0 2.5%;
       float: left;
     }
 
+    .document-description-input {
+      padding: 0;
+      float: left;
+    }
+    
+    .sapMInputBaseWidthPadding {
+      padding:0; 
+      font-size:1rem;
+      height: 2rem;
+    }
+
+    .sapMInputBaseInner {
+      padding:0; 
+      font-size:1rem;
+      height: 2rem;
+      margin: 0.5rem 0;
+    }
+
     .document-size {
+      padding: 1rem 0;
       font-size: 1rem;
       width: 10%;
       float: left;
     }
 
     .document-button {
-      width: 5%;
-      float: right;
+      padding: 0.7rem 0;
+      widows: 5%;
+      float: left;
 
       .document-edit {
-        font-size: 1rem;
-        width: 5%;
-        float: left;
+        font-size: 1.375rem;
+        color: $sapui-petrol;
+        padding: 0 0.5rem;
       }
 
       .document-delete {
-        font-size: 1rem;
-        width: 5%;
-        float: right;
+        font-size: 1.375rem;
+        padding: 0 0.5rem;
       }
     }
-  }
-}
 
+    .document-button-edit {
+      padding: 0.7rem 0;
+      width: 5%;
+      float: left;
+      // -webkit-flex: 1 0 0;
+      // flex: 1 0 0;
+
+      .document-accept {
+        font-size: 1.5rem;
+        padding: 0 0.5rem;
+        color: green;
+      }
+
+      .document-cancel {
+        font-size: 1.5rem;
+        padding: 0 0.5rem;
+        color: red;
+      }
+    }
+
+  }
+
+}

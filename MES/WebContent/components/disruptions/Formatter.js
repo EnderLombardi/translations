@@ -3,91 +3,91 @@
 jQuery.sap.declare("airbus.mes.disruptions.Formatter");
 
 airbus.mes.disruptions.Formatter = {
-	monthNames : [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
+	monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 
-	status : {
-		"pending" : "Pending",
-		"closed" : "Closed",
-		"acknowledged" : "Acknowledged",
-		"answered" : "Answered",
-		"solved" : "Solved",
-		"rejected" : "Rejected",
-		"deleted" : "Deleted"
+	status: {
+		"pending": "Pending",
+		"closed": "Closed",
+		"acknowledged": "Acknowledged",
+		"answered": "Answered",
+		"solved": "Solved",
+		"rejected": "Rejected",
+		"deleted": "Deleted"
 	},
 
 	/* For ui5-preload gulp task, we need to escape '$' characters */
 
-	actions : {
-		"close" : "close\$\$",
-		"del" : "delete\$\$",
-		"reject" : "reject\$\$",
-		"refuse" : "refuse\$\$",
-		"comment" : "comment\$\$",
-		"acknowledge" : "acknowledge\$\$",
-		"solve" : "solve\$\$",
-		"edit" : "edit\$\$",
-		"create" : "create\$\$",
-		"escalation" : "escalation\$\$",
-		"escalationLevel1" : "escalationLevel1\$\$",
-		"escalationLevel2" : "escalationLevel2\$\$",
-		"update":"update\$\$"
+	actions: {
+		"close": "close\$\$",
+		"del": "delete\$\$",
+		"reject": "reject\$\$",
+		"refuse": "refuse\$\$",
+		"comment": "comment\$\$",
+		"acknowledge": "acknowledge\$\$",
+		"solve": "solve\$\$",
+		"edit": "edit\$\$",
+		"create": "create\$\$",
+		"escalation": "escalation\$\$",
+		"escalationLevel1": "escalationLevel1\$\$",
+		"escalationLevel2": "escalationLevel2\$\$",
+		"update": "update\$\$"
 	},
 
-	opStatus : {
-		'completed' : 'COMPLETED',
-		'paused' : 'IN_QUEUE',
-		'active' : 'IN_WORK',
-		'notStarted' : 'NOT_STARTED',
-		'blocked' : 'Blocked'
+	opStatus: {
+		'completed': 'COMPLETED',
+		'paused': 'IN_QUEUE',
+		'active': 'IN_WORK',
+		'notStarted': 'NOT_STARTED',
+		'blocked': 'Blocked'
 	},
 
-	defaultDateConversion : function(defaultDate, defaultTime) {
+	defaultDateConversion: function (defaultDate, defaultTime) {
 
 		return defaultDate.getFullYear() + "-" + defaultDate.getMonth() + "-" + defaultDate.getDate();
 	},
 
-	setDisruptionTitle : function(iGravity) {
+	setDisruptionTitle: function (iGravity) {
 
 		switch (iGravity) {
-		case "1":
-			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY1");
-			break;
-		case "2":
-			if (airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2") === "Amber"){
-				return "#FFC200";
-			}
-			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2");
-			break;
-		case "3":
-			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY3");
-			break;
-		default:
-			return "";
-			break;
+			case "1":
+				return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY1");
+				break;
+			case "2":
+				if (airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2") === "Amber") {
+					return "#FFC200";
+				}
+				return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2");
+				break;
+			case "3":
+				return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY3");
+				break;
+			default:
+				return "";
+				break;
 		}
 	},
 
-	setGravityText : function(gravity) {
+	setGravityText: function (gravity) {
 
 		var property;
 
 		switch (gravity) {
-		case "1":
-			property = sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("NotBlocked");
-			break;
-		case "2":
-			property = sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("Disturbed");
-			break;
-		case "3":
-			property = sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("Blocked");
-			break;
-		default:
-			break;
+			case "1":
+				property = sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("NotBlocked");
+				break;
+			case "2":
+				property = sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("Disturbed");
+				break;
+			case "3":
+				property = sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("Blocked");
+				break;
+			default:
+				break;
 		}
 		return property;
 	},
 
-	setTimeLostValue : function(timeLost) {
+	setTimeLostValue: function (timeLost) {
 
 		var timeUnit = airbus.mes.disruptions.Formatter.getConfigTimeUnit();
 
@@ -97,17 +97,17 @@ airbus.mes.disruptions.Formatter = {
 
 		return 0 + " " + timeUnit;
 	},
-	
-	formatTimeBeforeEsc: function(sEscLEvel, sTime){
-		if(sEscLEvel == "3"){
+
+	formatTimeBeforeEsc: function (sEscLEvel, sTime) {
+		if (sEscLEvel == "3") {
 			return 'Escalated';
-		} else if(sTime == '') {
+		} else if (sTime == '') {
 			return '-';
 		} else {
 			return sTime;
 		}
 	},
-	
+
 	/*getDate : function(datetime) {
 
 		if (datetime == null || datetime === undefined) {
@@ -131,7 +131,7 @@ airbus.mes.disruptions.Formatter = {
 
 	// New function created for "Required Fix By" as MII parsing error on Date
 	// using getDate function
-	getDate : function(datetime) {
+	getDate: function (datetime) {
 
 		if (datetime == null || datetime === undefined) {
 			var today = new Date();
@@ -154,7 +154,7 @@ airbus.mes.disruptions.Formatter = {
 
 	},
 
-	getTime : function(datetime) {
+	getTime: function (datetime) {
 
 		if (datetime == null || datetime === undefined) {
 			var today = new Date();
@@ -168,7 +168,7 @@ airbus.mes.disruptions.Formatter = {
 
 		}
 	},
-	getDateNoDefault : function(datetime) {
+	getDateNoDefault: function (datetime) {
 
 		if (datetime == null || datetime === undefined) {
 			return "";
@@ -178,9 +178,9 @@ airbus.mes.disruptions.Formatter = {
 
 	},
 
-	getTimeNoDefault : function(datetime) {
+	getTimeNoDefault: function (datetime) {
 
-		if (datetime == null || datetime === undefined) {	
+		if (datetime == null || datetime === undefined) {
 			return "";
 		} else {
 			return datetime.split(" ")[1];
@@ -201,17 +201,17 @@ airbus.mes.disruptions.Formatter = {
 			return "-----"; 	
 	},*/
 
-	setEditButtonVisibility: function(originatorFlag, responsibleFlag, status, expanded){
-		if(expanded != "true")
+	setEditButtonVisibility: function (originatorFlag, responsibleFlag, status, expanded) {
+		if (expanded != "true")
 			return false;
-			
-		else if(originatorFlag != "X" && responsibleFlag != "X")
+
+		else if (originatorFlag != "X" && responsibleFlag != "X")
 			return false;
 
 		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)
 			return false;
 
-		else if (originatorFlag == "X" && responsibleFlag != "X" && (status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered) )
+		else if (originatorFlag == "X" && responsibleFlag != "X" && (status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered))
 			return false;
 
 		/*else if ((status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
@@ -220,23 +220,23 @@ airbus.mes.disruptions.Formatter = {
 		else if ((status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
 			&& responsibleFlag == "X")
 			return false;
-			
+
 		return true;
 	},
 
-	setDeleteButtonVisibility : function(originatorFlag, status, expanded) {
+	setDeleteButtonVisibility: function (originatorFlag, status, expanded) {
 
 		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
-		} else if (originatorFlag == 'X' && expanded =="true") {
+		} else if (originatorFlag == 'X' && expanded == "true") {
 			return true;
 		}
 
 		return false;
 	},
 
-	setCloseButtonVisibility : function(originatorFlag, status ,expanded) {
-		if(expanded != "true") {
+	setCloseButtonVisibility: function (originatorFlag, status, expanded) {
+		if (expanded != "true") {
 			return false;
 		}
 		if (originatorFlag == "X") {
@@ -251,7 +251,7 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setRejectButtonVisibility : function(responsibleFlag, status) {
+	setRejectButtonVisibility: function (responsibleFlag, status) {
 
 		// if (responsibleFlag == "X" && originatorFlag != "X") {
 		if (responsibleFlag == "X") {
@@ -274,14 +274,14 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, resolverID, status, commentBoxOpened) {
-		
-		if(commentBoxOpened === "true") {
+	setAddCommentButtonVisibility: function (originatorFlag, responsibleFlag, resolverID, status, commentBoxOpened) {
+
+		if (commentBoxOpened === "true") {
 			return false;
 		}
-		
-		if( status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered){
-			if (responsibleFlag == "X" && 
+
+		if (status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered) {
+			if (responsibleFlag == "X" &&
 				resolverID == sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"))
 				return true;
 			else
@@ -296,7 +296,7 @@ airbus.mes.disruptions.Formatter = {
 			return true;
 	},
 
-	setAcknowledgeButtonVisibility : function(responsibleFlag, status) {
+	setAcknowledgeButtonVisibility: function (responsibleFlag, status) {
 
 		// if (originatorFlag != "X" && responsibleFlag == "X") {
 		if (responsibleFlag == "X") {
@@ -310,7 +310,7 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setEscalateButtonVisibility : function(originatorFlag, escalation, status) {
+	setEscalateButtonVisibility: function (originatorFlag, escalation, status) {
 
 		if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.deleted
 			|| status == airbus.mes.disruptions.Formatter.status.closed) {
@@ -322,12 +322,12 @@ airbus.mes.disruptions.Formatter = {
 		}
 	},
 
-	setMarkSolvedButtonVisibility : function(responsibleFlag, status) {
+	setMarkSolvedButtonVisibility: function (responsibleFlag, status) {
 
 		// if (originatorFlag != "X" && responsibleFlag == "X") {
 		if (responsibleFlag == "X") {
 
-			if ( status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered) {
+			if (status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered) {
 
 				return true;
 			}
@@ -336,7 +336,7 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setRefuseButtonVisibility : function(originatorFlag, status) {
+	setRefuseButtonVisibility: function (originatorFlag, status) {
 		// if (originatorFlag == "X" && responsibleFlag != "X" && status ==
 		// airbus.mes.disruptions.Formatter.status.solved)
 		if (originatorFlag == "X" && status == airbus.mes.disruptions.Formatter.status.solved) {
@@ -346,15 +346,15 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setEmptyPromisedDateTimeText : function(dateTime) {
+	setEmptyPromisedDateTimeText: function (dateTime) {
 		if (dateTime == "") {
 			return "--:--:--";
 		}
 		return dateTime;
 	},
 
-	textCaseFormat : function(text) {
-		if(text) {
+	textCaseFormat: function (text) {
+		if (text) {
 			text = text.toLowerCase();
 		}
 		return text;
@@ -364,36 +364,37 @@ airbus.mes.disruptions.Formatter = {
 			return "";
 		
 		if (comment && comment.indexOf("\$\$") > -1) {
+
 			action = comment.split("\$\$")[0];
 		}
 		/*sometimes the id constants-text1-[viewId] to remove that we add another split*/
-		var sId= this.sId.split("--")[0];
-		var viewId = sId.split("-")[1]?sId.split("-")[1]:sId.split("-")[0];
+		var sId = this.sId.split("--")[0];
+		var viewId = sId.split("-")[1] ? sId.split("-")[1] : sId.split("-")[0];
 		return sap.ui.getCore().byId(viewId).getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
 	},
-	formatComment : function(comment) {
+	formatComment: function (comment) {
 		if (comment && comment.indexOf("\$\$") > -1) {
-			comment =  comment.split("\$\$");
+			comment = comment.split("\$\$");
 			comment.shift();
 			comment = comment.join();
 		}
-		if(comment == "" || comment == " ") {
-			try{
-			this.setVisible(false);
-			} catch(err){
-				
+		if (comment == "" || comment == " ") {
+			try {
+				this.setVisible(false);
+			} catch (err) {
+
 			}
 		}
 		return comment;
 	},
-	
+
 
 	/*
 	 * setTimeBeforeNextEsc : function(escalationLevel) { if(escalationLevel ==
 	 * 3)
 	 * this.setText(sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("escalated")); },
 	 */
-	setSolutionVisibility : function(solution) {
+	setSolutionVisibility: function (solution) {
 		if (solution == "") {
 			return false;
 		}
@@ -401,7 +402,7 @@ airbus.mes.disruptions.Formatter = {
 		return true;
 	},
 
-	setMaterialqty : function(oText) {
+	setMaterialqty: function (oText) {
 		var loString;
 		var loNewStr;
 		if (oText) {
@@ -418,7 +419,7 @@ airbus.mes.disruptions.Formatter = {
 
 	},
 
-	setOpeningTimeVisibility : function(closureDate) {
+	setOpeningTimeVisibility: function (closureDate) {
 		if (closureDate != "") {
 			return true;
 		}
@@ -426,7 +427,7 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	formatOpeningTime : function(openDate, closureDate) {
+	formatOpeningTime: function (openDate, closureDate) {
 
 		if (closureDate == undefined || closureDate == "") {
 			return 0;
@@ -435,18 +436,18 @@ airbus.mes.disruptions.Formatter = {
 		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
 		var aOpenDate = reggie.exec(openDate);
 		var oOpenDate = new Date((+aOpenDate[1]), (+aOpenDate[2]) - 1, // Careful,
-		// month
-		// starts
-		// at 0!
-		(+aOpenDate[3]), (+aOpenDate[4]), (+aOpenDate[5]), (+aOpenDate[6]));
+			// month
+			// starts
+			// at 0!
+			(+aOpenDate[3]), (+aOpenDate[4]), (+aOpenDate[5]), (+aOpenDate[6]));
 
 		var aClosureDate = reggie.exec(closureDate);
 		var oClosureDate = new Date((+aClosureDate[1]), (+aClosureDate[2]) - 1, // Careful,
-		// month
-		// starts
-		// at
-		// 0!
-		(+aClosureDate[3]), (+aClosureDate[4]), (+aClosureDate[5]), (+aClosureDate[6]));
+			// month
+			// starts
+			// at
+			// 0!
+			(+aClosureDate[3]), (+aClosureDate[4]), (+aClosureDate[5]), (+aClosureDate[6]));
 
 		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
@@ -467,7 +468,7 @@ airbus.mes.disruptions.Formatter = {
 		return openingTime;
 	},
 
-	timeToMilliseconds : function(time) {
+	timeToMilliseconds: function (time) {
 
 		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
@@ -489,9 +490,9 @@ airbus.mes.disruptions.Formatter = {
 		return;
 	},
 
-	timeMillisecondsToConfig : function(time) {
-		
-		if(time == undefined || time == null || time == "") {
+	timeMillisecondsToConfig: function (time) {
+
+		if (time == undefined || time == null || time == "") {
 			return 0;
 		}
 
@@ -512,7 +513,7 @@ airbus.mes.disruptions.Formatter = {
 		return airbus.mes.disruptions.Formatter.removeDecimal(time);
 	},
 
-	getConfigTimeUnit : function() {
+	getConfigTimeUnit: function () {
 
 		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
@@ -532,29 +533,29 @@ airbus.mes.disruptions.Formatter = {
 
 	},
 
-	getConfigTimeFullUnit : function() {
+	getConfigTimeFullUnit: function () {
 
 		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		if (timeUnit == "H") {
 			return "Hours";
-		
+
 		} else if (timeUnit == "IM") {
 			return "Industrial Minutes";
-		
+
 		} else if (timeUnit == "M") {
 			return "Minutes";
-			
+
 		} else if (timeUnit == "D") {
 			return "Days";
-			
+
 		}
 
 		return "";
 
 	},
 
-	removeDecimal : function(num) {
+	removeDecimal: function (num) {
 		var iNum = parseInt(num, 10);
 
 		if (num - iNum == 0) {
@@ -564,13 +565,13 @@ airbus.mes.disruptions.Formatter = {
 		return num;
 	},
 
-	setDisruptionStatus : function(status) {
-		if(status == undefined || status == null || status == "") {
+	setDisruptionStatus: function (status) {
+		if (status == undefined || status == null || status == "") {
 			return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty("Pending");
 		}
 		return sap.ui.getCore().byId(this.sId.split("--")[0]).getModel("i18nModel").getProperty(status);
 	},
-	isStatusFinal : function(status) {
+	isStatusFinal: function (status) {
 		if (status === airbus.mes.disruptions.Formatter.status.closed || status === airbus.mes.disruptions.Formatter.status.solved
 			|| status === airbus.mes.disruptions.Formatter.status.rejected || status === airbus.mes.disruptions.Formatter.status.deleted) {
 			return true;
@@ -583,11 +584,11 @@ airbus.mes.disruptions.Formatter = {
 	 * setNumberofAttachment : function(number) { var sValue = number + "\n" + "
 	 * Attachments"; return sValue; }
 	 */
-	
+
 	/*******************************************************************
 	 * Fields Enable/Disable for Create end screen
 	 */
-	setFivemCategoryEnable : function() {
+	setFivemCategoryEnable: function () {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return true;
 
@@ -596,17 +597,17 @@ airbus.mes.disruptions.Formatter = {
 		}
 
 	},
-	setReasonEnable : function(originatorFlag, status) {
+	setReasonEnable: function (originatorFlag, status) {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return false;
 
-		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X" ){
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X") {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	setResponsibleGrpEnable : function( responsibleFlag, status) {
+	setResponsibleGrpEnable: function (responsibleFlag, status) {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return true;
 		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && responsibleFlag == "X") {
@@ -615,7 +616,7 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 		}
 	},
-	selectResolverEnable : function(responsibleFlag, status) {
+	selectResolverEnable: function (responsibleFlag, status) {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return false;
 
@@ -625,20 +626,20 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 		}
 	},
-	
-	
-	promisedDateEnable : function(responsibleFlag, status){
+
+
+	promisedDateEnable: function (responsibleFlag, status) {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return false;
 
-		} else if (responsibleFlag == "X"  && ( status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.acknowledged)) {
+		} else if (responsibleFlag == "X" && (status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.acknowledged)) {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	
-	expectedDateEnable : function(originatorFlag, status){
+
+	expectedDateEnable: function (originatorFlag, status) {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return true;
 		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X"
@@ -648,7 +649,7 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 		}
 	},
-	expectedTimeEnable : function(originatorFlag, status){
+	expectedTimeEnable: function (originatorFlag, status) {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			return true;
 		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X"
@@ -658,7 +659,7 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 		}
 	},
-	setGravityEnable : function(originatorFlag, status){
+	setGravityEnable: function (originatorFlag, status) {
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create")
 			return true;
 
@@ -667,45 +668,63 @@ airbus.mes.disruptions.Formatter = {
 		else
 			return false;
 	},
-	setIssuerGroupEnable: function(originatorFlag, status){
-		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") 
+	setIssuerGroupEnable: function (originatorFlag, status) {
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create")
 			return true;
 
-		else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X") 
+		else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit" && originatorFlag == "X")
 			return true;
-		
+
 		else
 			return false;
 	},
-	setUpdateButtonVisibility:function(sStatus){
-		if(sStatus == airbus.mes.disruptions.Formatter.status.solved || sStatus == airbus.mes.disruptions.Formatter.status.deleted || sStatus == airbus.mes.disruptions.Formatter.status.closed ){
+	setUpdateButtonVisibility: function (sStatus) {
+		if (sStatus == airbus.mes.disruptions.Formatter.status.solved || sStatus == airbus.mes.disruptions.Formatter.status.deleted || sStatus == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
-		}else
+		} else
 			return true;
 	},
-	workCenterText:function(workCenter){
-		var sText ;
-		if(workCenter){
-		sText = workCenter.split(",").pop();
+	workCenterText: function (workCenter) {
+		var sText;
+		if (workCenter) {
+			sText = workCenter.split(",").pop();
 		}
 		return sText;
 	},
-	
-	setVisibilityShowCommentsButton: function(totalComments, showPrevComment){
-		if(totalComments == "" || totalComments <= 1 || showPrevComment == "true")
+
+	setVisibilityShowCommentsButton: function (totalComments, showPrevComment) {
+		if (totalComments == "" || totalComments <= 1 || showPrevComment == "true")
 			return false;
 		else return true;
 	},
-	
-	setFilterForComments: function(showAllFlag, totalComments, counter){
-		if(showAllFlag == "true"){
+
+	setFilterForComments: function (showAllFlag, totalComments, counter) {
+		if (showAllFlag == "true") {
 			return true;
-			
+
 			// Show only latest comment
-		} else if((totalComments + 1) == counter){
+		} else if ((totalComments + 1) == counter) {
 			return true;
-		} else{
+		} else {
 			return false;
 		}
+	},
+
+	isEmpty: function (obj) {
+		if (!obj || !obj.length) {
+			return false;
+		}
+		return true;
+	},
+
+	getFileSize: function (bytes) {
+		var decimals = 1;
+		if (bytes == 0) return '0 Bytes';
+		var k = 1000,
+			dm = decimals + 1 || 3,
+			sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+			i = Math.floor(Math.log(bytes) / Math.log(k));
+		return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 	}
+
 };
