@@ -1,12 +1,18 @@
 <core:FragmentDefinition xmlns="sap.m"
     xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
-    <Dialog title="{i18n>userConfirmation}" type="Message" id="partial" width="70% !important" height="100%" >
+    <Dialog title="{i18n>userConfirmation}" type="Message" id="partial">
             <content>
             <VBox>
-	            <HBox id="scanButtonEnd" >
+            
+            	 <HBox id="scanButtonEnd" >
 	                <Button id="scanButton" icon="sap-icon://business-card" text="{i18n>scan}" type="Emphasized" press="onScanConfirmation" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
 	            </HBox>
-	            <HBox >
+	           
+	            <HBox class="messageHBox">
+					     <MessageStrip id="msgstrpConfirm" visible="false" showIcon="true" showCloseButton="true"></MessageStrip>
+				</HBox>
+				
+				<HBox>
 					<HBox id="confirmationCheckList" >
 					    <Button type="Transparent" icon="" class=""  id="QAWA"  text="{i18n>qawa}"/>
 					    <Button type="Transparent" icon="" class="" id="serialNumberRecorded" text="{i18n>serialRecorded}"/>
@@ -14,17 +20,11 @@
 					    <Button type="Transparent" icon="" class="" id="noOpenNC" text="{i18n>openNcExist}"/>
 					    <Button type="Transparent" icon="" class="" id="inspectionStatus" text="{i18n>inspectionStatus}"/>
 					</HBox>
-					
-					 <HBox class="messageHBox">
-					     <MessageStrip id="msgstrpConfirm" visible="false" showIcon="true"
-					         showCloseButton="true">
-					     </MessageStrip>
-					 </HBox>
+										 
 				     <HBox id="partialConfirmForm" >
 					     <f:SimpleForm id="partialConfirm" 
 					         maxContainerCols="3" editable="true" layout="ResponsiveGridLayout"
-					         labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
-					         columnsL="3" columnsM="3">
+					         labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="3">
 					         <f:content>
 					             <Label text="{i18n>UID}" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
 					             <Input id="UIDForConfirmation" type="Text"
@@ -41,9 +41,7 @@
 					                 placeholder="{i18n>username}" liveChange="usernameLive" />
 					
 					             <Label text="{i18n>password}" required="true" />
-					             <Input id="passwordForConfirmation" type="Password"
-					                 placeholder="{i18n>password}" liveChange="passwordLive" />
-					
+					             <Input id="passwordForConfirmation" type="Password" placeholder="{i18n>password}" liveChange="passwordLive" />
 					         </f:content>
 					     </f:SimpleForm>
 					 </HBox>
