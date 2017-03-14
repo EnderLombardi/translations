@@ -197,8 +197,7 @@
 						</HBox>
  
 						<List showNoData="false" class="sapUiSmallMarginBeginEnd" visible="{=${operationDisruptionsModel>prevCommentsLoaded} === 'true'}"
-								items="{path: 'operationDisruptionsModel>disruptionComments', 
-								    filters: [ { path: 'action', operator: 'NE',value1: 'CREATE' } ]}">
+								items="{path: 'operationDisruptionsModel>disruptionComments'}">
 						
 						<!-- 	items="{path: 'operationDisruptionsModel>disruptionComments', 
 								    filters: [ { parts: [ {path: 'operationDisruptionsModel>prevCommentsLoaded'}, {path: 'operationDisruptionsModel>totalComments'}, {path: 'counter'} ], formatter: 'airbus.mes.disruptions.Formatter.setFilterForComments'} ]}"> -->

@@ -132,19 +132,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		// promised date has to be visible while editing
 		oView.byId("promisedDateLabel").setVisible(true);
 		oView.byId("promisedDate").setVisible(true);
-		oView.byId("promisedTime").setVisible(true);
-		
-		// Make un-editabe new fields
-//		if(this.getView().sId == "createDisruptionView"){
-//			this.getView().byId("bomItem").setEnabled(false);
-//			this.getView().byId("area").setEnabled(false);
-//			this.getView().byId("plan").setEnabled(false);
-//			this.getView().byId("ribs").setEnabled(false);
-//			this.getView().byId("view").setEnabled(false);
-//			this.getView().byId("stringer").setEnabled(false);
-//			this.getView().byId("stringer_rail").setEnabled(false);
-//			
-//		}
+		oView.byId("promisedTime").setVisible(true);		
 	},
 
 	createDisruptionSettings : function() {
@@ -172,15 +160,15 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("timeLost").setValue("");
 		
 		// Make editabe new fields
-//		if(this.getView().sId == "createDisruptionView"){
-//			this.getView().byId("bomItem").setEnabled(true);
-//			this.getView().byId("area").setEnabled(true);
-//			this.getView().byId("plan").setEnabled(true);
-//			this.getView().byId("ribs").setEnabled(true);
-//			this.getView().byId("view").setEnabled(true);
-//			this.getView().byId("stringer").setEnabled(true);
-//			this.getView().byId("stringer_rail").setEnabled(true);
-//		}
+		if(this.getView().sId == "createDisruptionView"){
+			this.getView().byId("bomItem").setEnabled(true);
+			this.getView().byId("area").setEnabled(true);
+			this.getView().byId("plan").setEnabled(true);
+			this.getView().byId("ribs").setEnabled(true);
+			this.getView().byId("view").setEnabled(true);
+			this.getView().byId("stringer").setEnabled(true);
+			this.getView().byId("stringer_rail").setEnabled(true);
+		}
 
 	},
 	
@@ -196,11 +184,23 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		this.getView().byId("expectedTime").setEnabled(true);
 		this.getView().byId("gravity").setEnabled(true);
 		this.getView().byId("timeLost").setEnabled(false);
-		this.getView().byId("materials").setEnabled(false);
-		this.getView().byId("jigtools").setEnabled(false);
+		this.getView().byId("materials").setEnabled(true);
+		this.getView().byId("jigtools").setEnabled(true);
 
 		if(this.getView().byId("selectResolver")){
 			this.getView().byId("selectResolver").setEnabled(true);
+		}
+		
+		// Make non-Editable new fields
+		if(this.getView().sId == "createDisruptionView"){
+			this.getView().byId("bomItem").setEnabled(true);
+			this.getView().byId("area").setEnabled(true);
+			this.getView().byId("plan").setEnabled(true);
+			this.getView().byId("ribs").setEnabled(true);
+			this.getView().byId("view").setEnabled(true);
+			this.getView().byId("stringer").setEnabled(true);
+			this.getView().byId("stringer_rail").setEnabled(true);
+			
 		}
 	},
 	resolutionGroupSettings : function() {
@@ -219,6 +219,18 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		if(this.getView().byId("selectResolver")){
 			this.getView().byId("selectResolver").setEnabled(true);
 		}
+		
+		// Make non-Editable new fields
+		if(this.getView().sId == "createDisruptionView"){
+			this.getView().byId("bomItem").setEnabled(false);
+			this.getView().byId("area").setEnabled(false);
+			this.getView().byId("plan").setEnabled(false);
+			this.getView().byId("ribs").setEnabled(false);
+			this.getView().byId("view").setEnabled(false);
+			this.getView().byId("stringer").setEnabled(false);
+			this.getView().byId("stringer_rail").setEnabled(false);
+			
+		}
 	},
 
 	originatorGroupSettings : function() {
@@ -232,10 +244,22 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("expectedTime").setEnabled(true);
 		oView.byId("gravity").setEnabled(true);
 		oView.byId("timeLost").setEnabled(false);
-		oView.byId("materials").setEnabled(false);
-		oView.byId("jigtools").setEnabled(false);
+		oView.byId("materials").setEnabled(true);
+		oView.byId("jigtools").setEnabled(true);
 		if(this.getView().byId("selectResolver")){
 			this.getView().byId("selectResolver").setEnabled(true);
+		}
+		
+		// Make non-Editable new fields
+		if(this.getView().sId == "createDisruptionView"){
+			this.getView().byId("bomItem").setEnabled(true);
+			this.getView().byId("area").setEnabled(true);
+			this.getView().byId("plan").setEnabled(true);
+			this.getView().byId("ribs").setEnabled(true);
+			this.getView().byId("view").setEnabled(true);
+			this.getView().byId("stringer").setEnabled(true);
+			this.getView().byId("stringer_rail").setEnabled(true);
+			
 		}
 	},
 
@@ -309,8 +333,17 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		
 	},
 	createDisruption:function(reportAndCloseFlag){
-	
+
 		var oView = airbus.mes.createdisruption.oView;
+		var sCategory = oView.byId("selectCategory").getSelectedKey();
+		var sBomItem  = oView.byId("bomItem").getValue();
+		
+		// BOM Item is mandatory if Object is PART
+		if(sCategory.indexOf("PART") > -1  && sBomItem == ""){
+			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("BoMMandatory"));
+			return;
+		}
+	
 		var sJigtools = oView.getController().getSelectedJIgTool();
 		if (sJigtools == undefined) {
 			sJigtools = ""
@@ -328,7 +361,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			sHandle = oView.getModel("disruptionRsnRespGrp").getProperty(sPathReason).HANDLE;
 		}
 		
-		var sCategory = oView.byId("selectCategory").getSelectedKey();
 		var sComment = airbus.mes.disruptions.Formatter.actions.create + oView.byId("comment").getValue();
 
 		var aModelData = []
@@ -396,7 +428,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"value" : oView.byId("plan").getValue()
 				}, {
 					"attribute" : "BOM_ITEM",
-					"value" : oView.byId("bomItem").getValue()
+					"value" : sBomItem
 				}, {
 					"attribute" : "RIBS",
 					"value" : oView.byId("ribs").getValue()
@@ -476,9 +508,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		var sReason = oView.byId("selectAttribute").getSelectedKey();
 		var sResponsibleGroup = oView.byId("selectResponsibleGrp").getSelectedKey();
 
-		// -[MES V1.5] root cause removed
-		// var sRootCause = oView.byId("selectRootCause").getSelectedKey();
-
 		var iTimeLost = airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue());
 		var dFixedByTime = oView.byId("expectedDate").getValue() + " " + oView.byId("expectedTime").getValue();
 		var sComment = airbus.mes.disruptions.Formatter.actions.edit + oView.byId("comment").getValue();
@@ -486,8 +515,25 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		var dPromisedTime = oView.byId("promisedDate").getValue() === "" ? "" : oView.byId("promisedDate").getValue() + " "
 			+ oView.byId("promisedTime").getValue();
 		
+		var sJigtools = oView.getController().getSelectedJIgTool();
+		if (sJigtools == undefined) {
+			sJigtools = ""
+		}
+
+		var sMaterials = oView.getController().getSelectedMaterials();
+		if (sMaterials == undefined) {
+			sMaterials = ""
+		}
+		
 		var oJson = {
 			"payload" : [
+				{
+					"attribute" : "MATERIALS",
+					"value" : sMaterials
+				}, {
+					"attribute" : "JIG_TOOLS",
+					"value" : sJigtools
+				},
 				{
 					"attribute" : "AREA",
 					"value" : oView.byId("area").getValue()

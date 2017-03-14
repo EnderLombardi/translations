@@ -199,19 +199,4 @@ airbus.mes.disruptiontracker.Formatter = {
 			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("status." + status.toLowerCase());
 	},
 
-
-//	/**
-//	 * Set Disruption table visible on the basis of Roles
-//	 */
-//
-//	setVisible : function(){
-////    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DISRUPTION_LIST === true ){
-////    	return true;
-////    	} else { 
-////    	return false;
-////    	}
-//		return true;
-//	}
-
-
 };

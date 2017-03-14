@@ -62,7 +62,7 @@ airbus.mes.disruptions.ModelManager = {
 				"workCenterBO" : workCenterBO,
 				"operationNo" : operation,
 				"sfcStepBO" : sSfcStepRef,
-				"userBO" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"userBO" : "UserBO:"+airbus.mes.settings.ModelManager.site+","+sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"msnNumber" : ""
 			}),
 

@@ -188,8 +188,7 @@
 			<f:content>
 				<VBox>
 					<List showNoData="false"
-						class="sapUiSmallMarginBeginEnd" items="{path: 'DisruptionDetailModel>/disruptionComments', 
-						filters: [{ path: 'action', operator: 'NE',value1: 'CREATE' } ]}">
+						class="sapUiSmallMarginBeginEnd" items="{path: 'DisruptionDetailModel>/disruptionComments'}">
 						<CustomListItem class="msgColor">
 							<HBox
 								class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
