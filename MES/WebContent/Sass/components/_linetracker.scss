@@ -107,12 +107,14 @@ Linetracker View (Main Table)
     }
 
     .classLineTrackerTable table tr td:nth-child(2) {
-        background-image: url("grid.svg");
+        //background-image: url("grid.png");
+        background-image:repeating-linear-gradient(90deg, rgba(153, 153, 153, 0.50), rgba(153, 153, 153, 0.50) 2px, #EAFBFD 1px, #EAFBFD 10%);
         vertical-align: middle !important;
     }
 
     .classLineTrackerTable table tr th:nth-child(2) {
-        background-image: url("grid.svg");
+        //background-image: url("grid.png");
+        background-image:repeating-linear-gradient(90deg, rgba(153, 153, 153, 0.50), rgba(153, 153, 153, 0.50) 2px, #EAFBFD 1px, #EAFBFD 10%);
         vertical-align: middle !important;
     }
 
