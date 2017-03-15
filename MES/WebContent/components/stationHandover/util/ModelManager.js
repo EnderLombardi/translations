@@ -43,7 +43,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 	init : function(core) {
 
-		var aModel = [ "oswModel", "msnModel", "typeModel", "groupModel", "phStation", "optionInsertOsw" ]
+		var aModel = [ "oswModel", "msnModel", "typeModel", "groupModel", "phStation", "optionInsertOsw" , "productionGroup" ]
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 
 		//core.getModel("oswModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onOswLoad);
@@ -291,6 +291,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 		var urlsave  = this.urlModel.getProperty("urlsave");
 		var sPhysicalStationBo =  "WorkCenterBO:" +  airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station;
 		var sSelectedType = sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey();
+		var sProductionGroup = airbus.mes.stationHandover.oView.getModel("productionGroup").getProperty("/Rowsets/Rowset/0/Row/0/PP_STATION");
 		var sTime = sap.ui.getCore().byId("insertOsw--TimePicker");
 		var sTimeDate = sap.ui.getCore().byId("insertOsw--calendar");
 		var sDate = "";
@@ -311,7 +312,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 				"site" : airbus.mes.settings.ModelManager.site,
 				"physicalStationBO" : sPhysicalStationBo,
 				"msn" : airbus.mes.settings.ModelManager.msn,
-				"productionGroup" : airbus.mes.settings.ModelManager.prodGroup,
+				"productionGroup" : sProductionGroup,
 				"manualDate" : sDate,
 				'insertType' : sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey(),
 				'outstandingWorkOrderInfoList' : [oModel.outstandingWorkOrderInfoList],
@@ -326,7 +327,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 				"site" : airbus.mes.settings.ModelManager.site,
 				"physicalStationBO" : sPhysicalStationBo,
 				"msn" : airbus.mes.settings.ModelManager.msn,
-				"productionGroup" : airbus.mes.settings.ModelManager.prodGroup,
+				"productionGroup" : sProductionGroup,
 				"manualDate" : sDate,
 				'insertType' : sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey(),
 				'outstandingWorkOrderInfoList' : [oModel],
@@ -351,4 +352,17 @@ airbus.mes.stationHandover.util.ModelManager = {
 			}
 		});
 	},
+	
+	loadProductionGroup: function () {
+
+        var oData = airbus.mes.settings.ModelManager;
+        var geturlstationtracker = this.urlModel.getProperty('urlproductiongroup');
+		var oViewModel = airbus.mes.stationHandover.oView.getModel("productionGroup");
+
+        geturlstationtracker = airbus.mes.shell.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
+        geturlstationtracker = airbus.mes.shell.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.site);
+        
+        oViewModel.loadData(geturlstationtracker, null, true);
+
+    },
 };

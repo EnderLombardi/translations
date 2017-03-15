@@ -389,6 +389,7 @@ sap.ui.controller(
 	
 				var oManager = airbus.mes.stationHandover.util.ModelManager;
 	
+				oManager.loadProductionGroup();
 				oManager.getMsn();
 				oManager.loadOsw();
 				oManager.loadType();
