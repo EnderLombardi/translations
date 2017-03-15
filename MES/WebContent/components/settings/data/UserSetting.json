@@ -1,156 +1,26 @@
-{
-   "Rowsets": {
-      "DateCreated": "2016-11-10T11:02:20",
-      "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
-      "StartDate": "2016-11-10T10:02:20+0100",
-      "EndDate": "2016-11-10T11:02:20+0100",
-      "CachedTime": "",
-      "Rowset": [
-         {
-            "Columns": {
-               "Column": [
-                  {
-                     "Name": "user",
-                     "SourceColumn": "user",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "program",
-                     "SourceColumn": "program",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "line",
-                     "SourceColumn": "line",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "station",
-                     "SourceColumn": "station",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "msn",
-                     "SourceColumn": "msn",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "current_flag",
-                     "SourceColumn": "current_flag",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "site",
-                     "SourceColumn": "site",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "language",
-                     "SourceColumn": "language",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "programDescription",
-                     "SourceColumn": "programDescription",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "lineDescription",
-                     "SourceColumn": "lineDescription",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "stationDescription",
-                     "SourceColumn": "stationDescription",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "siteDescription",
-                     "SourceColumn": "siteDescription",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "Takt_Duration",
-                     "SourceColumn": "Takt_Duration",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "Takt_Start",
-                     "SourceColumn": "Takt_Start",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  },
-                  {
-                     "Name": "Takt_End",
-                     "SourceColumn": "Takt_End",
-                     "Description": "",
-                     "SQLDataType": 1,
-                     "MinRange": 1,
-                     "MaxRange": 1
-                  }
-               ]
-            },
-            "Row": [
-               {
-                  "user": "NG560DB",
-                  "program": "A330",
-                  "line": "A330_LINE_GROUP_1",
-                  "station": "PHYS_ST_IP3",
-                  "msn": "---",
-                  "current_flag": "X",
-                  "site": "FNZ1",
-                  "language": "en",
-                  "programDescription": "A330",
-                  "lineDescription": "A330 Line Group 1",
-                  "stationDescription": "IP3 Physical Station Mod",
-                  "siteDescription": "Saint Nazaire",
-                  "Takt_Duration": "---",
-                  "Takt_Start": "2016-12-01 10:00:59",
-                  "Takt_End": "2016-12-30 15:00:00"
-               } 
-            ]
-         }
-      ]
-   }
-}
+{ "Rowsets" : { 
+	"DateCreated" : "2017-03-15T11:06:06", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-03-15T10:06:06+0100", "EndDate" : "2017-03-15T11:06:06+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "user", "SourceColumn" : "user", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "program", "SourceColumn" : "program", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "line", "SourceColumn" : "line", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "station", "SourceColumn" : "station", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "msn", "SourceColumn" : "msn", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "current_flag", "SourceColumn" : "current_flag", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "site", "SourceColumn" : "site", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "language", "SourceColumn" : "language", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "programDescription", "SourceColumn" : "programDescription", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "lineDescription", "SourceColumn" : "lineDescription", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "stationDescription", "SourceColumn" : "stationDescription", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "siteDescription", "SourceColumn" : "siteDescription", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Takt_Duration", "SourceColumn" : "Takt_Duration", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Takt_Start", "SourceColumn" : "Takt_Start", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Takt_End", "SourceColumn" : "Takt_End", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "customLineBO", "SourceColumn" : "customLineBO", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "user" : "NG560DB", "program" : "A330", "line" : "PA", "station" : "PA_IP1-2-OW", "msn" : "01782", "current_flag" : "X", "site" : "FNZ1", "language" : "en", "programDescription" : "AL SAINT NAZAIRE", "lineDescription" : "Pointe Avant", "stationDescription" : "OW \"ACPNG\" Test", "siteDescription" : "Saint Nazaire", "Takt_Duration" : "6", "Takt_Start" : "2017-03-09T22:00:00", "Takt_End" : "2017-03-10T04:00:00", "customLineBO" : "---" } ]
+		 } ]
+	 }
+ }

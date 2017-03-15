@@ -160,5 +160,14 @@ airbus.mes.shell.util.Formatter = {
 
 		return dDate.getFullYear() + "-" + aLoop[0] + "-" + aLoop[1] + "T" + aLoop[2] + ":" + aLoop[3] + ":" + aLoop[4];
 	},
+	
+	/**
+	 * Formatter to parse dates from XML (from string to Date)
+	 */
+	jsDateFromDayTimeStr : function(day) {
+		
+		return new Date(day.slice(0,4),day.slice(5,7)-1,day.slice(8,10),day.slice(11,13),day.slice(14,16),day.slice(17,19));
+		
+	},
 
 };

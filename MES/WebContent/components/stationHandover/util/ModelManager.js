@@ -3,7 +3,8 @@ jQuery.sap.declare("airbus.mes.stationHandover.util.ModelManager");
 
 airbus.mes.stationHandover.util.ModelManager = {
 	urlModel : undefined,
-	aSelected : [],
+	aSelectedStartDate : [],
+	aSelectedEndDate : [],
 	queryParams : jQuery.sap.getUriParameters(),
 	i18nModel : undefined,
 	filter : {
@@ -22,7 +23,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 			}
 		}),
 		"noTime" : new sap.ui.model.Filter("duration", "NE", ""),
-		"selected" : new sap.ui.model.Filter("SELECED_UI", "EQ", "false"),
+		"selected" : new sap.ui.model.Filter("SELECTED_UI", "EQ", "false"),
 //		"station" : new sap.ui.model.Filter({
 //			path : "ORIGIN_STATION",
 //			test : function(oValue) {
@@ -219,7 +220,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 				
 				aModel[indice].outstandingWorkStepInfoList.forEach(function(al, indice1) {
 					
-					al.SELECED_UI = al.selected;
+					al.SELECTED_UI = al.selected;
 					aSelected.push(al.selected);
 					
 				})
@@ -227,12 +228,12 @@ airbus.mes.stationHandover.util.ModelManager = {
 				// That mean all child are not selected so the parent need to be unselect
 				if ( aSelected.indexOf("false") > -1 ) {
 					
-					el.SELECED_UI = "false";
+					el.SELECTED_UI = "false";
 					el.selected = "false";
 					
 				} else {
 					
-					el.SELECED_UI = "true";
+					el.SELECTED_UI = "true";
 					el.selected = "true";
 
 				}
@@ -291,16 +292,31 @@ airbus.mes.stationHandover.util.ModelManager = {
 		var sPhysicalStationBo =  "WorkCenterBO:" +  airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station;
 		var sSelectedType = sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey();
 		var sTime = sap.ui.getCore().byId("insertOsw--TimePicker");
+		var sTimeDate = sap.ui.getCore().byId("insertOsw--calendar");
 		var sDate = "";
 		var dDate = "";
 		
 		if ( sSelectedType != "P" ) {
 			
-			dDate = sSelectedType[0].mProperties.startDate + sTime.getDateValue();
+			dDate = new Date(sTimeDate.getSelectedDates()[0].mProperties.startDate);
+			dDate.setHours(sTime.getDateValue().getHours());
+			dDate.setMinutes(sTime.getDateValue().getMinutes());
+			dDate.setSeconds(sTime.getDateValue().getSeconds());
+
 			sDate = airbus.mes.shell.util.Formatter.dDate2sDate(dDate);
 			
 		}
-				
+		
+		console.log(JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"physicalStationBO" : sPhysicalStationBo,
+				"msn" : airbus.mes.settings.ModelManager.msn,
+				"productionGroup" : airbus.mes.settings.ModelManager.prodGroup,
+				"manualDate" : sDate,
+				'insertType' : sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey(),
+				'outstandingWorkOrderInfoList' : [oModel.outstandingWorkOrderInfoList],
+			}));
+		
 		jQuery.ajax({
 			type : 'post',
 			url : urlsave,
