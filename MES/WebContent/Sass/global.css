@@ -4935,6 +4935,8 @@ END OF QUARANTINE
 
 #createDisruptionView--idListDocument .document-item .document-button-edit .document-cancel { font-size: 1.5rem; padding: 0 0.5rem; color: red; }
 
+#video-area { height: 400px; width: 500px; }
+
 /*************
 GENERALE RULES
 **************/
