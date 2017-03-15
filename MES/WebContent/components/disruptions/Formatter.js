@@ -360,8 +360,9 @@ airbus.mes.disruptions.Formatter = {
 		return text;
 	},
 	formatCommentAction : function(action, comment) {
-		if(!action)
+		if(!action) {
 			return "";
+		}
 		
 		if (comment && comment.indexOf("\$\$") > -1) {
 
