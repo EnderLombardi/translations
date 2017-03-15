@@ -555,6 +555,10 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 	},
 
 	onEscalateDisruption : function(oEvent) {
+		
+		// Set Busy
+		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
+		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
 
 		var msgRef = sap.ui.getCore().byId("disruptionCommentMsgRef").getText();
 		var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();

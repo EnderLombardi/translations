@@ -378,12 +378,13 @@ airbus.mes.disruptions.Formatter = {
 			comment.shift();
 			comment = comment.join();
 		}
-		if (comment == "" || comment == " ") {
-			try {
+		try {
+			if (comment == "" || comment == " ") {
 				this.setVisible(false);
-			} catch (err) {
-
+			} else{
+				this.setVisible(true);
 			}
+		} catch (err){
 		}
 		return comment;
 	},
