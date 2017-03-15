@@ -371,10 +371,8 @@ airbus.mes.shell.util.navFunctions = {
         if (airbus.mes.ncdisplay === undefined || airbus.mes.ncdisplay.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.ncdisplay", "../components/ncdisplay");
             sap.ui.getCore().createComponent({ name: "airbus.mes.ncdisplay" });
-        } else { // or load data
-            airbus.mes.ncdisplay.util.ModelManager.loadNcDisplayData();
-            airbus.mes.ncdisplay.util.ModelManager.operationData = airbus.mes.ncdisplay.util.ModelManager.getOperationData();
         }
+        
         if (container.getPage("ncdisplayView") === null) {
             container.addPage(airbus.mes.ncdisplay.oView);
         }

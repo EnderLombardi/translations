@@ -3,14 +3,15 @@ jQuery.sap.declare("airbus.mes.operationdetail.Formatter");
 
 airbus.mes.operationdetail.Formatter = {
 
-    status:{'completed'    : 'COMPLETED',
-            'paused'    : 'IN_QUEUE',
-            'active'    : 'IN_WORK',
-            'notStarted': 'NOT_STARTED',
-            'blocked'    : 'Blocked'
+    status: {
+        'completed': 'COMPLETED',
+        'paused': 'IN_QUEUE',
+        'active': 'IN_WORK',
+        'notStarted': 'NOT_STARTED',
+        'blocked': 'Blocked'
     },
 
-    setSliderStatus : function(status, progress) {
+    setSliderStatus: function (status, progress) {
         switch (status) {
             case airbus.mes.operationdetail.Formatter.status.completed:
                 return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("confirmed");
@@ -30,7 +31,7 @@ airbus.mes.operationdetail.Formatter = {
         }
     },
 
-    sliderStatusFirst : function(status, progress) {
+    sliderStatusFirst: function (status, progress) {
         if (typeof progress == "undefined")
             return;
         this.removeStyleClass("dynProgressSlider");
@@ -52,7 +53,7 @@ airbus.mes.operationdetail.Formatter = {
         }
     },
 
-    sliderStatus : function(status, progress) {
+    sliderStatus: function (status, progress) {
         if (typeof progress == "undefined")
             return;
 
@@ -67,12 +68,12 @@ airbus.mes.operationdetail.Formatter = {
             return "0%";
         } else {
             this.addStyleClass("dynProgressSlider");
-            return (100 - parseInt(progress,10)) + "%";
+            return (100 - parseInt(progress, 10)) + "%";
         }
     },
 
 
-    displayOriginalPlan : function(startTime, endTime) {
+    displayOriginalPlan: function (startTime, endTime) {
         if (endTime !== undefined && startTime !== undefined) {
             var newStartTime = startTime.replace("T", " ");
             var newEndTime = endTime.replace("T", " ");
@@ -82,16 +83,16 @@ airbus.mes.operationdetail.Formatter = {
         }
     },
 
-    displayValueOrDash : function( sDate ) {
-        if ( sDate != undefined && sDate != "" ) {
+    displayValueOrDash: function (sDate) {
+        if (sDate != undefined && sDate != "") {
             return sDate;
         } else {
             return "-";
         }
     },
 
-    checkOperationStartEndDate:function(startTime, endTime,endDate){
-        if (endDate === undefined || endDate === 'TimeUnavailable'){
+    checkOperationStartEndDate: function (startTime, endTime, endDate) {
+        if (endDate === undefined || endDate === 'TimeUnavailable') {
             var newStartTime = startTime.replace("T", " ");
             var newEndTime = endTime.replace("T", " ");
             return newStartTime + " - " + newEndTime;
@@ -99,15 +100,15 @@ airbus.mes.operationdetail.Formatter = {
             return endDate;
     },
 
-    displayBadge : function(){
+    displayBadge: function () {
         return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVE");
     },
 
-    displayPin : function(){
+    displayPin: function () {
         return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
     },
 
-    displaySeperator : function() {
+    displaySeperator: function () {
         if (airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVE")
             || airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN")) {
             return true;
@@ -116,35 +117,35 @@ airbus.mes.operationdetail.Formatter = {
     },
 
     //convert the duration in milliseconde from the json in IM
-    convertMStoIM : function(){
+    convertMStoIM: function () {
         var duration = airbus.mes.operationdetail.ModelManager.durationNeededForCalc;
-        var convert = ((duration * 100 * 0.001)/3600).toFixed(0);
-        return parseInt(convert,10);
+        var convert = ((duration * 100 * 0.001) / 3600).toFixed(0);
+        return parseInt(convert, 10);
     },
     //convert value from the progress bar in IM
-    convertProgressBarToImField : function(progress){
+    convertProgressBarToImField: function (progress) {
         var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
         var result = (duration * (progress / 100)).toFixed(0);
         return result;
     },
     // convert Value from IM Input in value % value for the progress bar
-    convertImFieldToProgressBar : function(im){
+    convertImFieldToProgressBar: function (im) {
         var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
         var result = (im * 100 / duration).toFixed(0);
         return result;
     },
     //Progress bar syncronised with the IM Input for changes.
     // and verification on the input type.
-    liveChangeIm : function(event){
+    liveChangeIm: function (event) {
         var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
         var sMinValue = parseFloat(airbus.mes.operationdetail.Formatter.convertProgressBarToImField(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/progress")));
 
-        if(sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange != undefined){
-            if(sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange.length >= 1)
-            sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange.length = null;
+        if (sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange != undefined) {
+            if (sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange.length >= 1)
+                sap.ui.getCore().byId("imTextArea").mEventRegistry.liveChange.length = null;
         }
-        if(duration != "0" || duration != 0){
-            sap.ui.getCore().byId("imTextArea").attachLiveChange(function() {
+        if (duration != "0" || duration != 0) {
+            sap.ui.getCore().byId("imTextArea").attachLiveChange(function () {
 
                 // value from im field
                 var value = sap.ui.getCore().byId("imTextArea").getValue();
@@ -152,7 +153,7 @@ airbus.mes.operationdetail.Formatter = {
                 // Regex to prevent other input than number
                 value = value.replace(/[^0-9]+/g, '');
 
-                if(sap.ui.getCore().byId("imTextArea").getValue() != value){
+                if (sap.ui.getCore().byId("imTextArea").getValue() != value) {
                     // Reset field if other value than number
                     sap.ui.getCore().byId("imTextArea").setValue(value);
                 }
@@ -164,107 +165,97 @@ airbus.mes.operationdetail.Formatter = {
                 //var dynamicCoversion = airbus.mes.operationdetail.Formatter.convertImFieldToProgressBar(sap.ui.getCore().byId("imTextArea").getValue()) + "%";
                 value = parseFloat(value);
                 //if the value the user input is higher than the durantion we reset it
-                if(value >= duration){
+                if (value >= duration) {
                     sap.ui.getCore().byId("imTextArea").setValue(duration);
-                	sap.ui.getCore().byId("imTextArea").setValueState("None");
-                	sap.ui.getCore().byId("progressSlider").setValue(100);
+                    sap.ui.getCore().byId("imTextArea").setValueState("None");
+                    sap.ui.getCore().byId("progressSlider").setValue(100);
 
-                	if(duration != "0" || duration != 0){
+                    if (duration != "0" || duration != 0) {
                         $("#progressTextDynamic").text("Progress: " + convertedDuration);
-                    }else{
+                    } else {
                         $("#progressTextDynamic").text("Progress: " + $("#progressSlider-progress").width());
                     }
                 }
-                if ( value < sMinValue ) {
-                	sap.ui.getCore().byId("imTextArea").setValueState("Error");
-                	sap.ui.getCore().byId("progressSlider").setValue(0);
+                if (value < sMinValue) {
+                    sap.ui.getCore().byId("imTextArea").setValueState("Error");
+                    sap.ui.getCore().byId("progressSlider").setValue(0);
                 }
-                if ( value >= sMinValue && value < duration) {
-                	sap.ui.getCore().byId("imTextArea").setValueState("None");
-                	sap.ui.getCore().byId("progressSlider").setValue(value*100/duration);         	
+                if (value >= sMinValue && value < duration) {
+                    sap.ui.getCore().byId("imTextArea").setValueState("None");
+                    sap.ui.getCore().byId("progressSlider").setValue(value * 100 / duration);
                 }
-                
-              });
-        }else{
-            sap.ui.getCore().byId("imTextArea").attachLiveChange(function() {
+
+            });
+        } else {
+            sap.ui.getCore().byId("imTextArea").attachLiveChange(function () {
                 var value = sap.ui.getCore().byId("imTextArea").getValue();
                 value = value.replace(/[^0-9]+/g, '');
                 sap.ui.getCore().byId("imTextArea").setValue(value);
 
-                if(sap.ui.getCore().byId("imTextArea").getValue() > duration){
+                if (sap.ui.getCore().byId("imTextArea").getValue() > duration) {
                     sap.ui.getCore().byId("imTextArea").setValue(duration);
                 }
             });
         }
     },
     //Change the progress bar value and visual if the value from im field change
-    liveChangeProgressBar : function(){
+    liveChangeProgressBar: function () {
         var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
-        if(duration != "0" || duration != 0){
-            sap.ui.getCore().byId("progressSlider").attachLiveChange(function(){
-            	var value  = airbus.mes.operationdetail.Formatter.convertProgressBarToImField(this.getValue());
-            	sap.ui.getCore().byId("imTextArea").setValue(value);
-            	sap.ui.getCore().byId("imTextArea").setValueState("None");
+        if (duration != "0" || duration != 0) {
+            sap.ui.getCore().byId("progressSlider").attachLiveChange(function () {
+                var value = airbus.mes.operationdetail.Formatter.convertProgressBarToImField(this.getValue());
+                sap.ui.getCore().byId("imTextArea").setValue(value);
+                sap.ui.getCore().byId("imTextArea").setValueState("None");
 
             });
-        }else{
-            sap.ui.getCore().byId("progressSlider").attachLiveChange(function(){
+        } else {
+            sap.ui.getCore().byId("progressSlider").attachLiveChange(function () {
                 sap.ui.getCore().byId("imTextArea").setValue(duration);
             });
         }
     },
     //Set dynamycly the SAP Icon for the user checklist
-    setIconTypeConfirmation : function(){
+    setIconTypeConfirmation: function () {
         var jsonModel = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
         var checkList = sap.ui.getCore().byId("confirmationCheckList").getItems();
-            $(checkList).each(function(i) {
-                var id = checkList[i].sId;
-                if(jsonModel[id] === true || jsonModel[id] === "true"){
-                    sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://accept");
-                }else{
-                    sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://decline");
-                }
-            });
+        $(checkList).each(function (i) {
+            var id = checkList[i].sId;
+            if (jsonModel[id] === true || jsonModel[id] === "true") {
+                sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://accept");
+            } else {
+                sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://decline");
+            }
+        });
     },
     //Set dynamycly the SAP Icon color for user checklist
-    setIconColor : function(){
-        var check = airbus.mes.operationdetail.Formatter.setIconTypeConfirmation();
+    setIconColor: function () {
         var checkList = sap.ui.getCore().byId("confirmationCheckList").getItems();
-            $(checkList).each(function(i) {
-                var id = checkList[i].sId;
-                var element = sap.ui.getCore().byId(id).getProperty("icon");
+        $(checkList).each(function (i) {
+            var id = checkList[i].sId;
+            var element = sap.ui.getCore().byId(id).getProperty("icon");
 
-                if(element == "sap-icon://accept"){
-                    sap.ui.getCore().byId(id)._image.setProperty("color", "green");
-                }else{
-                    sap.ui.getCore().byId(id)._image.setProperty("color", "red");
-                }
+            if (element == "sap-icon://accept") {
+                sap.ui.getCore().byId(id)._image.setProperty("color", "green");
+            } else {
+                sap.ui.getCore().byId(id)._image.setProperty("color", "red");
+            }
 
-            });
+        });
     },
 
-    goToDisrptionVisibility: function(status){
-
-        if(status == airbus.mes.operationdetail.Formatter.status.blocked)
+    goToDisrptionVisibility: function (status) {
+        if (status == airbus.mes.operationdetail.Formatter.status.blocked)
             return true;
         else
             return false;
-
     },
-    
 
-    displayStatus: function(assigned){
-
-        if(assigned === "1" ) {
-        	
-        	return true;
-        	
+    displayStatus: function (assigned) {
+        if (assigned === "1") {
+            return true;
         } else {
-        	
-        	return false;
-        	
+            return false;
         }
-         
-    }
+    },
 
 };

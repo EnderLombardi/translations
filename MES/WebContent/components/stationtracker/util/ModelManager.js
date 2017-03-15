@@ -195,19 +195,19 @@ airbus.mes.stationtracker.util.ModelManager = {
         var oData = airbus.mes.stationtracker.util.ModelManager.settings;
         var opeData = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
         var lang = airbus.mes.settings.ModelManager.loadLanguage();
-        
+
         var oViewModel = sap.ui.getCore().getModel("dispatchFromMesModel");
         var getUrlMesStatus = this.urlModel.getProperty("urlDispatchFromMes");
 
         getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(getUrlMesStatus, "$erpSystem", opeData.erp_system);
-        
-        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
-        .replaceURI(getUrlMesStatus, "$site", oData.site);
 
         getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
-        .replaceURI(getUrlMesStatus, "$language", lang);
-        
+            .replaceURI(getUrlMesStatus, "$site", oData.site);
+
+        getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
+            .replaceURI(getUrlMesStatus, "$language", lang);
+
         getUrlMesStatus = airbus.mes.stationtracker.util.ModelManager
             .replaceURI(getUrlMesStatus, "$workorder", opeData.wo_no);
 
@@ -513,7 +513,7 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (airbus.mes.stationtracker.util.AssignmentManager.userSelected === '%') {
                     //if the previous user selected was "ALL USERS" we assigne the user to load at workTrackerUser
                     airbus.mes.stationtracker.util.AssignmentManager.userSelected = workTrackerUser;
-                    if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT") ) {
+                    if (sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT")) {
                         airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
                         airbus.mes.stationtracker.oView.oController.hideKPI();
                     }
@@ -524,10 +524,10 @@ airbus.mes.stationtracker.util.ModelManager = {
                     airbus.mes.stationtracker.util.AssignmentManager.userSelected = '%';
                     sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey("ALL");
                     airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
-                    airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                    
+                    airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");
                     sap.ui.getCore().byId("stationTrackerView--splitWorkTra").rerender();
                     airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(airbus.mes.stationtracker.splitterWorkTracker);
-                    airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                    
+                    airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");
                     if (!airbus.mes.stationtracker.oView.byId("kpi_header").getExpanded()) {
                         $("#stationTrackerView--splitWorkTra").addClass("withoutKPI");
                     }
@@ -536,7 +536,7 @@ airbus.mes.stationtracker.util.ModelManager = {
                 } else {
                     //if the previous user selected was different and is still in the ressourcePoolList
                     workTrackerUser = airbus.mes.stationtracker.util.AssignmentManager.userSelected;
-                    if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT") ) {
+                    if (sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT")) {
                         airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
                         airbus.mes.stationtracker.oView.oController.hideKPI();
                     }
@@ -546,9 +546,9 @@ airbus.mes.stationtracker.util.ModelManager = {
             } else if (airbus.mes.stationtracker.util.AssignmentManager.userSelected !== "No") {
                 //if we are in station stacker mode we reset the user to --> ALL USERS in order to reload the complete station tracker list
                 airbus.mes.stationtracker.util.AssignmentManager.userSelected = '%';
-                if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT") ) {
-                airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(true);
-                airbus.mes.stationtracker.oView.oController.showKPI();
+                if (sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT")) {
+                    airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(true);
+                    airbus.mes.stationtracker.oView.oController.showKPI();
                 }
                 sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey("ALL");
             }
@@ -821,7 +821,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         for (var prop in options) {
             // skip loop if the property is from prototype
             if (!options.hasOwnProperty(prop)) {
-            	continue;
+                continue;
             }
 
             airbus.mes.stationtracker.util.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.util.ShiftManager.current_day][prop]
@@ -901,7 +901,6 @@ airbus.mes.stationtracker.util.ModelManager = {
     },
 
     onStationTrackerLoadInitial: function () {
-    	
         var GroupingBoxingManager = airbus.mes.stationtracker.util.GroupingBoxingManager;
         airbus.mes.stationtracker.util.ModelManager.fIsLoad++;
         // initial model and rescheduled model are load in same time it permit to redenrer stationtracker only one time
@@ -913,7 +912,6 @@ airbus.mes.stationtracker.util.ModelManager = {
     },
 
     loadShifts: function () {
-    	
         var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
         var getUrlShifts = this.urlModel.getProperty("urlshifts");
         var oData = airbus.mes.stationtracker.util.ModelManager.settings;
@@ -1028,7 +1026,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 
         });
     },
-    
+
 	/*----------------------------------------------------------------------------
 	 * Reschedule AVL Line(s) Request 
 	 * 
@@ -1043,22 +1041,22 @@ airbus.mes.stationtracker.util.ModelManager = {
         var oData = airbus.mes.stationtracker.util.ModelManager.settings;
 
         // Get current and previous shift id
-		var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
-		var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
-		var prevShiftName = undefined;
-		if (fIndexShift != -1 && fIndexShift != 0) {
-			prevShiftName = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift -1].shiftName;
-		}
+        var oShift = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected;
+        var fIndexShift = airbus.mes.stationtracker.util.ShiftManager.closestShift(oShift.StartDate);
+        var prevShiftName = undefined;
+        if (fIndexShift != -1 && fIndexShift != 0) {
+            prevShiftName = airbus.mes.stationtracker.util.ShiftManager.shifts[fIndexShift - 1].shiftName;
+        }
 
-		// Get formated current date
+        // Get formated current date
         var dateFormat = sap.ui.core.format.DateFormat.getInstance({
-        	pattern: "yyyyMMdd",
+            pattern: "yyyyMMdd",
             calendarType: sap.ui.core.CalendarType.Gregorian
         });
-		var currentDate = dateFormat.format(new Date());
+        var currentDate = dateFormat.format(new Date());
 
-		// Get current user
-		var userName = this.getUserName();
+        // Get current user
+        var userName = this.getUserName();
 
         var data = {};
 
@@ -1137,13 +1135,13 @@ airbus.mes.stationtracker.util.ModelManager = {
      * @PARAM {String} AVL Line
      * @PARAM {Int} number of not confirmed operation
     ----------------------------------------------------------------------------*/
-	rescheduleLine: function (avlLine, count) {
-		window.event.stopPropagation();
-		var objLine = airbus.mes.stationtracker.util.Formatter.getFormatedObjLine(avlLine, count);
-		// Open confirm popup
-		airbus.mes.stationtracker.oView.getController().openRescheduleLinePopUp(objLine);
-	},
-	
+    rescheduleLine: function (avlLine, count) {
+        window.event.stopPropagation();
+        var objLine = airbus.mes.stationtracker.util.Formatter.getFormatedObjLine(avlLine, count);
+        // Open confirm popup
+        airbus.mes.stationtracker.oView.getController().openRescheduleLinePopUp(objLine);
+    },
+
     /*----------------------------------------------------------------------------
 	 * Reschedule not confirmed operation(s) on all avl lines.
 	 * Called when onclick on red button at left of x axis (header of scheduler)
@@ -1157,22 +1155,22 @@ airbus.mes.stationtracker.util.ModelManager = {
         // Open confirm popup
 		airbus.mes.stationtracker.oView.getController().openRescheduleAllPopUp(objCount);
     },
-	
+
 	/*----------------------------------------------------------------------------
 	 * Get current user name
 	 * 
 	 * @RETURN {String} an user name
 	----------------------------------------------------------------------------*/
-    getUserName : function() {
-		// Check if generic User
-		var sUser =	sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
-		if	(sUser==undefined) {
-			sUser=airbus.mes.shell.oView.getController().goToMyProfile();
-		} else {
-			return sUser;
-		}
-		return sUser;
-	},
+    getUserName: function () {
+        // Check if generic User
+        var sUser = sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+        if (sUser == undefined) {
+            sUser = airbus.mes.shell.oView.getController().goToMyProfile();
+        } else {
+            return sUser;
+        }
+        return sUser;
+    },
 
     openWorkListPopover: function (id) {
 
@@ -1260,7 +1258,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         elOverallModel.BLOCKING_DISRUPTION = oEvent.isBlocked;
         elOverallModel.STOP = oEvent.stop;
         elOverallModel.EXECUTION_STATION_SOURCE = oEvent.OSW;
-        
+
         elOverallModel.FREEZE_TRACKING_TEMPLATE = aModel[0].FREEZE_TRACKING_TEMPLATE;
 
         switch (oEvent.status) {
@@ -1294,11 +1292,11 @@ airbus.mes.stationtracker.util.ModelManager = {
                 break;
             default:
         }
-    	// if operation is not active and disruption it should be display in yellow even if the disruption is escalated
-		if ( oEvent.status2 === "1" && oEvent.status >= "4" ) {
-			
-			 elOverallModel.DISRUPTION = "D2";
-		}
+        // if operation is not active and disruption it should be display in yellow even if the disruption is escalated
+        if (oEvent.status2 === "1" && oEvent.status >= "4") {
+
+            elOverallModel.DISRUPTION = "D2";
+        }
         aOverallModel.push(elOverallModel);
 
         airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(aOverallModel), "WorkListOverallModel");
@@ -1431,8 +1429,8 @@ airbus.mes.stationtracker.util.ModelManager = {
                                 "noOfEmp": aModel[0].NUMBER_OF_EMPLOYEES,
                                 "duration": aModel[0].DURATION,
                                 "routerStepBo": aModel[0].ROUTERSTEPBO,
-                                "freeze_tracking_template" : aModel[0].FREEZE_TRACKING_TEMPLATE,
-                                "frozen_fitted_parts" : aModel[0].FROZEN_FITTED_PARTS
+                                "freeze_tracking_template": aModel[0].FREEZE_TRACKING_TEMPLATE,
+                                "frozen_fitted_parts": aModel[0].FROZEN_FITTED_PARTS
                             }]
                         }]
                     }
@@ -1457,6 +1455,10 @@ airbus.mes.stationtracker.util.ModelManager = {
                     airbus.mes.operationdetail.oView = this.oOperationDetailComp.oView;
                     airbus.mes.operationdetail.parentId = airbus.mes.stationtracker.operationDetailPopup.sId;
                 }
+
+                //NC Display (need to be create at the popup opening to set the value of Blockers in the orange bubble
+                airbus.mes.stationtracker.util.ModelManager.createOrLoadNCDisplayComponent();
+
                 // Model for Missing Parts Notification
                 airbus.mes.operationdetail.ModelManager.loadMissingPartsModel(airbus.mes.operationdetail.oView.getModel("i18n"));
                 airbus.mes.stationtracker.operationDetailPopup.open();
@@ -1481,17 +1483,9 @@ airbus.mes.stationtracker.util.ModelManager = {
                 //Load acpngLinks if no child find for the wo the button is disabled
                 airbus.mes.shell.util.navFunctions.acpnglinksDetail(airbus.mes.operationdetail.oView.getController().nav);
 
-                
-                //sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(airbus.mes.acpnglinks.model.ModelManager.checkExistingChildrentData());
-
                 //Load components model
                 airbus.mes.stationtracker.util.ModelManager.loadComponentsTabs();
 
-//            	If already opens, reload data to update number of blockers
-                if (jQuery.sap.getObject("airbus.mes.ncdisplay.Component") !== undefined) {
-                	airbus.mes.ncdisplay.util.ModelManager.loadNcDisplayData();
-                }
-                
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
                 
                 var dataRequest = airbus.mes.operationstatus.oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
@@ -1715,7 +1709,7 @@ airbus.mes.stationtracker.util.ModelManager = {
                 if (data.success) {
                     spentTime = data.spentTime;
                 } else {
-                	return 0;
+                    return 0;
                 }
             },
 
@@ -1817,5 +1811,25 @@ airbus.mes.stationtracker.util.ModelManager = {
             }
         });
     },
+
+    createOrLoadNCDisplayComponent: function () {
+        if (jQuery.sap.getObject("airbus.mes.ncdisplay.Component") === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.ncdisplay", "../components/ncdisplay");
+            sap.ui.getCore().createComponent({
+                name: "airbus.mes.ncdisplay",
+                site: airbus.mes.settings.ModelManager.site,
+                operation: sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no,
+                workOrder: airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no
+            });
+        } else {
+            airbus.mes.ncdisplay.util.ModelManager.operationData = airbus.mes.ncdisplay.util.ModelManager.getOperationData();
+        }
+
+        var component = airbus.mes.ncdisplay.oView.getController().getOwnerComponent();
+        component.setSite(airbus.mes.settings.ModelManager.site);
+        component.setOperation(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no);
+        component.setWorkOrder(airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
+        airbus.mes.ncdisplay.util.ModelManager.loadNcDisplayData();
+    }
 
 };

@@ -79,7 +79,13 @@ sap.ui
 
 
             airbus.mes.operationstatus.util.ModelManager.getShopOrderOperation();
+
+
+            // init the tabindex 
+            $("#operationDetailsView--opDetailSegmentButtons--header-head").attr("tabindex", "-1");
+            $("#operationDetailsView--idStatus").attr("tabindex", "0");
         },
+
 
         /***********************************************************
          *
@@ -173,7 +179,6 @@ sap.ui
                 case "status":
                     airbus.mes.shell.util.navFunctions.operationstatus(this.nav, true);
                     break;
-
                 case "checkList":
                     airbus.mes.shell.util.navFunctions.qdc(this.nav);
                     break;
@@ -333,6 +338,12 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailPopup--createPNC").setVisible(false);
             }
 
+            //fix bad tabindex: issue is active with the statusView because we set the tabindex with jquery in onAfterRendering
+            //the tabindex doesn't change so we change it here
+            if (oEvent.mParameters.toId !== "idStatusView") {
+                $("#operationDetailsView--idStatus").attr("tabindex", "-1");
+            }
+
         },
 
         renderViews: function (oEvent) {
@@ -386,7 +397,6 @@ sap.ui
 
         onMissingPartsNotifPress: function (oEvent) {
             airbus.mes.shell.util.navFunctions.componentsDetail(this.nav);
-
             //set visible the buttons of the components view
             sap.ui.getCore().byId("operationDetailPopup--btnCommittedFitted").setVisible(true);
             if (airbus.mes.components !== undefined && airbus.mes.components.oView !== undefined && airbus.mes.components.oView.oController.committedFittedView) {
