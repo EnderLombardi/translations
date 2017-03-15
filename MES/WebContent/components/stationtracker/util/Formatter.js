@@ -625,7 +625,8 @@ airbus.mes.stationtracker.util.Formatter = {
 		var sNotConfirmedOpLS = "";
 		
 		// Count number of not totally confirmed in previous shift
-		var countNotConfirmedOps = airbus.mes.stationtracker.util.ShiftManager.countNoTotalConfLastShif(oSection);
+		var countNotConfirmedOps = 0;
+		countNotConfirmedOps = airbus.mes.stationtracker.util.ShiftManager.countNoTotalConfLastShif(oSection);
 		
 		if (countNotConfirmedOps !== 0) {
 			
@@ -638,14 +639,17 @@ airbus.mes.stationtracker.util.Formatter = {
 							  	'</span>';
 			
 			// Add count of operation on AVL Line to global toRescheduleAllCount
-			var toRescheduleAllCount = airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount;
-			toRescheduleAllCount += countNotConfirmedOps;
-			
+			airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount += countNotConfirmedOps;
+
 			// Display Reschedule all button
-			if(toRescheduleAllCount > 0) {
-				console.log("(toRescheduleAllCount > 0)");
+			if(airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount > 0) {
+				console.log("Display RescheduleAll Button");
 				$(".rescheduleAllBtn").css({'display' : 'block'});
-			}
+			} else {
+				console.log("Hide RescheduleAll Button");
+            	$(".rescheduleAllBtn").css({'display' : 'none'});
+        	}
+        
 		}
 
 		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {

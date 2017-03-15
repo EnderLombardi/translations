@@ -79,6 +79,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         this.loadFilterUnplanned();
         
         this.toRescheduleAllCount = 0;
+        console.log("INIT toRescheduleAllCount");
 
     },
 
@@ -1107,8 +1108,12 @@ airbus.mes.stationtracker.util.ModelManager = {
                 }
                 //we reload the work tracker
                 airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
-				console.log("(toRescheduleAllCount === 0)");
-				$(".rescheduleAllBtn").css({'display' : 'none'});
+
+                // If reschedule all,reinit global count of late operation
+                if(this.toRescheduleAllCount === 0) {
+                    //this.initToRescheduleAllCount()
+                }
+				
             },
             error: function (error, jQXHR) {
                 jQuery.sap.log.info(error);
@@ -1121,10 +1126,17 @@ airbus.mes.stationtracker.util.ModelManager = {
      * Reinit count of operation AVL Line to reschedule (toRescheduleAllCount)
      * Used for refresh
     ----------------------------------------------------------------------------*/
-    initToRescheduleAllCount: function (fromWhere) {
+    initToRescheduleAllCount: function () {
+        console.log("ToRescheduleAllCount === 0" );
     	this.toRescheduleAllCount = 0;
+    
+        // If reschedule all,reinit global count of late operation
+        if(airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount === 0) {
+            console.log("Hide RescheduleAll Button")
+            $(".rescheduleAllBtn").css({'display' : 'none'});
+        }
     	// DEBUG
-    	//console.log("Reinit toRescheduleAllCount FROM => " + fromWhere);
+    	
     },
 
     /*----------------------------------------------------------------------------
