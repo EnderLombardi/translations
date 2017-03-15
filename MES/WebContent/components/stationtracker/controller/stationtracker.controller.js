@@ -1051,7 +1051,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 
         // for ALL users
-        if (oSelected.key === "ALL" || oSelected.key === "No") {
+        if (oSelected.key === "ALL" || oSelected.key === "---") {
 
             if (oSelected.key === "ALL") {
                 airbus.mes.stationtracker.util.AssignmentManager.userSelected = "%";

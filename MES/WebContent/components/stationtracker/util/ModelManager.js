@@ -476,7 +476,7 @@ airbus.mes.stationtracker.util.ModelManager = {
 
             aModel.oData.Rowsets.Rowset[0].Row.unshift({
                 "firstName": "No Users",
-                "user": "No",
+                "user": "---",
             });
 
             aModel.oData.Rowsets.Rowset[0].Row.unshift({
@@ -538,7 +538,7 @@ airbus.mes.stationtracker.util.ModelManager = {
                 }
                 sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey(workTrackerUser);
                 airbus.mes.stationtracker.util.ModelManager.loadSplitModel(workTrackerUser);
-            } else if (airbus.mes.stationtracker.util.AssignmentManager.userSelected !== "No") {
+            } else if (airbus.mes.stationtracker.util.AssignmentManager.userSelected !== "---") {
                 //if we are in station stacker mode we reset the user to --> ALL USERS in order to reload the complete station tracker list
                 airbus.mes.stationtracker.util.AssignmentManager.userSelected = '%';
                 if (sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT")) {
