@@ -181,8 +181,6 @@ WORK LIST POP OVER
 
 .classWorklistPopover .fa.stopIcon.white-two { color: #ffffff; }
 
-.classWorklistPopover .fa.colorBlue { color: #0085ad; }
-
 .classWorklistPopover .sapMPIText3 { position: absolute; display: block; right: 0px; height: 20px; margin-right: 6px; top: 50%; margin-top: calc(-20px/2); width: auto; }
 
 .classWorklistPopover header.sapMIBar.sapMHeader-CTX { background: #d4f1f7; box-shadow: 0 0 5px #333; z-index: 1000; }
@@ -251,8 +249,6 @@ BOX MANAGEMENT
 .trackerBox .green { background-color: #049372; color: #ffffff; }
 
 .trackerBox .blue { background-color: #0085ad; color: #ffffff; }
-
-.trackerBox .colorBlue { color: #0085ad; }
 
 .trackerBox .pink { background-color: #E08283; color: #ffffff; }
 

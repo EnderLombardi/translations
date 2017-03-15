@@ -257,7 +257,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		} else {
 			var dispatch = false;
 		}		
-		var dispatchWhite = false;
+		var isWhiteIcon = false;
 		
 		// Text to display different case regarding box selected
 		switch (airbus.mes.stationtracker.util.GroupingBoxingManager.box) {
@@ -319,9 +319,6 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sOSW);
-//				}
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sUNPD);
 				}
@@ -337,13 +334,9 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
-				if ( oBox.isBlocked === 1 ) {
-					
-					sRightIcon = boxDisplayManager.rightStopWhite;
-				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
+				
+				isWhiteIcon = true;
+				
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
@@ -364,14 +357,6 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 				}
-				
-				if ( oBox.isBlocked === 1 ) {
-					
-					sRightIcon = boxDisplayManager.rightStop;
-				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
@@ -388,22 +373,11 @@ airbus.mes.stationtracker.util.Formatter = {
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
 				
-				if ( oBox.isBlocked === 1 ) {
-					
-					sRightIcon = boxDisplayManager.rightStopWhite;
-				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
 				
-				if (dispatch) {
-					
-					dispatchWhite = true;
-				}
-				
+				isWhiteIcon = true;
 				break;
 
 				//Answered yellow hatch
@@ -415,14 +389,6 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 				}
-				if ( oBox.isBlocked === 1 ) {
-					
-					sRightIcon = boxDisplayManager.rightStop;
-				}
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
-
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
@@ -443,9 +409,7 @@ airbus.mes.stationtracker.util.Formatter = {
 //				if (oBox.OSW === 3) { //OSW
 //					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
 //				}
-				if (dispatch) {
-					dispatchWhite = true;
-				}
+				isWhiteIcon = true;
 
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
@@ -456,7 +420,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 		
 		if (dispatch) {
-			if (dispatchWhite){
+			if (isWhiteIcon){
 				sLeftIcon = boxDisplayManager.leftStopIcon_White;
 			} else {
 				sLeftIcon = boxDisplayManager.leftStopIcon;
@@ -466,8 +430,20 @@ airbus.mes.stationtracker.util.Formatter = {
 //		SD-PPC-WT-1250
 //		Case of Tracking Template freeze
 		if(oBox.freezeTrackingTemplate) {
-			sRightIcon2 = boxDisplayManager.rightTTFreeze;
+			if(isWhiteIcon) {
+				sRightIcon2 = boxDisplayManager.rightTTFreezeWhite;	
+			} else {
+				sRightIcon2 = boxDisplayManager.rightTTFreeze;	
+			}
 		}
+
+		if ( oBox.isBlocked === 1 ) {
+			if(isWhiteIcon) {
+				sRightIcon = boxDisplayManager.rightStopWhite;
+			} else {
+				sRightIcon = boxDisplayManager.rightStop;	
+			}			
+		}		
 		
 
 		//
