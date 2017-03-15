@@ -229,7 +229,7 @@ airbus.mes.disruptions.ModelManager = {
 		return urlCreateDisruption;
 	},
 
-	createDisruption: function (messageHandle, messageType, sComment, payloadData, reportAndCloseFlag) {
+	createDisruption: function (messageHandle, messageType, sComment, payloadData, severity, reportAndCloseFlag) {
 
 		// Set Busy Indicator
 		sap.ui.core.BusyIndicator.show(0);
@@ -249,7 +249,7 @@ airbus.mes.disruptions.ModelManager = {
 					payloadAttributelist: payloadData
 				}),
 				"Param.7": messageHandle,
-				"Param.8": payloadData[0].payload[8].value, // gravity
+				"Param.8": severity,
 				"Param.9": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc"),
 				// Operation number
 				"Param.10": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo").split(",")[1],
@@ -279,7 +279,7 @@ airbus.mes.disruptions.ModelManager = {
 						sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
 
 						// If blocking disruption created
-						if (payloadData[0].payload[8].value == "3") {
+						if (severity == "3") {
 							// Set paused value in operation detail model
 							sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].paused = "---";
 							sap.ui.getCore().getModel("operationDetailModel").refresh();
@@ -812,7 +812,7 @@ airbus.mes.disruptions.ModelManager = {
 	// Change text of status in progress tab if any blocking disruption still
 	// open (not closed)
 	checkDisruptionStatus: function (operationDisruptionsModel) {
-		var aDisruption = operationDisruptionsModel.getProperty("/Rowsets/Rowset/0/Row");
+		var aDisruption = operationDisruptionsModel.getProperty("/0");
 		var sStatus = null;
 
 		if (aDisruption === undefined || aDisruption == null) {

@@ -383,6 +383,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		}
 		
 		var sComment = airbus.mes.disruptions.Formatter.actions.create + oView.byId("comment").getValue();
+		var severity = oView.byId("gravity").getSelectedKey();
 
 		var aModelData = []
 		var oJson = {
@@ -413,7 +414,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"value" : oView.byId("expectedDate").getValue() + " " + oView.byId("expectedTime").getValue()
 				}, {
 					"attribute" : "GRAVITY",
-					"value" : oView.byId("gravity").getSelectedKey()
+					"value" : severity
 				}, {
 					"attribute" : "STATUS",
 					"value" : airbus.mes.disruptions.Formatter.status.pending
@@ -466,7 +467,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		}
 		aModelData.push(oJson);
-		airbus.mes.disruptions.ModelManager.createDisruption(sHandle, sCategory, sComment, aModelData ,reportAndCloseFlag);
+		airbus.mes.disruptions.ModelManager.createDisruption(sHandle, sCategory, sComment, aModelData, severity, reportAndCloseFlag);
 
 	},
 
