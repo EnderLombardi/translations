@@ -85,11 +85,11 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 					var i = list.length - 1;
 					for (; i >= 0; i -= 1) {
 						var item = list[i];
-						airbus.mes.createdisruption.oView.oController.addFilesToList(item.fileName, item.fileDescription, '', item.fileSize);
+						airbus.mes.createdisruption.oView.oController.addUpdateFilesToList(item.fileName, item.fileDescription, item.fileCount, item.fileSize);
 					}
 				} else {
 					var item = data.listkMResources;
-					airbus.mes.createdisruption.oView.oController.addFilesToList(item.fileName, item.fileDescription, '', item.fileSize);
+					airbus.mes.createdisruption.oView.oController.addUpdateFilesToList(item.fileName, item.fileDescription, item.fileCount, item.fileSize);
 				}
 			}
 		});
@@ -162,6 +162,21 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		item.oldDescription = description;
 		item.File = fileBase64;
 		item.Size = size;
+		item.Status = 'CREATE';
+		oData.unshift(item);
+		oModel.refresh();
+	},
+
+	addUpdateFilesToList: function (fileName, description, fileCount, size) {
+		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
+		var oData = oModel.getData();
+		var item = {};
+		item.Title = fileName;
+		item.Description = description;
+		item.oldDescription = description;
+		item.Size = size;
+		item.fileCount = fileCount;
+		item.Status = 'UPDATE';
 		oData.unshift(item);
 		oModel.refresh();
 	},
@@ -289,7 +304,11 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		var i = 0;
 		for (; i < length; i += 1) {
 			var document = attachedDocumentList[i];
-			airbus.mes.disruptions.ModelManager.attachDocument(ref, document.Title, document.File, document.Description);
+			if(document.Status === 'CREATE') {
+				airbus.mes.disruptions.ModelManager.attachDocument(ref, document.Title, document.File, document.Description);
+			} else if (document.Status === 'UPDATE') {
+				airbus.mes.disruptions.ModelManager.updateAttachDocument(ref, document.fileCount, document.Description);
+			}
 		}
 	},
 	

@@ -582,7 +582,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 
 		}
 		
-		
+		airbus.mes.createdisruption.oView.oController.sendAttachedDocument(sMessageRef);
 		
 		// call update service
 		airbus.mes.disruptions.ModelManager.updateDisruption(sMessageRef, sReason, sResponsibleGroup, iTimeLost, dFixedByTime, sComment, iGravity,

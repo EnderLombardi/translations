@@ -740,7 +740,7 @@ airbus.mes.disruptions.ModelManager = {
 						// Set Refresh disruption tracker flag
 						airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 					}
-					
+
 				}
 			}
 		});
@@ -782,9 +782,10 @@ airbus.mes.disruptions.ModelManager = {
 				airbus.mes.disruptions.func.tryAgainError(i18nModel);
 
 			},
-			success: function (result, status, xhr) {2
+			success: function (result, status, xhr) {
+				2
 				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
-				
+
 				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
 					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 
@@ -931,7 +932,7 @@ airbus.mes.disruptions.ModelManager = {
      * Send POST retrieve document request
      **************************************************************************/
 	retrieveDocument: function (reference, callback) {
-		
+
 		jQuery.ajax({
 			async: false,
 			url: this.getPostRetrieveDocumentUrl(),
@@ -966,7 +967,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
      * Send POST update attached document request
      **************************************************************************/
-	updateAttachDocument: function (site, reference, fileCount, descript, userName) {
+	updateAttachDocument: function (reference, fileCount, descript) {
 		jQuery.ajax({
 			async: false,
 			url: this.getPostUpdateAttachedDocumentUrl(),
@@ -975,7 +976,7 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			type: 'post',
 			data: JSON.stringify({
-				"site": site,
+				"site": airbus.mes.settings.ModelManager.site,
 				"type": "DA",
 				"ref": reference,
 				"fileCount": fileCount,
@@ -1000,12 +1001,12 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	/***************************************************************************
-	 * Send POST delete document request
-	 ***************************************************************************/
-	updateAttachDocument: function (site, reference, fileCount, userName) {
+ * Send POST delete document request
+ **************************************************************************/
+	deleteAttachDocument: function (reference, fileCount) {
 		jQuery.ajax({
 			async: false,
-			url: this.getPostUpdateAttachedDocumentUrl(),
+			url: this.getPostDeleteAttachedDocumentUrl(),
 			dataType: "json",
 			cache: false,
 			contentType: 'application/json',
@@ -1033,6 +1034,5 @@ airbus.mes.disruptions.ModelManager = {
 	getPostDeleteAttachedDocumentUrl: function () {
 		return this.urlModel.getProperty('postDeleteAttachedDocument');
 	},
-
 
 };
