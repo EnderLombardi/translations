@@ -50,7 +50,7 @@
 												<Label text="{i18nModel>quantity}" />
 												<Input type="Number" width="80%" value="1" class="inputQty" />
 											</VBox>
-											<Button icon="sap-icon://sys-cancel" type="Transparent" press="removeJigTool" />
+											<Button icon="sap-icon://sys-cancel" type="Transparent" press="removeJigTool" class="buttonBlack" />
 										</HBox>
 									</items>
 								</HBox>

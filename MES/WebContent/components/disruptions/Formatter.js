@@ -214,12 +214,12 @@ airbus.mes.disruptions.Formatter = {
 		else if (originatorFlag == "X" && responsibleFlag != "X" && (status == airbus.mes.disruptions.Formatter.status.acknowledged || status == airbus.mes.disruptions.Formatter.status.answered))
 			return false;
 
-		/*else if ((status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
-			&& responsibleFlag == "X" && originatorFlag != "X")
-			return false;*/
 		else if ((status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
-			&& responsibleFlag == "X")
+			&& responsibleFlag == "X" && originatorFlag != "X")
 			return false;
+		/*else if ((status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
+			&& responsibleFlag == "X")
+			return false;*/
 
 		return true;
 	},

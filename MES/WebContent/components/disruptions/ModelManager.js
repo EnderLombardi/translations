@@ -418,7 +418,7 @@ airbus.mes.disruptions.ModelManager = {
 
 	},
 
-	updateDisruptionModel: function () {
+	/*updateDisruptionModel: function () {
 
 		var oModel = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");
 
@@ -461,7 +461,7 @@ airbus.mes.disruptions.ModelManager = {
 
 		oModel.refresh();
 
-	},
+	},*/
 
 	/***************************************************************************
 	 * Get URL to Escalate Disruption
