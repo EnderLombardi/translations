@@ -54,7 +54,7 @@
 								<Button press="handleDisruptionPanelExpand"   design="Transparent" icon="sap-icon://slim-arrow-down" 
 									visible="{=${operationDisruptionsModel>expanded} !== 'true'}" />
 								<Button press="handleDisruptionPanelCollapse" design="Transparent" icon="sap-icon://slim-arrow-up"
-									visible="{=${operationDisruptionsModel>expanded} === 'true'}" />
+									visible="{=${operationDisruptionsModel>expanded} !== 'true' ? false : ${operationDisruptionsModel>disruptionTracker} === 'true' ? false : true}" />
 
 							</Toolbar>
 						</headerToolbar>

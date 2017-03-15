@@ -623,7 +623,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 		var oData = oBindingContext.getProperty(oBindingContext.sPath);
 
 		// Navigate to Edit Screen
-		airbus.mes.shell.util.navFunctions.createDisruptionScreen(sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer"),
+		airbus.mes.shell.util.navFunctions.createDisruptionScreen(this.getView().getParent(),
 			{
 				mode : "Edit",
 				oData : oData
