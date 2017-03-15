@@ -5,7 +5,6 @@ sap.ui
     {
         reasonCodeText: undefined,
         operationStatus: undefined,
-        tabSelected: "#operationDetailsView--idStatus",
 
         /**
          * Called when a controller is instantiated and its View
@@ -41,11 +40,6 @@ sap.ui
          * @memberOf components.operationdetail.operationDetail
          */
         onAfterRendering: function () {
-            //tabselection
-            $(this.tabSelected).removeClass("operationDetailTabSelected");
-            this.tabSelected = "#operationDetailsView--idStatus";
-            $(this.tabSelected).addClass("operationDetailTabSelected");
-
             var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
             if (airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start) === "0") {
                 airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
@@ -53,25 +47,20 @@ sap.ui
                 airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
             }
 
-
             // Navigation to Status every time pop-up is opened
             this.nav.to(airbus.mes.operationstatus.oView.getId());
 
             // Set button
             airbus.mes.operationstatus.oView.oController.setOperationActionButtons();
 
+            //select the icontabbarfilter which matched with the panel displayed in pop-up
             this.getView().byId("opDetailSegmentButtons").setSelectedKey(
                 this.getView().byId("opDetailSegmentButtons").getSelectedKey()[0].sId);
 
-            // Collapse Operation Detail panel and show Expand
-            // button
-            this.getView().byId("opDetailExpandButton").setVisible(true);
-            this.getView().byId("opDetailCloseButton").setVisible(false);
-            this.getView().byId("operationDetailPanel").setExpanded(false);
-            this.getView().byId("opDetailSegmentButtons").setExpanded(false);
-            this.getView().byId("opDetailSegmentButtons").setExpandable(false);
             this.setToolbarVisible();
 
+
+            //AFTER THIS ITS OK
             var oSwitchButton = this.getView().byId("switchOperationModeBtn");
             if (oSwitchButton.getState() == true) {
                 //Define visibility for header sections
@@ -147,12 +136,12 @@ sap.ui
             var state = sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState();
             var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
             if (!state) {
-                sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(false);   
+                sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(false);
                 //It must be possible to reschedule an operation than has not started even when the operation is not in execution mode
-                if (airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start) === "1"){ 
-                	sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(true);
-                }else{
-                	sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(false);
+                if (airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start) === "1") {
+                    sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(true);
+                } else {
+                    sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(false);
                 }
                 sap.ui.getCore().byId("operationDetailsView--idtouchngo").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idJignTools").setVisible(false);
@@ -182,27 +171,13 @@ sap.ui
 
             switch (sItemKey) {
                 case "status":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idStatus";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     airbus.mes.shell.util.navFunctions.operationstatus(this.nav, true);
                     break;
 
                 case "checkList":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idCheckList";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     airbus.mes.shell.util.navFunctions.qdc(this.nav);
                     break;
                 case "ncDisplay":
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idNCDisplay";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     airbus.mes.shell.util.navFunctions.ncDisplayLink(this.nav);
                     this.nav.to(airbus.mes.ncdisplay.oView.getId());
 
@@ -214,22 +189,12 @@ sap.ui
                     break;
 
                 case "displayOpeAttachments":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idDisplayOpeAttachments";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     airbus.mes.shell.util.navFunctions.displayOpeAttachments(this.nav);
 
                     /** Navigate **/
                     this.nav.to(airbus.mes.displayOpeAttachments.oView.getId());
                     break;
                 case "reschedule":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idReschedule";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     var aModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
 
                     if (airbus.mes.stationtracker.ReschedulePopover === undefined) {
@@ -248,20 +213,15 @@ sap.ui
                     airbus.mes.stationtracker.ReschedulePopover.getModel();
 
                     this.nav.to(airbus.mes.stationtracker.ReschedulePopover.getId());
-                    
+
                     //we can rechedule if operation is different of confirmed
-                    if ( aModel[0].state != "C" ) {
+                    if (aModel[0].state != "C") {
                         sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(true);
                     } else {
                         sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
                     }
                     break;
                 case "touchngo":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idtouchngo";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     var selectedSegmentedButton = sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getSelectedKey();
                     var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
                     var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
@@ -276,11 +236,6 @@ sap.ui
                     }, 2000);
                     break;
                 case "jigntools":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idJignTools";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     airbus.mes.shell.util.navFunctions.jigToolsDetail(this.nav);
 
                     /** Navigate **/
@@ -290,11 +245,6 @@ sap.ui
                     this.refreshMesTable("jigtoolsView--jigToolList");
                     break;
                 case "components":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idComponents";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     airbus.mes.shell.util.navFunctions.componentsDetail(this.nav);
 
                     /** Navigate **/
@@ -307,19 +257,10 @@ sap.ui
                     this.refreshMesTable("componentsView--ComponentsList");
                     break;
                 case "ACPnGLinks":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idACPnGLinks";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
-
                     airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
                     this.nav.to(airbus.mes.acpnglinks.oView.getId());
                     break;
                 case "tckTemplate":
-                    //tabselection
-                    $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#operationDetailsView--idTrackingTemplate";
-                    $(this.tabSelected).addClass("operationDetailTabSelected");
                     airbus.mes.shell.util.navFunctions.tckTemplateLink(this.nav);
                     this.nav.to(airbus.mes.trackingtemplate.oView.getId());
                     sap.ui.getCore().byId("operationDetailPopup--btnPrintTckTmplt").setVisible(true);
@@ -376,7 +317,7 @@ sap.ui
             //set visible false if the view isn't components one
             if (oEvent.mParameters.toId !== "TrackingTemplateView") {
                 sap.ui.getCore().byId("operationDetailPopup--btnFreezeTT").setVisible(false);
-            }            
+            }
             if (oEvent.mParameters.toId == "ncdisplayView") {
                 var oButtonNc = sap.ui.getCore().byId("operationDetailPopup--createNC");
                 oButtonNc.setVisible(true);
@@ -395,10 +336,7 @@ sap.ui
         },
 
         renderViews: function (oEvent) {
-
-            /*****************************************
-             * Load Data
-             */
+            //Load Data
             switch (this.nav.getCurrentPage().sId) {
 
                 case "ViewDisruptionView":
@@ -440,17 +378,13 @@ sap.ui
                     airbus.mes.components.oView.oController.checkSettingComponents();
                     break;
                 case "trackingTemplateView":
-                	airbus.mes.trackingtemplate.oView.oController.checkSettingTrackingTemplate();
-                	break;
+                    airbus.mes.trackingtemplate.oView.oController.checkSettingTrackingTemplate();
+                    break;
                 default:
             };
         },
 
         onMissingPartsNotifPress: function (oEvent) {
-            //tab selection
-            $(this.tabSelected).removeClass("operationDetailTabSelected");
-            this.tabSelected = "#operationDetailsView--idComponents";
-            $(this.tabSelected).addClass("operationDetailTabSelected");
             airbus.mes.shell.util.navFunctions.componentsDetail(this.nav);
 
             //set visible the buttons of the components view
@@ -482,27 +416,17 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailPopup--reportDisruption") // Report Disruption Button
             );
 
-
-            /***************************************************
-            * Load Disruption Data
-            **************************************************/
+            //Load Disruption Data
             airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation();
-
-
-            //tabselection
-            $(this.tabSelected).removeClass("operationDetailTabSelected");
-            this.tabSelected = "#operationDetailsView--idDisruption";
-            $(this.tabSelected).addClass("operationDetailTabSelected");
-
         },
 
-        refreshMesTable: function(id) {
+        refreshMesTable: function (id) {
             //rerender the table to get the good row number
             if (sap.ui.getCore().byId(id)) {
-                setTimeout(function() {
+                setTimeout(function () {
                     sap.ui.getCore().byId(id).rerender(true);
                 }, 0);
             }
         }
-        
+
     });

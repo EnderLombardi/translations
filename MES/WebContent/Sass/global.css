@@ -1646,11 +1646,7 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMITBTab { display: inline-block; vertical-align: middle; width: auto; }
 
-.operationDetailHeadPanel + .opDetailNavToolbar .sapMITBText { display: inline-block; background-color: #fe5000 !important; font-weight: lighter; color: #FFFFFF; padding: 4px; width: 15px; height: 15px; text-align: center; vertical-align: middle; margin-left: 6px; border-radius: 50%; outline: none !important; }
-
-.operationDetailHeadPanel + .opDetailNavToolbar .operationDetailTabSelected > .sapMITBTab .sapMITBCount { color: rgba(0, 86, 112, 0.94) !important; font-weight: bold; }
-
-.operationDetailHeadPanel + .opDetailNavToolbar .operationDetailTabSelected > .sapMITBTab .sapMITBCount:after { content: ""; height: 4px; position: absolute; top: 20px; bottom: 0; left: 0; right: 0; background: #fe5000; }
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMITBText { display: inline-block; background-color: #fe5000 !important; font-weight: lighter; color: #FFFFFF; padding: 4px; width: 15px; height: 15px; text-align: center; vertical-align: middle; margin-left: 6px; border-radius: 50%; outline: none !important; text-shadow: none; }
 
 html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocusable:hover { background: rgba(0, 86, 112, 0.2); color: rgba(0, 86, 112, 0.94); }
 
@@ -1695,6 +1691,8 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 .opDetailNavToolbar ul.opDetailNav { margin-left: 0; }
 
 .opDetailNavToolbar ul.opDetailNav li { border: 0px !important; }
+
+.opDetailNavToolbar .sapMITBContent { padding: 0; }
 
 .operationNavBar .countText { background: #007cc0 !important; color: #ffffff !important; }
 
@@ -1811,13 +1809,13 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 .MissingPartsNotifIcon { color: #fe5000; }
 
-#operationDetailsView--idComponents.operationDetailTabSelected #operationDetailsView--idComponents-count::before { content: ""; height: 4px; position: absolute; top: 20px; bottom: 0; left: 0; right: 0; background: #fe5000; }
-
 #operationDetailsView--idComponents[data-idcomponentsho="true"] #operationDetailsView--idComponents-count::after { height: 4px; position: relative; top: 0; background: transparent; content: " ⇧HO  "; color: #4CBB17; font-size: 80%; font-weight: bold; vertical-align: sub; }
 
-#operationDetailsView--idTrackingTemplate.operationDetailTabSelected #operationDetailsView--idTrackingTemplate-count::before { content: ""; height: 4px; position: absolute; top: 20px; bottom: 0; left: 0; right: 0; background: #fe5000; }
-
 #operationDetailsView--idTrackingTemplate[data-idtrackingtemplateho="true"] #operationDetailsView--idTrackingTemplate-count::after { height: 4px; position: relative; top: 0; background: transparent; content: " ⇧HO  "; color: #4CBB17; font-size: 80%; font-weight: bold; vertical-align: sub; }
+
+.sapMITBSelected > .sapMITBTab .sapMITBCount { color: rgba(0, 86, 112, 0.94) !important; font-weight: bold; }
+
+.sapMITBSelected > .sapMITBTab .sapMITBCount:before { content: ""; height: 4px; position: absolute; top: 20px; bottom: 0; left: 0; right: 0; background: #fe5000; }
 
 #ViewDisruptionView--disrptlist { width: 95% !important; margin: 50px auto !important; padding: 0; }
 
@@ -2349,7 +2347,10 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
+/*!
+*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
+*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+*/
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
