@@ -63,7 +63,8 @@ airbus.mes.disruptions.ModelManager = {
 				"operationNo": operation,
 				"sfcStepBO": sSfcStepRef,
 				"userBO": "UserBO:" + airbus.mes.settings.ModelManager.site + "," + sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
-				"msnNumber": ""
+				"msnNumber": "",
+				"forMobile": true
 			}),
 
 			success: function (data) {
@@ -472,50 +473,6 @@ airbus.mes.disruptions.ModelManager = {
 		return urlOnEscalate;
 	},
 
-	/***************************************************************************
-	 * Escalate Disruption Service
-	 **************************************************************************/
-	escalateDisruption: function (msgRef, sComment, sPath, i18nModel) {
-
-		jQuery.ajax({
-			url: this.getUrlOnEscalate(),
-			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
-				"Param.2": msgRef,
-				"Param.3": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
-				"Param.4": sComment
-			},
-			type: 'POST',
-			error: function (xhr, status, error) {
-
-				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
-				airbus.mes.disruptions.func.tryAgainError(i18nModel);
-
-			},
-			success: function (result, status, xhr) {
-				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
-
-				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
-					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-
-				} else { // Success
-					airbus.mes.disruptions.__enterCommentDialogue.close();
-					airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("successfulEscalation"));
-
-					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
-
-					// Refresh station tracker
-					if (nav.getCurrentPage().getId() == "stationtrackerView")
-						airbus.mes.shell.oView.getController().renderStationTracker();
-
-					// Set Refresh disruption tracker flag
-					else if (nav.getCurrentPage().getId() == "disruptiontrackerView")
-						airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
-
-				}
-			}
-		});
-	},
 
 	/***************************************************************************
 	 * Get URL to Acknowledge Disruption
@@ -582,6 +539,9 @@ airbus.mes.disruptions.ModelManager = {
 	 * Mark Solved Disruption
 	 **************************************************************************/
 	markSolvedDisruption: function (msgRef, comment, sPath, i18nModel) {
+
+		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
+		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
 
 		jQuery.ajax({
 			url: this.getUrlToMarkSolvedDisruption(),
@@ -693,7 +653,10 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Reject Disruption Service
 	 **************************************************************************/
-	rejectDisruption: function (comment, msgref, sStatus, sPath, i18nModel) {
+	rejectDisruption: function (comment, msgRef, sStatus, sPath, i18nModel) {
+
+		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
+		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
 
 		jQuery.ajax({
 			url: this.getUrlToRejectDisruption(),
@@ -758,6 +721,9 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	refuseDisruption: function (comment, msgref, sPath, i18nModel) {
 
+		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
+		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
+
 		jQuery.ajax({
 			url: this.getUrlToRefuseDisruption(),
 			data: {
@@ -770,7 +736,9 @@ airbus.mes.disruptions.ModelManager = {
 				airbus.mes.disruptions.func.tryAgainError(i18nModel);
 
 			},
-			success: function (result, status, xhr) {
+			success: function (result, status, xhr) {2
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
+				
 				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
 					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 

@@ -13,7 +13,7 @@
 						<l:GridData span="L2 M2 S12" />
 					</layoutData>
 					</Label>
-					<Input id="closeDisruption-timeLost" type="Number" enabled="{Profile>/identifiedUser/permissions/WORK_DIS_TIME_LOST}" >
+					<Input id="closeDisruption-timeLost" type="Number" enabled="{Profile>/identifiedUser/permissions/WORK_DIS_TIME_LOST}"  liveChange="liveChangeTimeLost">
 					<layoutData>
 						<l:GridData span="L2 M6 S8" />
 					</layoutData>

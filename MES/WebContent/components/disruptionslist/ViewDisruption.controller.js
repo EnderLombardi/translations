@@ -314,13 +314,9 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 
 		// Comment is mandatory while rejection
 		if (comment == "") {
-			sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
+			airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("plsEnterComment"));
 			return;
 		}
-
-		// Set Busy
-		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
-		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
 
 		var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();
 		var msgRef = sap.ui.getCore().byId("disruptionCommentMsgRef").getText();
@@ -353,10 +349,6 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 			sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
 			return;
 		}
-		
-		// Set Busy
-		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
-		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
 
 		var msgRef = sap.ui.getCore().byId("disruptionCommentMsgRef").getText();
 		var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();
@@ -438,8 +430,9 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 
 		}
 		sap.ui.getCore().byId("disruptionAckCommentDialogue").setTitle(title);
-
+		
 		sap.ui.getCore().byId("disruptionAckDate").setDateValue(new Date());
+		sap.ui.getCore().byId("disruptionAckTime").setDateValue();
 
 		sap.ui.getCore().byId("disruptionAckMsgRef").setText(msgRef);
 
@@ -525,17 +518,22 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 	 */
 	onMarkSolvedDisruptionComment : function() {
 
-		// Set Busy
-		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
-		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
+		var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
+		
+		//Comment is mandatory while solving
+		var sComment = sap.ui.getCore().byId("disruptionCommentBox").getValue();
+		if (sComment == "") {
+			airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("plsEnterComment"));
+			return;
+		}
+		sComment = airbus.mes.disruptions.Formatter.actions.solve + sComment;
+
 
 		var msgRef = sap.ui.getCore().byId("disruptionCommentMsgRef").getText();
 		var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();
-		var comment = airbus.mes.disruptions.Formatter.actions.solve + sap.ui.getCore().byId("disruptionCommentBox").getValue();
-
-		// Call to Mark Solved Disruption
-		var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
-		airbus.mes.disruptions.ModelManager.markSolvedDisruption(msgRef, comment, sPath, i18nModel);
+		
+		// Call to mark solve service
+		airbus.mes.disruptions.ModelManager.markSolvedDisruption(msgRef, sComment, sPath, i18nModel);
 
 	},
 
@@ -563,11 +561,53 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 		var msgRef = sap.ui.getCore().byId("disruptionCommentMsgRef").getText();
 		var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();
 
-		var comment = airbus.mes.disruptions.Formatter.actions.escalation + sap.ui.getCore().byId("disruptionCommentBox").getValue();
+		var sComment = airbus.mes.disruptions.Formatter.actions.escalation + sap.ui.getCore().byId("disruptionCommentBox").getValue();
 
-		// Call Escalate Service
 		var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
-		airbus.mes.disruptions.ModelManager.escalateDisruption(msgRef, comment, sPath, i18nModel);
+
+		// Set Busy
+		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
+		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
+		
+		// Call Escalate Service
+		jQuery.ajax({
+			url: airbus.mes.disruptions.ModelManager.getUrlOnEscalate(),
+			data: {
+				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.2": msgRef,
+				"Param.3": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.4": sComment
+			},
+			type: 'POST',
+			error: function (xhr, status, error) {
+
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
+				airbus.mes.disruptions.func.tryAgainError(i18nModel);
+
+			},
+			success: function (result, status, xhr) {
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
+
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
+					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+
+				} else { // Success
+					airbus.mes.disruptions.__enterCommentDialogue.close();
+					airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("successfulEscalation"));
+
+					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
+
+					// Refresh station tracker
+					if (nav.getCurrentPage().getId() == "stationtrackerView")
+						airbus.mes.shell.oView.getController().renderStationTracker();
+
+					// Set Refresh disruption tracker flag
+					else if (nav.getCurrentPage().getId() == "disruptiontrackerView")
+						airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
+
+				}
+			}
+		});;
 
 	},
 
@@ -748,6 +788,23 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
   			}
 
   		});
-  	}
+  	},
+  	
+
+	/***********************
+	 * value in time lost should't be greater than four
+	 * Mesv1.5 defect correction
+	 */
+	liveChangeTimeLost:function(oEvt){
+		var oView = airbus.mes.disruptionslist.oView;
+		if(oEvt.getParameters().value.length == 4){
+			this.sTimeLost = oEvt.getSource().getValue();
+			return;
+		} else if(oEvt.getParameters().value.length >4){
+			airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("fourDigitsOnly"));
+			oEvt.getSource().setValue(this.sTimeLost);
+			return;
+		}
+	},
 
 });

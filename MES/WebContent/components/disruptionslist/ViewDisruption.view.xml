@@ -26,7 +26,7 @@
 
 								
 								<Label text="{i18nModel>opensince}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}"  width="5%"/>
-								<Label text=" {path:'operationDisruptionsModel>openDateTime', formatter: 'airbus.mes.disruptionslist.Formatter.setOpenSince'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="5%"/>
+								<Label text=" {path:'operationDisruptionsModel>openSince', formatter: 'airbus.mes.disruptionslist.Formatter.setOpenSince'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="5%"/>
 								
 								<Label text="{i18nModel>level} {operationDisruptionsModel>escalationLevel}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" class="disrptlistdesc" design="Bold" width="5%"/>
 								
