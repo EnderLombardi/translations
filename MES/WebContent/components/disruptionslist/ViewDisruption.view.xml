@@ -237,15 +237,24 @@
 								</HBox>
 							</VBox>
 						</Panel>
-
-						<Toolbar class="disruptionBottomBar">
-								
-							<Button text="{i18nModel>seeAttachment}" icon="sap-icon://attachment"
+						<Button text="{i18nModel>seeAttachment}" icon="sap-icon://attachment"
 								press="viewAttachments" design="Transparent" class="transparentBlueButton"  />
 
-							<ToolbarSpacer />
+						<List id="idListDocument" class="sapUiSmallMarginBegin"
+							items="{path: 'operationDisruptionsModel>attachedDocument'}">
+							<CustomListItem id="document-list-item" >
+								<HBox class="document-item">
+									<Link class="document-title" text="{operationDisruptionsModel>fileName}" href="{operationDisruptionsModel>fileURL}"/>
+									<!--<Label id="document-title" class="document-title" text="{operationDisruptionsModel>fileName}" />-->
+									<Label id="document-description" class="document-description" text="{operationDisruptionsModel>fileDescription}" />
+									<Label id="document-size" class="document-description" text="{operationDisruptionsModel>fileSize} Ko" />
+								</HBox>
+							</CustomListItem>
+						</List>
+							
+						<Toolbar class="disruptionBottomBar">
 						
-
+							<ToolbarSpacer />
 							<Button id="addComment" text="{i18nModel>addComment}"
 								type="Emphasized"
 								visible="{parts: [ {path: 'operationDisruptionsModel>originatorFlag'}, {path: 'operationDisruptionsModel>responsibleFlag'}, {path: 'operationDisruptionsModel>resolverID'}, {path: 'operationDisruptionsModel>status'}, {path: 'operationDisruptionsModel>commentBoxOpened'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
@@ -278,6 +287,7 @@
 								
 
 						</Toolbar>
+
 					</Panel>
 					
 				</CustomListItem>

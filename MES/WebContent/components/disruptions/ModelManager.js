@@ -883,7 +883,8 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
      * Send POST retrieve document request
      **************************************************************************/
-	retrieveDocument: function (site, reference) {
+	retrieveDocument: function (reference, callback) {
+		
 		jQuery.ajax({
 			async: false,
 			url: this.getPostRetrieveDocumentUrl(),
@@ -892,13 +893,14 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			type: 'post',
 			data: JSON.stringify({
-				"site": site,
+				"site": airbus.mes.settings.ModelManager.site,
 				"type": "DA",
 				"ref": reference,
 			})
 			,
 			success: function (data, textStatus, jqXHR) {
 				console.log(data);
+				callback(data);
 			},
 			error: function (data, textStatus, jqXHR) {
 				console.log(data);

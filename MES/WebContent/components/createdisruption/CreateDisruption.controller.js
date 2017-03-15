@@ -67,14 +67,32 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 			this.createDisruptionSettings();
 			sap.ui.getCore().getModel("MaterialListModel").setData([]);
 			sap.ui.getCore().getModel("JigtoolListModel").setData([]);
-
 			sap.ui.getCore().getModel("DesktopFilesModel").setData([]);
 		} else if (sMode == "Edit") {
 			this.loadRsnResponsibleGrp(oData.messageType);
 			this.editPreSettings();
+			this.loadAttachedDocument(oData.messageRef);
 
 		}
+	},
 
+	loadAttachedDocument: function (messageRef) {
+		sap.ui.getCore().getModel("DesktopFilesModel").setData([]);
+		airbus.mes.disruptions.ModelManager.retrieveDocument(messageRef, function (data) {
+			if (data) {
+				if (data.listkMResources.length) {
+					var list = data.listkMResources;
+					var i = list.length - 1;
+					for (; i >= 0; i -= 1) {
+						var item = list[i];
+						airbus.mes.createdisruption.oView.oController.addFilesToList(item.fileName, item.fileDescription, '', item.fileSize);
+					}
+				} else {
+					var item = data.listkMResources;
+					airbus.mes.createdisruption.oView.oController.addFilesToList(item.fileName, item.fileDescription, '', item.fileSize);
+				}
+			}
+		});
 	},
 
 	onExit: function (oEvt) {
