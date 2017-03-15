@@ -60,7 +60,9 @@ airbus.mes.ncdisplay.util.ModelManager = {
 					}
 
 					if (set === airbus.mes.ncdisplay.util.ModelManager.workOrder) {
-						data.count = data.ncDetailList.length;
+						data.count = airbus.mes.ncdisplay.util.ModelManager.getOperationCount(data.ncDetailList,
+							"%"
+						);
 					} else {//operation and null/undefined
 						data.count = airbus.mes.ncdisplay.util.ModelManager.getOperationCount(data.ncDetailList,
 							airbus.mes.ncdisplay.oView.oController.getOwnerComponent().mProperties.operation
@@ -172,7 +174,10 @@ airbus.mes.ncdisplay.util.ModelManager = {
 	getOperationCount: function (ncDetailList, operationId) {
 		var count = 0;
 		for (var i = 0; i < ncDetailList.length; i++) {
-			if (ncDetailList[i].operationNumber === operationId.split('-')[3]) {
+//			Count for current operation or if operationId = %, the count level is workorder, so we count all for all operation
+			if ( ( ncDetailList[i].operationNumber === operationId.split('-')[3] || operationId === "%" )
+//			 and NC is open
+			 && ncDetailList[i].acpStatus === "O") {
 				count++;
 			}
 		}
