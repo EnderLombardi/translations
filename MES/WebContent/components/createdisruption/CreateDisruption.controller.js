@@ -113,7 +113,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 
 		var oInput = sap.ui.getCore().byId("idTitleInput");
 		var description = oInput.getValue();
-		
+
 		this.addFilesToList(filesListBase64.fileName, description, filesListBase64.fileBase64, filesListBase64.size);
 		oInput.destroy();
 	},
@@ -207,7 +207,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 	onEditPress: function (oEvent) {
 		var sPath = oEvent.oSource.oParent.oPropagatedProperties.oBindingContexts.DesktopFilesModel.sPath;
 		var iIndex = sPath.split("/")[1];
-		this.onEditMode(iIndex,true);
+		this.onEditMode(iIndex, true);
 	},
 
 	onCancelPress: function (oEvent) {
@@ -216,7 +216,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		var oData = oModel.getData();
 		oData[iIndex].Description = oData[iIndex].oldDescription;
-		this.onEditMode(iIndex,false);
+		this.onEditMode(iIndex, false);
 		oModel.refresh();
 	},
 
@@ -226,7 +226,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		var oData = oModel.getData();
 		oData[iIndex].oldDescription = oData[iIndex].Description;
-		this.onEditMode(iIndex,false);
+		this.onEditMode(iIndex, false);
 		oModel.refresh();
 	},
 
@@ -237,14 +237,24 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		this.getView().byId('createDisruptionView--document-description-input-createDisruptionView--idListDocument-' + iIndex).setVisible(isEdit);
 	},
 
-	removeEditMode: function() {
+	removeEditMode: function () {
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		var oData = oModel.getData();
 		var len = oData.length;
 		var i = 0;
-		for(; i<len; i+=1) {
+		for (; i < len; i += 1) {
 			oData[i].Description = oData[i].oldDescription;
-			this.onEditMode(i,false);
+			this.onEditMode(i, false);
+		}
+	},
+
+	sendAttachedDocument: function (ref) {
+		var attachedDocumentList = sap.ui.getCore().getModel("DesktopFilesModel").getData();
+		var length = attachedDocumentList.length;
+		var i = 0;
+		for (; i < length; i += 1) {
+			var document = attachedDocumentList[i];
+			airbus.mes.disruptions.ModelManager.attachDocument(ref, document.Title, document.File, document.Description);
 		}
 	}
 

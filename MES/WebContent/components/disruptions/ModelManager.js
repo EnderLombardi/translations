@@ -265,7 +265,7 @@ airbus.mes.disruptions.ModelManager = {
 				if (rowExists != undefined) {
 					if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
 						airbus.mes.shell.ModelManager.messageShow(airbus.mes.createdisruption.oView.getModel("i18nModel").getProperty("DisruptCreateSuccess"));
-
+						airbus.mes.createdisruption.oView.oController.sendAttachedDocument(data.Rowsets.Rowset[0].Row[0].MessageRef);
 						// Load disruption Model again for new message
 						airbus.mes.disruptions.ModelManager.createEditFlag = true;
 
@@ -878,7 +878,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	* Send POST attached document request
 	**************************************************************************/
-	attachDocument: function (site, reference, fileName, fileBase64, descript, userName) {
+	attachDocument: function (reference, fileName, fileBase64, descript) {
 		jQuery.ajax({
 			async: false,
 			url: this.getPostAttachedDocumentUrl(),
@@ -887,20 +887,20 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			type: 'post',
 			data: JSON.stringify({
-				"site": site,
+				"site": airbus.mes.settings.ModelManager.site,
 				"type": "DA",
 				"ref": reference,
 				"fileName": fileName,
 				"fileDescription": descript,
 				"fileBase64": fileBase64,
-				"userName": userName
+				"userName": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
 			})
 			,
 			success: function (data, textStatus, jqXHR) {
 				console.log(data);
 			},
 			error: function (data, textStatus, jqXHR) {
-				airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
+				console.log(data);
 			}
 		});
 	},
@@ -933,7 +933,7 @@ airbus.mes.disruptions.ModelManager = {
 				console.log(data);
 			},
 			error: function (data, textStatus, jqXHR) {
-				airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
+				console.log(data);
 			}
 		});
 	},
@@ -962,14 +962,14 @@ airbus.mes.disruptions.ModelManager = {
 				"ref": reference,
 				"fileCount": fileCount,
 				"fileDescription": descript,
-				"userName": userName
+				"userName": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
 			})
 			,
 			success: function (data, textStatus, jqXHR) {
 				console.log(data);
 			},
 			error: function (data, textStatus, jqXHR) {
-				airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
+				console.log(data);
 			}
 		});
 	},
@@ -1004,7 +1004,7 @@ airbus.mes.disruptions.ModelManager = {
 				console.log(data);
 			},
 			error: function (data, textStatus, jqXHR) {
-				airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
+				console.log(data);
 			}
 		});
 	},

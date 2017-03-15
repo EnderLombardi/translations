@@ -2347,10 +2347,7 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*!
-*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
-*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-*/
+/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -4918,7 +4915,7 @@ END OF QUARANTINE
 ********************/
 #createDisruptionView--idListDocument .document-item { display: inline-block; text-align: center; vertical-align: middle; min-height: 3rem; width: 100%; }
 
-#createDisruptionView--idListDocument .document-item .document-title { padding: 1rem 0; font-weight: bold; font-size: 1rem; width: 20%; float: left; }
+#createDisruptionView--idListDocument .document-item .document-title { padding: 1rem 0; font-weight: bold; font-size: 1rem; width: 20%; padding-left: 10px; float: left; }
 
 #createDisruptionView--idListDocument .document-item .document-description { padding: 1rem 0; font-size: 1rem; width: 60%; margin: 0 2.5%; float: left; }
 
@@ -4928,7 +4925,7 @@ END OF QUARANTINE
 
 #createDisruptionView--idListDocument .document-item .sapMInputBaseInner { padding: 0; font-size: 1rem; height: 2rem; margin: 0.5rem 0; }
 
-#createDisruptionView--idListDocument .document-item .document-size { padding: 1rem 0; font-size: 1rem; width: 10%; float: left; }
+#createDisruptionView--idListDocument .document-item .document-size { padding: 1rem 0; font-size: 1rem; width: 8%; float: left; }
 
 #createDisruptionView--idListDocument .document-item .document-button { padding: 0.7rem 0; widows: 5%; float: left; }
 
