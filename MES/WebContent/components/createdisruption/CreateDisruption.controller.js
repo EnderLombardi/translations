@@ -83,13 +83,16 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 				if (data.listkMResources.length) {
 					var list = data.listkMResources;
 					var i = list.length - 1;
+					
 					for (; i >= 0; i -= 1) {
 						var item = list[i];
-						airbus.mes.createdisruption.oView.oController.addUpdateFilesToList(item.fileName, item.fileDescription, item.fileCount, item.fileSize);
+						var status = item.isDeleted === 'true' ? 'DELETE' : 'UPDATE';
+						airbus.mes.createdisruption.oView.oController.addUpdateFilesToList(item.fileName, item.fileDescription, item.fileCount, item.fileSize, status);
 					}
 				} else {
 					var item = data.listkMResources;
-					airbus.mes.createdisruption.oView.oController.addUpdateFilesToList(item.fileName, item.fileDescription, item.fileCount, item.fileSize);
+					var status = item.isDeleted === 'true' ? 'DELETE' : 'UPDATE';
+					airbus.mes.createdisruption.oView.oController.addUpdateFilesToList(item.fileName, item.fileDescription, item.fileCount, item.fileSize, status);
 				}
 			}
 		});
@@ -147,7 +150,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		var description = oInputComment.getValue();
 		filesListBase64.fileName = oInputName.getValue() + '.' + filesListBase64.type;
 		filesListBase64.size = filesListBase64.size || '';
-
+		
 		this.addFilesToList(filesListBase64.fileName, description, filesListBase64.fileBase64, filesListBase64.size);
 		oInputComment.destroy();
 		oInputName.destroy();
@@ -167,7 +170,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		oModel.refresh();
 	},
 
-	addUpdateFilesToList: function (fileName, description, fileCount, size) {
+	addUpdateFilesToList: function (fileName, description, fileCount, size, status) {
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		var oData = oModel.getData();
 		var item = {};
@@ -176,7 +179,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		item.oldDescription = description;
 		item.Size = size;
 		item.fileCount = fileCount;
-		item.Status = 'UPDATE';
+		item.Status = status;
 		oData.unshift(item);
 		oModel.refresh();
 	},
@@ -250,7 +253,12 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		// Removing the selected list item from the model based on the index
 		// calculated
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
-		oModel.oData.splice(iIndex, 1);
+		if(oModel.oData[iIndex].Status === 'UPDATE') {
+			oModel.oData[iIndex].Status = 'DELETE';
+		} else if (oModel.oData[iIndex].Status === 'CREATE'){
+			oModel.oData.splice(iIndex, 1);
+		}
+		
 		oModel.refresh();
 	},
 
@@ -308,6 +316,8 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 				airbus.mes.disruptions.ModelManager.attachDocument(ref, document.Title, document.File, document.Description);
 			} else if (document.Status === 'UPDATE') {
 				airbus.mes.disruptions.ModelManager.updateAttachDocument(ref, document.fileCount, document.Description);
+			} else if ( document.Status === 'DELETE' ){
+				airbus.mes.disruptions.ModelManager.deleteAttachDocument(ref, document.fileCount);
 			}
 		}
 	},

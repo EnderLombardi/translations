@@ -146,7 +146,7 @@
 							<Label id="document-description" class="document-description" text="{DesktopFilesModel>Description}" />
 							<Input width="60%" id="document-description-input" class="document-description" visible="false" value="{DesktopFilesModel>Description}" />
 							<Label class="document-size" text="{path:'DesktopFilesModel>Size', formatter: 'airbus.mes.disruptions.Formatter.getFileSize'}" />
-							<HBox id="document-button" class= "document-button">
+							<HBox id="document-button" class= "document-button" visible="{path:'DesktopFilesModel>Status', formatter: 'airbus.mes.disruptions.Formatter.getDocumentStatus'}">
 								<core:Icon id="document-edit-test" class="document-edit" src="sap-icon://edit" press="onEditPress" />
 								<core:Icon class="document-delete" src="sap-icon://delete" press="onDeletePress" />
 							</HBox>

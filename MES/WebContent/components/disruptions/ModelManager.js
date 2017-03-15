@@ -1012,11 +1012,11 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			type: 'post',
 			data: JSON.stringify({
-				"site": site,
+				"site": airbus.mes.settings.ModelManager.site,
 				"type": "DA",
 				"ref": reference,
 				"fileCount": fileCount,
-				"userName": userName
+				"userName": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
 			})
 			,
 			success: function (data, textStatus, jqXHR) {
