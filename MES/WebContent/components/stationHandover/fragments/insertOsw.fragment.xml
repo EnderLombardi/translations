@@ -18,9 +18,9 @@
 					<ToolbarSpacer />
 
 					<Button id="jumpToStart" text="{stationHandoverI18n>jumpToStart}"
-						press="onPressJumpDate" key="shift" />
+						press="onPressJumpDateStart" key="shift" visible="false" />
 					<Button id="jumpToEnd" text="{stationHandoverI18n>jumpToEnd}"
-						press="onPressJumpDate" key="day" />
+						press="onPressJumpDateEnd" key="day" visible="false" />
 				</content>
 
 			</OverflowToolbar>
@@ -28,9 +28,7 @@
 		</subHeader>
 
 		<content>
-
-
-				<u:Calendar id="calendar" select="handleCalendarSelect"
+					<u:Calendar id="calendar" select="handleCalendarSelect"
 					class="center" enabled="false" />
 
 				<TimePicker id="TimePicker" valueFormat="hh:mm a"

@@ -210,10 +210,11 @@
 				</ui:Column>
 
 
-				<ui:Column id="openingTimeCol">
+				<ui:Column id="openingTimeCol" filterProperty="openDuration"
+					sortProperty="openDuration">
 					<Label text="{disruptiontrackerI18n>timeToGetFix}" />
 					<ui:template>
-						<Text text="{parts: [ {path: 'disruptionsTrackerModel>openingTime'}, {path: 'disruptionsTrackerModel>closureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
+						<Text text="{path: 'disruptionsTrackerModel>openDuration', formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
 					</ui:template>
 				</ui:Column>
 				

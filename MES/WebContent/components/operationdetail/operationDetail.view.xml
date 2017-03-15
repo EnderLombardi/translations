@@ -124,7 +124,7 @@
             </Panel>
 
             <Toolbar id="opDetailNavToolbar" class="opDetailNavToolbar">
-                <IconTabBar id="opDetailSegmentButtons" class="opDetailNav" width="100%" select="openPage">
+                <IconTabBar id="opDetailSegmentButtons" class="opDetailNav" width="100%" select="openPage" selectedKey="status" expandable="false">
                     <items>
                         <IconTabFilter id="idStatus" count="{i18n>Status}" tooltip="{i18n>Status}" key="status"></IconTabFilter>
                         <IconTabFilter id="idCheckList" enabled="{Profile>/identifiedUser/permissions/WORK_TRACKER_CHECKLIST}" count="{i18n>CheckListAndRecords}" tooltip="{i18n>CheckListAndRecords}" key="checkList"></IconTabFilter>

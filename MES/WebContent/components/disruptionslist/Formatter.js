@@ -12,34 +12,23 @@ airbus.mes.disruptionslist.Formatter = {
 		return false;
 	},
 	
-	setOpenSince:function(openingTime){
-		if (openingTime == undefined || openingTime =="") {
-			return 0;
+	setOpenSince:function(openSince){
+		if (openSince == undefined || openSince =="") {
+			return "---";
 		}
-		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
-		/*to avoid T*/
-		openingTime = openingTime.replace("T"," ");
-		var aOpenDate = reggie.exec(openingTime);
-		var oOpenDate = new Date((+aOpenDate[1]), (+aOpenDate[2]) - 1, // Careful
-		// month
-		// starts
-		// at 0!
-		(+aOpenDate[3]), (+aOpenDate[4]), (+aOpenDate[5]), (+aOpenDate[6]));
-		var dPresent = new Date();
-		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
-		var openSince;
 
+		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 		if (unit === "H")
-			openSince = (Math.round((dPresent - oOpenDate) / (1000 * 60 * 60) * 100) / 100) + " Hr";
+			openSince = (Math.round((openSince) / (1000 * 60 * 60) * 100) / 100) + " Hr";
 
 		else if (unit === "IM")
-			openSince = (Math.round((dPresent - oOpenDate) * 100 / (1000 * 60 * 60) * 100) / 100) + " IM";
+			openSince = (Math.round((openSince) * 100 / (1000 * 60 * 60) * 100) / 100) + " IM";
 
 		else if (unit === "M")
-			openSince = (Math.round((dPresent - oOpenDate) / (1000 * 60) * 100) / 100) + " Min";
+			openSince = (Math.round((openSince) / (1000 * 60) * 100) / 100) + " Min";
 
 		else if (unit === "D")
-			openSince = (Math.round((dPresent - oOpenDate) / (1000 * 60 * 60 * 24) * 100) / 100) + " Days";
+			openSince = (Math.round((openSince) / (1000 * 60 * 60 * 24) * 100) / 100) + " Days";
 
 		return openSince;
 		

@@ -63,7 +63,8 @@ airbus.mes.disruptions.ModelManager = {
 				"operationNo": operation,
 				"sfcStepBO": sSfcStepRef,
 				"userBO": "UserBO:" + airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.user,
-				"msnNumber": ""
+				"msnNumber": "",
+				"forMobile": true
 			}),
 
 			success: function (data) {
@@ -265,7 +266,7 @@ airbus.mes.disruptions.ModelManager = {
 				if (rowExists != undefined) {
 					if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
 						airbus.mes.shell.ModelManager.messageShow(airbus.mes.createdisruption.oView.getModel("i18nModel").getProperty("DisruptCreateSuccess"));
-
+						airbus.mes.createdisruption.oView.oController.sendAttachedDocument(data.Rowsets.Rowset[0].Row[0].MessageRef);
 						// Load disruption Model again for new message
 						airbus.mes.disruptions.ModelManager.createEditFlag = true;
 
@@ -585,6 +586,9 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	markSolvedDisruption: function (msgRef, comment, sPath, i18nModel) {
 
+		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
+		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
+
 		jQuery.ajax({
 			url: this.getUrlToMarkSolvedDisruption(),
 			data: {
@@ -695,7 +699,10 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Reject Disruption Service
 	 **************************************************************************/
-	rejectDisruption: function (comment, msgref, sStatus, sPath, i18nModel) {
+	rejectDisruption: function (comment, msgRef, sStatus, sPath, i18nModel) {
+
+		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
+		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
 
 		jQuery.ajax({
 			url: this.getUrlToRejectDisruption(),
@@ -760,6 +767,9 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	refuseDisruption: function (comment, msgref, sPath, i18nModel) {
 
+		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
+		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
+
 		jQuery.ajax({
 			url: this.getUrlToRefuseDisruption(),
 			data: {
@@ -772,7 +782,9 @@ airbus.mes.disruptions.ModelManager = {
 				airbus.mes.disruptions.func.tryAgainError(i18nModel);
 
 			},
-			success: function (result, status, xhr) {
+			success: function (result, status, xhr) {2
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
+				
 				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
 					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 
@@ -881,7 +893,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	* Send POST attached document request
 	**************************************************************************/
-	attachDocument: function (site, reference, fileName, fileBase64, descript, userName) {
+	attachDocument: function (reference, fileName, fileBase64, descript) {
 		jQuery.ajax({
 			async: false,
 			url: this.getPostAttachedDocumentUrl(),
@@ -890,20 +902,20 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			type: 'post',
 			data: JSON.stringify({
-				"site": site,
+				"site": airbus.mes.settings.ModelManager.site,
 				"type": "DA",
 				"ref": reference,
 				"fileName": fileName,
 				"fileDescription": descript,
 				"fileBase64": fileBase64,
-				"userName": userName
+				"userName": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
 			})
 			,
 			success: function (data, textStatus, jqXHR) {
 				console.log(data);
 			},
 			error: function (data, textStatus, jqXHR) {
-				airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
+				console.log(data);
 			}
 		});
 	},
@@ -918,7 +930,8 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
      * Send POST retrieve document request
      **************************************************************************/
-	retrieveDocument: function (site, reference) {
+	retrieveDocument: function (reference, callback) {
+		
 		jQuery.ajax({
 			async: false,
 			url: this.getPostRetrieveDocumentUrl(),
@@ -927,16 +940,17 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			type: 'post',
 			data: JSON.stringify({
-				"site": site,
+				"site": airbus.mes.settings.ModelManager.site,
 				"type": "DA",
 				"ref": reference,
 			})
 			,
 			success: function (data, textStatus, jqXHR) {
 				console.log(data);
+				callback(data);
 			},
 			error: function (data, textStatus, jqXHR) {
-				airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
+				console.log(data);
 			}
 		});
 	},
@@ -946,6 +960,36 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 	getPostRetrieveDocumentUrl: function () {
 		return this.urlModel.getProperty('postRetrieveDocument');
+	},
+
+
+	/***************************************************************************
+     * Send POST update attached document request
+     **************************************************************************/
+	updateAttachDocument: function (site, reference, fileCount, descript, userName) {
+		jQuery.ajax({
+			async: false,
+			url: this.getPostUpdateAttachedDocumentUrl(),
+			dataType: "json",
+			cache: false,
+			contentType: 'application/json',
+			type: 'post',
+			data: JSON.stringify({
+				"site": site,
+				"type": "DA",
+				"ref": reference,
+				"fileCount": fileCount,
+				"fileDescription": descript,
+				"userName": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+			})
+			,
+			success: function (data, textStatus, jqXHR) {
+				console.log(data);
+			},
+			error: function (data, textStatus, jqXHR) {
+				console.log(data);
+			}
+		});
 	},
 
 	/*
@@ -978,7 +1022,7 @@ airbus.mes.disruptions.ModelManager = {
 				console.log(data);
 			},
 			error: function (data, textStatus, jqXHR) {
-				airbus.mes.trackingtemplate.oView.oController.cleanListFiles();
+				console.log(data);
 			}
 		});
 	},

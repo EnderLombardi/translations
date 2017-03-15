@@ -360,8 +360,9 @@ airbus.mes.disruptions.Formatter = {
 		return text;
 	},
 	formatCommentAction : function(action, comment) {
-		if(!action)
+		if(!action) {
 			return "";
+		}
 		
 		if (comment && comment.indexOf("\$\$") > -1) {
 
@@ -378,12 +379,13 @@ airbus.mes.disruptions.Formatter = {
 			comment.shift();
 			comment = comment.join();
 		}
-		if (comment == "" || comment == " ") {
-			try {
+		try {
+			if (comment == "" || comment == " ") {
 				this.setVisible(false);
-			} catch (err) {
-
+			} else{
+				this.setVisible(true);
 			}
+		} catch (err){
 		}
 		return comment;
 	},

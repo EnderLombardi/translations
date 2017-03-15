@@ -48,220 +48,220 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	 */
 	loadacpnglinksWorkOrderDetail: function () {
 		try{
-		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
-		var sLinkType;
-		var hasColumns = false;
-		var jsonFormat;
-		try{
-			if ( oModel.getData().Rowsets.Rowset[0].Columns.Column[0] !== undefined ){
-				hasColumns = true;
-			}
-		}catch(error){
-			hasColumns = false;
-		}
-		jQuery.ajax({
-			type: 'post',
-			url: this.getacpnglinksWorkOrderDetail(),
-			contentType: 'application/json',
-			async: false,
-			data: JSON.stringify({
-				"site": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSite(),
-				"sfcStep": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSfcstep(),
-				"phStationBO": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getPhStation()
-			}),
-
-			success: function (data) {
-
-				try {
-					//DMI
-					// Rest response with only one list, need same schema
-					if (hasColumns && oModel.getData().Rowsets.Rowset[0].Row){
-						jsonFormat = {
-							"Rowsets": {
-								"Rowset": [{
-									"Columns": {
-										"Column": oModel.getData().Rowsets.Rowset[0].Columns.Column
-									}, 
-									"Row": []
-								}]
-							}
-						};
-								
-					}else{
-						
-					jsonFormat = {
-						"Rowsets": {
-							"Rowset": [{
-								"Columns": {
-									"Column": [
-										{
-											"Name": "Type",
-											"SourceColumn": "Type",
-											"Visible": "true",
-											"Sort": 0
-										},
-										{
-											"Name": "reference",
-											"SourceColumn": "reference",
-											"Visible": "true",
-											"Sort": 1
-										},
-										{
-											"Name": "reviewEnd",
-											"SourceColumn": "reviewEnd",
-											"Visible": "true",
-											"Sort": 2
-										},
-										{
-											"Name": "note",
-											"SourceColumn": "note",
-											"Visible": "true",
-											"Sort": 3
-										},
-										{
-											"Name": "familyTarget",
-											"SourceColumn": "familyTarget",
-											"Visible": "true",
-											"Sort": 4
-										},
-										{
-											"Name": "confirmedTime",
-											"SourceColumn": "confirmedTime",
-											"Visible": "false",
-											"Sort": 5
-										},
-										{
-											"Name": "stv",
-											"SourceColumn": "stv",
-											"Visible": "false",
-											"Sort": 6
-										},
-										{
-											"Name": "acpWorkstation",
-											"SourceColumn": "acpWorkstation",
-											"Visible": "false",
-											"Sort": 7
-										},
-										{
-											"Name": "ca",
-											"SourceColumn": "ca",
-											"Visible": "false",
-											"Sort": 8
-										},
-										{
-											"Name": "fatherLink",
-											"SourceColumn": "fatherLink",
-											"Visible": "false",
-											"Sort": 9
-										},
-										{
-											"Name": "blockingReason",
-											"SourceColumn": "blockingReason",
-											"Visible": "false",
-											"Sort": 10
-										},
-										{
-											"Name": "userStatus",
-											"SourceColumn": "userStatus",
-											"Visible": "false",
-											"Sort": 11
-										},
-										{
-											"Name": "executionStation",
-											"SourceColumn": "executionStation",
-											"Visible": "false",
-											"Sort": 12
-										},
-										{
-											"Name": "originWorkstation",
-											"SourceColumn": "originWorkstation",
-											"Visible": "false",
-											"Sort": 13
-										},
-										{
-											"Name": "tdl",
-											"SourceColumn": "tdl",
-											"Visible": "false",
-											"Sort": 14
-										},
-										{
-											"Name": "upperFamily",
-											"SourceColumn": "upperFamily",
-											"Visible": "false",
-											"Sort": 15
-										},
-										{
-											"Name": "zoning",
-											"SourceColumn": "zoning",
-											"Visible": "false",
-											"Sort": 16
-										},
-										{
-											"Name": "materialDescription",
-											"SourceColumn": "materialDescription",
-											"Visible": "false",
-											"Sort": 17
-										},
-										{
-											"Name": "ata",
-											"SourceColumn": "ata",
-											"Visible": "false",
-											"Sort": 18
-										},
-										{
-											"Name": "fatherType",
-											"SourceColumn": "fatherType",
-											"Visible": "never",
-											"Sort": 19
-										},
-										{
-											"Name": "predId",
-											"SourceColumn": "predId",
-											"Visible": "never",
-											"Sort": 20
-										}
-									]
-								}, "Row": []
-							}]
-						}
-					};
-					}
-					jsonFormat.Rowsets.Rowset[0].Row = data.elementList;
-					jsonFormat.linkTypeToDisplay = data.linkTypeToDisplay.toUpperCase();
-					oModel.setData(jsonFormat);
-					oModel.refresh(true);
-
-				} catch (e) {
-					oModel.setData(undefined);
-					oModel.refresh(true)
-					return;
+			var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
+			var sLinkType; //link type for data filtering
+			var hasColumns = false; //column saving for the current page
+			var jsonFormat;
+			try{
+				if ( oModel.getData().Rowsets.Rowset[0].Columns.Column[0] !== undefined ){
+					hasColumns = true;
 				}
-
-			},
-			error: function (error, jQXHR) {
-				console.log('acpnglinksWorkOrderDetail error', error);
+			}catch(error){
+				hasColumns = false;
 			}
-		});
+			jQuery.ajax({
+				type: 'post',
+				url: this.getacpnglinksWorkOrderDetail(),
+				contentType: 'application/json',
+				async: false,
+				data: JSON.stringify({
+					"site": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSite(),
+					"sfcStep": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getSfcstep(),
+					"phStationBO": airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getPhStation()
+				}),
 
-		// If is temporary until airbus side create service to get data.
-		if (oModel.getData().Rowsets.Rowset[0].Row != undefined){
-			switch (oModel.getData().linkTypeToDisplay){
+				success: function (data) {
+					// Rest response with only one list, need same schema
+					try {
+						if (hasColumns && oModel.getData().Rowsets.Rowset[0].Row){
+							jsonFormat = {
+								"Rowsets": {
+									"Rowset": [{
+										"Columns": {
+											"Column": oModel.getData().Rowsets.Rowset[0].Columns.Column
+										}, 
+										"Row": []
+									}]
+								}
+							};
+
+						}else{
+
+							jsonFormat = {
+								"Rowsets": {
+									"Rowset": [{
+										"Columns": {
+											"Column": [
+											           {
+											        	   "Name": "Type",
+											        	   "SourceColumn": "Type",
+											        	   "Visible": "true",
+											        	   "Sort": 0
+											           },
+											           {
+											        	   "Name": "reference",
+											        	   "SourceColumn": "reference",
+											        	   "Visible": "true",
+											        	   "Sort": 1
+											           },
+											           {
+											        	   "Name": "reviewEnd",
+											        	   "SourceColumn": "reviewEnd",
+											        	   "Visible": "true",
+											        	   "Sort": 2
+											           },
+											           {
+											        	   "Name": "note",
+											        	   "SourceColumn": "note",
+											        	   "Visible": "true",
+											        	   "Sort": 3
+											           },
+											           {
+											        	   "Name": "familyTarget",
+											        	   "SourceColumn": "familyTarget",
+											        	   "Visible": "true",
+											        	   "Sort": 4
+											           },
+											           {
+											        	   "Name": "confirmedTime",
+											        	   "SourceColumn": "confirmedTime",
+											        	   "Visible": "false",
+											        	   "Sort": 5
+											           },
+											           {
+											        	   "Name": "stv",
+											        	   "SourceColumn": "stv",
+											        	   "Visible": "false",
+											        	   "Sort": 6
+											           },
+											           {
+											        	   "Name": "acpWorkstation",
+											        	   "SourceColumn": "acpWorkstation",
+											        	   "Visible": "false",
+											        	   "Sort": 7
+											           },
+											           {
+											        	   "Name": "ca",
+											        	   "SourceColumn": "ca",
+											        	   "Visible": "false",
+											        	   "Sort": 8
+											           },
+											           {
+											        	   "Name": "fatherLink",
+											        	   "SourceColumn": "fatherLink",
+											        	   "Visible": "false",
+											        	   "Sort": 9
+											           },
+											           {
+											        	   "Name": "blockingReason",
+											        	   "SourceColumn": "blockingReason",
+											        	   "Visible": "false",
+											        	   "Sort": 10
+											           },
+											           {
+											        	   "Name": "userStatus",
+											        	   "SourceColumn": "userStatus",
+											        	   "Visible": "false",
+											        	   "Sort": 11
+											           },
+											           {
+											        	   "Name": "executionStation",
+											        	   "SourceColumn": "executionStation",
+											        	   "Visible": "false",
+											        	   "Sort": 12
+											           },
+											           {
+											        	   "Name": "originWorkstation",
+											        	   "SourceColumn": "originWorkstation",
+											        	   "Visible": "false",
+											        	   "Sort": 13
+											           },
+											           {
+											        	   "Name": "tdl",
+											        	   "SourceColumn": "tdl",
+											        	   "Visible": "false",
+											        	   "Sort": 14
+											           },
+											           {
+											        	   "Name": "upperFamily",
+											        	   "SourceColumn": "upperFamily",
+											        	   "Visible": "false",
+											        	   "Sort": 15
+											           },
+											           {
+											        	   "Name": "zoning",
+											        	   "SourceColumn": "zoning",
+											        	   "Visible": "false",
+											        	   "Sort": 16
+											           },
+											           {
+											        	   "Name": "materialDescription",
+											        	   "SourceColumn": "materialDescription",
+											        	   "Visible": "false",
+											        	   "Sort": 17
+											           },
+											           {
+											        	   "Name": "ata",
+											        	   "SourceColumn": "ata",
+											        	   "Visible": "false",
+											        	   "Sort": 18
+											           },
+											           {
+											        	   "Name": "fatherType",
+											        	   "SourceColumn": "fatherType",
+											        	   "Visible": "never",
+											        	   "Sort": 19
+											           },
+											           {
+											        	   "Name": "predId",
+											        	   "SourceColumn": "predId",
+											        	   "Visible": "never",
+											        	   "Sort": 20
+											           }
+											           ]
+										}, "Row": []
+									}]
+								}
+							};
+						}
+						//model build
+						jsonFormat.Rowsets.Rowset[0].Row = data.elementList;
+						jsonFormat.linkTypeToDisplay = data.linkTypeToDisplay.toUpperCase();
+						oModel.setData(jsonFormat);
+						oModel.refresh(true);
+
+					} catch (e) {
+						oModel.setData(undefined);
+						oModel.refresh(true)
+						return;
+					}
+
+				},
+				error: function (error, jQXHR) {
+					console.log('acpnglinksWorkOrderDetail error', error);
+				}
+			});
+			
+			if (oModel.getData().Rowsets.Rowset[0].Row != undefined){
+				//Filtering on link type
+				switch (oModel.getData().linkTypeToDisplay){
 				case "MANUAL":
 					sLinkType = ""
-					break;
+						break;
 				case "SAP":
 					sLinkType = "X"
-					break;
+						break;
 				default: //BOTH or anything else
-					 sLinkType = "BOTH"
-					break;
+					sLinkType = "BOTH"
+						break;
+				}
+				//transform model into a real tree model for tree table component
+				var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row, sLinkType);
+				oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
+				oModel.refresh(true);
 			}
-			var transformedModel = this.transformTreeData(oModel.getData().Rowsets.Rowset[0].Row, sLinkType);
-			oModel.getData().Rowsets.Rowset[0].Row = transformedModel;
-			oModel.refresh(true);
-		}
 		}catch(error){
-// do nothing no model			
+//			do nothing no model			
 		}
 
 	},
@@ -271,8 +271,8 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	 */
 	getacpnglinksWorkOrderDetail: function () {
 		try{
-		var url = this.urlModel.getProperty("acpnglinksWorkOrderDetail");
-		return url;
+			var url = this.urlModel.getProperty("acpnglinksWorkOrderDetail");
+			return url;
 		}catch(error){
 			return "";
 		}
@@ -298,11 +298,11 @@ airbus.mes.acpnglinks.model.ModelManager = {
 					Type: nodeIn.type,
 					acpid: nodeIn.acpId,
 					Reference: nodeIn.reference,
-					ReviewEnd: nodeIn.reviewEnd,
+					ReviewEnd: nodeIn.reviewEndDate,
 					Note: nodeIn.note,
 					FamilyTarget: nodeIn.familyTarget,
 					ConfirmedTime: nodeIn.confirmedTime,
-					STV: nodeIn.STV,
+					STV: nodeIn.stv,
 					ACPWorkstation: nodeIn.acpWorkstation,
 					CA: nodeIn.ca,
 					FatherLink: nodeIn.fatherLink,
@@ -321,22 +321,31 @@ airbus.mes.acpnglinks.model.ModelManager = {
 					linkType: nodeIn.linkType,
 					children: []
 				}
+				if (nodeIn.reviewEndDate == "00000000"){
+					nodeIn.reviewEndDate = "";
+				}
 				if( i == 0){
 					nodeIn.linkType = sLink;
 				}
 				parentId = nodeIn.predId;
+				//push only if needed in display
 				if (nodeIn.linkType == sLink || sLink == "BOTH"){
 					if (parentId && parentId.length > 0 && parentId != '?') {
+						//looking for a father
 						var parent = nodeMap[parentId];
+						//real father found
 						if (parent) {
 							parent.children.push(nodeOut);
 							lastParent = nodeIn.acpId;
 						}else{
+							//Link to last father found
 							parent = nodeMap[lastParent];
 							if (parent){
 								parent.children.push(nodeOut);
 								lastParent = nodeIn.acpId;
 							} else {
+								//if not father found, determine this node as father
+								//change the model accordingly replacing this node as predid
 								nodes.push(nodeOut);
 								lastParent = nodeIn.acpId
 								var index = airbus.mes.acpnglinks.util.Formatter.findIndexObjectKey(nodesIn,"predId",parentId,0);

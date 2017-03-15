@@ -117,6 +117,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
          */
 
         scheduler.eventId.push(scheduler.attachEvent("onBeforeEventChanged", function (ev, e, is_new, original) {
+
             //Filled on event onBeforeDrag
             var oInitial = original;
             var oFinal = ev;
@@ -401,20 +402,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
 
         }));
         
-        /**
-         * Called when scheduler is reloaded
-         */
-        scheduler.eventId.push(scheduler.attachEvent("onViewChange", function (){
-        	// Empty count of not confirmed operations to reschedule
-        	airbus.mes.stationtracker.util.ModelManager.initToRescheduleAllCount("DHTMLXscheduler onViewChange");
-        }));
-        
-        scheduler.eventId.push(scheduler.attachEvent("onBeforeViewChange", function(){
-        	// Empty count of not confirmed operations to reschedule
-        	airbus.mes.stationtracker.util.ModelManager.initToRescheduleAllCount("DHTMLXscheduler onBeforeViewChange");
-            return true;
-        }));
-
         /************************************************************************/
         /************************************************************************/
         /**                                                                    **/
@@ -461,5 +448,17 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
                 return "folderAxisColor";
             }
         };
+
+        /* Custom scale date */
+        scheduler.templates.timeline_scale_date = function(date){
+
+            // Re init count of all late operations
+            airbus.mes.stationtracker.util.ModelManager.initToRescheduleAllCount();
+
+            var timeline = scheduler.matrix.timeline;
+            var func=scheduler.date.date_to_str(timeline.x_date||scheduler.config.hour_date);
+            return func(date);
+        }
+        
     },
 });

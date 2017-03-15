@@ -268,7 +268,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		/***************************
 		 * MES V1.5 Navigate to disruption Detail Page if opened from Desktop/Laptop [Begin]
 		 */
-		if (sap.ui.Device.system.desktop ) {
+		if (sap.ui.Device.system.desktop && disruptionData.responsibleFlag == "X" && disruptionData.originatorFlag != "X") {
 			airbus.mes.shell.util.navFunctions.disruptionsDetailScreen(sCurrMessageRef,sMessageType, sResolverGroup);
 			
 			 
@@ -297,8 +297,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				cache : false,
 				data : JSON.stringify({
 					"site" : airbus.mes.settings.ModelManager.site,
-					"messageRef": sCurrMessageRef,
-					"forMobile": true
+					"messageRef": sCurrMessageRef
 				}),
 
 				success : function(data) {
@@ -308,6 +307,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 						if (data && !data[0]) {
 
 							data.expanded="true"; //Set panel expanded by default
+							data.disruptionTracker="true";
 							aDisruptions = [ data ];
 						}
 					}

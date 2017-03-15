@@ -124,44 +124,8 @@
         margin-left: 6px;
         border-radius: 50%;
         outline: none!important;
+        text-shadow: none;
     }
-    
-
-    .operationDetailTabSelected{
-        >.sapMITBTab .sapMITBCount{
-            color: $petrol !important;
-            // background: transparent;
-            font-weight:bold;
-            // display: inline-block;
-            // margin: 1rem 0 0 0;
-            // height: calc(100% - 1rem);
-            &:after{
-                content: "";
-                height: 4px;
-                position:absolute;
-                top: 20px;
-                bottom:0;
-                left:0;
-                right:0;
-                background:$blood-orange;
-
-            //IN sap ui5 1.4 is not a list...we need to play with "tabindex"; who change with the active tab
-            // exemple
-            //     #operationDetailsView--idDisplayOpeAttachments{
-            //     >.sapMITBContentArrow{
-            //                     content: "";
-            //                     height: 4px;
-            //                     position:absolute;
-            //                     bottom:0;
-            //                     left:0;
-            //                     right:0;
-            //                     background:$blood-orange;
-            //                 }
-            //      }
-            }
-        }
-    }
-
 }
 @at-root html{
     &.sap-desktop{
@@ -267,6 +231,9 @@
                 border: 0px !important;
             }
         }
+    }
+    .sapMITBContent  {
+        padding: 0;
     }
 }
 
@@ -547,21 +514,6 @@
 }
 
 #operationDetailsView--idComponents{
-// When selected, we use the after to write HO icon so, we apply the orange underline as ::before
-	&.operationDetailTabSelected{
-		#operationDetailsView--idComponents-count{
-			&::before{ 
-			    content: "";
-			    height: 4px;
-			    position: absolute;
-			    top: 20px;
-			    bottom: 0;
-			    left: 0;
-			    right: 0;
-			    background: #fe5000;
-			}
-		}
-	}
 // If component is freeze, data-idcomponentsho = true, display HO
 	&[data-idcomponentsho="true"]{
 		#operationDetailsView--idComponents-count{
@@ -581,21 +533,6 @@
 }
 
 #operationDetailsView--idTrackingTemplate{
-// When selected, we use the after to write HO icon so, we apply the orange underline as ::before
-	&.operationDetailTabSelected{
-		#operationDetailsView--idTrackingTemplate-count{
-			&::before{ 
-			    content: "";
-			    height: 4px;
-			    position: absolute;
-			    top: 20px;
-			    bottom: 0;
-			    left: 0;
-			    right: 0;
-			    background: #fe5000;
-			}
-		}
-	}
 // If component is freeze, data-idtrackingtemplateho = true, display HO
 	&[data-idtrackingtemplateho="true"]{
 		#operationDetailsView--idTrackingTemplate-count{
@@ -612,4 +549,20 @@
 			}
 		}
 	}
+}
+.sapMITBSelected {
+    >.sapMITBTab .sapMITBCount{
+            color: $petrol !important;
+            font-weight:bold;
+            &:before{
+                content: "";
+                height: 4px;
+                position:absolute;
+                top: 20px;
+                bottom:0;
+                left:0;
+                right:0;
+                background:$blood-orange;
+        }
+    }
 }

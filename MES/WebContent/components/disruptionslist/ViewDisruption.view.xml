@@ -26,21 +26,18 @@
 
 								
 								<Label text="{i18nModel>opensince}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}"  width="5%"/>
-								<Label text=" {path:'operationDisruptionsModel>openDateTime', formatter: 'airbus.mes.disruptionslist.Formatter.setOpenSince'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="5%"/>
+								<Label text=" {path:'operationDisruptionsModel>openSince', formatter: 'airbus.mes.disruptionslist.Formatter.setOpenSince'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="5%"/>
 								
-								<ToolbarSpacer />
 								<Label text="{i18nModel>level} {operationDisruptionsModel>escalationLevel}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" class="disrptlistdesc" design="Bold" width="5%"/>
 								
-								<ToolbarSpacer />
 								<Label text="{operationDisruptionsModel>responsibleGroupDesc}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="10%"/>
 								
-								<ToolbarSpacer />
 								<Label text="{i18nModel>solutionin}:" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false : ${operationDisruptionsModel>status} ==='Solved' ? false : true}" width="5%" />
 								<Label text="{parts: [{path:'operationDisruptionsModel>promisedDateTime'}, {path:'operationDisruptionsModel>status'}], formatter: 'airbus.mes.disruptionslist.Formatter.setSolutionIn'}"  width="5%" design="Bold" />
 								
 								<ToolbarSpacer />
 								<core:Icon id="disrptListEnvelop" src="sap-icon://email" class="blinkingIcon" visible="{= ${operationDisruptionsModel>isCommentsLastUpdated} === 'true' ? true: false}"  width="3%" />
-								 <ToolbarSpacer />
+								
 								<Label
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>closureDate}"
 									visible="{path: 'operationDisruptionsModel>status', formatter: 'airbus.mes.disruptionslist.Formatter.setClosureDateVisibility'}"
@@ -57,7 +54,7 @@
 								<Button press="handleDisruptionPanelExpand"   design="Transparent" icon="sap-icon://slim-arrow-down" 
 									visible="{=${operationDisruptionsModel>expanded} !== 'true'}" />
 								<Button press="handleDisruptionPanelCollapse" design="Transparent" icon="sap-icon://slim-arrow-up"
-									visible="{=${operationDisruptionsModel>expanded} === 'true'}" />
+									visible="{=${operationDisruptionsModel>expanded} !== 'true' ? false : ${operationDisruptionsModel>disruptionTracker} === 'true' ? false : true}" />
 
 							</Toolbar>
 						</headerToolbar>
@@ -240,15 +237,24 @@
 								</HBox>
 							</VBox>
 						</Panel>
-
-						<Toolbar class="disruptionBottomBar">
-								
-							<Button text="{i18nModel>seeAttachment}" icon="sap-icon://attachment"
+						<Button text="{i18nModel>seeAttachment}" icon="sap-icon://attachment"
 								press="viewAttachments" design="Transparent" class="transparentBlueButton"  />
 
-							<ToolbarSpacer />
+						<List id="idListDocument" class="sapUiSmallMarginBegin"
+							items="{path: 'operationDisruptionsModel>attachedDocument'}">
+							<CustomListItem id="document-list-item" >
+								<HBox class="document-item">
+									<Link class="document-title" text="{operationDisruptionsModel>fileName}" href="{operationDisruptionsModel>fileURL}"/>
+									<!--<Label id="document-title" class="document-title" text="{operationDisruptionsModel>fileName}" />-->
+									<Label id="document-description" class="document-description" text="{operationDisruptionsModel>fileDescription}" />
+									<Label id="document-size" class="document-description" text="{operationDisruptionsModel>fileSize} Ko" />
+								</HBox>
+							</CustomListItem>
+						</List>
+							
+						<Toolbar class="disruptionBottomBar">
 						
-
+							<ToolbarSpacer />
 							<Button id="addComment" text="{i18nModel>addComment}"
 								type="Emphasized"
 								visible="{parts: [ {path: 'operationDisruptionsModel>originatorFlag'}, {path: 'operationDisruptionsModel>responsibleFlag'}, {path: 'operationDisruptionsModel>resolverID'}, {path: 'operationDisruptionsModel>status'}, {path: 'operationDisruptionsModel>commentBoxOpened'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
@@ -281,6 +287,7 @@
 								
 
 						</Toolbar>
+
 					</Panel>
 					
 				</CustomListItem>

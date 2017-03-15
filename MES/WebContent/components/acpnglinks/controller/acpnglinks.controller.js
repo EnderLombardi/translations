@@ -33,14 +33,23 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 		}
 		return oTTbl.getRows().length;
 	},
+	
+	filterWO1 : function(obj){
+		return (obj.STATE != "C" );
+	},
 
 	/**
-	 * Clickable Cell management in Tree Table (unscoped for v1.5)
+	 * Clickable Cell management in Tree Table
 	 */
 	OnSelectionChange : function(oEvt) {
 //		 try {
+//		 var aModel = sap.ui.getCore().getModel("stationTrackerRModel").oData.Rowsets.Rowset[0].Row;
+//		 var aOp = [];
 //		 airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath);
 //		 console.log(airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath));
+//		
+//		 aOp = aModel.filter(this.filterWO1);
+//		 
 //		 } catch (exception) {
 //		 // do nothing
 //		 }
@@ -136,6 +145,7 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 	onUnassignColumns : function(oEvt) {
 		var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAllocatedcolumns").getSelectedItem();
 		try {
+			//Type column can't be unassigned
 			if(airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(aColumnsToAssign.getBindingContextPath()+"/SourceColumn").toUpperCase() != "TYPE"){
 				
 			airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath() + "/Visible", "false");

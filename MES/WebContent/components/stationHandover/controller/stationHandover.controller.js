@@ -245,8 +245,8 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 	},
 	/***************************************************************************
-	 * trigger when the user check/unechek the SELECED_UILine checkbox it filter
-	 * the tree table regading the SELECED_UILine value
+	 * trigger when the user check/unechek the SELECTED_UILine checkbox it filter
+	 * the tree table regading the SELECTED_UILine value
 	 **************************************************************************/
 	filterInsertedLines : function(oEvt) {
 
@@ -257,7 +257,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		} else {
 
-			airbus.mes.stationHandover.util.ModelManager.filter.selected = new sap.ui.model.Filter("SELECED_UI", "EQ", "false");
+			airbus.mes.stationHandover.util.ModelManager.filter.selected = new sap.ui.model.Filter("SELECTED_UI", "EQ", "false");
 
 		}
 
@@ -293,7 +293,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 				
 				var sPath = el.getCells()[0].oPropagatedProperties.oBindingContexts.oswModel.sPath;
 				var oModelOsw = oModel.getProperty(sPath);			
-				//Save the selection value in the model on the attributes SELECTED
+				//Save the selection value in the model on the attributes selected
 				that.isSelected(bValue,oModelOsw);			
 								
 			}
@@ -399,12 +399,24 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		}		
 	},
 	/***************************************************************************
-	 * trigger when the user click button of jump to Acpng start/End date Select
+	 * trigger when the user click button of jump to Acpng start date Select
 	 * in the Date picker the date of acpng Date of the osw selected
 	 **************************************************************************/
-	onPressJumpDate : function() {
+	onPressJumpDateStart : function() {
 		
+	//	var dDate = new Date(Math.max.apply(null,airbus.mes.stationHandover.util.ModelManager.aSelectedStartDate));
+
 				
+	},
+	/***************************************************************************
+	 * trigger when the user click button of jump to Acpng End date Select
+	 * in the Date picker the date of acpng Date of the osw selected
+	 **************************************************************************/
+	onPressJumpDateEnd : function() {
+		
+	//	var dDate = new Date(Math.max.apply(null,airbus.mes.stationHandover.util.ModelManager.aSelectedEndDate));
+		
+		
 	},
 	/***************************************************************************
 	 * trigger when the user Click on insert button check if one or more line are selected
@@ -414,21 +426,23 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	onPressInsert : function() {
 
 		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").oData.outstandingWorkOrderInfoList;
-		
 		var aSelected = [];
+//		var aSelectedStartDate = airbus.mes.stationHandover.util.ModelManager.aSelectedStartDate = [];
+//		var aSelectedEndDate = airbus.mes.stationHandover.util.ModelManager.aSelectedEndDate = [];
+//		var oFormatter = airbus.mes.shell.util.Formatter;
 		
 		oModel.forEach(function(el){
-			if ( el.SELECED_UI != el.selected ) {
+			if ( el.SELECTED_UI != el.selected ) {
 				
-				aSelected.push(el);
-
 			}			
 			
 				el.outstandingWorkStepInfoList.forEach(function(al){
 				
-					if ( al.SELECED_UI != al.selected ) {
+					if ( al.SELECTED_UI != al.selected ) {
 						
 						aSelected.push(al);
+//						aSelectedStartDate.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.startDate)));
+//						aSelectedEndDate.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.enDate)));
 					}	
 					
 				})
@@ -478,17 +492,15 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			
 		}
 		
+		// Parse model and remove selcted field and selected_UI for format data to send it to sdk services
 		oModel.outstandingWorkOrderInfoList.forEach(function(el){
-			if ( el.SELECED_UI != el.selected ) {
 				
-				delete el["selected"];
-				delete el["SELECED_UI"];
+				delete el.selected;
+				delete el.SELECTED_UI;
 
-			}			
-			
 				el.outstandingWorkStepInfoList.forEach(function(al){
 						
-					delete al["SELECED_UI"];
+					delete al.SELECTED_UI;
 					
 				})
 		})
