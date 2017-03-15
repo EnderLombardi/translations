@@ -341,10 +341,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
 				
-				if (dispatch) {
-					
-					dispatchWhite = true;
-				}
+				isWhiteIcon = true;
 				
 				break;
 
@@ -406,9 +403,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				if ( oBox.isBlocked === 1 ) {
 					sRightIcon = boxDisplayManager.rightStopWhite;
 				}	
-//				if (oBox.OSW === 3) { //OSW
-//					sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
-//				}
+
 				isWhiteIcon = true;
 
 				if (oBox.isUnplanned === 1) { //Unplanned
