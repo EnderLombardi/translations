@@ -25,7 +25,6 @@
 								<Label class="disrptlistdesc" id="headerStatus" text="{path: 'operationDisruptionsModel>status'}" visible="{=${operationDisruptionsModel>status} === 'Pending' ? false: true}" design="Bold" width="7%"/>
 
 								
-								<ToolbarSpacer />
 								<Label text="{i18nModel>opensince}: " visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}"  width="5%"/>
 								<Label text=" {path:'operationDisruptionsModel>openDateTime', formatter: 'airbus.mes.disruptionslist.Formatter.setOpenSince'}" visible="{=${operationDisruptionsModel>status} === 'Closed' ? false: true}" design="Bold" width="5%"/>
 								

@@ -65,6 +65,9 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 
 		if (sMode == "Create") {
 			this.createDisruptionSettings();
+			sap.ui.getCore().getModel("MaterialListModel").setData([]);
+			sap.ui.getCore().getModel("JigtoolListModel").setData([]);
+			
 			sap.ui.getCore().getModel("DesktopFilesModel").setData([]);
 		} else if (sMode == "Edit") {
 			this.loadRsnResponsibleGrp(oData.messageType);

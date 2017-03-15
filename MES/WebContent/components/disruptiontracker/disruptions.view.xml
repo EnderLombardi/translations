@@ -161,7 +161,7 @@
 				</ui:Column>
 
 				
-				<ui:Column id="solutionCol"
+				<ui:Column id="solutionCol" filterProperty="Solution"
 					sortProperty="Solution">
 					<Label text="{disruptiontrackerI18n>solution}" />
 					<ui:template>
@@ -169,7 +169,7 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="resolutionGroupCol"
+				<ui:Column id="resolutionGroupCol" filterProperty="responsibleGroupDesc"
 					sortProperty="responsibleGroupDesc">
 					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
 					<ui:template>
@@ -177,7 +177,7 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="resolver"
+				<ui:Column id="resolver" filterProperty="resolverName"
 					sortProperty="resolverName">
 					<Label text="{disruptiontrackerI18n>resolver}" />
 					<ui:template>
@@ -185,30 +185,27 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="fixByTimeCol"
+				<ui:Column id="fixByTimeCol" filterProperty="requiredFixBy"
 					sortProperty="requiredFixBy">
 					<Label text="{disruptiontrackerI18n>fixByTime}" />
 					<ui:template>
-						<Text
-							text="{path :'disruptionsTrackerModel>requiredFixBy'}" />
+						<Text text="{path :'disruptionsTrackerModel>requiredFixBy'}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="escalationCol"
+				<ui:Column id="escalationCol" filterProperty="escalationLevel"
 					sortProperty="escalationLevel">
 					<Label text="{disruptiontrackerI18n>escalation}" />
 					<ui:template>
-						<Text
-							text="{disruptiontrackerI18n>level} {disruptionsTrackerModel>escalationLevel}" />
+						<Text text="{disruptiontrackerI18n>level} {disruptionsTrackerModel>escalationLevel}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="escalationDate"
+				<ui:Column id="escalationDate" filterProperty="escalationDateTime"
 					sortProperty="escalationDateTime">
 					<Label text="{disruptiontrackerI18n>dateofescalation}" />
 					<ui:template>
-						<Text
-							text="{path: 'disruptionsTrackerModel>escalationDateTime'}" />
+						<Text text="{path: 'disruptionsTrackerModel>escalationDateTime'}" />
 					</ui:template>
 				</ui:Column>
 
@@ -216,13 +213,12 @@
 				<ui:Column id="openingTimeCol">
 					<Label text="{disruptiontrackerI18n>timeToGetFix}" />
 					<ui:template>
-						<Text
-							text="{parts: [ {path: 'disruptionsTrackerModel>openingTime'}, {path: 'disruptionsTrackerModel>closureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
+						<Text text="{parts: [ {path: 'disruptionsTrackerModel>openingTime'}, {path: 'disruptionsTrackerModel>closureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
 					</ui:template>
 				</ui:Column>
 				
 								
-				<ui:Column id="dateOfanswer"
+				<ui:Column id="dateOfanswer" filterProperty="dateOfAnswer"
 					sortProperty="dateOfAnswer">
 					<Label text="{disruptiontrackerI18n>dateofanswer}" />
 					<ui:template>
@@ -231,7 +227,7 @@
 				</ui:Column>
 				
 				
-				<ui:Column id="originatorGroupCol"
+				<ui:Column id="originatorGroupCol" filterProperty="originatorGroupDesc"
 					sortProperty="originatorGroupDesc">
 					<Label text="{disruptiontrackerI18n>originatorGroup}" />
 					<ui:template>

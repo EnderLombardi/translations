@@ -650,6 +650,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	addNewMaterialToList : function() {
 
 		if (sap.ui.getCore().byId("customMaterial").getValue() != "") {
+			
 			var oData = {"material": sap.ui.getCore().byId("customMaterial").getValue(), "quantity": sap.ui.getCore().byId("customMaterialQty").getValue()};
 			sap.ui.getCore().getModel("MaterialListModel").oData.push(oData);
 			sap.ui.getCore().getModel("MaterialListModel").refresh();
