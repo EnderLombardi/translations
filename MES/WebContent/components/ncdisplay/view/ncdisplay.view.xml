@@ -23,35 +23,32 @@
 				</table:extension>
 
 				<table:columns>
- 					<table:Column width="10%">
-						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayMoreDetail}" />
+ 					<table:Column hAlign="Center" width="3.5rem">
+						<Label text="{i18ncdisplaylinksModel>NCDisplayMoreDetail}" />
 						<table:template>
-							<Button icon="sap-icon://inspection"
-										press="onLineClick"/>
-<!-- 							        visible="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" 
-									enabled="{path:'ncdisplaydata>ncType' , formatter:'airbus.mes.ncdisplay.util.Formatter.showButton'}" -->
+							<Button icon="sap-icon://inspection" press="onLineClick"/>
 						</table:template>
 					</table:Column>			
 					<table:Column width="10%">
-						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayACPStatus}" />
+						<Label text="{i18ncdisplaylinksModel>NCDisplayACPStatus}" />
 						<table:template>
 							<Text text="{path : 'ncdisplaydata>acpStatus', formatter : 'airbus.mes.ncdisplay.util.Formatter.translateStatus'}" />
 						</table:template>
 					</table:Column>
 					<table:Column width="10%">
-						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayType}" />
+						<Label text="{i18ncdisplaylinksModel>NCDisplayType}" />
 						<table:template>
 							<Text text="{ncdisplaydata>ncType}" />
 						</table:template>							
 					</table:Column>
 					<table:Column width="10%">
-						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayReference}" />
+						<Label text="{i18ncdisplaylinksModel>NCDisplayReference}" />
 						<table:template>
 							<Text text="{ncdisplaydata>ncReference}" />
 						</table:template>						
 					</table:Column>
 					<table:Column>
-						<Label textAlign="Center" text="{i18ncdisplaylinksModel>NCDisplayTitle}" />
+						<Label text="{i18ncdisplaylinksModel>NCDisplayTitle}" />
 						<table:template>
 							<Text text="{ncdisplaydata>description}" />
 						</table:template>								
