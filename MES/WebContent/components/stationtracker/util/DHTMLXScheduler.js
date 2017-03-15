@@ -453,6 +453,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
         scheduler.templates.timeline_scale_date = function(date){
 
             // Re init count of all late operations
+            // because this template is the first trigger on rendering the scheduler
             airbus.mes.stationtracker.util.ModelManager.initToRescheduleAllCount();
 
             var timeline = scheduler.matrix.timeline;
