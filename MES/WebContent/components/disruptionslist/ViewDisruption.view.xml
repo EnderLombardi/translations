@@ -37,7 +37,7 @@
 								
 								<ToolbarSpacer />
 								<core:Icon id="disrptListEnvelop" src="sap-icon://email" class="blinkingIcon" visible="{= ${operationDisruptionsModel>isCommentsLastUpdated} === 'true' ? true: false}"  width="3%" />
-								 <ToolbarSpacer />
+								
 								<Label
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>closureDate}"
 									visible="{path: 'operationDisruptionsModel>status', formatter: 'airbus.mes.disruptionslist.Formatter.setClosureDateVisibility'}"
