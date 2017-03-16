@@ -2148,9 +2148,9 @@ reschedule
 }
 
 #stationTrackerView--splitWorkTra {
-    height: calc(100% - 18rem) !important;
+    height: calc(100% - 18rem - 15px) !important;
 }
 
 #stationTrackerView--splitWorkTra.withoutKPI {
-    height: calc(100% - 6rem) !important;
+    height: calc(100% - 6rem - 15px) !important;
 }
