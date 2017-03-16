@@ -273,19 +273,17 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
 
         //      Param.1=$site&Param.2=$ERPSystem&Param.3=$xmlPAPI&Param.4=$xmlJCO
-        var url = airbus.mes.components.util.ModelManager.urlModel.getProperty("componentsSaveFittedComponent");
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$ERPSystem", airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system);
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlPAPI", airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi);
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$xmlJCO", airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO);
-
-        //      call service
         jQuery.ajax({
-            type: 'get',
-            async: false,
-            url: url,
-            contentType: 'application/json',
-
+            async : true,
+            cache : false,
+            url : airbus.mes.components.util.ModelManager.urlModel.getProperty("componentsSaveFittedComponent"),
+            type : 'POST',
+            data : {
+                "Param.1" : airbus.mes.components.oView.getController().getOwnerComponent().getSite(),
+                "Param.2" : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system,
+                "Param.3" : airbus.mes.components.util.ModelManager.jsonConvertedToXmlPapi,
+                "Param.4" : airbus.mes.components.util.ModelManager.jsonConvertedToXmlJCO
+            },
             success: function (data) {
                 console.log("sucess");
             },
