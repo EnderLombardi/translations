@@ -729,6 +729,13 @@ airbus.mes.disruptions.Formatter = {
 		return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 	},
 
+	getDocumentStatusToString: function (status) {
+		if(status === 'DELETE') {
+			return 'true';
+		}
+		return 'false';
+	},
+
 	getDocumentStatus: function (status) {
 		if(status === 'DELETE') {
 			return false;

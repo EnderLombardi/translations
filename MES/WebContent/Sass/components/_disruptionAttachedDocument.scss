@@ -1,4 +1,20 @@
 #createDisruptionView--idListDocument {
+  [data-attacheddocumentstatus="true"] {
+    .document-item {
+      background: #EEEEEE;
+      
+    }
+    .document-title {
+      text-decoration: line-through;
+    }
+    .document-description {
+      text-decoration: line-through;
+    }
+    .document-size {
+      text-decoration: line-through;
+    }
+  }
+
   .document-item {
     // display: flex;
     display: inline-block;
@@ -7,14 +23,12 @@
     min-height: 3rem;
     width: 100%;
 
-
-
     .document-title {
       padding: 1rem 0;
       font-weight: bold;
       font-size: 1rem;
       width: 20%;
-      padding-left:10px;
+      padding-left: 10px;
       float: left;
     }
 
@@ -30,18 +44,18 @@
       padding: 0;
       float: left;
     }
-    
+
     .sapMInputBaseWidthPadding {
-      padding:0; 
-      font-size:1rem;
+      padding: 0;
+      font-size: 1rem;
       height: 2rem;
     }
 
     .sapMInputBaseInner {
-      padding:0; 
-      font-size:1rem;
+      padding: 0;
+      font-size: 1rem;
       height: 2rem;
-      margin: 0.5rem 0;
+      margin: .5rem 0;
     }
 
     .document-size {
@@ -52,36 +66,36 @@
     }
 
     .document-button {
-      padding: 0.7rem 0;
+      padding: .7rem 0;
       widows: 5%;
       float: left;
 
       .document-edit {
         font-size: 1.375rem;
         color: $sapui-petrol;
-        padding: 0 0.5rem;
+        padding: 0 .5rem;
       }
 
       .document-delete {
         font-size: 1.375rem;
-        padding: 0 0.5rem;
+        padding: 0 .5rem;
       }
     }
 
     .document-button-edit {
-      padding: 0.7rem 0;
+      padding: .7rem 0;
       width: 5%;
       float: left;
 
       .document-accept {
         font-size: 1.5rem;
-        padding: 0 0.5rem;
+        padding: 0 .5rem;
         color: green;
       }
 
       .document-cancel {
         font-size: 1.5rem;
-        padding: 0 0.5rem;
+        padding: 0 .5rem;
         color: red;
       }
     }
@@ -91,6 +105,6 @@
 }
 
 #video-area {
-    height: 400px;
-    width: 500px;
+  height: 400px;
+  width: 500px;
 }

@@ -4905,6 +4905,14 @@ QUARANTINE USELESS CODE
 /*******************
 END OF QUARANTINE
 ********************/
+#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-item { background: #EEEEEE; }
+
+#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-title { text-decoration: line-through; }
+
+#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-description { text-decoration: line-through; }
+
+#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-size { text-decoration: line-through; }
+
 #createDisruptionView--idListDocument .document-item { display: inline-block; text-align: center; vertical-align: middle; min-height: 3rem; width: 100%; }
 
 #createDisruptionView--idListDocument .document-item .document-title { padding: 1rem 0; font-weight: bold; font-size: 1rem; width: 20%; padding-left: 10px; float: left; }
@@ -4915,21 +4923,21 @@ END OF QUARANTINE
 
 #createDisruptionView--idListDocument .document-item .sapMInputBaseWidthPadding { padding: 0; font-size: 1rem; height: 2rem; }
 
-#createDisruptionView--idListDocument .document-item .sapMInputBaseInner { padding: 0; font-size: 1rem; height: 2rem; margin: 0.5rem 0; }
+#createDisruptionView--idListDocument .document-item .sapMInputBaseInner { padding: 0; font-size: 1rem; height: 2rem; margin: .5rem 0; }
 
 #createDisruptionView--idListDocument .document-item .document-size { padding: 1rem 0; font-size: 1rem; width: 8%; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-button { padding: 0.7rem 0; widows: 5%; float: left; }
+#createDisruptionView--idListDocument .document-item .document-button { padding: .7rem 0; widows: 5%; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-button .document-edit { font-size: 1.375rem; color: #005483; padding: 0 0.5rem; }
+#createDisruptionView--idListDocument .document-item .document-button .document-edit { font-size: 1.375rem; color: #005483; padding: 0 .5rem; }
 
-#createDisruptionView--idListDocument .document-item .document-button .document-delete { font-size: 1.375rem; padding: 0 0.5rem; }
+#createDisruptionView--idListDocument .document-item .document-button .document-delete { font-size: 1.375rem; padding: 0 .5rem; }
 
-#createDisruptionView--idListDocument .document-item .document-button-edit { padding: 0.7rem 0; width: 5%; float: left; }
+#createDisruptionView--idListDocument .document-item .document-button-edit { padding: .7rem 0; width: 5%; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-button-edit .document-accept { font-size: 1.5rem; padding: 0 0.5rem; color: green; }
+#createDisruptionView--idListDocument .document-item .document-button-edit .document-accept { font-size: 1.5rem; padding: 0 .5rem; color: green; }
 
-#createDisruptionView--idListDocument .document-item .document-button-edit .document-cancel { font-size: 1.5rem; padding: 0 0.5rem; color: red; }
+#createDisruptionView--idListDocument .document-item .document-button-edit .document-cancel { font-size: 1.5rem; padding: 0 .5rem; color: red; }
 
 #video-area { height: 400px; width: 500px; }
 

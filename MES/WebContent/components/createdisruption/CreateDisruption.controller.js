@@ -304,8 +304,10 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		var len = oData.length;
 		var i = 0;
 		for (; i < len; i += 1) {
-			oData[i].Description = oData[i].oldDescription;
-			this.onEditMode(i, false);
+			if(oData[i].Status !== 'DELETE') {
+				oData[i].Description = oData[i].oldDescription;
+				this.onEditMode(i, false);
+			}
 		}
 	},
 
