@@ -61,8 +61,8 @@
 						<TimePicker id="promisedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" value="{path: 'DisruptionDetailModel>/promisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTimeNoDefault'}" enabled="{parts: [  {path: 'DisruptionDetailModel>/responsibleFlag'}, {path: 'DisruptionDetailModel>/status'} ], formatter: 'airbus.mes.disruptions.Formatter.promisedDateEnable'}"></TimePicker>
 						<core:Title />
 						<Label text="{i18nModel>OpenDate}" class="textAlignLeft"/>
-						<DatePicker enabled="false" id="openDate" valueFormat="yyyy-MM-dd" displayFormat="long" value="{path: 'DisruptionDetailModel>/openingTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"></DatePicker>
-						<TimePicker enabled="false" id="openTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" value="{path: 'DisruptionDetailModel>/openingTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"></TimePicker>
+						<DatePicker enabled="false" id="openDate" valueFormat="yyyy-MM-dd" displayFormat="long" value="{path: 'DisruptionDetailModel>/openDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"></DatePicker>
+						<TimePicker enabled="false" id="openTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" value="{path: 'DisruptionDetailModel>/openDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"></TimePicker>
 						<Label required="true" text="{i18nModel>Expected}" class="textAlignLeft"/>
 						<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd" displayFormat="long" value="{path: 'DisruptionDetailModel>/requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"></DatePicker>
 						<TimePicker id="expectedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" value="{path: 'DisruptionDetailModel>/requiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"></TimePicker>

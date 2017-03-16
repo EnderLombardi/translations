@@ -815,5 +815,5 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.oController.createDisruption( "X");
 		
 		return true;
-}
+	}
 });
