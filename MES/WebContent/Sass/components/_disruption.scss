@@ -1,251 +1,317 @@
 // For the disruptions list
-#ViewDisruptionView--disrptlist{ 
-	width:95% !important;
-	margin: 50px auto !important;
-	padding:0;
-}
-#ViewDisruptionView label{
-	text-align : left !important;
-} 
-.pendingStatusColor{
-color:#e4042f !important;
+
+#ViewDisruptionView--disrptlist {
+  width: 95% !important;
+  margin: 50px auto !important;
+  padding: 0;
 }
 
-.classFormHint{
-    font-size: 80% !important;
-    font-style: italic !important;
+#ViewDisruptionView label {
+  text-align: left !important;
 }
 
-#ViewDisruptionView--disrptlist{
-    &>.sapMPanelContent{
-        padding: 0 1rem;
+.pendingStatusColor {
+  color: #e4042f !important;
+}
+
+.classFormHint {
+  font-size: 80% !important;
+  font-style: italic !important;
+}
+
+#ViewDisruptionView--disrptlist {
+  & > .sapMPanelContent {
+    padding: 0 1rem;
+  }
+
+  .sapMPanelExpandableIcon {
+    display: none;
+  }
+
+  .disrptListToolbar[role=toolbar] {
+    margin-left: 1rem !important;
+  }
+
+  .disruptionDetailForm .sapUiFormResGrid.sapUiFormBackgrTranslucent > div {
+    background: transparent !important;
+  }
+
+  .RoundBttn {
+    background-color: #ebeef2;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+
+    span.sapUiIcon {
+      color: #2f758a !important;
     }
-    .sapMPanelExpandableIcon{
-    	display: none;
-	}
-	.disrptListToolbar[role=toolbar]{
-		margin-left: 1rem !important;
-	}
-	
-	.disruptionDetailForm .sapUiFormResGrid.sapUiFormBackgrTranslucent>div{
-		background:transparent !important;
-	}
-	
-    .RoundBttn{
-   		background-color:#ebeef2;
-   		border-radius: 50%;
-   		height:48px;
-   		width:48px;
-   		
-   		span.sapUiIcon{
-	    	color:#2f758a !important;
-   		}
-   		div.sapMBtnInner {
-   		border-radius: 50%;
-   		height:48px;
-   		width:48px;
-   		}
-   	}
-   	
-   	.HorizontalLine:before,.HorizontalLine:after{
-		  content:" "!important;
-		  width: 50% !important;
-		  height: 1px !important;
-		  margin: 0 10px !important;
-		  vertical-align: super !important;
-		  background-color:#dcd7d7 !important;
-   	}
-   	
-   	.blinkingIcon{
-   	    animation: blinker 1s linear infinite;
-    	color: #e4042f;
+
+    div.sapMBtnInner {
+      border-radius: 50%;
+      height: 48px;
+      width: 48px;
     }
+  }
+
+  .HorizontalLine:after,
+  .HorizontalLine:before {
+    content: " "!important;
+    width: 50% !important;
+    height: 1px !important;
+    margin: 0 10px !important;
+    vertical-align: super !important;
+    background-color: #dcd7d7 !important;
+  }
+
+  .blinkingIcon {
+    animation: blinker 1s linear infinite;
+    color: #e4042f;
+  }
+
+  .document-item {
+    // display: flex;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    min-height: 3rem;
+    font-size: 0;
+    width: 100%;
+
+    .document-title {
+      padding: 1rem 0;
+      font-weight: bold;
+      font-size: 1rem;
+      width: 20%;
+    //   padding-left: 10px;
+      float: left;
+    }
+
+    .document-description {
+      font-size: 1rem;
+      width: 60%;
+    //   float: left;
+    }
+
+    .document-size {
+      padding: 1rem 0;
+      font-size: 1rem;
+      width: 10%;
+      float: right;
+    }
+
+  }
 }
 
 //Disruption title bar buttons
-.disruptionTitleBarButtons{
-    &>.sapMBtnReject{
-         @include  disruptionBackground(#cc1919);
-        &>.sapMBtnIcon{
-            color: #cc1919 !important
-            ;
-        }
+.disruptionTitleBarButtons {
+  & > .sapMBtnReject {
+    @include disruptionBackground(#cc1919);
+
+    & > .sapMBtnIcon {
+      color: #cc1919 !important;
     }
-   
-    &:hover{
-        background: $petrol-20 !important;
+  }
+
+  &:hover {
+    background: $petrol-20 !important;
+  }
+
+  & > .sapMBtnEmphasized {
+    @include disruptionBackground(#008bc7);
+
+    & > .sapMBtnIcon {
+      color: #008bc7 !important;
     }
-    &>.sapMBtnEmphasized{
-        @include  disruptionBackground(#008bc7); 
-        &>.sapMBtnIcon{
-            color: #008bc7 !important;
-        }
+  }
+
+  & > .sapMBtnAccept {
+    @include disruptionBackground(#005f28);
+
+    & > .sapMBtnIcon {
+      color: #005f28 !important;
     }
-    &>.sapMBtnAccept{
-        @include  disruptionBackground(#005f28);
-        &>.sapMBtnIcon{
-            color: #005f28 !important;
-        }
-    }
-}
-.transparentBlueButton{
-		background:transparent !important;
-        .sapMBtnInner{
-        	border:0px !important;
-        }
-        span{
-            color: #0f86ae !important
-        }
-        :not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive{
-			background:transparent !important;
-            color: #0f86ae !important
-        }
-}
-section{
-    #ViewDisruptionView{
-        .sapMLIBFocusable{
-            &:focus{
-                outline: none;
-            }
-        }
-    }
+  }
 }
 
+.transparentBlueButton {
+  background: transparent !important;
+
+  .sapMBtnInner {
+    border: 0 !important;
+  }
+
+  span {
+    color: #0f86ae !important;
+  }
+
+  :not(.sapMBtnDisabled) > .sapMBtnInner.sapMBtnActive {
+    background: transparent !important;
+    color: #0f86ae !important;
+  }
+}
+
+section {
+  #ViewDisruptionView {
+    .sapMLIBFocusable {
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
 
 // Disruption Screen
-.disruptionBottomBar{
-    border-bottom: none !important;
-    margin: 0.5rem!important;
-    &>.sapMBtn{
-        &>.sapMBtnText{
-            border-radius: 1.5rem;
-        }
+.disruptionBottomBar {
+  border-bottom: none !important;
+  margin: .5rem !important;
+
+  & > .sapMBtn {
+    & > .sapMBtnText {
+      border-radius: 1.5rem;
     }
+  }
 }
 
-    #ViewDisruptionView--disruptLabel.sapUiSmallMargin{
-        font-weight: bold;
-    	padding: 0;  
-   		margin: 25px 0 25px 2.5% !important;
-    } 
+#ViewDisruptionView--disruptLabel.sapUiSmallMargin {
+  font-weight: bold;
+  padding: 0;
+  margin: 25px 0 25px 2.5% !important;
+}
 
-.disruptionDetail{
-	
-    .disruptionExpandablePanel{
-    .sapMPanelBGTranslucent{
-            background-color: #F5F5F5 !important;
-            .sapMPanelContent{
-                margin-left: 0 !important;
-            }
-        }
-        
+.disruptionDetail {
+  .disruptionExpandablePanel {
+    .sapMPanelBGTranslucent {
+      background-color: #F5F5F5 !important;
+
+      .sapMPanelContent {
+        margin-left: 0 !important;
+      }
     }
-    .detailLabels{
-        overflow: visible !important;
-        text-align: left !important;
+
+  }
+
+  .detailLabels {
+    overflow: visible !important;
+    text-align: left !important;
+  }
+
+  .formoperationDisruptionsModel {
+    & > div {
+      & > div {
+        background-color: transparent !important;
+      }
     }
-    .formoperationDisruptionsModel{
-        &>div{
-            &>div{
-                background-color: transparent !important;
-            }
-        }
-        &.sapUiFormEdit .sapMText{
-        	min-height: 2rem !important;
-        }
+
+    &.sapUiFormEdit .sapMText {
+      min-height: 2rem !important;
     }
-    .statusText{
-        font-weight: 700 !important;
-        font-style: italic !important;
-        color: #0f86ae !important;
-    }
-    .msgHeaderText{
-        font-weight: 700 !important;
-        text-transform: capitalize !important;
-    }
-    .msgColor{
-        background: #F5F5F5 !important;
-        color: #0f86ae !important;
-        padding-bottom:0.5rem;
-    }
+  }
+
+  .statusText {
+    font-weight: 700 !important;
+    font-style: italic !important;
+    color: #0f86ae !important;
+  }
+
+  .msgHeaderText {
+    font-weight: 700 !important;
+    text-transform: capitalize !important;
+  }
+
+  .msgColor {
+    background: #F5F5F5 !important;
+    color: #0f86ae !important;
+    padding-bottom: .5rem;
+  }
 }
 
 // Disruption ack comment dialog
 #disruptionAckCommentDialogue {
-    background: $white-two;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 0 5px #333;
+  background: $white-two;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 0 5px #333;
 }
 
-#disruptionAckCommentDialogue-header-BarPH{
-    background: #d4f1f7;
+#disruptionAckCommentDialogue-header-BarPH {
+  background: #d4f1f7;
 }
-#disruptionAckCommentDialogue-title{
-    color: #434343;
+
+#disruptionAckCommentDialogue-title {
+  color: #434343;
 }
-#disruptionAckCommentDialogue-cont{
-    border-top: 3px solid rgba(255, 255, 255, 0);
+
+#disruptionAckCommentDialogue-cont {
+  border-top: 3px solid rgba(255, 255, 255, 0);
 }
-#disruptionAckCommentDialogue-header{
-    box-shadow: 0 0 5px #333;
-    overflow: visible;
+
+#disruptionAckCommentDialogue-header {
+  box-shadow: 0 0 5px #333;
+  overflow: visible;
 }
 
 // Disruption comment dialogue
-#disruptionCommentDialogue{
-    background: $white-two;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 0 5px #333;
+#disruptionCommentDialogue {
+  background: $white-two;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 0 5px #333;
 }
-#disruptionCommentDialogue-header-BarPH{
-    background: #d4f1f7;
+
+#disruptionCommentDialogue-header-BarPH {
+  background: #d4f1f7;
 }
-#disruptionCommentDialogue-title{
-    color: #434343;
+
+#disruptionCommentDialogue-title {
+  color: #434343;
 }
-#disruptionCommentDialogue-cont{
-    border-top: 3px solid rgba(255, 255, 255, 0);
+
+#disruptionCommentDialogue-cont {
+  border-top: 3px solid rgba(255, 255, 255, 0);
 }
-#disruptionCommentDialogue-header{
-    box-shadow: 0 0 5px #333;
-    overflow: visible;
+
+#disruptionCommentDialogue-header {
+  box-shadow: 0 0 5px #333;
+  overflow: visible;
 }
 
 // Disruption close dialog
-#disruptionCloseDialogue{
-    background: $white-two;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 0 5px #333;
+#disruptionCloseDialogue {
+  background: $white-two;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 0 5px #333;
 }
-#disruptionCloseDialogue-header-BarPH{
-    background: #d4f1f7;
+
+#disruptionCloseDialogue-header-BarPH {
+  background: #d4f1f7;
 }
-#disruptionCloseDialogue-title{
-    color: #434343;
+
+#disruptionCloseDialogue-title {
+  color: #434343;
 }
-#disruptionCloseDialogue-cont{
-    border-top: 3px solid rgba(255, 255, 255, 0);
+
+#disruptionCloseDialogue-cont {
+  border-top: 3px solid rgba(255, 255, 255, 0);
 }
-#disruptionCloseDialogue-header{
-    box-shadow: 0 0 5px #333;
-    overflow: visible;
+
+#disruptionCloseDialogue-header {
+  box-shadow: 0 0 5px #333;
+  overflow: visible;
 }
 
 // Footer
-.viewDisruptionFooter{
-    position: fixed;
-    bottom: 0px;
-    background: #607381 !important;
-    @at-root .viewDisruptionFooter .sapMBtnContent{
-        @at-root &, .operationDetailFooter .sapMBtnIcon{
-            color: #fff !important;
-        }
+.viewDisruptionFooter {
+  position: fixed;
+  bottom: 0;
+  background: #607381 !important;
+  @at-root .viewDisruptionFooter .sapMBtnContent {
+     @at-root &, .operationDetailFooter .sapMBtnIcon{
+      color: #fff !important;
     }
+  }
 }
 
-.buttonBlack span{
-	color:#666666 !important;
+.buttonBlack span {
+  color: #666666 !important;
 }

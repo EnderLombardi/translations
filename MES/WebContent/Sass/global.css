@@ -1835,9 +1835,17 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 #ViewDisruptionView--disrptlist .RoundBttn div.sapMBtnInner { border-radius: 50%; height: 48px; width: 48px; }
 
-#ViewDisruptionView--disrptlist .HorizontalLine:before, #ViewDisruptionView--disrptlist .HorizontalLine:after { content: " " !important; width: 50% !important; height: 1px !important; margin: 0 10px !important; vertical-align: super !important; background-color: #dcd7d7 !important; }
+#ViewDisruptionView--disrptlist .HorizontalLine:after, #ViewDisruptionView--disrptlist .HorizontalLine:before { content: " " !important; width: 50% !important; height: 1px !important; margin: 0 10px !important; vertical-align: super !important; background-color: #dcd7d7 !important; }
 
 #ViewDisruptionView--disrptlist .blinkingIcon { animation: blinker 1s linear infinite; color: #e4042f; }
+
+#ViewDisruptionView--disrptlist .document-item { display: inline-block; text-align: center; vertical-align: middle; min-height: 3rem; font-size: 0; width: 100%; }
+
+#ViewDisruptionView--disrptlist .document-item .document-title { padding: 1rem 0; font-weight: bold; font-size: 1rem; width: 20%; float: left; }
+
+#ViewDisruptionView--disrptlist .document-item .document-description { font-size: 1rem; width: 60%; }
+
+#ViewDisruptionView--disrptlist .document-item .document-size { padding: 1rem 0; font-size: 1rem; width: 10%; float: right; }
 
 .disruptionTitleBarButtons > .sapMBtnReject { background-color: transparent !important; color: #cc1919 !important; border-color: transparent !important; text-shadow: none !important; }
 
@@ -1855,7 +1863,7 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 .transparentBlueButton { background: transparent !important; }
 
-.transparentBlueButton .sapMBtnInner { border: 0px !important; }
+.transparentBlueButton .sapMBtnInner { border: 0 !important; }
 
 .transparentBlueButton span { color: #0f86ae !important; }
 
@@ -1863,7 +1871,7 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 section #ViewDisruptionView .sapMLIBFocusable:focus { outline: none; }
 
-.disruptionBottomBar { border-bottom: none !important; margin: 0.5rem !important; }
+.disruptionBottomBar { border-bottom: none !important; margin: .5rem !important; }
 
 .disruptionBottomBar > .sapMBtn > .sapMBtnText { border-radius: 1.5rem; }
 
@@ -1883,7 +1891,7 @@ section #ViewDisruptionView .sapMLIBFocusable:focus { outline: none; }
 
 .disruptionDetail .msgHeaderText { font-weight: 700 !important; text-transform: capitalize !important; }
 
-.disruptionDetail .msgColor { background: #F5F5F5 !important; color: #0f86ae !important; padding-bottom: 0.5rem; }
+.disruptionDetail .msgColor { background: #F5F5F5 !important; color: #0f86ae !important; padding-bottom: .5rem; }
 
 #disruptionAckCommentDialogue { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
 
@@ -1915,7 +1923,7 @@ section #ViewDisruptionView .sapMLIBFocusable:focus { outline: none; }
 
 #disruptionCloseDialogue-header { box-shadow: 0 0 5px #333; overflow: visible; }
 
-.viewDisruptionFooter { position: fixed; bottom: 0px; background: #607381 !important; }
+.viewDisruptionFooter { position: fixed; bottom: 0; background: #607381 !important; }
 
 .viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon { color: #fff !important; }
 
