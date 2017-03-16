@@ -952,6 +952,10 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
                 case "StatusConfirmed":
                     aMyFilter.push(new sap.ui.model.Filter("status", "EQ", "0"));
                     break;
+                case "StatusPartiallyConfirmed":
+                    aMyFilter.push(new sap.ui.model.Filter("PROGRESS", "NE", "0"));
+                    aMyFilter.push(new sap.ui.model.Filter("status", "EQ", "2"));
+                    break;  
                 default:
             }
             sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, false));
