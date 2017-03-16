@@ -1104,10 +1104,11 @@ airbus.mes.stationtracker.util.ModelManager = {
                 //we reload the work tracker
                 airbus.mes.stationtracker.util.ModelManager.loadSplitModel();
 
-                // If reschedule all,reinit global count of late operation
+                /* Unused
                 if(this.toRescheduleAllCount === 0) {
-                    //this.initToRescheduleAllCount()
+                    this.initToRescheduleAllCount()
                 }
+                */
 				
             },
             error: function (error, jQXHR) {
@@ -1122,16 +1123,11 @@ airbus.mes.stationtracker.util.ModelManager = {
      * Used for refresh
     ----------------------------------------------------------------------------*/
     initToRescheduleAllCount: function () {
-        console.log("ToRescheduleAllCount === 0" );
     	this.toRescheduleAllCount = 0;
-    
         // If reschedule all,reinit global count of late operation
         if(airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount === 0) {
-            console.log("Hide RescheduleAll Button")
             $(".rescheduleAllBtn").css({'display' : 'none'});
         }
-    	// DEBUG
-    	
     },
 
     /*----------------------------------------------------------------------------
@@ -1156,9 +1152,7 @@ airbus.mes.stationtracker.util.ModelManager = {
     ----------------------------------------------------------------------------*/
 	rescheduleAll: function () {
 		window.event.stopPropagation();
-        
         var objCount = { "count": this.toRescheduleAllCount }
-        
         // Open confirm popup
 		airbus.mes.stationtracker.oView.getController().openRescheduleAllPopUp(objCount);
     },

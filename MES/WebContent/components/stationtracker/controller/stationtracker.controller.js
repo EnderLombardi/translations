@@ -238,6 +238,10 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             airbus.mes.stationtracker.oView.byId("splitWorkTra").setModel(airbus.mes.missingParts.oView.getModel("getMissingParts"),"getMissingParts")
 
         }
+
+        // show loading
+        airbus.mes.stationtracker.oView.byId("splitWorkTra").setBusy(true);
+        
         //load data
         airbus.mes.missingParts.util.ModelManager.loadMPDetail();
      	
@@ -255,6 +259,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
 						airbus.mes.shell.util.navFunctions.splitMissingPart = false;
 						airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+                        airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                
 						airbus.mes.stationtracker.oView.byId("splitWorkTra").rerender();
 			            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 
@@ -264,6 +269,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
 					airbus.mes.shell.util.navFunctions.splitMissingPart = true;
 					airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+                    airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                
 					// Insert the page in the splitter
 					airbus.mes.stationtracker.oView.byId("splitWorkTra").addContentArea(sap.ui.getCore().byId("missingPartsView--MPTable"));
 					airbus.mes.stationtracker.oView.byId("splitWorkTra").rerender();
@@ -271,6 +277,8 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 
 
 				}
+                // Remove loading
+                airbus.mes.stationtracker.oView.byId("splitWorkTra").setBusy(false);
        // airbus.mes.missingParts.oView.getContent()[0].open();
         
     },
