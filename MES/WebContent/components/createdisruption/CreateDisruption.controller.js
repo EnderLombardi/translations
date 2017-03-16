@@ -68,9 +68,9 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 			sap.ui.getCore().getModel("MaterialListModel").setData([]);
 			sap.ui.getCore().getModel("JigtoolListModel").setData([]);
 			sap.ui.getCore().getModel("DesktopFilesModel").setData([]);
-			
+
 			this.loadSiteTime();
-			
+
 		} else if (sMode == "Edit") {
 			this.loadRsnResponsibleGrp(oData.messageType);
 			this.editPreSettings();
@@ -86,7 +86,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 				if (data.listkMResources.length) {
 					var list = data.listkMResources;
 					var i = list.length - 1;
-					
+
 					for (; i >= 0; i -= 1) {
 						var item = list[i];
 						var status = item.isDeleted === 'true' ? 'DELETE' : 'UPDATE';
@@ -153,7 +153,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		var description = oInputComment.getValue();
 		filesListBase64.fileName = oInputName.getValue() + '.' + filesListBase64.type;
 		filesListBase64.size = filesListBase64.size || '';
-		
+
 		this.addFilesToList(filesListBase64.fileName, description, filesListBase64.fileBase64, filesListBase64.size);
 		oInputComment.destroy();
 		oInputName.destroy();
@@ -256,12 +256,12 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		// Removing the selected list item from the model based on the index
 		// calculated
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
-		if(oModel.oData[iIndex].Status === 'UPDATE') {
+		if (oModel.oData[iIndex].Status === 'UPDATE') {
 			oModel.oData[iIndex].Status = 'DELETE';
-		} else if (oModel.oData[iIndex].Status === 'CREATE'){
+		} else if (oModel.oData[iIndex].Status === 'CREATE') {
 			oModel.oData.splice(iIndex, 1);
 		}
-		
+
 		oModel.refresh();
 	},
 
@@ -304,7 +304,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		var len = oData.length;
 		var i = 0;
 		for (; i < len; i += 1) {
-			if(oData[i].Status !== 'DELETE') {
+			if (oData[i].Status !== 'DELETE') {
 				oData[i].Description = oData[i].oldDescription;
 				this.onEditMode(i, false);
 			}
@@ -317,16 +317,16 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		var i = 0;
 		for (; i < length; i += 1) {
 			var document = attachedDocumentList[i];
-			if(document.Status === 'CREATE') {
+			if (document.Status === 'CREATE') {
 				airbus.mes.disruptions.ModelManager.attachDocument(ref, document.Title, document.File, document.Description);
 			} else if (document.Status === 'UPDATE') {
 				airbus.mes.disruptions.ModelManager.updateAttachDocument(ref, document.fileCount, document.Description);
-			} else if ( document.Status === 'DELETE' ){
+			} else if (document.Status === 'DELETE') {
 				airbus.mes.disruptions.ModelManager.deleteAttachDocument(ref, document.fileCount);
 			}
 		}
 	},
-	
+
 	onCameraPress: function (oEvt) {
 		var that = this;
 		var recorder, videoElement;
@@ -357,7 +357,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 					text: 'Take a Picture',
 					press: function () {
 						that.cameraDialog.close();
-						takePicture(function(filesListBase64) {
+						takePicture(function (filesListBase64) {
 							that.openCommentDialog(oEvt, filesListBase64);
 						});
 					}
@@ -378,7 +378,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		//to get access to the global model
 		this.getView().addDependent(that.cameraDialog);
 
-		that.cameraDialog.open();
+
 		that.cameraDialog.attachAfterOpen(null, function () {
 			var elementToShare = document.getElementById('video-area');
 			elementToShare.innerHTML = '<video autoplay style="width:100%; height: 100%; position:absolute;right:0px; top:0px; bottom: 0px; background-color:black;"></video>';
@@ -413,28 +413,31 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 				showMousePointer: true
 			});
 
-			function playVideo(callback) {
-				videoElement = document.querySelector('video');
-				function successCallback(stream) {
-					videoElement.onloadedmetadata = function () {
-						callback();
-					};
-					window.localStream = stream;
-					videoElement.src = URL.createObjectURL(stream);
-					videoElement.play();
-				}
-				function errorCallback(error) {
-					console.error('get-user-media error', error);
-					callback();
-				}
-				var mediaConstraints = { video: true, facingMode: { exact: "environment" } };
-				navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
-			}
-
-			playVideo(function () {
+			videoElement = document.querySelector('video');
+			videoElement.onloadedmetadata = function () {
 				console.log('video started');
-			});
+			};
+			
+			videoElement.src = URL.createObjectURL(window.localStream);
+			videoElement.play();
 
+
+		});
+
+		function startVideo(callback) {
+			function successCallback(stream) {
+				window.localStream = stream;
+				callback();
+			}
+			function errorCallback(error) {
+				console.error('get-user-media error', error);
+			}
+			var mediaConstraints = { video: true, facingMode: { exact: "environment" } };
+			navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
+		}
+
+		startVideo(function () {
+			that.cameraDialog.open();
 		});
 
 		function launchVideo() {
@@ -537,13 +540,13 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		this.getView().addDependent(dialog);
 		dialog.open();
 	},
-	
-	loadSiteTime : function() {
+
+	loadSiteTime: function () {
 		sap.ui.getCore().byId("createDisruptionView--openDate").setBusy(true);
 		sap.ui.getCore().byId("createDisruptionView--openTime").setBusy(true);
-		
+
 		var url = airbus.mes.disruptions.ModelManager.getCurrentSiteTimeURL();
-				
+
 		jQuery.ajax({
 			url: url,
 			type: 'POST',
@@ -553,13 +556,13 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 			}),
 			success: function (data) {
 				if (typeof data == "string") {
-                    data = JSON.parse(data);
-                }
-				
+					data = JSON.parse(data);
+				}
+
 				var openDateTime = data.time;
 				sap.ui.getCore().getModel("DisruptionDetailModel").setProperty("/openDateTime", openDateTime);
 				sap.ui.getCore().getModel("DisruptionDetailModel").setProperty("/requiredFixBy", openDateTime);
-				
+
 
 				sap.ui.getCore().byId("createDisruptionView--openDate").setBusy(false);
 				sap.ui.getCore().byId("createDisruptionView--openTime").setBusy(false);
