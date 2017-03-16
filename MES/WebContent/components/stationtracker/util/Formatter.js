@@ -643,10 +643,10 @@ airbus.mes.stationtracker.util.Formatter = {
 
 			// Display Reschedule all button
 			if(airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount > 0) {
-				console.log("Display RescheduleAll Button");
+				//console.log("Display RescheduleAll Button");
 				$(".rescheduleAllBtn").css({'display' : 'block'});
 			} else {
-				console.log("Hide RescheduleAll Button");
+				//console.log("Hide RescheduleAll Button");
             	$(".rescheduleAllBtn").css({'display' : 'none'});
         	}
         
