@@ -243,6 +243,9 @@
 						<List id="idListDocument" class="sapUiSmallMarginBegin"
 							items="{path: 'operationDisruptionsModel>attachedDocument'}" visible="{=${operationDisruptionsModel>showAttachedDocument} === true}">
 							<CustomListItem id="document-list-item" >
+								<customData class="document-custom-data">
+									<core:CustomData key="attachedDocumentStatus" value="{path : 'operationDisruptionsModel>isDeleted'}" writeToDom="true" />
+								</customData>
 								<HBox class="document-item">
 									<Link class="document-title" text="{operationDisruptionsModel>fileName}" href="{operationDisruptionsModel>fileURL}"/>
 									<!--<Label id="document-title" class="document-title" text="{operationDisruptionsModel>fileName}" />-->
