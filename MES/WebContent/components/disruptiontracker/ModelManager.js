@@ -41,7 +41,8 @@ airbus.mes.disruptiontracker.ModelManager = {
 				"operationNo" : "",
 				"sfcStepBO": "",
 				"msnNumber": msnNumber,
-				"forMobile": false
+				"forMobile": false,
+				"lang": sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey()
 			}),
 
 			success : function(data) {

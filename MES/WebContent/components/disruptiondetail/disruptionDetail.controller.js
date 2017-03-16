@@ -60,7 +60,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
 				"messageRef" : msgRef,
-				"forMobile" : false
+				"lang": sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey()
 			}),
 			success : function(data) {
 

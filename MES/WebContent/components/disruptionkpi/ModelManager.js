@@ -110,8 +110,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 				"site" : airbus.mes.settings.ModelManager.site,
 				"stations" : aStations,
 				"startTime": startTime, //"2016-04-04T12:03:03",
-				"untilTime": untilTime //"2016-04-04T12:03:03"
-				
+				"untilTime": untilTime, //"2016-04-04T12:03:03"
 			}),
 
 			success : function(data) {
@@ -134,6 +133,8 @@ airbus.mes.disruptionkpi.ModelManager = {
 					data.operation = [data.operation];
 				}
 				oViewModel.setData(data);
+				oViewModel.refresh();
+				
 				sap.ui.getCore().byId("disruptionKPIView--vizFrame3").setBusy(false); //Remove Busy Indicator
 				sap.ui.getCore().byId("disruptionKPIView--vizFrame4").setBusy(false); //Remove Busy Indicator
 			},
@@ -146,8 +147,8 @@ airbus.mes.disruptionkpi.ModelManager = {
 			}
 		});
 		
-		oViewModel.refresh();
 		
+		// Get data for Category Reason / Time Lost PAreto Chart
 				
 		jQuery.ajax({
 			type : 'post',
@@ -158,7 +159,8 @@ airbus.mes.disruptionkpi.ModelManager = {
 				"line": line == "All"? "" : line,
 				"stations": aStations,
 				"startTime": startTime, //"2016-04-04T12:03:03",
-				"untilTime": untilTime //"2016-04-04T12:03:03"
+				"untilTime": untilTime, //"2016-04-04T12:03:03"
+				"lang": sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey()
 				
 			}),
 
@@ -179,7 +181,8 @@ airbus.mes.disruptionkpi.ModelManager = {
 					chartData.data = [chartData.data];
 				}
 
-				oParetoModel.setData(chartData);
+				oParetoModel.setData(chartData);		
+				oParetoModel.refresh();
 				
 				sap.ui.getCore().byId("disruptionKPIView--idParettoCategoryReason").setBusy(false); //Set Busy Indicator
 				
@@ -191,8 +194,6 @@ airbus.mes.disruptionkpi.ModelManager = {
 
 			}
 		});
-		
-		oParetoModel.refresh();
 	},
 
 	

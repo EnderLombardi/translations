@@ -64,7 +64,8 @@ airbus.mes.disruptions.ModelManager = {
 				"sfcStepBO": sSfcStepRef,
 				"userBO": "UserBO:" + airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.user,
 				"msnNumber": "",
-				"forMobile": true
+				"forMobile": true,
+				"lang": sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey()
 			}),
 
 			success: function (data) {
