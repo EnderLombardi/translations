@@ -42,17 +42,16 @@
 						</OverflowToolbar>
 						<uiTable:template>
 							<HBox alignItems="Center" justifyContent="Center">
-								<core:Icon id="lineTrackerActionIcon" press="openTaktActionPopover" tooltip=""
+								<core:Icon id="lineTrackerActionIcon" class="ClassLineTrackerActionIcon" press="openTaktActionPopover" tooltip=""
 										src="{path:'stationDataModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }"/>
 								<control:PhysicalStationBox id="linetrackerEditStation"
 									color="#bcf6ff" actionIconColor="black"
 									station="{stationDataModel>station}"
 									stationName="{stationDataModel>stationName}"
 									msn="{stationDataModel>msn}"
-									
 									press="handlePopoverPress" width="80%">
 									<control:image>
-										<Image width="100%"
+										<Image width="100%" height="auto"
 											src="{ parts : ['stationDataModel>station', 'stationDataModel>msn'], formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo'}"
 											error="airbus.mes.linetracker.util.Formatter.getErrorFlightImage"
 											/>
@@ -64,8 +63,8 @@
 						</uiTable:template>
 					</uiTable:Column>
 
-					<uiTable:Column width="44%" resizable="false">
-						<FlexBox height="2rem" alignItems="Center" margin-top="12px" justifyContent="SpaceAround">
+					<uiTable:Column width="44%" resizable="false" id="percentageLabel" hAlign="Center">
+						<FlexBox height="3.3rem" alignItems="Center" margin-top="20px" justifyContent="SpaceAround">
 							<Text text="10%" />
 							<Text text="20%" />
 							<Text text="30%" />
@@ -86,7 +85,7 @@
 						</uiTable:template>
 					</uiTable:Column>
 
-					<uiTable:Column width="6%" resizable="false">
+					<uiTable:Column width="6%" resizable="false" hAlign="Center">
 						<Text text="{i18n>trend}" class="taktHeading" />
 						<uiTable:template>
 							<core:Icon class="trendIconLinetracker"
@@ -96,35 +95,35 @@
 						</uiTable:template>
 					</uiTable:Column>
 
-					<uiTable:Column width="6%" resizable="false">
+					<uiTable:Column width="6%" resizable="false" hAlign="Center">
 						<Text text="{i18n>date}" class="taktHeading" />
 						<uiTable:template>
 							<Text class="dateTableLinetracker" text="{parts:['stationDataModel>completionTime','stationDataModel>actualEndTime', 'stationDataModel>status'], formatter:'airbus.mes.linetracker.util.Formatter.forcastEndDate'}" />
 						</uiTable:template>
 					</uiTable:Column>
 
-					<uiTable:Column width="6%" resizable="false">
+					<uiTable:Column width="6%" resizable="false" hAlign="Center">
 						<Text text="{i18n>cycleTime}" class="taktHeading" />
 						<uiTable:template>
 							<Text class="fontTableLinetracker" text="{stationDataModel>cycleTime} {i18n>hrs}" />
 						</uiTable:template>
 					</uiTable:Column>
 
-					<uiTable:Column width="6%" resizable="false">
+					<uiTable:Column width="6%" resizable="false" hAlign="Center">
 						<Text text="{i18n>workContent}" class="taktHeading" />
 						<uiTable:template>
 							<Text class="fontTableLinetracker" text="{stationDataModel>workContent} {i18n>hrs}" />
 						</uiTable:template>
 					</uiTable:Column>
 
-					<uiTable:Column width="6%" resizable="false">
+					<uiTable:Column width="6%" resizable="false" hAlign="Center">
 						<Text text="{i18n>openDisruptions}" class="taktHeading" />
 						<uiTable:template>
 							<Text class="fontTableLinetracker" text="{stationDataModel>openDisruption}" />
 						</uiTable:template>
 					</uiTable:Column>
 
-					<uiTable:Column width="6%" resizable="false">
+					<uiTable:Column width="6%" resizable="false" hAlign="Center">
 						<Text text="{i18n>openANDON}" class="taktHeading" />
 						<uiTable:template>
 							<Text class="fontTableLinetracker" text="{stationDataModel>openAndon}" />

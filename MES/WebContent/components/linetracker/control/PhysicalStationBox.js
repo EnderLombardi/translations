@@ -78,11 +78,14 @@ sap.ui.core.Control.extend(
 					oRm.write(html);
 				}
 				oRm.write("</div>");
+				
+				/* Now unused
 				oRm.write("<div");
 				oRm.addClass("blankDiv");
 				oRm.writeClasses();
 				oRm.write("></div>");
-
+				*/
+				
 				oRm.write("<div");
 				oRm.addClass("imageDiv");
 				oRm.writeClasses();
