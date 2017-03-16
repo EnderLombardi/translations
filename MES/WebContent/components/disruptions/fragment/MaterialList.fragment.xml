@@ -75,7 +75,7 @@
 		</content>
 		<buttons>
 			<Button text="{i18nModel>ok}" press="handleSelectMaterialList" />
-			<Button text="{i18nModel>cancel}" press="handleCancelMaterialList" />
+			<!-- <Button text="{i18nModel>cancel}" press="handleCancelMaterialList" /> -->
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

@@ -21,6 +21,8 @@ airbus.mes.disruptions.ModelManager = {
 			"JigtoolListModel", // Jigtool List Model
 			"disruptionRsnRespGrp", // model for reason and responsible group
 			"disruptionResolverModel", // Model for resolver name
+			"MaterialDropDownListModel",
+			"JigtoolDropDownListModel"
 		]);
 
 		/***********************************************************************
@@ -181,10 +183,12 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Load Material List for create/update disruption
 	 */
-
 	getURLMaterialList: function () {
-		var urlMaterialList = this.urlModel.getProperty("urlMaterialList");
-		return urlMaterialList;
+		var url = this.urlModel.getProperty("urlMaterialList");
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].shopOrderBo.split(",")[1]);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$operation", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no);
+        return url;
 	},
 
 	/***************************************************************************
@@ -192,39 +196,60 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 	loadMaterialList: function () {
 
-		var oViewModel = sap.ui.getCore().getModel("MaterialListModel");
+		var oViewModel = sap.ui.getCore().getModel("MaterialDropDownListModel");
 
 		var getMaterialListURL = airbus.mes.disruptions.ModelManager.getURLMaterialList();
 
 		oViewModel.loadData(getMaterialListURL);
 
 	},
+	
 
 	/***************************************************************************
 	 * Load Jigtool List for create/update disruption
 	 */
-
-	getURLJigtoolList: function () {
-		var urlJigtoolList = this.urlModel.getProperty("urlJigtoolList");
-		return urlJigtoolList;
-	},
-
-	/***************************************************************************
-	 * Load Disruptions for a single operation
-	 */
 	loadJigtoolList: function () {
 
-		var oViewModel = sap.ui.getCore().getModel("JigtoolListModel");
+		var oViewModel = sap.ui.getCore().getModel("JigtoolDropDownListModel");
+        
+//      Launch the service 
+        jQuery.ajax({
+            type : 'post',
+            async : false,
+            url : this.urlModel.getProperty("urlJigtoolList"),
+            contentType : 'application/json',
+            data : JSON.stringify({
+                "site" : airbus.mes.settings.ModelManager.site,
+                "shopOrder" : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].shopOrderBo.split(",")[1]
+            }),
 
-		var getJigtoolListURL = airbus.mes.disruptions.ModelManager.getURLJigtoolList();
+            success : function(data) {
+                if (typeof data == "string") {
+                    data = JSON.parse(data);
+                }
+                if (typeof data != "object" || data === null) {
+ //					In case the tool list is empty, we receive "null"
+                	data = { toolInfoList : [] };
+                }
+                data.toolInfoList = data.toolInfoList || [];
+                if (!Array.isArray(data.toolInfoList)) {
+//					In case the tool list contain one element, we receive an object
+                    data.toolInfoList = [ data.toolInfoList ];
+                }
+                oViewModel.setData(data);
+                oViewModel.refresh();
+            },
 
-		oViewModel.loadData(getJigtoolListURL);
+            error : function(error, jQXHR) {
+                console.log(error);
+            }
+        });
 
 	},
+	
 	/***************************************************************************
 	 * Create Disruption service
 	 */
-
 	getURLCreateDisruption: function () {
 		var urlCreateDisruption = this.urlModel.getProperty("urlCreateDisruption");
 		return urlCreateDisruption;

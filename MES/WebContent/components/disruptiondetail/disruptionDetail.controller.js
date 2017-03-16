@@ -38,8 +38,8 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		this.resetAllFields();
 		
 		this.loadDisruptionCategory();
-		//ModelManager.loadMaterialList();
-		//ModelManager.loadJigtoolList();
+		ModelManager.loadMaterialList();
+		ModelManager.loadJigtoolList();
 
 		
 		this.loadDisruptionDetail(msgRef);
