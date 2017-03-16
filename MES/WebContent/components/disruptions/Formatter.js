@@ -719,14 +719,14 @@ airbus.mes.disruptions.Formatter = {
 		return true;
 	},
 
-	getFileSize: function (bytes) {
+	getFileSize: function (octets) {
 		var decimals = 1;
-		if (bytes == 0) return '0 Bytes';
+		if (octets == 0) return '0 octets';
 		var k = 1000,
 			dm = decimals + 1 || 3,
-			sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-			i = Math.floor(Math.log(bytes) / Math.log(k));
-		return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+			sizes = ['octets', 'Ko', 'Mo', 'Go', 'To', 'Po', 'Eo', 'Zo', 'Yo'],
+			i = Math.floor(Math.log(octets) / Math.log(k));
+		return parseFloat((octets / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 	},
 
 	getDocumentStatusToString: function (status) {

@@ -180,7 +180,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		item.Title = fileName;
 		item.Description = description;
 		item.oldDescription = description;
-		item.Size = size;
+		item.Size = size*1000;
 		item.fileCount = fileCount;
 		item.Status = status;
 		oData.unshift(item);
