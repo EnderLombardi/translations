@@ -1,0 +1,15 @@
+{
+    "files": [
+        {
+            "nameFile": "./WebContent/components/acpnglinks/i18n/i18n_en.properties",
+            "ACPnGLinks": "0030",
+            "en": "ACPnG links",
+            "fr": "Liens ACPnG",
+            "de": "Deutsch ACPnG",
+            "sp": "Enlaces ACPnG",
+            "comment": "",
+            "line": "1"            
+        }
+
+ 	]
+}

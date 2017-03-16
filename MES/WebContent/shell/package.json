@@ -1,0 +1,22 @@
+{
+  "name": "shell",
+  "version": "1.0.0",
+  "description": "MES Shell",
+  "main": "Component.js",
+  "scripts": {
+    "test": "n"
+  },
+  "repository": {
+    "type": "git",
+    "url": "shell"
+  },
+  "keywords": [
+    "n"
+  ],
+  "author": "n",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-ui5-preload": "^1.3.0"
+  }
+}
