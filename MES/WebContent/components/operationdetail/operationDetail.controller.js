@@ -100,7 +100,7 @@ sap.ui
 
             if (airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status") == airbus.mes.operationdetail.Formatter.status.blocked) {
                 oSwitchButton.setState(false);
-                sap.m.MessageToast.show(this.getView().getModel("i18n").getProperty("BlockedOperation"));
+                airbus.mes.shell.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("BlockedOperation"));
                 return;
             }
 
