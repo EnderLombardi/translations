@@ -758,6 +758,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 		var iIndex = sPath.split("/")[1];
 		var iModel = sap.ui.getCore().getModel("operationDisruptionsModel").getData()[iIndex];
 		airbus.mes.disruptions.ModelManager.retrieveDocument(iModel.messageRef, function (data) {
+			iModel.attachedDocument = [];
 			if (data) {
 				if (data.listkMResources.length) {
 					iModel.attachedDocument = data.listkMResources;
