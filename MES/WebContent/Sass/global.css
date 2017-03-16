@@ -4022,23 +4022,17 @@ DATE PICKER
 
 #insertOsw--insertHeader .sapMSltArrow { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; }
 
-#insertOsw--insertHeader.sapMSltPressed .sapMSltArrow { background-color: #74d2e7; }
+#insertOsw--insertHeader.sapMSltPressed .sapMSltArrow { color: #74d2e7; }
 
-#insertOsw--insertHeader .sapMSlt { border-left: none; height: 3rem; background-color: #d5f5f8 !important; }
+#insertOsw--insertHeader.sapMSltPressed .sapMSltArrow:before { color: #74d2e7; }
+
+#insertOsw--insertHeader .sapMSlt { border-left: none; height: 3rem; background-color: #D5F1F8; }
 
 #insertOsw--insertHeader .sapMBtnDefault { background: transparent; color: #0D5D76; }
 
 #insertOsw--insertHeader .borderRight { border-right: 1px solid #8db9ca; }
 
 #insertOsw--insertHeader .sapMBtnIcon { color: #0D5D76; }
-
-#stationHandoverView--headerstationhandover .comboStationHandover { color: #F5F5F5; font-size: 16px; width: auto; height: 3rem; margin: 0; max-width: 100%; line-height: 3rem; text-transform: capitalize; margin-right: 0px !important; border-right: solid 1px #74d2e7 !important; background: #0f2d65 !important; border: 0; border-left: solid 1px #74d2e7 !important; opacity: 1; }
-
-#stationHandoverView--headerstationhandover .sapMSltLabel { line-height: 3rem; }
-
-#stationHandoverView--headerstationhandover #stationHandoverView--selectMsnHandover-arrow, #stationHandoverView--headerstationhandover #stationHandoverView--selectStationHandover-arrow { padding-top: 8px; }
-
-#stationHandoverView--headerstationhandover #stationHandoverView--headerText { height: 3rem; line-height: 3rem; border-right: 1px solid #8db9ca; padding-right: 1rem; }
 
 #oswDialog--oswDialog-scrollCont { padding: 0px; }
 
@@ -4086,7 +4080,7 @@ DATE PICKER
 
 #stationHandoverView--headerstationhandover.sapMSltPressed .sapMSltArrow { background-color: #74d2e7; }
 
-#stationHandoverView--headerstationhandover .sapMSlt { border: none; height: 3rem; background-color: #d5f5f8 !important; }
+#stationHandoverView--headerstationhandover .sapMSlt { border: none; height: 3rem; background-color: #D5F1F8; }
 
 #stationHandoverView--headerstationhandover .sapMBtnDefault { background: transparent; border: none; color: #0D5D76; }
 
@@ -4094,13 +4088,7 @@ DATE PICKER
 
 #stationHandoverView--headerstationhandover #stationHandoverView--originHandOver { border-right: 1px solid #8db9ca; }
 
-#stationHandoverView--insertHandOver { border-left: 1px solid #8db9ca; background-color: #d5f5f8 !important; }
-
-#stationHandoverView--insertHandOver-inner { background: none; border: none; color: #0D5D76; }
-
-#stationHandoverView--insertHandOver-inner > span { color: #0D5D76; padding-left: 15px; }
-
-#insertOsw--insertOSW .center { margin-left: auto; margin-right: auto; display: block; }
+#stationHandoverView--headerstationhandover #stationHandoverView--insertHandOver { border-left: 1px solid #8db9ca; background-color: #d5f5f8 !important; }
 
 /********************
 MES Document Viewer

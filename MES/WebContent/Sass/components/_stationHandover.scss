@@ -1,12 +1,11 @@
 // popup insert osw
-#insertOsw--insertHeader{
-        margin-top: 10px;
-        overflow: visible;
-        background-color: #d4f1f7;
-        color: #434343;
-        border : 1px solid #8db9ca ! important;
-        box-shadow: 0 0 0 ! important;
-    
+#insertOsw--insertHeader {
+    margin-top: 10px;
+    overflow: visible;
+    background-color: #d4f1f7;
+    color: #434343;
+    border: 1px solid #8db9ca ! important;
+    box-shadow: 0 0 0 ! important;
     label {
         background-color: transparent;
         color: #0D5D76;
@@ -21,20 +20,24 @@
         height: 3rem;
         line-height: 3rem;
         border-right: 1px solid #8db9ca;
+        
     }
     &.sapMSltPressed {
         .sapMSltArrow {
-            background-color: $tiffany-blue;
+            color: $tiffany-blue;
+            &:before {
+                color: $tiffany-blue;
+            }
         }
     }
     .sapMSlt {
         border-left: none;
         height: 3rem;
-        background-color: $duck-egg-blue !important;
+        background-color: #D5F1F8;
     }
     .sapMBtnDefault {
         background: transparent;
-       // border: none;
+        // border: none;
         color: #0D5D76;
     }
     .borderRight {
@@ -43,43 +46,9 @@
     .sapMBtnIcon {
         color: #0D5D76;
     }
-        
 }
 
-
-// StationHandover screen
-#stationHandoverView--headerstationhandover {
-    .comboStationHandover {
-        color: #F5F5F5;
-        font-size: 16px;
-        width: auto;
-        height: 3rem;
-        margin: 0;
-        max-width: 100%;
-        line-height: 3rem;
-        text-transform: capitalize;
-        margin-right: 0px !important;
-        border-right: solid 1px $tiffany-blue !important;
-        background: #0f2d65 !important;
-        border: 0;
-        border-left: solid 1px $tiffany-blue !important;
-        opacity: 1;
-    }
-    .sapMSltLabel {
-        line-height: 3rem;
-    }
-    #stationHandoverView--selectMsnHandover-arrow,
-    #stationHandoverView--selectStationHandover-arrow {
-        padding-top: 8px;
-    }
-    #stationHandoverView--headerText {
-        height: 3rem;
-        line-height: 3rem;
-        border-right: 1px solid #8db9ca;
-        padding-right: 1rem;
-    }
-}
-
+// StationHandover scree
 #oswDialog--oswDialog-scrollCont {
     padding: 0px
 }
@@ -197,7 +166,7 @@
     .sapMSlt {
         border: none;
         height: 3rem;
-        background-color: $duck-egg-blue !important;
+        background-color: #D5F1F8;
     }
     .sapMBtnDefault {
         background: transparent;
@@ -210,27 +179,8 @@
     #stationHandoverView--originHandOver {
         border-right: 1px solid #8db9ca;
     }
-}
-
-#stationHandoverView--insertHandOver {
-    border-left: 1px solid #8db9ca;
-    background-color: $duck-egg-blue !important;
-}
-
-#stationHandoverView--insertHandOver-inner {
-    background: none;
-    border: none;
-    color: #0D5D76;
-    >span {
-        color: #0D5D76;
-        padding-left: 15px;
-    }
-}
-
-#insertOsw--insertOSW {
-    .center {
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
+    #stationHandoverView--insertHandOver {
+        border-left: 1px solid #8db9ca;
+        background-color: $duck-egg-blue !important;
     }
 }

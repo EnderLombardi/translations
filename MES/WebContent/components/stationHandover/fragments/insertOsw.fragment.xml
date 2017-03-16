@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
 
-	<Dialog id="insertOSW" class="oswPopover" contentWidth = "50%"
+	<Dialog id="insertOSW" class="oswPopover"
 		verticalScrolling="false" title="{stationHandoverI18n>nameInsertOsw}">
 
 		<subHeader>
@@ -28,12 +28,14 @@
 		</subHeader>
 
 		<content>
-					<u:Calendar id="calendar" select="handleCalendarSelect"
+			<VBox>
+				<u:Calendar id="calendar" select="handleCalendarSelect"
 					class="center" enabled="false" />
 
-				<TimePicker id="TimePicker" valueFormat="hh:mm a"
+				<TimePicker id="TimePicker" valueFormat="hh:mm a" width="100%"
 					displayFormat="hh:mm a" change="handleChange" placeholder="Enter daily task deadline"
 					class="center" />
+			</VBox>
 		</content>
 
 		<buttons>
