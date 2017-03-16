@@ -75,12 +75,6 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                     data = { Rowsets: [] };
                 }    
                 if (data.Rowsets.Rowset[0] && data.Rowsets.Rowset[0].Row) {
-//                	If Row doesn't exist                	
-                	if (jQuery.sap.getObject("data.Rowsets.Rowset[0].Row") === undefined) {
-//						Initialize to empty array  
-                		data.Rowsets.Rowset[0].Row = [];
-                	}  
-                	
                     data.Rowsets.Rowset[0].Row = airbus.mes.trackingtemplate.util.ModelManager.sortArrayByOperationAndDate(data.Rowsets.Rowset[0].Row);
                 }
 
@@ -113,27 +107,13 @@ airbus.mes.trackingtemplate.util.ModelManager = {
                     /* In case the tool list is empty, we receive "null" */
                     data = { Rowsets: [] };
                 }                
-                if (data.Rowsets.Rowset) {
-//					Case of no data
-//                	If Row doesn't exist
-                	if (jQuery.sap.getObject("data.Rowsets.Rowset[0].Row") === undefined) {
-//						Initialize to empty array                	
-                		data.Rowsets.Rowset[0].Row = [];
-                	}
-//                	If Row doesn't exist                	
-                	if (jQuery.sap.getObject("data.Rowsets.Rowset[1].Row") === undefined) {
-//						Initialize to empty array  
-                		data.Rowsets.Rowset[1].Row = [];
-                	}                	
+                if (data.Rowsets.Rowset[0].Row) {
+                	var wonotes = data.Rowsets.Rowset[0].Row;
+                    wonotes = wonotes.sort(airbus.mes.shell.util.Formatter.fieldComparator(['-Created_Date_Time']));
+                	wonotes[0].lastOperationNote = true;
                 	
-                    var wonotes = data.Rowsets.Rowset[0].Row;
                     if (data.Rowsets.Rowset[1].Row && wonotes) {
                         airbus.mes.trackingtemplate.util.ModelManager.attachedDocumentToWoNotes(wonotes, data.Rowsets.Rowset[1].Row);
-                        wonotes = wonotes.sort(airbus.mes.shell.util.Formatter.fieldComparator(['-Created_Date_Time']));
-                    	if (jQuery.sap.getObject("wonotes[0].lastOperationNote") !== undefined) {
-                    		wonotes[0].lastOperationNote = true;
-                    	}                        
-                        
                     }
                 }
                 woNotesModel.setData(data);
