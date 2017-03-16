@@ -307,16 +307,16 @@ airbus.mes.stationHandover.util.ModelManager = {
 			sDate = airbus.mes.shell.util.Formatter.dDate2sDate(dDate);
 			
 		}
-		
-		console.log(JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"physicalStationBO" : sPhysicalStationBo,
-				"msn" : airbus.mes.settings.ModelManager.msn,
-				"productionGroup" : sProductionGroup,
-				"manualDate" : sDate,
-				'insertType' : sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey(),
-				'outstandingWorkOrderInfoList' : [oModel.outstandingWorkOrderInfoList],
-			}));
+//		
+//		console.log(JSON.stringify({
+//				"site" : airbus.mes.settings.ModelManager.site,
+//				"physicalStationBO" : sPhysicalStationBo,
+//				"msn" : airbus.mes.settings.ModelManager.msn,
+//				"productionGroup" : sProductionGroup,
+//				"manualDate" : sDate,
+//				'insertType' : sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey(),
+//				'outstandingWorkOrderInfoList' : oModel.outstandingWorkOrderInfoList,
+//			}));
 		
 		jQuery.ajax({
 			type : 'post',
@@ -330,7 +330,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 				"productionGroup" : sProductionGroup,
 				"manualDate" : sDate,
 				'insertType' : sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey(),
-				'outstandingWorkOrderInfoList' : [oModel],
+				'outstandingWorkOrderInfoList' : oModel.outstandingWorkOrderInfoList,
 			}),
 
 			success : function(data) {
@@ -339,6 +339,22 @@ airbus.mes.stationHandover.util.ModelManager = {
 					
 					airbus.mes.shell.oView.getController().renderStationHandover();
 					airbus.mes.stationHandover.insertOsw.close();
+					
+					if (airbus.mes.stationtracker != undefined ) {
+						
+						if ( nav.getCurrentPage().sId === "stationHandoverView") {
+							airbus.mes.stationtracker.oswDialog.close();
+							airbus.mes.shell.oView.getController().renderStationHandover();	
+						}
+						
+					}
+					
+					if ( data.message === "S" ) {
+	                    sap.m.MessageToast.show(airbus.mes.stationHandover.oView.getModel("stationHandoverI18n").getProperty("success"));					
+					} else {
+	                    sap.m.MessageToast.show(airbus.mes.stationHandover.oView.getModel("stationHandoverI18n").getProperty("error"));						
+					}
+					
 				} catch (e) {
 
 					console.log("NO ressource pool load");

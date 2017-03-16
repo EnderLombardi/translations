@@ -427,25 +427,20 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").oData.outstandingWorkOrderInfoList;
 		var aSelected = [];
-//		var aSelectedStartDate = airbus.mes.stationHandover.util.ModelManager.aSelectedStartDate = [];
-//		var aSelectedEndDate = airbus.mes.stationHandover.util.ModelManager.aSelectedEndDate = [];
-//		var oFormatter = airbus.mes.shell.util.Formatter;
 		
+		// if there os only one object in the field outstandingWorkStepInfoList or outstandingWorkOrderInfoList we need to set it like an object 
+		// to match with sdk services....
 		oModel.forEach(function(el){
-			if ( el.SELECTED_UI != el.selected ) {
-				
-			}			
 			
 				el.outstandingWorkStepInfoList.forEach(function(al){
 				
 					if ( al.SELECTED_UI != al.selected ) {
 						
 						aSelected.push(al);
-//						aSelectedStartDate.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.startDate)));
-//						aSelectedEndDate.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.enDate)));
 					}	
-					
+										
 				})
+			
 		})		
 		
 		// Display a dialog to inform if at least one osw is selected or not
@@ -478,6 +473,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	onInsertPress : function() {
 		
 		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").oData;
+		//var oTest = JSON.parse(JSON.stringify(oModel));
 		var sSelectedType = sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey();
 		var sTime = sap.ui.getCore().byId("insertOsw--TimePicker");
 		// Check if time is Set
@@ -492,18 +488,36 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			
 		}
 		
+		
+		
+		
+		
 		// Parse model and remove selcted field and selected_UI for format data to send it to sdk services
 		oModel.outstandingWorkOrderInfoList.forEach(function(el){
 				
 				delete el.selected;
 				delete el.SELECTED_UI;
-
+				
 				el.outstandingWorkStepInfoList.forEach(function(al){
 						
 					delete al.SELECTED_UI;
 					
+					if ( el.outstandingWorkStepInfoList.length === 1 ) {
+						
+						el.outstandingWorkStepInfoList = al;
+						
+					}	
+					
 				})
+				
+				if ( oModel.outstandingWorkOrderInfoList.length === 1 ) {
+					
+					oModel.outstandingWorkOrderInfoList = el;
+					
+				}	
 		})
+		
+		console.log(oModel);
 	
 		airbus.mes.stationHandover.util.ModelManager.saveOsw();
 	},
