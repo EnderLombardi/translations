@@ -241,7 +241,7 @@
 								press="viewAttachments" design="Transparent" class="transparentBlueButton"  />
 
 						<List id="idListDocument" class="sapUiSmallMarginBegin"
-							items="{path: 'operationDisruptionsModel>attachedDocument'}">
+							items="{path: 'operationDisruptionsModel>attachedDocument'}" visible="{=${operationDisruptionsModel>showAttachedDocument} === true}">
 							<CustomListItem id="document-list-item" >
 								<HBox class="document-item">
 									<Link class="document-title" text="{operationDisruptionsModel>fileName}" href="{operationDisruptionsModel>fileURL}"/>

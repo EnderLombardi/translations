@@ -766,6 +766,12 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 				}
 			}
 		});
+		if(iModel.showAttachedDocument) {
+			iModel.showAttachedDocument = !iModel.showAttachedDocument;
+		} else {
+			iModel.showAttachedDocument = true;
+		}
+
 		this.getView().getModel("operationDisruptionsModel").refresh();
 	},
 
