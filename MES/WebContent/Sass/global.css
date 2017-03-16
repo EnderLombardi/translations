@@ -2098,21 +2098,25 @@ Custom Progress Bar
 /*********************************
 Physical Station
 ********************************/
-.ParentDiv { background-color: #EAFBFD; min-width: 10rem; height: 3rem; float: left; display: flex; }
+.ClassLineTrackerActionIcon { padding-left: 5px; }
 
-.ActionDiv { float: left; width: 10%; align-self: center; }
+.ParentDiv { background-color: #EAFBFD; padding-left: 10px; min-width: 10rem; max-height: 3rem; display: flex; justify-content: space-between; }
 
-.labelDiv { float: left; width: 40%; align-self: center; }
+.labelDiv { max-width: 50%; align-self: center; }
 
-.StationLabel { font-size: small; color: #436471; font-family: sans-serif; font-weight: bolder; }
+.StationLabel { font-size: 0.8rem; color: #436471; font-family: sans-serif; font-weight: bolder; text-overflow: ellipsis; word-wrap: break-word !important; white-space: normal !important; }
 
 .MSNlabel { font-size: x-small; font-family: sans-serif; color: #5cabb7; }
 
-.blankDiv { float: left; width: 8%; }
+.blankDiv { width: 8%; }
 
-.imageDiv { float: left; width: 35%; padding: 8px; display: inline-flex; }
+.imageDiv { max-width: 35%; max-height: 3rem; padding: 8px; display: block; }
 
-.detailDiv { float: left; width: 23%; align-self: center; display: flex; }
+.imageDiv .sapMImg { width: 100% !important; height: 100% !important; }
+
+.ActionDiv { width: 10%; align-self: center; }
+
+.detailDiv { width: 23%; align-self: center; display: flex; }
 
 /*********************************
 KPI Charts
@@ -2120,6 +2124,10 @@ KPI Charts
 /******************************
   Header
 ******************************/
+.sapUiTableCol #idLinetracker--percentageLabel #sapUiTableColCell { vertical-align: middle !important; }
+
+#idLinetracker--percentageLabel { vertical-align: middle !important; line-height: 3rem; }
+
 .KPIlinetrackerHeader { margin-left: 0rem; }
 
 .KPIheaderTitle { font-size: 1.35rem; }
