@@ -20,7 +20,7 @@ airbus.mes.disruptions.ModelManager = {
 			"MaterialListModel", // Material List Model
 			"JigtoolListModel", // Jigtool List Model
 			"disruptionRsnRespGrp", // model for reason and responsible group
-			"disruptionResolverModel" // Model for resolver name
+			"disruptionResolverModel", // Model for resolver name
 		]);
 
 		/***********************************************************************
@@ -1034,5 +1034,9 @@ airbus.mes.disruptions.ModelManager = {
 	getPostDeleteAttachedDocumentUrl: function () {
 		return this.urlModel.getProperty('postDeleteAttachedDocument');
 	},
+	
+	getCurrentSiteTimeURL: function () {
+		return this.urlModel.getProperty("getCurrentSiteTime");
+	}
 
 };

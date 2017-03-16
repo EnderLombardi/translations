@@ -812,5 +812,41 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.oController.createDisruption( "X");
 		
 		return true;
-}
+	},
+	
+	loadSiteTime : function() {
+		sap.ui.getCore().byId("createDisruptionView--openDate").setBusy(true);
+		sap.ui.getCore().byId("createDisruptionView--openTime").setBusy(true);
+		
+		var url = airbus.mes.disruptions.ModelManager.getCurrentSiteTimeURL();
+				
+		jQuery.ajax({
+			url: url,
+			type: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify({
+				"site": airbus.mes.settings.ModelManager.site
+			}),
+			success: function (data) {
+				if (typeof data == "string") {
+                    data = JSON.parse(data);
+                }
+				
+				var openDateTime = data.time;
+				
+				var openDate = sap.ui.getCore().byId("createDisruptionView--openDate");
+				openDate.setValue(openDateTime.split(' ')[0]);
+				
+				var openTime = sap.ui.getCore().byId("createDisruptionView--openTime");
+				openTime.setValue(openDateTime.split(' ')[1]);
+
+				sap.ui.getCore().byId("createDisruptionView--openDate").setBusy(false);
+				sap.ui.getCore().byId("createDisruptionView--openTime").setBusy(false);
+			},
+			error: function (data, textStatus, jqXHR) {
+				sap.ui.getCore().byId("createDisruptionView--openDate").setBusy(false);
+				sap.ui.getCore().byId("createDisruptionView--openTime").setBusy(false);
+			}
+		});
+	}
 });
