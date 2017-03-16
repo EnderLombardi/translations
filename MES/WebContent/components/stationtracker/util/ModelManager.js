@@ -1371,7 +1371,9 @@ airbus.mes.stationtracker.util.ModelManager = {
 
                 // calculate status of operation
                 var sStatus;
-                if (aModel[0].status == "0") {
+                if(aModel[0].BLOCKING_DISRUPTION==='1'){
+                	sStatus = "Blocked";
+                } else if (aModel[0].status == "0") {
                     sStatus = "COMPLETED";
                 } else if (aModel[0].status == "2") {
                     sStatus = "IN_WORK";
@@ -1379,9 +1381,9 @@ airbus.mes.stationtracker.util.ModelManager = {
                     sStatus = "IN_QUEUE";
                 } else if (aModel[0].status === "1") {
                     sStatus = "NOT_STARTED";
-                } else if (aModel[0].status === "4") {
+                } /*else if (aModel[0].status === "4") {
                     sStatus = "Blocked";
-                }
+                }*/
 
 
                 // progress calculation
