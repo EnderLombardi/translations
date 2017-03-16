@@ -17,7 +17,7 @@
 								<HBox>
 									<HBox justifyContent="Begin" width="100%">
 										<Text text="{QDCModel>name}" class="AllignItem"
-											visible="{= ${GetQDCDataModel>/Rowsets/Rowset/0/Row/0/QDCSTATUS} === 'X'}" />
+											visible="{= ${GetQDCDataModel>/Rowsets/Rowset/0/Row/0/QDCSTATUS} !== ''}" />
 										<Label text="" class="adjustWidth" />
 									</HBox>
 									<HBox justifyContent="End">
@@ -31,7 +31,7 @@
 						<tab:Column>
 							<Label class="TabChecklistLabel" text="{i18nModel>record}" />
 							<tab:template>
-								<Label text="{parts: [ {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/TOT_COUNT'}, {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/CLOSE_COUNT'} ], formatter: 'airbus.mes.qdc.util.Formatter.getDescription'}" visible="{= ${GetQDCDataModel>/Rowsets/Rowset/0/Row/0/QDCSTATUS} === 'X'}" class="AllignItem" />
+								<Label text="{parts: [ {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/TOT_COUNT'}, {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/CLOSE_COUNT'} ], formatter: 'airbus.mes.qdc.util.Formatter.getDescription'}" visible="{= ${GetQDCDataModel>/Rowsets/Rowset/0/Row/0/QDCSTATUS} !== ''}" class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 					</tab:columns>
@@ -39,17 +39,17 @@
 				<HBox>
 					<HBox justifyContent="Begin" width="100%">
 						<Button id="idButtonMEA" text="{i18nModel>MEA}"
-							class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"
+							class="ConfirmChecklist sapUiMediumMarginEnd" visible="false"
 							press="onClick"></Button>
 						<Button id="idButtonMAA" text="{i18nModel>MAA}"
-							class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"
+							class="ConfirmChecklist sapUiMediumMarginEnd" visible="false"
 							press="onClick"></Button>
 						<Button id="idButtonQDC" text="{i18nModel>QDC}"
-							class="ConfirmChecklist sapUiMediumMarginEnd" enabled="false"
+							class="ConfirmChecklist sapUiMediumMarginEnd" visible="false"
 							press="onClick"></Button>
 					</HBox>
 					<HBox justifyContent="End">
-						<Button text="{i18nModel>confirm}" class="ConfirmChecklist" enabled="false"></Button>
+						<Button text="{i18nModel>confirm}" class="ConfirmChecklist" visible="false"></Button>
 					</HBox>
 				</HBox>
 

@@ -14,36 +14,38 @@ sap.ui.controller("airbus.mes.qdc.controller.Checklist", {
 	enableButtons: function(){
 		var oData = sap.ui.getCore().getModel("GetQDCDataModel").getData();
 
-		airbus.mes.qdc.oView.byId("idButtonMEA").setEnabled(false);
-		airbus.mes.qdc.oView.byId("idButtonMAA").setEnabled(false);
-		airbus.mes.qdc.oView.byId("idButtonQDC").setEnabled(false);
+		airbus.mes.qdc.oView.byId("idButtonMEA").setVisible(false);
+		airbus.mes.qdc.oView.byId("idButtonMAA").setVisible(false);
+		airbus.mes.qdc.oView.byId("idButtonQDC").setVisible(false);
 
-		if (oData.Rowsets.Rowset[0].Row[0].QDCSTATUS === "X" &&
+		if (oData.Rowsets.Rowset[0].Row[0].QDCSTATUS !== "" &&
 			// Operation Started
 			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").getState() === true) {
 			var obj = oData.Rowsets.Rowset[1].Row;
 			
+			if(obj){
 			obj.filter(function(row) {
 				if (row.DOC_TYPE === "MEA") {
-					airbus.mes.qdc.oView.byId("idButtonMEA").setEnabled();
+					airbus.mes.qdc.oView.byId("idButtonMEA").setVisible(true);
 				}
 		
 			});
 		
 			obj.filter(function(row) {
 				if (row.DOC_TYPE === "MAA") {
-					airbus.mes.qdc.oView.byId("idButtonMAA").setEnabled();
+					airbus.mes.qdc.oView.byId("idButtonMAA").setVisible(true);
 				}
 		
 			});
 		
 			obj.filter(function(row) {
 				if (row.DOC_TYPE === "QDC") {
-					airbus.mes.qdc.oView.byId("idButtonQDC").setEnabled();
+					airbus.mes.qdc.oView.byId("idButtonQDC").setVisible(true);
 				}
 		
 			});
 		}
+			}
 	},
 	
 	
