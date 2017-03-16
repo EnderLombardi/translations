@@ -24,7 +24,7 @@ airbus.mes.disruptiontracker.Formatter = {
 
 	},
 
-	setText : function(status, gravity, escalation) {
+	setSeverityText : function(status, gravity, escalation) {
 
 		if (status == "CLOSED") {
 			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("solved");

@@ -22,7 +22,7 @@
 							<Text
 								text="OP {path: 'DisruptionDetailModel>/operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'} - {i18nModel>workOrder} {DisruptionDetailModel>/workOrder}" class="textSize" />
 							<Text
-								text=" - {DisruptionDetailModel>/wODescription}" class="textSize" />
+								text=" - {DisruptionDetailModel>/operationDescription}" class="textSize" />
 							<Text text="DIS-{DisruptionDetailModel>/disruptionNumber}" class="textSize" />
 						</contentMiddle>
 					</Bar>

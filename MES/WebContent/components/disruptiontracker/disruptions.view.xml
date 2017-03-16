@@ -34,6 +34,16 @@
 				<core:Item key="Rejected" text="{disruptiontrackerI18n>status.rejected}" />
 			</Select>
 
+			<Select id="severityComboBox" class="sapUiMediumMarginEnd"
+				placeholder="{disruptiontrackerI18n>selectStatus}" selectedKey=""
+				change="filterDisruptions"
+				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>severity}" />
+				<core:Item key="1" text="{disruptiontrackerI18n>not_Blocked}" />
+				<core:Item key="2" text="{disruptiontrackerI18n>disturbed}" />
+				<core:Item key="3" text="{disruptiontrackerI18n>blocked}" />
+			</Select>
+
 			<Select id="resolutionGroupBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/disruptionListDetails}"
 				selectedKey="" change="filterDisruptions"
@@ -136,7 +146,7 @@
 					</ui:template>
 				</ui:Column>
 					
-				<ui:Column id="gravityCol" filterProperty="severity"
+				<ui:Column id="gravityCol"
 					sortProperty="severity">
 					<Label text="{disruptiontrackerI18n>severity}" />
 					<ui:template>
@@ -146,12 +156,12 @@
 								color="{path: 'disruptionsTrackerModel>severity', formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}"
 								class="sapUiSmallMarginEnd" />
 							<Text
-								text="{parts: [ {path: 'disruptionsTrackerModel>status'}, {path: 'disruptionsTrackerModel>severity'}, {path: 'disruptionsTrackerModel>escalationLevel'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />
+								text="{parts: [ {path: 'disruptionsTrackerModel>status'}, {path: 'disruptionsTrackerModel>severity'}, {path: 'disruptionsTrackerModel>escalationLevel'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setSeverityText'}" />
 						</HBox>
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="statusCol" filterProperty="status"
+				<ui:Column id="statusCol"
 					sortProperty="status">
 					<Label text="{disruptiontrackerI18n>status}" />
 					<ui:template>
@@ -169,7 +179,7 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="resolutionGroupCol" filterProperty="responsibleGroupDesc"
+				<ui:Column id="resolutionGroupCol"
 					sortProperty="responsibleGroupDesc">
 					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
 					<ui:template>

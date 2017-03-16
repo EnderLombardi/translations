@@ -137,6 +137,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	filterDisruptions : function(oEvent) {
 		var sStatus = this.getView().byId("statusComboBox").getSelectedKey().toUpperCase();
 		var sResoGroup = this.getView().byId("resolutionGroupBox").getSelectedKey();
+		var sSeverity = this.getView().byId("severityComboBox").getSelectedKey();
+		
 
 		var aFilters = [];
 		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
@@ -146,7 +148,11 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if (sResoGroup != "")
 			aFilters.push(new sap.ui.model.Filter("responsibleGroup", "EQ", sResoGroup));
 
-				if (this.mFilterParams) {
+		if(sSeverity != "")
+			aFilters.push(new sap.ui.model.Filter("severity", "EQ", sSeverity));
+			
+			
+		if (this.mFilterParams) {
 			jQuery.each(this.mFilterParams.filterItems, function(i, oItem) {
 				var sFilterPath;
 				if (oItem.getParent().getId() == "categoryFilter")
@@ -166,6 +172,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				}
 			});
 		}
+				
 				
 
 		var searchBox = this.getView().byId("disruptionSearchField").getValue();
@@ -268,7 +275,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		/***************************
 		 * MES V1.5 Navigate to disruption Detail Page if opened from Desktop/Laptop [Begin]
 		 */
-		if (sap.ui.Device.system.desktop && disruptionData.responsibleFlag == "X" && disruptionData.originatorFlag != "X") {
+		if (sap.ui.Device.system.desktop && disruptionData.responsibleFlag == "X" /*&& disruptionData.originatorFlag != "X"*/) {
 			airbus.mes.shell.util.navFunctions.disruptionsDetailScreen(sCurrMessageRef,sMessageType, sResolverGroup);
 			
 			 
@@ -277,7 +284,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		 */
 		} else {
 
-			// create Pop-Up as a fragment
+			// Create Pop-Up as a fragment
 			if (airbus.mes.disruptiontracker.detailPopUp === undefined) {
 
 				airbus.mes.disruptiontracker.detailPopUp = sap.ui.xmlfragment("disruptionDetailPopup", "airbus.mes.disruptiontracker.disruptionDetailPopup",
