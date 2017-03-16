@@ -138,11 +138,11 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="openingTime" filterProperty="openingTime"
-					sortProperty="openingTime">
+				<ui:Column id="openingTime" filterProperty="openDateTime"
+					sortProperty="openDateTime">
 					<Label text="{disruptiontrackerI18n>openingTime}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>openingTime}" />
+						<Text text="{disruptionsTrackerModel>openDateTime}" />
 					</ui:template>
 				</ui:Column>
 					
@@ -218,7 +218,14 @@
 						<Text text="{path: 'disruptionsTrackerModel>escalationDateTime'}" />
 					</ui:template>
 				</ui:Column>
-
+				
+				<ui:Column id="escalationGroup" 
+					sortProperty="escalationGroup">
+					<Label text="{disruptiontrackerI18n>escalationGroup}" />
+					<ui:template>
+						<Text text="{path: 'disruptionsTrackerModel>escalationGroup'}" />
+					</ui:template>
+				</ui:Column>
 
 				<ui:Column id="openingTimeCol" filterProperty="openDuration"
 					sortProperty="openDuration">
