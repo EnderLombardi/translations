@@ -88,14 +88,21 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
     onLineClick: function (oEvent) {
         var sUrl;
         var sNcReference;
-
+		var oOperationData = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0];
+		var workOrder = oOperationData.wo_no;
+		var operation = oOperationData.operation_no;
+        
         // Get url
         sUrl = airbus.mes.ncdisplay.util.ModelManager.loadExternalUrl();
-
+        
+		// replace &amp; to &
+        sUrl = sUrl.replace(/\&amp;/g,'&');
         // Replace parameters
         sNcReference = sap.ui.getCore().getModel("ncdisplaydata").getProperty(oEvent.getSource().getParent().getBindingContext("ncdisplaydata").getPath()).ncReference;
         sUrl = sUrl.replace("p_notification", sNcReference);
-
+        sUrl = sUrl.replace("p_workorder", workOrder);
+        sUrl = sUrl.replace("p_operation", operation);
+        
         // Open URL        	
         window.open(sUrl);
     },

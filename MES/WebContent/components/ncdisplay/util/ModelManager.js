@@ -155,6 +155,9 @@ airbus.mes.ncdisplay.util.ModelManager = {
 		var workOrder = oOperationData.wo_no;
 		var operation = oOperationData.operation_no;
 
+		// replace &amp; to &
+        sUrl = sUrl.replace(/\&amp;/g,'&');
+		
 		jQuery.ajax({
 			type: 'GET',
 			url: sUrl,
