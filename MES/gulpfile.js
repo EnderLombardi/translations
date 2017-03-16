@@ -1,6 +1,7 @@
 "use strict";
 
 var gulp = require('gulp');
+var jQuery = require('jquery');
 var ui5preload = require('gulp-ui5-preload');
 //var uglify = require('gulp-uglify');
 //var prettydata = require('gulp-pretty-data');
@@ -109,6 +110,81 @@ gulp.task('copy_index', ['clean'], function () {
 	return gulp.src('./shell/index_airbus.html', { cwd: src })
 		.pipe(rename('./shell/index.html'))
 		.pipe(gulp.dest(dest));
+});
+
+//--------------------------------------------------------------------------------------------------------------------------//
+//																															//
+//														retrieve_translation												//
+//																															//
+//--------------------------------------------------------------------------------------------------------------------------//
+
+
+var json2array;
+json2array = function(json) {
+    var result = [];
+    var keys = Object.keys(json);
+    console.log("keys:" + keys)
+    keys.forEach(function(key){
+        result.push(json[key]);
+    });
+    return result;
+};
+
+var findFile, jsFiles, rootDir;
+jsFiles = [];
+
+// Retrieve all i18n file and repository
+findFile = function(dir)
+{
+//	console.log('dir:' + dir);
+	
+    fs.readdirSync(dir).forEach(function(file) {
+	    var stat;
+	    stat = fs.statSync("" + dir + "/" + file);
+
+	    if (stat.isDirectory()) {
+	      return findFile("" + dir + "/" + file);
+	    } else if (file.split('.')[0].substring(0, 4) === 'i18n') {
+//	    	console.log('filei18n:' + file);
+//	    	console.log('filei18nDirectory:' + "" + dir + "/" + file);
+	    	return jsFiles.push("" + dir + "/" + file);
+	    }
+  });
+};
+
+
+
+gulp.task('retrieve_translation', ['clean'], function () {
+	 
+	//Synchronous 
+	var file = [];
+//	TODO : add shell on repository to investigate
+	file = fs.readdirSync('../MES/WebContent/components');
+	
+	//
+	for (let i = 0; i < file.length; i++) {
+		findFile('./WebContent/components/' + file[i]);
+	}
+	console.log('findfile:' + jsFiles);
+	
+	
+	for (let i = 0; i < jsFiles.length; i++) {
+		console.log("file Reading:" , jsFiles[i]);
+		console.log(fs.readFileSync(jsFiles[i], 'utf-8'));
+	}
+	
+	
+//	Open JSON local
+//	Correspond to step launch service to MI and retrieve database on JSON model
+
+	var string = fs.readFileSync("Translation.json", 'utf-8');
+	console.log(string);
+	var array = json2array(string);
+//	var array = string.toArray();
+	console.log(array);
+	
+	
+	
 });
 
 //--------------------------------------------------------------------------------------------------------------------------//
