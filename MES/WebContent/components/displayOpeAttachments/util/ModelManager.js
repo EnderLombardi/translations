@@ -158,7 +158,8 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 			url = this.replaceURI(url, "p_workorder", externalUrlParameters[0]);
 			url = this.replaceURI(url, "p_operation", externalUrlParameters[1]);
 		}
-
+		// replace &amp; to &
+		url = url.replace(/\&amp;/g,'&');
 		return url;
 	},
 
