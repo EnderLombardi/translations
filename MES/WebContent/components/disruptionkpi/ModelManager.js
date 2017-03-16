@@ -217,7 +217,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 	
 	    aFilters.push(duplicatesFilter);
 	
-	    aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program)); // Filter on selected A/C Program
+	    //aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program)); // Filter on selected A/C Program
 	
 	    var lineBox = sap.ui.getCore().byId("disruptionKPIView--lineComboBox")
 	    
