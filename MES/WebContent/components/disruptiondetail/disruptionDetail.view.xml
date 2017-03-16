@@ -20,11 +20,10 @@
 
 						<contentMiddle>
 							<Text
-								text="{DisruptionDetailModel>/workOrder} / {path: 'DisruptionDetailModel>/operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}"
-								class="textSize" />
+								text="OP {path: 'DisruptionDetailModel>/operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'} - {i18nModel>workOrder} {DisruptionDetailModel>/workOrder}" class="textSize" />
 							<Text
-								text="{DisruptionDetailModel>/operationDescription}--{DisruptionDetailModel>/disruptionNumber}"
-								class="textSize" />
+								text=" - {DisruptionDetailModel>/wODescription}" class="textSize" />
+							<Text text="DIS-{DisruptionDetailModel>/disruptionNumber}" class="textSize" />
 						</contentMiddle>
 					</Bar>
 
