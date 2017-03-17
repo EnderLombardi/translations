@@ -346,7 +346,7 @@ airbus.mes.disruptions.ModelManager = {
 		return urlUpdateDisruption;
 	},
 
-	updateDisruption: function (sMessageRef, sReason, sResponsibleGroup, iTimeLost, dFixedByTime, sComment, iGravity, dPromisedDate, oJson) {
+	updateDisruption: function (sMessageRef, sReason, sResponsibleGroup, iTimeLost, dFixedByTime, sComment, iGravity, sStatus, dPromisedDate, oJson) {
 
 		// Set Busy Indicator
 		sap.ui.core.BusyIndicator.show(0);
@@ -376,6 +376,7 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.16": airbus.mes.shell.ModelManager.json2xml({
 					payloadAttributelist: oJson
 				}),
+				"Param.17": sStatus,
 			},
 			success: function (data, textStatus, jqXHR) {
 

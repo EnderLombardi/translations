@@ -51,7 +51,7 @@
 						<core:Item text="{disruptionRsnRespGrp>TEXT}" key="{disruptionRsnRespGrp>REASON}" />
 					</items>
 				</Select>
-				<Label text="{i18nModel>bomItem}" />
+				<Label text="{i18nModel>material}" />
 				<MultiInput id="materials" enabled="false"  tokens="{MaterialListModel>/}" >
 					<tokens>
 				    	<Token key="{MaterialListModel>material}" text="{MaterialListModel>material} ({MaterialListModel>quantity})" />
@@ -133,7 +133,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>EscalationLevel}" />
 				<Input id="escalationLevel" enabled="false"
-					text="{i18nModel>level} {DisruptionDetailModel>/escalationLevel}">
+					value="{i18nModel>level} {DisruptionDetailModel>/escalationLevel}">
 				</Input>
 
 
