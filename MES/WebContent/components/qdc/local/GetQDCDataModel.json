@@ -1,0 +1,20 @@
+{
+    "Rowsets": {
+        "DateCreated": "2017-01-19T17:38:56",
+        "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+        "StartDate": "2016-11-17T16:38:56+0100",
+        "EndDate": "2016-11-17T17:38:56+0100",
+        "CachedTime": "",
+        "Rowset": [
+            {
+                "Row": [
+                    {
+                        "TOT_COUNT": "1",
+                        "CLOSE_COUNT": "2",
+                        "QDCSTATUS": "A"
+                    }
+                ]
+            }
+        ]
+    }
+}

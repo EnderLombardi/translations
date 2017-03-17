@@ -1,0 +1,15 @@
+{ "Rowsets" : { 
+         "DateCreated" : "2017-03-09T15:58:00", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-03-09T14:58:00+0100", "EndDate" : "2017-03-09T15:58:00+0100", "CachedTime" : "", 
+         "Rowset" : [ 
+         { "Columns" : { 
+                 "Column" : [ 
+                 { "Name" : "WorkOrder", "SourceColumn" : "WorkOrder", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+                 { "Name" : "OperationID", "SourceColumn" : "OperationID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+                 { "Name" : "Tracea", "SourceColumn" : "Tracea", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+                 { "Name" : "ReckordedMaterials", "SourceColumn" : "ReckordedMaterials", "Description" : "Reckorded Materials", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+                 { "Name" : "TotalMaterials", "SourceColumn" : "TotalMaterials", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+         "Row" : [ 
+                 { "WorkOrder" : "11002566", "OperationID" : "0010", "Tracea" : "false", "ReckordedMaterials" : "4", "TotalMaterials" : "9" } ]
+                 } ]
+         }
+}
