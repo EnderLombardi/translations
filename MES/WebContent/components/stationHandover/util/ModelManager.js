@@ -342,9 +342,9 @@ airbus.mes.stationHandover.util.ModelManager = {
 					
 					if (airbus.mes.stationtracker != undefined ) {
 						
-						if ( nav.getCurrentPage().sId === "stationHandoverView") {
+						if ( nav.getCurrentPage().sId === "stationTrackerView") {
 							airbus.mes.stationtracker.oswDialog.close();
-							airbus.mes.shell.oView.getController().renderStationHandover();	
+							airbus.mes.shell.oView.getController().renderStationTracker();	
 						}
 						
 					}
@@ -381,4 +381,5 @@ airbus.mes.stationHandover.util.ModelManager = {
         oViewModel.loadData(geturlstationtracker, null, true);
 
     },
+   
 };

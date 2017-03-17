@@ -495,7 +495,7 @@ sap.ui.controller(
             oModule.loadKPI();
             oModule.getPhStation();
             oModule.loadTimeMinRModel();
-
+            oModule.loadOswQuantity();
             //set mode missing part off when on workTracker
             if (airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker") {
                 airbus.mes.shell.util.navFunctions.splitMissingPart = false;

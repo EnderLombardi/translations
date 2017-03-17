@@ -58,6 +58,7 @@ airbus.mes.stationtracker.util.ModelManager = {
             "SplitDetailModel", // Model for Split Model
             "dispatchFromAcpngModel", //Model for ACPGN status
             "dispatchFromMesModel", //Model for MES status
+            "oswQuantityModel",
         ]
 
         airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
@@ -1834,6 +1835,44 @@ airbus.mes.stationtracker.util.ModelManager = {
         component.setOperation(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no);
         component.setWorkOrder(airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
         airbus.mes.ncdisplay.util.ModelManager.loadNcDisplayData();
-    }
+    },
 
+    loadOswQuantity : function () {
+    	
+    	var getUrlShifts = this.urlModel.getProperty("urloswquantity");
+		var sPhysicalStationBo =  "WorkCenterBO:" +  airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station;
+		var oViewModel = airbus.mes.stationtracker.oView.getModel("oswQuantityModel");
+		
+		jQuery.ajax({
+			type : 'post',
+			url : getUrlShifts,
+			contentType : 'application/json',
+			async : 'false',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"physicalStationBO" : sPhysicalStationBo,
+				"msn" : airbus.mes.settings.ModelManager.msn,
+			
+			}),
+
+			success : function(data) {
+
+				
+				try {
+									
+					console.log(data);
+										
+				} catch (e) {
+					oViewModel.setData({});
+					console.log("NO osw load problem");
+				}
+
+			},
+
+			error : function(error, jQXHR) {
+				console.log("NO osw load problem");
+
+			}
+		});
+    }
 };

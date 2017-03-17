@@ -76,7 +76,8 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
         this.oView.setModel(sap.ui.getCore().getModel("affectationModel"), "affectationModel");
         this.oView.setModel(sap.ui.getCore().getModel("ressourcePoolModel"), "ressourcePoolModel");
         this.oView.setModel(sap.ui.getCore().getModel("SplitDetailModel"), "SplitDetailModel");
-        
+        this.oView.setModel(sap.ui.getCore().getModel("oswQuantityModel"), "oswQuantityModel");
+
     /*    airbus.mes.disruptiontracker.oView = this.odisruptiontrackerComp.oView;*/
         return this.oView;
     } else {
