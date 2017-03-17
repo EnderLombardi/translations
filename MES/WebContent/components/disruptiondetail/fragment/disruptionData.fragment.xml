@@ -48,7 +48,7 @@
 					forceSelection="false" selectedKey="{DisruptionDetailModel>/reason}">
 					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}"> -->
 					<items>
-						<core:Item text="{disruptionRsnRespGrp>REASON}" key="{disruptionRsnRespGrp>REASON}" />
+						<core:Item text="{disruptionRsnRespGrp>TEXT}" key="{disruptionRsnRespGrp>REASON}" />
 					</items>
 				</Select>
 				<Label text="{i18nModel>bomItem}" />

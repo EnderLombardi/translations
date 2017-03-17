@@ -33,7 +33,7 @@
 						<Label required="true" text="{i18nModel>reason}" class="textAlignLeft"/>
 						<Select id="selectAttribute" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}" forceSelection="false" selectedKey="{DisruptionDetailModel>/reason}">
 							<items>
-								<core:Item text="{disruptionRsnRespGrp>REASON}" key="{disruptionRsnRespGrp>REASON}" />
+								<core:Item text="{disruptionRsnRespGrp>TEXT}" key="{disruptionRsnRespGrp>REASON}" />
 							</items>
 						</Select>
 						<Label text="{i18nModel>bomItem}" class="textAlignLeft" />
