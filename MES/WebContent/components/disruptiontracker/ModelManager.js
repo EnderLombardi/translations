@@ -96,7 +96,54 @@ airbus.mes.disruptiontracker.ModelManager = {
 				}
 		    }
 		  }));
-
+		// Remove Duplicate from Category
+		aTemp = [];
+		var oCategoryBox = sap.ui
+		.getCore()
+		.byId("disruptiontrackerView--disruptionCategoryBox");
+		oCategoryBox.getBinding("items")
+		.filter(new sap.ui.model.Filter({
+		    path: "category",
+		    test: function(oValue) {
+				if (aTemp.indexOf(oValue) == -1) {
+					aTemp.push(oValue);
+					return true;
+				} else {
+					return false;
+				}
+		    }
+		  }));
+		//Add new item All category
+		var categoryItemAll = new sap.ui.core.Item();
+		categoryItemAll.setKey("");
+		categoryItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All")
+			+ " " + airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("category"));
+		oCategoryBox.insertItem(categoryItemAll,0);
+		
+		// Remove Duplicate from reason
+		aTemp = [];
+		var oReasonBox = sap.ui
+		.getCore()
+		.byId("disruptiontrackerView--disruptionReasonBox");
+		oReasonBox.getBinding("items")
+		.filter(new sap.ui.model.Filter({
+		    path: "reason",
+		    test: function(oValue) {
+				if (aTemp.indexOf(oValue) == -1) {
+					aTemp.push(oValue);
+					return true;
+				} else {
+					return false;
+				}
+		    }
+		  }));
+		//Add new item All category
+		var reasonItemAll = new sap.ui.core.Item();
+		reasonItemAll.setKey("");
+		reasonItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All")
+			+ " " + airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("reason"));
+		oReasonBox.insertItem(reasonItemAll,0);
+		
 		
 		var resGroupItemAll = new sap.ui.core.Item();
 		resGroupItemAll.setKey("");

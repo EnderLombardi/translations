@@ -138,20 +138,32 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var sStatus = this.getView().byId("statusComboBox").getSelectedKey().toUpperCase();
 		var sResoGroup = this.getView().byId("resolutionGroupBox").getSelectedKey();
 		var sSeverity = this.getView().byId("severityComboBox").getSelectedKey();
-		
+		var sEscLevel = this.getView().byId("esclationLevelBox").getSelectedKey();
+		var sCategory = this.getView().byId("disruptionCategoryBox").getSelectedKey();	
+		var sReason = this.getView().byId("disruptionReasonBox").getSelectedKey();
 
 		var aFilters = [];
 		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
 
-		if (sStatus != "")
+		if (sStatus != ""){
 			aFilters.push(new sap.ui.model.Filter("status", "EQ", sStatus));
-		if (sResoGroup != "")
+		}
+		if (sResoGroup != "")	{
 			aFilters.push(new sap.ui.model.Filter("responsibleGroup", "EQ", sResoGroup));
-
-		if(sSeverity != "")
+		}
+		if(sSeverity != ""){
 			aFilters.push(new sap.ui.model.Filter("severity", "EQ", sSeverity));
-			
-			
+		}
+		if(sEscLevel != ""){
+			aFilters.push(new sap.ui.model.Filter("escalationLevel", "EQ", sEscLevel));
+		}
+		if(sCategory != ""){
+			aFilters.push(new sap.ui.model.Filter("category", "EQ", sCategory));
+		}
+		if(sReason != ""){
+			aFilters.push(new sap.ui.model.Filter("reason", "EQ", sReason));
+		}
+	
 		if (this.mFilterParams) {
 			jQuery.each(this.mFilterParams.filterItems, function(i, oItem) {
 				var sFilterPath;

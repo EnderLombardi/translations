@@ -20,6 +20,19 @@
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
 			</Select>
+			<Select id="disruptionCategoryBox" class="sapUiMediumMarginEnd"
+				placeholder="{disruptiontrackerI18n>selectCategory}" items="{ path:'disruptionsTrackerModel>/disruptionListDetails' }"
+				selectedKey="" change="filterDisruptions"
+				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+				<core:Item key="{disruptionsTrackerModel>category}" text="{disruptionsTrackerModel>category}" />
+			</Select>
+			
+			<Select id="disruptionReasonBox" class="sapUiMediumMarginEnd"
+			 items="{ path:'disruptionsTrackerModel>/disruptionListDetails' }"
+				selectedKey="" change="filterDisruptions"
+				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+				<core:Item key="{disruptionsTrackerModel>reason}" text="{disruptionsTrackerModel>reason}" />
+			</Select>
 
 			<Select id="statusComboBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>selectStatus}" selectedKey=""
@@ -42,6 +55,17 @@
 				<core:Item key="1" text="{disruptiontrackerI18n>not_Blocked}" />
 				<core:Item key="2" text="{disruptiontrackerI18n>disturbed}" />
 				<core:Item key="3" text="{disruptiontrackerI18n>blocked}" />
+			</Select>
+			
+			<Select id="esclationLevelBox" class="sapUiMediumMarginEnd"
+				placeholder="{disruptiontrackerI18n>selectEscLevel}" selectedKey=""
+				change="filterDisruptions"
+				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>level}" />
+				<core:Item key="0" text="{disruptiontrackerI18n>level} 0" />
+				<core:Item key="1" text="{disruptiontrackerI18n>level} 1" />
+				<core:Item key="2" text="{disruptiontrackerI18n>level} 2" />
+				
 			</Select>
 
 			<Select id="resolutionGroupBox" class="sapUiMediumMarginEnd"
