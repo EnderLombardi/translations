@@ -734,7 +734,7 @@ airbus.mes.disruptions.ModelManager = {
 			data: {
 				"Param.1": airbus.mes.settings.ModelManager.site,
 				"Param.2": airbus.mes.settings.ModelManager.user,
-				"Param.3": msgref,
+				"Param.3": msgRef,
 				"Param.4": comment,
 				"Param.5": sStatus
 			},
@@ -790,7 +790,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Reject Disruption Service
 	 **************************************************************************/
-	refuseDisruption: function (comment, msgref, sPath, i18nModel) {
+	refuseDisruption: function (comment, msgRef, sPath, i18nModel) {
 
 		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
 		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
@@ -799,7 +799,7 @@ airbus.mes.disruptions.ModelManager = {
 			url: this.getUrlToRefuseDisruption(),
 			data: {
 				"Param.1": airbus.mes.settings.ModelManager.site,
-				"Param.2": msgref,
+				"Param.2": msgRef,
 				"Param.3": comment,
 				"Param.4": airbus.mes.settings.ModelManager.user
 			},
