@@ -46,51 +46,8 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		
 		this.loadRsnResponsibleGrp(oData.messageType);
 		this.editPreSettings();
-		this.loadAttachedDocument(oData.messageRef);
 
-	},
-
-	/***************************************************************************
-	 * Load disruptions detail from message reference
-	 **************************************************************************/
-	/*loadDisruptionDetail: function(msgRef){
-		jQuery.ajax({
-			type : 'post',
-			url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDisruptionDetailsURL"),
-			contentType : 'application/json',
-			cache : false,
-			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"messageRef" : msgRef,
-				"lang": sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey()
-			}),
-			success : function(data) {
-
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-  				if(data.disruptionComments && data.disruptionComments[0] == undefined){
-  					data.disruptionComments = [data.disruptionComments];
-  				}
-  				
-				var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-				oModel.setData(data);
-				oModel.refresh();				
-				airbus.mes.disruptiondetail.oView.oController.editPreSettings();
-				airbus.mes.disruptiondetail.oView.setBusy(false);
-				
-				var operation = data.operation.split(",")[1];
-				airbus.mes.disruptions.ModelManager.loadMaterialList(data.workOrder, operation);
-				airbus.mes.disruptions.ModelManager.loadJigtoolList(data.workOrder, operation);
-			},
-
-			error : function(error, jQXHR) {
-				airbus.mes.disruptiondetail.oView.setBusy(false);
-			}
-
-		});
-	},*/
-	
+	},	
 
 	/***************************************************************************
 	 * Load Step3 model for create disruption screen (Resolver Names for a

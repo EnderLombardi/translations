@@ -281,7 +281,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			}),
 
 			success : function(data) {
-;
+				
   				if(data.disruptionComments && data.disruptionComments[0] == undefined){
   					data.disruptionComments = [data.disruptionComments];
   				}
