@@ -88,7 +88,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 		.filter(new sap.ui.model.Filter({
 		    path: "responsibleGroup",
 		    test: function(oValue) {
-				if (aTemp.indexOf(oValue) == -1) {
+				if (oValue != "" && aTemp.indexOf(oValue) == -1) {
 					aTemp.push(oValue);
 					return true;
 				} else {
@@ -141,7 +141,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 		var reasonItemAll = new sap.ui.core.Item();
 		reasonItemAll.setKey("");
 		reasonItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All")
-			+ " " + airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("reason"));
+			+ " " + airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("attribute"));
 		oReasonBox.insertItem(reasonItemAll,0);
 		
 		

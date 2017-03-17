@@ -7,13 +7,15 @@
 		<Toolbar class="pageHeader">
 			<Label text="{i18nModel>disruptionKPITitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
 			
-			<Select id="lineComboBox" class="sapUiTinyMarginBeginEnd" forceSelection="falce" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+			<Select id="lineComboBox" class="sapUiTinyMarginBeginEnd" forceSelection="falce" items="{ path:'plantModel>/Rowsets/Rowset/0/Row',
+			         sorter : {  path : 'lineDescription'  } }"
 				selectedKey="" change="onChangeSelection" >
 				<core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
 			</Select>
 			
 			<MultiComboBox id="stationComboBox" class="sapUiTinyMarginBeginEnd"
-				placeholder="{i18nModel>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+				placeholder="{i18nModel>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row',
+			         sorter : {  path : 'stationDescription'  } }"
 				selectedKey="" selectionFinish="onChangeSelection" >
 				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 			</MultiComboBox>
