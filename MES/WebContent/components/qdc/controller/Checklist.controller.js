@@ -57,11 +57,13 @@ sap.ui.controller("airbus.mes.qdc.controller.Checklist", {
 	onClick : function(oEvt) {
 		var oData = sap.ui.getCore().getModel("QACheckModel");
 		var sMssg = oData.oData.message;
-
+		var sMsg;
 		if (sMssg === "E") {
-			sap.m.MessageToast.show(airbus.mes.qdc.oView.getModel("i18nModel").getProperty("NoAuthorization"));
+			sMsg = airbus.mes.qdc.oView.getModel("i18nModel").getResourceBundle().getText("NoAuthorization", [ sap.ui.getCore().getModel("userSettingModel").oData.Rowsets.Rowset[0].Row[0].user]);
+			sap.m.MessageToast.show(sMsg);
 		} else if (sMssg === "W") {
-			sap.m.MessageToast.show(airbus.mes.qdc.oView.getModel("i18nModel").getProperty("NoAuthorization"));
+			sMsg = airbus.mes.qdc.oView.getModel("i18nModel").getResourceBundle().getText("NoAuthorization", [ sap.ui.getCore().getModel("userSettingModel").oData.Rowsets.Rowset[0].Row[0].user]);
+			sap.m.MessageToast.show(sMsg);
 		} else if (sMssg === "S") {
 			var oVal = sap.ui.getCore().getModel("GetQDCDataModel");
 			var sGroup = "";
