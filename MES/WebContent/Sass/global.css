@@ -10,9 +10,9 @@ GLOBAL
 *********************/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
 
-#disruptiontrackerView--stationComboBox, #disruptiontrackerView--esclationLevelBox, #disruptiontrackerView--disruptionCategoryBox, #disruptiontrackerView--disruptionReasonBox, #disruptiontrackerView--msnComboBox, #disruptiontrackerView--statusComboBox, #disruptiontrackerView--severityComboBox, #disruptiontrackerView--resolutionGroupBox, #disruptionKPIView--lineComboBox, #disruptionKPIView--timeUnit { height: 3rem; margin: 0; line-height: 3rem; margin-right: 0px !important; border: 0; border-right: solid 1px #74d2e7 !important; background: #0f2d65 !important; }
+#disruptiontrackerView--stationComboBox, #disruptiontrackerView--msnComboBox, #disruptiontrackerView--disruptionCategoryBox, #disruptiontrackerView--disruptionReasonBox, #disruptiontrackerView--statusComboBox, #disruptiontrackerView--severityComboBox, #disruptiontrackerView--esclationLevelBox, #disruptiontrackerView--resolutionGroupBox, #disruptionKPIView--lineComboBox, #disruptionKPIView--timeUnit { height: 3rem; margin: 0; line-height: 3rem; margin-right: 0px !important; border: 0; border-right: solid 1px #74d2e7 !important; background: #0f2d65 !important; }
 
-#disruptiontrackerView--esclationLevelBox .sapMSltLabel, #disruptiontrackerView--esclationLevelBox .sapMSltArrow, #disruptiontrackerView--disruptionCategoryBox .sapMSltLabel, #disruptiontrackerView--disruptionCategoryBox .sapMSltArrow, #disruptiontrackerView--disruptionReasonBox .sapMSltLabel, #disruptiontrackerView--disruptionReasonBox .sapMSltArrow, #disruptiontrackerView--stationComboBox .sapMSltLabel, #disruptiontrackerView--msnComboBox .sapMSltLabel, #disruptiontrackerView--statusComboBox .sapMSltLabel, #disruptiontrackerView--severityComboBox .sapMSltLabel, #disruptiontrackerView--resolutionGroupBox .sapMSltLabel, #disruptionKPIView--lineComboBox .sapMSltLabel, #disruptionKPIView--timeUnit .sapMSltLabel, #disruptiontrackerView--stationComboBox .sapMSltArrow, #disruptiontrackerView--msnComboBox .sapMSltArrow, #disruptiontrackerView--statusComboBox .sapMSltArrow, #disruptiontrackerView--severityComboBox .sapMSltArrow, #disruptiontrackerView--resolutionGroupBox .sapMSltArrow, #disruptionKPIView--lineComboBox .sapMSltArrow, #disruptionKPIView--timeUnit .sapMSltArrow { top: 0; bottom: 0; line-height: 3rem; color: #F5F5F5; font-size: 12px; }
+#disruptiontrackerView--stationComboBox .sapMSltLabel, #disruptiontrackerView--msnComboBox .sapMSltLabel, #disruptiontrackerView--disruptionCategoryBox .sapMSltLabel, #disruptiontrackerView--disruptionReasonBox .sapMSltLabel, #disruptiontrackerView--statusComboBox .sapMSltLabel, #disruptiontrackerView--severityComboBox .sapMSltLabel, #disruptiontrackerView--esclationLevelBox .sapMSltLabel, #disruptiontrackerView--resolutionGroupBox .sapMSltLabel, #disruptionKPIView--lineComboBox .sapMSltLabel, #disruptionKPIView--timeUnit .sapMSltLabel, #disruptiontrackerView--stationComboBox .sapMSltArrow, #disruptiontrackerView--msnComboBox .sapMSltArrow, #disruptiontrackerView--disruptionCategoryBox .sapMSltArrow, #disruptiontrackerView--disruptionReasonBox .sapMSltArrow, #disruptiontrackerView--statusComboBox .sapMSltArrow, #disruptiontrackerView--severityComboBox .sapMSltArrow, #disruptiontrackerView--esclationLevelBox .sapMSltArrow, #disruptiontrackerView--resolutionGroupBox .sapMSltArrow, #disruptionKPIView--lineComboBox .sapMSltArrow, #disruptionKPIView--timeUnit .sapMSltArrow { top: 0; bottom: 0; line-height: 3rem; color: #F5F5F5; font-size: 12px; }
 
 #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input::-webkit-input-placeholder { /* WebKit, Blink, Edge */ font-size: 12px; color: #F5F5F5; }
 
@@ -2012,6 +2012,8 @@ Linetracker View (Main Table)
 
 #idLinetracker .classLineTrackerTable table tr th, #idLinetracker td span, #idLinetracker .headerColumnText { text-align: center !important; }
 
+#idLinetracker #idLinetracker--firstHeaderColumnText { /* margin-left: 20px; display: block position: relative; */ color: #1A6980; font-weight: 600; font-size: 1.1em; font-stretch: condensed; text-shadow: none; }
+
 #idLinetracker .classLineTrackerTable .taktHeading { color: #a9cdd8 !important; font-size: 1rem !important; width: 100%; font-weight: 500; text-align: center !important; }
 
 #idLinetracker .classLineTrackerTable table tr th:nth-child(1), #idLinetracker td:nth-child(1), #idLinetracker td:nth-child(2), #idLinetracker th:nth-child(2) { background-color: #EAFBFD !important; }
@@ -2116,7 +2118,10 @@ Physical Station
 ********************************/
 .ClassLineTrackerActionIcon { padding-left: 5px; }
 
-.ParentDiv { background-color: #EAFBFD; padding-left: 10px; min-width: 10rem; max-height: 3rem; display: flex; justify-content: space-between; }
+.ParentDiv { background-color: #EAFBFD; padding-left: 10px; min-width: 10rem; max-height: 3rem; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+
+@media screen and (max-width: 800px) { .ParentDiv { display: flex; flex-direction: column; justify-content: flex-start; }
+  .labelDiv { max-width: 100; align-self: flex-start; align-items: flex-start; } }
 
 .labelDiv { max-width: 50%; align-self: center; }
 
@@ -2126,13 +2131,28 @@ Physical Station
 
 .blankDiv { width: 8%; }
 
-.imageDiv { max-width: 35%; max-height: 3rem; padding: 8px; display: block; }
+.imageDiv { max-width: 35%; max-height: 3rem; padding: 8px; margin-right: 7px; display: block; }
 
-.imageDiv .sapMImg { width: 100% !important; height: 100% !important; }
+.imageDiv .sapMImg { min-width: 90px; width: 100% !important; height: auto !important; }
 
 .ActionDiv { width: 10%; align-self: center; }
 
 .detailDiv { width: 23%; align-self: center; display: flex; }
+
+/*
+tr th:nth-child(2),
+tr th:nth-child(4),
+tr th:nth-child(6),
+*/
+tr td:nth-child(4), tr td:nth-child(6) { border-right: 2px solid #B5B5B5; }
+
+tr td:nth-child(3) { border-left: 2px solid #B5B5B5; }
+
+#__column1, #idLinetracker--percentageLabel { border-left: 2px solid #B5B5B5; }
+
+#__column2, #__column4 { border-right: 2px solid #B5B5B5; }
+
+#idLinetracker--linetrackerTable-sapUiTableColHdrScr { min-height: 65px; }
 
 /*********************************
 KPI Charts
@@ -4243,6 +4263,8 @@ DISRUPTIONTRACKER
 .disruptionKPI .Subheader #disruptionKPIView--startDateTime input, .disruptionKPI .Subheader #disruptionKPIView--endDateTime input { pointer-events: none; color: #0d5d76; line-height: 3rem; border: 0 !important; background: #d5f5f8 !important; }
 
 .disruptionKPI .Subheader #disruptionKPIView--startDateTime span.sapUiIcon, .disruptionKPI .Subheader #disruptionKPIView--endDateTime span.sapUiIcon { color: #0d5d76 !important; background: transparent !important; }
+
+.disruptionKPI .Subheader #disruptionKPIView--startDateTime span.sapUiIcon:hover, .disruptionKPI .Subheader #disruptionKPIView--endDateTime span.sapUiIcon:hover { background: #85c4d8 !important; }
 
 .disruptionKPI .Subheader #disruptionKPIView--endDateTime { border-right: 1px solid #8db9ca; }
 
