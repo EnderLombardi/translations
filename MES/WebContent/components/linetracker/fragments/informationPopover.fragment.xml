@@ -3,7 +3,7 @@
 	<Popover showHeader="false" placement="Left" showArrow="false" class="informationColor rightPlace" afterClose="onCloseInformation">
 		<VBox>
 			<items>
-				<Label text="{i18n>ActionDetails}" class="sapUiTinyMarginTopBottom sapUiTinyMarginBeginEnd" design="Bold"/>
+				<Label text="{i18n>Legend}" class="sapUiTinyMarginTopBottom sapUiTinyMarginBeginEnd" design="Bold"/>
 				<HBox  alignItems="Center"  class="sapUiTinyMarginTopBottom">
 					<Button icon="sap-icon://synchronize" type="Transparent"></Button> 
 					<Label text="{i18n>loadNextMsn}" />

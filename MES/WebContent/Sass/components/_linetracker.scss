@@ -94,6 +94,19 @@ Linetracker View (Main Table)
         text-align: center !important;
     }
 
+    #idLinetracker--firstHeaderColumnText {
+        /*
+        margin-left: 20px;
+        display: block
+        position: relative;
+        */
+        color: #1A6980;
+        font-weight: 600;
+        font-size: 1.1em;
+        font-stretch: condensed;
+        text-shadow: none;
+    }
+
     .classLineTrackerTable .taktHeading {
         color: #a9cdd8!important;
         font-size: 1rem !important;
@@ -362,7 +375,22 @@ Physical Station
     max-height: 3rem;
     //float: left;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-between;
+}
+@media screen and (max-width: 800px) {
+    .ParentDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .labelDiv {
+        //float: left;
+        max-width: 100;
+        align-self: flex-start;
+        align-items: flex-start 
+    }
 }
 
 .labelDiv {
@@ -397,11 +425,13 @@ Physical Station
     max-width: 35%;
     max-height: 3rem;
     padding: 8px;
+    margin-right: 7px;
     display: block; 
     //display: inline-flex;
     .sapMImg {
+        min-width: 90px;
         width: 100% !important;
-        height: 100% !important;
+        height: auto !important;
     }
 }
 
@@ -418,6 +448,29 @@ Physical Station
     width: 23%;
     align-self: center;
     display: flex;
+}
+/*
+tr th:nth-child(2),
+tr th:nth-child(4),
+tr th:nth-child(6),
+*/
+tr td:nth-child(4),
+tr td:nth-child(6) {
+    border-right: 2px solid #B5B5B5;
+}
+tr td:nth-child(3) {
+    border-left: 2px solid #B5B5B5;
+}
+#__column1,
+#idLinetracker--percentageLabel {
+    border-left: 2px solid #B5B5B5;
+}
+#__column2,
+#__column4 {
+    border-right: 2px solid #B5B5B5;
+}
+#idLinetracker--linetrackerTable-sapUiTableColHdrScr {
+    min-height: 65px;
 }
 
 /*********************************

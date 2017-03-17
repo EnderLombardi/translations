@@ -16,7 +16,7 @@
 				<uiTable:toolbar>
 					<Toolbar id="toolbar" class="toolbar">
 						<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
-						<Title class="taktAdherenceLinetrackerTitle" text="{i18n>taktAdherence}"
+						<Title id="firstHeaderColumnText" class="taktAdherenceLinetrackerTitle" text="{i18n>taktAdherence}"
 							level="H2" />
 						<Text text="{i18n>forcastEndOfAssembly}"
 							class="headerColumnText headerTextTableLinetracker" />
@@ -41,7 +41,7 @@
 							</Input>
 						</OverflowToolbar>
 						<uiTable:template>
-							<HBox alignItems="Center" justifyContent="Center">
+							<HBox alignItems="Center" justifyContent="SpaceAround">
 								<core:Icon id="lineTrackerActionIcon" class="ClassLineTrackerActionIcon" press="openTaktActionPopover" tooltip=""
 										src="{path:'stationDataModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }"/>
 								<control:PhysicalStationBox id="linetrackerEditStation"
@@ -95,7 +95,7 @@
 						</uiTable:template>
 					</uiTable:Column>
 
-					<uiTable:Column width="6%" resizable="false" hAlign="Center">
+					<uiTable:Column width="6%" resizable="false" hAlign="Center" class="myTestClass">
 						<Text text="{i18n>date}" class="taktHeading" />
 						<uiTable:template>
 							<Text class="dateTableLinetracker" text="{parts:['stationDataModel>completionTime','stationDataModel>actualEndTime', 'stationDataModel>status'], formatter:'airbus.mes.linetracker.util.Formatter.forcastEndDate'}" />
