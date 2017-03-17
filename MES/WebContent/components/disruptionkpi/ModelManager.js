@@ -24,8 +24,11 @@ airbus.mes.disruptionkpi.ModelManager = {
 	
 	
 	setPreSelectionCriteria: function(){
-		
-		this.oFilters.station= airbus.mes.settings.ModelManager.station;
+		if(sap.ui.getCore().byId("disruptiontrackerView--stationComboBox").getSelectedKey() == ""){
+			this.oFilters.station= airbus.mes.settings.ModelManager.station;
+		} else{
+			this.oFilters.station= sap.ui.getCore().byId("disruptiontrackerView--stationComboBox").getSelectedKey();
+		}
 		this.oFilters.startDateTime= "";
 		sap.ui.getCore().byId("disruptionKPIView--endDateTime").setDateValue(new Date());
 		this.oFilters.endDateTime= sap.ui.getCore().byId("disruptionKPIView--endDateTime").getDateValue();
