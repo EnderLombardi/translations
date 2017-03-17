@@ -10,6 +10,17 @@
 				<f:content>
 					<l:Grid defaultSpan="L12 M12 S12">
 						<l:content>
+						
+							<!-- <ComboBox id="customJigTool" placeholder="{i18nModel>AddNewJig_Tool}" showSecondaryValues= "true"
+								items="{ path: 'JigtoolDropDownListModel>/Rowsets/Rowset/0/Row',
+										sorter: { path: 'materialDescription' } }">
+								<layoutData>
+									<l:GridData span="L7 M7 S12" />
+								</layoutData>
+								<core:ListItem key="{JigtoolDropDownListModel>materialDescription}" text="{JigtoolDropDownListModel>materialDescription}"
+									additionalText = "{i18nModel>materialType} {JigtoolDropDownListModel>materialType}"/>
+							</ComboBox>
+							 -->
 							<Input id="customJigTool" placeholder="{i18nModel>AddNewJig_Tool}">
 								<layoutData>
 									<l:GridData span="L7 M7 S12" />

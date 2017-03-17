@@ -133,11 +133,7 @@ airbus.mes.disruptions.ModelManager = {
 		var oView = sap.ui.getCore().byId(airbus.mes.disruptions.ModelManager.sCurrentViewId);
 
 		// Un-Set Busy Indicator
-		oView.byId("selectCategory").setBusy(false);
-
-		if (airbus.mes.disruptions.ModelManager.sCurrentViewId == "createDisruptionView") {
-			oView.setBusy(false);
-		}
+		oView.setBusy(false);
 	},
 
 	/***************************************************************************

@@ -268,69 +268,68 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var sPath = oEvt.getParameters().rowBindingContext.getPath();
 		var disruptionData = sap.ui.getCore().getModel("disruptionsTrackerModel").getProperty(sPath);
 		
-		var sCurrMessageRef = disruptionData.messageRef;
-		var sMessageType = disruptionData.messageType;
-		var sResolverGroup = disruptionData.responsibleGroup;
+		sap.ui.core.BusyIndicator.show(true);
 		
-		/***************************
-		 * MES V1.5 Navigate to disruption Detail Page if opened from Desktop/Laptop [Begin]
-		 */
-		if (sap.ui.Device.system.desktop && disruptionData.responsibleFlag == "X" /*&& disruptionData.originatorFlag != "X"*/) {
-			airbus.mes.shell.util.navFunctions.disruptionsDetailScreen(sCurrMessageRef,sMessageType, sResolverGroup);
-			
-			 
-		/*************************
-		 * Open Pop -Up if Mobile or Tablet devices
-		 */
-		} else {
+		jQuery.ajax({
+			type : 'post',
+			url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDisruptionDetailsURL"),
+			contentType : 'application/json',
+			cache : false,
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"messageRef": disruptionData.messageRef
+			}),
 
-			// Create Pop-Up as a fragment
-			if (airbus.mes.disruptiontracker.detailPopUp === undefined) {
+			success : function(data) {
 
-				airbus.mes.disruptiontracker.detailPopUp = sap.ui.xmlfragment("disruptionDetailPopup", "airbus.mes.disruptiontracker.disruptionDetailPopup",
-					airbus.mes.disruptiontracker.oView.getController());
-
-				airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.detailPopUp);
-			}
-
-			// Add View Disruptions view to pop-up navigation container
-			this.nav = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
-			airbus.mes.shell.util.navFunctions.viewDisruptionsList(this.nav, 0);
-			
-			jQuery.ajax({
-				type : 'post',
-				url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDisruptionDetailsURL"),
-				contentType : 'application/json',
-				cache : false,
-				data : JSON.stringify({
-					"site" : airbus.mes.settings.ModelManager.site,
-					"messageRef": sCurrMessageRef
-				}),
-
-				success : function(data) {
-					
+				sap.ui.core.BusyIndicator.show(true);
+  				if(data.disruptionComments && data.disruptionComments[0] == undefined){
+  					data.disruptionComments = [data.disruptionComments];
+  				}
+				
+  				// Call detail screen
+  				if (sap.ui.Device.system.desktop && disruptionData.responsibleFlag == "X" /*&& disruptionData.originatorFlag != "X"*/) {
+  					airbus.mes.shell.util.navFunctions.disruptionsDetailScreen(data);
+  					
+  				} else{
 					var aDisruptions = [];
 					if (data) {
 						if (data && !data[0]) {
 
+			  				
 							data.expanded="true"; //Set panel expanded by default
 							data.disruptionTracker="true";
 							aDisruptions = [ data ];
 						}
 					}
-					
 					// Set Data in Model 
 					sap.ui.getCore().getModel("operationDisruptionsModel").setData(aDisruptions);
 
+					
+					// Create Pop-Up as a fragment
+					if (airbus.mes.disruptiontracker.detailPopUp === undefined) {
+
+						airbus.mes.disruptiontracker.detailPopUp = sap.ui.xmlfragment("disruptionDetailPopup", "airbus.mes.disruptiontracker.disruptionDetailPopup",
+							airbus.mes.disruptiontracker.oView.getController());
+
+						airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.detailPopUp);
+					}
+
+					// Add View Disruptions view to pop-up navigation container
+					airbus.mes.disruptiontracker.oView.oController.nav = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
+					airbus.mes.shell.util.navFunctions.viewDisruptionsList(airbus.mes.disruptiontracker.oView.oController.nav, 0);
+					
 					airbus.mes.disruptiontracker.detailPopUp.open();
-				},
+  				}
 
-				error : function(error, jQXHR) {
-				}
+  				sap.ui.core.BusyIndicator.show(false);
+			},
 
-			});
+			error : function(error, jQXHR) {
+  				sap.ui.core.BusyIndicator.show(false);
+			}
 
-		}
+		});
 
 	},
 

@@ -22,11 +22,20 @@
 				<f:content>
 					<l:Grid defaultSpan="L12 M12 S12">
 						<l:content>
-							<Input id="customMaterial" placeholder="{i18nModel>AddNewMaterial}">
+							<ComboBox id="customMaterial" placeholder="{i18nModel>AddNewMaterial}" showSecondaryValues= "true"
+								items="{ path: 'MaterialDropDownListModel>/Rowsets/Rowset/0/Row',
+										sorter: { path: 'materialDescription' } }">
 								<layoutData>
 									<l:GridData span="L7 M7 S12" />
 								</layoutData>
-							</Input>
+								<core:ListItem key="{MaterialDropDownListModel>materialDescription}" text="{MaterialDropDownListModel>materialDescription}"
+									additionalText = "{i18nModel>materialType} {MaterialDropDownListModel>materialType}"/>
+							</ComboBox>
+							<!-- <Input id="customMaterial" placeholder="{i18nModel>AddNewMaterial}">
+								<layoutData>
+									<l:GridData span="L7 M7 S12" />
+								</layoutData>
+							</Input> -->
 
 							<Input id="customMaterialQty" value="1">
 								<layoutData>

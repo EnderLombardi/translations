@@ -5,11 +5,11 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 	 * Set the Models for Category of Disruption Creation
 	 **************************************************************************/
 	loadDisruptionCategory : function() {
-		var oView = this.getView();
+		/*var oView = this.getView();
 
 		// Set Busy's
 		oView.byId("selectCategory").setBusyIndicatorDelay(0);
-		oView.byId("selectCategory").setBusy(true);
+		oView.byId("selectCategory").setBusy(true);*/
 		
 		var url = airbus.mes.disruptions.ModelManager.getDisruptionCategoryURL();
 		sap.ui.getCore().getModel("disruptionCategoryModel").loadData(url);

@@ -25,6 +25,10 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		var ModelManager = airbus.mes.disruptions.ModelManager;
 		ModelManager.createViewMode = "Edit";
 
+		var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+		oModel.setData(oData);
+		oModel.refresh();
+
 		// Get View
 		var oView = this.getView();
 		ModelManager.sCurrentViewId = oView.sId;
@@ -40,16 +44,16 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		this.loadDisruptionCategory();
 
 		
-		this.loadDisruptionDetail(msgRef);
-		this.loadRsnResponsibleGrp(sMsgType);
-		this.loadResolverModel(sResolverGroup);
+		this.loadRsnResponsibleGrp(oData.messageType);
+		this.editPreSettings();
+		this.loadAttachedDocument(oData.messageRef);
 
 	},
 
 	/***************************************************************************
 	 * Load disruptions detail from message reference
 	 **************************************************************************/
-	loadDisruptionDetail: function(msgRef){
+	/*loadDisruptionDetail: function(msgRef){
 		jQuery.ajax({
 			type : 'post',
 			url : airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDisruptionDetailsURL"),
@@ -75,7 +79,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 				airbus.mes.disruptiondetail.oView.oController.editPreSettings();
 				airbus.mes.disruptiondetail.oView.setBusy(false);
 				
-				var operation = oData.operation.split(",")[1];
+				var operation = data.operation.split(",")[1];
 				airbus.mes.disruptions.ModelManager.loadMaterialList(data.workOrder, operation);
 				airbus.mes.disruptions.ModelManager.loadJigtoolList(data.workOrder, operation);
 			},
@@ -85,7 +89,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 			}
 
 		});
-	},
+	},*/
 	
 
 	/***************************************************************************

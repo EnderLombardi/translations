@@ -497,7 +497,7 @@ airbus.mes.shell.util.navFunctions = {
 
 
     // Screen to be called from disruption tracker on Laptop/Desktop by support team only -  V1.5
-    disruptionsDetailScreen: function (msgRef, messageType, resolverGroup) {
+    disruptionsDetailScreen: function (oData) {
 
         if (airbus.mes.disruptiondetail === undefined || airbus.mes.disruptiondetail.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.disruptiondetail", "../components/disruptiondetail");
@@ -509,13 +509,13 @@ airbus.mes.shell.util.navFunctions = {
             // Add event delegate to pass the data and load the services
             airbus.mes.disruptiondetail.oView.addEventDelegate({
                 onBeforeShow: function (evt) {
-                    airbus.mes.disruptiondetail.oView.getController().loadData(evt.data.msgRef, evt.data.msgType, evt.data.resolverGroup);
+                    airbus.mes.disruptiondetail.oView.getController().loadData(evt.data.oData);
                 }
             });
         }
 
         // Navigate
-        nav.to(airbus.mes.disruptiondetail.oView.getId(), { msgRef: msgRef, msgType: messageType, resolverGroup: resolverGroup });
+        nav.to(airbus.mes.disruptiondetail.oView.getId(), { "oData": oData });
 
     },
 

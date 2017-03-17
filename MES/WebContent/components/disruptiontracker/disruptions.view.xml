@@ -92,12 +92,10 @@
 			</content>
 
 		</Panel>
-		
-		
-		<ScrollContainer height="auto" width="150%" horizontal="true" vertical="false" focusable="true">
+
 
 		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="true" selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: '.setSelectionMode'}" selectionBehavior="Row"
-			rows="{ path: 'disruptionsTrackerModel>/disruptionListDetails' }" width="100%"
+			rows="{ path: 'disruptionsTrackerModel>/disruptionListDetails' }"
 			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick">
 
 			<ui:columns>
@@ -270,10 +268,6 @@
 			</items> -->
 
 		</ui:Table>
-		
-		
-		</ScrollContainer>
-	
 	</Page>
 
 </mvc:View>
