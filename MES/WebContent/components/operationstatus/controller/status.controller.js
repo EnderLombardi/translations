@@ -93,13 +93,19 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
             success : function(result, status, xhr) {
 
                 if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-                    airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
+                    if (result.Rowsets.Rowset[0].Row[0].Message || result.Rowsets.Rowset[0].Row[0].Message !== undefined) {
+                        airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
+                    }
                     flagSuccess = true;
                 } else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-                    airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+                    if (result.Rowsets.Rowset[0].Row[0].Message || result.Rowsets.Rowset[0].Row[0].Message !== undefined) {
+                        airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+                    }
                     flagSuccess = false;
                 } else {
-                    airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+                    if (result.Rowsets.Rowset[0].Row[0].Message || result.Rowsets.Rowset[0].Row[0].Message !== undefined) {
+                        airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+                    }
                     flagSuccess = true;
                 }
             }
@@ -131,6 +137,7 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
     },
 
     pauseOperation : function() {
+
         //active busy
         airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
 
@@ -149,14 +156,21 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
                 flagSuccess = false
             },
             success : function(result, status, xhr) {
+
                 if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-                    airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
+                    if (result.Rowsets.Rowset[0].Row[0].Message || result.Rowsets.Rowset[0].Row[0].Message !== undefined) {
+                        airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
+                    }
                     flagSuccess = true;
                 } else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-                    airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+                    if (result.Rowsets.Rowset[0].Row[0].Message || result.Rowsets.Rowset[0].Row[0].Message !== undefined) {
+                        airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+                    }
                     flagSuccess = false;
                 } else {
-                    airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+                    if (result.Rowsets.Rowset[0].Row[0].Message || result.Rowsets.Rowset[0].Row[0].Message !== undefined) {
+                        airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+                    }
                     flagSuccess = true;
                 }
             }

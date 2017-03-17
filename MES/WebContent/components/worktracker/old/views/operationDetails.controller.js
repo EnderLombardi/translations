@@ -194,6 +194,7 @@ sap.ui
 						}
 					},
 					pauseOperation : function() {
+
 						var data = this.getView().getModel(
 								"operationDetailModel").oData.schedule;
 						var sMessage = this.getView().getModel("i18n")
@@ -210,7 +211,7 @@ sap.ui
 
 									},
 									success : function(result, status, xhr) {
-
+										
 										if (result.Rowsets.Rowset[0].Row[0].Message_Type == undefined) {
 											airbus.mes.worktracker.util.ModelManager
 													.messageShow(sMessage);
