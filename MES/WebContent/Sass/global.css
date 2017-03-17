@@ -1851,7 +1851,7 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 #ViewDisruptionView--disrptlist .document-item .document-title { font-weight: bold; font-size: 1rem; width: 20%; float: left; }
 
-#ViewDisruptionView--disrptlist .document-item .document-description { font-size: 1rem; width: 70%; float: left; }
+#ViewDisruptionView--disrptlist .document-item .document-description { font-size: 1rem; width: 70%; float: left; white-space: normal; }
 
 #ViewDisruptionView--disrptlist .document-item .document-size { font-size: 1rem; width: 5%; float: right; }
 
@@ -4929,7 +4929,7 @@ END OF QUARANTINE
 
 #createDisruptionView--idListDocument .document-item .document-title { padding: 1rem 0; font-weight: bold; font-size: 1rem; width: 20%; padding-left: 10px; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-description { padding: 1rem 0; font-size: 1rem; width: 60%; margin: 0 2.5%; float: left; }
+#createDisruptionView--idListDocument .document-item .document-description { padding: 1rem 0; font-size: 1rem; width: 60%; margin: 0 2.5%; float: left; white-space: normal; }
 
 #createDisruptionView--idListDocument .document-item .document-description-input { padding: 0; float: left; }
 
@@ -4939,7 +4939,7 @@ END OF QUARANTINE
 
 #createDisruptionView--idListDocument .document-item .document-size { padding: 1rem 0; font-size: 1rem; width: 8%; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-button { padding: .7rem 0; widows: 5%; float: left; }
+#createDisruptionView--idListDocument .document-item .document-button { padding: .7rem 0; width: 5%; float: left; }
 
 #createDisruptionView--idListDocument .document-item .document-button .document-edit { font-size: 1.375rem; color: #005483; padding: 0 .5rem; }
 

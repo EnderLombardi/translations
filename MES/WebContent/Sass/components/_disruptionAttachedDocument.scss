@@ -38,6 +38,7 @@
       width: 60%;
       margin: 0 2.5%;
       float: left;
+      white-space: normal;
     }
 
     .document-description-input {
@@ -67,7 +68,7 @@
 
     .document-button {
       padding: .7rem 0;
-      widows: 5%;
+      width: 5%;
       float: left;
 
       .document-edit {
