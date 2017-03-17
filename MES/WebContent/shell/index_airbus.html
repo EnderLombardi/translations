@@ -2,51 +2,49 @@
 <html id="mes">
 
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
 
-<link rel="stylesheet"
-	href="../../lib/dhtmlxscheduler/dhtmlxscheduler.css" type="text/css"
-	title="no title">
-<link rel='stylesheet' type='text/css'
-	href='../../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
-<link rel="stylesheet" href="../Sass/global.css"> <!--keep this one-->
-<script type="text/javascript" src="../../lib/js-cookie.js"></script>
+	<link rel="stylesheet" href="../../lib/dhtmlxscheduler/dhtmlxscheduler.css" type="text/css" title="no title">
+	<link rel='stylesheet' type='text/css' href='../../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
+	<link rel="stylesheet" href="../Sass/global.css">
+	<!--keep this one-->
+	<script type="text/javascript" src="../../lib/js-cookie.js"></script>
+	<script src="..././lib/recordRTC/RecordRTC.js"></script>
+	<script src="../../lib/recordRTC/screenshot.js"></script>
 </head>
-<body class="sapUiBody" id="content"
-	style="background: #002C63; margin: 0;">
+
+<body class="sapUiBody" id="content" style="background: #002C63; margin: 0;">
 	<div id="welcome_airbus" style="height: 100vh; display: flex;">
 		<div style="margin: auto;">
-			<img src="../../images/Airbus-xl.png"
-				style="display: block; width: 40vw; height: auto; margin: auto; transform: translateY(2vh);" />
-			<img src="../../images/ajax_loader_metal_512.gif"
-				style="display: block; width: auto; height: 8vh; margin: 0 auto; transform: translateY(12vh);" />
+			<img src="../../images/Airbus-xl.png" style="display: block; width: 40vw; height: auto; margin: auto; transform: translateY(2vh);"
+			/>
+			<img src="../../images/ajax_loader_metal_512.gif" style="display: block; width: auto; height: 8vh; margin: 0 auto; transform: translateY(12vh);"
+			/>
 		</div>
 	</div>
 
 	<!-- /XMII/CM/XX_MOD1N97_LIB_UI5/1.40.11/resources/sap-ui-core.js -->
-	<script
-		src="/XMII/CM/XX_MOD1N97_LIB_UI5/1.40.11/resources/sap-ui-core.js"
-		id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
-		data-sap-ui-theme="sap_bluecrystal"
-		data-sap-ui-xx-bindingSyntax="complex">
+	<script src="/XMII/CM/XX_MOD1N97_LIB_UI5/1.40.11/resources/sap-ui-core.js" id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
+	 data-sap-ui-theme="sap_bluecrystal" data-sap-ui-xx-bindingSyntax="complex">
+
 	</script>
 
 	<script>
-		sap.ui.getCore().attachInit(function() {
+		sap.ui.getCore().attachInit(function () {
 
 			jQuery.sap.registerModulePath("airbus.mes.shell", "./");
 
 			sap.ui.getCore().setModel(new sap.ui.model.resource.ResourceModel({
-				bundleName : "airbus.mes.shell.config.res_config",
-				bundleLocale : "prod"
+				bundleName: "airbus.mes.shell.config.res_config",
+				bundleLocale: "prod"
 			}), "ResourceUrl");
-			
+
 			jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");
 			jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
 			jQuery.sap.registerModulePath("airbus.mes.dhtmlx", "../../lib/dhtmlxscheduler");
 			jQuery.sap.registerModulePath("airbus.mes.d3", "../../lib/d3");
-			
+
 			//disableEnable();
 
 			if (window.location.hostname === "localhost" && window.location.search != "?url_config=local" && Cookies.getJSON("login") === undefined) {
@@ -54,8 +52,8 @@
 				jQuery.sap.registerModulePath("airbus.mes.login", "../components/login");
 
 				oCompCont = new sap.ui.core.ComponentContainer({
-					component : sap.ui.getCore().createComponent({
-						name : "airbus.mes.login", // root component folder is resources
+					component: sap.ui.getCore().createComponent({
+						name: "airbus.mes.login", // root component folder is resources
 					})
 				});
 				oCompCont.placeAt("content");
@@ -65,20 +63,20 @@
 
 				// Create a Ui container
 				oCompCont = new sap.ui.core.ComponentContainer({
-					component : sap.ui.getCore().createComponent({
-						name : "airbus.mes.shell", // root component folder is resources
-						propagateModel : true,
+					component: sap.ui.getCore().createComponent({
+						name: "airbus.mes.shell", // root component folder is resources
+						propagateModel: true,
 					})
 				});
-				
+
 				oComp1 = sap.ui.getCore().createComponent({
-					name : "airbus.mes.homepage", // root component folder is resources
+					name: "airbus.mes.homepage", // root component folder is resources
 				});
 
 				airbus.mes.component = airbus.mes.component || {};
 
 				airbus.mes.component.settings = sap.ui.getCore().createComponent({
-					name : "airbus.mes.settings", // root component folder is resources
+					name: "airbus.mes.settings", // root component folder is resources
 				});
 
 				nav = airbus.mes.shell.oView.byId("navCont");
