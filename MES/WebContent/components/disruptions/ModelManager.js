@@ -112,6 +112,7 @@ airbus.mes.disruptions.ModelManager = {
 		var urlCustomCategory = this.urlModel.getProperty("urlGetCategory");
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$site", airbus.mes.settings.ModelManager.site);
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$station", airbus.mes.settings.ModelManager.station);
+		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$lang", sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey());
 
 		/*// Get user to which operation is affected else current logged in user
 		// In Edit Mode originator field will contain Issuer
@@ -148,6 +149,7 @@ airbus.mes.disruptions.ModelManager = {
 		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.ModelManager.site);
 		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$station", airbus.mes.settings.ModelManager.station);
 		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$messageType", sMsgType);
+		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$lang", sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey());
 		return urlGetRsnResponsibleGrp;
 
 	},
