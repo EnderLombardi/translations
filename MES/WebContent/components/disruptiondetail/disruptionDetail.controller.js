@@ -20,7 +20,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 	 * Load Category and custom Data
 	 * @param {string} sMode tells it is edit disruption page or new disruption page
 	 */
-	loadData : function(msgRef, sMsgType, sResolverGroup) {
+	loadData : function(oData) {
 
 		var ModelManager = airbus.mes.disruptions.ModelManager;
 		ModelManager.createViewMode = "Edit";

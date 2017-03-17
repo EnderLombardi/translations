@@ -268,7 +268,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var sPath = oEvt.getParameters().rowBindingContext.getPath();
 		var disruptionData = sap.ui.getCore().getModel("disruptionsTrackerModel").getProperty(sPath);
 		
-		sap.ui.core.BusyIndicator.show(true);
+		sap.ui.core.BusyIndicator.show(0);
 		
 		jQuery.ajax({
 			type : 'post',
@@ -281,14 +281,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			}),
 
 			success : function(data) {
-
-				sap.ui.core.BusyIndicator.show(true);
+;
   				if(data.disruptionComments && data.disruptionComments[0] == undefined){
   					data.disruptionComments = [data.disruptionComments];
   				}
 				
   				// Call detail screen
-  				if (sap.ui.Device.system.desktop && disruptionData.responsibleFlag == "X" /*&& disruptionData.originatorFlag != "X"*/) {
+  				if (sap.ui.Device.system.desktop && data.responsibleFlag == "X" /*&& disruptionData.originatorFlag != "X"*/) {
   					airbus.mes.shell.util.navFunctions.disruptionsDetailScreen(data);
   					
   				} else{
@@ -322,11 +321,11 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 					airbus.mes.disruptiontracker.detailPopUp.open();
   				}
 
-  				sap.ui.core.BusyIndicator.show(false);
+  				sap.ui.core.BusyIndicator.hide(0);
 			},
 
 			error : function(error, jQXHR) {
-  				sap.ui.core.BusyIndicator.show(false);
+  				sap.ui.core.BusyIndicator.hide(0);
 			}
 
 		});
