@@ -1,135 +1,20 @@
-{
-
-   "Rowsets": {
-
-      "DateCreated": "2016-10-18T10:14:00",
-
-      "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
-
-      "StartDate": "2016-10-18T09:14:00+0200",
-
-      "EndDate": "2016-10-18T10:14:00+0200",
-
-      "CachedTime": "",
-
-      "Rowset": [
-
-         {
-
-            "Columns": {
-
-               "Column": [
-
-                  {
-
-                     "Name": "site",
-
-                     "SourceColumn": "site",
-
-                     "Description": "Site Name",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 1,
-
-                     "MaxRange": 1
-
-                  },
-
-                  {
-
-                     "Name": "site_desc",
-
-                     "SourceColumn": "site_desc",
-
-                     "Description": "Site Description",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 1,
-
-                     "MaxRange": 1
-
-                  },
-
-                  {
-
-                     "Name": "time_zone",
-
-                     "SourceColumn": "time_zone",
-
-                     "Description": "Time Zone",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 1,
-
-                     "MaxRange": 1
-
-                  }
-
-               ]
-
-            },
-
-            "Row": [
-
-               {
-
-                  "site": "*",
-
-                  "site_desc": "Global Site",
-
-                  "time_zone": "Europe/Paris"
-
-               },
-
-               {
-
-                  "site": "TEST",
-
-                  "site_desc": "Test Site",
-
-                  "time_zone": "Europe/Paris"
-
-               },
-
-               {
-
-                  "site": "FNZ1",
-
-                  "site_desc": "Saint Nazaire",
-
-                  "time_zone": "Europe/Paris"
-
-               },
-
-               {
-
-                  "site": "UBN1",
-
-                  "site_desc": "Broughton",
-
-                  "time_zone": "Europe/London"
-
-               },
-
-               {
-
-                  "site": "CHES",
-
-                  "site_desc": "Chester",
-
-                  "time_zone": "Europe/London"
-
-               }
-
-            ]
-
-         }
-
-      ]
-
-   }
-
-}
+{ "Rowsets" : { 
+	"DateCreated" : "2017-03-17T09:18:22", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-03-17T08:18:22+0100", "EndDate" : "2017-03-17T09:18:22+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "site", "SourceColumn" : "site", "Description" : "Site Name", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "site_desc", "SourceColumn" : "site_desc", "Description" : "Site Description", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "time_zone", "SourceColumn" : "time_zone", "Description" : "Time Zone", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "site" : "TEST", "site_desc" : "Test Site", "time_zone" : "Europe/Paris" }, 
+		{ "site" : "FNZ1", "site_desc" : "Saint Nazaire", "time_zone" : "Europe/Paris" }, 
+		{ "site" : "UBN1", "site_desc" : "Broughton", "time_zone" : "Europe/London" }, 
+		{ "site" : "CHES", "site_desc" : "Chester", "time_zone" : "Europe/London" }, 
+		{ "site" : "FFF1", "site_desc" : "FAL France", "time_zone" : "Europe/Paris" }, 
+		{ "site" : "DHA1", "site_desc" : "Hamburg", "time_zone" : "Europe/Berlin" }, 
+		{ "site" : "FNT1", "site_desc" : "Nantes", "time_zone" : "Europe/Paris" }, 
+		{ "site" : "DFD1", "site_desc" : "SA FAL Hamburg", "time_zone" : "Europe/Berlin" } ]
+		 } ]
+	 }
+ }
