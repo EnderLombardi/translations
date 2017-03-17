@@ -10,7 +10,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 	filter : {
 		"search" : undefined,
 		"responsibilityTransferType" : new sap.ui.model.Filter({
-			path : "type",
+			path : "responsibilityTransferType",
 			test : function(oValue) {
 
 				if (airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1) {
@@ -24,21 +24,21 @@ airbus.mes.stationHandover.util.ModelManager = {
 		}),
 		"noTime" : new sap.ui.model.Filter("duration", "NE", ""),
 		"selected" : new sap.ui.model.Filter("SELECTED_UI", "EQ", "false"),
-//		"station" : new sap.ui.model.Filter({
-//			path : "ORIGIN_STATION",
-//			test : function(oValue) {
-//										
-//				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
-//					
-//					return true;
-//				} else {
-//					
-//					return false;
-//				}
-//			}
-//		}),
-		"aType" : [ "LOCAL" ],
-//		"aStation" : [],
+		"station" : new sap.ui.model.Filter({
+			path : "meOriginPhysicalStation",
+			test : function(oValue) {
+										
+				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
+					
+					return true;
+				} else {
+					
+					return false;
+				}
+			}
+		}),
+		"aType" : [ "" ],
+		"aStation" : [],
 	},
 
 	init : function(core) {
@@ -100,6 +100,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 	loadOsw : function() {
 
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
+		var oModelStation = airbus.mes.stationHandover.oView.getModel("phStation");
 		var getUrlShifts = this.urlModel.getProperty("urlosw");
 		var sPhysicalStationBo =  "WorkCenterBO:" +  airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station;
 		
@@ -121,7 +122,8 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 				var sField = "outstandingWorkOrderInfoList";
 				var sFieldStep = "outstandingWorkStepInfoList"
-				
+				var sOriginStation = "meOriginPhysicalStations";
+					
 				try {
 					
 					
@@ -141,6 +143,15 @@ airbus.mes.stationHandover.util.ModelManager = {
 						
 					});
 					
+					if ( !Array.isArray(data[sOriginStation]) ) {
+						
+						data[sOriginStation] = [data[sOriginStation]];
+						
+					}
+					
+					oModelStation.setData(data[sOriginStation]);
+					airbus.mes.stationHandover.util.ModelManager.filter.aStation.push(data[sOriginStation][data[sOriginStation].length - 1].meOriginPhysicalStation);
+
 					oViewModel.setData(data);
 					//airbus.mes.calendar.oView.getModel("ressourcePoolModel").refresh(true);
 					airbus.mes.stationHandover.util.ModelManager.onOswLoad();
@@ -165,42 +176,42 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 	loadPhStation : function() {
 
-		try {
-
-			var oModel = airbus.mes.settings.oView.getModel("plantModel").oData.Rowsets.Rowset[0].Row;
-			var oModelStation = airbus.mes.stationHandover.oView.getModel("phStation");
-			var oContext = airbus.mes.settings.ModelManager;
-			var oModelManager = airbus.mes.stationHandover.util.ModelManager;
-			var aPhStation = [];
-			var aModel = oModel.filter(function(el) {
-
-				return el.msn === oContext.msn
-
-			});
-			// select a planned takt start date/time strictly smaller than the planned start date/time by setting
-			aModel.forEach(function(el) {
-
-				if (new Date(el.Takt_Start) < new Date(oContext.taktStart)) {
-
-					el.sDate = Date.parse(new Date(el.Takt_Start));
-					aPhStation.push(el);
-
-				}
-
-			});
-			
-			// oCurrent.sDate = Date.parse(new Date(oCurrent.Takt_Start))
-			//aPhStation.push(oCurrent);
-			aPhStation = aPhStation.sort(airbus.mes.shell.util.Formatter.fieldComparator([ 'sDate' ]));
-			//As a default, the physical station with the biggest planned start date/time should be selected.
-			oModelManager.filter.aStation.push(aPhStation[aPhStation.length - 1].station);
-			oModelStation.setData(aPhStation);
-			console.log(aPhStation);
-
-		} catch (e) {
-
-			console.log("No Ph station load bug problem")
-		}
+//		try {
+//
+//			var oModel = airbus.mes.settings.oView.getModel("plantModel").oData.Rowsets.Rowset[0].Row;
+//			var oModelStation = airbus.mes.stationHandover.oView.getModel("phStation");
+//			var oContext = airbus.mes.settings.ModelManager;
+//			var oModelManager = airbus.mes.stationHandover.util.ModelManager;
+//			var aPhStation = [];
+//			var aModel = oModel.filter(function(el) {
+//
+//				return el.msn === oContext.msn
+//
+//			});
+//			// select a planned takt start date/time strictly smaller than the planned start date/time by setting
+//			aModel.forEach(function(el) {
+//
+//				if (new Date(el.Takt_Start) < new Date(oContext.taktStart)) {
+//
+//					el.sDate = Date.parse(new Date(el.Takt_Start));
+//					aPhStation.push(el);
+//
+//				}
+//
+//			});
+//			
+//			// oCurrent.sDate = Date.parse(new Date(oCurrent.Takt_Start))
+//			//aPhStation.push(oCurrent);
+//			aPhStation = aPhStation.sort(airbus.mes.shell.util.Formatter.fieldComparator([ 'sDate' ]));
+//			//As a default, the physical station with the biggest planned start date/time should be selected.
+//			oModelManager.filter.aStation.push(aPhStation[aPhStation.length - 1].station);
+//			oModelStation.setData(aPhStation);
+//			console.log(aPhStation);
+//
+//		} catch (e) {
+//
+//			console.log("No Ph station load bug problem")
+//		}
 
 	},
 

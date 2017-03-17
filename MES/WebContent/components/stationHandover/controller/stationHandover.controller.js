@@ -185,14 +185,14 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 **************************************************************************/
 	filterStation : function(oEvt) {
 
-		var aPath = oEvt.getSource().getContent()[0].getSelectedContextPaths()
+		var aPath = oEvt.getSource().getSelectedContextPaths();
 		var oModel = airbus.mes.stationHandover.oView.getModel("phStation");
 
 		airbus.mes.stationHandover.util.ModelManager.filter.aStation = [];
 
 		aPath.forEach(function(el) {
 
-			var sKey = oModel.getProperty(el).station;
+			var sKey = oModel.getProperty(el).meOriginPhysicalStation;
 			airbus.mes.stationHandover.util.ModelManager.filter.aStation.push(sKey.toUpperCase());
 
 		});

@@ -1,1 +1,73 @@
-{"site":"FNZ1","physicalStationBO":"WorkCenterBO:FNZ1,TC_IP2","msn":"01814","meOriginPhysicalStations":{"meOriginPhysicalStation":"TC_IP1","taktStartDate":"2017-03-09T00:00:00.000+01:00","taktEndDate":"2017-03-17T00:00:00.000+01:00"},"outstandingWorkOrderInfoList":{"shopOrder":"49630175","outstandingWorkStepInfoList":[{"sfcStep":"SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,49630175-2105,RouterBO:FNZ1,49630175-FF032PROCESSNZF,U,A,1,20","meOriginPhysicalStationBO":"WorkCenterBO:FNZ1,TC_IP1","meOriginPhysicalStation":"TC_IP1","meOriginExecStationBO":"WorkCenterBO:FNZ1,FG1MA1","shopOrder":"49630175","blocked":"false","reference":"49630175-51131068-1-0-0010","description":"Validation faite par expérience","type":"LOCAL","taktStartDate":"2017-03-09T00:00:00.000+01:00","taktEndDate":"2017-03-17T00:00:00.000+01:00","selected":"false","duration":"0.000"},{"sfcStep":"SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,49630175-2105,RouterBO:FNZ1,49630175-FF032PROCESSNZF,U,A,1,30","meOriginPhysicalStationBO":"WorkCenterBO:FNZ1,TC_IP1","meOriginPhysicalStation":"TC_IP1","meOriginExecStationBO":"WorkCenterBO:FNZ1,FG1MA1","shopOrder":"49630175","blocked":"false","reference":"49630175-51131068-1-0-0020","description":"49630175-51131068-1-0-0020","type":"LOCAL","taktStartDate":"2017-03-09T00:00:00.000+01:00","taktEndDate":"2017-03-17T00:00:00.000+01:00","selected":"false","competence":"A330SYS2X8-A330 Système 2x8 pour AVL2","duration":"0.065"},{"sfcStep":"SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,49630175-2105,RouterBO:FNZ1,49630175-FF032PROCESSNZF,U,A,1,40","meOriginPhysicalStationBO":"WorkCenterBO:FNZ1,TC_IP1","meOriginPhysicalStation":"TC_IP1","meOriginExecStationBO":"WorkCenterBO:FNZ1,FG1MA1","shopOrder":"49630175","blocked":"false","reference":"49630175-51131068-1-0-0030","description":"49630175-51131068-1-0-0030","type":"LOCAL","taktStartDate":"2017-03-09T00:00:00.000+01:00","taktEndDate":"2017-03-17T00:00:00.000+01:00","selected":"false","duration":"0.000"}]}}
+{
+   "site": "FNZ1",
+   "physicalStationBO": "WorkCenterBO:FNZ1,PA_IP1-2-OW",
+   "msn": "01782",
+   "meOriginPhysicalStations": [{
+      "meOriginPhysicalStation": "PA_IP1-2-OW",
+      "taktStartDate": "2017-03-09T20:00:00.000+01:00",
+      "taktEndDate": "2017-03-10T05:00:00.000+01:00"
+   },{
+      "meOriginPhysicalStation": "PA_IP1-2-OW",
+      "taktStartDate": "2017-03-09T23:00:00.000+01:00",
+      "taktEndDate": "2017-03-10T05:00:00.000+01:00"
+   }],
+   "outstandingWorkOrderInfoList": {
+      "shopOrder": "49156847",
+      "type": "MO",
+      "reference": "49156847",
+      "description": "",
+      "confirmationPercentage": "0",
+      "userStatus": "OERA",
+      "family": "",
+      "ca": "FC000",
+      "tld": "",
+      "zoning": "",
+      "ata": "",
+      "note": "",
+      "acpWorkstation": "FG2NQA",
+      "executionStation": "FG2NQA",
+      "originWorkstation": "FG2NQA",
+      "upperFamily": "",
+      "materialDescription": "FDOMPAINSQSYSTA",
+      "outstandingWorkStepInfoList": [
+         {
+            "sfcStep": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,49156847-0646,RouterBO:FNZ1,49156847-FDOMPAINSQSYSTA,U,A,1,30",
+            "meOriginPhysicalStationBO": "WorkCenterBO:FNZ1,PA_IP1-2-OW",
+            "meOriginPhysicalStation": "PA_IP1-2-OW",
+            "meOriginExecStationBO": "WorkCenterBO:FNZ1,FG2NQA",
+            "shopOrder": "49156847",
+            "blocked": "false",
+            "reference": "51172397-1-0-0030",
+            "description": "51172397-1-0-0030",
+            "remainingTime": "53.663",
+            "confirmationPercentage": "0",
+            "userStatus": "OERA",
+            "type": "IMPORTED_ACPNG",
+            "responsibilityTransferType": "WITHOUT",
+            "taktStartDate": "2017-03-09T23:00:00.000+01:00",
+            "taktEndDate": "2017-03-10T05:00:00.000+01:00",
+            "selected": "true",
+            "duration": "0.000"
+         },
+         {
+            "sfcStep": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,49156847-0646,RouterBO:FNZ1,49156847-FDOMPAINSQSYSTA,U,A,1,20",
+            "meOriginPhysicalStationBO": "WorkCenterBO:FNZ1,PA_IP1-2-OW",
+            "meOriginPhysicalStation": "PA_IP1-2-OW",
+            "meOriginExecStationBO": "WorkCenterBO:FNZ1,FG2NQA",
+            "shopOrder": "49156847",
+            "blocked": "false",
+            "reference": "51172397-1-0-0020",
+            "description": "CALCUL DE TEMPS DE LA GAMME",
+            "remainingTime": "53.663",
+            "confirmationPercentage": "0",
+            "userStatus": "OERA",
+            "type": "IMPORTED_ACPNG",
+            "responsibilityTransferType": "WITHOUT",
+            "taktStartDate": "2017-03-09T23:00:00.000+01:00",
+            "taktEndDate": "2017-03-10T05:00:00.000+01:00",
+            "selected": "true",
+            "duration": "53.663"
+         }
+      ]
+   }
+}
