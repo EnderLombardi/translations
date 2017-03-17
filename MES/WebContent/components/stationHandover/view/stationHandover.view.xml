@@ -124,7 +124,7 @@
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Competence}" />
 						<template>
-							<m:Label text="{oswModel>COMPETENCE}" />
+							<m:Label text="{oswModel>competence}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">

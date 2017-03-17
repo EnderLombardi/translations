@@ -10,7 +10,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 	filter : {
 		"search" : undefined,
 		"responsibilityTransferType" : new sap.ui.model.Filter({
-			path : "responsibilityTransferType",
+			path : "type",
 			test : function(oValue) {
 
 				if (airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1) {
@@ -37,7 +37,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 //				}
 //			}
 //		}),
-		"aType" : [ "" ],
+		"aType" : [ "LOCAL" ],
 //		"aStation" : [],
 	},
 

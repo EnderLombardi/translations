@@ -313,7 +313,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var that = this;
 
 		// Check if we selected a chill or not
-		if (oModel.materialDescription != undefined) {
+		if (oModel.outstandingWorkStepInfoList != undefined) {
 				
 			//Save the selection value in the model on the attributes SELECTED
 			that.isSelected(bValue,oModel);
