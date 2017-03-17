@@ -3811,7 +3811,7 @@ div#iconTabBar--header { background-color: #E0F2F4; }
 /***********************************
 STATION TRACKER TOOLBAR
 ************************************/
-#calendar--toolbarcalendar { background-color: #d5f5f8 !important; }
+#calendar--toolbarcalendar { background-color: #d5f5f8 !important; /* Defect #897 - FIT 1.5 - Planned Absences - HMI screen #calendar--calendarDiversion{ color:$teal-blue;         } #calendar--calendarLoaned{ color:$dandelion;         } */ }
 
 #calendar--toolbarcalendar .comboBoxStyle label, #calendar--toolbarcalendar .comboBoxStyle .sapMSltArrow { background-color: transparent; color: #0D5D76; height: 3rem; line-height: 3rem; }
 
@@ -3822,10 +3822,6 @@ STATION TRACKER TOOLBAR
 #calendar--toolbarcalendar .sapMBtnIconLeft, #calendar--toolbarcalendar .sapMBtnContent { color: #0D5D76; }
 
 #calendar--toolbarcalendar #calendar--calendarAbsence { color: #767879; }
-
-#calendar--toolbarcalendar #calendar--calendarDiversion { color: #0085ad; }
-
-#calendar--toolbarcalendar #calendar--calendarLoaned { color: #fbec00; }
 
 #calendar--toolbarcalendar > label { color: #767879; text-shadow: none; font-style: italic; }
 

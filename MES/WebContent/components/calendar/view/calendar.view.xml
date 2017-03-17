@@ -29,14 +29,19 @@
 					</SegmentedButton>
 					<Label text="{calendarI18n>teamavaibility}" class="sapUiSmallMarginBegin" />
 
-					<core:Icon id="calendarAbsence" src="sap-icon://color-fill"/>
+					
+					<core:Icon id="calendarAbsence" src="sap-icon://color-fill" />
 					<Label id="calendarAbsenceLabel" text="{calendarI18n>calendarAbsence}" class="initialFont" />
 
+					<!-- Defect #897 - FIT 1.5 - Planned Absences - HMI screen 
 					<core:Icon id="calendarDiversion" src="sap-icon://color-fill"/>
 					<Label id="calendarDiversionLabel" text="{calendarI18n>calendarDiversion}" class="initialFont" />
-					
+					-->
+
+					<!-- Defect #897 - FIT 1.5 - Planned Absences - HMI screen
 					<core:Icon id="calendarLoaned" src="sap-icon://color-fill" />
 					<Label id="calendarLoanedLabel" text="{calendarI18n>calendarLoaned}" class="initialFont" />
+					-->
 
 					<ToolbarSpacer />
 					<Select id="calendarRessource" class="sapUiTinyMarginBeginEnd comboBoxStyle"

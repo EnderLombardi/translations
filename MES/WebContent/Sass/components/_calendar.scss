@@ -421,12 +421,14 @@ STATION TRACKER TOOLBAR
     #calendar--calendarAbsence{
         color:$cool-grey-hover;        
     }
+    /* Defect #897 - FIT 1.5 - Planned Absences - HMI screen
     #calendar--calendarDiversion{
         color:$teal-blue;        
     }
     #calendar--calendarLoaned{
         color:$dandelion;        
     }
+    */
     >label {
         color: $cool-grey-hover;
         text-shadow: none;
