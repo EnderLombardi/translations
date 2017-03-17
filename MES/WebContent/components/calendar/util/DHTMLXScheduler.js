@@ -154,10 +154,10 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler", {
 
 			if (event.validated === "true") {
 				// absence validated
-				return "grey";
+				return "black";
 			} else {
 				// absence pending
-				return "black";
+				return "grey";
 			}
 			return "";
 		};
