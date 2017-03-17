@@ -114,26 +114,26 @@ sap.ui.controller("airbus.mes.qdc.controller.Checklist", {
 			// grab the content of the form field and place it into a variable
 			var textToWrite = JSON.stringify(oQDCData);
 			
-			var textToWrite =   "PROFILE:" + "OPERATEUR"+
-            "\rORIGIN:" + oData.ERP_SYSTEM + "CLNT001" +
-			"\rLANGUAGE:" + oValue.Language+
-			"\rOPERATION_CODE:" + "J"+
-			"\rWORKSHOP:" + oData.WORKSHOP+
-			"\rMACHINE:"+ oData.MACHINE+
-			"\rPRODUCT:"+ oData.PRODUCT+
-			"\rSERNR:"+ oData.SERNR+
-			"\rGROUP:"+ sGroup+
-			"\rOF:"+ oData.OF+
-			"\rOPERATION:"+ oData.OPERATION+
-			"\rCONFIRMATION:"+ oData.CONFIRMATION+
-			"\rARTICLE:"+ oData.ARTICLE+
-			"\rUSERID:"+ oValue.IllumLoginName+
-			"\rNOM:"+ oValue.lastname+
-			"\rPRENOM:"+ oValue.firstname+
-			"\rPROGRAMME:"+ oData.PROGRAMME+
-			"\rMSN_INITIAL:"+ oData.MSN_INITIAL+
-			"\rSTATION:"+ oData.STATION+
-			"\rSTD:"+ oData.STD+"\r";
+			var textToWrite =   "PROFILE=" + "OPERATEUR"+
+            "\rORIGIN=" + oData.ERP_SYSTEM + "CLNT001" +
+			"\rLANGUAGE=" + oValue.Language+
+			"\rOPERATION_CODE=" + "J"+
+			"\rWORKSHOP=" + oData.WORKSHOP+
+			"\rMACHINE="+ oData.MACHINE+
+			"\rPRODUCT="+ oData.PRODUCT+
+			"\rSERNR="+ oData.SERNR+
+			"\rGROUP="+ sGroup+
+			"\rOF="+ oData.OF+
+			"\rOPERATION="+ oData.OPERATION+
+			"\rCONFIRMATION="+ oData.CONFIRMATION+
+			"\rARTICLE="+ oData.ARTICLE+
+			"\rUSERID="+ oValue.IllumLoginName+
+			"\rNOM="+ oValue.lastname+
+			"\rPRENOM="+ oValue.firstname+
+			"\rPROGRAMME="+ oData.PROGRAMME+
+			"\rMSN_INITIAL="+ oData.MSN_INITIAL+
+			"\rSTATION="+ oData.STATION+
+			"\rSTD="+ oData.STD+"\r";
 
 
             // create a new Blob (html5 magic) that conatins the data from your
