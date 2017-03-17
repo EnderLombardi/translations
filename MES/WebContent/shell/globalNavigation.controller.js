@@ -340,7 +340,7 @@ sap.ui.controller(
                     airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                     airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                     break;
-                case "polypolyPage":
+                case "polypoly":
                     airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                     airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                     break;
