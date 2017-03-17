@@ -110,8 +110,11 @@ DISRUPTIONTRACKER
 // CSS for Header selection boxes
 #disruptiontrackerView--stationComboBox,
 #disruptiontrackerView--msnComboBox,
+#disruptiontrackerView--disruptionCategoryBox,
+#disruptiontrackerView--disruptionReasonBox,
 #disruptiontrackerView--statusComboBox,
 #disruptiontrackerView--severityComboBox,
+#disruptiontrackerView--esclationLevelBox,
 #disruptiontrackerView--resolutionGroupBox{
     @extend %headerFilterBoxes;
 }

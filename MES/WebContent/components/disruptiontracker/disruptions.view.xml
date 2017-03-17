@@ -61,10 +61,11 @@
 				placeholder="{disruptiontrackerI18n>selectEscLevel}" selectedKey=""
 				change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
-				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>level}" />
-				<core:Item key="0" text="{disruptiontrackerI18n>level} 0" />
-				<core:Item key="1" text="{disruptiontrackerI18n>level} 1" />
-				<core:Item key="2" text="{disruptiontrackerI18n>level} 2" />
+				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>escalation}" />
+				<core:Item key="0" text="{disruptiontrackerI18n>escalation} 0" />
+				<core:Item key="1" text="{disruptiontrackerI18n>escalation} 1" />
+				<core:Item key="2" text="{disruptiontrackerI18n>escalation} 2" />
+				<core:Item key="3" text="{disruptiontrackerI18n>escalation} 3" />
 				
 			</Select>
 

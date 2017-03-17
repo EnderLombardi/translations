@@ -10,7 +10,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * @memberOf table.table
 	 */
 	disruptionTrackerRefresh : undefined,
-	mFilterParams : undefined,
 	onInit : function() {
 		// if the page is not busy
 		if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)) {
@@ -109,31 +108,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 
-		/*
-		 * filterByResolutionGroup:function(oEvent){ sValue =
-		 * oEvent.getSource().getSelectedKey(); if (sValue != "") {
-		 * this.getView().byId("disruptionsTable").getBinding("items").filter(
-		 * new sap.ui.model.Filter("ResponsibleGroup", "EQ", sValue)); } },
-		 */
 	},
+	
 	/***************************************************************************
 	 * Table Settings Sorter And Filter
 	 * 
 	 * @param oEvent
 	 */
-
-	/*
-	 * onFilterDetailPageOpened : function(oEvent) { var a =
-	 * oEvent.getSource().getId(); console.log(a); }, onResetFilters :
-	 * function(oEvent) { var a = oEvent.getSource().getId(); console.log(a); },
-	 */
-	onTableSettingsConfirm : function(oEvent) {
-
-		this.mFilterParams = oEvent.getParameters();
-
-		airbus.mes.disruptiontracker.oView.oController.filterDisruptions({});
-	},
-
 	filterDisruptions : function(oEvent) {
 		var sStatus = this.getView().byId("statusComboBox").getSelectedKey().toUpperCase();
 		var sResoGroup = this.getView().byId("resolutionGroupBox").getSelectedKey();
@@ -163,37 +144,15 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if(sReason != ""){
 			aFilters.push(new sap.ui.model.Filter("reason", "EQ", sReason));
 		}
-	
-		if (this.mFilterParams) {
-			jQuery.each(this.mFilterParams.filterItems, function(i, oItem) {
-				var sFilterPath;
-				if (oItem.getParent().getId() == "categoryFilter")
-					sFilterPath = "category";
-				else if (oItem.getParent().getId() == "reasonFilter")
-					sFilterPath = "reason";
-				else if (oItem.getParent().getId() == "escalationFilter")
-					sFilterPath = "escalationLevel";
-				else if (oItem.getParent().getId() == "gravityFilter")
-					sFilterPath = "severity";
-
-				var sOperator = "EQ";
-				var sValue1 = oItem.getKey();
-				if (sValue1 != " ") {
-					var oFilter = new sap.ui.model.Filter(sFilterPath, sOperator, sValue1);
-					aFilters.push(oFilter);
-				}
-			});
-		}
-				
 				
 
-		var searchBox = this.getView().byId("disruptionSearchField").getValue();
+		/*var searchBox = this.getView().byId("disruptionSearchField").getValue();
 		if(searchBox != ""){
 			var filter1 = new sap.ui.model.Filter("operation", sap.ui.model.FilterOperator.Contains, searchBox)
 			aFilters.push(filter1);
 			var filter2 = new sap.ui.model.Filter("workOrder", sap.ui.model.FilterOperator.Contains, searchBox)
 			aFilters.push(filter2);;
-		}
+		}*/
 		oBinding.filter(aFilters);
 
 	},
