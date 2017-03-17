@@ -197,6 +197,7 @@ airbus.mes.shell.util.navFunctions = {
         //Load data
         airbus.mes.qdc.util.ModelManager.loadQDCModel();
         airbus.mes.qdc.util.ModelManager.loadQDCData();
+        airbus.mes.qdc.util.ModelManager.loadTraceabilityData();
         airbus.mes.qdc.util.ModelManager.loadQACheckModel();
 
         // Navigate

@@ -7,7 +7,7 @@ airbus.mes.qdc.util.ModelManager = {
 
 	init : function(core) {
 
-		var aModel = [ "QDCModel", "GetQDCDataModel" ]; // Model having list of attachments for
+		var aModel = [ "QDCModel", "GetQDCDataModel" , "GetTraceabilityDataModel"]; // Model having list of attachments for
 										// disruptions
 
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
@@ -71,6 +71,41 @@ airbus.mes.qdc.util.ModelManager = {
 				var oModel = new sap.ui.model.json.JSONModel();
 				oModel.setData(data)
 				sap.ui.getCore().setModel(oModel, "QACheckModel")
+			},
+			error : function(error, jQXHR) {
+				console.log(error);
+
+			}
+		});
+
+	},
+
+	loadTraceabilityData : function() {
+        var url = this.urlModel.getProperty('TraceabilityDataurl');
+//        Param.1 : st_erp_system
+//        Param.2 : st_work_order
+//        Param.3 : st_work_order_oper
+//        Param.4 : st_Application_Id
+//        Param.5 : st_langu
+        
+		jQuery.ajax({
+			url : url,
+			type : 'POST',
+			async : true,
+            data : {
+                "Param.1" : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].erp_system,
+                "Param.2" : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no,
+                "Param.3" : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_id,
+                "Param.4" : "MES",
+                "Param.5" : airbus.mes.shell.RoleManager.profile.connectedUser.Language
+            },
+			
+			
+			success : function(data) {
+				sap.ui.getCore().getModel("GetTraceabilityDataModel").setData(data);
+
+				airbus.mes.qdc.oView.getController().enableButtons();
+
 			},
 			error : function(error, jQXHR) {
 				console.log(error);
