@@ -9,7 +9,7 @@
                  { "Name" : "ReckordedMaterials", "SourceColumn" : "ReckordedMaterials", "Description" : "Reckorded Materials", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
                  { "Name" : "TotalMaterials", "SourceColumn" : "TotalMaterials", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
          "Row" : [ 
-                 { "WorkOrder" : "11002566", "OperationID" : "0010", "Tracea" : "false", "ReckordedMaterials" : "4", "TotalMaterials" : "9" } ]
+                 { "WorkOrder" : "11002566", "OperationID" : "0010", "Tracea" : "false", "ReckordedMaterials" : "4", "TotalMaterials" : "9" }]
                  } ]
          }
 }
