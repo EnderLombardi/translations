@@ -7,10 +7,9 @@
 		enableScrolling="false " class="GenricBgColor">
 
 		<Toolbar id="kpiHeaderToolbar" class="pageHeader kpiPageHeader">
-			<Label id="teamAvaibility" text="{calendarI18n>teamavaibility}" class="headerText" />
+			<Label text="{calendarI18n>teamavaibility}" id="teamAvaibility"  class="headerText" />
 			<Button id="calendardateButton" icon="sap-icon://appointment"
 				type="Transparent" tooltip="{calendarI18n>Calendar}" press="datePick"/>
-			<Label id="dateLabel" text="" class="classDateLabel" />
 		</Toolbar>
 
 		<content width="100%" height="100%">
@@ -27,8 +26,10 @@
 							<SegmentedButtonItem text="{calendarI18n>ButtonTAKT}" press="onTaktPress" key="takt" />
 						</items>
 					</SegmentedButton>
+					
+					<!-- Sopra QC 2631
 					<Label text="{calendarI18n>teamavaibility}" class="sapUiSmallMarginBegin" />
-
+					-->
 					
 					<core:Icon id="calendarAbsence" src="sap-icon://color-fill" />
 					<Label id="calendarAbsenceLabel" text="{calendarI18n>calendarAbsence}" class="initialFont" />
@@ -49,8 +50,12 @@
 						<core:ListItem key="{ressourcePoolModel>id}"
 							text="{ressourcePoolModel>description}" />
 					</Select>
+
+					<!--
 					<Button id="calendarCapacity" type="Transparent" enabled="false"
 						icon="sap-icon://hide" text="{calendarI18n>showCapacity}"/>
+					-->
+
 				</content>
 			</OverflowToolbar>
 			<custom:DHTMLXScheduler id="calendar"></custom:DHTMLXScheduler>

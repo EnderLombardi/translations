@@ -210,7 +210,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	    	var oDate = new Date($("#calendar--calendar")[0].children[0].children[0].textContent.split("-")[0]);
 	    	var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern : "dd MMM yyyy",calendarType : sap.ui.core.CalendarType.Gregorian
 	     });
-	     var oText = airbus.mes.calendar.oView.byId("dateLabel");
+	     var oText = airbus.mes.calendar.oView.byId("calendardateButton");
 	     oText.setText(oFormatddMMyyy.format(oDate));
 			}
 		}, 

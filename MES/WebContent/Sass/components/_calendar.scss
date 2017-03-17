@@ -393,10 +393,15 @@ STATION TRACKER TOOLBAR
 ************************************/
 #calendar--buttonViewMode {
     @extend %segmentedButton;
+    >:nth-child(1) {
+        border-left: 1px solid #8db9ca;
+    }
 }
 #calendar--toolbarcalendar{
     background-color: $duck-egg-blue !important;
      .comboBoxStyle{
+        border: none;
+        border-left: 1px solid #8db9ca;
         @extend %comboBoxStyleStationTracker;
         label,
         .sapMSltArrow{
@@ -419,6 +424,7 @@ STATION TRACKER TOOLBAR
         color: #0D5D76;
     }
     #calendar--calendarAbsence{
+        margin-left: 15px;
         color:$cool-grey-hover;        
     }
     /* Defect #897 - FIT 1.5 - Planned Absences - HMI screen
@@ -521,6 +527,9 @@ DATE PICKER
             }
         }
     }
+}
+#calendar--calendardateButton-content {
+    color: $white-two !important;
 }
 
 
