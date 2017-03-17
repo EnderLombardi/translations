@@ -38,8 +38,6 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		this.resetAllFields();
 		
 		this.loadDisruptionCategory();
-		ModelManager.loadMaterialList();
-		ModelManager.loadJigtoolList();
 
 		
 		this.loadDisruptionDetail(msgRef);
@@ -76,6 +74,10 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 				oModel.refresh();				
 				airbus.mes.disruptiondetail.oView.oController.editPreSettings();
 				airbus.mes.disruptiondetail.oView.setBusy(false);
+				
+				var operation = oData.operation.split(",")[1];
+				airbus.mes.disruptions.ModelManager.loadMaterialList(data.workOrder, operation);
+				airbus.mes.disruptions.ModelManager.loadJigtoolList(data.workOrder, operation);
 			},
 
 			error : function(error, jQXHR) {

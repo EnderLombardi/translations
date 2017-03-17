@@ -183,22 +183,22 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Load Material List for create/update disruption
 	 */
-	getURLMaterialList: function () {
+	getURLMaterialList: function (workOrder, operation) {
 		var url = this.urlModel.getProperty("urlMaterialList");
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].shopOrderBo.split(",")[1]);
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$operation", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", workOrder);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$operation", operation);
         return url;
 	},
 
 	/***************************************************************************
 	 * Load Disruptions for a single operation
 	 */
-	loadMaterialList: function () {
+	loadMaterialList: function (workOrder, operation) {
 
 		var oViewModel = sap.ui.getCore().getModel("MaterialDropDownListModel");
 
-		var getMaterialListURL = airbus.mes.disruptions.ModelManager.getURLMaterialList();
+		var getMaterialListURL = airbus.mes.disruptions.ModelManager.getURLMaterialList(workOrder, operation);
 
 		oViewModel.loadData(getMaterialListURL);
 
@@ -208,7 +208,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Load Jigtool List for create/update disruption
 	 */
-	loadJigtoolList: function () {
+	loadJigtoolList: function (workOrder, operation) {
 
 		var oViewModel = sap.ui.getCore().getModel("JigtoolDropDownListModel");
         
@@ -220,7 +220,7 @@ airbus.mes.disruptions.ModelManager = {
             contentType : 'application/json',
             data : JSON.stringify({
                 "site" : airbus.mes.settings.ModelManager.site,
-                "shopOrder" : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].shopOrderBo.split(",")[1]
+                "shopOrder" : workOrder
             }),
 
             success : function(data) {

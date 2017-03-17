@@ -60,8 +60,6 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		this.resetAllFields();
 
 		this.loadDisruptionCategory();
-		ModelManager.loadMaterialList();
-		ModelManager.loadJigtoolList();
 
 		if (sMode == "Create") {
 			this.createDisruptionSettings();
@@ -70,11 +68,20 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 			sap.ui.getCore().getModel("DesktopFilesModel").setData([]);
 
 			this.loadSiteTime();
-
+			
+			var workOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].shopOrderBo.split(",")[1];
+			var operation = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
+			ModelManager.loadMaterialList(workOrder, operation);
+			ModelManager.loadJigtoolList(workOrder, operation);
+			
 		} else if (sMode == "Edit") {
 			this.loadRsnResponsibleGrp(oData.messageType);
 			this.editPreSettings();
 			this.loadAttachedDocument(oData.messageRef);
+
+			var operationNo = oData.operation.split(",")[1];
+			ModelManager.loadMaterialList(oData.workOrder, operationNo);
+			ModelManager.loadJigtoolList(oData.workOrder, operationNo);
 
 		}
 	},
