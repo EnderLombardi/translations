@@ -1294,11 +1294,12 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         if (airbus.mes.stationtracker.opeDetailCallStack.arr.length > 0){
         	airbus.mes.stationtracker.util.ModelManager.openOperationDetailPopup([airbus.mes.stationtracker.opeDetailCallStack.arr[airbus.mes.stationtracker.opeDetailCallStack.arr.length-1]]);
         }else{
+        	airbus.mes.stationtracker.opeDetailCallStack.sOrigin = false;
         	 // Close the Popup
             this.onCloseDialog(oEvent);
          // Reinitialization : Navigation to Status every time pop-up is closed
             airbus.mes.operationdetail.oView.getController().nav.to(airbus.mes.operationstatus.oView.getId());
-            airbus.mes.stationtracker.opeDetailCallStack.sOrigin = false;
+            
         }
 
         

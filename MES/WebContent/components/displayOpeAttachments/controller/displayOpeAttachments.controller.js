@@ -12,6 +12,11 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	onAfterRendering: function () {
 		this.init();
+		
+	    	//management of radiobutton when coming from acpnglinks
+		    if(airbus.mes.stationtracker.opeDetailCallStack.arr && airbus.mes.stationtracker.opeDetailCallStack.arr.length > 1 && airbus.mes.stationtracker.opeDetailCallStack.sOrigin){
+		    	this.selectDocumentFilter("P")
+			}
 	},
 
 	//create/update model + update view

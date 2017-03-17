@@ -49,14 +49,19 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 			 var fatherLinkClicked = airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath).FatherLink;
 			 var site = this.getOwnerComponent().getSite();
 			 var station = this.getOwnerComponent().getPhStation();
-			 if ( ( typeClicked != "NC" &&  woClicked != woCurrent ) || ( typeClicked == "NC" && fatherLinkClicked != woCurrent ) ){
+			 var oldSettings = {};
+			 if ( ( typeClicked != "NC" &&  woClicked != woCurrent ) || ( typeClicked == "NC" && fatherLinkClicked != woCurrent) ){
 				
 				 if (typeClicked == "NC"){
 					 woClicked = fatherLinkClicked;
 				 }
 				 //TODO : call model msn/ physical station/ workorder
-				 //Step 1 call service to find linked NC or WO	 
-				 //test mode : first operation of the model	 
+				 //Step 1 call service to find linked WO	
+				 if (!woClicked){
+					return; 	
+				}
+//to uncomment to activate acpnglinks click				 
+//				//test mode : first operation of the model	 
 //				 var aModel = [sap.ui.getCore().getModel("stationTrackerRModel").oData.Rowsets.Rowset[0].Row[0]];
 //				 
 //
@@ -66,12 +71,31 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 //				 
 //
 //				 //Step 3 update and save settings for physical station
-//				 airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
+//				 oldSettings.site =  airbus.mes.settings.ModelManager.site;
+//				 oldSettings.program =  airbus.mes.settings.ModelManager.program;
+//				 oldSettings.line =  airbus.mes.settings.ModelManager.line;
+//				 oldSettings.station =  airbus.mes.settings.ModelManager.station;
+//				 oldSettings.msn =  airbus.mes.settings.ModelManager.msn;
+//				 try{
+//					 // TODO change user settings
+//					 airbus.mes.settings.ModelManager.site 		=  airbus.mes.settings.ModelManager.site;
+//					 airbus.mes.settings.ModelManager.program 	=  airbus.mes.settings.ModelManager.program;
+//					 airbus.mes.settings.ModelManager.line 		=  airbus.mes.settings.ModelManager.line;
+//					 airbus.mes.settings.ModelManager.station 	=  airbus.mes.settings.ModelManager.station;
+//					 airbus.mes.settings.ModelManager.msn 		=  airbus.mes.settings.ModelManager.msn;
+//					 
+//					 airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
+//				 }catch(error){
+//					 airbus.mes.settings.ModelManager.site 		=   oldSettings.site;
+//					 airbus.mes.settings.ModelManager.program 	=   oldSettings.program;
+//					 airbus.mes.settings.ModelManager.line 		=   oldSettings.line;
+//					 airbus.mes.settings.ModelManager.station 	=   oldSettings.station;
+//					 airbus.mes.settings.ModelManager.msn 		=   oldSettings.msn;
+//				 }
 //
 //
 //				 //Step 4 prepare data for openOperationDetailPopup to replace the content of this new Operation
-//				 airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath);
-//				 console.log(airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath).Reference);
+////				 airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath);
 //
 //				 //Step 5 call openOperationDetailPopup
 //				 airbus.mes.stationtracker.util.ModelManager.openOperationDetailPopup([airbus.mes.stationtracker.opeDetailCallStack.arr[airbus.mes.stationtracker.opeDetailCallStack.arr.length-1]],undefined,undefined,true);

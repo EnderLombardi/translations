@@ -40,6 +40,7 @@ sap.ui
          * @memberOf components.operationdetail.operationDetail
          */
         onAfterRendering: function () {
+
         	var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
         	if (airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start) === "0") {
         		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
@@ -47,6 +48,10 @@ sap.ui
         		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
         	}
 
+    		this.nav.to(airbus.mes.operationstatus.oView.getId());
+    		//select the icontabbarfilter which matched with the panel displayed in pop-up
+    		this.getView().byId("opDetailSegmentButtons").setSelectedKey("status");
+    		sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").fireSelect({selectedKey:"status"})
         	// Navigation to Status every time pop-up is opened
         	if(airbus.mes.stationtracker.opeDetailCallStack && airbus.mes.stationtracker.opeDetailCallStack.sOrigin){
         		if(airbus.mes.stationtracker.opeDetailCallStack.arr[airbus.mes.stationtracker.opeDetailCallStack.arr.length-1].type == "NC"){

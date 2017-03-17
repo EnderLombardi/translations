@@ -43,7 +43,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
                 this.sSet = sSet;
             }
         }
-
+        if(airbus.mes.stationtracker.opeDetailCallStack.arr && airbus.mes.stationtracker.opeDetailCallStack.arr.length > 1 && airbus.mes.stationtracker.opeDetailCallStack.sOrigin){
+			 this.sSet = "P";
+		 }
         switch (this.sSet) {
             case "O"://operation
                 this.getView().byId("operationButton").setSelected(true);

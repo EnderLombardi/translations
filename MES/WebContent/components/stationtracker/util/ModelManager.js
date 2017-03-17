@@ -1480,7 +1480,7 @@ airbus.mes.stationtracker.util.ModelManager = {
                     airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("ReadOnly"));
                 }
 
-                //save entry in callstack table
+                //save entry in callstack table if coming from acpnglinks
                 if (sOrigin){
                 	airbus.mes.stationtracker.opeDetailCallStack.sOrigin = true;
                 }

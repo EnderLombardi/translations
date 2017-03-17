@@ -30,6 +30,16 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
         sap.ui.getCore().byId("idStatusView--assignMESstatus").setVisible(false);
         
     },
+    onAfterRendering: function () {
+    	//management of radiobutton when coming from acpnglinks
+	    if(airbus.mes.stationtracker.opeDetailCallStack.arr && airbus.mes.stationtracker.opeDetailCallStack.arr.length > 1 && airbus.mes.stationtracker.opeDetailCallStack.sOrigin){
+	    	sap.ui.getCore().byId("idStatusView--workOrderButton").setSelected(true);
+			sap.ui.getCore().byId("idStatusView--workOrderButton").fireSelect({selected:true});
+		}else{
+			sap.ui.getCore().byId("idStatusView--operationButton").setSelected(true);
+			sap.ui.getCore().byId("idStatusView--operationButton").fireSelect({selected:true});
+		}
+    },
     onSelectLevel : function(oEvent) {
          var sId = oEvent.mParameters.selectedIndex;
          var detailStatus = sap.ui.getCore().byId("idStatusView--Statutprogress");

@@ -39,7 +39,10 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 				this.sSet = this.getOwnerComponent().getSSet();
 			}
 		}
-		
+		 //coming from acpnglinks
+		 if(airbus.mes.stationtracker.opeDetailCallStack.arr && airbus.mes.stationtracker.opeDetailCallStack.arr.length > 1 && airbus.mes.stationtracker.opeDetailCallStack.sOrigin){
+			 this.sSet = airbus.mes.jigtools.util.ModelManager.workOrder;
+		 }
 		switch (this.sSet) {
 			case airbus.mes.jigtools.util.ModelManager.operation:
 				sap.ui.getCore().byId("jigtoolsView--operationButton").setSelected(true);
