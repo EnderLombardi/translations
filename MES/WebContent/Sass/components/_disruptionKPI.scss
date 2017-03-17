@@ -107,6 +107,12 @@
 		}
 	}
 	
+	#disruptionKPIView--startDateTime, #disruptionKPIView--endDateTime{
+		span.sapUiIcon:hover{
+    		background: #85c4d8 !important;
+		}
+	}
+	
 	#disruptionKPIView--endDateTime{
 		border-right: 1px solid #8db9ca;
 	}
