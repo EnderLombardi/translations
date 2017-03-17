@@ -1085,6 +1085,10 @@ airbus.mes.stationtracker.util.Formatter = {
 		return parseFloat(value1) + parseFloat(value2) + parseFloat(value3);
 	},
 	checkDisplayHOComponents :function(bValue) {
-		return bValue.toString();
+		if(bValue){
+			return bValue.toString();
+		}else{
+			return "";
+		}
 	}
 };

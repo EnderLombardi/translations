@@ -68,6 +68,7 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
         //to refresh the value inside the orange circle
         sap.ui.getCore().getModel("ncdisplaydata").refresh(true);
     },
+   
 
     //table filter
     filterNcDisplay: function (sScope) {

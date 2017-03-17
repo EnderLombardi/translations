@@ -1325,7 +1325,8 @@ airbus.mes.stationtracker.util.ModelManager = {
     /***************************************************************************
      * open operation detail popup containing progress slider
      **************************************************************************/
-    openOperationDetailPopup: function (aModel, sAvlStart, sAvlEnd) {
+    openOperationDetailPopup: function (aModel, sAvlStart, sAvlEnd, sOrigin) {
+    	
 
         //two timeout chained to active setBusy & to be sure the setBusy is launched before the next operations
         //don't work without this trick (or sometimes but don't 100% effective)
@@ -1478,6 +1479,14 @@ airbus.mes.stationtracker.util.ModelManager = {
                     airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("ReadOnly"));
                 }
 
+                //save entry in callstack table
+                if (sOrigin){
+                	airbus.mes.stationtracker.opeDetailCallStack.sOrigin = true;
+                }
+                
+                if( !airbus.mes.stationtracker.opeDetailCallStack || airbus.mes.stationtracker.opeDetailCallStack.arr.length === 0){
+                	airbus.mes.stationtracker.opeDetailCallStack.arr = [aModel[0]];
+                }
 
                 // Ooen Pop-up and place status view inside it
                 airbus.mes.stationtracker.operationDetailPopup.open();

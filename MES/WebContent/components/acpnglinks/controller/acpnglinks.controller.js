@@ -15,6 +15,7 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 		var oTTbl = sap.ui.getCore().byId("acpnglinksView--ACPnGTreeTable");
 		if (oTTbl != undefined) {
 			// Expand all nodes of the tree and init the number of visible rows
+			oTTbl.expandToLevel(99);
 			oTTbl.setVisibleRowCount(this.treeExpandAll(oTTbl));
 			oTTbl.setSelectionMode("None");
 		}
@@ -34,25 +35,50 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 		return oTTbl.getRows().length;
 	},
 	
-	filterWO1 : function(obj){
-		return (obj.STATE != "C" );
-	},
-
 	/**
 	 * Clickable Cell management in Tree Table
 	 */
 	OnSelectionChange : function(oEvt) {
-//		 try {
-//		 var aModel = sap.ui.getCore().getModel("stationTrackerRModel").oData.Rowsets.Rowset[0].Row;
-//		 var aOp = [];
-//		 airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath);
-//		 console.log(airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath));
-//		
-//		 aOp = aModel.filter(this.filterWO1);
-//		 
-//		 } catch (exception) {
-//		 // do nothing
-//		 }
+		 try {
+			//TODO: check if the line selected doesn't concern the current work order
+			//if clicked on workorder compare with current work order
+			//if clicked on NC use fatherlink to do the comparison
+			 var woClicked = airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath).Reference;
+			 var woCurrent = airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getWorkOrder();
+			 var typeClicked = airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath).Type;
+			 var fatherLinkClicked = airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath).FatherLink;
+			 var site = this.getOwnerComponent().getSite();
+			 var station = this.getOwnerComponent().getPhStation();
+			 if ( ( typeClicked != "NC" &&  woClicked != woCurrent ) || ( typeClicked == "NC" && fatherLinkClicked != woCurrent ) ){
+				
+				 if (typeClicked == "NC"){
+					 woClicked = fatherLinkClicked;
+				 }
+				 //TODO : call model msn/ physical station/ workorder
+				 //Step 1 call service to find linked NC or WO	 
+				 //test mode : first operation of the model	 
+//				 var aModel = [sap.ui.getCore().getModel("stationTrackerRModel").oData.Rowsets.Rowset[0].Row[0]];
+//				 
+//
+//				 //Step 2 save the line clicked on in an array for history management;
+//				 aModel[0].type = airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath).Type;
+//				 airbus.mes.stationtracker.opeDetailCallStack.arr.push(aModel[0]);
+//				 
+//
+//				 //Step 3 update and save settings for physical station
+//				 airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
+//
+//
+//				 //Step 4 prepare data for openOperationDetailPopup to replace the content of this new Operation
+//				 airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath);
+//				 console.log(airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").getProperty(oEvt.mParameters.rowBindingContext.sPath).Reference);
+//
+//				 //Step 5 call openOperationDetailPopup
+//				 airbus.mes.stationtracker.util.ModelManager.openOperationDetailPopup([airbus.mes.stationtracker.opeDetailCallStack.arr[airbus.mes.stationtracker.opeDetailCallStack.arr.length-1]],undefined,undefined,true);
+			 }
+		 } catch (exception) {
+		 // do nothing
+		 }
 	},
 
 	/**

@@ -23,7 +23,8 @@ jQuery.sap.declare("airbus.mes.stationtracker.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {
     metadata : {
-        properties : {},
+        properties : {
+        },
         //includes : []
     // array of css and/or javascript files that should be used in the component
 
@@ -33,7 +34,8 @@ sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {
 });
 
 airbus.mes.stationtracker.Component.prototype.createContent = function() {
-
+	
+    airbus.mes.stationtracker.opeDetailCallStack = {sOrigin: false, arr : [] };
     airbus.mes.stationtracker.isDisplay = true;
 
     if (airbus.mes.stationtracker.oView === undefined) {

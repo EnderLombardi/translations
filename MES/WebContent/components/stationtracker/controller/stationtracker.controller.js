@@ -43,7 +43,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
      * @memberOf components.stationtracker.stationtracker
      */
     onAfterRendering: function () {
-
     },
 
     /***************************************************************************
@@ -1289,11 +1288,21 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
                 airbus.mes.disruptions.oView.viewDisruption.getController().expandedDisruptionPanel = undefined;
             }
         }
-        // Close the Popup
-        this.onCloseDialog(oEvent);
+        if( airbus.mes.stationtracker.opeDetailCallStack.arr){
+        	airbus.mes.stationtracker.opeDetailCallStack.arr.pop();
+        }
+        if (airbus.mes.stationtracker.opeDetailCallStack.arr.length > 0){
+        	airbus.mes.stationtracker.util.ModelManager.openOperationDetailPopup([airbus.mes.stationtracker.opeDetailCallStack.arr[airbus.mes.stationtracker.opeDetailCallStack.arr.length-1]]);
+        }else{
+        	 // Close the Popup
+            this.onCloseDialog(oEvent);
+         // Reinitialization : Navigation to Status every time pop-up is closed
+            airbus.mes.operationdetail.oView.getController().nav.to(airbus.mes.operationstatus.oView.getId());
+            airbus.mes.stationtracker.opeDetailCallStack.sOrigin = false;
+        }
+
         
-        // Reinitialization : Navigation to Status every time pop-up is closed
-        airbus.mes.operationdetail.oView.getController().nav.to(airbus.mes.operationstatus.oView.getId());
+        
     },
 
     afterCloseOperationDetailPopup: function () {
