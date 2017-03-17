@@ -82,13 +82,8 @@ airbus.mes.qdc.util.ModelManager = {
 
 	loadTraceabilityData : function() {
         var url = this.urlModel.getProperty('TraceabilityDataurl');
-//        Param.1 : st_erp_system
-//        Param.2 : st_work_order
-//        Param.3 : st_work_order_oper
-//        Param.4 : st_Application_Id
-//        Param.5 : st_langu
-        
-		jQuery.ajax({
+
+        jQuery.ajax({
 			url : url,
 			type : 'POST',
 			async : true,
@@ -102,8 +97,18 @@ airbus.mes.qdc.util.ModelManager = {
 			
 			
 			success : function(data) {
+				
+				try{
+					
+					var oModel = sap.ui.getCore().getModel("QDCModel").oData.root[0];
+					oModel = data.Rowsets.Rowset[0].Row[0];
+					
+					
+				} catch(e) {
+					
+				}
+				
 				sap.ui.getCore().getModel("GetTraceabilityDataModel").setData(data);
-
 				airbus.mes.qdc.oView.getController().enableButtons();
 
 			},

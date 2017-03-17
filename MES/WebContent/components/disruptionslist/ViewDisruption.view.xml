@@ -244,7 +244,7 @@
 							items="{path: 'operationDisruptionsModel>attachedDocument'}" visible="{=${operationDisruptionsModel>showAttachedDocument} === true}">
 							<headerToolbar class="document-toolbar">
 								<Toolbar>
-									<Title text="Attached document ({operationDisruptionsModel>attachedDocument/length})" />
+									<Title text="{i18nModel>attachedDocument} ({operationDisruptionsModel>attachedDocument/length})" />
 								</Toolbar>
 							</headerToolbar>
 							<CustomListItem id="document-list-item" >
