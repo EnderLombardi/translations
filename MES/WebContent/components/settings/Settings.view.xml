@@ -75,29 +75,29 @@
                     columnsL="1" columnsM="1" class="editableForm" title="{i18n>OtherSettings}">
                     <f:content>
                         <Label id="lblLine" text="{i18n>Line}" design="Bold" />
-                        <Select id="selectLine" items="{path : 'plantModel>/Rowsets/Rowset/0/Row', 
+                        <ComboBox id="selectLine" items="{path : 'plantModel>/Rowsets/Rowset/0/Row', 
                             sorter: { path : 'plantModel>line'} }"
-                            visible="true" change="onSelectionChange" class="customComboBox">
+                            visible="true" selectionChange="onSelectionChange" class="customComboBox">
                             <items>
                                 <core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
                             </items>
-                        </Select>
+                        </ComboBox>
                         <Label id="lblStation" text="{i18n>Station}" design="Bold" />
-                        <Select id="selectStation" items="{path : 'plantModel>/Rowsets/Rowset/0/Row', 
+                        <ComboBox id="selectStation" items="{path : 'plantModel>/Rowsets/Rowset/0/Row', 
                             sorter: { path : 'plantModel>station'} }"
-                            visible="true" change="onSelectionChange" class="customComboBox">
+                            visible="true" selectionChange="onSelectionChange" class="customComboBox">
                             <items>
                                 <core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
                             </items>
-                        </Select>
+                        </ComboBox>
                         <Label id="lblMSN" text="{i18n>MSN}" design="Bold" />
-                        <Select id="selectMSN" items="{path : 'plantModel>/Rowsets/Rowset/0/Row', 
+                        <ComboBox id="selectMSN" items="{path : 'plantModel>/Rowsets/Rowset/0/Row', 
                             sorter: { path : 'plantModel>msn'} }"
-                            visible="true" change="onSelectionChange" enabled="false">
+                            visible="true" selectionChange="onSelectionChange" enabled="false">
                             <items>
                                 <core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
                             </items>
-                        </Select>
+                        </ComboBox>
                         <CheckBox id="currMSN" selected="false" text="{i18n>CurrentMSN}"
                             style="font-weight: bold;" select="selectCurrentMsn" visible="false" />
                     </f:content>

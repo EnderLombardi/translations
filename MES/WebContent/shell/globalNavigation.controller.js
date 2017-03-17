@@ -72,9 +72,9 @@ sap.ui.controller(
                         nav.to(airbus.mes.homepage.oView.getId());
                     }
                     break;
-
+                   
             }
-
+       
         },
 
         /**
@@ -123,6 +123,31 @@ sap.ui.controller(
             }
 
             airbus.mes.shell.oView.byId("SelectLanguage").setSelectedKey(sText);
+        },
+
+        /**
+         * Similar to onAfterRendering, but this hook is invoked
+         * before the controller's View is re-rendered (NOT before
+         * the first rendering! onInit() is used for that one!).
+         *
+         * @memberOf components.globalnav.globalNavigation
+         */
+        onBeforeRendering: function () {
+        },
+
+        /**
+         * Called when the View has been rendered (so its HTML is
+         * part of the document). Post-rendering manipulations of
+         * the HTML could be done here. This hook is the same one
+         * that SAPUI5 controls get after being rendered.
+         *
+         * @memberOf components.globalnav.globalNavigation
+         */
+        onAfterRendering: function () {
+
+            // $( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
+
+
         },
 
         /**
@@ -181,9 +206,6 @@ sap.ui.controller(
                     break;
                 default:
             }
-
-            //enable or not the station and the msn Selects
-            airbus.mes.settings.oView.oController.initSelect();
         },
 
         onNavigate: function () {
@@ -251,7 +273,7 @@ sap.ui.controller(
 
             switch (nav.getCurrentPage().getId()) {
                 case "homePageView":
-                    airbus.mes.shell.oView.byId("informationButton").setVisible(false);
+                	airbus.mes.shell.oView.byId("informationButton").setVisible(false);
                     airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
                     airbus.mes.shell.oView.byId("homeButton").setVisible(false);
                     airbus.mes.shell.oView.byId("SelectLanguage").setVisible(true);
@@ -401,7 +423,7 @@ sap.ui.controller(
             var jqStationTracker = $(airbus.mes.calendar.oView.byId('calendar').getDomRef());
             jqStationTracker.css('top', jqToolbar.offset().top);
             // **Calculation of takt mode step in one hours or day**
-            if (airbus.mes.calendar.util.ShiftManager.taktDisplay) {
+            if ( airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
                 airbus.mes.calendar.oView.getController().onTaktPress();
             }
 
@@ -422,7 +444,7 @@ sap.ui.controller(
                 airbus.mes.stationtracker.util.ShiftManager.updateShift = false;
                 var oModule = airbus.mes.stationtracker.util.ModelManager;
                 airbus.mes.shell.oView.getController().setInformationVisibility(true);
-
+                	
                 //show split worktracker
                 var MyModele = airbus.mes.shell.util.navFunctions.splitMode;
                 if (MyModele == "WorkTracker") {
@@ -430,15 +452,15 @@ sap.ui.controller(
                 } else if (MyModele == "StationTracker") {
                     //if already exist remove content
                     if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
-                        //Check if Missing Parts is open in case of yes we let it displayed and update it
-                        if (!airbus.mes.shell.util.navFunctions.splitMissingPart) {
-                            airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
-                            airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");
-                        } else {
-                            airbus.mes.missingParts.util.ModelManager.loadMPDetail();
-                        }
+                       //Check if Missing Parts is open in case of yes we let it displayed and update it
+                    	if ( !airbus.mes.shell.util.navFunctions.splitMissingPart ) {
+                    		airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+            airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                    		
+                       } else {
+                    	   airbus.mes.missingParts.util.ModelManager.loadMPDetail();              	   
+                       }
                     }
-                }
+                 }
 
                 // ** synchrone call **//
                 oModule.loadShifts();
@@ -454,7 +476,7 @@ sap.ui.controller(
 
 
         renderWorkTracker: function () {
-
+        	
             //get spliter
             var oSpliter = airbus.mes.stationtracker.oView.byId("splitWorkTra");
 
@@ -462,6 +484,10 @@ sap.ui.controller(
             if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
                 oSpliter.removeContentArea(1);
                 airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");
+
+                //force gantt 100% height
+                //$("#stationTrackerView--splitWorkTra").children().css('height', '100%');
+
             }
 
             //get fragment 
@@ -470,8 +496,14 @@ sap.ui.controller(
                 airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.splitterWorkTracker);
             }
 
+            console.log("LOADSPLITTERWT");
+
             //Add content
             oSpliter.addContentArea(airbus.mes.stationtracker.splitterWorkTracker);
+
+            //refresh area
+            //scheduler.updateView();
+
         },
 
         loadStationTrackerGantKPI: function () {
@@ -496,23 +528,23 @@ sap.ui.controller(
             oModule.loadTimeMinRModel();
             oModule.loadOswQuantity();
             //set mode missing part off when on workTracker
-            if (airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker") {
-                airbus.mes.shell.util.navFunctions.splitMissingPart = false;
-            }
+            if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
+            	airbus.mes.shell.util.navFunctions.splitMissingPart = false;
+             }
 
-            //Set disabled missing part button
-            if (sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_DRILL_MISSING")) {
+			//Set disabled missing part button
+			if ( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_DRILL_MISSING") ) {
+				
+				if ( airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker" ) {
+					
+					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(false);
 
-                if (airbus.mes.shell.util.navFunctions.splitMode === "WorkTracker") {
+				} else {
+					
+					airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(true);
 
-                    airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(false);
-
-                } else {
-
-                    airbus.mes.stationtracker.oView.byId("showMissingPart").setEnabled(true);
-
-                }
-            }
+				}
+			} 
         },
 
         setInformationVisibility: function (bSet) {
@@ -522,7 +554,7 @@ sap.ui.controller(
         },
 
         onInformation: function (oEvent) {
-            var that = this;
+        	var that=this;
             airbus.mes.shell.oView.addStyleClass("viewOpacity");
             var oPopover = nav.getCurrentPage().getController().onInformation(that);
             // delay because addDependent will do a async
@@ -530,31 +562,49 @@ sap.ui.controller(
             // without it
             var oButton = oEvent.getSource();
             jQuery.sap.delayedCall(0, this, function () {
-                try {
-                    oPopover.openBy(oButton);
-                } catch (E) {
-                    oPopover.open();
-                }
+            	try{
+            	oPopover.openBy(oButton);
+            	}catch(E){
+            		oPopover.open();
+            	}
             });
-        },
+/*            if (airbus.mes.stationtracker.informationPopover === undefined) {
+                var oView = airbus.mes.stationtracker.oView;
+                airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment(
+                    "informationPopover",
+                    "airbus.mes.shell.informationPopover",
+                    airbus.mes.shell.oView.getController()
+                );
+                airbus.mes.stationtracker.informationPopover.addStyleClass("alignTextLeft");
+                oView.addDependent(airbus.mes.stationtracker.informationPopover);
+            }
+
+            // delay because addDependent will do a async
+            // re-rendering and the popover will immediately close
+            // without it
+            var oButton = oEvent.getSource();
+            jQuery.sap.delayedCall(0, this, function () {
+                airbus.mes.stationtracker.informationPopover.openBy(oButton);
+            });
+*/        },
 
         onCloseInformation: function () {
             airbus.mes.shell.oView.removeStyleClass("viewOpacity");
         },
         onCloseInformationDialog: function (oEvt) {
-            oEvt.getSource().getParent().close();
-            airbus.mes.shell.oView.getController().onCloseInformation();
+        	oEvt.getSource().getParent().close();
+        	airbus.mes.shell.oView.getController().onCloseInformation();
         },
         /***********************************************************
          * User login Popup
          */
         userLogin: function () {
-            if (!this.userLoginDailog) {
+        	if (!this.userLoginDailog) {
                 this.userLoginDailog = sap.ui.xmlfragment("airbus.mes.shell.userLogin", this);
                 this.getView().addDependent(this._userLoginDailog);
             }
-
-            this.userLoginDailog.open();
+        	
+        	this.userLoginDailog.open();
             sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
             sap.ui.getCore().byId("uIdMyProfile").setValue("");
             sap.ui.getCore().byId("badgeIdMyProfile").setValue("");
@@ -562,7 +612,7 @@ sap.ui.controller(
             sap.ui.getCore().byId("passwordMyProfile").setValue("");
             sap.ui.getCore().byId("pinCodeMyProfile").setValue("");
         },
-
+        
         onCanceluserLoginDailog: function () {
             sap.ui.getCore().getElementById("userNameMyProfile").setValueState(sap.ui.core.ValueState.None);
             sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);
@@ -576,7 +626,7 @@ sap.ui.controller(
 
             this.userLoginDailog.close();
         },
-
+        
         onLogin: function (oEvent) {
             sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
             var badgeID = sap.ui.getCore().getElementById("badgeIdMyProfile").getValue();
@@ -587,7 +637,7 @@ sap.ui.controller(
             if (pinCode == "") {
                 pinCode = "0000"; // Set Pin Code default to 0
             }
-
+                
             if (user == "" || pass == "") {
                 sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
                 sap.ui.getCore().byId("msgstrpMyProfile").setType("Error");
@@ -662,7 +712,7 @@ sap.ui.controller(
             }
 
         },
-
+        
 
         /***********************************************************
          * My Profile PopUp
@@ -830,7 +880,7 @@ sap.ui.controller(
             if (pinCode == "") {
                 pinCode = "0000"; // Set Pin Code default to 0
             }
-
+                
             if (user == "" || pass == "") {
                 sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
                 sap.ui.getCore().byId("msgstrpMyProfile").setType("Error");
@@ -938,14 +988,15 @@ sap.ui.controller(
                 //active busy
                 airbus.mes.shell.busyManager.setBusy(airbus.mes.linetracker.oView, "linetrackerTable");
                 airbus.mes.shell.oView.getController().setInformationVisibility(true);
-
+                // ** asynchrone call **//
+                //airbus.mes.shell.oView.oController.loadLineTrackerKPI();
                 //assign the customLineBO to 
                 airbus.mes.linetracker.util.ModelManager.customLineBO = sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO");
                 if (airbus.mes.linetracker.util.ModelManager.customLineBO || airbus.mes.linetracker.util.ModelManager.customLineBO != null) {
                     airbus.mes.linetracker.oView.byId("selectLine").setValue(airbus.mes.linetracker.util.ModelManager.customLineBO.split(",")[1]);
                 }
                 airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
-                if (!sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO") || sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO") === '---') {
+                if (!sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO") || sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO")==='---') {
                     sap.ui.getCore().byId("idLinetracker--selectLine").onsapshow();
                     sap.ui.getCore().byId("idLinetracker--selectLine").setValue();
                 }
@@ -953,26 +1004,26 @@ sap.ui.controller(
         },
 
         onLogOutPress: function () {
-            if (!this.logoutDialog) {
-                this.logoutDialog = sap.ui.xmlfragment("airbus.mes.shell.Logout", this);
-                this.getView().addDependent(this.logoutDialog);
-            }
+        	if(!this.logoutDialog){
+        	   this.logoutDialog = sap.ui.xmlfragment("airbus.mes.shell.Logout", this);
+               this.getView().addDependent(this.logoutDialog);
+           }
             this.logoutDialog.open();
 
         },
-        onPressLoginUser: function () {
-            jQuery.ajax({
-                url: airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout"),
-                type: 'POST',
-                async: false,
-                complete: function () {
-                    location.href = window.location.origin + "/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled";
-                }
+        onPressLoginUser: function(){         
+          jQuery.ajax({
+              url: airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout"),
+              type: 'POST',
+              async: false,
+              complete: function () {
+                  location.href = window.location.origin + "/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled";
+              }
 
-            })
+          })
         },
-
-        onPressAutoLogin: function () {
+        
+        onPressAutoLogin: function(){
             jQuery.ajax({
                 url: airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled"),
                 type: 'POST',
@@ -981,11 +1032,11 @@ sap.ui.controller(
                     location.href = window.location.origin + "/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled";
                 }
 
-            })
+            })	
         },
-
-        onPressCancel: function () {
-            this.logoutDialog.close();
+        
+        onPressCancel: function(){
+        	this.logoutDialog.close();
         }
     });
 
