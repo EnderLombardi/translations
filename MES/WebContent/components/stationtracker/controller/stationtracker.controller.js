@@ -1209,7 +1209,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         var dSeletectedDate = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
         if (dSeletectedDate < airbus.mes.stationtracker.util.GroupingBoxingManager.minDate || dSeletectedDate > airbus.mes.stationtracker.util.GroupingBoxingManager.maxDate) {
             // If we are out of range, we display a message and don't close the date picker
-            sap.m.MessageToast.show("Selected date out of range");
+            sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("OutRange"));
         } else {
             // Reselect the date in shift hierarchy to select the good date
             var dDataSelected = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
@@ -1562,5 +1562,37 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 	/* Close PopUp */
 	closeRescheduleAllPopUp: function (oEvent) {
 		this.onCloseDialog(oEvent);
+	},
+	/**
+     * Fire when the user is on the reschedule view of the operation detail and tried to selected date,it
+     * check if the date is part of shift and disable or enabled the insert button
+     */
+	checkDate : function(oEvt) {
+		
+        var fFormater = airbus.mes.stationtracker.util.Formatter;
+        var dNewDate = sap.ui.getCore().byId("reschedulePage--datePicker").getDateValue();
+        var dNewDateSecond = sap.ui.getCore().byId("reschedulePage--hourPicker").getDateValue();
+        // Merge in string year mount date + hour minutes second in string + retransform in js date format
+        var dNewDate = fFormater.jsDateFromDayTimeStr(fFormater.dDate2sDate(dNewDate).split("T")[0] + "T" + fFormater.dDate2sDate(dNewDateSecond).split("T")[1]);
+        
+		if (dNewDate < airbus.mes.stationtracker.util.GroupingBoxingManager.minDate || dNewDate > airbus.mes.stationtracker.util.GroupingBoxingManager.maxDate) {
+            // If we are out of range, we display a message and don't close the date picker
+            sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("OutRange"));
+			sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setEnabled(false);
+
+			return;
+        }
+
+		if ( airbus.mes.stationtracker.util.ShiftManager.isDateIgnored(dNewDate) ) {
+			
+            sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("noShiftExist"));
+			sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setEnabled(false);
+			
+		} else {
+			
+			sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setEnabled(true);
+		}
+		
+		
 	}
 });

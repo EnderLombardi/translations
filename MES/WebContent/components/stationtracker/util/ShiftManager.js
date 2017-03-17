@@ -136,35 +136,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 				break;
 			}
 		}
-		
-//		//Airbus Defect #262 - Shift selection is not kept when changing date
-//		if(!airbus.mes.stationtracker.util.ShiftManager.changeShift){
-//			var flag = false;
-//
-//			/********
-//			 * First search in backward direction
-//			 * because there is a possibility that Dichomatic search result in Shift other than first shift of the day
-//			 */
-//			for(var i = iMed;; i--){
-//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.util.ShiftManager.current_shift.shiftName)
-//				{ iMed = i; flag= true;	break; }
-//				else if(this.shifts[i].EndDate < date)
-//					break;
-//			}
-//			
-//			/********
-//			 * Then search in forward direction
-//			 */
-//			if(!flag)
-//			for(var i = iMed;; i++){
-//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.util.ShiftManager.current_shift.shiftName)
-//				{ iMed = i;	break; }
-//				else if(this.shifts[i].EndDate < date)
-//					break;
-//			}
-//		}
-//		// End of Airbus Defect #262
-		
+			
 		return iMed;
 	},
 
@@ -613,30 +585,6 @@ airbus.mes.stationtracker.util.ShiftManager = {
 				}
 			}
 		}
-		
-		
-		
-		
-		//A quoi sert ce code ??
-		//
-		//		d1 = aShiftBreak[aShiftBreak.length - 1].EndDate;
-		//		
-		//		d2 = scheduler.date.copy(d1);
-		//		d2.setMinutes(d2.getMinutes() + scheduler.matrix.timeline.x_size * scheduler.matrix.timeline.x_step);
-		//		scheduler.addMarkedTimespan({
-		//			start_date : d1,
-		//			end_date : d2,
-		//			css : "offtime"
-		//		});
-		//		
-		//		d3 = this.shifts[this.shifts.length - 1].StartDate;
-		//		d4 = scheduler.date.copy(d3);
-		//		d4.setMinutes(d4.getMinutes() + 5);
-		//		scheduler.addMarkedTimespan({
-		//			start_date : d3,
-		//			end_date : d4,
-		//			css : "begin_shifht"
-		//		});
 		
 		// Add maker for takt time
 		var d6 = airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart);

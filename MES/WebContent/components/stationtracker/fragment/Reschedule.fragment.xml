@@ -2,17 +2,17 @@
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
 	xmlns:u="sap.ui.unified">
 	<Page id="reschedulePage" showHeader="false" horizontalScrolling="false"
-		class="pageHeaderDialog classWorklistPopover">
+		class="pageHeaderDialog">
 		<content>
 		
 		<!-- <Text id="rescheduleLabel" class="rescheduleLabel" text="{i18nModel>Reschedule}" /> -->
 		
-			<HBox id="reschedulefield" class="sapUiMediumMarginTop" justifyContent="Center" >
+			<HBox id="reschedulefield" class="sapUiMediumMarginTop" justifyContent="Center" width="100%" >
 
 				<VBox class="sapUiMediumMarginEnd" >
 
 					<Label text="{i18nModel>Date}"></Label>
-					<DatePicker id="datePicker" valueFormat="yyyy-MM-dd"
+					<DatePicker id="datePicker" valueFormat="yyyy-MM-dd" change="checkDate"
 						displayFormat="long"
 						dateValue="{path : 'RescheduleModel>/0/reschedule_start_time' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }">
 					</DatePicker>
@@ -20,7 +20,7 @@
 				<VBox>
 
 					<Label text="{i18nModel>Time}"></Label>
-					<TimePicker id="hourPicker" displayFormat="HH:mm:ss"
+					<TimePicker id="hourPicker" displayFormat="HH:mm:ss" change="checkDate"
 						valueFormat="HH:mm:ss"
 						dateValue="{path : 'RescheduleModel>/0/reschedule_start_time' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }">
 					</TimePicker>
