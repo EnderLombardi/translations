@@ -1065,6 +1065,13 @@ airbus.mes.disruptions.ModelManager = {
 	
 	getCurrentSiteTimeURL: function () {
 		return this.urlModel.getProperty("getCurrentSiteTime");
+	},
+	setDefaultResolutionGroup : function(oEvt){
+		var sPath = oEvt.getSource().getSelectedItem().getBindingContext("disruptionRsnRespGrp").getPath()+"/DEFAULT_RESOLVER_GROUP";
+		if(sap.ui.getCore().getModel("disruptionRsnRespGrp").getProperty(sPath)!='---'){
+			sap.ui.getCore().getModel("DisruptionDetailModel").setProperty("/responsibleGroup",sap.ui.getCore().getModel("disruptionRsnRespGrp").getProperty(sPath));
+			sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
+		}
 	}
 
 };
