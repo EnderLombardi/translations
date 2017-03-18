@@ -66,8 +66,8 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    rightPlay_Petrol : '<i class="fa fa-play rightIcon petrol"></i>',
 		    rightStop_Petrol :'<i class="fa fa-stop rightIcon petrol" ></i>',
 		    rightCheck : '<i class="fa fa-check rightIcon"></i>',
-		    rightStop : '<i class="fa  fa-exclamation stopIcon rightIcon"></i>',
-		    rightStopWhite : '<i class="fa  fa-exclamation stopIcon white-two rightIcon"></i>',
+		    rightStop : '<i class="fa  fa-stop stopIcon rightIcon petrol"></i>',
+		    rightStopWhite : '<i class="fa  fa-stop stopIcon white-two rightIcon"></i>',
 		    
 		    rightTTFreeze : '<i class="fa  fa-long-arrow-up rightIcon petrol"></i>',
 		    rightTTFreezeWhite : '<i class="fa  fa-long-arrow-up rightIcon stopIcon white-two"></i>',
