@@ -934,10 +934,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             // we apply the a filter
             switch (oEvent.getSource().getSelectedKey()) {
                 case "StatusBlocked":
-                    aMyFilter.push(new sap.ui.model.Filter("status", "EQ", "5"));
-                    aMyFilter.push(new sap.ui.model.Filter("status", "EQ", "6"));
-                    aMyFilter.push(new sap.ui.model.Filter("status", "EQ", "7"));
-                    aMyFilter.push(new sap.ui.model.Filter("status", "EQ", "4"));
+                    aMyFilter.push(new sap.ui.model.Filter("BLOCKING_DISRUPTION", "EQ", "1"));
                     break;
                 case "StatusPaused":
                     aMyFilter.push(new sap.ui.model.Filter("status", "EQ", "3"));
@@ -957,7 +954,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
                     break;  
                 default:
             }
-            sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, false));
+            sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));
         }
     },
 
