@@ -2080,6 +2080,10 @@ Linetracker View (Main Table)
 
 #idLinetracker #idLinetracker--linetrackerTable-sapUiTableColHdrScr div > .sapMTB { border: none; }
 
+#idLinetracker tr td:nth-child(4), #idLinetracker tr td:nth-child(6) { border-right: 2px solid #B5B5B5; }
+
+#idLinetracker tr td:nth-child(3) { border-left: 2px solid #B5B5B5; }
+
 .stationBtns.sapMBtn > .sapMBtnInner { text-align: center !important; }
 
 .dialogForm .sapMFlexItem:nth-child(2) { width: 100% !important; }
@@ -2144,10 +2148,6 @@ tr th:nth-child(2),
 tr th:nth-child(4),
 tr th:nth-child(6),
 */
-tr td:nth-child(4), tr td:nth-child(6) { border-right: 2px solid #B5B5B5; }
-
-tr td:nth-child(3) { border-left: 2px solid #B5B5B5; }
-
 #__column1, #idLinetracker--percentageLabel { border-left: 2px solid #B5B5B5; }
 
 #__column2, #__column4 { border-right: 2px solid #B5B5B5; }

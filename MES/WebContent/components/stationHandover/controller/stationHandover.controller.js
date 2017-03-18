@@ -207,7 +207,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	 **************************************************************************/
 	filterType : function(oEvt) {
 
-		var aPath = oEvt.getSource().getContent()[0].getSelectedContextPaths()
+		var aPath = oEvt.getSource().getSelectedContextPaths();
 		var oModel = airbus.mes.stationHandover.oView.getModel("typeModel");
 
 		airbus.mes.stationHandover.util.ModelManager.filter.aType = [];

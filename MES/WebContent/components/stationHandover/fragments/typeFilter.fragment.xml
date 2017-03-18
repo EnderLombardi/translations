@@ -2,10 +2,10 @@
 	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
 	<Popover placement="Bottom" showHeader="false" showArrow="false"
 		contentWidth="auto" contentHeight="auto" offsetY="5px" offsetX="5px"
-		class="MyproductionGroupPopover" afterClose="filterType">
+		class="MyproductionGroupPopover">
 
 		<List id="typeFilter" items="{ path : 'typeModel>/' }" mode="MultiSelect"
-			includeItemInSelection="true" selectionChange="onSelectionChange">
+			includeItemInSelection="true" selectionChange="filterType">
 			<items>
 				<StandardListItem class="stationFilter" key="{typeModel>key}"
 					title="{path:'typeModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}"

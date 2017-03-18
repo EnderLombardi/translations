@@ -2,7 +2,7 @@
 	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
 	<Popover placement="Bottom" showHeader="false" showArrow="false"
 		contentWidth="auto" contentHeight="auto" offsetY="5px" offsetX="5px"
-		class="MyproductionGroupPopover" afterClose="filterStation">
+		class="MyproductionGroupPopover">
 
 		<List id="typeFilter" items="{path: 'phStation>/', sorter: {
             path : 'taktStartDate' , descending : false }}" mode="MultiSelect"
