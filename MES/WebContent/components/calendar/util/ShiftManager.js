@@ -612,8 +612,6 @@ airbus.mes.calendar.util.ShiftManager = {
 				css : "begin_shifht"
 			});
 			
-			//after the first step
-			if (index > 0){
 				// If different date show border of the start shift
 				//EndDate of current shift
 				d8 =  this.shifts[index].EndDate;
@@ -627,7 +625,6 @@ airbus.mes.calendar.util.ShiftManager = {
 						end_date : d9,
 						css : "end_shifht"
 					});
-				}
 			}
 		}
 		

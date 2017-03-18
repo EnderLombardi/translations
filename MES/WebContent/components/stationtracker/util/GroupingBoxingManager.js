@@ -105,20 +105,20 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 	
 	fillStartDate : function(oStartDate){
 		if(this.minDate === undefined) {
-			this.minDate = oStartDate;
+			this.minDate = oStartDate.setHours(0,0,0);
 			
 		} else if (this.minDate > oStartDate) {
-			this.minDate = oStartDate;
+			this.minDate = oStartDate.setHours(0,0,0);
 			
 		}
 	},
 
 	fillEndDate : function(oEndDate){
 		if(this.maxDate === undefined) {
-			this.maxDate = oEndDate;
+			this.maxDate = oEndDate.setHours(0,0,0);
 			
 		} else if (this.maxDate < oEndDate) {
-			this.maxDate = oEndDate;
+			this.maxDate = oEndDate.setHours(0,0,0);
 			
 		}
 	},

@@ -190,7 +190,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	     ****************************************************************************/
 	    updateDateLabel : function(oCalendar){
 	        var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern: "dd MMM yyyy", calendarType: sap.ui.core.CalendarType.Gregorian});
-	        var oText = airbus.mes.calendar.oView.byId("dateLabel");
+	        var oText = airbus.mes.calendar.oView.byId("calendardateButton");
 	        var aSelectedDates = oCalendar.getSelectedDates();
 	        var oDate;
 	        if (aSelectedDates.length > 0 ) {
