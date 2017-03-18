@@ -610,7 +610,7 @@ airbus.mes.calendar.util.ShiftManager = {
 				start_date : d3,
 				end_date : d4,
 				css : "begin_shifht"
-			});
+			}); 
 			
 				// If different date show border of the start shift
 				//EndDate of current shift
