@@ -233,11 +233,11 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var sValue = oEvt.getSource().mProperties.selected;
 		if (sValue) {
 
-			airbus.mes.stationHandover.util.ModelManager.filter.noTime = new sap.ui.model.Filter("duration", "EQ", "");
+			airbus.mes.stationHandover.util.ModelManager.filter.noTime = new sap.ui.model.Filter("duration", "EQ", "0.000");
 
 		} else {
 
-			airbus.mes.stationHandover.util.ModelManager.filter.noTime = new sap.ui.model.Filter("duration", "NE", "");
+			airbus.mes.stationHandover.util.ModelManager.filter.noTime = new sap.ui.model.Filter("duration", "NE", "0.000");
 
 		}
 

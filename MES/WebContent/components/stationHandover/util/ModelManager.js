@@ -22,7 +22,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 				}
 			}
 		}),
-		"noTime" : new sap.ui.model.Filter("duration", "NE", ""),
+		"noTime" : new sap.ui.model.Filter("duration", "NE", "0.000"),
 		"selected" : new sap.ui.model.Filter("SELECTED_UI", "EQ", "false"),
 		"station" : new sap.ui.model.Filter({
 			path : "meOriginPhysicalStation",
