@@ -37,7 +37,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 				}
 			}
 		}),
-		"aType" : [ "" ],
+		"aType" : [ "NO" ],
 		"aStation" : [],
 	},
 
