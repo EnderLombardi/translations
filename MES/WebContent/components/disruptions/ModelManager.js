@@ -904,8 +904,7 @@ airbus.mes.disruptions.ModelManager = {
 	 * Get Url for the Post Attached document 
 	 */
 	getPostAttachedDocumentUrl: function () {
-		// return this.urlModel.getProperty('postAttachedDocument');
-		return this.addLoginToUrl('http://dmivie0.eu.airbus.corp:55600/airbus-rswebservice/rest/kmresource/createresource?');
+		return this.urlModel.getProperty('postAttachedDocument');
 	},
 
 	/***************************************************************************
@@ -940,8 +939,7 @@ airbus.mes.disruptions.ModelManager = {
 	 * Get Url for the Post retrieve document 
 	 */
 	getPostRetrieveDocumentUrl: function () {
-		// return this.urlModel.getProperty('postRetrieveDocument');
-		return this.addLoginToUrl('http://dmivie0.eu.airbus.corp:55600/airbus-rswebservice/rest/kmresource/readresource?');
+		return this.urlModel.getProperty('postRetrieveDocument');
 	},
 
 
@@ -978,8 +976,7 @@ airbus.mes.disruptions.ModelManager = {
 	 * Get Url for the Post Attached document 
 	 */
 	getPostUpdateAttachedDocumentUrl: function () {
-		// return this.urlModel.getProperty('postUpdateAttachedDocument');
-		return this.addLoginToUrl('http://dmivie0.eu.airbus.corp:55600/airbus-rswebservice/rest/kmresource/updateresource?');
+		return this.urlModel.getProperty('postUpdateAttachedDocument');
 	},
 
 	/***************************************************************************
@@ -1014,8 +1011,7 @@ airbus.mes.disruptions.ModelManager = {
 	* Get Url for the delete Attached document 
 	*/
 	getPostDeleteAttachedDocumentUrl: function () {
-		// return this.urlModel.getProperty('postDeleteAttachedDocument');
-		return this.addLoginToUrl('http://dmivie0.eu.airbus.corp:55600/airbus-rswebservice/rest/kmresource/deleteresource?');
+		return this.urlModel.getProperty('postDeleteAttachedDocument');
 	},
 	
 	getCurrentSiteTimeURL: function () {
@@ -1028,10 +1024,5 @@ airbus.mes.disruptions.ModelManager = {
 			sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
 		}
 	},
-
-	addLoginToUrl  : function(urlToAdd) {
-		urlToAdd += "&j_user=" + Cookies.getJSON("login").user + "&j_password=" + Cookies.getJSON("login").mdp;
-		return urlToAdd;
-	}
 
 };
