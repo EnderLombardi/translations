@@ -100,7 +100,7 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 					
 				} else {
 				
-				console.log("missing part date error");
+				console.log("missing part not found in stationTracker");
 				return;
 				
 			}
