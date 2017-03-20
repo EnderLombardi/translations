@@ -23,8 +23,8 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    leftOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon yellow petrol"><b style="padding-left:1px">',
 		    leftOswIcon_TealBlueWhite: '<i class="fa fa-refresh oswIcon teal-blue white">',
 		
-		    leftTTFreeze : '<i class="fa  fa-long-arrow-up left"></i>',
-		    leftTTFreezeWhite : '<i class="fa  fa-long-arrow-up white-two left"></i>',
+		    leftTTFreeze : '<i class="fa  fa-arrow-up left"></i>',
+		    leftTTFreezeWhite : '<i class="fa  fa-arrow-up white-two left"></i>',
 		    
 			leftOswIcon_Constructor : function(elt, sStatus) {
 			    						
@@ -69,8 +69,8 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    rightStop : '<i class="fa  fa-stop stopIcon rightIcon petrol"></i>',
 		    rightStopWhite : '<i class="fa  fa-stop stopIcon white-two rightIcon"></i>',
 		    
-		    rightTTFreeze : '<i class="fa  fa-long-arrow-up rightIcon petrol"></i>',
-		    rightTTFreezeWhite : '<i class="fa  fa-long-arrow-up rightIcon stopIcon white-two"></i>',
+		    rightTTFreeze : '<i class="fa  fa-arrow-up rightIcon petrol"></i>',
+		    rightTTFreezeWhite : '<i class="fa  fa-arrow-up rightIcon stopIcon white-two"></i>',
 		    
 		    rightOswIcon_Constructor: function(elt) {
 		        return airbus.mes.stationtracker.util.BoxDisplayManager.rightOswIcon + elt + '</b></i>';
