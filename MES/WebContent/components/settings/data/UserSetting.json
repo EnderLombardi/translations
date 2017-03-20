@@ -1,5 +1,5 @@
 { "Rowsets" : { 
-	"DateCreated" : "2017-03-15T11:06:06", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-03-15T10:06:06+0100", "EndDate" : "2017-03-15T11:06:06+0100", "CachedTime" : "", 
+	"DateCreated" : "2017-03-20T17:58:08", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-03-20T16:58:08+0100", "EndDate" : "2017-03-20T17:58:08+0100", "CachedTime" : "", 
 	"Rowset" : [ 
 	{ "Columns" : { 
 		"Column" : [ 
@@ -20,7 +20,7 @@
 		{ "Name" : "Takt_End", "SourceColumn" : "Takt_End", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
 		{ "Name" : "customLineBO", "SourceColumn" : "customLineBO", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
 	"Row" : [ 
-		{ "user" : "NG560DB", "program" : "A330", "line" : "PA", "station" : "PA_IP1-2-OW", "msn" : "01782", "current_flag" : "X", "site" : "FNZ1", "language" : "en", "programDescription" : "AL SAINT NAZAIRE", "lineDescription" : "Pointe Avant", "stationDescription" : "OW \"ACPNG\" Test", "siteDescription" : "Saint Nazaire", "Takt_Duration" : "6", "Takt_Start" : "2017-03-09T22:00:00", "Takt_End" : "2017-03-10T04:00:00", "customLineBO" : "---" } ]
+		{ "user" : "NG560DB", "program" : "A330", "line" : "A330_LINE_GROUP_2", "station" : "PHYS_ST_IP22", "msn" : "22348", "current_flag" : "X", "site" : "CHES", "language" : "en", "programDescription" : "Airbus A320", "lineDescription" : "Chester line 2", "stationDescription" : "IP22 Physical Station", "siteDescription" : "Chester", "Takt_Duration" : "58", "Takt_Start" : "2016-11-19T09:45:53", "Takt_End" : "2016-11-19T09:45:53", "customLineBO" : "ZCustomLineBO:FNZ1,A330_LINE_GROUP_1" } ]
 		 } ]
 	 }
  }
