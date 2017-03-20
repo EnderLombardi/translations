@@ -395,26 +395,26 @@ airbus.mes.disruptions.ModelManager = {
 							// Load disruption Model again for updated message
 							airbus.mes.disruptions.ModelManager.createEditFlag = true;
 
+
+							// If disruption is set to blocking
+							if (iGravity == "3") {
+								// Set paused value in operation detail model
+								sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].paused = "---";
+								sap.ui.getCore().getModel("operationDetailModel").refresh();
+							}
+							
 							airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation();
+
+							sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
 
 							// Refresh station tracker
 							airbus.mes.shell.oView.getController().renderStationTracker();
 
-							sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
-
 						} else if (currentPage == "disruptiontrackerView") {
-							//airbus.mes.disruptions.ModelManager.updateDisruptionModel();
 							airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(sMessageRef, "/0");
 							airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 							sap.ui.getCore().byId("disruptionDetailPopUp--disruptDetailNavContainer").back();
 
-						}
-
-						// If disruption is set to blocking
-						if (iGravity == "3") {
-							// Set paused value in operation detail model
-							sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].paused = "---";
-							sap.ui.getCore().getModel("operationDetailModel").refresh();
 						}
 
 					} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
@@ -443,51 +443,6 @@ airbus.mes.disruptions.ModelManager = {
 		});
 
 	},
-
-	/*updateDisruptionModel: function () {
-
-		var oModel = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");
-
-		var disruptionModel = oModel.getProperty("/Rowsets/Rowset/0/Row/0");
-
-		disruptionModel.Reason = sap.ui.getCore().byId("createDisruptionView--selectAttribute").getSelectedKey();
-
-		if (sap.ui.getCore().byId("createDisruptionView--selectResponsibleGrp").getSelectedItem()) {
-			disruptionModel.ResponsibleGroupDesc = sap.ui.getCore().byId("createDisruptionView--selectResponsibleGrp").getSelectedItem().getText();
-			disruptionModel.ResponsibleGroup = sap.ui.getCore().byId("createDisruptionView--selectResponsibleGrp").getSelectedKey();
-		}
-
-		disruptionModel.RootCause = sap.ui.getCore().byId("createDisruptionView--selectRootCause").getSelectedKey();
-
-		disruptionModel.TimeLost = sap.ui.getCore().byId("createDisruptionView--timeLost").getValue();
-
-		disruptionModel.RequiredFixBy = sap.ui.getCore().byId("createDisruptionView--expectedDate").getValue() + " "
-			+ sap.ui.getCore().byId("createDisruptionView--expectedTime").getValue();
-
-		disruptionModel.PromisedDateTime = sap.ui.getCore().byId("createDisruptionView--promisedDate").getValue() + " "
-			+ sap.ui.getCore().byId("createDisruptionView--promisedTime").getValue();
-
-		var sComment = sap.ui.getCore().byId("createDisruptionView--comment").getValue();
-		var currDate = new Date();
-		var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
-
-		var oComment = {
-			"Action": airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("comment"),
-			"Comments": sComment,
-			"Counter": "",
-			"Date": date,
-			"MessageRef": disruptionModel.MessageRef,
-			"UserFullName": (sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + sap.ui
-				.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
-		};
-
-		var commentModel = oModel.getProperty("/Rowsets/Rowset/1/Row");
-
-		commentModel.push(oComment);
-
-		oModel.refresh();
-
-	},*/
 
 	/***************************************************************************
 	 * Get URL to Escalate Disruption
