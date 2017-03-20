@@ -131,7 +131,7 @@
 						</VBox>
 					</f:content>
 				</f:SimpleForm>
-				<List id="idListDocument" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/'}" visible="{path:'DesktopFilesModel>/length', formatter: 'airbus.mes.disruptions.Formatter.isEmpty'}">
+				<List id="idListDocument" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/', sorter: {path: 'fileCount', descending : false}}" visible="{path:'DesktopFilesModel>/length', formatter: 'airbus.mes.disruptions.Formatter.isEmpty'}">
 					<!-- <StandardListItem/> -->
 					<headerToolbar class="document-toolbar">
 						<Toolbar>
@@ -147,7 +147,7 @@
 							<Label id="document-id" class="document-id" text="{DesktopFilesModel>fileCount}" />
 							<Label id="document-title" class="document-title" text="{DesktopFilesModel>Title}" />
 							<Label id="document-description" class="document-description" text="{DesktopFilesModel>Description}" />
-							<Input width="60%" id="document-description-input" class="document-description" visible="false" value="{DesktopFilesModel>Description}" />
+							<Input width="58%" id="document-description-input" class="document-description" visible="false" value="{DesktopFilesModel>Description}" />
 							<Label class="document-size" text="{path:'DesktopFilesModel>Size', formatter: 'airbus.mes.disruptions.Formatter.getFileSize'}" />
 							<HBox id="document-button" class= "document-button" visible="{path:'DesktopFilesModel>Status', formatter: 'airbus.mes.disruptions.Formatter.getDocumentStatus'}">
 								<core:Icon id="document-edit-test" class="document-edit" src="sap-icon://edit" press="onEditPress" />

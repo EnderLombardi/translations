@@ -241,7 +241,7 @@
 								press="viewAttachments" design="Transparent" class="transparentBlueButton"  />
 
 						<List id="idListDocument" class="sapUiSmallMarginBegin"
-							items="{path: 'operationDisruptionsModel>attachedDocument'}" visible="{=${operationDisruptionsModel>showAttachedDocument} === true}">
+							items="{path: 'operationDisruptionsModel>attachedDocument', sorter: {path: 'fileCount', descending : false}}" visible="{=${operationDisruptionsModel>showAttachedDocument} === true}">
 							<headerToolbar class="document-toolbar">
 								<Toolbar>
 									<Title text="{i18nModel>attachedDocument} ({operationDisruptionsModel>attachedDocument/length})" />
