@@ -27,7 +27,7 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    leftTTFreezeWhite : '<i class="fa  fa-arrow-up white-two left"></i>',
 		    
 			leftOswIcon_Constructor : function(elt, sStatus) {
-			    						
+			 				 		
 				switch(sStatus) {
 			    case "1":
 			    	return airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon1 + elt + "1" + '</b></i>';
