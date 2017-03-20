@@ -808,13 +808,13 @@ airbus.mes.disruptions.ModelManager = {
 
 			},
 			success: function (result, status, xhr) {
-				2
 				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
 
 				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
 					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 
 				} else { // Success
+					airbus.mes.disruptions.__enterCommentDialogue.close();
 
 					var sMessageSuccess = i18nModel.getProperty("successRefused");
 					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
