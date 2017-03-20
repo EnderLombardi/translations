@@ -368,9 +368,8 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.9": iGravity,
 				"Param.10": airbus.mes.settings.ModelManager.user,
 				"Param.11": dPromisedDate,
-				"Param.12": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc"),
-				"Param.13": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo").split(",")[1], // Operation
-				// number
+				"Param.12": sap.ui.getCore().getModel("DisruptionDetailModel").oData.sfcStepBO.split("SFCBO:")[1].split(",")[1], //SFC
+				"Param.13": sap.ui.getCore().getModel("DisruptionDetailModel").oData.operation.split(",")[1], // Operation number
 				"Param.14": "DEFAULT",
 				"Param.15": "A",
 				"Param.16": airbus.mes.shell.ModelManager.json2xml({
@@ -407,7 +406,7 @@ airbus.mes.disruptions.ModelManager = {
 							//airbus.mes.disruptions.ModelManager.updateDisruptionModel();
 							airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(sMessageRef, "/0");
 							airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
-							sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer").back();
+							sap.ui.getCore().byId("disruptionDetailPopUp--disruptDetailNavContainer").back();
 
 						}
 

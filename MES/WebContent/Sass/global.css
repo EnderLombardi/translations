@@ -4226,7 +4226,7 @@ DISRUPTIONTRACKER
 
 #disrptTrackerSettings header { box-shadow: 0 0 5px #333; overflow: visible; }
 
-.classDisruptionDetailPopUp .sapMPageBusyCoversAll > section { overflow-y: scroll !important; }
+.classdisruptionDetailPopUp .sapMPageBusyCoversAll > section { overflow-y: scroll !important; }
 
 #disruptiontrackerView--disruptionsTable .sapUiTableColHdrCnt { height: 40px !important; }
 

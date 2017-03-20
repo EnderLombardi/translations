@@ -11,21 +11,19 @@
 					<l:Grid defaultSpan="L12 M12 S12">
 						<l:content>
 						
-							<!-- <ComboBox id="customJigTool" placeholder="{i18nModel>AddNewJig_Tool}" showSecondaryValues= "true"
-								items="{ path: 'JigtoolDropDownListModel>/Rowsets/Rowset/0/Row',
-										sorter: { path: 'materialDescription' } }">
+							<ComboBox id="customJigTool" placeholder="{i18nModel>AddNewJig_Tool}"
+								items="{ path: 'JigtoolDropDownListModel>/toolInfoList',
+										sorter: { path: 'toolDescription' } }">
 								<layoutData>
 									<l:GridData span="L7 M7 S12" />
 								</layoutData>
-								<core:ListItem key="{JigtoolDropDownListModel>materialDescription}" text="{JigtoolDropDownListModel>materialDescription}"
-									additionalText = "{i18nModel>materialType} {JigtoolDropDownListModel>materialType}"/>
+								<core:ListItem key="{JigtoolDropDownListModel>toolDescription}" text="{JigtoolDropDownListModel>toolDescription}"/>
 							</ComboBox>
-							 -->
-							<Input id="customJigTool" placeholder="{i18nModel>AddNewJig_Tool}">
+							<!-- <Input id="customJigTool" placeholder="{i18nModel>AddNewJig_Tool}">
 								<layoutData>
 									<l:GridData span="L7 M7 S12" />
 								</layoutData>
-							</Input>
+							</Input> -->
 
 							<Input id="jigToolQty" value="1">
 								<layoutData>

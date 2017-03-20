@@ -615,7 +615,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		}
 
 		else if (currentPage == "disruptiontrackerView"){
-			oOperDetailNavContainer = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
+			oOperDetailNavContainer = sap.ui.getCore().byId("disruptionDetailPopUp--disruptDetailNavContainer");
 		}
 
 		oOperDetailNavContainer.back();

@@ -93,7 +93,7 @@ sap.ui
 				$("#operationDetailPopup--operationDetailPopUp").css('display', 'none');
 				break;
 			case "disruptiontrackerView":
-				$("#disruptionDetailPopup--disruptionDetailPopUp").css('display', 'none');
+				$("#disruptionDetailPopUp--disruptionDetailPopUp").css('display', 'none');
 			}
 
 			// Open Document viewer
@@ -112,7 +112,7 @@ sap.ui
 				$("#operationDetailPopup--operationDetailPopUp").css('display', 'block');
 				break;
 			case "disruptiontrackerView":
-				$("#disruptionDetailPopup--disruptionDetailPopUp").css('display', 'block');
+				$("#disruptionDetailPopUp--disruptionDetailPopUp").css('display', 'block');
 			}
 		},
 

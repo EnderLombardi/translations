@@ -279,14 +279,14 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 					// Create Pop-Up as a fragment
 					if (airbus.mes.disruptiontracker.detailPopUp === undefined) {
 
-						airbus.mes.disruptiontracker.detailPopUp = sap.ui.xmlfragment("disruptionDetailPopup", "airbus.mes.disruptiontracker.disruptionDetailPopup",
+						airbus.mes.disruptiontracker.detailPopUp = sap.ui.xmlfragment("disruptionDetailPopUp", "airbus.mes.disruptiontracker.disruptionDetailPopUp",
 							airbus.mes.disruptiontracker.oView.getController());
 
 						airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.detailPopUp);
 					}
 
 					// Add View Disruptions view to pop-up navigation container
-					airbus.mes.disruptiontracker.oView.oController.nav = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
+					airbus.mes.disruptiontracker.oView.oController.nav = sap.ui.getCore().byId("disruptionDetailPopUp--disruptDetailNavContainer");
 					airbus.mes.shell.util.navFunctions.viewDisruptionsList(airbus.mes.disruptiontracker.oView.oController.nav, 0);
 					
 					airbus.mes.disruptiontracker.detailPopUp.open();
@@ -326,16 +326,16 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	onNavigate : function() {
 
 		if (this.nav.getCurrentPage().sId == "createDisruptionView") {
-			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(false);
-			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(false);
+			sap.ui.getCore().byId("disruptionDetailPopUp--btnUpdateDisruption").setVisible(false);
+			sap.ui.getCore().byId("disruptionDetailPopUp--btnCancelDisruption").setVisible(false);
 		}
 	},
 
 	afterNavigate : function() {
 
 		if (this.nav.getCurrentPage().sId == "createDisruptionView") {
-			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(true);
-			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(true);
+			sap.ui.getCore().byId("disruptionDetailPopUp--btnUpdateDisruption").setVisible(true);
+			sap.ui.getCore().byId("disruptionDetailPopUp--btnCancelDisruption").setVisible(true);
 		}
 	},
 

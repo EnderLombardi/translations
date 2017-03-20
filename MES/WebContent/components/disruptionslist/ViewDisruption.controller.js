@@ -626,6 +626,10 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 		// Set the data for this new model from the already loaded model
 		var oBindingContext = oEvent.getSource().getBindingContext("operationDisruptionsModel");
 		var oData = oBindingContext.getProperty(oBindingContext.sPath);
+		
+		// Get pop-up id based on currengt view
+		var popUpId = "operationDetailPopup";
+		if(nav.getCurrentPage().sId == "disruptiontrackerView"){ popUpId = "disruptionDetailPopUp";}
 
 		// Navigate to Edit Screen
 		airbus.mes.shell.util.navFunctions.createDisruptionScreen(this.getView().getParent(),
@@ -633,9 +637,9 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 				mode: "Edit",
 				oData: oData
 			},
-			sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
-			sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-			sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption") // Cancel Button
+			0, // Create Button
+			sap.ui.getCore().byId(popUpId+"--btnUpdateDisruption"), // Update Button
+			sap.ui.getCore().byId(popUpId+"--btnCancelDisruption") // Cancel Button
 		);
 	},
 
