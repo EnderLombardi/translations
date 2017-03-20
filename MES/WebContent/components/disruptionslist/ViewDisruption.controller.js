@@ -234,14 +234,25 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 	 */
 	onConfirmDelete: function (oEvent) {
 
-		airbus.mes.disruptionslist.oView.setBusy(true);
-
-		var comment = airbus.mes.disruptions.Formatter.actions.del + sap.ui.getCore().byId("disruptionCommentBox").getValue();
+		var sComment = sap.ui.getCore().byId("disruptionCommentBox").getValue();
+		var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
+		
+		// Comment is mandatory while rejection
+		if (sComment == "") {
+			airbus.mes.shell.ModelManager.messageShow(i18nModel.getProperty("plsEnterComment"));
+			return;
+		}
+		
+		sComment = airbus.mes.disruptions.Formatter.actions.del + sComment;
+		
 
 		var msgRef = sap.ui.getCore().byId("disruptionCommentMsgRef").getText();
 		var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();
 
-		var i18nModel = airbus.mes.disruptionslist.oView.getModel("i18nModel");
+		
+
+		airbus.mes.disruptions.__enterCommentDialogue.setBusyIndicatorDelay(0);
+		airbus.mes.disruptions.__enterCommentDialogue.setBusy(true);
 
 		// Call Revoke Disruption Service
 		jQuery.ajax({
@@ -250,16 +261,16 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 				"Param.1": airbus.mes.settings.ModelManager.site,
 				"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"Param.3": msgRef,
-				"Param.4": comment
+				"Param.4": sComment
 			},
 			error: function (xhr, status, error) {
-				airbus.mes.disruptionslist.oView.setBusy(false);
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
 				airbus.mes.disruptions.func.tryAgainError(i18nModel);
 			},
 			success: function (result, status, xhr) {
 
 				airbus.mes.disruptions.__enterCommentDialogue.close();
-				airbus.mes.disruptionslist.oView.setBusy(false);
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
 
 				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
 					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
