@@ -4280,6 +4280,8 @@ DISRUPTIONTRACKER
 
 #disruptionDetailView { overflow: auto; background-color: #E9EEF3; }
 
+#disruptionDetailView #disruptionDetailView--comment { padding-right: 6rem; }
+
 #disruptionDetailView .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox { background-color: #E9EEF3; }
 
 #disruptionDetailView .sapUiFormTitle { background-color: transparent; }
@@ -4955,45 +4957,47 @@ QUARANTINE USELESS CODE
 /*******************
 END OF QUARANTINE
 ********************/
-#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-item { background: #EEEEEE; }
+#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-item, #disruptionDetailView--idListDocument [data-attacheddocumentstatus="true"] .document-item { background: #EEEEEE; }
 
-#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-title { text-decoration: line-through; }
+#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-title, #disruptionDetailView--idListDocument [data-attacheddocumentstatus="true"] .document-title { text-decoration: line-through; }
 
-#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-description { text-decoration: line-through; }
+#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-description, #disruptionDetailView--idListDocument [data-attacheddocumentstatus="true"] .document-description { text-decoration: line-through; }
 
-#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-size { text-decoration: line-through; }
+#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-size, #disruptionDetailView--idListDocument [data-attacheddocumentstatus="true"] .document-size { text-decoration: line-through; }
 
-#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-id { text-decoration: line-through; }
+#createDisruptionView--idListDocument [data-attacheddocumentstatus="true"] .document-id, #disruptionDetailView--idListDocument [data-attacheddocumentstatus="true"] .document-id { text-decoration: line-through; }
 
-#createDisruptionView--idListDocument .document-item { display: inline-block; text-align: center; vertical-align: middle; min-height: 3rem; width: 100%; }
+#createDisruptionView--idListDocument .document-item, #disruptionDetailView--idListDocument .document-item { display: inline-block; text-align: center; vertical-align: middle; min-height: 3rem; width: 100%; }
 
-#createDisruptionView--idListDocument .document-item .document-id { padding: 1rem 0; font-weight: bold; font-size: 1rem; width: 2%; padding-left: 10px; float: left; }
+#createDisruptionView--idListDocument .document-item .document-id, #disruptionDetailView--idListDocument .document-item .document-id { padding: 1rem 0; font-weight: bold; font-size: 1rem; width: 2%; padding-left: 10px; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-title { padding: 1rem 0; font-weight: bold; font-size: 1rem; width: 20%; padding-left: 10px; float: left; }
+#createDisruptionView--idListDocument .document-item .document-title, #disruptionDetailView--idListDocument .document-item .document-title { padding: 1rem 0; font-weight: bold; font-size: 1rem; width: 20%; padding-left: 10px; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-description { padding: 1rem 0; font-size: 1rem; width: 58%; margin: 0 2.5%; float: left; white-space: normal; }
+#createDisruptionView--idListDocument .document-item .document-description, #disruptionDetailView--idListDocument .document-item .document-description { padding: 1rem 0; font-size: 1rem; width: 58%; margin: 0 2.5%; float: left; white-space: normal; }
 
-#createDisruptionView--idListDocument .document-item .document-description-input { padding: 0; float: left; }
+#createDisruptionView--idListDocument .document-item .document-description-input, #disruptionDetailView--idListDocument .document-item .document-description-input { padding: 0; float: left; }
 
-#createDisruptionView--idListDocument .document-item .sapMInputBaseWidthPadding { padding: 0; font-size: 1rem; height: 2rem; }
+#createDisruptionView--idListDocument .document-item .sapMInputBaseWidthPadding, #disruptionDetailView--idListDocument .document-item .sapMInputBaseWidthPadding { padding: 0; font-size: 1rem; height: 2rem; }
 
-#createDisruptionView--idListDocument .document-item .sapMInputBaseInner { padding: 0; font-size: 1rem; height: 2rem; margin: .5rem 0; }
+#createDisruptionView--idListDocument .document-item .sapMInputBaseInner, #disruptionDetailView--idListDocument .document-item .sapMInputBaseInner { padding: 0; font-size: 1rem; height: 2rem; margin: .5rem 0; }
 
-#createDisruptionView--idListDocument .document-item .document-size { padding: 1rem 0; font-size: 1rem; width: 8%; float: left; }
+#createDisruptionView--idListDocument .document-item .document-size, #disruptionDetailView--idListDocument .document-item .document-size { padding: 1rem 0; font-size: 1rem; width: 8%; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-button { padding: .7rem 0; width: 5%; float: left; }
+#createDisruptionView--idListDocument .document-item .document-button, #disruptionDetailView--idListDocument .document-item .document-button { padding: .7rem 0; width: 5%; float: left; background-color: white; }
 
-#createDisruptionView--idListDocument .document-item .document-button .document-edit { font-size: 1.375rem; color: #005483; padding: 0 .5rem; }
+#createDisruptionView--idListDocument .document-item .document-button .document-edit, #disruptionDetailView--idListDocument .document-item .document-button .document-edit { font-size: 1.375rem; color: #005483; padding: 0 .5rem; }
 
-#createDisruptionView--idListDocument .document-item .document-button .document-delete { font-size: 1.375rem; padding: 0 .5rem; }
+#createDisruptionView--idListDocument .document-item .document-button .document-delete, #disruptionDetailView--idListDocument .document-item .document-button .document-delete { font-size: 1.375rem; padding: 0 .5rem; }
 
-#createDisruptionView--idListDocument .document-item .document-button-edit { padding: .7rem 0; width: 5%; float: left; }
+#createDisruptionView--idListDocument .document-item .document-button-edit, #disruptionDetailView--idListDocument .document-item .document-button-edit { padding: .7rem 0; width: 5%; float: left; background-color: white; }
 
-#createDisruptionView--idListDocument .document-item .document-button-edit .document-accept { font-size: 1.5rem; padding: 0 .5rem; color: green; }
+#createDisruptionView--idListDocument .document-item .document-button-edit .document-accept, #disruptionDetailView--idListDocument .document-item .document-button-edit .document-accept { font-size: 1.5rem; padding: 0 .5rem; color: green; }
 
-#createDisruptionView--idListDocument .document-item .document-button-edit .document-cancel { font-size: 1.5rem; padding: 0 .5rem; color: red; }
+#createDisruptionView--idListDocument .document-item .document-button-edit .document-cancel, #disruptionDetailView--idListDocument .document-item .document-button-edit .document-cancel { font-size: 1.5rem; padding: 0 .5rem; color: red; }
 
 #video-area { height: 400px; width: 500px; }
+
+#disruptionDetailView--idListDocument .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox { background-color: white; }
 
 /*************
 GENERALE RULES

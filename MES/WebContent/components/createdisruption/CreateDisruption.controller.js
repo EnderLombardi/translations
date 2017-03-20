@@ -129,15 +129,6 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		airbus.mes.shell.ModelManager.createJsonModel(core, ["DesktopFilesModel"]);
 	},
 
-	// onAttachPress: function (oEvt) {
-	// 	if (!this.AttachmentDialog) {
-	// 		this.AttachmentDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.AttachmentDialog", airbus.mes.disruptions.AttachmentFile);
-	// 		this.getView().addDependent(this.AttachmentDialog);
-	// 	}
-
-	// 	this.AttachmentDialog.open();
-	// },
-
 	/*
 	 * Local json model is maintained to store the list of attachments 
 	 * attached from the desktop

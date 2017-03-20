@@ -26,6 +26,7 @@ airbus.mes.disruptiondetail.Component.prototype.createContent = function() {
     if (airbus.mes.disruptiondetail.oView === undefined) {
         //    Initialization
         airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
+        airbus.mes.disruptions.AttachmentFile.init(sap.ui.getCore());
 
         // View on XML
         this.oView = sap.ui.view({
@@ -46,9 +47,10 @@ airbus.mes.disruptiondetail.Component.prototype.createContent = function() {
         this.oView.setModel(sap.ui.getCore().getModel("disruptionRsnRespGrp"),"disruptionRsnRespGrp");
         this.oView.setModel(sap.ui.getCore().getModel("disruptionResolverModel"),"disruptionResolverModel");
         
-
         this.oView.setModel(sap.ui.getCore().getModel("JigtoolListModel"),"JigtoolListModel");
         this.oView.setModel(sap.ui.getCore().getModel("MaterialListModel"),"MaterialListModel");
+
+        this.oView.setModel(sap.ui.getCore().getModel("DesktopFilesModel"),"DesktopFilesModel");
 
 
         return this.oView;

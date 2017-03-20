@@ -1,5 +1,8 @@
 //DISRUPTION DETAIL
 #disruptionDetailView{
+    #disruptionDetailView--comment {
+        padding-right: 6rem;
+    }
     overflow: auto;
     .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox{
         background-color: #E9EEF3;
