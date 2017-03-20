@@ -53,8 +53,7 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 		var filterSelected = comboFilter.getSelectedItem();
 		var sorterSelected= comboSorter.getSelectedItemId();
 		
-		if ( filterSelected )
-		{
+		if ( filterSelected ) {
 			var filterCriteria = filterSelected.getBindingInfo("text").binding.oValue;
 			if( query 
 			&& (filterCriteria != undefined)
@@ -78,18 +77,28 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 		
 		var sPath = oEvt.getParameters().rowBindingContext.sPath;
 		var oModel =  airbus.mes.missingParts.oView.getModel("getMissingParts").getProperty(sPath);
+		var aModelR  = sap.ui.getCore().getModel("stationTrackerRModel").getProperty("/Rowsets/Rowset/0/Row");
+		var aModelGood  = [];
 		
 		if ( oModel.workOrder != undefined ) {
 			
-			airbus.mes.missingParts.util.ModelManager.operation = oModel.operation;
+			airbus.mes.missingParts.util.ModelManager.operation = oModel.operation.split(",")[1];
 			airbus.mes.missingParts.util.ModelManager.workOrder = oModel.workOrder;
+			//Search the start date of missingPart operation clicked...
+			if ( aModelR != undefined ) {
+				
+				aModelGood = aModelR.filter(function(el){
+					return el.WORKORDER_ID === oModel.workOrder && el.OPERATION_BO.split(",")[1] === oModel.operation;
+				})
+				
+			}
 			
-			if ( new Date(oModel.expectedDeliveryDate) != "Invalid Date" ) {
-				
-				scheduler.updateView(oModel.expectedDeliveryDate);
-				airbus.mes.stationtracker.util.ModelManager.selectMyShift();
-				
-			} else {
+				if ( aModelGood.length > 0 ) {
+										
+					scheduler.updateView(aModelGood.START_TIME);
+					airbus.mes.stationtracker.util.ModelManager.selectMyShift();
+					
+				} else {
 				
 				console.log("missing part date error");
 				return;
