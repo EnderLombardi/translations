@@ -1013,7 +1013,7 @@ sap.ui.controller(
         },
         onPressLoginUser: function(){         
           jQuery.ajax({
-              url: airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout"),
+              url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout") + "&target="+window.location.origin+"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled"),
               type: 'POST',
               async: false,
               complete: function () {
@@ -1025,7 +1025,7 @@ sap.ui.controller(
         
         onPressAutoLogin: function(){
             jQuery.ajax({
-                url: airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled"),
+                url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled") + "&target="+window.location.origin+"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled"),
                 type: 'POST',
                 async: false,
                 complete: function () {
