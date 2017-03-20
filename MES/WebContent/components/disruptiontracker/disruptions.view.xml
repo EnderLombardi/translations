@@ -4,7 +4,7 @@
 	<Page class=" sapUiSizeCozy disruptions" showHeader="false">
 
 
-		<Toolbar class="pageHeader">
+		<Toolbar class="pageHeader" id="disruptionTrackerToolbar">
 			<Label text="{disruptiontrackerI18n>disruptionsTitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
 			
 			<Select id="stationComboBox" class="sapUiMediumMarginEnd"

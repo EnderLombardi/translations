@@ -15,6 +15,9 @@ airbus.mes.disruptiontracker.ModelManager = {
 		//Set Busy Indicator
 		airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusyIndicatorDelay(0);
 		airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusy(true);
+		airbus.mes.disruptiontracker.oView.byId("disruptionTrackerToolbar").setBusyIndicatorDelay(0);
+		airbus.mes.disruptiontracker.oView.byId("disruptionTrackerToolbar").setBusy(true);
+		
 
 		var oViewModel = sap.ui.getCore().getModel("disruptionsTrackerModel");
 
@@ -65,11 +68,13 @@ airbus.mes.disruptiontracker.ModelManager = {
 				
 				//Set Busy Indicator
 				airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusy(false);
+				airbus.mes.disruptiontracker.oView.byId("disruptionTrackerToolbar").setBusy(false);
 			},
 
 			error : function(error, jQXHR) {
 				//Set Busy Indicator
 				airbus.mes.disruptiontracker.oView.byId("disruptionsTable").setBusy(false);
+				airbus.mes.disruptiontracker.oView.byId("disruptionTrackerToolbar").setBusy(false);
 			}
 
 		});
