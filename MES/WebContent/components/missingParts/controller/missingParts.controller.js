@@ -84,9 +84,10 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 			airbus.mes.missingParts.util.ModelManager.operation = oModel.operation;
 			airbus.mes.missingParts.util.ModelManager.workOrder = oModel.workOrder;
 			
-			if ( new Date(oModel.expectedDeliveryDate) !== "Invalid Date" ) {
+			if ( new Date(oModel.expectedDeliveryDate) != "Invalid Date" ) {
 				
 				scheduler.updateView(oModel.expectedDeliveryDate);
+				airbus.mes.stationtracker.util.ModelManager.selectMyShift();
 				
 			} else {
 				

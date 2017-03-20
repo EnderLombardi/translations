@@ -456,7 +456,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			var oMissingPart = airbus.mes.missingParts.util.ModelManager;
 	
 	    	if ( airbus.mes.shell.util.navFunctions.splitMissingPart && oMissingPart.operation != "" ) {    		
-	    		if (oBox.operationId != oMissingPart.operation && oBox.shopOrder != oMissingPart.workOrder ) {
+	    		if (oBox.operationId != oMissingPart.operation || oBox.shopOrder != oMissingPart.workOrder ) {
 	    			
 	    			sColorProgress = boxDisplayManager.colorMissingPart;
 	
