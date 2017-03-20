@@ -35,6 +35,10 @@ sap.ui.define([
             var oModel = this.getView().getModel('myTable');
             oModel.setData(oData[0]);
 
+        },
+        
+        onExportPress: function (oEvent) {
+        
         }
 
     });

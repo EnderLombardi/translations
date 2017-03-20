@@ -46,7 +46,10 @@
                         </table:Column>
               		</table:columns>
 					</table:Table>
-					<Button id="saveButton" icon="sap-icon://save" type="Accept" text="Validate" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"></Button>
+					<Toolbar id="toolBar">
+						<Button id="saveButton" icon="sap-icon://save" type="Accept" text="Validate" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"></Button>
+						<Button id="exportButton" icon="sap-icon://download" type="Accept" text="CSV Export" press="onExportPress" ></Button>
+					</Toolbar>
 				</content>
 			</Page>
 		</pages>
