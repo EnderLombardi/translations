@@ -106,6 +106,10 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 				}
 			}
 		});
+		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
+		var oData = oModel.getData();
+		oData = oData.sort(airbus.mes.shell.util.Formatter.fieldComparator(['fileCount']));
+		oModel.setData(oData);
 	},
 
 	onExit: function (oEvt) {

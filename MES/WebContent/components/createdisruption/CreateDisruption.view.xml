@@ -131,7 +131,7 @@
 						</VBox>
 					</f:content>
 				</f:SimpleForm>
-				<List id="idListDocument" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/', sorter: {path: 'fileCount', descending : false}}" visible="{path:'DesktopFilesModel>/length', formatter: 'airbus.mes.disruptions.Formatter.isEmpty'}">
+				<List id="idListDocument" class="sapUiSmallMarginBegin" items="{path: 'DesktopFilesModel>/'}" visible="{path:'DesktopFilesModel>/length', formatter: 'airbus.mes.disruptions.Formatter.isEmpty'}">
 					<!-- <StandardListItem/> -->
 					<headerToolbar class="document-toolbar">
 						<Toolbar>
