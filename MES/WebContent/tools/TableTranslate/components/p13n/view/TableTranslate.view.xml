@@ -1,0 +1,54 @@
+<mvc:View controllerName="airbus.mes.poc.p13n.controller.TableTranslate" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:table="sap.ui.table">
+	<App>
+		<pages>
+			<Page title="TABLE TRANSLATE">
+				<content>
+				<!-- Button Action  -->
+				 <f:SimpleForm editable="true" layout="ResponsiveGridLayout" id="SimpleForm" >
+					<f:content id="FormContent">
+					<ComboBox id="comboboxFile" items="{path: 'myFillCombobox>/Row'}" selectedKey="{path: 'myFillCombobox>/name'}"  change="onSelect">
+						<core:Item key="{path: 'myFillCombobox>name'}" text="{path: 'myFillCombobox>name', formatter: '.formatter.alertData'}" />
+					</ComboBox>
+				</f:content>
+				</f:SimpleForm>
+				<!-- Table of result  -->
+					<table:Table id="tableTranslate"  visible="true" rows="{ path: 'myTable>/data' }">	
+					 <table:columns>
+                        <table:Column>
+                                  <Label text="ID"/>
+							<table:template>
+								<Text text="{ path: 'myTable>id' }" />
+							</table:template>
+                        </table:Column>
+                        <table:Column>
+                                  <Label text="EN"/>
+							<table:template>
+								<Input  placeholder="Empty..." value="{ path: 'myTable>en' }"   type="Text" />
+							</table:template>
+                        </table:Column>
+                        <table:Column>
+                                  <Label text="FR"/>
+							<table:template>
+								<Input placeholder="Empty..." value="{ path: 'myTable>fr' }"  type="Text" />
+							</table:template>
+                        </table:Column>
+						<table:Column>
+                                  <Label text="SP"/>
+							<table:template>
+								<Input placeholder="Empty..." value="{ path: 'myTable>sp' }"   type="Text" />
+							</table:template>
+                        </table:Column>
+						<table:Column>
+                                  <Label text="DE"/>
+							<table:template>
+								<Input placeholder="Empty..." value="{ path: 'myTable>de' }"   type="Text" />
+							</table:template>
+                        </table:Column>
+              		</table:columns>
+					</table:Table>
+					<Button id="saveButton" icon="sap-icon://save" type="Accept" text="Validate" press="onPress" ariaDescribedBy="acceptButtonDescription genericButtonDescription"></Button>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

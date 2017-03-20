@@ -1,0 +1,9 @@
+#__xmlview0--saveButton{
+	position: absolute;
+	right: 2.5%;
+}
+
+
+input[placeholder], [placeholder], *[placeholder] {
+    color: blue !important;
+}
