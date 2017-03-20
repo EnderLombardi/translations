@@ -14,7 +14,14 @@
             "command": "gulp",
             "args": ["service"],
             "isShellCommand": true
+        },
+        {
+            "taskName": "translation_tool",
+            "command": "gulp",
+            "args": ["serve-table-translate"],
+            "isShellCommand": true
         }
+
 
     ]
 }
