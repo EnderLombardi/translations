@@ -7,7 +7,7 @@
 		<content>
 
 			<VBox id="TabChecklist" class="TabChecklist">
-				<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" rootLevel="1"
+				<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable"
 					class="TabChecklistTable" selectionMode="None" visibleRowCount="4"
 					expandFirstLevel="true">
 					<tab:columns>

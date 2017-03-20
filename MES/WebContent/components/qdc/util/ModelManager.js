@@ -49,6 +49,7 @@ airbus.mes.qdc.util.ModelManager = {
 							"description": data.Rowsets.Rowset[0].Row[0].CLOSE_COUNT + "/" + data.Rowsets.Rowset[0].Row[0].TOT_COUNT ,
 							"docType": "Doc",
 							"checked": "true",
+							"exclamation" : airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TOT_COUNT,data.Rowsets.Rowset[0].Row[0].CLOSE_COUNT),
 							"0": {
 								"name": "Record Results",
 								"description": "",
@@ -65,6 +66,7 @@ airbus.mes.qdc.util.ModelManager = {
 							} else {
 								oModel.root[0] = oQDC;							
 							}
+						oModel = sap.ui.getCore().getModel("QDCModel");
 						oModel.refresh(true);
 						airbus.mes.qdc.oView.getController().enableButtons(data);
 						} catch(oException) {
