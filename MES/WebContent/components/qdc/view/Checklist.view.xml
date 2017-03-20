@@ -16,14 +16,13 @@
 							<tab:template>
 								<HBox>
 									<HBox justifyContent="Begin" width="100%">
-										<Text text="{QDCModel>name}" class="AllignItem"
-											visible="{= ${GetQDCDataModel>/Rowsets/Rowset/0/Row/0/QDCSTATUS} !== ''}" />
+										<Text text="{QDCModel>name}" class="AllignItem" />
 										<Label text="" class="adjustWidth" />
 									</HBox>
 									<HBox justifyContent="End">
 										<core:Icon color="orange"
 											src="{path:'QDCModel>checked', formatter:'airbus.mes.qdc.util.Formatter.getExclamationIcon'}" 
-											visible="{parts: [ {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/TOT_COUNT'}, {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/CLOSE_COUNT'} ], formatter: 'airbus.mes.qdc.util.Formatter.getExclamationVisible'}"></core:Icon>
+											visible="{QDCModel>exclamation}"></core:Icon>
 									</HBox>
 								</HBox>
 							</tab:template>
@@ -31,7 +30,7 @@
 						<tab:Column>
 							<Label class="TabChecklistLabel" text="{i18nModel>record}" />
 							<tab:template>
-								<Label text="{parts: [ {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/TOT_COUNT'}, {path: 'GetQDCDataModel>/Rowsets/Rowset/0/Row/0/CLOSE_COUNT'} ], formatter: 'airbus.mes.qdc.util.Formatter.getDescription'}" visible="{= ${GetQDCDataModel>/Rowsets/Rowset/0/Row/0/QDCSTATUS} !== ''}" class="AllignItem" />
+								<Label text="{QDCModel>description}" class="AllignItem" />
 							</tab:template>
 						</tab:Column>
 					</tab:columns>

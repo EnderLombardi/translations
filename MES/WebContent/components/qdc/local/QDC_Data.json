@@ -2,20 +2,7 @@
 	"root": {
 		"name": "root",
 		"description": "root description",
-		"docType": "NonDoc",
-		"0": {
-			
-		},
-		"1": {
-			"name": "Quality Measurements",
-			"description": "1/3",
-			"docType": "NonDoc",
-			"0": {
-				"name": "Record Results",
-				"description": "",
-				"docType": "Doc",
-				"checked": "true"
-			}
-		}
+		"docType": "NonDoc"
+
 	}
 }

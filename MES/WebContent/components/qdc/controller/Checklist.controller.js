@@ -11,8 +11,8 @@ sap.ui.controller("airbus.mes.qdc.controller.Checklist", {
 	 * External tools buttons on switching the display only and Execution mode
 	 * Switch control
 	 */
-	enableButtons: function(){
-		var oData = sap.ui.getCore().getModel("GetQDCDataModel").getData();
+	enableButtons: function(data){
+		var oData = data;
 
 		airbus.mes.qdc.oView.byId("idButtonMEA").setVisible(false);
 		airbus.mes.qdc.oView.byId("idButtonMAA").setVisible(false);
