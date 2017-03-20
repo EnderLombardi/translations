@@ -34,4 +34,16 @@ airbus.mes.stationHandover.util.Formatter = {
 		}
 
 	},
+	
+	displayColor : function(oEvt) {
+		
+		if (oEvt) {
+			
+			return oEvt;
+		} else {
+			
+			return "";
+		}
+		
+	}
 };

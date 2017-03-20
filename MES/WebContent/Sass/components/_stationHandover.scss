@@ -119,6 +119,14 @@
             color: $dandelion-hover;
         }
     }
+    
+    [data-color="true"]{
+       color:$kelly-green;
+    }
+    [data-color="false"]{ 
+        color:$orange;
+    }
+    
 }
 
 #stationHandoverView--TreeTableBasic-rows-row0-rowselecttext.sapUiTableColRowHdr.sapUiTableSelAllEnabled::after,

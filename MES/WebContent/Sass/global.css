@@ -4112,6 +4112,10 @@ DATE PICKER
 
 #stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-table .orange { color: #ffbf00; }
 
+#stationHandoverView--TreeTableBasic [data-color="true"] { color: #4CBB17; }
+
+#stationHandoverView--TreeTableBasic [data-color="false"] { color: #ffa500; }
+
 #stationHandoverView--TreeTableBasic-rows-row0-rowselecttext.sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableRowHdr::after, .sapUiTableRowHdr::after { width: 1rem !important; height: 1rem !important; border: 1px #bfbfbf solid !important; }
 
 #stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr > .sapUiTableRowHdr { border: none !important; }

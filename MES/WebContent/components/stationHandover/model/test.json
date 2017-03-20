@@ -47,7 +47,9 @@
             "taktStartDate": "2017-03-09T23:00:00.000+01:00",
             "taktEndDate": "2017-03-10T05:00:00.000+01:00",
             "selected": "true",
-            "duration": "0.000"
+            "duration": "0.000",
+            "FROZEN_TRACKING":"true",
+            "FROZEN_LIST": "true"
          },
          {
             "sfcStep": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:FNZ1,49156847-0646,RouterBO:FNZ1,49156847-FDOMPAINSQSYSTA,U,A,1,20",
@@ -66,7 +68,11 @@
             "taktStartDate": "2017-03-09T23:00:00.000+01:00",
             "taktEndDate": "2017-03-10T05:00:00.000+01:00",
             "selected": "true",
-            "duration": "53.663"
+            "duration": "53.663",
+            "FROZEN_TRACKING":"true",
+             "FROZEN_LIST": "true"
+                        
+            
          }
       ]
    }
