@@ -152,28 +152,24 @@ airbus.mes.ncdisplay.util.ModelManager = {
 			oOperationData.erp_system,
 			functionName
 		)
-		var workOrder = oOperationData.wo_no;
-		var operation = oOperationData.operation_no;
 
 		// replace &amp; to &
         sUrl = sUrl.replace(/\&amp;/g,'&');
 		
-		jQuery.ajax({
-			type: 'GET',
-			url: sUrl,
-			success: function (data) {
-				var sGetExternalUrl = data.Rowsets.Rowset[0].Row[0].str_output;
-				sGetExternalUrl = sGetExternalUrl.replace("p_workorder", workOrder);
-				sGetExternalUrl = sGetExternalUrl.replace("p_operation", operation);
-				// replace &amp; to &
-		        sUrl = sUrl.replace(/\&amp;/g,'&');				
-				window.open(sGetExternalUrl);
 
-			},
-			error: function (error, jQXHR) {
-				console.log("error in getting Url");
-			}
-		});
+		var oModel = sap.ui.getCore().getModel("getExternalUrlTemplate");
+		oModel.loadData(sUrl, null, false);
+
+		//    	Second step, retrieve the url on the model
+		var sGetExternalUrl = oModel.getData().Rowsets.Rowset[0].Row[0].str_output;
+		var workOrder = oOperationData.wo_no;
+		var operation = oOperationData.operation_no;
+		
+		sGetExternalUrl = sGetExternalUrl.replace("p_workorder", workOrder);
+		sGetExternalUrl = sGetExternalUrl.replace("p_operation", operation);
+		// replace &amp; to &
+		sGetExternalUrl = sGetExternalUrl.replace(/\&amp;/g,'&');				
+		window.open(sGetExternalUrl);        
 	},
 
 	getOperationCount: function (ncDetailList, operationId) {
