@@ -252,8 +252,8 @@
 									<core:CustomData key="attachedDocumentStatus" value="{path : 'operationDisruptionsModel>isDeleted'}" writeToDom="true" />
 								</customData>
 								<HBox class="document-item">
+									<Label id="document-id" class="document-id" text="{operationDisruptionsModel>fileCount}" />
 									<Link class="document-title" text="{operationDisruptionsModel>fileName}" href="{operationDisruptionsModel>fileURL}"/>
-									<!--<Label id="document-title" class="document-title" text="{operationDisruptionsModel>fileName}" />-->
 									<Label id="document-description" class="document-description" text="{operationDisruptionsModel>fileDescription}" />
 									<Label id="document-size" class="document-size" text="{operationDisruptionsModel>fileSize} Ko" />
 								</HBox>
