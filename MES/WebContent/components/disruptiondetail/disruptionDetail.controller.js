@@ -224,6 +224,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 					};
 					oView.getModel("DisruptionDetailModel").getProperty("/disruptionComments").push(oComment);
 					oView.getModel("DisruptionDetailModel").setProperty("/promisedDateTime", sPromisedDateTime);
+					oView.getModel("DisruptionDetailModel").setProperty("/resolverName", sap.ui.getCore().byId("disruptionDetailView--selectResolver").getSelectedItem().getText());
 					//oView.getModel("DisruptionDetailModel").setProperty("/ResolverName",oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/last_name") + " "	+ oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name"));
 					oView.getModel("DisruptionDetailModel").refresh();
 					sap.ui.getCore().byId("disruptionDetailView--comment").setValue();
