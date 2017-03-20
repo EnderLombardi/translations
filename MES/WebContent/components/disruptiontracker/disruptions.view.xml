@@ -278,7 +278,7 @@
 					sortProperty="originatorGroupDesc">
 					<Label text="{disruptiontrackerI18n>originatorGroup}" />
 					<ui:template>
-						<Text text="{disruptionsTrackerModel>originatorGroup}" />
+						<Text text="{disruptionsTrackerModel>originatorGroupDesc}" />
 					</ui:template>
 				</ui:Column>
 					
