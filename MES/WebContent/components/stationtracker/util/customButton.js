@@ -45,17 +45,22 @@ sap.m.Button.extend("airbus.mes.stationtracker.util.customButton", {
         oRm.addClass("sapMBtnHoverable sapMBtnIconFirst sapMBtnInner sapMBtnText sapMBtnTransparent sapMFocusable customButton");
         oRm.writeClasses();
         oRm.write(">");
+
+		oRm.writeIcon("sap-icon://cause", "customButtonIcon");
+
         oRm.write("<span");
         oRm.writeClasses();
         oRm.write(">");
         oRm.write(oControl.getText1());
         oRm.write("</span>")
+
         oRm.write("<span");
         oRm.addClass("circle");
         oRm.writeClasses();
         oRm.write(">");
         oRm.write(oControl.getText2());
         oRm.write("</span>")
+
         oRm.write("</div>");
         oRm.write("</button>");
 	

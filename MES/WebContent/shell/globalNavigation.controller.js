@@ -365,7 +365,7 @@ sap.ui.controller(
                     airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                     airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                     airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
-
+                    airbus.mes.shell.oView.byId("informationButton").setVisible(false);
                     break;
                 case "stationHandoverView":
                     this.renderStationHandover(false);

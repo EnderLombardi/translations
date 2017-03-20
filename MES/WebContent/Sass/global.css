@@ -659,6 +659,8 @@ STATION TRACKER TOOLBAR
 
 .sapMPopoverScroll .sapMSelectListItemBaseSelected { background-color: #d5f5f8 !important; }
 
+.customButtonIcon { position: absolute; top: 0; left: 0; font-size: 1.375rem; line-height: 2.375rem; width: 2.375rem; text-align: center; margin: 0; padding: 0; vertical-align: top; max-height: 2.375rem; }
+
 /********************************
 POP UP POLYPOLY
 *********************************/
