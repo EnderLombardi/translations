@@ -28,7 +28,16 @@
     }
 }
 
-
+  .HorizontlLine:after,
+  .HorizontlLine:before {
+    content: " " !important;
+    width: 40% !important;
+    height: 0.75px !important;
+    margin: 7px 10px !important;
+    vertical-align: super !important;
+    background-color: #dcd7d7 !important;
+  }
+  
 .inputQty{
     .sapMInputBaseInner{
         line-height: 1.9rem !important;

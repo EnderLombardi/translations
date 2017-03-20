@@ -69,7 +69,7 @@
 						<!-- 	<VBox visible="true"><Label text="{i18nModel>Resolver}" /><Select id="selectResolver" items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }" forceSelection="false" selectedKey="{DisruptionDetailModel>/resolverID}"><items><core:Item text="{disruptionResolverModel>Name}" key="{disruptionResolverModel>UserID}" /></items></Select><Label text="{i18nModel>status}" /><Input id="status" enabled="false" value="{path: 'DisruptionDetailModel>/status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}"></Input><Select id="selectRootCause" selectedKey="" forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"><items><core:Item text="{disruptionCustomData>RootCause}" key="{disruptionCustomData>RootCause}" /></items></Select><Label text="{i18nModel>OriginatorGroup}" /><Select id="selectOriginator" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}" forceSelection="false" selectedKey="{DisruptionDetailModel>/originatorGroup}"><items><core:Item text="{disruptionCategoryModel>group_desc}" key="{disruptionCategoryModel>group_name}" /></items></Select></VBox> -->
 					</f:content>
 				</f:SimpleForm>
-				<HBox width="100%" justifyContent="Center">
+				<HBox width="100%" justifyContent="Center" class="HorizontlLine">
 					<Text text='{i18nModel>additionalInfo}' class="titleAdditionalInfo" />
 				</HBox>
 				<f:SimpleForm id="extraFieldDisruption" backgroundDesign="Transparent" maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" columnsL="3" columnsM="3" columnsS="3" class="sapUiSmallMargin heightZero" visible="true">
