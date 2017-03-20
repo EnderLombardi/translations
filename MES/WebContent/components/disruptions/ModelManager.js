@@ -1025,10 +1025,4 @@ airbus.mes.disruptions.ModelManager = {
 		}
 	},
 
-
-	addLoginToUrl  : function(urlToAdd) {
-		//urlToAdd += "&j_user=" + Cookies.getJSON("login").user + "&j_password=" + Cookies.getJSON("login").mdp;
-		return urlToAdd;
-	}
-
 };

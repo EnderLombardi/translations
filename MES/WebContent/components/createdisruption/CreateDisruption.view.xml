@@ -144,6 +144,7 @@
 							<core:CustomData key="attachedDocumentStatus" value="{path : 'DesktopFilesModel>Status', formatter: 'airbus.mes.disruptions.Formatter.getDocumentStatusToString'}" writeToDom="true" />
 						</customData>
 						<HBox class="document-item">
+							<Label id="document-id" class="document-id" text="{DesktopFilesModel>fileCount}" />
 							<Label id="document-title" class="document-title" text="{DesktopFilesModel>Title}" />
 							<Label id="document-description" class="document-description" text="{DesktopFilesModel>Description}" />
 							<Input width="60%" id="document-description-input" class="document-description" visible="false" value="{DesktopFilesModel>Description}" />

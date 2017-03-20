@@ -175,6 +175,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		item.oldDescription = description;
 		item.File = fileBase64;
 		item.Size = size;
+		item.fileCount = " ";
 		item.Status = 'CREATE';
 		oData.unshift(item);
 		oModel.refresh();
