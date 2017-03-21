@@ -9,18 +9,18 @@
 			<f:content>
 				<core:Title text="" />
 				<Label text="{i18nModel>Category}" />
-				<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}" change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>/messageType}">
+				<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}" enabled="false" change="onSelectionChange" forceSelection="false" selectedKey="{DisruptionDetailModel>/messageType}">
 					<items>
 						<core:Item text="{disruptionCategoryModel>DESCRIPTION}" key="{disruptionCategoryModel>MESSAGE_TYPE}" />
 					</items>
 				</Select>
 				<Label text="{i18nModel>Expected}"></Label>
-				<DatePicker id="expectedDate" displayFormat="short" value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}" change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedDateEnable'}">
+				<DatePicker id="expectedDate" enabled="false" displayFormat="short" value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}" change="onExpectedDateChange">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
-				<TimePicker id="expectedTime" displayFormat="HH:mm" valueFormat="HH:mm" value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}" change="onExpectedDateChange" enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.expectedTimeEnable'}">
+				<TimePicker id="expectedTime" enabled="false"  displayFormat="HH:mm" valueFormat="HH:mm" value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}" change="onExpectedDateChange" >
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -34,7 +34,7 @@
 				</Select>
 				<core:Title text="" />
 				<Label text="{i18nModel>reason}" />
-				<Select id="selectAttribute" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}" forceSelection="false" selectedKey="{DisruptionDetailModel>/reason}" change="airbus.mes.disruptions.ModelManager.setDefaultResolutionGroup">
+				<Select id="selectAttribute" enabled="false" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}" forceSelection="false" selectedKey="{DisruptionDetailModel>/reason}" change="airbus.mes.disruptions.ModelManager.setDefaultResolutionGroup">
 					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}"> -->
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>TEXT}" key="{disruptionRsnRespGrp>REASON}" />
@@ -48,7 +48,7 @@
 				</MultiInput>
 				<core:Title text="" />
 				<Label text="{i18nModel>gravity}" />
-				<Select id="gravity" selectedKey="{DisruptionDetailModel>/severity}">
+				<Select id="gravity" selectedKey="{DisruptionDetailModel>/severity}" enabled="false">
 					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setGravityEnable'}"> -->
 					<items>
 						<core:Item text="{i18nModel>NotBlocked}" key="1" />
