@@ -70,7 +70,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
             x_date: "%H:%i",
             //When coming back from setting permit to display the previous mode shift/day
             x_step: airbus.mes.stationtracker.util.ShiftManager.dayDisplay ? 60 : 30,
-            x_size: 18,
+            x_size: 0,
             x_start: 0,
             //x_length : 18,
             y_unit: [],

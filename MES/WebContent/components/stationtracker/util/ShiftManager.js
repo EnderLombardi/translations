@@ -8,6 +8,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 	updateShift : true,
 	
 	dayDisplay : undefined,
+	ignoreTimeLineFirst : true,
 	shiftDisplay :true,
 	fSwipe: false,
 	//Variables for shift combobox Day/Shit view
@@ -388,9 +389,13 @@ airbus.mes.stationtracker.util.ShiftManager = {
 		if ( this.shiftDisplay ) {
 		
 		    scheduler.matrix.timeline.x_size = Math.ceil((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
-	
+		    
+		    if ( new Date(date).getMinutes() >= 30 ) {
+		    	scheduler.matrix.timeline.x_size ++;		    	
+		    }
+		    
 		    var date = new Date(this.shifts[c].StartDate).setMinutes(0);
-    
+		    		    
 		    return new Date( date );
 		    
 		}
@@ -455,6 +460,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 		    scheduler.matrix.timeline.x_size += Math.ceil((new Date(fEndDate) - new Date(fStartDate))/1000/60/60);
 		   // scheduler.matrix.timeline.x_size += Math.ceil(fTotalMS/1000/60/60);
 
+		    this.ignoreTimeLineFirst = true;
 			return new Date (new Date ( fStartDate ).setMinutes(0));
 		    
 			}
@@ -472,7 +478,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 
 		if (this.shifts.length === 0)
 			return false;
-		
+			
 		var iMin = 0,
 			iMax = this.shifts.length - 1,
 			iMed;
@@ -493,7 +499,14 @@ airbus.mes.stationtracker.util.ShiftManager = {
 			
 			if (d1 > date) {
 				if (iMin === iMed) {
-			//		 scheduler.matrix.timeline.x_size += 1; 
+					
+					//The first date ignore have to be not set to true otherwise the event onYScaleClick is not triggered. 
+					if ( d1-date <= 1000*60*30 ) {
+						
+						return false;						
+					}
+					
+					//		 scheduler.matrix.timeline.x_size += 1; 
 					return true;
 				} else {
 					iMax = iMed - 1;
@@ -567,7 +580,8 @@ airbus.mes.stationtracker.util.ShiftManager = {
 				css : "begin_shifht"
 			});
 			
-		
+			//after the first step
+			if (index > 0){
 				// If different date show border of the start shift
 				//EndDate of current shift
 				d8 =  this.shifts[index].EndDate;
@@ -581,7 +595,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 						end_date : d9,
 						css : "end_shifht"
 					});
-				
+				}
 			}
 		}
 		
