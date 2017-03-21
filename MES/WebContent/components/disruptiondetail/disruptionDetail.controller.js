@@ -60,10 +60,10 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		jQuery
 		.ajax({
 			url: airbus.mes.disruptions.ModelManager.urlModel.getProperty("getOperationStartEndTime"),
-			data:{
-				"Param.1": airbus.mes.settings.ModelManager.site,
-				"Param.2": sSfcStepBO	
-			},
+			data:JSON.stringify({
+				"site": airbus.mes.settings.ModelManager.site,
+				"sfcStepBO": sSfcStepBO	
+			}),
 			error: function (xhr, status, error) {
 				airbus.mes.disruptions.func.tryAgainError(i18nModel);
 			},

@@ -124,6 +124,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 		categoryItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All")
 			+ " " + airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("category"));
 		oCategoryBox.insertItem(categoryItemAll,0);
+		oCategoryBox.setSelectedKey("");
 		
 		// Remove Duplicate from reason
 		aTemp = [];
@@ -148,6 +149,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 		reasonItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All")
 			+ " " + airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("attribute"));
 		oReasonBox.insertItem(reasonItemAll,0);
+		oReasonBox.setSelectedKey("");
 		
 		
 		var resGroupItemAll = new sap.ui.core.Item();
@@ -157,5 +159,6 @@ airbus.mes.disruptiontracker.ModelManager = {
 		
 		var resGroupBox = sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox");
 		resGroupBox.insertItem(resGroupItemAll,0);
+		resGroupBox.setSelectedKey("");
 	}
 }

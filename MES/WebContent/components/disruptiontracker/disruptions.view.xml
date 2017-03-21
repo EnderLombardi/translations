@@ -3,43 +3,37 @@
 	xmlns="sap.m" xmlns:ui="sap.ui.table">
 	<Page class=" sapUiSizeCozy disruptions" showHeader="false">
 
-
 		<Toolbar class="pageHeader" id="disruptionTrackerToolbar">
 			<Label text="{disruptiontrackerI18n>disruptionsTitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
 			
 			<Select id="stationComboBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row',
-			         sorter : {  path : 'stationDescription'  } }"
-				selectedKey="" change="filterByStation"
+			         sorter : {  path : 'stationDescription'  } }" change="filterByStation"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 			</Select>
 
 			<Select id="msnComboBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-				selectedKey="" change="filterByStation"
+				placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }" change="filterByStation"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
 			</Select>
 			<Select id="disruptionCategoryBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>selectCategory}" items="{ path:'disruptionsTrackerModel>/disruptionListDetails',
-			         sorter : {  path : 'category'  } }"
-				selectedKey="" change="filterDisruptions"
+			         sorter : {  path : 'category'  } }" change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{disruptionsTrackerModel>category}" text="{disruptionsTrackerModel>category}" />
 			</Select>
 			
 			<Select id="disruptionReasonBox" class="sapUiMediumMarginEnd"
 			 items="{ path:'disruptionsTrackerModel>/disruptionListDetails',
-			         sorter : {  path : 'reason'  } }"
-				selectedKey="" change="filterDisruptions"
+			         sorter : {  path : 'reason'  } }" change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{disruptionsTrackerModel>reason}" text="{disruptionsTrackerModel>reason}" />
 			</Select>
 
 			<Select id="statusComboBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectStatus}" selectedKey=""
-				change="filterDisruptions"
+				placeholder="{disruptiontrackerI18n>selectStatus}" change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>status}" />
 				<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
@@ -51,8 +45,7 @@
 			</Select>
 
 			<Select id="severityComboBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectStatus}" selectedKey=""
-				change="filterDisruptions"
+				placeholder="{disruptiontrackerI18n>selectStatus}"  change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>severity}" />
 				<core:Item key="1" text="{disruptiontrackerI18n>not_Blocked}" />
@@ -61,8 +54,7 @@
 			</Select>
 			
 			<Select id="esclationLevelBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectEscLevel}" selectedKey=""
-				change="filterDisruptions"
+				placeholder="{disruptiontrackerI18n>selectEscLevel}" change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>escalation}" />
 				<core:Item key="0" text="{disruptiontrackerI18n>escalation} 0" />
@@ -74,8 +66,7 @@
 
 			<Select id="resolutionGroupBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{ path: 'disruptionsTrackerModel>/disruptionListDetails',
-			         sorter : {  path : 'responsibleGroup'  } }"
-				selectedKey="" change="filterDisruptions"
+			         sorter : {  path : 'responsibleGroup'  } }" change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{disruptionsTrackerModel>responsibleGroup}"
 					text="{disruptionsTrackerModel>responsibleGroupDesc}" />

@@ -758,6 +758,7 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.4": airbus.mes.settings.ModelManager.user
 			},
 			error: function (xhr, status, error) {
+				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
 				airbus.mes.disruptions.func.tryAgainError(i18nModel);
 
 			},

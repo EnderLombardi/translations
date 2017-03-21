@@ -144,80 +144,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if(sReason != ""){
 			aFilters.push(new sap.ui.model.Filter("reason", "EQ", sReason));
 		}
-				
 
-		/*var searchBox = this.getView().byId("disruptionSearchField").getValue();
-		if(searchBox != ""){
-			var filter1 = new sap.ui.model.Filter("operation", sap.ui.model.FilterOperator.Contains, searchBox)
-			aFilters.push(filter1);
-			var filter2 = new sap.ui.model.Filter("workOrder", sap.ui.model.FilterOperator.Contains, searchBox)
-			aFilters.push(filter2);;
-		}*/
 		oBinding.filter(aFilters);
 
 	},
-
-	/***************************************************************************
-	 * Open fragment for table setting options
-	 */
-	/*onDisruptionTableSettings : function(oEvent) {
-		if (!this.tableSettingsDialogue) {
-			this.tableSettingsDialogue = sap.ui.xmlfragment("airbus.mes.disruptiontracker.tableSettings", this);
-			this.getView().addDependent(this.tableSettingsDialogue);
-		}
-		this.tableSettingsDialogue.open();
-
-		// Remove duplicates from Category filter list
-		var aTemp = [];
-		sap.ui.getCore().byId("categoryFilter").getBinding("items").filter(new sap.ui.model.Filter({
-			path : "Category",
-			test : function(oValue) {
-				if (aTemp.indexOf(oValue) == -1) {
-					aTemp.push(oValue);
-					return true;
-				} else {
-					return false;
-				}
-			}
-		}));
-
-		// Remove duplicates from Reason filter list
-		aTemp = [];
-		sap.ui.getCore().byId("reasonFilter").getBinding("items").filter(new sap.ui.model.Filter({
-			path : "Reason",
-			test : function(oValue) {
-				if (aTemp.indexOf(oValue) == -1) {
-					aTemp.push(oValue);
-					return true;
-				} else {
-					return false;
-				}
-			}
-		}));
-
-		// Add filter item All in Category filter list
-		var categoryItemAll = new sap.m.ViewSettingsItem();
-		categoryItemAll.setKey(" ");
-		categoryItemAll.setText(this.getView().getModel("disruptiontrackerI18n").getProperty("All"));
-
-		sap.ui.getCore().byId("categoryFilter").addItem(categoryItemAll);
-
-		// Add filter item All in Reason filter list
-		var reasonItemAll = new sap.m.ViewSettingsItem();
-		reasonItemAll.setKey(" ");
-		reasonItemAll.setText(this.getView().getModel("disruptiontrackerI18n").getProperty("All"));
-
-		sap.ui.getCore().byId("reasonFilter").addItem(reasonItemAll);
-
-	},*/
-
-	/***************************************************************************
-	 * Call Disruption KPI charts
-	 */
-	/*onPressDisruptionKPI : function(oEvent) {
-		airbus.mes.shell.util.navFunctions.disruptionKPI();
-	},
-	*/
 
 	/***************************************************************************
 	 * Open Operation Detail PopUp on table item click
@@ -339,24 +269,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		}
 	},
 
-	/**
-	 * [MES V1.5] [Beg]SD-SP1604983-DT-040 search disruption on basis of work
-	 * order/operation
-	 * 
-	 * @param {object}
-	 *            oEvt take control as an object
-	 */
-	/*onSearchDisruption : function(oEvt) {
-		var sQuery = oEvt.getSource().getValue();
-		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
-		var aFilters = [];
-		var filter1 = new sap.ui.model.Filter("operation", sap.ui.model.FilterOperator.Contains, sQuery)
-		aFilters.push(filter1);
-		var filter2 = new sap.ui.model.Filter("workOrder", sap.ui.model.FilterOperator.Contains, sQuery)
-		aFilters.push(filter2);
-		oBinding.filter(new sap.ui.model.Filter(aFilters, false), "Control");
 
-	},*/
 	/**
 	 * Export Disruption Data to excel [MES V1.5] [SD-SP1604983-EXT-005]
 	 */
@@ -460,6 +373,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		this._oTPC.openDialog();
 	},
+	
 	/**
 	 * Set Roles for type of Table Column
 	 */
@@ -472,24 +386,4 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 	},
 
-/**
- * search disruption on basis of work order/operation
- * 
- * @param {object}
- *            oEvt take control as an object
- */
-/*
- * onDisruptionSuggestions : function(oEvt) { var oSF =
- * this.getView().byId("disruptionSearchField"); var value =
- * oEvt.getParameter("suggestValue"); var aTemp = []; if (value) {
- * oSF.getBinding("suggestionItems").filter(new sap.ui.model.Filter({ path :
- * "Operation", test : function(sText) { if (((sText ||
- * "").toUpperCase().indexOf(value.toUpperCase()) > -1) && (aTemp.indexOf(sText) ==
- * -1) ) { aTemp.push(sText); return true; } else { return false; }
- *  } })); } if (!value) { oSF.getBinding("suggestionItems").filter(new
- * sap.ui.model.Filter({ path : "Operation", test : function(sText) { if
- * (aTemp.indexOf(sText) == -1) { aTemp.push(sText); return true; } else {
- * return false; } } })); } oSF.suggest(); this.onSearchDisruption(oEvt);
- *  }
- */
 });
