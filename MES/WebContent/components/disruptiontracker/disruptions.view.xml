@@ -200,11 +200,11 @@
 				</ui:Column>
 
 				
-				<ui:Column id="solutionCol" filterProperty="Solution"
-					sortProperty="Solution">
+				<ui:Column id="solutionCol" filterProperty="solution"
+					sortProperty="solution">
 					<Label text="{disruptiontrackerI18n>solution}" />
 					<ui:template>
-						<Text text="{path: 'disruptionsTrackerModel>solution', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}" />
+						<Text text="{disruptionsTrackerModel>solution}" />
 					</ui:template>
 				</ui:Column>
 				
