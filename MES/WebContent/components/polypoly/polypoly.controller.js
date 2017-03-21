@@ -785,9 +785,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
             } else {
 //                airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter();
             	
-            	//FIXME : Temporary fix for Defect 823.
-//                airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(3);
-                airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(0);
+                airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(3);
                 airbus.mes.polypoly.oView.getController().setRowCountVisible(false);
             }
         }
