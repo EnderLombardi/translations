@@ -95,28 +95,28 @@ airbus.mes.disruptiontracker.Formatter = {
 
 	},
 
-	formatOpeningTime : function(openDuration) {
-		if (openDuration == undefined || openDuration =="")
-			return 0;
+	timeMillisecondsToConfig : function(iTime) {
+		if (iTime == undefined || iTime =="")
+			return "---";
 
 
 		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
-		var openingTime;
+		var iFormattedTime;
 
 		if (unit === "H")
-			openingTime = (Math.round((openDuration) / (1000 * 60 * 60) * 100) / 100) + " Hr";
+			iFormattedTime = (Math.round((iTime) / (1000 * 60 * 60) * 100) / 100) + " Hr";
 
 		else if (unit === "IM")
-			openingTime = (Math.round((openDuration) * 100 / (1000 * 60 * 60) * 100) / 100) + " IM";
+			iFormattedTime = (Math.round((iTime) * 100 / (1000 * 60 * 60) * 100) / 100) + " IM";
 
 		else if (unit === "M")
-			openingTime = (Math.round((openDuration) / (1000 * 60) * 100) / 100) + " Min";
+			iFormattedTime = (Math.round((iTime) / (1000 * 60) * 100) / 100) + " Min";
 
 		else if (unit === "D")
-			openingTime = (Math.round((openDuration) / (1000 * 60 * 60 * 24) * 100) / 100) + " Days";
+			iFormattedTime = (Math.round((iTime) / (1000 * 60 * 60 * 24) * 100) / 100) + " Days";
 
-		return openingTime;
+		return airbus.mes.disruptiontracker.Formatter.removeDecimal(iFormattedTime);
 	},
 
 	removeDecimal : function(num) {
@@ -148,7 +148,7 @@ airbus.mes.disruptiontracker.Formatter = {
 
 	},
 
-	setTimeLostValue : function(timeLost) {
+	/*setTimeLostValue : function(timeLost) {
 		var timeUnit = airbus.mes.disruptiontracker.Formatter.getConfigTimeUnit();
 
 		if (timeLost != "") {
@@ -175,7 +175,7 @@ airbus.mes.disruptiontracker.Formatter = {
 			time = (time / (24 * 60 * 60 * 1000)).toFixed(2);
 
 		return airbus.mes.disruptiontracker.Formatter.removeDecimal(time);
-	},
+	},*/
 	setDisruptionTrackerStatus : function(status) {
 		if (status)
 			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("status." + status.toLowerCase());

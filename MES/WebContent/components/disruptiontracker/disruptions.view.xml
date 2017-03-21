@@ -256,11 +256,19 @@
 					</ui:template>
 				</ui:Column>
 
-				<ui:Column id="openingTimeCol" filterProperty="openDuration"
+				<ui:Column id="timetoGetFix" filterProperty="openDuration"
 					sortProperty="openDuration">
 					<Label text="{disruptiontrackerI18n>timeToGetFix}" />
 					<ui:template>
-						<Text text="{path: 'disruptionsTrackerModel>openDuration', formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
+						<Text text="{path: 'disruptionsTrackerModel>openDuration', formatter: 'airbus.mes.disruptiontracker.Formatter.timeMillisecondsToConfig'}" />
+					</ui:template>
+				</ui:Column>
+
+				<ui:Column id="timeLost" filterProperty="timeLost"
+					sortProperty="timeLost">
+					<Label text="{disruptiontrackerI18n>timeLost}" />
+					<ui:template>
+						<Text text="{path: 'disruptionsTrackerModel>timeLost', formatter: 'airbus.mes.disruptiontracker.Formatter.timeMillisecondsToConfig'}" />
 					</ui:template>
 				</ui:Column>
 				
