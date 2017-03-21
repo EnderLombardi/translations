@@ -20,6 +20,20 @@
 				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 			</MultiComboBox>
 
+			<Select id="msnComboBox" class="sapUiMediumMarginEnd"
+				placeholder="{i18nModeln>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+				selectedKey="" change="filterByStation">
+				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
+			</Select>
+
+			<Select id="resolutionGroupBox" class="sapUiMediumMarginEnd"
+				placeholder="{i18nModel>resolutionGroup}" items="{ path: 'resolutionGroupsModel>/',
+			         sorter : {  path : 'responsibleGroup'  } }"
+				selectedKey="" change="filterDisruptions">
+				<core:Item key="{resolutionGroupsModel>}"
+					text="{resolutionGroupsModel>responsibleGroupDesc}" />
+			</Select>
+
 			<Text text="{i18nModel>timeUnit}:" class="sapUiTinyMarginBegin" />
 			<Select id="timeUnit" forceSelection="true" selectedKey="Minutes" change="onChangeSelection" >
 				<core:Item key="Minutes" text="{i18nModel>Minutes}" />

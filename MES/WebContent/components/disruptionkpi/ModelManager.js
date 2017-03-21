@@ -6,6 +6,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 	oFilters:{
 		line: "",
 		station: "",
+		msn: "",
 		startDateTime: "",
 		endDateTime: "",
 		timeUnit: "Minutes"
@@ -24,11 +25,18 @@ airbus.mes.disruptionkpi.ModelManager = {
 	
 	
 	setPreSelectionCriteria: function(){
+	    
+	    // Remove filters for Station Multi Combo box
+	    this.removeDuplicateStations();   
 		if(sap.ui.getCore().byId("disruptiontrackerView--stationComboBox").getSelectedKey() == ""){
 			this.oFilters.station= airbus.mes.settings.ModelManager.station;
 		} else{
 			this.oFilters.station= sap.ui.getCore().byId("disruptiontrackerView--stationComboBox").getSelectedKey();
 		}
+		
+		this.removeDuplicateMSNs();
+		this.oFilters.station= sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getSelectedKey();
+		
 		this.oFilters.startDateTime= "";
 		sap.ui.getCore().byId("disruptionKPIView--endDateTime").setDateValue(new Date());
 		this.oFilters.endDateTime= sap.ui.getCore().byId("disruptionKPIView--endDateTime").getDateValue();
@@ -37,7 +45,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 		sap.ui.getCore().byId("disruptionKPIView--lineComboBox").setSelectedKey(this.oFilters.line);
 		
 		// Station
-		sap.ui.getCore().byId("disruptionKPIView--stationComboBox").removeAllSelectedItems()
+		sap.ui.getCore().byId("disruptionKPIView--stationComboBox").removeAllSelectedItems();
 		sap.ui.getCore().byId("disruptionKPIView--stationComboBox").addSelectedKeys(this.oFilters.station);
 		
 		// Time Unit
@@ -179,7 +187,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 					//airbus.mes.shell.ModelManager.messageShow(airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("noDataFound"));
 				};
 				
-				/*to avoid array inconsistency.. as the service dosent return an array [] when only one value pair has to be returned*/
+				/*to avoid array inconsistency.. as the service doesn't return an array [] when only one value pair has to be returned*/
 				if(!chartData.data[0]){
 					chartData.data = [chartData.data];
 				}
@@ -233,10 +241,6 @@ airbus.mes.disruptionkpi.ModelManager = {
 	    	" " +
 	    	airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("Lines"));
 	    lineBox.insertItem(lineItemAll, 0);
-	    
-	    
-	    // Remove filters for Station Multi Combo box
-	    this.removeDuplicateStations();   
 	},
 	
 	
@@ -263,7 +267,41 @@ airbus.mes.disruptionkpi.ModelManager = {
         aFilters.push(duplicatesFilter);
         
         sap.ui.getCore().byId("disruptionKPIView--stationComboBox").getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));
+	},
+	
+	removeDuplicateMSNs: function(){
+		/*********** Filter for MSN **************/
+	    var aFilters = [];
+	    var aStations = sap.ui.getCore().byId("disruptionKPIView--stationComboBox").getSelectedKeys();
+	    
+	    if(aStations.length == 0 && irbus.mes.disruptionkpi.ModelManager.oFilters.line != "All"){
+	    	aFilters.push(new sap.ui.model.Filter("line", "EQ", airbus.mes.disruptionkpi.ModelManager.oFilters.line)); // Filter on selected Line
+	    }
+        
+        var aTemp = [];
+        var duplicatesFilter = new sap.ui.model.Filter({
+            parts: [{path: "msn"},
+                    {path:"station"}],                    
+            test: function (msn, station) {
+            	if(aStations.length &&  aStations.indexOf(station) == -1){
+        			return false;
+        			
+        			
+            	} else if (aTemp.indexOf(msn) == -1) {
+                    aTemp.push(msn)
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
+        aFilters.push(duplicatesFilter);
+        
+        sap.ui.getCore().byId("disruptionKPIView--msnComboBox").getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));
+		
 	}
+	
 
 
 }

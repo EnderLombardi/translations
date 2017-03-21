@@ -157,7 +157,6 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 
 	onNavBack: function () {
 		nav.back();
-		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 	},
 
 	/**
@@ -963,7 +962,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		dialog.open();
 	},
 
-	getDateNow() {
+	getDateNow: function() {
 		var currDate = new Date();
 		var month = ("0" + (currDate.getMonth() + 1)).slice(-2);
 		var day = ("0" + (currDate.getDate())).slice(-2);

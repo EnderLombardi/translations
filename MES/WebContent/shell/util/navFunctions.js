@@ -402,6 +402,14 @@ airbus.mes.shell.util.navFunctions = {
                 name: "airbus.mes.disruptiontracker",
             });
             nav.addPage(airbus.mes.disruptiontracker.oView);
+
+            // Add event delegate to pass the data and load the services
+            airbus.mes.disruptiontracker.oView.addEventDelegate({
+                onBeforeShow: function (evt) {
+                    // Load data
+                    airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
+                }
+            });
         }
 
         if (nav.getPreviousPage() != undefined && nav.getPreviousPage().sId == "stationTrackerView") {
@@ -419,9 +427,6 @@ airbus.mes.shell.util.navFunctions = {
         }
 
         airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
-
-        // Load data
-        airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 
         // Navigate
         nav.to(airbus.mes.disruptiontracker.oView.getId());
