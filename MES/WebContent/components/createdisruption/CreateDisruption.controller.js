@@ -82,6 +82,23 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 			var operationNo = oData.operation.split(",")[1];
 			ModelManager.loadMaterialList(oData.workOrder, operationNo);
 			ModelManager.loadJigtoolList(oData.workOrder, operationNo);
+			
+			
+			
+
+			/*******************************************************************
+			 * Disable/Enable inputs according to  Originator/Resolution Group *
+			 ******************************************************************/
+			var origFlag = oData.originatorFlag;
+			var resFlag = oData.responsibleFlag;
+
+			if (origFlag == "X" && resFlag == "X") {
+				this.bothGroupSettings();
+			} else if (resFlag == "X") {
+				this.resolutionGroupSettings();
+			} else  if (origFlag == "X"){
+				this.originatorGroupSettings();
+			}
 
 		}
 	},

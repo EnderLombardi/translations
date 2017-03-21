@@ -132,28 +132,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 			
 			sap.ui.getCore().getModel("JigtoolListModel").refresh();
 			sap.ui.getCore().getModel("MaterialListModel").refresh();
-			
-			
-
-			/*******************************************************************
-			 * Disable/Enable inputs according to  Originator/Resolution Group *
-			 ******************************************************************/
-			var origFlag = oModel.getProperty("/originatorFlag");
-			var resFlag = oModel.getProperty("/responsibleFlag");
-
-			if (origFlag != "X" && resFlag == "X") {
-				this.resolutionGroupSettings();
-			} else if (origFlag == "X" && resFlag == "X") {
-				this.bothGroupSettings()
-			} else {
-				this.originatorGroupSettings();
-			}
-		}
-
-		// promised date has to be visible while editing
-		oView.byId("promisedDateLabel").setVisible(true);
-		oView.byId("promisedDate").setVisible(true);
-		oView.byId("promisedTime").setVisible(true);		
+		}		
 	},
 
 	createDisruptionSettings : function() {

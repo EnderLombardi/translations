@@ -274,7 +274,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 	    var aFilters = [];
 	    var aStations = sap.ui.getCore().byId("disruptionKPIView--stationComboBox").getSelectedKeys();
 	    
-	    if(aStations.length == 0 && irbus.mes.disruptionkpi.ModelManager.oFilters.line != "All"){
+	    if(aStations.length == 0 && airbus.mes.disruptionkpi.ModelManager.oFilters.line != "All"){
 	    	aFilters.push(new sap.ui.model.Filter("line", "EQ", airbus.mes.disruptionkpi.ModelManager.oFilters.line)); // Filter on selected Line
 	    }
         
