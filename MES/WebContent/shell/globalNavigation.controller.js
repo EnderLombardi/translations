@@ -1025,7 +1025,7 @@ sap.ui.controller(
         
         onPressAutoLogin: function(){
             jQuery.ajax({
-                url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled") + "&target="+window.location.origin+"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled"),
+                url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout") + "&target="+window.location.origin+"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled"),
                 type: 'POST',
                 async: true,
                 complete: function () {
