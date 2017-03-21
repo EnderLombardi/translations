@@ -7,11 +7,15 @@
 
 				<HBox>
 					<Label text="{i18nModel>start}:" class= "sapUiSmallMarginBegin" />
-					<Text text="{DisruptionDetailModel>/openDateTime}"  />
-					</HBox>
-					<HBox>
+					<Text text="{DisruptionDetailModel>/operationStartDateTime}"  />
+				</HBox>
+				<HBox>
 					<Label text="{i18nModel>end}:" class="sapUiSmallMarginBegin" />
-					<Text text="{DisruptionDetailModel>/closureDate}"  />
+					<Text text="{DisruptionDetailModel>/operationEndDateTime}"  />
+				</HBox>
+				<HBox>
+					<Label text="{i18nModel>closureDate}:" class="sapUiSmallMarginBegin" />
+					<Text text="{= ${DisruptionDetailModel>/closureDate} === '' ? '--' : ${DisruptionDetailModel>/closureDate}}"  />
 				</HBox>
 				<HBox>
 					<Label text="{i18nModel>workcenter}:" class="sapUiSmallMarginBegin" />

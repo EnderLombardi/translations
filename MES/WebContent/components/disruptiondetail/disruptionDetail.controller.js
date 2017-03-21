@@ -57,28 +57,25 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 	 */
 	loadOperationStartEndTime: function () {
 		var sSfcStepBO = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/sfcStepBO");
+		var i18nModel = airbus.mes.disruptiondetail.oView.getModel("i18nModel");
 		jQuery
 			.ajax({
+				type:"POST",
 				url: airbus.mes.disruptions.ModelManager.urlModel.getProperty("getOperationStartEndTime"),
 				data: JSON.stringify({
 					"site": airbus.mes.settings.ModelManager.site,
 					"sfcStepBO": sSfcStepBO
 				}),
+				contentType: 'application/json',
+				cache: false,
 				error: function (xhr, status, error) {
 					airbus.mes.disruptions.func.tryAgainError(i18nModel);
 				},
-				success: function (result, status, xhr) {
-
-					if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
-						airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-
-					} else { // Success
-						var sMessageSuccess = i18nModel.getProperty("successUpdate");
-						airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
-					}
-
+				success: function (oData) {
+					sap.ui.getCore().getModel("DisruptionDetailModel").setProperty("/operationStartDateTime", oData.startDateTime);
+					sap.ui.getCore().getModel("DisruptionDetailModel").setProperty("/operationEndDateTime", oData.endDateTime);					
 				}
-			})
+			});
 	},
 
 
