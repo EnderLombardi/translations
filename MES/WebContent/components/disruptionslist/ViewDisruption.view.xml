@@ -166,7 +166,7 @@
 							<Text
 								class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText"
 								text="{i18nModel>solution}:"></Text>
-							<Text text="{path: 'operationDisruptionsModel>solution', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
+							<Text text="{operationDisruptionsModel>solution}"
 								class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom"></Text>
 						</VBox>
 						
