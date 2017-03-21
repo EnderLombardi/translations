@@ -192,5 +192,19 @@ sap.ui.controller("airbus.mes.qdc.controller.Checklist", {
 			// click the new link
 			downloadLink.click();
 		}
+	}, 
+	
+	onPress : function() {
+//		Get URL touch N go
+		var sUrl = airbus.mes.qdc.util.ModelManager.urlModel.getProperty("openSerialTnG");
+
+//		Replace paramters
+		sUrl = sUrl.replace("$workorder", sap.ui.getCore().getModel("QDCModel").getData().root[0].workorder);
+		sUrl = sUrl.replace("$operation", sap.ui.getCore().getModel("QDCModel").getData().root[0].operation);
+		
+//		Launch URL
+		window.open(sUrl);
+		
+		
 	}
 });

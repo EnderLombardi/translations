@@ -48,7 +48,7 @@ airbus.mes.qdc.util.ModelManager = {
 							"name": "Quality Measurements",
 							"description": data.Rowsets.Rowset[0].Row[0].CLOSE_COUNT + "/" + data.Rowsets.Rowset[0].Row[0].TOT_COUNT ,
 							"docType": "Doc",
-							"checked": "true",
+							"checked": "false",
 							"exclamation" : airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TOT_COUNT,data.Rowsets.Rowset[0].Row[0].CLOSE_COUNT),
 							"0": {
 								"name": "Record Results",
@@ -72,6 +72,7 @@ airbus.mes.qdc.util.ModelManager = {
 						} catch(oException) {
 						}
 					}
+					sap.ui.getCore().getModel("GetQDCDataModel").setData(data);
 				} catch(e) {
 					
 				}
@@ -138,22 +139,27 @@ airbus.mes.qdc.util.ModelManager = {
 				var oModel = sap.ui.getCore().getModel("QDCModel").getData();
 				
 				try {
-					if(oModel.root[0] === undefined ) {
-							var oTracea = { 
-			                    "name": "Serial Number",
-			                    "description": data.Rowsets.Rowset[0].Row[0].ReckordedMaterials + "/" + data.Rowsets.Rowset[0].Row[0].TotalMaterials,
-			                    "docType":"NonDoc",
-			                    "checked": "true",
-			                    "exclamation:" : airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TotalMaterials , data.Rowsets.Rowset[0].Row[0].ReckordedMaterials)
-							}
-							oModel.root[0] = oTracea;
+					if(data.Rowsets.Rowset[0].Row[0].Tracea === "true") {
+					
+						if(oModel.root[0] === undefined ) {
+								var oTracea = { 
+				                    "name": "Serial Number",
+				                    "description": data.Rowsets.Rowset[0].Row[0].ReckordedMaterials + "/" + data.Rowsets.Rowset[0].Row[0].TotalMaterials,
+				                    "docType":"NonDoc",
+				                    "checked": "true",
+				                    "exclamation:" : airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TotalMaterials , data.Rowsets.Rowset[0].Row[0].ReckordedMaterials),
+				                    "button" : true,
+				                    "workorder" : data.Rowsets.Rowset[0].Row[0].WorkOrder,
+				                    "operation" : data.Rowsets.Rowset[0].Row[0].OperationID
+								}
+								oModel.root[0] = oTracea;
+						}
 					}
 				} catch(e) {
 					
 				}
-				
 
-				airbus.mes.qdc.oView.getController().enableButtons();
+	
 
 			},
 			error : function(error, jQXHR) {

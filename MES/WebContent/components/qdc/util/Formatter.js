@@ -40,6 +40,13 @@ airbus.mes.qdc.util.Formatter = {
 		} else {
 			return false;
 		}
+	},
+	getButtonVisible : function(sBoolean) {
+		if (sBoolean === true) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 };

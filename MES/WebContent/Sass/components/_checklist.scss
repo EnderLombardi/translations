@@ -55,4 +55,18 @@
 	
 }
 
+.GreyRoundButton{
+	>div {
+		border-radius : 20px;
+		background : $cool-grey;
+		color : $white-two;
+		text-shadow : none;
+	}
+	&:hover{
+		>div{
+			background : $cool-grey-hover !important;
+		}
+	}
+}
+
 

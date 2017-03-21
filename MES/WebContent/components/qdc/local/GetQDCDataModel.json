@@ -11,9 +11,31 @@
                     {
                         "TOT_COUNT": "5",
                         "CLOSE_COUNT": "1",
-                        "QDCSTATUS": "A"
+                        "QDCSTATUS": "A",
+ 	 					"WORKSHOP" : "GBH", 
+ 	 					"MACHINE" : "FG2250", 
+ 	 					"PRODUCT" : "F21B80030104600A", 
+ 	 					"SERNR" : "", 
+ 	 					"OF" : "000049156458", 
+ 	 					"OPERATION" : "0030", 
+ 	 					"CONFIRMATION" : "0848733723", 
+ 	 					"POSTETRAVAIL" : "GB4V99", 
+ 	 					"ARTICLE" : "F21B80030104600A", 
+ 	 					"PROGRAMME" : "F", 
+ 	 					"MSN_INITIAL" : "01750", 
+ 	 					"STATION" : "FG2250", 
+ 	 					"STD" : "ST9", 
+ 	 					"ERP_SYSTEM" : "IGI", 
+ 	 					"ERP_CLIENT" : "001" 
                     }
                 ]
+            },
+            {
+			"Row": [
+                    {
+                        "DOC_TYPE": "MEA"
+                    }
+                ]            
             }
         ]
     }

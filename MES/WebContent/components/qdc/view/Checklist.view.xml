@@ -28,6 +28,12 @@
 							</tab:template>
 						</tab:Column>
 						<tab:Column>
+							<Label class="TabChecklistLabel" text="{i18nModel>externalLink}" />
+							<tab:template>
+								<Button text="{i18nModel>serialNumber}" class="AllignItem GreyRoundButton" press="onPress" visible="{path: 'QDCModel>button' , formatter: 'airbus.mes.qdc.util.Formatter.getButtonVisible'}" />
+							</tab:template>
+						</tab:Column>						
+						<tab:Column>
 							<Label class="TabChecklistLabel" text="{i18nModel>record}" />
 							<tab:template>
 								<Label text="{QDCModel>description}" class="AllignItem" />
