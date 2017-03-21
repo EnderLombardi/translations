@@ -55,32 +55,32 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 	/****
 	 * load operation start end time for disruption summary
 	 */
-	loadOperationStartEndTime:function(){
+	loadOperationStartEndTime: function () {
 		var sSfcStepBO = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/sfcStepBO");
 		jQuery
-		.ajax({
-			url: airbus.mes.disruptions.ModelManager.urlModel.getProperty("getOperationStartEndTime"),
-			data:JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
-				"sfcStepBO": sSfcStepBO	
-			}),
-			error: function (xhr, status, error) {
-				airbus.mes.disruptions.func.tryAgainError(i18nModel);
-			},
-			success: function (result, status, xhr) {
+			.ajax({
+				url: airbus.mes.disruptions.ModelManager.urlModel.getProperty("getOperationStartEndTime"),
+				data: JSON.stringify({
+					"site": airbus.mes.settings.ModelManager.site,
+					"sfcStepBO": sSfcStepBO
+				}),
+				error: function (xhr, status, error) {
+					airbus.mes.disruptions.func.tryAgainError(i18nModel);
+				},
+				success: function (result, status, xhr) {
 
-				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
-					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+					if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
+						airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 
-				} else { // Success
-					var sMessageSuccess = i18nModel.getProperty("successUpdate");
-					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+					} else { // Success
+						var sMessageSuccess = i18nModel.getProperty("successUpdate");
+						airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+					}
+
 				}
-
-			}
-		})
+			})
 	},
-	
+
 
 
 	/***************************************************************************
@@ -769,13 +769,13 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 			var document = attachedDocumentList[i];
 			if (document.Status === 'CREATE') {
 				airbus.mes.disruptions.ModelManager.attachDocument(ref, document.Title, document.File, document.Description);
-				document.Status = 'UPDATE';
 			} else if (document.Status === 'UPDATE') {
 				airbus.mes.disruptions.ModelManager.updateAttachDocument(ref, document.fileCount, document.Description);
 			} else if (document.Status === 'DELETE') {
 				airbus.mes.disruptions.ModelManager.deleteAttachDocument(ref, document.fileCount);
 			}
 		}
+		this.updateDesktopFilesModel();
 	},
 
 	onCameraPress: function (oEvt) {
@@ -992,7 +992,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		dialog.open();
 	},
 
-	getDateNow: function() {
+	getDateNow: function () {
 		var currDate = new Date();
 		var month = ("0" + (currDate.getMonth() + 1)).slice(-2);
 		var day = ("0" + (currDate.getDate())).slice(-2);
@@ -1000,6 +1000,11 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		var hours = ("0" + (currDate.getHours())).slice(-2);
 		var minutes = ("0" + (currDate.getMinutes())).slice(-2);
 		return currDate.getFullYear() + "-" + month + "-" + day + ' ' + hours + ":" + minutes + ':' + seconds;
+	},
+
+	updateDesktopFilesModel: function () {
+		sap.ui.getCore().getModel("DesktopFilesModel").setData([]);
+		this.loadAttachedDocument(sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/messageRef"));
 	}
 
 
