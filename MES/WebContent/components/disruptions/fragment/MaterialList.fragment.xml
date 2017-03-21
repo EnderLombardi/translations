@@ -70,7 +70,7 @@
 										<HBox width="30%">
 											<VBox>
 												<Label text="{i18nModel>quantity}" />
-												<Input type="Number" width="80%"  value="1" class="inputQty" />
+												<Input type="Number" width="80%"  value="{MaterialListModel>quantity}" class="inputQty" />
 											</VBox>
 											<Button icon="sap-icon://sys-cancel" type="Transparent" press="removeMaterial" class="buttonBlack"/>
 										</HBox>

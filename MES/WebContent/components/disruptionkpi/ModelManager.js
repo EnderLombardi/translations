@@ -271,7 +271,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 	
 	removeDuplicateMSNs: function(){
 		/*********** Filter for MSN **************/
-	    var aFilters = [];
+	  /*  var aFilters = [];
 	    var aStations = sap.ui.getCore().byId("disruptionKPIView--stationComboBox").getSelectedKeys();
 	    
 	    if(aStations.length == 0 && airbus.mes.disruptionkpi.ModelManager.oFilters.line != "All"){
@@ -298,7 +298,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 
         aFilters.push(duplicatesFilter);
         
-        sap.ui.getCore().byId("disruptionKPIView--msnComboBox").getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));
+        sap.ui.getCore().byId("disruptionKPIView--msnComboBox").getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));*/
 		
 	}
 	

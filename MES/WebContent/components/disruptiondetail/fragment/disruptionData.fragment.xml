@@ -34,7 +34,7 @@
 				</Select>
 				<core:Title text="" />
 				<Label text="{i18nModel>reason}" />
-				<Select id="selectAttribute" enabled="false" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}" forceSelection="false" selectedKey="{DisruptionDetailModel>/reason}" change="airbus.mes.disruptions.ModelManager.setDefaultResolutionGroup">
+				<Select id="selectAttribute" enabled="false" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}" forceSelection="false" selectedKey="{DisruptionDetailModel>/reason}" change="onSelectionChange">
 					<!-- enabled="{parts: [ {path: 'DisruptionDetailModel>/OriginatorFlag'}, {path: 'DisruptionDetailModel>/Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setReasonEnable'}"> -->
 					<items>
 						<core:Item text="{disruptionRsnRespGrp>TEXT}" key="{disruptionRsnRespGrp>REASON}" />

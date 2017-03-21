@@ -158,7 +158,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	onTableClick : function(oEvt) {
 		var sSelectionMode = oEvt.getSource().getSelectionMode();
 		if(sSelectionMode === "None"){
-			return;
+			return false;
 		}
 		
 		//Remove clear all selections
@@ -166,6 +166,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		// set data of the selected row to Data Model
 		// binding context changed as table used is sap.ui.table
+		if(oEvt.getParameters().rowBindingContext === undefined){
+			return false;
+		}
 		var sPath = oEvt.getParameters().rowBindingContext.getPath();
 		var disruptionData = sap.ui.getCore().getModel("disruptionsTrackerModel").getProperty(sPath);
 		

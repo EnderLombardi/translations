@@ -31,7 +31,7 @@
 							</items>
 						</Select>
 						<Label required="true" text="{i18nModel>reason}" class="textAlignLeft"/>
-						<Select id="selectAttribute" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}" forceSelection="false" selectedKey="{DisruptionDetailModel>/reason}" change="airbus.mes.disruptions.ModelManager.setDefaultResolutionGroup">
+						<Select id="selectAttribute" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}" forceSelection="false" selectedKey="{DisruptionDetailModel>/reason}" change="onSelectionChange">
 							<items>
 								<core:Item text="{disruptionRsnRespGrp>TEXT}" key="{disruptionRsnRespGrp>REASON}" />
 							</items>

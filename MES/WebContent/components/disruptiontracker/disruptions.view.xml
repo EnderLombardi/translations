@@ -115,7 +115,7 @@
 
 
 		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="true" selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: '.setSelectionMode'}" selectionBehavior="Row"
-			rows="{ path: 'disruptionsTrackerModel>/disruptionListDetails' }"
+			rows="{ path: 'disruptionsTrackerModel>/disruptionListDetails' }" onFilter="filterDisruptions"
 			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick">
 
 			<ui:columns>
@@ -134,7 +134,7 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="categoryCol" filterProperty="category"
+				<ui:Column id="categoryCol"
 					sortProperty="category">
 					<Label text="{disruptiontrackerI18n>object}" />
 					<ui:template>
@@ -142,7 +142,7 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="reasonCol" filterProperty="reason"
+				<ui:Column id="reasonCol"
 					sortProperty="reason">
 					<Label text="{disruptiontrackerI18n>attribute}" />
 					<ui:template>
@@ -223,7 +223,7 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="escalationCol" filterProperty="escalationLevel"
+				<ui:Column id="escalationCol"
 					sortProperty="escalationLevel">
 					<Label text="{disruptiontrackerI18n>escalation}" />
 					<ui:template>

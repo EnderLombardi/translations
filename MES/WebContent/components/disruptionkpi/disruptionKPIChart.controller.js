@@ -78,6 +78,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 					}
 				});
 		
+		i18nModel = this.getView().getModel("i18nModel");
 		var feedValueAxis1 = new sap.viz.ui5.controls.common.feeds.FeedItem({
 				'uid' : "valueAxis",
 				'type' : "Measure",
