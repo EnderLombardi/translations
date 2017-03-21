@@ -363,7 +363,6 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.2": sMessageRef,
 				"Param.3": sReason,
 				"Param.4": sResponsibleGroup,
-				// "Param.5" : sRootCause,[MES v1.5]
 				"Param.6": iTimeLost,
 				"Param.7": dFixedByTime,
 				"Param.8": sComment,

@@ -152,7 +152,6 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		oView.byId("selectFivemCategory").setEnabled(true);
 		oView.byId("selectCategory").setEnabled(false);
 		oView.byId("selectAttribute").setEnabled(false);
-		// oView.byId("selectRootCause").setEnabled(false); //-V1.5
 		oView.byId("selectResponsibleGrp").setEnabled(false);
 		oView.byId("timeLost").setEnabled(true);
 		oView.byId("expectedDate").setEnabled(true);
