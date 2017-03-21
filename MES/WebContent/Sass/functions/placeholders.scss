@@ -192,15 +192,11 @@ STATION TRACKER
     cursor: pointer;
 }
 %faChevron{
-    position: absolute;
-    left: 0;
     margin-left: 10px;
     margin-right: 10px;
     color: #0F5F78;
 }
 %faChevronRight{
-    position: absolute;
-    right: 0;
     margin-left: 10px;
     margin-right: 10px;
     color: #0F5F78;
@@ -209,13 +205,14 @@ STATION TRACKER
     width: 3px !important;
 }
 %stationViewYlabelIconAndImage{
-    width: 30px;
     height: 30px;
     line-height: 30px;
-    vertical-align: middle;
     font-size: 16px;
-    text-align: center;
     color: #0D5D76;
+    min-width: 30px;
+    text-align: center;
+    border-radius: 50%;
+    margin: auto 5px auto 0;
 }
 %stationViewYlabelUser{
     vertical-align: middle;
@@ -223,20 +220,6 @@ STATION TRACKER
     color: #0D5D76;
     font-size: 14px;
     font-weight: bold;
-}
-%ylabelUser {
-    max-width: 75px;
-    white-space: nowrap;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 25px;
-    font-size: 18px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    color: $petrol;
 }
 %tracker-item-initial{
     color: #BBBCBC;
@@ -307,7 +290,6 @@ STATION TRACKER
     float: left !important;
 }
 %ylabelfolder{
-    padding: 0 30px;
     margin: 0;
     font-size: 12px;
     color: #0F5F78;
@@ -445,11 +427,6 @@ STATION TRACKER
     overflow: hidden;
     float: none !important;
     @include transition(width , 0.3s);
-}
-%rescheduleLineBtn{
-
-}
-%rescheduleAllBtn {
 }
 
 //BUTTONS

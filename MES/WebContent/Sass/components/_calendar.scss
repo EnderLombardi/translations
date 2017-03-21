@@ -6,6 +6,7 @@ TABLE
         max-width:199px;
         .ylabelfolder {
             @extend %ylabelfolder;
+            padding-left: 20px;
         }
     }
     &>div{
@@ -168,6 +169,8 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         float: none;
         text-align: left;
         position: relative;
+        display: flex;
+        width: 189px;
     }
     .dhx_row_folder{
         .dhx_matrix_scell{
@@ -260,20 +263,18 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         float: left;
         height: 40px;
     }
-
     .avlLine{
         overflow: hidden;
         text-overflow: ellipsis;
-    max-width: 120px;
+        max-width: 120px;
         white-space: nowrap;
-    white-space: nowrap;
-    color: #0D5D76;
-    vertical-align: middle;
-    text-overflow: ellipsis;
-    display: inline-block;
-    overflow: hidden;
+        white-space: nowrap;
+        color: #0D5D76;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+        display: inline-block;
+        overflow: hidden;
     }
-
     .ylabel{
         white-space: nowrap;
         color: #0D5D76;
@@ -288,6 +289,16 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         @extend %stationViewYlabelIconAndImage;
         float: left;
     }
+    .ylabelUser {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: $petrol;
+        font-size: 14px;
+        padding: 2px 0;
+        font-weight: bold;
+        margin: auto 0;
+    }
     .ylabelUserImage{
         @extend %stationViewYlabelIconAndImage;
         background-color: $duck-egg-blue;
@@ -295,11 +306,6 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         float: left;
         margin-right:10px;
         }
-    .ylabelUser{
-        @extend %stationViewYlabelUser;
-        margin-left: 0px;
-        max-width: 130px;
-    }
     .yMoreLabel{
         position: absolute;
         right: 2px;

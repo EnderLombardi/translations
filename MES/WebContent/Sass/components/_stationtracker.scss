@@ -54,23 +54,6 @@ Défilement text tooltip
 
 
 /********************
-TABLE
-*********************/
-
-.dhx_matrix_scell {
-    &.folder {
-        max-width: 199px;
-        .ylabelfolder {
-            @extend %ylabelfolder;
-        }
-    }
-    &>div {
-        padding-left: 10px !important;
-    }
-}
-
-
-/********************
 TOOLBAR
 *********************/
 
@@ -128,6 +111,7 @@ WORK LIST POP OVER
             }
         }
         &.fa-exclamation-triangle {
+            padding: 0 2px;
             &.triangleIcon {
                 &.petrol {
                     color: $petrol;
@@ -610,7 +594,6 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     .dhx_matrix_scell div {
         text-align: left;
         white-space: nowrap;
-        margin-top: 2px;
     }
     .dhx_cal_event {
         border: none;
@@ -655,26 +638,10 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
             background-image: none;
         }
     }
-    .dhx_scell_name {
-        float: none;
-        text-align: left;
-        position: relative;
-    }
     .dhx_row_folder {
         .dhx_matrix_scell {
             &.folder {
                 background-color: white;
-            }
-        }
-        .dhx_scell_name {
-            .fa-chevron-down {
-                @extend %faChevronRight;
-            }
-            .fa-chevron-right {
-                @extend %faChevronRight;
-            }
-            .fa-plus {
-                @extend %faChevron;
             }
         }
         .dhx_marked_timespan {
@@ -727,10 +694,6 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
                 background-color: green;
             }
         }
-        .dhx_scell_name {
-            white-space: nowrap;
-            padding: 0px;
-        }
     }
     .dhx_data_table {
         &.folder td {
@@ -754,47 +717,62 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     }
     .avlLine {
         overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 120px;
-        white-space: nowrap;
         white-space: nowrap;
         color: #0D5D76;
-        vertical-align: middle;
         text-overflow: ellipsis;
-        display: inline-block;
+        padding-left: 2px;
+    }
+    .avlLineWarning {
         overflow: hidden;
+        white-space: nowrap;
+        color: #0D5D76;
+        text-overflow: ellipsis;
+        padding-left: 2px;
     }
     .ylabel {
         white-space: nowrap;
-        color: #0D5D76;
-        vertical-align: middle;
-        text-overflow: ellipsis;
-        display: inline-block;
         overflow: hidden;
-        max-width: 80px;
-        height: 15px;
+        text-overflow: ellipsis;
+        color: rgba(0, 86, 112, 0.94);
+        font-size: 14px;
+        padding: 2px 0;
+    }
+    .ylabelUser {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: $petrol;
+        font-size: 14px;
+        padding: 2px 0;
+        font-weight: bold;
     }
     .ylabelEditIcon {
         @extend %stationViewYlabelIconAndImage;
-        float: left;
     }
-    .ylabelUserImage {
+    .ylabelUserIcon {
         @extend %stationViewYlabelIconAndImage;
-        background-color: $duck-egg-blue;
-        border-radius: 999px;
-        float: left;
-        margin-right: 10px;
     }
-    .ylabelUser {
-        @extend %stationViewYlabelUser;
-        margin-left: 0px;
-        max-width: 130px;
+    .yContainerWithImage {
+        display: flex;
+        align-self: center;
+        flex-direction: column-reverse;
+        >* {
+            width: 154px;
+        }
+    }
+    .yContainerWithoutImage {
+        display: flex;
+        align-self: center;
+        flex-direction: column-reverse;
+        >* {
+            width: 189px;
+        }
     }
     .yMoreLabel {
-        position: absolute;
-        right: 2px;
         color: #8db9ca;
-        top: 2px;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 4px;
         .fa-pencil {
             width: 30px;
             text-align: center;
@@ -803,6 +781,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     .tracker-item-initial {
         @extend %tracker-item-initial;
         .fa-exclamation-triangle {
+            padding: 0 2px;
             color: #BBBCBC !important;
         }
     }
@@ -1775,10 +1754,6 @@ OTHER
     }
 }
 
-.ylabelUser {
-    @extend %ylabelUser;
-}
-
 .div {
     &.Left {
         &.sapSuiteDmcBarInternal {
@@ -1792,50 +1767,6 @@ OTHER
     padding-left: 10px;
     width: 100px;
     position: relative;
-}
-
-.marginLeft0 {
-    margin-left: 0 !important;
-}
-
-.partialConfirmCss {
-    .sapUxAPObjectPageSectionTitle {
-        color: #006CA7 !important;
-        border-bottom: 0px solid #999999 !important;
-    }
-}
-
-.partialConfirmCss2 {
-    .sapUxAPObjectPageSectionHeader {
-        border-bottom: 0px solid #f2f2f2 !important;
-    }
-}
-
-.partialConfirmCss3 {
-    .sapUxAPObjectPageSectionHeader {
-        height: 0rem;
-    }
-}
-
-.partialConfHeader {
-    .sapUxAPObjectPageHeaderIdentifier {
-        background-color: $teal-blue !important;
-    }
-}
-
-.whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle,
-.whitePartialConfHeader2 .sapUxAPObjectPageHeaderIdentifierDescription {
-    color: white !important;
-}
-
-.lockCss {
-    .sapUxAPObjectPageHeaderLockBtn {
-        .sapMBtnTransparent {
-            &>.sapMBtnIcon {
-                color: #ED8E01;
-            }
-        }
-    }
 }
 
 .ylabel {
@@ -1863,21 +1794,8 @@ OTHER
     @include background(#515456);
 }
 
-.Blue {
-    @include background(#006CA7 !important);
-    z-index: 1 !important;
-}
-
 .white {
     @include background(white !important);
-}
-
-.centerItems {
-    &.NS {
-        &.sapSuiteHdrCellNorth {
-            text-align: center !important;
-        }
-    }
 }
 
 .whiteTextButton {
@@ -1913,15 +1831,10 @@ OTHER
 .alignTextLeft {
     .sapMIBar-CTX {
         .sapMTitle {
-            @include font("Verdana",
-            bold);
+            @include font("Verdana", bold);
             padding-right: 75%;
         }
     }
-}
-
-.hachure {
-    background-image: url("../../components/stationtracker/css/img/fat_lines.png");
 }
 
 .panelContent {
@@ -2167,4 +2080,55 @@ reschedule
 
 #stationTrackerView--splitWorkTra.withoutKPI {
     height: calc(100% - 6rem - 15px) !important;
+}
+
+/********************
+TABLE
+*********************/
+
+.dhx_matrix_scell {
+    &.folder {
+        max-width: 199px;
+        .ylabelfolder {
+            @extend %ylabelfolder;
+        }
+        .dhx_scell_name {
+            width: 189px;
+            >div {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                width: 100%;
+                .fa-chevron-down {
+                    @extend %faChevronRight;
+                }
+                .fa-chevron-right {
+                    @extend %faChevronRight;
+                }
+                .fa-plus {
+                    @extend %faChevron;
+                }
+            }
+        }
+    }
+    &.lineYaxis {
+        >div {
+            height: inherit;
+            .dhx_scell_name {
+                height: inherit;
+                float: none;
+                position: relative;
+                padding: 0px !important;
+                >div {
+                    height: inherit;
+                    display: flex;
+                    width: 189px;
+                }
+            }
+        }
+    }
+}
+
+.fa-exclamation-triangle {
+    padding: 0 2px;
 }

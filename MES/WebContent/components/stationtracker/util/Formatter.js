@@ -30,9 +30,9 @@ airbus.mes.stationtracker.util.Formatter = {
 		var returnValue;
 
 		returnValue = ("0" + startTime.getHours()).substr(-2) + ':'
-					+ ("0" + startTime.getMinutes()).substr(-2) + ' - '
-					+ ("0" + endTime.getHours()).substr(-2) + ':'
-					+ ("0" + endTime.getMinutes()).substr(-2);
+			+ ("0" + startTime.getMinutes()).substr(-2) + ' - '
+			+ ("0" + endTime.getHours()).substr(-2) + ':'
+			+ ("0" + endTime.getMinutes()).substr(-2);
 
 		return returnValue;
 	},
@@ -236,7 +236,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		// global name
 		var sOSW = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Osw");
 		var sUNPD = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Unplanned");
-			
+
 		var html = "";
 		var sDivForLeftDisplay = '<div  class="trackerBox">';
 		var sDivForLeftDisplayInitial = '<div class="tracker-item-initial" >';
@@ -251,14 +251,14 @@ airbus.mes.stationtracker.util.Formatter = {
 		var trackerTextClass = "";
 		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 		var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress, oBox.totalDuration);
-		
+
 		if (oBox.stop === 1) { //stop icon
 			var dispatch = true;
 		} else {
 			var dispatch = false;
-		}		
+		}
 		var isWhiteIcon = false;
-		
+
 		// Text to display different case regarding box selected
 		switch (airbus.mes.stationtracker.util.GroupingBoxingManager.box) {
 
@@ -287,8 +287,8 @@ airbus.mes.stationtracker.util.Formatter = {
 		if (oBox.rmaStatus === 1) { //rma
 			sLeftIcon = boxDisplayManager.leftTriangleIcon_Dandelion;
 		}
-		if (oBox.OSW === 3 ||oBox.OSW === 4) { //OSW
-			sLeftIcon2 = boxDisplayManager.leftOswIcon_Constructor(sOSW,oBox.aAcpngStatus);
+		if (oBox.OSW === 3 || oBox.OSW === 4) { //OSW
+			sLeftIcon2 = boxDisplayManager.leftOswIcon_Constructor(sOSW, oBox.aAcpngStatus);
 		}
 		if (oBox.isUnplanned === 1) { //Unplanned
 			sLeftIcon3 = boxDisplayManager.leftOswIcon_Constructor(sUNPD);
@@ -324,32 +324,32 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 
 				break;
-				
-				//Opened disruption Escalated red
+
+			//Opened disruption Escalated red
 			case 8:
 				sColorProgress = boxDisplayManager.colorProgress_Escalated;
 				trackerTextClass = "whiteColor"
-				sRightIcon = this.computeStatus(oBox.status2,"whiteColor");
-				
+				sRightIcon = this.computeStatus(oBox.status2, "whiteColor");
+
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
-				
+
 				isWhiteIcon = true;
-				
+
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
-				
+
 				isWhiteIcon = true;
-				
+
 				break;
 
-				//Open disruption yellow
+			//Open disruption yellow
 			case 7:
 				sColorProgress = boxDisplayManager.colorProgress_OpenBlocked;
 				trackerTextClass = "petrol"
-				sRightIcon = this.computeStatus(oBox.status2,"petrol");
+				sRightIcon = this.computeStatus(oBox.status2, "petrol");
 
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
@@ -357,32 +357,32 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
-							
+
 				break;
 
-				//Answered Escalated red Hatch
+			//Answered Escalated red Hatch
 			case 6:
 				sColorProgress = boxDisplayManager.colorProgress_AnsweredBlockedExcalated;
 				trackerTextClass = "whiteColor"
-				sRightIcon = this.computeStatus(oBox.status2,"whiteColor");
+				sRightIcon = this.computeStatus(oBox.status2, "whiteColor");
 
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
-				
+
 				if (oBox.isUnplanned === 1) { //Unplanned
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
-				
+
 				isWhiteIcon = true;
 				break;
 
-				//Answered yellow hatch
+			//Answered yellow hatch
 			case 5:
 				sColorProgress = boxDisplayManager.colorProgress_AnsweredBlocked;
 				trackerTextClass = "petrol";
-				sRightIcon = this.computeStatus(oBox.status2,"petrol");
-				
+				sRightIcon = this.computeStatus(oBox.status2, "petrol");
+
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 				}
@@ -390,19 +390,19 @@ airbus.mes.stationtracker.util.Formatter = {
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
 				break;
-				//All disruptions are solved green hatch
+			//All disruptions are solved green hatch
 			case 4:
 				sColorProgress = boxDisplayManager.colorProgress_SolvedDisruption;
 				//sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
 				trackerTextClass = "whiteColor";
-				sRightIcon = this.computeStatus(oBox.status2,"whiteColor");
-				
+				sRightIcon = this.computeStatus(oBox.status2, "whiteColor");
+
 				if (oBox.rmaStatus === 1) { //rma
 					sLeftIcon = boxDisplayManager.leftTriangleIcon;
 				}
-				if ( oBox.isBlocked === 1 ) {
+				if (oBox.isBlocked === 1) {
 					sRightIcon = boxDisplayManager.rightStopWhite;
-				}	
+				}
 
 				isWhiteIcon = true;
 
@@ -410,36 +410,36 @@ airbus.mes.stationtracker.util.Formatter = {
 					sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 				}
 				break;
-				
+
 			default:
 		}
-		
+
 		if (dispatch) {
-			if (isWhiteIcon){
+			if (isWhiteIcon) {
 				sLeftIcon = boxDisplayManager.leftStopIcon_White;
 			} else {
 				sLeftIcon = boxDisplayManager.leftStopIcon;
 			}
 		}
-		
-//		SD-PPC-WT-1250
-//		Case of Tracking Template freeze
-		if(oBox.freezeTrackingTemplate) {
-			if(isWhiteIcon) {
-				sRightIcon2 = boxDisplayManager.rightTTFreezeWhite;	
+
+		//		SD-PPC-WT-1250
+		//		Case of Tracking Template freeze
+		if (oBox.freezeTrackingTemplate) {
+			if (isWhiteIcon) {
+				sRightIcon2 = boxDisplayManager.rightTTFreezeWhite;
 			} else {
-				sRightIcon2 = boxDisplayManager.rightTTFreeze;	
+				sRightIcon2 = boxDisplayManager.rightTTFreeze;
 			}
 		}
 
-		if ( oBox.isBlocked === 1 ) {
-			if(isWhiteIcon) {
+		if (oBox.isBlocked === 1) {
+			if (isWhiteIcon) {
 				sRightIcon = boxDisplayManager.rightStopWhite;
 			} else {
-				sRightIcon = boxDisplayManager.rightStop;	
-			}			
-		}		
-		
+				sRightIcon = boxDisplayManager.rightStop;
+			}
+		}
+
 
 		//
 		var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon2bis, sLeftIcon3, sRightIcon, sRightIcon2);
@@ -450,27 +450,27 @@ airbus.mes.stationtracker.util.Formatter = {
 			+ sText + ' - [' + airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) + '/'
 			+ airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) + ' IM]</span>';
 
-    	//When missing part is open and we click on an operation it need to hide all operation in stationTracker and display only the selected one
-    	if ( airbus.mes.missingParts != undefined ) {
-    		   	
+		//When missing part is open and we click on an operation it need to hide all operation in stationTracker and display only the selected one
+		if (airbus.mes.missingParts != undefined) {
+
 			var oMissingPart = airbus.mes.missingParts.util.ModelManager;
-	
-	    	if ( airbus.mes.shell.util.navFunctions.splitMissingPart && oMissingPart.operation != "" ) {    		
-	    		if (oBox.operationId != oMissingPart.operation || oBox.shopOrder != oMissingPart.workOrder ) {
-	    			
-	    			sColorProgress = boxDisplayManager.colorMissingPart;
-	
-	    		}
-	    	}
-    	}
+
+			if (airbus.mes.shell.util.navFunctions.splitMissingPart && oMissingPart.operation != "") {
+				if (oBox.operationId != oMissingPart.operation || oBox.shopOrder != oMissingPart.workOrder) {
+
+					sColorProgress = boxDisplayManager.colorMissingPart;
+
+				}
+			}
+		}
 		//construction of the html
 		if (oBox.type === "I") {
 			trackerTextClass = ""
-			html = sDivForLeftDisplayInitial + sLeftIcon + sRightIcon + sRightIcon2 + sLeftIcon2 + sLeftIcon2bis  + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
+			html = sDivForLeftDisplayInitial + sLeftIcon + sRightIcon + sRightIcon2 + sLeftIcon2 + sLeftIcon2bis + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
 		} else {
-			html = sDivForLeftDisplay + sLeftIcon + sRightIcon + sRightIcon2  + sLeftIcon2 + sLeftIcon2bis + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
+			html = sDivForLeftDisplay + sLeftIcon + sRightIcon + sRightIcon2 + sLeftIcon2 + sLeftIcon2bis + sLeftIcon3 + sSpanText + sColorProgress + '</div>';
 		}
-    				
+
 		var tooltipTextForBox = '<div class="tooltipTextTrackerBox1"> ' + '<span class="tooltipTextTrackerBox2" data-text="' + sText + ' - ['
 			+ airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) + '/'
 			+ airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) + ' IM]"></span></div>';
@@ -479,28 +479,28 @@ airbus.mes.stationtracker.util.Formatter = {
 		return html;
 	},
 
-	computeStatus : function(fStatus,sColor) {
+	computeStatus: function (fStatus, sColor) {
 		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 		switch (fStatus) {
-		case 0:
-			return boxDisplayManager.rightIcon_Constructor("fa-check",sColor);
-			break;
-		case 1:
-			return "";
-		    break;
-		case 2:
-			return boxDisplayManager.rightIcon_Constructor("fa-play",sColor);
-		    break;
-		case 3:
-			return boxDisplayManager.rightIcon_Constructor("fa-pause",sColor);
-		    break;
-		default:
-			return "";
+			case 0:
+				return boxDisplayManager.rightIcon_Constructor("fa-check", sColor);
+				break;
+			case 1:
+				return "";
+				break;
+			case 2:
+				return boxDisplayManager.rightIcon_Constructor("fa-play", sColor);
+				break;
+			case 3:
+				return boxDisplayManager.rightIcon_Constructor("fa-pause", sColor);
+				break;
+			default:
+				return "";
 		}
-		
+
 		return "";
 	},
-	
+
 	initial: function (sText, sProgress) {
 		var html = "";
 		html += '<div  style=" border: solid 2px #979797; background-color:#f5f5f5; width:100%; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
@@ -552,7 +552,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			return 0;
 		}
 	},
-	
+
 	/*----------------------------------------------------------------------------
 	 * Formate and return an object with some AVL Line informations
 	 * for Reschedule Line
@@ -568,22 +568,22 @@ airbus.mes.stationtracker.util.Formatter = {
 
 		var nLine = avlLineArray[0];
 		var skill = avlLineArray[1];
-				
-		if(len >= 3) {
-			for (var i = 2; i <  len; i++) {
+
+		if (len >= 3) {
+			for (var i = 2; i < len; i++) {
 				skill += "_" + avlLineArray[i];
 			}
 		}
 
 		var objLine = {
-			"avlLine" : avlLine,
-			"nLine"   : nLine,
-			"skill"   : skill,
-			"count"   : count
+			"avlLine": avlLine,
+			"nLine": nLine,
+			"skill": skill,
+			"count": count
 		};
 		return objLine;
 	},
-	
+
 	/*----------------------------------------------------------------------------
 	 * Permit to display the different case to the left y-axis of scheduler
 	 * display the case of user affected
@@ -607,14 +607,14 @@ airbus.mes.stationtracker.util.Formatter = {
 
 		//** folder row **/
 		if (oSection.children != undefined) {
-			
+
 			var sAddLine = "";
 			// Checking Roles. If true then a new Line will be added, else not
-	    	if( sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_GANTT_CREATE") ) {
-	    	
-	    		sAddLine = '<span id= add_' + oSection.key + ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.util.AssignmentManager.newLine(\'' + oSection.key + '\')"></span>'
-	    	}
-	    	
+			if (sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_GANTT_CREATE")) {
+
+				sAddLine = '<span id= add_' + oSection.key + ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.util.AssignmentManager.newLine(\'' + oSection.key + '\')"></span>'
+			}
+
 			html = '<div><span id= folder_' + oSection.key + ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(oSection.open)
 				+ '"></span><div title=' + airbus.mes.stationtracker.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
 				+ '</div>' + sAddLine + '</div>';
@@ -623,120 +623,74 @@ airbus.mes.stationtracker.util.Formatter = {
 
 		var sshiftID = airbus.mes.stationtracker.util.ShiftManager.ShiftSelected.shiftID;
 		var sNotConfirmedOpLS = "";
-		
+
 		// Count number of not totally confirmed in previous shift
 		var countNotConfirmedOps = 0;
 		countNotConfirmedOps = airbus.mes.stationtracker.util.ShiftManager.countNoTotalConfLastShif(oSection);
-		
+
 		if (countNotConfirmedOps !== 0) {
-			
+
 			var paramsRescheduleLine = '\'' + oSection.avlLine + '\',' + countNotConfirmedOps;
-			var labelRescheduleBtn   = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("RescheduleLineButton");
-			
+			var labelRescheduleBtn = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("RescheduleLineButton");
+
 			sNotConfirmedOpLS = '<span class="rescheduleLineBtn" onclick="airbus.mes.stationtracker.util.ModelManager.rescheduleLine(' + paramsRescheduleLine + ')">' +
-								  	'<span class="rescheduleLineLabelBtn">' + labelRescheduleBtn + '</span>' +
-								  	'<i class="fa fa-clock-o" aria-hidden="true"></i>' +
-							  	'</span>';
-			
+				'<span class="rescheduleLineLabelBtn">' + labelRescheduleBtn + '</span>' +
+				'<i class="fa fa-clock-o" aria-hidden="true"></i>' +
+				'</span>';
+
 			// Add count of operation on AVL Line to global toRescheduleAllCount
 			airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount += countNotConfirmedOps;
 
 			// Display Reschedule all button
-			if(airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount > 0) {
+			if (airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount > 0) {
 				//console.log("Display RescheduleAll Button");
-				$(".rescheduleAllBtn").css({'display' : 'block'});
+				$(".rescheduleAllBtn").css({ 'display': 'block' });
 			} else {
 				//console.log("Hide RescheduleAll Button");
-            	$(".rescheduleAllBtn").css({'display' : 'none'});
-        	}
-        
+				$(".rescheduleAllBtn").css({ 'display': 'none' });
+			}
+
 		}
 
-		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
+		if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine]
+			&& airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID]) {
 
-			if (airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID]) {
+			// See SD there is only one user affected for the couple of shift id + avlLine
+			var oCurrentAffectedUser = airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
+			oHierarchyDelay = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchyDelay;
+			fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+			fDuration = oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+			sSpanWarn = "";
+			var yContainerClass = "";
 
-				// See SD there is only one user affected for the couple of shift id + avlLine
-				var oCurrentAffectedUser = airbus.mes.stationtracker.util.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
-				oHierarchyDelay = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchyDelay;
-				fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
-				fDuration = oHierarchyDelay[oSection.group][oSection.avlLine].duration;
-				sSpanWarn = "";
+			if (oCurrentAffectedUser.warn === "true") {
+				sSpanWarn = '<span class="fa fa-exclamation-triangle" onclick="airbus.mes.stationtracker.oView.getController().onCheckQA()"></span>';
+			}
 
-				if (oCurrentAffectedUser.warn === "true") {
-					sSpanWarn = '<span class="fa fa-exclamation-triangle" style="padding-right: 5px;" onclick="airbus.mes.stationtracker.oView.getController().onCheckQA()"></span>';
-				}
-
-				if (oSection.rescheduled) {
-					
-					html = sNotConfirmedOpLS + '<div>';
-
-					if (airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")) { // Check if user image to be displayed  or not
-
-						var imgId = sap.ui.getCore().byId("stationTrackerView").createId("folder_" + oSection.key + "Image--" + oCurrentAffectedUser.picture);
-
-						html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId + '" src='
-							+ airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage"/>' // To display User Image
-					}
-
-					html += '<div><span class="avlLine" title="' + oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '">'
-						+ oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '</span>';
-
-					if (airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME")) { // Check if user image to be displayed  or not
-
-						html += '<br><span class="ylabelUser" title='
-							+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName)
-							+ '>' + oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
-					}
-					// value used in localhost
-					if (airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME") === undefined) {
-
-						html += '<br><span class="ylabelUser" title='
-							+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName)
-							+ '>' + oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
-					}
-
-					html += airbus.mes.stationtracker.util.Formatter.createDelaySpan(fProgress, fDuration, sSpanWarn);
-
-					return html + '</div>';
-
-				}
-
-			} else {
-				//** no user affected **/
+			if (oSection.rescheduled) {
 				html = sNotConfirmedOpLS + '<div>';
+				if (airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")) { // Check if user image to be displayed  or not
+					var imgId = sap.ui.getCore().byId("stationTrackerView").createId("folder_" + oSection.key + "Image--" + oCurrentAffectedUser.picture);
 
-				html += '<i class="fa  fa-pencil ylabelEditIcon"></i>';
+					html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId + '" src='
+						+ airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserIcon"/>' // To display User Image
 
-				html += '<div class="yText">' + '<span class="avlLine" title="' + oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0]
-					+ '">' + oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '</span>' + '<br><span class="ylabel">'
-					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
-
-				oHierarchyDelay = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchyDelay;
-				//console.log(oHierarchyDelay);
-
-				if (oHierarchyDelay[oSection.group] != undefined) {
-					// Check if the avl exist in the model from mii it check if the avl is not a avlLine just creatd by a user
-					if (oHierarchyDelay[oSection.group][oSection.avlLine] != undefined) {
-
-						fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
-						fDuration = oHierarchyDelay[oSection.group][oSection.avlLine].duration;
-
-					} else {
-
-						fProgress = 0;
-						fDuration = 0;
-
-					}
-
+					yContainerClass = "yContainerWithImage";
+				} else {
+					yContainerClass = "yContainerWithoutImage";
 				}
 
-				sSpanWarn = "";
+				var sAvlLine = '<span class="avlLine" title="' + oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '">'
+					+ oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '</span>';
 
-				html += airbus.mes.stationtracker.util.Formatter.createDelaySpan(fProgress, fDuration, sSpanWarn);
+				html += '<div class="' + yContainerClass + '">';
+				html += '<span class="ylabelUser" title='
+					+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName)
+					+ '>' + oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
+
+				html += airbus.mes.stationtracker.util.Formatter.createDelaySpan(fProgress, fDuration, sSpanWarn, sAvlLine);
 
 				return html + '</div>';
-
 			}
 
 		} else {
@@ -744,38 +698,35 @@ airbus.mes.stationtracker.util.Formatter = {
 
 			html = sNotConfirmedOpLS + '<div>';
 
-			html += '<i class="fa  fa-pencil ylabelEditIcon"></i>';
+			html += '<i class="fa fa-pencil ylabelEditIcon"></i>';
 
-			html += '<div class="yText">' + '<span class="avlLine" title="' + oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '">'
-				+ oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '</span>' + '<br><span class="ylabel">'
-				+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
+			html += '<div class="yContainerWithImage">'
+						+ '<span class="ylabel">'
+							+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator")
+						+ '</span>';
+
+			var sAvlLine = '<span class="avlLine" title="' + oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '">'
+				+ oSection.avlLine.split("_")[1] + " - " + oSection.avlLine.split("_")[0] + '</span>';
 
 			oHierarchyDelay = airbus.mes.stationtracker.util.GroupingBoxingManager.operationHierarchyDelay;
 
 			if (oHierarchyDelay[oSection.group] != undefined) {
 				// Check if the avl exist in the model from mii it check if the avl is not a avlLine just creatd by a user
 				if (oHierarchyDelay[oSection.group][oSection.avlLine] != undefined) {
-
 					fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
 					fDuration = oHierarchyDelay[oSection.group][oSection.avlLine].duration;
-
 				} else {
-
 					fProgress = 0;
 					fDuration = 0;
-
 				}
-
 			}
 
 			sSpanWarn = "";
-
-			html += airbus.mes.stationtracker.util.Formatter.createDelaySpan(fProgress, fDuration, sSpanWarn);
+			html += airbus.mes.stationtracker.util.Formatter.createDelaySpan(fProgress, fDuration, sSpanWarn, sAvlLine);
 			return html + '</div>';
-
 		}
 
-		//                default mode
+		// default mode
 		html = "";
 		return html;
 	},
@@ -793,72 +744,11 @@ airbus.mes.stationtracker.util.Formatter = {
 	 * @param oWorkList
 	 */
 	sortWorkList: function (oWorkList) {
-		/*  var oWL2 = [];
-		  var oWOList = [];
-		  var i;*/
 
 		// Sort by WO number (to group operations with same WO)
 		// Also group by operation, because the sort order is kept for
 		// operations
 		oWorkList.sort(this.fieldComparator(['START_TIME']));
-
-		//                   // Constitute a table of WO groups with operations associated
-		//                   // The group object has template bellow.
-		//                   var currentWO = {
-		//
-		//                          shopOrder : undefined,
-		//                          dynamicStartDate : undefined,
-		//                          scheduledStartDate : undefined,
-		//                          operationsID : [],
-		//                   };
-		//
-		//                   for (i = 0; i < oWorkList.length; i++) {
-		//                          if (currentWO.shopOrder !== oWorkList[i].shopOrder) {
-		//
-		//                                 if (currentWO.operationsID.length > 0) {
-		//                                        oWOList.push(currentWO);
-		//                                 }
-		//
-		//                                 currentWO = {
-		//                                         shopkOrder : oWorkList[i].shopOrder,
-		//                                        startDate : oWorkList[i].startDate,
-		////                                        scheduledStartDate : oWorkList[i].start,
-		//                                        operationsID : [ oWorkList[i] ],
-		//                                 };
-		//
-		//                          } else {
-		//
-		//                                 if (oWorkList[i].startDate < currentWO.startDate) {
-		//                                        currentWO.startDate = oWorkList[i].startDate;
-		//                                 }
-		//
-		////                                 if (oWorkList[i].start < currentWO.scheduledStartDate) {
-		////                                        currentWO.scheduledStartDate = oWorkList[i].start;
-		////                                 }
-		//
-		//                                 currentWO.operationsID.push(oWorkList[i]);
-		//
-		//                          }
-		//                   }
-		//
-		//                   oWOList.push(currentWO);
-		//
-		//                   // Sort each groups (Work Orders)
-		//                   // The operations inside each groups should still be in the same order
-		//                   // (ascending order preserved)
-		//                   oWOList.sort(this.fieldComparator([ 'startDate', 'workOrder' ]));
-		//
-		//                   // Flatten worklist (take operations of each groups)
-		//                   oWL2 = oWOList.reduce(function(prev, curr) {
-		//                          return prev.concat(curr.operationsID);
-		//                   }, []);
-
-		// Keep the index, for stable sorting on WorkList screen (as sorter is
-		// also used for grouping)
-		/*oWorkList.forEach(function(el, i) {
-		       el.index = i;
-		});*/
-
 		return oWorkList;
 	},
 
@@ -982,7 +872,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					} else {
 						hasChild = true;
 					}
-						
+
 				}
 				xml += hasChild ? ">" : "/>";
 				if (hasChild) {
@@ -1034,7 +924,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		if (secs == 0) {
 			secs = "00";
 		}
-			
+
 		return hrs + ':' + mins + ':' + secs;
 	},
 
@@ -1051,7 +941,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		//Transfomr in hour
 		var sGapMin = Math.abs(Math.round((sGap - sGapHour) * 60));
 
-		//                  Conversion from minutes to industrial minutes
+		//Conversion from minutes to industrial minutes
 		sGapMin = Math.round((sGapMin / 3) * 5);
 
 		if (sGapMin < 10) {
@@ -1066,28 +956,38 @@ airbus.mes.stationtracker.util.Formatter = {
 		return sGapHour + "," + sGapMin + "h";
 
 	},
-	//                Calculate Total Takt
+
+	//Calculate Total Takt
 	totalTakt: function (inTakt, outTakt, notAck) {
 		var total;
 		total = inTakt + outTakt + notAck;
 		return total;
 
 	},
-	createDelaySpan: function (fProgress, fDuration, sSpanWarn) {
+
+	createDelaySpan: function (fProgress, fDuration, sSpanWarn, sAvlLine) {
 		var html = "";
 		if (sSpanWarn === undefined) {
 			sSpanWarn = "";
 		}
-		return html += '<span  class="yMoreLabel" >' + sSpanWarn + '<span title=' + airbus.mes.stationtracker.util.Formatter.computeDelay(fProgress, fDuration)
-			+ '>' + airbus.mes.stationtracker.util.Formatter.computeDelay(fProgress, fDuration) + '</span>' + '</span>';
+		return html += 
+			'<div class="yMoreLabel" >' + sAvlLine +
+				'<div>' + sSpanWarn +
+					'<span title=' + airbus.mes.stationtracker.util.Formatter.computeDelay(fProgress, fDuration) + '>'
+						+ airbus.mes.stationtracker.util.Formatter.computeDelay(fProgress, fDuration) +
+					'</span>' +
+				'</div>' +
+			'</div>';
 	},
+
 	sumKPI: function (value1, value2, value3) {
 		return parseFloat(value1) + parseFloat(value2) + parseFloat(value3);
 	},
-	checkDisplayHOComponents :function(bValue) {
-		if(bValue){
+
+	checkDisplayHOComponents: function (bValue) {
+		if (bValue) {
 			return bValue.toString();
-		}else{
+		} else {
 			return "";
 		}
 	}
