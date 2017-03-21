@@ -170,8 +170,8 @@
 				</customData>
 				<HBox class="document-item">
 					<Label id="document-id" class="document-id" text="{DesktopFilesModel>fileCount}" />
-					<Label id="document-title" class="document-title" text="{DesktopFilesModel>Title}" visible="{={path:'DesktopFilesModel>fileURL', formatter: 'airbus.mes.disruptions.Formatter.getLink'} ? true : false}" />
-					<Link class="document-title" text="{DesktopFilesModel>Title}" href="{operationDisruptionsModel>fileURL}" visible="{path:'DesktopFilesModel>fileURL', formatter: 'airbus.mes.disruptions.Formatter.getLink'}"/>
+					<Label id="document-title" class="document-title" text="{DesktopFilesModel>Title}" visible="{path:'DesktopFilesModel>fileURL', formatter: 'airbus.mes.disruptions.Formatter.isUndefined'}" />
+					<Link class="document-title" text="{DesktopFilesModel>Title}" href="{DesktopFilesModel>fileURL}" visible="{path:'DesktopFilesModel>fileURL', formatter: 'airbus.mes.disruptions.Formatter.isDefined'}"/>
 					<Label id="document-description" class="document-description" text="{DesktopFilesModel>Description}" />
 					<Input width="calc(58% - 20px)" id="document-description-input" class="document-description" visible="false" value="{DesktopFilesModel>Description}" />
 					<Label class="document-size" text="{path:'DesktopFilesModel>Size', formatter: 'airbus.mes.disruptions.Formatter.getFileSize'}" />

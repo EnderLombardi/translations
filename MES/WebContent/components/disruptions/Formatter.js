@@ -743,10 +743,18 @@ airbus.mes.disruptions.Formatter = {
 		return true;
 	},
 
-	getLink: function (link) {
-		if(link) {
+	isDefined: function (obj) {
+		if(obj) {
 			return true;
 		}
 		return false;
+	},
+
+	isUndefined: function (obj) {
+		if(obj) {
+			return false;
+		}
+		return true;
 	}
+
 };

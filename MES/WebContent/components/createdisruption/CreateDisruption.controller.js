@@ -114,12 +114,12 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 					for (; i >= 0; i -= 1) {
 						var item = list[i];
 						var status = item.isDeleted === 'true' ? 'DELETE' : 'UPDATE';
-						airbus.mes.createdisruption.oView.oController.addUpdateFilesToList(item.fileName, item.fileDescription, item.fileCount, item.fileSize, status);
+						airbus.mes.createdisruption.oView.oController.addUpdateFilesToList(item.fileName, item.fileDescription, item.fileCount, item.fileSize, status, item.fileURL);
 					}
 				} else {
 					var item = data.listkMResources;
 					var status = item.isDeleted === 'true' ? 'DELETE' : 'UPDATE';
-					airbus.mes.createdisruption.oView.oController.addUpdateFilesToList(item.fileName, item.fileDescription, item.fileCount, item.fileSize, status);
+					airbus.mes.createdisruption.oView.oController.addUpdateFilesToList(item.fileName, item.fileDescription, item.fileCount, item.fileSize, status,item.fileURL);
 				}
 			}
 		});
@@ -193,15 +193,16 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 		oModel.refresh();
 	},
 
-	addUpdateFilesToList: function (fileName, description, fileCount, size, status) {
+	addUpdateFilesToList: function (fileName, description, fileCount, size, status, link) {
 		var oModel = sap.ui.getCore().getModel("DesktopFilesModel");
 		var oData = oModel.getData();
 		var item = {};
 		item.Title = fileName;
 		item.Description = description;
 		item.oldDescription = description;
-		item.Size = size*1000;
+		item.Size = size * 1000;
 		item.fileCount = fileCount;
+		item.fileURL = link;
 		item.Status = status;
 		oData.unshift(item);
 		oModel.refresh();
