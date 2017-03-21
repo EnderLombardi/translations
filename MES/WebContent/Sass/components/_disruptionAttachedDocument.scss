@@ -52,7 +52,7 @@
     .document-description {
       padding: 1rem 0;
       font-size: 1rem;
-      width: 58%;
+      width: calc(58% - 20px);
       margin: 0 2.5%;
       float: left;
       white-space: normal;

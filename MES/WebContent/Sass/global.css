@@ -4973,7 +4973,7 @@ END OF QUARANTINE
 
 #createDisruptionView--idListDocument .document-item .document-title, #disruptionDetailView--idListDocument .document-item .document-title { padding: 1rem 0; font-weight: bold; font-size: 1rem; width: 20%; padding-left: 10px; float: left; }
 
-#createDisruptionView--idListDocument .document-item .document-description, #disruptionDetailView--idListDocument .document-item .document-description { padding: 1rem 0; font-size: 1rem; width: 58%; margin: 0 2.5%; float: left; white-space: normal; }
+#createDisruptionView--idListDocument .document-item .document-description, #disruptionDetailView--idListDocument .document-item .document-description { padding: 1rem 0; font-size: 1rem; width: calc(58% - 20px); margin: 0 2.5%; float: left; white-space: normal; }
 
 #createDisruptionView--idListDocument .document-item .document-description-input, #disruptionDetailView--idListDocument .document-item .document-description-input { padding: 0; float: left; }
 
