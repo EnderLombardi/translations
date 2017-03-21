@@ -98,9 +98,25 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		oParetto.addFeed(feedValueAxis2);
 		oParetto.addFeed(feedCategoryAxis);
 		
-		
-		var oPopover = new sap.viz.ui5.controls.Popover({});
-		oPopover.connect(oParetto.getVizUid());
+		// Without xml popover tag
+		//var oPopover = new sap.viz.ui5.controls.Popover({});
+		//oPopover.connect(oParetto.getVizUid());
+
+		// With xml popover tag
+		this.oPopOver = this.getView().byId("idDisruptionKpiPopOver");
+    	this.oPopOver.connect(oParetto.getVizUid());
+
+		// Close popover when scroll or touch move
+		document.addEventListener("mousewheel", function(test){ 
+			//console.log("mousewheel");
+			//$(".sapMPopover").css('visibility', 'hidden');
+			$(".sapMPopover").css('display', 'none');
+		});
+		document.addEventListener("touchmove", function(test){ 
+			//console.log("touchmove");
+			//$(".sapMPopover").css('visibility', 'hidden');
+			$(".sapMPopover").css('display', 'none');
+		});
 		
 		
 		/*// Title For Category

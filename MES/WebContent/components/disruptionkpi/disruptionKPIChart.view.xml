@@ -59,6 +59,7 @@
 				</content>
 			</OverflowToolbar>
 
+			<viz:Popover id="idDisruptionKpiPopOver"></viz:Popover>
 			
 			<viz:VizFrame id="idParettoCategoryReason" width="100%" height="80%" uiConfig="{applicationSet:'fiori'}" />	
 			<commons:HorizontalDivider class="sapUiSmallMarginTopBottom" />
