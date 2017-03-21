@@ -115,7 +115,7 @@
 
 
 		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="true" selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: '.setSelectionMode'}" selectionBehavior="Row"
-			rows="{ path: 'disruptionsTrackerModel>/disruptionListDetails' }" onFilter="filterDisruptions"
+			rows="{ path: 'disruptionsTrackerModel>/' }" filter="filterDisruptions"
 			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick">
 
 			<ui:columns>
