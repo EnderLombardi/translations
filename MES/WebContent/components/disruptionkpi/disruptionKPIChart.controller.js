@@ -110,12 +110,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		document.addEventListener("mousewheel", function(test){ 
 			//console.log("mousewheel");
 			//$(".sapMPopover").css('visibility', 'hidden');
-			$(".sapMPopover").css('display', 'none');
+			//$(".sapMPopover").css('display', 'none');
+			$(".sapMPopover").fadeTo( 50, 0 );
 		});
 		document.addEventListener("touchmove", function(test){ 
 			//console.log("touchmove");
 			//$(".sapMPopover").css('visibility', 'hidden');
-			$(".sapMPopover").css('display', 'none');
+			//$(".sapMPopover").css('display', 'none');
+			$(".sapMPopover").fadeTo( 50, 0 );
 		});
 		
 		
