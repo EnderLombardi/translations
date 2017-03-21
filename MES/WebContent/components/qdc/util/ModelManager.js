@@ -153,6 +153,8 @@ airbus.mes.qdc.util.ModelManager = {
 				                    "operation" : data.Rowsets.Rowset[0].Row[0].OperationID
 								}
 								oModel.root[0] = oTracea;
+								oModel = sap.ui.getCore().getModel("QDCModel");
+								oModel.refresh(true);								
 						}
 					}
 				} catch(e) {
