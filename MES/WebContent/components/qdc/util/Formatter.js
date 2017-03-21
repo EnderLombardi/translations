@@ -9,7 +9,7 @@ airbus.mes.qdc.util.Formatter = {
 	 * symbol from the local json model, moreover the icon src is set.
 	 */
 	getExclamationIcon : function(oEvt) {
-		if (oEvt === "true") {
+		if (oEvt === true) {
 			return "sap-icon://warning";
 		}
 	},

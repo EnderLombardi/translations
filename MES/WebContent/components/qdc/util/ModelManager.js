@@ -48,13 +48,13 @@ airbus.mes.qdc.util.ModelManager = {
 							"name": "Quality Measurements",
 							"description": data.Rowsets.Rowset[0].Row[0].CLOSE_COUNT + "/" + data.Rowsets.Rowset[0].Row[0].TOT_COUNT ,
 							"docType": "Doc",
-							"checked": "false",
+							"checked": false,
 							"exclamation" : airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TOT_COUNT,data.Rowsets.Rowset[0].Row[0].CLOSE_COUNT),
 							"0": {
 								"name": "Record Results",
 								"description": "",
 								"docType": "Doc",
-								"checked": "true",
+								"checked": airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TOT_COUNT,data.Rowsets.Rowset[0].Row[0].CLOSE_COUNT),
 								"exclamation" : airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TOT_COUNT,data.Rowsets.Rowset[0].Row[0].CLOSE_COUNT)
 							}								
 						}
@@ -146,7 +146,7 @@ airbus.mes.qdc.util.ModelManager = {
 				                    "name": "Serial Number",
 				                    "description": data.Rowsets.Rowset[0].Row[0].ReckordedMaterials + "/" + data.Rowsets.Rowset[0].Row[0].TotalMaterials,
 				                    "docType":"NonDoc",
-				                    "checked": "true",
+				                    "checked": airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TotalMaterials , data.Rowsets.Rowset[0].Row[0].ReckordedMaterials),
 				                    "exclamation:" : airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TotalMaterials , data.Rowsets.Rowset[0].Row[0].ReckordedMaterials),
 				                    "button" : true,
 				                    "workorder" : data.Rowsets.Rowset[0].Row[0].WorkOrder,
