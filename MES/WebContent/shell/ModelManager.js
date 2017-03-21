@@ -107,7 +107,7 @@ airbus.mes.shell.ModelManager = {
 				url : this.urlModel.getProperty('urlgetcurrentprofile'),
 				type : 'POST',
 			});
-			return JSON.parse(rep.responseText);
+			return rep.responseJSON;
 		},
 		
 	    getRolesForSite : function() {
