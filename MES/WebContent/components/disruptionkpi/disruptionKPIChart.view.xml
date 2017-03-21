@@ -27,7 +27,7 @@
 					text="{resolutionGroupsModel>responsibleGroupDesc}" />
 			</Select>
 
-			<Text text="{i18nModel>timeUnit}:" class="sapUiTinyMarginBegin" />
+			<Text text="{i18nModel>timeUnit}:" class="sapUiTinyMarginBegin classLabelUnit" />
 			<Select id="timeUnit" forceSelection="true" selectedKey="Minutes" change="onChangeSelection" >
 				<core:Item key="Minutes" text="{i18nModel>Minutes}" />
 				<core:Item key="Hours" text="{i18nModel>Hours}" />

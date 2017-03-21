@@ -29,10 +29,16 @@
     @extend %headerFilterBoxes;
 }
 
+.classLabelUnit {
+	width: 100px;
+	margin-right: 0;
+	/*white-space: nowrap;
+	overflow: hidden;*/
+}
+
 #disruptionKPIView--stationComboBox.sapMMultiComboBox{
     //width: 18rem !important;
 	width: 100% !important; // Correct deffect SopraQC 2719
-
     height: 3rem;
     margin: 0;
     line-height: 3rem;

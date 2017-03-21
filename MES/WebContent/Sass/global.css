@@ -4248,6 +4248,8 @@ DISRUPTIONTRACKER
 
 .disruptionKPI .pageHeader span.sapMText { font-size: 12px; color: #F5F5F5; }
 
+.classLabelUnit { width: 100px; margin-right: 0; /*white-space: nowrap; overflow: hidden;*/ }
+
 #disruptionKPIView--stationComboBox.sapMMultiComboBox { width: 100% !important; height: 3rem; margin: 0; line-height: 3rem; border: 0px; border-right: solid 1px #74d2e7 !important; margin: 0px !important; }
 
 #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder { background: #0f2d65 !important; border: 0; }
