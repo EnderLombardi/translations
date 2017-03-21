@@ -4248,7 +4248,7 @@ DISRUPTIONTRACKER
 
 .disruptionKPI .pageHeader span.sapMText { font-size: 12px; color: #F5F5F5; }
 
-#disruptionKPIView--stationComboBox.sapMMultiComboBox { width: 18rem !important; height: 3rem; margin: 0; line-height: 3rem; border: 0px; border-right: solid 1px #74d2e7 !important; margin: 0px !important; }
+#disruptionKPIView--stationComboBox.sapMMultiComboBox { width: 100% !important; height: 3rem; margin: 0; line-height: 3rem; border: 0px; border-right: solid 1px #74d2e7 !important; margin: 0px !important; }
 
 #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder { background: #0f2d65 !important; border: 0; }
 
@@ -4258,7 +4258,7 @@ DISRUPTIONTRACKER
 
 #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder .sapMTokenizer .sapMTokenIcon { cursor: pointer; }
 
-#disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input { font-size: 12px; color: #F5F5F5; border: 0px !important; }
+#disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input { font-size: 12px; color: #F5F5F5; border: 0px !important; text-align: end; }
 
 #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder button.sapMMultiComboBoxArrow { font-size: 12px; background: #0f2d65; color: #F5F5F5; border: 0px; }
 

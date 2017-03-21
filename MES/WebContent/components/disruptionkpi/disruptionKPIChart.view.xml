@@ -12,13 +12,6 @@
 				selectedKey="" change="onChangeSelection" >
 				<core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
 			</Select>
-			
-			<MultiComboBox id="stationComboBox" class="sapUiTinyMarginBeginEnd"
-				placeholder="{i18nModel>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row',
-			         sorter : {  path : 'stationDescription'  } }"
-				selectedKey="" selectionFinish="onChangeSelection" >
-				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
-			</MultiComboBox>
 
 			<Select id="msnComboBox" class="sapUiMediumMarginEnd" visible="false"
 				placeholder="{i18nModeln>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
@@ -39,6 +32,13 @@
 				<core:Item key="Minutes" text="{i18nModel>Minutes}" />
 				<core:Item key="Hours" text="{i18nModel>Hours}" />
 			</Select>
+			
+			<MultiComboBox id="stationComboBox" class="sapUiTinyMarginBeginEnd"
+				placeholder="{i18nModel>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row',
+			         sorter : {  path : 'stationDescription'  } }"
+				selectedKey="" selectionFinish="onChangeSelection" >
+				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
+			</MultiComboBox>
 		</Toolbar>
 
 		<content>
