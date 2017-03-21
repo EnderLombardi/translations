@@ -26,7 +26,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 	
 	setPreSelectionCriteria: function(){
 	    
-	    // Remove filters for Station Multi Combo box
+	    // Remove filters for Station Multi-Combo box
 	    this.removeDuplicateStations();   
 		if(sap.ui.getCore().byId("disruptiontrackerView--stationComboBox").getSelectedKey() == ""){
 			this.oFilters.station= airbus.mes.settings.ModelManager.station;
@@ -35,7 +35,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 		}
 		
 		this.removeDuplicateMSNs();
-		this.oFilters.station= sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getSelectedKey();
+		this.oFilters.msn= sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getSelectedKey();
 		
 		this.oFilters.startDateTime= "";
 		sap.ui.getCore().byId("disruptionKPIView--endDateTime").setDateValue(new Date());
