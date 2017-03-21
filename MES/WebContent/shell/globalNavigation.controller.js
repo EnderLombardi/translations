@@ -1012,29 +1012,22 @@ sap.ui.controller(
 
         },
         onPressLoginUser: function(){         
-          jQuery.ajax({
-              url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout") + "&target="+window.location.origin+"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled"),
-              type: 'POST',
-              async: true,
-              complete: function () {
-//                  location.href = window.location.origin + "/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled";
-            	  location.href = window.location.origin + "/XMII/Illuminator?service=Logout&target=" + window.location.origin +"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled";
-              }
-
-          })
+            
+        	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout");
+            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+        	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
+                
+        	location.href = sUrl; 
+                  
         },
         
         onPressAutoLogin: function(){
-            jQuery.ajax({
-                url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout") + "&target="+window.location.origin+"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled"),
-                type: 'POST',
-                async: true,
-                complete: function () {
-//                    location.href = window.location.origin + "/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled";
-                	location.href = window.location.origin + "/XMII/Illuminator?service=Logout&target=" + window.location.origin +"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled";
-                }
-
-            })	
+        
+         	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled");
+            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+        	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
+                
+        	location.href = sUrl; 
         },
         
         onPressCancel: function(){
