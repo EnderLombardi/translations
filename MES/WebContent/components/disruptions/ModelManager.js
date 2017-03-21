@@ -8,6 +8,8 @@ airbus.mes.disruptions.ModelManager = {
 	createEditFlag: false,
 	createViewMode: undefined,  // (Values: Create, Edit) To check if create disruption view is called in edit more or creation mode
 	urlModel: undefined,
+	resolver:undefined,
+	resolverGroup:undefined,
 
 
 	init: function (core) {
