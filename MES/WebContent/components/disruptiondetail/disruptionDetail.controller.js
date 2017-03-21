@@ -47,11 +47,41 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		this.loadRsnResponsibleGrp(oData.messageType);
 		this.loadResolverModel(oData.responsibleGroup);
 		this.editPreSettings();
-
+		this.loadOperationStartEndTime();
 		sap.ui.getCore().getModel("DesktopFilesModel").setData([]);
 		this.loadAttachedDocument(oData.messageRef);
 
 	},
+	/****
+	 * load operation start end time for disruption summary
+	 */
+	loadOperationStartEndTime:function(){
+		var sSfcStepBO = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/sfcStepBO");
+		jQuery
+		.ajax({
+			url: airbus.mes.disruptions.ModelManager.urlModel.getProperty("getOperationStartEndTime"),
+			data:{
+				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.2": sSfcStepBO	
+			},
+			error: function (xhr, status, error) {
+				airbus.mes.disruptions.func.tryAgainError(i18nModel);
+			},
+			success: function (result, status, xhr) {
+
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
+					airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+
+				} else { // Success
+					var sMessageSuccess = i18nModel.getProperty("successUpdate");
+					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+				}
+
+			}
+		})
+	},
+	
+
 
 	/***************************************************************************
 	 * Load Step3 model for create disruption screen (Resolver Names for a
