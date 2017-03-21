@@ -20,7 +20,7 @@
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
-				<TimePicker id="expectedTime" enabled="false"  displayFormat="HH:mm" valueFormat="HH:mm" value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}" change="onExpectedDateChange" >
+				<TimePicker id="expectedTime" enabled="false" displayFormat="HH:mm" valueFormat="HH:mm" value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}" change="onExpectedDateChange">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -144,12 +144,10 @@
 			<f:content>
 				<VBox>
 					<HBox justifyContent="End" class="attachmentIcon">
-						<!--<core:Icon src="sap-icon://attachment" width="1rem" class="sapUiSmallMarginEnd" />
-						<core:Icon src="sap-icon://camera" width="1rem" />-->
+						<!--<core:Icon src="sap-icon://attachment" width="1rem" class="sapUiSmallMarginEnd" /><core:Icon src="sap-icon://camera" width="1rem" />-->
 						<u:FileUploader id="idfileUploader" tooltip="{i18nModel>Attach}" buttonText=" " icon="sap-icon://attachment" sameFilenameAllowed="true" class="attachIcon" change="onPressAttachBttn" buttonOnly="true" style="Transparent"></u:FileUploader>
-								<!--<Button type="Transparent" icon="sap-icon://attachment" width="2rem" class="attachIcon"  press ="airbus.mes.disruptions.AttachmentFile.onAttachPress" visible="{Profile>/identifiedUser/permissions/WORK_DIS_ATTACH_DOC}"/>-->
-					<Button type="Transparent" press="onCameraPress" icon="sap-icon://camera" width="2rem" class="attachIcon" visible="{Profile>/identifiedUser/permissions/WORK_DIS_PICTURE}"/>
-							
+						<!--<Button type="Transparent" icon="sap-icon://attachment" width="2rem" class="attachIcon"  press ="airbus.mes.disruptions.AttachmentFile.onAttachPress" visible="{Profile>/identifiedUser/permissions/WORK_DIS_ATTACH_DOC}"/>-->
+						<Button type="Transparent" press="onCameraPress" icon="sap-icon://camera" width="2rem" class="attachIcon" visible="{Profile>/identifiedUser/permissions/WORK_DIS_PICTURE}"/>
 					</HBox>
 					<TextArea width="100%" height="100%" id="comment" value="{DisruptionDetailModel>/comment}">
 						<layoutData>
@@ -172,7 +170,8 @@
 				</customData>
 				<HBox class="document-item">
 					<Label id="document-id" class="document-id" text="{DesktopFilesModel>fileCount}" />
-					<Label id="document-title" class="document-title" text="{DesktopFilesModel>Title}" />
+					<Label id="document-title" class="document-title" text="{DesktopFilesModel>Title}" visible="{={path:'DesktopFilesModel>fileURL', formatter: 'airbus.mes.disruptions.Formatter.getLink'} ? true : false}" />
+					<Link class="document-title" text="{DesktopFilesModel>Title}" href="{operationDisruptionsModel>fileURL}" visible="{path:'DesktopFilesModel>fileURL', formatter: 'airbus.mes.disruptions.Formatter.getLink'}"/>
 					<Label id="document-description" class="document-description" text="{DesktopFilesModel>Description}" />
 					<Input width="calc(58% - 20px)" id="document-description-input" class="document-description" visible="false" value="{DesktopFilesModel>Description}" />
 					<Label class="document-size" text="{path:'DesktopFilesModel>Size', formatter: 'airbus.mes.disruptions.Formatter.getFileSize'}" />

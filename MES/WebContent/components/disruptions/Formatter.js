@@ -741,6 +741,12 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 		}
 		return true;
-	}
+	},
 
+	getLink: function (link) {
+		if(link) {
+			return true;
+		}
+		return false;
+	}
 };
