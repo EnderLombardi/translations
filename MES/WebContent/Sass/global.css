@@ -810,6 +810,8 @@ DHTMLX LEFT SIDEBAR
 
 .dhx_matrix_scell.lineYaxis > div .dhx_scell_name > div > div > .yMoreLabel .fa-pencil { width: 30px; text-align: center; }
 
+.dhx_matrix_scell.lineYaxis > div .dhx_scell_name > div > div > .yMoreLabel > div { padding-right: 3px; }
+
 .fa-exclamation-triangle { padding: 0 2px; }
 
 /********************
