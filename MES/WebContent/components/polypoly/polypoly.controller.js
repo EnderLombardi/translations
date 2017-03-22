@@ -211,7 +211,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
                                      formatter : function(
                                              type) {
                                          return type == "UA_A"
-                                             || (type == "UA_P" && airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY"));
+                                             || (type == "UA_P" && airbus.mes.settings.util.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY"));
                                      }
                                  }
                            }),
@@ -227,7 +227,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
                                 visible : {
                                      parts : [ "type" ],
                                      formatter : function(type) {
-                                         return airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME");
+                                         return airbus.mes.settings.util.AppConfManager.getConfiguration("MES_PHOTO_NAME");
                                      }
                                  }
                            })

@@ -21,7 +21,7 @@ airbus.mes.components.util.Formatter = {
         json.forEach(function(el){
             sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({Row : {
             	BOMComponentBO : [el.BOMComponentBO],
-            	Site : [airbus.mes.settings.ModelManager.site],
+            	Site : [airbus.mes.settings.util.ModelManager.site],
             	Checked_Components : [el.committed],
             	Fitted_Components : [el.fitted],
             },})

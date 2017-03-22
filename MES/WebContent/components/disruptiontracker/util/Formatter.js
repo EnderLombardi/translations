@@ -6,7 +6,7 @@ airbus.mes.disruptiontracker.Formatter = {
 
 	getConfigTimeUnit : function() {
 
-		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		var timeUnit = airbus.mes.settings.util.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		if (timeUnit == "H")
 			return "Hr";
@@ -42,13 +42,13 @@ airbus.mes.disruptiontracker.Formatter = {
 
 		switch (iGravity) {
 		case "1":
-			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY1");
+			return airbus.mes.settings.util.AppConfManager._getConfiguration("MES_COLOR_GRAVITY1");
 		case "2":
-			if (airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2") === "Amber")
+			if (airbus.mes.settings.util.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2") === "Amber")
 				return "#FFC200";
-			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2");
+			return airbus.mes.settings.util.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2");
 		case "3":
-			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY3");
+			return airbus.mes.settings.util.AppConfManager._getConfiguration("MES_COLOR_GRAVITY3");
 		default:
 			return "";
 		}
@@ -100,7 +100,7 @@ airbus.mes.disruptiontracker.Formatter = {
 			return "---";
 
 
-		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		var unit = airbus.mes.settings.util.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		var iFormattedTime;
 
@@ -160,7 +160,7 @@ airbus.mes.disruptiontracker.Formatter = {
 
 	timeMillisecondsToConfig : function(time) {
 
-		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		var timeUnit = airbus.mes.settings.util.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		if (timeUnit == "H")
 			time = (time / (60 * 60 * 1000)).toFixed(2);

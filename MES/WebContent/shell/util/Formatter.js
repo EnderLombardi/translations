@@ -7,7 +7,7 @@ airbus.mes.shell.util.Formatter = {
 	checkCurrentView : function() {
 	},
 	checkToEnableProfile : function(){
-		if(airbus.mes.settings.ModelManager.site) {
+		if(airbus.mes.settings.util.ModelManager.site) {
 			return true;
 		} else { 
 			return false;
@@ -31,7 +31,7 @@ airbus.mes.shell.util.Formatter = {
 		if (sMsn === "---") {
 			return airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
 			"MSN")
-			+ " " + airbus.mes.settings.ModelManager.currentMsnValue ;
+			+ " " + airbus.mes.settings.util.ModelManager.currentMsnValue ;
 		} else {
 			return airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
 					"MSN")
@@ -94,10 +94,10 @@ airbus.mes.shell.util.Formatter = {
 		}
 	},
 	displayBadge : function(){
-		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVE");
+		return airbus.mes.settings.util.AppConfManager.getConfiguration("MES_BADGE_ACTIVE");
 	},
 	displayPin : function(){
-		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
+		return airbus.mes.settings.util.AppConfManager.getConfiguration("MES_BADGE_PIN");
 	},
 		/**
 	 * Returns a comparator function on the provided fields, in the provided

@@ -178,29 +178,29 @@ airbus.mes.factoryView.util.ModelManager = {
                 if(airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E"){
                     sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
                 }else{
-                    airbus.mes.settings.ModelManager.site = "UBN1";
-                    airbus.mes.settings.ModelManager.program = "A320";
-                    airbus.mes.settings.ModelManager.line = data.Rowsets.Rowset[0].Row[0].Line;
-                    airbus.mes.settings.ModelManager.station = data.Rowsets.Rowset[0].Row[0].Physical_Station;
-                    airbus.mes.settings.ModelManager.msn = sMSN;
-                   // airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
-                   // airbus.mes.settings.ModelManager.loadUserSettingsModel();
+                    airbus.mes.settings.util.ModelManager.site = "UBN1";
+                    airbus.mes.settings.util.ModelManager.program = "A320";
+                    airbus.mes.settings.util.ModelManager.line = data.Rowsets.Rowset[0].Row[0].Line;
+                    airbus.mes.settings.util.ModelManager.station = data.Rowsets.Rowset[0].Row[0].Physical_Station;
+                    airbus.mes.settings.util.ModelManager.msn = sMSN;
+                   // airbus.mes.settings.util.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
+                   // airbus.mes.settings.util.ModelManager.loadUserSettingsModel();
                     
                     var oModel = sap.ui.getCore().getModel("userSettingModel");
                     
-            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/stationDescription",airbus.mes.settings.ModelManager.stationDesc);
-            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/msn",airbus.mes.settings.ModelManager.msn);
-            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/lineDescription",airbus.mes.settings.ModelManager.lineDesc);
-            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/programDescription",airbus.mes.settings.ModelManager.programDesc);
-            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/station",airbus.mes.settings.ModelManager.station);
-            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/line",airbus.mes.settings.ModelManager.line);
-            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/program",airbus.mes.settings.ModelManager.program);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/stationDescription",airbus.mes.settings.util.ModelManager.stationDesc);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/msn",airbus.mes.settings.util.ModelManager.msn);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/lineDescription",airbus.mes.settings.util.ModelManager.lineDesc);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/programDescription",airbus.mes.settings.util.ModelManager.programDesc);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/station",airbus.mes.settings.util.ModelManager.station);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/line",airbus.mes.settings.util.ModelManager.line);
+            		oModel.setProperty("/Rowsets/Rowset/0/Row/0/program",airbus.mes.settings.util.ModelManager.program);
             		sap.ui.getCore().getModel("userSettingModel").refresh();
                     
             		 airbus.mes.shell.util.navFunctions.stationTracker(); 
                    /* airbus.mes.settings.oView.getController().saveUserSettings();
                     // Permit to know if the user settings saved is correct or not regarding the plant model 
-                    if ( airbus.mes.settings.ModelManager.saveSettingIsCorrect() ) {
+                    if ( airbus.mes.settings.util.ModelManager.saveSettingIsCorrect() ) {
                     	airbus.mes.shell.util.navFunctions.stationTracker();                    	
                     } */                  
                 }

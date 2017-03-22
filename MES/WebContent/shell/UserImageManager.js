@@ -30,7 +30,7 @@ airbus.mes.shell.UserImageManager =  {
 	},
 	
     displayImage : function() {
-        return airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY");
+        return airbus.mes.settings.util.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY");
     },
     selectImageToDisplay : function(userId){
         var src = airbus.mes.shell.UserImageManager.getUserImage(this.sId, userId);

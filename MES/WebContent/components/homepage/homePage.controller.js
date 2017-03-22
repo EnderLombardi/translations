@@ -125,7 +125,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 },
 
 	 enableDisableFactoryView : function() {
-			if (airbus.mes.settings.ModelManager.site == "UBN1") {
+			if (airbus.mes.settings.util.ModelManager.site == "UBN1") {
 				airbus.mes.homepage.oView.getModel("1TileLineHome").setProperty("/buttonDetail/9/enable", "true");
 				airbus.mes.homepage.oView.getModel("1TileLineHome").refresh();
 			} else {

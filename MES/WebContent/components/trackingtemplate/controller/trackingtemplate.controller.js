@@ -56,7 +56,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         // confirm if we have already check the ME settings
         if (this.sFreeze === undefined) {
             //Application manager configuration is setting to physical station level, we concatenate the ID TT_FREEZE_ACTION_ with the physical station
-            var sFreeze = airbus.mes.settings.AppConfManager.getConfiguration("TT_FREEZE_ACTION_" + airbus.mes.settings.ModelManager.station);
+            var sFreeze = airbus.mes.settings.util.AppConfManager.getConfiguration("TT_FREEZE_ACTION_" + airbus.mes.settings.util.ModelManager.station);
 
             if (sFreeze === null) {
 //            	Default value : warning message
@@ -136,7 +136,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
 //		We inverse the freeze status
         this.freeze = !this.freeze
 
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.util.ModelManager.site);
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no);
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$freeze", this.freeze);
         
@@ -337,7 +337,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
             //Param.7 logon
             sap.ui.getCore().byId('userNameTckTmpltForConfirmation').getValue(),
             //Param.8 site
-            airbus.mes.settings.ModelManager.site
+            airbus.mes.settings.util.ModelManager.site
         );
 
         this._oUserConfirmationDialog.close();
@@ -516,7 +516,7 @@ sap.ui.controller("airbus.mes.trackingtemplate.controller.trackingtemplate", {
         var i = this.attachDocument.length - 1;
         for (; i >= 0; i -= 1) {
             airbus.mes.trackingtemplate.util.ModelManager.attachDocument(
-                airbus.mes.settings.ModelManager.site,
+                airbus.mes.settings.util.ModelManager.site,
                 handle,
                 this.attachDocument[i].fileName,
                 this.attachDocument[i].fileBase64,

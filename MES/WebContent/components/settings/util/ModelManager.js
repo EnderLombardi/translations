@@ -1,8 +1,8 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.settings.ModelManager")
+jQuery.sap.declare("airbus.mes.settings.util.ModelManager")
 
-airbus.mes.settings.ModelManager = {
+airbus.mes.settings.util.ModelManager = {
 
 	site : undefined,
 	program : undefined,
@@ -29,8 +29,8 @@ airbus.mes.settings.ModelManager = {
 	
 		airbus.mes.shell.ModelManager.createJsonModel(core,["plantModel","siteModel","program","site"]);
 
-		core.getModel("userSettingModel").attachRequestCompleted(airbus.mes.settings.ModelManager.onUserSettingLoad);
-		core.getModel("plantModel").attachRequestCompleted(airbus.mes.settings.ModelManager.onPLantModelLoad);
+		core.getModel("userSettingModel").attachRequestCompleted(airbus.mes.settings.util.ModelManager.onUserSettingLoad);
+		core.getModel("plantModel").attachRequestCompleted(airbus.mes.settings.util.ModelManager.onPLantModelLoad);
 
 		// Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.settings.config.url_config");
@@ -66,7 +66,7 @@ airbus.mes.settings.ModelManager = {
 
 	loadSiteModel : function() {
 		var oViewModel = this.core.getModel("siteModel");
-		oViewModel.loadData(airbus.mes.settings.ModelManager.getUrlSite(),
+		oViewModel.loadData(airbus.mes.settings.util.ModelManager.getUrlSite(),
 				null, false);
 	},
 	
@@ -78,7 +78,7 @@ airbus.mes.settings.ModelManager = {
 
 	loadPlantModel : function(sSite) {
 		var oViewModel = sap.ui.getCore().getModel("plantModel");
-		oViewModel.loadData(airbus.mes.settings.ModelManager.getUrlPlant(sSite), null, false);
+		oViewModel.loadData(airbus.mes.settings.util.ModelManager.getUrlPlant(sSite), null, false);
 	},
 	
 	getUrlLang : function() {
@@ -88,7 +88,7 @@ airbus.mes.settings.ModelManager = {
 	
 	loadLangModel : function() {
 		var oLangModel = this.core.getModel("langModel");
-		oLangModel.loadData(airbus.mes.settings.ModelManager.getUrlLang(),
+		oLangModel.loadData(airbus.mes.settings.util.ModelManager.getUrlLang(),
 				null, false);
 	},
 	// ********************************************************************************
@@ -119,15 +119,15 @@ airbus.mes.settings.ModelManager = {
 	getUrlUserSetting : function() {
 		var urlUserSetting = this.urlModel.getProperty("urlUserSettings");
 		// urlUserSetting =
-		// airbus.mes.settings.ModelManager.replaceURI(urlUserSetting, "$user",
-		// airbus.mes.settings.ModelManager.user);
+		// airbus.mes.settings.util.ModelManager.replaceURI(urlUserSetting, "$user",
+		// airbus.mes.settings.util.ModelManager.user);
 		return urlUserSetting;
 
 	},
 	
 	loadUserSettingsModel : function() {
 		var oUserSettingModel = sap.ui.getCore().getModel("userSettingModel");
-		oUserSettingModel.loadData(airbus.mes.settings.ModelManager
+		oUserSettingModel.loadData(airbus.mes.settings.util.ModelManager
 				.getUrlUserSetting(), null, false);
 
 	},
@@ -135,7 +135,7 @@ airbus.mes.settings.ModelManager = {
 	onUserSettingLoad : function() {
 		// Apply user settings.
 		airbus.mes.settings.oView.getController().getUserSettings();
-		airbus.mes.settings.AppConfManager.loadAppConfig();
+		airbus.mes.settings.util.AppConfManager.loadAppConfig();
 
 	},
 
@@ -162,59 +162,59 @@ airbus.mes.settings.ModelManager = {
 		var urlSaveUserSetting = this.urlModel
 				.getProperty("urlSaveUserSetting");
 		// urlSaveUserSetting =
-		// airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting,
-		// "$user", airbus.mes.settings.ModelManager.user);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+		// airbus.mes.settings.util.ModelManager.replaceURI(urlSaveUserSetting,
+		// "$user", airbus.mes.settings.util.ModelManager.user);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$langage", sLanguage);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$plant",
-				airbus.mes.settings.ModelManager.site);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+				airbus.mes.settings.util.ModelManager.site);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$program",
-				airbus.mes.settings.ModelManager.program);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+				airbus.mes.settings.util.ModelManager.program);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$line",
-				airbus.mes.settings.ModelManager.line);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+				airbus.mes.settings.util.ModelManager.line);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$station",
-				airbus.mes.settings.ModelManager.station);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+				airbus.mes.settings.util.ModelManager.station);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$siteDesc",
-				airbus.mes.settings.ModelManager.siteDesc);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+				airbus.mes.settings.util.ModelManager.siteDesc);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$lineDesc",
-				airbus.mes.settings.ModelManager.lineDesc);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+				airbus.mes.settings.util.ModelManager.lineDesc);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$programDesc",
-				airbus.mes.settings.ModelManager.programDesc);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+				airbus.mes.settings.util.ModelManager.programDesc);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$stationDesc",
-				airbus.mes.settings.ModelManager.stationDesc);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+				airbus.mes.settings.util.ModelManager.stationDesc);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$taktDuration",
-				airbus.mes.settings.ModelManager.taktDuration);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+				airbus.mes.settings.util.ModelManager.taktDuration);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$taktStart",
-				airbus.mes.settings.ModelManager.taktStart);
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+				airbus.mes.settings.util.ModelManager.taktStart);
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$taktEnd",
-				airbus.mes.settings.ModelManager.taktEnd);
+				airbus.mes.settings.util.ModelManager.taktEnd);
 
-		if (airbus.mes.settings.ModelManager.currentMsnSelected) {
+		if (airbus.mes.settings.util.ModelManager.currentMsnSelected) {
 
-			urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+			urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 					urlSaveUserSetting, "$msn", "");
 
 		} else {
 
-			urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+			urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 					urlSaveUserSetting, "$msn",
-					airbus.mes.settings.ModelManager.msn);
+					airbus.mes.settings.util.ModelManager.msn);
 
 		}
-		urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(
+		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 				urlSaveUserSetting, "$current_flag",
-				airbus.mes.settings.ModelManager.current_flag);
+				airbus.mes.settings.util.ModelManager.current_flag);
 
 		jQuery.ajax({
 			url : urlSaveUserSetting,
@@ -249,19 +249,19 @@ airbus.mes.settings.ModelManager = {
 		var sSapLanguage = sap.ui.getCore().getConfiguration().getLanguage()
 				.slice(0, 2);
 		// Retrieve connexion language
-		var sSaveLanguage = airbus.mes.settings.ModelManager.loadLanguage();
+		var sSaveLanguage = airbus.mes.settings.util.ModelManager.loadLanguage();
 
 		if (sSaveLanguage != undefined && sSaveLanguage != "---"
 				&& sSaveLanguage != "" && sSaveLanguage != null) {
 
 			airbus.mes.shell.oView.getController().updateUrlForLanguage(
 					sSaveLanguage);
-			airbus.mes.settings.ModelManager.setUserLang(sSaveLanguage)
+			airbus.mes.settings.util.ModelManager.setUserLang(sSaveLanguage)
 
 		} else {
 
-			// airbus.mes.settings.ModelManager.saveUserSetting(sSapLanguage);
-			// airbus.mes.settings.ModelManager.setUserLang(sSapLanguage);
+			// airbus.mes.settings.util.ModelManager.saveUserSetting(sSapLanguage);
+			// airbus.mes.settings.util.ModelManager.setUserLang(sSapLanguage);
 			airbus.mes.shell.oView.getController().updateUrlForLanguage(
 					sSapLanguage);
 
@@ -282,8 +282,8 @@ airbus.mes.settings.ModelManager = {
 
 	checkDisplayFirstSetting : function() {
 		
-		var sSite = airbus.mes.settings.ModelManager.site;
-		var sMSN = airbus.mes.settings.ModelManager.msn;
+		var sSite = airbus.mes.settings.util.ModelManager.site;
+		var sMSN = airbus.mes.settings.util.ModelManager.msn;
 				
 		if (!sSite || sSite == "---" || sSite == "undefined"
 			|| !sMSN || sMSN == "---" || sMSN == "undefined") {
@@ -295,7 +295,7 @@ airbus.mes.settings.ModelManager = {
 	saveSettingIsCorrect : function() {
 		
 		 var oModelSetting = sap.ui.getCore().getModel("userSettingModel");
-		 var aModel = airbus.mes.settings.ModelManager.plantModelSaved;
+		 var aModel = airbus.mes.settings.util.ModelManager.plantModelSaved;
 		 var aModelSetting = [];
 					 
 		 if (oModelSetting.getProperty("/Rowsets/Rowset/0/Row/0")) {              
@@ -345,10 +345,10 @@ airbus.mes.settings.ModelManager = {
 		
 		 if (oModel.getProperty("/Rowsets/Rowset/0/Row")) {              
 				
-			 airbus.mes.settings.ModelManager.plantModelSaved = sap.ui.getCore().getModel("plantModel").oData.Rowsets.Rowset[0].Row;
+			 airbus.mes.settings.util.ModelManager.plantModelSaved = sap.ui.getCore().getModel("plantModel").oData.Rowsets.Rowset[0].Row;
 				
 	        } else  {
-	        airbus.mes.settings.ModelManager.plantModelSaved = [];
+	        airbus.mes.settings.util.ModelManager.plantModelSaved = [];
 	        console.log("no plantModelLoad");
 	     }
 		

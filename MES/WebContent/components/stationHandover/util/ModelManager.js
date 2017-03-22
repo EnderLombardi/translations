@@ -102,7 +102,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		var oModelStation = airbus.mes.stationHandover.oView.getModel("phStation");
 		var getUrlShifts = this.urlModel.getProperty("urlosw");
-		var sPhysicalStationBo =  "WorkCenterBO:" +  airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station;
+		var sPhysicalStationBo =  "WorkCenterBO:" +  airbus.mes.settings.util.ModelManager.site + "," + airbus.mes.settings.util.ModelManager.station;
 		
 		jQuery.ajax({
 			type : 'post',
@@ -110,9 +110,9 @@ airbus.mes.stationHandover.util.ModelManager = {
 			contentType : 'application/json',
 			async : 'false',
 			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
+				"site" : airbus.mes.settings.util.ModelManager.site,
 				"physicalStationBO" : sPhysicalStationBo,
-				"msn" : airbus.mes.settings.ModelManager.msn,
+				"msn" : airbus.mes.settings.util.ModelManager.msn,
 				"calculateOWWithResponsibility" : true,
 				"calculateOWWithoutResponsibility" : true,
 				"calculateLocalOW" : true
@@ -180,7 +180,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 //
 //			var oModel = airbus.mes.settings.oView.getModel("plantModel").oData.Rowsets.Rowset[0].Row;
 //			var oModelStation = airbus.mes.stationHandover.oView.getModel("phStation");
-//			var oContext = airbus.mes.settings.ModelManager;
+//			var oContext = airbus.mes.settings.util.ModelManager;
 //			var oModelManager = airbus.mes.stationHandover.util.ModelManager;
 //			var aPhStation = [];
 //			var aModel = oModel.filter(function(el) {
@@ -302,7 +302,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 		
 		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").oData;
 		var urlsave  = this.urlModel.getProperty("urlsave");
-		var sPhysicalStationBo =  "WorkCenterBO:" +  airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station;
+		var sPhysicalStationBo =  "WorkCenterBO:" +  airbus.mes.settings.util.ModelManager.site + "," + airbus.mes.settings.util.ModelManager.station;
 		var sSelectedType = sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey();
 		var sProductionGroup = airbus.mes.stationHandover.oView.getModel("productionGroup").getProperty("/Rowsets/Rowset/0/Row/0/PROD_GROUP");
 		var sTime = sap.ui.getCore().byId("insertOsw--TimePicker");
@@ -322,9 +322,9 @@ airbus.mes.stationHandover.util.ModelManager = {
 		}
 //		
 //		console.log(JSON.stringify({
-//				"site" : airbus.mes.settings.ModelManager.site,
+//				"site" : airbus.mes.settings.util.ModelManager.site,
 //				"physicalStationBO" : sPhysicalStationBo,
-//				"msn" : airbus.mes.settings.ModelManager.msn,
+//				"msn" : airbus.mes.settings.util.ModelManager.msn,
 //				"productionGroup" : sProductionGroup,
 //				"manualDate" : sDate,
 //				'insertType' : sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey(),
@@ -337,9 +337,9 @@ airbus.mes.stationHandover.util.ModelManager = {
 			contentType : 'application/json',
 			async : 'false',
 			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
+				"site" : airbus.mes.settings.util.ModelManager.site,
 				"physicalStationBO" : sPhysicalStationBo,
-				"msn" : airbus.mes.settings.ModelManager.msn,
+				"msn" : airbus.mes.settings.util.ModelManager.msn,
 				"productionGroup" : sProductionGroup,
 				"manualDate" : sDate,
 				'insertType' : sap.ui.getCore().byId("insertOsw--selectMode").getSelectedKey(),
@@ -384,7 +384,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 	
 	loadProductionGroup: function () {
 
-        var oData = airbus.mes.settings.ModelManager;
+        var oData = airbus.mes.settings.util.ModelManager;
         var geturlstationtracker = this.urlModel.getProperty('urlproductiongroup');
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("productionGroup");
 

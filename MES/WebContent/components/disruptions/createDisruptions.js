@@ -387,7 +387,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 				},
 				{
 					"attribute" : "SFC_BO",
-					"value" : "SFCBO:" + airbus.mes.settings.ModelManager.site + ","
+					"value" : "SFCBO:" + airbus.mes.settings.util.ModelManager.site + ","
 						+ sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc"),
 				}, {
 					"attribute" : "SFC_STEP_BO",
@@ -409,13 +409,13 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"value" : airbus.mes.disruptions.Formatter.status.pending
 				}, {
 					"attribute" : "MSN",
-					"value" : airbus.mes.settings.ModelManager.msn
+					"value" : airbus.mes.settings.util.ModelManager.msn
 				}, {
 					"attribute" : "RESPONSIBLE_GROUP",
 					"value" : oView.byId("selectResponsibleGrp").getSelectedKey()
 				}, {
 					"attribute" : "WORK_CENTER_BO",
-					"value" : "WorkCenterBO:" + airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station
+					"value" : "WorkCenterBO:" + airbus.mes.settings.util.ModelManager.site + "," + airbus.mes.settings.util.ModelManager.station
 				}, {
 					"attribute" : "MATERIALS",
 					"value" : sMaterials
@@ -430,7 +430,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"value" : oView.byId("selectFivemCategory").getSelectedKey()
 				}, {
 					"attribute" : "LINE",
-					"value" : airbus.mes.settings.ModelManager.line
+					"value" : airbus.mes.settings.util.ModelManager.line
 				}, {
 					"attribute" : "AREA",
 					"value" : oView.byId("area").getValue()
@@ -454,7 +454,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"value" : oView.byId("stringer_rail").getValue()
 				}, {
 					"attribute" : "AC_PROGRAM",
-					"value" : airbus.mes.settings.ModelManager.program
+					"value" : airbus.mes.settings.util.ModelManager.program
 				} ]
 
 		}

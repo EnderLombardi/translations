@@ -37,7 +37,7 @@ airbus.mes.stationtracker.util.Globals_Functions = {
 								data.missingPartList = [data.missingPartList];
 							} 						
 							//Get missing Parts data in Rowsets format from REST data 
-							missingPartsData = airbus.mes.settings.GlobalFunction.getRowsetsFromREST(data.missingPartList, 
+							missingPartsData = airbus.mes.settings.util.GlobalFunction.getRowsetsFromREST(data.missingPartList, 
 														     					this.excludedFields);
 						
 					} catch (error) {

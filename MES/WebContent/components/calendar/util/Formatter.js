@@ -100,7 +100,7 @@ airbus.mes.calendar.util.Formatter = {
 				}
 				if ( oSection.key != "total1") {
 					//Creation of Div of picture display
-					if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
+					if(airbus.mes.settings.util.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
 						
 						var imgId = oSection.avlLine + oSection.ng;
 						

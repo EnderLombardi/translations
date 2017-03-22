@@ -573,7 +573,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.createdisruption.Cre
 			type: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site
+				"site": airbus.mes.settings.util.ModelManager.site
 			}),
 			success: function (data) {
 				if (typeof data == "string") {

@@ -14,7 +14,7 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
 
             //will be the configuration received in AppConfManager
             //Application manager configuration is setting to physical station level, we concatenate the ID VIEW_ATTACHED_TOOL with the physical station
-            var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_NC_" + airbus.mes.settings.ModelManager.station);
+            var sSet = airbus.mes.settings.util.AppConfManager.getConfiguration("VIEW_ATTACHED_NC_" + airbus.mes.settings.util.ModelManager.station);
 
             if (sSet === null) {
                 this.sSet = airbus.mes.ncdisplay.util.ModelManager.operation;

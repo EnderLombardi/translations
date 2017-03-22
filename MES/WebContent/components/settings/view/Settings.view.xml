@@ -1,4 +1,4 @@
-<core:View controllerName="airbus.mes.settings.Settings"
+<core:View controllerName="airbus.mes.settings.controller.Settings"
     xmlns="sap.m" xmlns:vbm="sap.ui.vbm" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core">
     <Page class="classSettingPage">

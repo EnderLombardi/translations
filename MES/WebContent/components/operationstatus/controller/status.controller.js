@@ -251,7 +251,7 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
             oView.addDependent(oView._oUserConfirmationDialog);
         }
         //Display PIN Field in Confirmation PopUp
-        var flagForPIN = airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
+        var flagForPIN = airbus.mes.settings.util.AppConfManager.getConfiguration("MES_BADGE_PIN");
         if (flagForPIN == true) {
             sap.ui.getCore().byId("confirmPinLabel").setVisible(true);
             sap.ui.getCore().byId("pinForConfirmation").setVisible(true);
@@ -629,7 +629,7 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
             oView.addDependent(oView._oUserConfirmationDialog);
         }
         //Display PIN Field in Confirmation PopUp
-        var flagForPIN = airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
+        var flagForPIN = airbus.mes.settings.util.AppConfManager.getConfiguration("MES_BADGE_PIN");
         if (flagForPIN == true) {
             sap.ui.getCore().byId("confirmPinLabel").setVisible(true);
             sap.ui.getCore().byId("pinForConfirmation").setVisible(true);

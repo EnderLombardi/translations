@@ -198,7 +198,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			contentType : 'application/json',
 			cache : false,
 			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
+				"site" : airbus.mes.settings.util.ModelManager.site,
 				"messageRef": disruptionData.messageRef
 			}),
 

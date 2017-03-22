@@ -68,7 +68,7 @@ airbus.mes.worktracker.util.ModelManager = {
 	getReasonCodesURL : function() {
 		var urlReasonCodes = this.urlModel.getProperty("getReasonCodes");
 		urlReasonCodes = airbus.mes.worktracker.util.ModelManager.replaceURI(
-				urlReasonCodes, "$site", airbus.mes.settings.ModelManager.site);
+				urlReasonCodes, "$site", airbus.mes.settings.util.ModelManager.site);
 		return urlReasonCodes;
 
 	},
@@ -84,7 +84,7 @@ airbus.mes.worktracker.util.ModelManager = {
 				.replaceURI(urlStartOperation, "$sfc", data.sfc);
 		urlStartOperation = airbus.mes.worktracker.util.ModelManager
 				.replaceURI(urlStartOperation, "$site",
-						airbus.mes.settings.ModelManager.site);
+						airbus.mes.settings.util.ModelManager.site);
 		urlStartOperation = airbus.mes.worktracker.util.ModelManager
 				.replaceURI(urlStartOperation, "$resource", "DEFAULT");
 		urlStartOperation = airbus.mes.worktracker.util.ModelManager
@@ -106,7 +106,7 @@ airbus.mes.worktracker.util.ModelManager = {
 				.replaceURI(urlPauseOperation, "$Sfc", data.sfc);
 		urlPauseOperation = airbus.mes.worktracker.util.ModelManager
 				.replaceURI(urlPauseOperation, "$Site",
-						airbus.mes.settings.ModelManager.site);
+						airbus.mes.settings.util.ModelManager.site);
 		urlPauseOperation = airbus.mes.worktracker.util.ModelManager
 				.replaceURI(urlPauseOperation, "$Resource", "DEFAULT");
 		urlPauseOperation = airbus.mes.worktracker.util.ModelManager
@@ -124,11 +124,11 @@ airbus.mes.worktracker.util.ModelManager = {
 				.getProperty("getUsersInWorkcenter");
 		UsersInWorkcenterUrl = airbus.mes.worktracker.util.ModelManager
 				.replaceURI(UsersInWorkcenterUrl, "$Site",
-						airbus.mes.settings.ModelManager.site);
+						airbus.mes.settings.util.ModelManager.site);
 		UsersInWorkcenterUrl = airbus.mes.worktracker.util.ModelManager
 				.replaceURI(UsersInWorkcenterUrl, "$WorkCenter",
 						//"1TL1H13");
-						airbus.mes.settings.ModelManager.station);
+						airbus.mes.settings.util.ModelManager.station);
 		return UsersInWorkcenterUrl;
 	},
 	loadUserListModel : function() {
@@ -171,7 +171,7 @@ airbus.mes.worktracker.util.ModelManager = {
 	loadUserOperationsModel : function() {
 		var OperationUrl = this.urlModel.getProperty("getOperationsForUser");
 		OperationUrl = airbus.mes.worktracker.util.ModelManager.replaceURI(
-				OperationUrl, "$Site", airbus.mes.settings.ModelManager.site);
+				OperationUrl, "$Site", airbus.mes.settings.util.ModelManager.site);
 		OperationUrl = airbus.mes.worktracker.util.ModelManager.replaceURI(
 		// OperationUrl, "$User", "S007C96");
 		OperationUrl, "$User", this.currentOperator.user_id);

@@ -101,16 +101,16 @@ airbus.mes.operationdetail.Formatter = {
     },
 
     displayBadge: function () {
-        return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVE");
+        return airbus.mes.settings.util.AppConfManager.getConfiguration("MES_BADGE_ACTIVE");
     },
 
     displayPin: function () {
-        return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
+        return airbus.mes.settings.util.AppConfManager.getConfiguration("MES_BADGE_PIN");
     },
 
     displaySeperator: function () {
-        if (airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVE")
-            || airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN")) {
+        if (airbus.mes.settings.util.AppConfManager.getConfiguration("MES_BADGE_ACTIVE")
+            || airbus.mes.settings.util.AppConfManager.getConfiguration("MES_BADGE_PIN")) {
             return true;
         } else
             return false;

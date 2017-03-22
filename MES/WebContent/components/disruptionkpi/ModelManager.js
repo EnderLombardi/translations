@@ -29,7 +29,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 	    // Remove filters for Station Multi-Combo box
 	    this.removeDuplicateStations();   
 		if(sap.ui.getCore().byId("disruptiontrackerView--stationComboBox").getSelectedKey() == ""){
-			this.oFilters.station= airbus.mes.settings.ModelManager.station;
+			this.oFilters.station= airbus.mes.settings.util.ModelManager.station;
 		} else{
 			this.oFilters.station= sap.ui.getCore().byId("disruptiontrackerView--stationComboBox").getSelectedKey();
 		}
@@ -63,9 +63,9 @@ airbus.mes.disruptionkpi.ModelManager = {
 			url : this.urlModel.getProperty("getTaktStartTime"),
 			contentType : 'application/json',
 			data : JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
-				"station": airbus.mes.settings.ModelManager.station,
-				"msn": airbus.mes.settings.ModelManager.msn
+				"site": airbus.mes.settings.util.ModelManager.site,
+				"station": airbus.mes.settings.util.ModelManager.station,
+				"msn": airbus.mes.settings.util.ModelManager.msn
 				
 			}),
 
@@ -118,7 +118,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 			contentType : 'application/json',
 			data : JSON.stringify({
 				"line" : line == "All"? "" : line,
-				"site" : airbus.mes.settings.ModelManager.site,
+				"site" : airbus.mes.settings.util.ModelManager.site,
 				"stations" : aStations,
 				"startTime": startTime, //"2016-04-04T12:03:03",
 				"untilTime": untilTime, //"2016-04-04T12:03:03"
@@ -166,7 +166,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 			url : this.urlModel.getProperty("getParetoKPIURL"),
 			contentType : 'application/json',
 			data : JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
+				"site": airbus.mes.settings.util.ModelManager.site,
 				"line": line == "All"? "" : line,
 				"stations": aStations,
 				"startTime": startTime, //"2016-04-04T12:03:03",
@@ -229,7 +229,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 	
 	    aFilters.push(duplicatesFilter);
 	
-	    //aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program)); // Filter on selected A/C Program
+	    //aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.util.ModelManager.program)); // Filter on selected A/C Program
 	
 	    var lineBox = sap.ui.getCore().byId("disruptionKPIView--lineComboBox")
 	    

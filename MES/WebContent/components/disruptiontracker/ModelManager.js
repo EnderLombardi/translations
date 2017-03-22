@@ -21,12 +21,12 @@ airbus.mes.disruptiontracker.ModelManager = {
 
 		var oViewModel = sap.ui.getCore().getModel("disruptionsTrackerModel");
 
-		var site = airbus.mes.settings.ModelManager.site;
+		var site = airbus.mes.settings.util.ModelManager.site;
 		var workCenterBO = "";
 		var msnNumber = "";
 		
 		if(oFilters.station != undefined && oFilters.station != ""){
-			workCenterBO = "WorkCenterBO:" + airbus.mes.settings.ModelManager.site + "," + oFilters.station;
+			workCenterBO = "WorkCenterBO:" + airbus.mes.settings.util.ModelManager.site + "," + oFilters.station;
 		}
 		
 		if(oFilters.msn != undefined && oFilters.msn != ""){

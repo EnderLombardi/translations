@@ -50,16 +50,16 @@ airbus.mes.disruptions.Formatter = {
 
 		switch (iGravity) {
 			case "1":
-				return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY1");
+				return airbus.mes.settings.util.AppConfManager._getConfiguration("MES_COLOR_GRAVITY1");
 				break;
 			case "2":
-				if (airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2") === "Amber") {
+				if (airbus.mes.settings.util.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2") === "Amber") {
 					return "#FFC200";
 				}
-				return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2");
+				return airbus.mes.settings.util.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2");
 				break;
 			case "3":
-				return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY3");
+				return airbus.mes.settings.util.AppConfManager._getConfiguration("MES_COLOR_GRAVITY3");
 				break;
 			default:
 				return "";
@@ -451,7 +451,7 @@ airbus.mes.disruptions.Formatter = {
 			// 0!
 			(+aClosureDate[3]), (+aClosureDate[4]), (+aClosureDate[5]), (+aClosureDate[6]));
 
-		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		var unit = airbus.mes.settings.util.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		var openingTime;
 
@@ -472,7 +472,7 @@ airbus.mes.disruptions.Formatter = {
 
 	timeToMilliseconds: function (time) {
 
-		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		var timeUnit = airbus.mes.settings.util.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		if (timeUnit == "H")
 			return (time * 60 * 60 * 1000);
@@ -498,7 +498,7 @@ airbus.mes.disruptions.Formatter = {
 			return 0;
 		}
 
-		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		var timeUnit = airbus.mes.settings.util.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		if (timeUnit == "H")
 			time = (time / (60 * 60 * 1000)).toFixed(2);
@@ -517,7 +517,7 @@ airbus.mes.disruptions.Formatter = {
 
 	getConfigTimeUnit: function () {
 
-		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		var timeUnit = airbus.mes.settings.util.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		if (timeUnit == "H")
 			return "Hr";
@@ -537,7 +537,7 @@ airbus.mes.disruptions.Formatter = {
 
 	getConfigTimeFullUnit: function () {
 
-		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		var timeUnit = airbus.mes.settings.util.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		if (timeUnit == "H") {
 			return "Hours";

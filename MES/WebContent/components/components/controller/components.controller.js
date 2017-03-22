@@ -35,7 +35,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         // confirm if we have already check the ME settings
         if (this.sSet === undefined) {
             //Application manager configuration is setting to physical station level, we concatenate the ID VIEW_ATTACHED_TOOL with the physical station
-            var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_BOM_" + airbus.mes.settings.ModelManager.station);
+            var sSet = airbus.mes.settings.util.AppConfManager.getConfiguration("VIEW_ATTACHED_BOM_" + airbus.mes.settings.util.ModelManager.station);
 
             if (sSet === null) {
                 this.sSet = 'O';

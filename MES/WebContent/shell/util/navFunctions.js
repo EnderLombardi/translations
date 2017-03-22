@@ -142,7 +142,7 @@ airbus.mes.shell.util.navFunctions = {
 
         airbus.mes.polypoly.PolypolyManager.firstVisibleRow = 0;
         // //FIXME When Settings ready
-        airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+        airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.util.ModelManager.site, airbus.mes.settings.util.ModelManager.station);
     },
 
     resourcePool: function () {
@@ -290,10 +290,10 @@ airbus.mes.shell.util.navFunctions = {
         }
 
         //component parameters
-        var station = airbus.mes.settings.ModelManager.station;
+        var station = airbus.mes.settings.util.ModelManager.station;
         var componentProperties = airbus.mes.displayOpeAttachments.component.mProperties;
         componentProperties.phStation = station;
-        componentProperties.sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL_" + station);
+        componentProperties.sSet = airbus.mes.settings.util.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL_" + station);
         airbus.mes.displayOpeAttachments.util.ModelManager.checkOperationWorkOrderFilter();//change the value if not "P" or "O"
 
         if (container.getPage("displayOpeAttachmentsView") === null) {
@@ -313,12 +313,12 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({ name: "airbus.mes.jigtools" });
         } else if (airbus.mes.jigtools.oView.oController.workOrder !== sCurrentWorkOrder) {
             //          If WorkdOrder changed, need to reload data in the model
-            airbus.mes.jigtools.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
+            airbus.mes.jigtools.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.util.ModelManager.site);
             airbus.mes.jigtools.oView.getController().getOwnerComponent().setWorkOrder(airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
             airbus.mes.jigtools.util.ModelManager.loadjigToolsWorkOrderDetail();
             airbus.mes.jigtools.oView.getController().checkSettingJigsTools();
         }
-        airbus.mes.jigtools.oView.getController().getOwnerComponent().setPhStation(airbus.mes.settings.ModelManager.station);
+        airbus.mes.jigtools.oView.getController().getOwnerComponent().setPhStation(airbus.mes.settings.util.ModelManager.station);
         airbus.mes.jigtools.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no);
         airbus.mes.jigtools.oView.getController().checkSettingJigsTools();
 
@@ -346,7 +346,7 @@ airbus.mes.shell.util.navFunctions = {
     acpnglinksDetail: function (container) {
         //    	Retrieve current workOrder Display
         var sCurrentWorkOrder = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
-        var oData = airbus.mes.settings.ModelManager;
+        var oData = airbus.mes.settings.util.ModelManager;
 
         if (airbus.mes.acpnglinks === undefined || airbus.mes.acpnglinks.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.acpnglinks", "../components/acpnglinks");
@@ -354,7 +354,7 @@ airbus.mes.shell.util.navFunctions = {
             airbus.mes.acpnglinks.model.ModelManager.loadacpnglinksWorkOrderDetail();
         } else if (airbus.mes.acpnglinks.oView.getController().getOwnerComponent().getWorkOrder() !== sCurrentWorkOrder) {
             // If WorkdOrder changed, need to reload data in the model
-            airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
+            airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.util.ModelManager.site);
             airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setWorkOrder(airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
             airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setSfcstep(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref);
             airbus.mes.acpnglinks.oView.getController().getOwnerComponent().setPhStation("WorkCenterBO:" + oData.site + "," + oData.station);
@@ -413,16 +413,16 @@ airbus.mes.shell.util.navFunctions = {
         }
 
         if (nav.getPreviousPage() != undefined && nav.getPreviousPage().sId == "stationTrackerView") {
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.util.ModelManager.station;
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.util.ModelManager.msn;
 
         } else if (airbus.mes.stationtracker != undefined && airbus.mes.stationtracker.util.ModelManager.showDisrupionBtnClicked == true) {
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.util.ModelManager.station;
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.util.ModelManager.msn;
             airbus.mes.stationtracker.util.ModelManager.showDisrupionBtnClicked = false;
 
         } else {
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.util.ModelManager.station;
             airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
         }
 
@@ -454,7 +454,7 @@ airbus.mes.shell.util.navFunctions = {
 
         aFilters.push(duplicatesFilter);
 
-        aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program)); // Filter on selected A/C Program
+        aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.util.ModelManager.program)); // Filter on selected A/C Program
 
         sap.ui.getCore().byId("disruptiontrackerView--stationComboBox")
             .getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));
@@ -537,7 +537,7 @@ airbus.mes.shell.util.navFunctions = {
                     //Get start date time of current TAKT
                     airbus.mes.disruptionkpi.ModelManager.setTaktStartTime();
                     // Sequence is important !!!
-                    airbus.mes.disruptionkpi.ModelManager.oFilters.line = airbus.mes.settings.ModelManager.line;
+                    airbus.mes.disruptionkpi.ModelManager.oFilters.line = airbus.mes.settings.util.ModelManager.line;
                     airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
                     airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
                     airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
@@ -598,12 +598,12 @@ airbus.mes.shell.util.navFunctions = {
             if (!flagUserFound) {
                 airbus.mes.worktracker.util.ModelManager.messageShow(
                     airbus.mes.worktracker.oView.getModel("i18n").getProperty("notAssigned_Workcenter")
-                    + airbus.mes.settings.ModelManager.station, 5000)
+                    + airbus.mes.settings.util.ModelManager.station, 5000)
             }
         } else {
             airbus.mes.worktracker.util.ModelManager.messageShow(
                 airbus.mes.worktracker.oView.getModel("i18n").getProperty("notAssigned_Workcenter")
-                + airbus.mes.settings.ModelManager.station, 5000)
+                + airbus.mes.settings.util.ModelManager.station, 5000)
         }
 
         // Set Current Operator
@@ -615,7 +615,7 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.worktracker.util.ModelManager.loadUserOperationsModel();
 
         // Set station name
-        airbus.mes.worktracker.oView.byId("stationName").setText(airbus.mes.settings.ModelManager.station);
+        airbus.mes.worktracker.oView.byId("stationName").setText(airbus.mes.settings.util.ModelManager.station);
 
         // Navigate
         nav.to(airbus.mes.worktracker.oView.getId());
@@ -630,7 +630,7 @@ airbus.mes.shell.util.navFunctions = {
         var controller = airbus.mes.worktracker.detail.oView.getController();
 
         // Set station name
-        airbus.mes.worktracker.detail.oView.byId("stationName").setText(airbus.mes.settings.ModelManager.station);
+        airbus.mes.worktracker.detail.oView.byId("stationName").setText(airbus.mes.settings.util.ModelManager.station);
 
         // Get Operation data from operation list
         var operationData = sap.ui.getCore().getModel("userOperationsModel").getProperty("/Rowsets/Rowset/0/Row/" + operationIndex);

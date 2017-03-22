@@ -26,7 +26,7 @@ airbus.mes.qdc.util.ModelManager = {
 	loadQDCData : function() {
         var url = this.urlModel.getProperty('QDCDataurl');
 //      Param.1=$Site&Param.2=$st_langu&Param.3=$st_Application_Id&Param.4=$st_work_order&Param.5=$st_work_order_oper
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$Site", airbus.mes.settings.ModelManager.site);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$Site", airbus.mes.settings.util.ModelManager.site);
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$st_langu", airbus.mes.shell.RoleManager.profile.connectedUser.Language);
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$st_Application_Id", "MES");		
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$st_work_order", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no);        

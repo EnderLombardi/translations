@@ -184,7 +184,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		var doaParameters = [], site, erpId, shopOrderBO, sfc, operationBO;
 
 
-		site = airbus.mes.settings.ModelManager.site;
+		site = airbus.mes.settings.util.ModelManager.site;
 		erpId = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM;
 		shopOrderBO = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ShopOrderBO;
 		
@@ -212,7 +212,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		var externalUrlTemplateParameters = [], site, erpId, fct;
 		var set = airbus.mes.displayOpeAttachments.component.mProperties.sSet;
 
-		site = airbus.mes.settings.ModelManager.site;
+		site = airbus.mes.settings.util.ModelManager.site;
 		erpId = airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM;
 		if (set === "O") {
 			fct = this.functions[0];

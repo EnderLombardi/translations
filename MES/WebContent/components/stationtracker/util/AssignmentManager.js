@@ -40,9 +40,9 @@ airbus.mes.stationtracker.util.AssignmentManager = {
 		var sAVLLineSKILL = airbus.mes.stationtracker.util.AssignmentManager.polypolyAssignment.selectedLine.avlLine;
 		var sLine = sAVLLineSKILL.split("_")[0];
 		var sSkill = sAVLLineSKILL.split("_")[1];
-		var sSite = airbus.mes.settings.ModelManager.site;
-		var sStation = airbus.mes.settings.ModelManager.station;
-		var sMSN = airbus.mes.settings.ModelManager.msn;
+		var sSite = airbus.mes.settings.util.ModelManager.site;
+		var sStation = airbus.mes.settings.util.ModelManager.station;
+		var sMSN = airbus.mes.settings.util.ModelManager.msn;
 //		var sMyUserID = "UserBO:" + sSite + ",NG55E48"; //FIXME ??
 //		var sMyUserID = "UserBO:" + sSite + "," + Cookies.getJSON("login").user; //FIXME ??
 

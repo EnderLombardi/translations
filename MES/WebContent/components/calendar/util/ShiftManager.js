@@ -474,12 +474,12 @@ airbus.mes.calendar.util.ShiftManager = {
 
 		if ( airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
 			
-			var dEndDate=airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd);
-			var dStartDate=airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart);
+			var dEndDate=airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.util.ModelManager.taktEnd);
+			var dStartDate=airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.util.ModelManager.taktStart);
 			
 			calendar.matrix.timeline.x_size = 0;
 			 
-	        var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart)
+	        var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.util.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.util.ModelManager.taktStart)
 	       
 	        // Takt is over one day
 	        if ( Math.abs(sTime) > 86400000 ) {
@@ -653,20 +653,20 @@ airbus.mes.calendar.util.ShiftManager = {
 		//		});
 		
 		// Add maker for takt time
-		var d6 = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart);
+		var d6 = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.util.ModelManager.taktStart);
 		d6.setMinutes(d6.getMinutes() + 5);
 		
 		calendar.addMarkedTimespan({
-			start_date : airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart),
+			start_date : airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.util.ModelManager.taktStart),
 			end_date : d6,
 			css : "taktMarker"
 		});
 		
-		var d7 = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd);
+		var d7 = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.util.ModelManager.taktEnd);
 		d7.setMinutes(d7.getMinutes() + 5);
 		
 		calendar.addMarkedTimespan({
-			start_date : airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd),
+			start_date : airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.util.ModelManager.taktEnd),
 			end_date : d7,
 			css : "taktMarker"
 		});

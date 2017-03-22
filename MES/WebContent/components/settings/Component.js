@@ -2,9 +2,9 @@
 
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.settings.util.Formatter");
-jQuery.sap.require("airbus.mes.settings.GlobalFunction");
-jQuery.sap.require("airbus.mes.settings.ModelManager");
-jQuery.sap.require("airbus.mes.settings.AppConfManager");
+jQuery.sap.require("airbus.mes.settings.util.GlobalFunction");
+jQuery.sap.require("airbus.mes.settings.util.ModelManager");
+jQuery.sap.require("airbus.mes.settings.util.AppConfManager");
 
 jQuery.sap.declare("airbus.mes.settings.Component");
 
@@ -55,10 +55,10 @@ sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 airbus.mes.settings.Component.prototype.createContent = function() {
 
 	if (airbus.mes.settings.oView === undefined) {
-		airbus.mes.settings.ModelManager.init(sap.ui.getCore());
+		airbus.mes.settings.util.ModelManager.init(sap.ui.getCore());
 		this.oView = sap.ui.view({
 			id : "settingsView",
-			viewName : "airbus.mes.settings.Settings",
+			viewName : "airbus.mes.settings.view.Settings",
 			type : "XML",
 		})
 	}

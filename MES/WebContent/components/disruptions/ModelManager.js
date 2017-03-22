@@ -50,7 +50,7 @@ airbus.mes.disruptions.ModelManager = {
 		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
 
-		var workCenterBO = "WorkCenterBO:" + airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.station;
+		var workCenterBO = "WorkCenterBO:" + airbus.mes.settings.util.ModelManager.site + "," + airbus.mes.settings.util.ModelManager.station;
 		var operation = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo.split(",")[1];
 		var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
 
@@ -62,11 +62,11 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			cache: false,
 			data: JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
+				"site": airbus.mes.settings.util.ModelManager.site,
 				"workCenterBO": workCenterBO,
 				"operationNo": operation,
 				"sfcStepBO": sSfcStepRef,
-				"userBO": "UserBO:" + airbus.mes.settings.ModelManager.site + "," + airbus.mes.settings.ModelManager.user,
+				"userBO": "UserBO:" + airbus.mes.settings.util.ModelManager.site + "," + airbus.mes.settings.util.ModelManager.user,
 				"msnNumber": "",
 				"forMobile": true,
 				"lang": sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey()
@@ -112,8 +112,8 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	getDisruptionCategoryURL: function () {
 		var urlCustomCategory = this.urlModel.getProperty("urlGetCategory");
-		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$site", airbus.mes.settings.ModelManager.site);
-		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$station", airbus.mes.settings.ModelManager.station);
+		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$site", airbus.mes.settings.util.ModelManager.site);
+		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$station", airbus.mes.settings.util.ModelManager.station);
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$lang", sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey());
 
 		/*// Get user to which operation is affected else current logged in user
@@ -144,8 +144,8 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	getRsnResponsibleGrpURL: function (sMsgType) {
 		var urlGetRsnResponsibleGrp = this.urlModel.getProperty("urlGetRsnResponsibleGrp");
-		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.ModelManager.site);
-		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$station", airbus.mes.settings.ModelManager.station);
+		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.util.ModelManager.site);
+		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$station", airbus.mes.settings.util.ModelManager.station);
 		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$messageType", sMsgType);
 		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$lang", sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey());
 		return urlGetRsnResponsibleGrp;
@@ -167,7 +167,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	getResolverModelURL: function (sResolverGroup) {
 		var urlGetRsnResponsibleGrp = this.urlModel.getProperty("urlGetResolver");
-		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.ModelManager.site);
+		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$site", airbus.mes.settings.util.ModelManager.site);
 		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp, "$group", sResolverGroup);
 		return urlGetRsnResponsibleGrp;
 
@@ -185,7 +185,7 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 	getURLMaterialList: function (workOrder, operation) {
 		var url = this.urlModel.getProperty("urlMaterialList");
-        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.util.ModelManager.site);
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", workOrder);
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$operation", operation);
         return url;
@@ -219,7 +219,7 @@ airbus.mes.disruptions.ModelManager = {
             url : this.urlModel.getProperty("urlJigtoolList"),
             contentType : 'application/json',
             data : JSON.stringify({
-                "site" : airbus.mes.settings.ModelManager.site,
+                "site" : airbus.mes.settings.util.ModelManager.site,
                 "shopOrder" : workOrder
             }),
 
@@ -266,8 +266,8 @@ airbus.mes.disruptions.ModelManager = {
 			url: this.getURLCreateDisruption(),
 			type: 'POST',
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
-				"Param.2": airbus.mes.settings.ModelManager.user,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
+				"Param.2": airbus.mes.settings.util.ModelManager.user,
 				"Param.3": messageType,
 				/* "Param.4" : "abc", */
 				"Param.5": sComment,
@@ -359,7 +359,7 @@ airbus.mes.disruptions.ModelManager = {
 			url: this.getURLUpdateDisruption(),
 			type: 'POST',
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": sMessageRef,
 				"Param.3": sReason,
 				"Param.4": sResponsibleGroup,
@@ -367,7 +367,7 @@ airbus.mes.disruptions.ModelManager = {
 				"Param.7": dFixedByTime,
 				"Param.8": sComment,
 				"Param.9": iGravity,
-				"Param.10": airbus.mes.settings.ModelManager.user,
+				"Param.10": airbus.mes.settings.util.ModelManager.user,
 				"Param.11": dPromisedDate,
 				"Param.12": sap.ui.getCore().getModel("DisruptionDetailModel").oData.sfcStepBO.split("SFCBO:")[1].split(",")[1], //SFC
 				"Param.13": sap.ui.getCore().getModel("DisruptionDetailModel").oData.operation.split(",")[1], // Operation number
@@ -462,9 +462,9 @@ airbus.mes.disruptions.ModelManager = {
 		jQuery.ajax({
 			url: this.getUrlOnEscalate(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": msgRef,
-				"Param.3": airbus.mes.settings.ModelManager.user,
+				"Param.3": airbus.mes.settings.util.ModelManager.user,
 				"Param.4": sComment
 			},
 			type: 'POST',
@@ -517,8 +517,8 @@ airbus.mes.disruptions.ModelManager = {
 			.ajax({
 				url: this.getUrlToAckDisruption(),
 				data: {
-					"Param.1": airbus.mes.settings.ModelManager.site,
-					"Param.2": airbus.mes.settings.ModelManager.user,
+					"Param.1": airbus.mes.settings.util.ModelManager.site,
+					"Param.2": airbus.mes.settings.util.ModelManager.user,
 					"Param.3": msgRef,
 					"Param.4": comment,
 					"Param.5": dateTime
@@ -572,8 +572,8 @@ airbus.mes.disruptions.ModelManager = {
 		jQuery.ajax({
 			url: this.getUrlToMarkSolvedDisruption(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
-				"Param.2": airbus.mes.settings.ModelManager.user,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
+				"Param.2": airbus.mes.settings.util.ModelManager.user,
 				"Param.3": msgRef,
 				"Param.4": comment
 			},
@@ -630,9 +630,9 @@ airbus.mes.disruptions.ModelManager = {
 		jQuery.ajax({
 			url: this.getUrlToAddComment(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": sComment,
-				"Param.3": airbus.mes.settings.ModelManager.user,
+				"Param.3": airbus.mes.settings.util.ModelManager.user,
 				"Param.4": msgRef
 
 			},
@@ -687,8 +687,8 @@ airbus.mes.disruptions.ModelManager = {
 		jQuery.ajax({
 			url: this.getUrlToRejectDisruption(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
-				"Param.2": airbus.mes.settings.ModelManager.user,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
+				"Param.2": airbus.mes.settings.util.ModelManager.user,
 				"Param.3": msgRef,
 				"Param.4": comment,
 				"Param.5": sStatus
@@ -753,10 +753,10 @@ airbus.mes.disruptions.ModelManager = {
 		jQuery.ajax({
 			url: this.getUrlToRefuseDisruption(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": msgRef,
 				"Param.3": comment,
-				"Param.4": airbus.mes.settings.ModelManager.user
+				"Param.4": airbus.mes.settings.util.ModelManager.user
 			},
 			error: function (xhr, status, error) {
 				airbus.mes.disruptions.__enterCommentDialogue.setBusy(false);
@@ -842,11 +842,11 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 	getIssuer: function () {
 		// Check if generic User, "Generic users are starting with SH*."
-		var sUser = (airbus.mes.settings.ModelManager.user.substring(0, 2) == "SH") ?
+		var sUser = (airbus.mes.settings.util.ModelManager.user.substring(0, 2) == "SH") ?
 			// then send operator of operation as issuer
 			(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1]) :
 			// else Current logged in user for a real user as Issuer
-			airbus.mes.settings.ModelManager.user;
+			airbus.mes.settings.util.ModelManager.user;
 
 		// If generic user and no operator assigned, prompt for username
 		if (sUser == undefined) {
@@ -884,7 +884,7 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			type: 'post',
 			data: JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
+				"site": airbus.mes.settings.util.ModelManager.site,
 				"type": "DA",
 				"ref": reference,
 				"fileName": fileName,
@@ -922,7 +922,7 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			type: 'post',
 			data: JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
+				"site": airbus.mes.settings.util.ModelManager.site,
 				"type": "DA",
 				"ref": reference,
 			})
@@ -957,7 +957,7 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			type: 'post',
 			data: JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
+				"site": airbus.mes.settings.util.ModelManager.site,
 				"type": "DA",
 				"ref": reference,
 				"fileCount": fileCount,
@@ -993,7 +993,7 @@ airbus.mes.disruptions.ModelManager = {
 			contentType: 'application/json',
 			type: 'post',
 			data: JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
+				"site": airbus.mes.settings.util.ModelManager.site,
 				"type": "DA",
 				"ref": reference,
 				"fileCount": fileCount,

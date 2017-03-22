@@ -1,7 +1,7 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.settings.GlobalFunction")
-airbus.mes.settings.GlobalFunction = {
+jQuery.sap.declare("airbus.mes.settings.util.GlobalFunction")
+airbus.mes.settings.util.GlobalFunction = {
 	
 	bOpen : undefined,
 	bInitial : false,

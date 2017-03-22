@@ -36,8 +36,8 @@ airbus.mes.resourcepool.util.ModelManager = {
 
     askResourcePool: function(){
         // Ask to select Resource Pool if launched initially or Site is changed
-        if(airbus.mes.resourcepool.util.ModelManager.site != airbus.mes.settings.ModelManager.site || airbus.mes.resourcepool.util.ModelManager.resourceName === undefined){
-            airbus.mes.resourcepool.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
+        if(airbus.mes.resourcepool.util.ModelManager.site != airbus.mes.settings.util.ModelManager.site || airbus.mes.resourcepool.util.ModelManager.resourceName === undefined){
+            airbus.mes.resourcepool.util.ModelManager.site = airbus.mes.settings.util.ModelManager.site;
             airbus.mes.resourcepool.oView.getController().openSelectResourcePool();
             sap.ui.getCore().getModel("ResourcePoolDetailModel").setData();
             sap.ui.getCore().getModel("ResourcePoolDetailModel").refresh();
@@ -58,7 +58,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 
         var urlValueHelpModel = this.urlModel.getProperty('urlvaluehelp');
         urlValueHelpModel = urlValueHelpModel.replace('$Site',
-                airbus.mes.settings.ModelManager.site);
+                airbus.mes.settings.util.ModelManager.site);
         return urlValueHelpModel;
     },
 
@@ -73,7 +73,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 
         var urlAvailableUsers = this.urlModel.getProperty('urlavailableusers');
         urlAvailableUsers = urlAvailableUsers.replace("$Site",
-                airbus.mes.settings.ModelManager.site);
+                airbus.mes.settings.util.ModelManager.site);
         urlAvailableUsers = urlAvailableUsers.replace("$ResourcePoolName",
                 this.resourceName);
         return urlAvailableUsers;
@@ -91,7 +91,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 
         var urlAssignedUsers = this.urlModel.getProperty('urlassignedusers');
         urlAssignedUsers = urlAssignedUsers.replace("$Site",
-                airbus.mes.settings.ModelManager.site);
+                airbus.mes.settings.util.ModelManager.site);
         urlAssignedUsers = urlAssignedUsers.replace("$ResourcePoolName",
                 this.resourceName);
         return urlAssignedUsers;
@@ -109,7 +109,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 
         var urlAssignedWC = this.urlModel.getProperty('urlassignedworkcenters');
         urlAssignedWC = urlAssignedWC.replace("$Site",
-                airbus.mes.settings.ModelManager.site);
+                airbus.mes.settings.util.ModelManager.site);
         urlAssignedWC = urlAssignedWC.replace("$ResourcePoolName",
                 this.resourceName);
         return urlAssignedWC;
@@ -126,7 +126,7 @@ airbus.mes.resourcepool.util.ModelManager = {
         var urlAvailableWC = this.urlModel
                 .getProperty('urlavailableworkcenters');
         urlAvailableWC = urlAvailableWC.replace("$Site",
-                airbus.mes.settings.ModelManager.site);
+                airbus.mes.settings.util.ModelManager.site);
         urlAvailableWC = urlAvailableWC.replace("$ResourcePoolName",
                 this.resourceName);
         return urlAvailableWC;
@@ -142,7 +142,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 
         var urlAvailableShift = this.urlModel.getProperty('urlshifts');
         urlAvailableShift = urlAvailableShift.replace("$Site",
-                airbus.mes.settings.ModelManager.site);
+                airbus.mes.settings.util.ModelManager.site);
         urlAvailableShift = urlAvailableShift.replace("$ResourcePoolName",
                 this.resourceName);
         return urlAvailableShift;
@@ -158,7 +158,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 
     getUrlResourcePoolDetail : function(){
         var urlResourceDetailPool = this.urlModel.getProperty('resourcepooldetails');
-        urlResourceDetailPool = urlResourceDetailPool.replace("$Site",airbus.mes.settings.ModelManager.site);
+        urlResourceDetailPool = urlResourceDetailPool.replace("$Site",airbus.mes.settings.util.ModelManager.site);
         urlResourceDetailPool = urlResourceDetailPool.replace("$ResourcePoolName",this.resourceName);
         return urlResourceDetailPool;
     },
@@ -174,7 +174,7 @@ airbus.mes.resourcepool.util.ModelManager = {
     getUrlCreateResource : function(name, description) {
         var urlCreateResource = this.urlModel.getProperty('urlcreateresource');
         urlCreateResource = urlCreateResource.replace("$Site",
-                airbus.mes.settings.ModelManager.site);
+                airbus.mes.settings.util.ModelManager.site);
         urlCreateResource = urlCreateResource
                 .replace("$ResourcePoolName", name);
         urlCreateResource = urlCreateResource.replace("$Description",
@@ -215,7 +215,7 @@ airbus.mes.resourcepool.util.ModelManager = {
             cache : false,
             type : 'POST',
             data : {
-                "Param.1" : airbus.mes.settings.ModelManager.site,
+                "Param.1" : airbus.mes.settings.util.ModelManager.site,
                 "Param.2" : name,
                 "Param.3" : description,
                 "Param.4" : false,
@@ -253,7 +253,7 @@ airbus.mes.resourcepool.util.ModelManager = {
             url : this.getUrlUpdateResourcePool(),
             type : 'POST',
             data : {
-                "Param.1" : airbus.mes.settings.ModelManager.site,
+                "Param.1" : airbus.mes.settings.util.ModelManager.site,
                 "Param.2" : this.resourceName,
                 "Param.3" : this.resourceDescription,
                 "Param.4" : true,
@@ -291,7 +291,7 @@ airbus.mes.resourcepool.util.ModelManager = {
             type : 'POST',
             data : {
                 "Param.1" : name,
-                "Param.2" : airbus.mes.settings.ModelManager.site,
+                "Param.2" : airbus.mes.settings.util.ModelManager.site,
             },
             success : function(data, textStatus, jqXHR) {
                 var message = airbus.mes.resourcepool.oView.getModel(

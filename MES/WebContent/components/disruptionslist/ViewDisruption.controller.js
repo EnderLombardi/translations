@@ -117,7 +117,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 		jQuery.ajax({
 			url: airbus.mes.disruptions.ModelManager.getUrlToCloseDisruption(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"Param.3": sMsgRef,
 				"Param.4": sComment,
@@ -258,7 +258,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 		jQuery.ajax({
 			url: airbus.mes.disruptions.ModelManager.getUrlDeleteDisruption(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"Param.3": msgRef,
 				"Param.4": sComment
@@ -589,7 +589,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 		jQuery.ajax({
 			url: airbus.mes.disruptions.ModelManager.getUrlOnEscalate(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": msgRef,
 				"Param.3": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"Param.4": sComment
@@ -715,7 +715,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 				url: urlToCreateMsgLogCode,
 				type: 'POST',
 				data: {
-					"Param.1": airbus.mes.settings.ModelManager.site,
+					"Param.1": airbus.mes.settings.util.ModelManager.site,
 					"Param.2": messageRef,
 					"Param.3": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 					"Param.4": "READ",
@@ -802,7 +802,7 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 			contentType: 'application/json',
 			cache: false,
 			data: JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
+				"site": airbus.mes.settings.util.ModelManager.site,
 				"messageRef": msgRef,
 				"lang": sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedKey()
 			}),

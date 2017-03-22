@@ -30,7 +30,7 @@ airbus.mes.calendar.util.ModelManager = {
 
 		var oViewModelshift = airbus.mes.calendar.oView.getModel("calendarshiftsModel");
 		var getUrlShifts = this.urlModel.getProperty("urlshifts");
-		var oData = airbus.mes.settings.ModelManager;
+		var oData = airbus.mes.settings.util.ModelManager;
 		var reqResult = "";
 		getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$site", oData.site);
 		getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$station", oData.station);
@@ -59,7 +59,7 @@ airbus.mes.calendar.util.ModelManager = {
 
 	loadCalendarTracker : function() {
 
-		var oData = airbus.mes.settings.ModelManager;
+		var oData = airbus.mes.settings.util.ModelManager;
 		var oViewModel = airbus.mes.calendar.oView.getModel("calendarTrackerModel");
 		var geturlcalendartracker = this.urlModel.getProperty('urlCalendaroperation');
 		//Format need to be same format at Ph_Station in table Z_RESOURCE_POOL_ASSIGNMENT 
@@ -134,8 +134,8 @@ airbus.mes.calendar.util.ModelManager = {
 			contentType : 'application/json',
 			async : 'false',
 			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
-				"phStation" : airbus.mes.settings.ModelManager.station	               
+				"site" : airbus.mes.settings.util.ModelManager.site,
+				"phStation" : airbus.mes.settings.util.ModelManager.station	               
 			}),
 
 			success : function(data) {

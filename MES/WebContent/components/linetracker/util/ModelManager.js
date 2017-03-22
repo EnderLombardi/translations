@@ -45,7 +45,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			contentType : 'application/json',
 			cache : false,
 			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
+				"site" : airbus.mes.settings.util.ModelManager.site,
 				"customLine" : airbus.mes.linetracker.util.ModelManager.customLineBO,//.split(",")[1],
 				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey()
 			}),
@@ -90,7 +90,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			url : this.urlModel.getProperty("urlLineVariant"),
 			contentType : 'application/json',
 			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
+				"site" : airbus.mes.settings.util.ModelManager.site,
 				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey()
 			}),
 
@@ -163,10 +163,10 @@ airbus.mes.linetracker.util.ModelManager = {
 		});
 		result = result ? result[0] : null; // or undefined
 */		var result = airbus.mes.linetracker.util.ModelManager.getProgramForMsnStation(station, msn);
-		airbus.mes.settings.ModelManager.program = result.program;
-		airbus.mes.settings.ModelManager.station = result.station;
-		airbus.mes.settings.ModelManager.msn = result.msn;
-		airbus.mes.settings.ModelManager.line = result.line;
+		airbus.mes.settings.util.ModelManager.program = result.program;
+		airbus.mes.settings.util.ModelManager.station = result.station;
+		airbus.mes.settings.util.ModelManager.msn = result.msn;
+		airbus.mes.settings.util.ModelManager.line = result.line;
 		var oModel = sap.ui.getCore().getModel("userSettingModel");
 		oModel.setProperty("/Rowsets/Rowset/0/Row/0/stationDescription",result.stationDescription);
 		oModel.setProperty("/Rowsets/Rowset/0/Row/0/msn",result.msn);
@@ -199,7 +199,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			url : this.urlModel.getProperty("urltaktaction"),
 			contentType : 'application/json',
 			data : JSON.stringify({
-				"site" : airbus.mes.settings.ModelManager.site,
+				"site" : airbus.mes.settings.util.ModelManager.site,
 				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey(),
 				"msn" : msn,
 				"station" : sap.ui.getCore().getModel("statusActionModel").getProperty("/station"),

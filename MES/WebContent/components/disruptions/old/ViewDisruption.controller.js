@@ -219,7 +219,7 @@ sap.ui
                                          jQuery.ajax({
                                                 url : airbus.mes.disruptions.ModelManager.getUrlToCloseDisruption(),
                                                 data : {
-                                                       "Param.1" : airbus.mes.settings.ModelManager.site,
+                                                       "Param.1" : airbus.mes.settings.util.ModelManager.site,
                                                        "Param.2" : sap.ui.getCore().getModel(
                                                                      "userSettingModel").getProperty(
                                                                      "/Rowsets/Rowset/0/Row/0/user"),
@@ -389,7 +389,7 @@ sap.ui
                                          jQuery.ajax({
                                                 url : airbus.mes.disruptions.ModelManager.getUrlDeleteDisruption(),
                                                 data : {
-                                                       "Param.1" : airbus.mes.settings.ModelManager.site,
+                                                       "Param.1" : airbus.mes.settings.util.ModelManager.site,
                                                        "Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
                                                        "Param.3" : msgRef,
                                                        "Param.4" : comment

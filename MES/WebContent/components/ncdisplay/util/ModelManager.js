@@ -33,8 +33,8 @@ airbus.mes.ncdisplay.util.ModelManager = {
 			contentType: 'application/json',
 			async: 'true',
 			data: JSON.stringify({
-				"site": airbus.mes.settings.ModelManager.site,
-				"phStation": airbus.mes.settings.ModelManager.station,
+				"site": airbus.mes.settings.util.ModelManager.site,
+				"phStation": airbus.mes.settings.util.ModelManager.station,
 				"shopOrderBO": airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].shopOrderBo,
 			}),
 
@@ -56,7 +56,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
 
 					var set = airbus.mes.ncdisplay.oView.oController.sSet;
 					if (!set) {
-						set = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_NC_" + airbus.mes.settings.ModelManager.station);
+						set = airbus.mes.settings.util.AppConfManager.getConfiguration("VIEW_ATTACHED_NC_" + airbus.mes.settings.util.ModelManager.station);
 					}
 
 					if (set === airbus.mes.ncdisplay.util.ModelManager.workOrder) {
@@ -123,7 +123,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
 
 		//    	First step, retrieve correct url depending site and target erp
 		var sGetExternalUrl = this.urlModel.getProperty('getExternalUrlTemplate');
-		sGetExternalUrl = sGetExternalUrl.replace("$Site", airbus.mes.settings.ModelManager.site);
+		sGetExternalUrl = sGetExternalUrl.replace("$Site", airbus.mes.settings.util.ModelManager.site);
 		sGetExternalUrl = sGetExternalUrl.replace("$ErpId", airbus.mes.stationtracker.util.ModelManager.stationInProgress.ERP_SYSTEM);
 		sGetExternalUrl = sGetExternalUrl.replace("$Function", "OPEN_NC");
 
@@ -141,7 +141,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
 
 		//    	First step, retrieve correct url depending site and target erp
 		var sGetExternalUrl = this.urlModel.getProperty('getExternalUrlTemplate');
-		sGetExternalUrl = sGetExternalUrl.replace("$Site", airbus.mes.settings.ModelManager.site);
+		sGetExternalUrl = sGetExternalUrl.replace("$Site", airbus.mes.settings.util.ModelManager.site);
 		sGetExternalUrl = sGetExternalUrl.replace("$ErpId", erp_id);
 		sGetExternalUrl = sGetExternalUrl.replace("$Function", functionName);
 		return sGetExternalUrl;

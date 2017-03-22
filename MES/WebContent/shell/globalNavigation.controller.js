@@ -91,8 +91,8 @@ sap.ui.controller(
             var sText = oEvent.getSource().getSelectedKey();
 
             //                        Update the language on the settings ModelManager
-            airbus.mes.settings.ModelManager.saveUserSetting(sText);
-            airbus.mes.settings.ModelManager.setUserLang(sText);
+            airbus.mes.settings.util.ModelManager.saveUserSetting(sText);
+            airbus.mes.settings.util.ModelManager.setUserLang(sText);
 
             //                        Reload the url with the new language
             this.updateUrlForLanguage(sText);
@@ -166,43 +166,43 @@ sap.ui.controller(
             switch (nav.getCurrentPage().getId()) {
                 case "stationTrackerView":
                     textButtonTo = "Go to Station Tracker";
-                    airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                    airbus.mes.settings.util.GlobalFunction.navigateTo(textButtonTo, "back");
                     break;
                 case "homePageView":
                     textButtonTo = "Go to Home Page";
-                    airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                    airbus.mes.settings.util.GlobalFunction.navigateTo(textButtonTo, "back");
                     break;
                 case "resourcePool":
                     textButtonTo = "Go to Team Assignment";
-                    airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                    airbus.mes.settings.util.GlobalFunction.navigateTo(textButtonTo, "back");
                     break;
                 case "disruptiontrackerView":
                     textButtonTo = "Go to Disruption Tracker";
-                    airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                    airbus.mes.settings.util.GlobalFunction.navigateTo(textButtonTo, "back");
                     break;
                 case "disruptionKPIView":
                     textButtonTo = "Go to Disruption KPI";
-                    airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                    airbus.mes.settings.util.GlobalFunction.navigateTo(textButtonTo, "back");
                     break;
                 case "polypoly":
                     textButtonTo = "Go to Polypoly";
-                    airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "polypoly");
+                    airbus.mes.settings.util.GlobalFunction.navigateTo(textButtonTo, "polypoly");
                     break;
                 case "idLinetracker":
                     textButtonTo = "Go to LineTracker";
-                    airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                    airbus.mes.settings.util.GlobalFunction.navigateTo(textButtonTo, "back");
                     break;
                 case "calendar":
                     textButtonTo = "Go to Calendar Tracker";
-                    airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                    airbus.mes.settings.util.GlobalFunction.navigateTo(textButtonTo, "back");
                     break;
                 case "stationHandoverView":
                     textButtonTo = "Go to Calendar Tracker";
-                    airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                    airbus.mes.settings.util.GlobalFunction.navigateTo(textButtonTo, "back");
                     break;
                 case "disruptionDetailView":
                     textButtonTo = "Go to Disruption Detail View";
-                    airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                    airbus.mes.settings.util.GlobalFunction.navigateTo(textButtonTo, "back");
                     break;
                 default:
             }

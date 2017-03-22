@@ -88,7 +88,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.util.ShiftManager.taktDisplay = true;
         airbus.mes.calendar.oView.byId("calendardateButton").setEnabled(false);
         
-        var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart)
+        var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.util.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.util.ModelManager.taktStart)
        
         // Takt is over one day
         if ( Math.abs(sTime) > 86400000 ) {

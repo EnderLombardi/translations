@@ -238,7 +238,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
      **************************************************************************/
     getConfirmationsNotesUrl: function (model) {
         var trackingTemplateUrl = this.urlModel.getProperty(model);
-        var site = airbus.mes.settings.ModelManager.site;
+        var site = airbus.mes.settings.util.ModelManager.site;
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
             trackingTemplateUrl, "$site", site);
         trackingTemplateUrl = airbus.mes.shell.ModelManager.replaceURI(
@@ -253,7 +253,7 @@ airbus.mes.trackingtemplate.util.ModelManager = {
     getReasonCodeUrl: function (model) {
         var reasonCodeUrl = this.urlModel.getProperty(model);
         reasonCodeUrl = airbus.mes.shell.ModelManager.replaceURI(
-            reasonCodeUrl, "$site", airbus.mes.settings.ModelManager.site);
+            reasonCodeUrl, "$site", airbus.mes.settings.util.ModelManager.site);
         // console.log(reasonCodeUrl);
         return reasonCodeUrl;
     },

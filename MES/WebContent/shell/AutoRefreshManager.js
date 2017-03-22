@@ -36,7 +36,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 
 
              //if auto refresh disable
-             if(!airbus.mes.settings.AppConfManager._getConfiguration("MES_REFRESH_ACTIVE")){
+             if(!airbus.mes.settings.util.AppConfManager._getConfiguration("MES_REFRESH_ACTIVE")){
                     airbus.mes.shell.AutoRefreshManager.clearInterval();
                     return;
              }
@@ -52,27 +52,27 @@ airbus.mes.shell.AutoRefreshManager =  {
              switch (this.viewName) {
 
 	             case "stationTrackerView":
-	            	 refreshConfigKey = "REFRESH_STATION_TRACKER_"+airbus.mes.settings.ModelManager.station;
+	            	 refreshConfigKey = "REFRESH_STATION_TRACKER_"+airbus.mes.settings.util.ModelManager.station;
 	            	 break;
 	                 
 	             case "disruptiontrackerView":
-	            	 refreshConfigKey = "REFRESH_DISRUPTION_TRACKER_"+airbus.mes.settings.ModelManager.station;
+	            	 refreshConfigKey = "REFRESH_DISRUPTION_TRACKER_"+airbus.mes.settings.util.ModelManager.station;
 	            	 break;
 	                 	 
 	             case "disruptionKPIView":
-	            	 refreshConfigKey = "REFRESH_DISRUPTION_KPI_"+airbus.mes.settings.ModelManager.station;
+	            	 refreshConfigKey = "REFRESH_DISRUPTION_KPI_"+airbus.mes.settings.util.ModelManager.station;
 	            	 break;
 	             case "calendar" :
-            	 	refreshConfigKey = "REFRESH_CALENDAR_TRACKER_"+airbus.mes.settings.ModelManager.station;
+            	 	refreshConfigKey = "REFRESH_CALENDAR_TRACKER_"+airbus.mes.settings.util.ModelManager.station;
 	             	break;
 	             case "idLinetracker" :
 	            	 refreshConfigKey = "REFRESH_LINE_TRACKER";
 	             case "stationHandoverView" :
-	            	 refreshConfigKey = "REFRESH_STATION_HANDOVER_"+airbus.mes.settings.ModelManager.station;
+	            	 refreshConfigKey = "REFRESH_STATION_HANDOVER_"+airbus.mes.settings.util.ModelManager.station;
 	             default:
             	 
              }
-             this.refreshInterval = config[sVal.viewName].timer = parseInt(airbus.mes.settings.AppConfManager.getConfiguration(refreshConfigKey, this.defaultKey))
+             this.refreshInterval = config[sVal.viewName].timer = parseInt(airbus.mes.settings.util.AppConfManager.getConfiguration(refreshConfigKey, this.defaultKey))
               
              
              // init function

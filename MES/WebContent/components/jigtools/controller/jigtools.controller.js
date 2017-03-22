@@ -24,7 +24,7 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 				
 				//will be the configuration received in AppConfManager
 //				Application manager configuration is setting to physical station level, we concatenate the ID VIEW_ATTACHED_TOOL with the physical station
-				var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL_" + airbus.mes.settings.ModelManager.station);
+				var sSet = airbus.mes.settings.util.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL_" + airbus.mes.settings.util.ModelManager.station);
 				
 				if(sSet === null) {
 //					Default mode

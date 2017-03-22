@@ -55,7 +55,7 @@ airbus.mes.operationstatus.util.ModelManager = {
     **************************************************************************/
     getOperationstatusUrl: function (model) {
         var operationstatusUrl = this.urlModel.getProperty(model);
-        var site = airbus.mes.settings.ModelManager.site;
+        var site = airbus.mes.settings.util.ModelManager.site;
         var ShopOrderNumber = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
 
         operationstatusUrl = airbus.mes.shell.ModelManager.replaceURI(
@@ -63,7 +63,7 @@ airbus.mes.operationstatus.util.ModelManager = {
         operationstatusUrl = airbus.mes.shell.ModelManager.replaceURI(
             operationstatusUrl, "$ShopOrderNumber", ShopOrderNumber);
         operationstatusUrl = airbus.mes.shell.ModelManager.replaceURI(
-            operationstatusUrl, "$program", airbus.mes.settings.ModelManager.program);
+            operationstatusUrl, "$program", airbus.mes.settings.util.ModelManager.program);
         
 
         return operationstatusUrl;

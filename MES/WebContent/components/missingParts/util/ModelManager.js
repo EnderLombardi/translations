@@ -24,9 +24,9 @@ airbus.mes.missingParts.util.ModelManager = {
 	//request + loadData + model refresh
 	loadMPDetail: function () {
 		var oViewModel = airbus.mes.missingParts.oView.getModel("getMissingParts");
-		oViewModel.setData(airbus.mes.stationtracker.util.Globals_Functions.getMissingPartsData(airbus.mes.settings.ModelManager.site,
-								  								   airbus.mes.settings.ModelManager.station,
-								  								   airbus.mes.settings.ModelManager.msn));
+		oViewModel.setData(airbus.mes.stationtracker.util.Globals_Functions.getMissingPartsData(airbus.mes.settings.util.ModelManager.site,
+								  								   airbus.mes.settings.util.ModelManager.station,
+								  								   airbus.mes.settings.util.ModelManager.msn));
 
 		var sorterCombo = airbus.mes.missingParts.oView.byId("missingPartsView--mpSorter");
 		if ( sorterCombo ){

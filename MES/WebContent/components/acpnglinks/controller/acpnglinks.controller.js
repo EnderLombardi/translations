@@ -71,26 +71,26 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 //				 
 //
 //				 //Step 3 update and save settings for physical station
-//				 oldSettings.site =  airbus.mes.settings.ModelManager.site;
-//				 oldSettings.program =  airbus.mes.settings.ModelManager.program;
-//				 oldSettings.line =  airbus.mes.settings.ModelManager.line;
-//				 oldSettings.station =  airbus.mes.settings.ModelManager.station;
-//				 oldSettings.msn =  airbus.mes.settings.ModelManager.msn;
+//				 oldSettings.site =  airbus.mes.settings.util.ModelManager.site;
+//				 oldSettings.program =  airbus.mes.settings.util.ModelManager.program;
+//				 oldSettings.line =  airbus.mes.settings.util.ModelManager.line;
+//				 oldSettings.station =  airbus.mes.settings.util.ModelManager.station;
+//				 oldSettings.msn =  airbus.mes.settings.util.ModelManager.msn;
 //				 try{
 //					 // TODO change user settings
-//					 airbus.mes.settings.ModelManager.site 		=  airbus.mes.settings.ModelManager.site;
-//					 airbus.mes.settings.ModelManager.program 	=  airbus.mes.settings.ModelManager.program;
-//					 airbus.mes.settings.ModelManager.line 		=  airbus.mes.settings.ModelManager.line;
-//					 airbus.mes.settings.ModelManager.station 	=  airbus.mes.settings.ModelManager.station;
-//					 airbus.mes.settings.ModelManager.msn 		=  airbus.mes.settings.ModelManager.msn;
+//					 airbus.mes.settings.util.ModelManager.site 		=  airbus.mes.settings.util.ModelManager.site;
+//					 airbus.mes.settings.util.ModelManager.program 	=  airbus.mes.settings.util.ModelManager.program;
+//					 airbus.mes.settings.util.ModelManager.line 		=  airbus.mes.settings.util.ModelManager.line;
+//					 airbus.mes.settings.util.ModelManager.station 	=  airbus.mes.settings.util.ModelManager.station;
+//					 airbus.mes.settings.util.ModelManager.msn 		=  airbus.mes.settings.util.ModelManager.msn;
 //					 
-//					 airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
+//					 airbus.mes.settings.util.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
 //				 }catch(error){
-//					 airbus.mes.settings.ModelManager.site 		=   oldSettings.site;
-//					 airbus.mes.settings.ModelManager.program 	=   oldSettings.program;
-//					 airbus.mes.settings.ModelManager.line 		=   oldSettings.line;
-//					 airbus.mes.settings.ModelManager.station 	=   oldSettings.station;
-//					 airbus.mes.settings.ModelManager.msn 		=   oldSettings.msn;
+//					 airbus.mes.settings.util.ModelManager.site 		=   oldSettings.site;
+//					 airbus.mes.settings.util.ModelManager.program 	=   oldSettings.program;
+//					 airbus.mes.settings.util.ModelManager.line 		=   oldSettings.line;
+//					 airbus.mes.settings.util.ModelManager.station 	=   oldSettings.station;
+//					 airbus.mes.settings.util.ModelManager.msn 		=   oldSettings.msn;
 //				 }
 //
 //

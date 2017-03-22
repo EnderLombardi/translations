@@ -290,7 +290,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.DHTMLXScheduler", {
                         }
                     }
                     //load model of polypoly
-                    airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+                    airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.util.ModelManager.site, airbus.mes.settings.util.ModelManager.station);
 
                     //active busy
                     airbus.mes.shell.busyManager.setBusy(airbus.mes.polypoly.oView);

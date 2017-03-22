@@ -163,8 +163,8 @@ airbus.mes.stationtracker.util.GroupingBoxingManager	 = {
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 		var oHierarchyI = airbus.mes.stationtracker.util.GroupingBoxingManager.operationDateIHierarchy;
 		var sCstSplit = airbus.mes.stationtracker.util.GroupingBoxingManager.constante;
-		var sTaktStart = new Date(airbus.mes.settings.ModelManager.taktStart);
-		var sTaktEnd = new Date(airbus.mes.settings.ModelManager.taktEnd);
+		var sTaktStart = new Date(airbus.mes.settings.util.ModelManager.taktStart);
+		var sTaktEnd = new Date(airbus.mes.settings.util.ModelManager.taktEnd);
 
 		
 		oModel.forEach(function(el){

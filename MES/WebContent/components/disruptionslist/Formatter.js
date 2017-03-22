@@ -17,7 +17,7 @@ airbus.mes.disruptionslist.Formatter = {
 			return "---";
 		}
 
-		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		var unit = airbus.mes.settings.util.AppConfManager._getConfiguration("MES_TIME_UNIT");
 		if (unit === "H")
 			openSince = (Math.round((openSince) / (1000 * 60 * 60) * 100) / 100) + " Hr";
 
@@ -52,7 +52,7 @@ airbus.mes.disruptionslist.Formatter = {
 		// at 0!
 		(+aPromisedTime[3]), (+aPromisedTime[4]), (+aPromisedTime[5]), (+aPromisedTime[6]));
 		var dPresent = new Date();
-		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		var unit = airbus.mes.settings.util.AppConfManager._getConfiguration("MES_TIME_UNIT");
 		var solutionIn;
 
 		if (unit === "H")

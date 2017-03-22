@@ -62,7 +62,7 @@ airbus.mes.operationdetail.ModelManager = {
     getReasonCodesURL: function () {
         var urlReasonCodes = this.urlModel.getProperty("getReasonCodes");
         urlReasonCodes = airbus.mes.shell.ModelManager.replaceURI(
-            urlReasonCodes, "$site", airbus.mes.settings.ModelManager.site);
+            urlReasonCodes, "$site", airbus.mes.settings.util.ModelManager.site);
         return urlReasonCodes;
 
     },
@@ -76,7 +76,7 @@ airbus.mes.operationdetail.ModelManager = {
         var oOperationModel =airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0");
         var geturlDispatchToObserver = this.urlModel.getProperty("urlDispatchToObserver");
 
-        geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlDispatchToObserver, "$site", airbus.mes.settings.ModelManager.site);
+        geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlDispatchToObserver, "$site", airbus.mes.settings.util.ModelManager.site);
         geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlDispatchToObserver, "$erpSystem", oOperationModel.erp_system);
         geturlDispatchToObserver = airbus.mes.stationtracker.util.ModelManager.replaceURI(geturlDispatchToObserver, "$language", sap.ui.getCore().getConfiguration().getLanguage());
         
@@ -89,7 +89,7 @@ airbus.mes.operationdetail.ModelManager = {
     	var urlDispatch = this.urlModel.getProperty("urlSendDispatchToObserver");
     	 
     	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
-    		 urlDispatch, "$site", airbus.mes.settings.ModelManager.site);
+    		 urlDispatch, "$site", airbus.mes.settings.util.ModelManager.site);
     	 
     	 urlDispatch = airbus.mes.shell.ModelManager.replaceURI(
     		 urlDispatch, "$level", level);
@@ -124,7 +124,7 @@ airbus.mes.operationdetail.ModelManager = {
             .replaceURI(urlStartOperation, "$sfc", data.sfc);
         urlStartOperation = airbus.mes.shell.ModelManager
             .replaceURI(urlStartOperation, "$site",
-            airbus.mes.settings.ModelManager.site);
+            airbus.mes.settings.util.ModelManager.site);
         urlStartOperation = airbus.mes.shell.ModelManager
             .replaceURI(urlStartOperation, "$resource", "DEFAULT");
 
@@ -133,7 +133,7 @@ airbus.mes.operationdetail.ModelManager = {
     getUrlConfirmationCheckList : function(data){
         var urlConfirmationCheckList = this.urlModel.getProperty("confirmationCheckList");
         urlConfirmationCheckList = airbus.mes.shell.ModelManager
-            .replaceURI(urlConfirmationCheckList, "$Site", airbus.mes.settings.ModelManager.site);
+            .replaceURI(urlConfirmationCheckList, "$Site", airbus.mes.settings.util.ModelManager.site);
         urlConfirmationCheckList = airbus.mes.shell.ModelManager
             .replaceURI(urlConfirmationCheckList, "$Sfc", data.sfc);
         urlConfirmationCheckList = airbus.mes.shell.ModelManager
@@ -143,7 +143,7 @@ airbus.mes.operationdetail.ModelManager = {
         urlConfirmationCheckList = airbus.mes.shell.ModelManager
         .replaceURI(urlConfirmationCheckList, "$OperationID", data.operation_id);
         urlConfirmationCheckList = airbus.mes.shell.ModelManager
-        .replaceURI(urlConfirmationCheckList, "$PhysStation", airbus.mes.settings.ModelManager.station);
+        .replaceURI(urlConfirmationCheckList, "$PhysStation", airbus.mes.settings.util.ModelManager.station);
         urlConfirmationCheckList = airbus.mes.shell.ModelManager
         .replaceURI(urlConfirmationCheckList, "$erp_system", data.erp_system);
         return urlConfirmationCheckList;
@@ -177,7 +177,7 @@ airbus.mes.operationdetail.ModelManager = {
         var urlPauseOperation = this.urlModel.getProperty("pauseOperation");
         urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Operation", data.operation_no);
         urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Sfc", data.sfc);
-        urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Site", airbus.mes.settings.ModelManager.site);
+        urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Site", airbus.mes.settings.util.ModelManager.site);
         urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Resource", "DEFAULT");
         return urlPauseOperation;
     },
@@ -297,9 +297,9 @@ airbus.mes.operationdetail.ModelManager = {
         try {
             //get Missing Parts data
             var MPData = airbus.mes.stationtracker.util.Globals_Functions.getMissingPartsData(
-                                                airbus.mes.settings.ModelManager.site,
-								                airbus.mes.settings.ModelManager.station,
-								                airbus.mes.settings.ModelManager.msn,
+                                                airbus.mes.settings.util.ModelManager.site,
+								                airbus.mes.settings.util.ModelManager.station,
+								                airbus.mes.settings.util.ModelManager.msn,
                                                 sWorkOrder);
             //Update counters of missing parts 
             MPData.Rowsets.Rowset[0].Row.forEach(function(element){

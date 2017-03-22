@@ -669,7 +669,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 			if (oSection.rescheduled) {
 				html = sNotConfirmedOpLS + '<div>';
-				if (airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")) { // Check if user image to be displayed  or not
+				if (airbus.mes.settings.util.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")) { // Check if user image to be displayed  or not
 					var imgId = sap.ui.getCore().byId("stationTrackerView").createId("folder_" + oSection.key + "Image--" + oCurrentAffectedUser.picture);
 
 					html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId + '" src='

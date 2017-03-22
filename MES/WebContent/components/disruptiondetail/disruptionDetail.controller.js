@@ -65,7 +65,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 				type:"POST",
 				url: airbus.mes.disruptions.ModelManager.urlModel.getProperty("getOperationStartEndTime"),
 				data: JSON.stringify({
-					"site": airbus.mes.settings.ModelManager.site,
+					"site": airbus.mes.settings.util.ModelManager.site,
 					"sfcStepBO": sSfcStepBO
 				}),
 				contentType: 'application/json',
@@ -142,7 +142,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 				.ajax({
 					url: airbus.mes.disruptions.ModelManager.getUrlupdateDisruption(),
 					data: {
-						"Param.1": airbus.mes.settings.ModelManager.site,
+						"Param.1": airbus.mes.settings.util.ModelManager.site,
 						"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 						"Param.3": sMessageRef,
 						"Param.4": resolverGroup,
@@ -194,9 +194,9 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 					jQuery.ajax({
 						url: airbus.mes.disruptions.ModelManager.getUrlToAddComment(),
 						data: {
-							"Param.1": airbus.mes.settings.ModelManager.site,
+							"Param.1": airbus.mes.settings.util.ModelManager.site,
 							"Param.2": sComment,
-							"Param.3": airbus.mes.settings.ModelManager.user,
+							"Param.3": airbus.mes.settings.util.ModelManager.user,
 							"Param.4": sMessageRef
 
 						},
@@ -278,7 +278,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 			.ajax({
 				url: airbus.mes.disruptions.ModelManager.getUrlToAckDisruption(),
 				data: {
-					"Param.1": airbus.mes.settings.ModelManager.site,
+					"Param.1": airbus.mes.settings.util.ModelManager.site,
 					"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 					"Param.3": sMessageRef,
 					"Param.4": comment,
@@ -346,7 +346,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		jQuery.ajax({
 			url: airbus.mes.disruptions.ModelManager.getUrlToRejectDisruption(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"Param.3": sMessageRef,
 				"Param.4": sComment,
@@ -412,7 +412,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		jQuery.ajax({
 			url: airbus.mes.disruptions.ModelManager.getUrlToMarkSolvedDisruption(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"Param.3": sMessageRef,
 				"Param.4": sComment
@@ -480,7 +480,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		jQuery.ajax({
 			url: airbus.mes.disruptions.ModelManager.getUrlToRefuseDisruption(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": sMessageRef,
 				"Param.3": sComment,
 				"Param.4": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
@@ -531,7 +531,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 		jQuery.ajax({
 			url: airbus.mes.disruptions.ModelManager.getUrlToCloseDisruption(),
 			data: {
-				"Param.1": airbus.mes.settings.ModelManager.site,
+				"Param.1": airbus.mes.settings.util.ModelManager.site,
 				"Param.2": sap.ui.getCore().getModel(
 					"userSettingModel").getProperty(
 					"/Rowsets/Rowset/0/Row/0/user"),
