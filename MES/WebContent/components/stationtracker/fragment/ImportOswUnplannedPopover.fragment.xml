@@ -84,7 +84,7 @@
 		<buttons>
 			<Button text="{StationTrackerI18n>WorklistButtonImport}" type="Transparent" icon="sap-icon://forward"
 				class="sapUiTinyMarginBeginEnd pageHeaderDialog" press="onUnplannedImport"
-				visible="true" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_SELECT}">
+				visible="true" enable="{Profile>/identifiedUser/permissions/STATION_OSW_SELECT}">
 			</Button>
 			<Button text="{StationTrackerI18n>Close}" type="Transparent" icon="sap-icon://decline"
 				class="sapUiTinyMarginBeginEnd" press="onCloseImportOswUnplannedPopoverDialog">

@@ -45,7 +45,11 @@ sap.ui
         	if (airbus.mes.stationtracker.util.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start) === "0") {
         		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
         	} else {
+        			if(sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_DRILL_RESCHEDULE") === true){
         		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
+        			} else{
+        				airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
+        			}
         	}
 
     		this.nav.to(airbus.mes.operationstatus.oView.getId());

@@ -36,7 +36,7 @@
 						</suggestionItems>
 					</SearchField>
 					<Button id="AddPolypoly" icon="sap-icon://add" text="{PolypolyI18n>Polypoly}"
-						press="openColumnPopup" enabled = "{Profile>/identifiedUser/permissions/PM_POLY_NEED}"/>
+						press="openColumnPopup" enable = "{Profile>/identifiedUser/permissions/PM_POLY_NEED}"/>
 					<Button id="SeeQA" icon="sap-icon://show" text="{PolypolyI18n>ShowQA}"
 						press="openQAPopup" />
 				</content>
