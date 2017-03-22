@@ -1,122 +1,103 @@
 <mvc:View controllerName="airbus.mes.disruptiontracker.disruptions"
 	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:ui="sap.ui.table">
-	<Page class=" sapUiSizeCozy disruptions" showHeader="false">
 
-		<Toolbar class="pageHeader" id="disruptionTrackerToolbar">
-			<Label text="{disruptiontrackerI18n>disruptionsTitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
+	<Page class="sapUiSizeCozy disruptions" showHeader="false" enableScrolling="false" height="100%">
+	<content>
+		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="true"  inset="false"
+			selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: '.setSelectionMode'}"
+			selectionBehavior="Row" rows="{ path: 'disruptionsTrackerModel>/' }" filter="filterDisruptions" 
+			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick"
+			visibleRowCountMode="Auto" enableBusyIndicator="true" rowHeight="60px">
+
+			<ui:extension >
+				<OverflowToolbar class="pageHeader" id="disruptionTrackerToolbar">
+					<Label text="{disruptiontrackerI18n>disruptionsTitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
+					
+					<Select id="stationComboBox" class="sapUiMediumMarginEnd"
+						placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row',
+							sorter : {  path : 'stationDescription'  } }" change="filterByStation"
+						enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+						<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
+					</Select>
+
+					<Select id="msnComboBox" class="sapUiMediumMarginEnd"
+						placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }" change="filterByStation"
+						enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+						<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
+					</Select>
+					<Select id="disruptionCategoryBox" class="sapUiMediumMarginEnd"
+						placeholder="{disruptiontrackerI18n>selectCategory}" items="{ path:'disruptionsTrackerModel>/',
+							sorter : {  path : 'category'  } }" change="filterDisruptions"
+						enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+						<core:Item key="{disruptionsTrackerModel>category}" text="{disruptionsTrackerModel>category}" />
+					</Select>
+					
+					<Select id="disruptionReasonBox" class="sapUiMediumMarginEnd"
+					items="{ path:'disruptionsTrackerModel>/',
+							sorter : {  path : 'reason'  } }" change="filterDisruptions"
+						enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+						<core:Item key="{disruptionsTrackerModel>reason}" text="{disruptionsTrackerModel>reason}" />
+					</Select>
+
+					<Select id="statusComboBox" class="sapUiMediumMarginEnd"
+						placeholder="{disruptiontrackerI18n>selectStatus}" change="filterDisruptions"
+						enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+						<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>status}" />
+						<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
+						<core:Item key="Acknowledged" text="{disruptiontrackerI18n>status.acknowledged}" />
+						<core:Item key="Answered" text="{disruptiontrackerI18n>status.answered}" />
+						<core:Item key="Solved" text="{disruptiontrackerI18n>status.solved}" />
+						<core:Item key="Closed" text="{disruptiontrackerI18n>status.closed}" />
+						<core:Item key="Rejected" text="{disruptiontrackerI18n>status.rejected}" />
+					</Select>
+
+					<Select id="severityComboBox" class="sapUiMediumMarginEnd"
+						placeholder="{disruptiontrackerI18n>selectStatus}"  change="filterDisruptions"
+						enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+						<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>severity}" />
+						<core:Item key="1" text="{disruptiontrackerI18n>not_Blocked}" />
+						<core:Item key="2" text="{disruptiontrackerI18n>disturbed}" />
+						<core:Item key="3" text="{disruptiontrackerI18n>blocked}" />
+					</Select>
+					
+					<Select id="esclationLevelBox" class="sapUiMediumMarginEnd"
+						placeholder="{disruptiontrackerI18n>selectEscLevel}" change="filterDisruptions"
+						enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+						<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>escalation}" />
+						<core:Item key="0" text="{disruptiontrackerI18n>escalation} 0" />
+						<core:Item key="1" text="{disruptiontrackerI18n>escalation} 1" />
+						<core:Item key="2" text="{disruptiontrackerI18n>escalation} 2" />
+						<core:Item key="3" text="{disruptiontrackerI18n>escalation} 3" />
+					</Select>
+
+					<Select id="resolutionGroupBox" class="sapUiMediumMarginEnd"
+						placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{ path: 'disruptionsTrackerModel>/',
+							sorter : {  path : 'responsibleGroup'  } }" change="filterDisruptions"
+						enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
+						<core:Item key="{disruptionsTrackerModel>responsibleGroup}"
+							text="{disruptionsTrackerModel>responsibleGroupDesc}" />
+					</Select>
+				</OverflowToolbar>
 			
-			<Select id="stationComboBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row',
-			         sorter : {  path : 'stationDescription'  } }" change="filterByStation"
-				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
-				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
-			</Select>
-
-			<Select id="msnComboBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }" change="filterByStation"
-				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
-				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
-			</Select>
-			<Select id="disruptionCategoryBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectCategory}" items="{ path:'disruptionsTrackerModel>/',
-			         sorter : {  path : 'category'  } }" change="filterDisruptions"
-				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
-				<core:Item key="{disruptionsTrackerModel>category}" text="{disruptionsTrackerModel>category}" />
-			</Select>
-			
-			<Select id="disruptionReasonBox" class="sapUiMediumMarginEnd"
-			 items="{ path:'disruptionsTrackerModel>/',
-			         sorter : {  path : 'reason'  } }" change="filterDisruptions"
-				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
-				<core:Item key="{disruptionsTrackerModel>reason}" text="{disruptionsTrackerModel>reason}" />
-			</Select>
-
-			<Select id="statusComboBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectStatus}" change="filterDisruptions"
-				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
-				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>status}" />
-				<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
-				<core:Item key="Acknowledged" text="{disruptiontrackerI18n>status.acknowledged}" />
-				<core:Item key="Answered" text="{disruptiontrackerI18n>status.answered}" />
-				<core:Item key="Solved" text="{disruptiontrackerI18n>status.solved}" />
-				<core:Item key="Closed" text="{disruptiontrackerI18n>status.closed}" />
-				<core:Item key="Rejected" text="{disruptiontrackerI18n>status.rejected}" />
-			</Select>
-
-			<Select id="severityComboBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectStatus}"  change="filterDisruptions"
-				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
-				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>severity}" />
-				<core:Item key="1" text="{disruptiontrackerI18n>not_Blocked}" />
-				<core:Item key="2" text="{disruptiontrackerI18n>disturbed}" />
-				<core:Item key="3" text="{disruptiontrackerI18n>blocked}" />
-			</Select>
-			
-			<Select id="esclationLevelBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectEscLevel}" change="filterDisruptions"
-				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
-				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>escalation}" />
-				<core:Item key="0" text="{disruptiontrackerI18n>escalation} 0" />
-				<core:Item key="1" text="{disruptiontrackerI18n>escalation} 1" />
-				<core:Item key="2" text="{disruptiontrackerI18n>escalation} 2" />
-				<core:Item key="3" text="{disruptiontrackerI18n>escalation} 3" />
-				
-			</Select>
-
-			<Select id="resolutionGroupBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{ path: 'disruptionsTrackerModel>/',
-			         sorter : {  path : 'responsibleGroup'  } }" change="filterDisruptions"
-				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
-				<core:Item key="{disruptionsTrackerModel>responsibleGroup}"
-					text="{disruptionsTrackerModel>responsibleGroupDesc}" />
-			</Select>
-
-		</Toolbar>
-
-
-		<Panel  width="100%">
-			<content>
-
-				<!-- <Toolbar class="sapUiSmallMarginTop" height="1rem"> <Label text="{disruptiontrackerI18n>selectStation}" 
-					width="13.7rem" class="sapUiLargeMarginEnd" /> <Label text="{disruptiontrackerI18n>selectMSN}" 
-					width="13.7rem" class="sapUiLargeMarginEnd" /> <Label text="{disruptiontrackerI18n>selectStatus}" 
-					width="13.7rem" class="sapUiLargeMarginEnd" /> <Label text="{disruptiontrackerI18n>resolutionGroup}" 
-					/> </Toolbar> -->
-				<Toolbar id="toolbar">
-					<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress"
-						type="Transparent" />
-
-
+				<OverflowToolbar id="toolbar" >
+					<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent" />
 					<!--[MES V1.5] [Beg]SD-SP1604983-DT-040 --><!-- TODO: removed because its not working -->
 					<SearchField id="disruptionSearchField" width="40%" visible="false"
 						placeholder="{disruptiontrackerI18n>searchForWoOpe}" search="filterDisruptions" >
 					</SearchField>
 					<!--[MES V1.5] [End]SD-SP1604983-DT-040 -->
-
 					<ToolbarSpacer />
-
 					<Button text="{disruptiontrackerI18n>extractDisruptionList}" icon="sap-icon://excel-attachment"
 						press="handleSelectedRowExcelExport" id="exportbutton" class="borderbutton" />
-
-				<!-- 	<Button id="onDisruptionTableSettings" type="Transparent"
+					<!--<Button id="onDisruptionTableSettings" type="Transparent"
 						press="onDisruptionTableSettings" icon="sap-icon://drop-down-list"
 						tooltip="{disruptiontrackerI18n>disruptionFilter}" class="borderbutton" /> -->
-
 					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
 						text="{disruptiontrackerI18n>disruptionKPI}" press="airbus.mes.shell.util.navFunctions.disruptionKPI"
 						class="borderbutton" />
-				
-				</Toolbar>
-
-			</content>
-
-		</Panel>
-
-
-		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="true" selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: '.setSelectionMode'}" selectionBehavior="Row"
-			rows="{ path: 'disruptionsTrackerModel>/' }" 
-			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick">
+				</OverflowToolbar>
+			</ui:extension>
 
 			<ui:columns>
 				<ui:Column id="workOrderCol" filterProperty="workOrder"
@@ -341,7 +322,11 @@
 				</ColumnListItem>
 			</items> -->
 
+			<ui:footer text="hello">
+			</ui:footer>
+
 		</ui:Table>
+	</content>
 	</Page>
 
 </mvc:View>
