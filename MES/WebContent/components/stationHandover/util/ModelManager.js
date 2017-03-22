@@ -251,6 +251,8 @@ airbus.mes.stationHandover.util.ModelManager = {
 								
 			})
 
+			airbus.mes.stationHandover.oView.getController().applyMyFilter();
+			
 		} catch (e) {
 
 			console.log("Error");

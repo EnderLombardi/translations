@@ -395,7 +395,6 @@ sap.ui.controller(
             oManager.loadType();
             oManager.loadGroup();
             oManager.loadOptionInsertOsw();
-            airbus.mes.stationHandover.oView.getController().applyMyFilter();
 
         },
 
