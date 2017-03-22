@@ -19,14 +19,14 @@
 				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
 			</Select>
 			<Select id="disruptionCategoryBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>selectCategory}" items="{ path:'disruptionsTrackerModel>/disruptionListDetails',
+				placeholder="{disruptiontrackerI18n>selectCategory}" items="{ path:'disruptionsTrackerModel>/',
 			         sorter : {  path : 'category'  } }" change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{disruptionsTrackerModel>category}" text="{disruptionsTrackerModel>category}" />
 			</Select>
 			
 			<Select id="disruptionReasonBox" class="sapUiMediumMarginEnd"
-			 items="{ path:'disruptionsTrackerModel>/disruptionListDetails',
+			 items="{ path:'disruptionsTrackerModel>/',
 			         sorter : {  path : 'reason'  } }" change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{disruptionsTrackerModel>reason}" text="{disruptionsTrackerModel>reason}" />
@@ -65,7 +65,7 @@
 			</Select>
 
 			<Select id="resolutionGroupBox" class="sapUiMediumMarginEnd"
-				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{ path: 'disruptionsTrackerModel>/disruptionListDetails',
+				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{ path: 'disruptionsTrackerModel>/',
 			         sorter : {  path : 'responsibleGroup'  } }" change="filterDisruptions"
 				enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}">
 				<core:Item key="{disruptionsTrackerModel>responsibleGroup}"
