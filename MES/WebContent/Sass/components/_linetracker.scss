@@ -541,14 +541,6 @@ TASK ADHERENCE
     font-size: 1vw;
 }
 
-.classKpiHeaderContent .taktKpiName {
-    height: 25px;
-    text-align: right !important;
-    font-size: 0.8vw;
-    vertical-align: middle;
-    display: baseline;
-}
-
 .classKpiHeaderContent .taktKpiValue {
     height: 25px;
     display: inline-block;
@@ -560,30 +552,12 @@ TASK ADHERENCE
     width: 100%;
 }
 
-/*
-#idLinetracker--takt_adherence_adherence_value {
-  font-size: 15px; }
-*/
-
-
 /*************
 ARE CHART for Header KPI of Line Tracker
 **************/
 
 svg#idLinetracker--takt_adherence_area_chart {
     border: none;
-}
-
-.classTaktAdherenceAreaChart div:nth-child(2) {
-    position: absolute;
-    top: 0;
-    left: 20px;
-}
-
-.classTaktAdherenceAreaChart div:nth-child(3) {
-    position: absolute;
-    top: 0;
-    right: 15px;
 }
 
 .takt_adherence_area_chart_svg-container {
@@ -660,35 +634,6 @@ ARE CHART  for Station specific(below slide)
 
 svg#idLinetracker--station_takt_adherence_area_chart {
     border: none;
-}
-
-.classTaktAdherenceAreaChart div:nth-child(2) {
-    position: absolute;
-    top: 0;
-    left: 20px;
-}
-
-.classTaktAdherenceAreaChart div:nth-child(3) {
-    position: absolute;
-    top: 0;
-    right: 15px;
-}
-
-.station_takt_adherence_area_chart_svg-container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%;
-    /* aspect ratio */
-    vertical-align: top;
-    overflow: hidden;
-}
-
-.station_takt_adherence_area_chart_svg-content-responsive {
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    left: 0;
 }
 
 #idLinetracker--station_takt_adherence_area_chart .yaxis {

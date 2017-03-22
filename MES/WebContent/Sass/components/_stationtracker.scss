@@ -77,7 +77,6 @@ TOOLBAR
     position: absolute;
 }
 
-
 /********************
 WORK LIST POP OVER
 *********************/
@@ -248,7 +247,6 @@ BOX MANAGEMENT
             float: left;
             border: 1px solid;
             margin-left: 6px;
-            //            background-color: $dandelion;
             margin-bottom: 10px;
             // prevent design to beark on resize
             min-width: 45px;
@@ -710,74 +708,6 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     .dhx_matrix_line {
         overflow: visible;
     }
-    .yText {
-        width: 100px;
-        float: left;
-        height: 40px;
-    }
-    .avlLine {
-        overflow: hidden;
-        white-space: nowrap;
-        color: #0D5D76;
-        text-overflow: ellipsis;
-        padding-left: 2px;
-    }
-    .avlLineWarning {
-        overflow: hidden;
-        white-space: nowrap;
-        color: #0D5D76;
-        text-overflow: ellipsis;
-        padding-left: 2px;
-    }
-    .ylabel {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: rgba(0, 86, 112, 0.94);
-        font-size: 14px;
-        padding: 2px 0;
-    }
-    .ylabelUser {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: $petrol;
-        font-size: 14px;
-        padding: 2px 0;
-        font-weight: bold;
-    }
-    .ylabelEditIcon {
-        @extend %stationViewYlabelIconAndImage;
-    }
-    .ylabelUserIcon {
-        @extend %stationViewYlabelIconAndImage;
-    }
-    .yContainerWithImage {
-        display: flex;
-        align-self: center;
-        flex-direction: column-reverse;
-        >* {
-            width: 154px;
-        }
-    }
-    .yContainerWithoutImage {
-        display: flex;
-        align-self: center;
-        flex-direction: column-reverse;
-        >* {
-            width: 189px;
-        }
-    }
-    .yMoreLabel {
-        color: #8db9ca;
-        display: flex;
-        justify-content: space-between;
-        padding-top: 4px;
-        .fa-pencil {
-            width: 30px;
-            text-align: center;
-        }
-    }
     .tracker-item-initial {
         @extend %tracker-item-initial;
         .fa-exclamation-triangle {
@@ -869,15 +799,6 @@ div {
     }
 }
 
-.test {
-    background: red !important;
-}
-
-.ganttBar {
-    height: 2rem !important;
-}
-
-
 /***********************
 WORKLIST
 ************************/
@@ -915,35 +836,11 @@ button {
     }
 }
 
-.allowWrapping {
-    flex-wrap: wrap;
-}
-
 label {
     &.teamLabel {
         font-size: 2rem;
         font-weight: bold;
     }
-}
-
-.Save_reschedule {
-    @extend %Save_reschedule;
-}
-
-.ComboBoxProdGroup {
-    width: 50% !important;
-}
-
-.ComboBoxInitial {
-    width: 18% !important;
-}
-
-.ComboBoxProdGroupMobile {
-    width: 90% !important;
-}
-
-.setFullResponsiveWidth {
-    width: 100% !important;
 }
 
 .topMargin {
@@ -960,41 +857,7 @@ label {
     }
 }
 
-.fullWidth {
-    width: 100%;
-}
-
-.homeHeaderBox {
-    background-color: $white-two;
-}
-
-.DialogWidth {
-    width: 50%;
-}
-
-.noBorderToolbar {
-    background-color: $white-two !important;
-    box-shadow: none !important;
-    border: 0px !important;
-    border-bottom: 0px !important;
-}
-
-.customTileBox {
-    padding: 0.5rem;
-    height: 10.5rem;
-}
-
-.textInfoGreen {
-    color: green;
-}
-
-.textInfoRed {
-    color: red;
-}
-
-
 /* Reschedule one line button */
-
 .rescheduleLineBtn {
     @extend %rescheduleBtn;
     width: 5px;
@@ -1015,16 +878,13 @@ label {
     }
 }
 
-
 /* Reschedule all line button */
-
 .rescheduleAllBtn {
     @extend %rescheduleBtn;
     width: 5px;
     height: 37px;
     top: 0;
     cursor: pointer;
-    /*left: -10px;*/
     &:hover {
         width: 200px;
     }
@@ -1109,38 +969,6 @@ svg {
     &#stationTrackerView--takt_adherence_area_chart {
         border: none;
     }
-}
-
-.classTaktAdherenceAreaChart {
-    div {
-        &:nth-child(2) {
-            position: absolute;
-            top: 0;
-            left: 20px;
-        }
-        &:nth-child(3) {
-            position: absolute;
-            top: 0;
-            right: 15px;
-        }
-    }
-}
-
-.takt_adherence_area_chart_svg-container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%;
-    /* aspect ratio */
-    vertical-align: top;
-    overflow: hidden;
-}
-
-.takt_adherence_area_chart_svg-content-responsive {
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    left: 0;
 }
 
 #stationTrackerView--takt_adherence_area_chart {
@@ -1369,7 +1197,6 @@ POP UP POLYPOLY
     background-color: $teal-blue-hover;
 }
 
-
 /**********************
 DATE PICKER
 ***********************/
@@ -1497,10 +1324,6 @@ TOOLTIP TEXT
     padding-left: 0.5rem;
 }
 
-.gray_section {
-    background-color: grey;
-}
-
 .sapMPIText3 {
     float: right;
     margin-top: -29px;
@@ -1509,52 +1332,40 @@ TOOLTIP TEXT
     height: 24px;
 }
 
-
 /****************************
 FROM CUSTOM CSS
 *****************************/
 
 .sapMPIBarYellow {
-    @include sapMPIBarType3(#f1c40f,
-    #f39c12,
-    #00923e);
+    @include sapMPIBarType3(#f1c40f, #f39c12, #00923e);
 }
 
 .sapMPIBarBlue {
-    @include sapMPIBarType2(#008cda,
-    #006ca7);
+    @include sapMPIBarType2(#008cda, #006ca7);
 }
 
 .sapMPIBarGreen {
-    @include sapMPIBarType1(#00923e,
-    #005f28,
-    #7ED320 !important);
+    @include sapMPIBarType1(#00923e, #005f28, #7ED320 !important);
 }
 
 .sapMPIBarRed {
-    @include sapMPIBarType2(#e31c1c,
-    #b51616);
+    @include sapMPIBarType2(#e31c1c, #b51616);
 }
 
 .sapMPIBarOrange {
-    @include sapMPIBarType2(#eb5200,
-    #b84000);
+    @include sapMPIBarType2(#eb5200, #b84000);
 }
 
 .sapMPIBarDarkGrey {
-    @include sapMPIBarType2(#616161,
-    #4d4d4d);
+    @include sapMPIBarType2(#616161, #4d4d4d);
 }
 
 .sapMPIBarDarkGreen {
-    @include sapMPIBarType2(#005524,
-    #003c19);
+    @include sapMPIBarType2(#005524, #003c19);
 }
 
 .sapMPIBarGrey {
-    @include sapMPIBarType1(#008cda,
-    #006ca7,
-    #97999b !important);
+    @include sapMPIBarType1(#008cda, #006ca7, #97999b !important);
 }
 
 .orange {
@@ -1569,12 +1380,6 @@ FROM CUSTOM CSS
     }
 }
 
-.overallProgresstitle {
-    span {
-        @extend %overallProgresstitleSpan;
-    }
-}
-
 .triangle {
     @extend %triangle;
 }
@@ -1583,55 +1388,9 @@ FROM CUSTOM CSS
     @extend %hammer_swipe;
 }
 
-.sectionusers {
-    button {
-        padding: 0;
-    }
-}
-
-.operatorList {
-    .sapMListHdr {
-        text-align: left;
-        font-size: small;
-        font-weight: bold;
-        border-bottom: 0px;
-    }
-}
-
-.initialCell {
-    background-color: rgba(255, 255, 204, 0.5);
-}
-
 .margin {
     margin-left: 5px;
     margin-right: 5px;
-}
-
-.borderCell {
-    background-color: rgba(242, 180, 87, 0.2);
-}
-
-.borderX {
-    border-left: none !important;
-    border-right: none !important;
-    background-color: rgba(242, 180, 87, 0.2);
-}
-
-.borderY {
-    border-top: none !important;
-    border-bottom: none !important;
-}
-
-.boxColor {
-    background-color: #ecf0f1;
-    margin: 1px;
-    border: 1px solid #bdc3c7;
-}
-
-.boxColorInitial {
-    background-color: transparent;
-    margin: 1px;
-    border: 1px solid #bdc3c7;
 }
 
 .user {
@@ -1639,35 +1398,8 @@ FROM CUSTOM CSS
     margin-right: 5px;
 }
 
-.task {
-    height: 50px !important;
-}
-
 .padding {
     padding: 5px;
-}
-
-.one_line {
-    white-space: nowrap;
-    overflow: hidden;
-    padding-top: 5px;
-    padding-left: 5px;
-    text-align: left !important;
-}
-
-.progressIndicator {
-    padding: 0px;
-    margin: 0px;
-    height: 1.5rem;
-}
-
-.spTitle {
-    font-size: 20px;
-}
-
-.commentConfirmCss {
-    border-right: 1px solid black;
-    padding-right: 17px;
 }
 
 div {
@@ -1690,50 +1422,8 @@ div {
     }
 }
 
-.noFooterDialog {
-    .sapMDialogStretchContent {
-        height: 100% !important;
-    }
-}
-
-.closeWorklistCss {
-    .sapUxAPObjectPageHeaderActionButtonHideText {
-        .sapMBtnInner {
-            &.sapMBtnIconFirst {
-                color: white;
-                padding-left: 0rem;
-            }
-        }
-    }
-}
-
-.toolbarSeparatorWhite {
-    background: white !important;
-}
-
-.italicText {
-    font-style: italic;
-}
-
-.smallIconButton {
-    .sapMBtnIcon {
-        width: 10%;
-    }
-}
-
 #operationDetailPopup--operationDetailPopUp-scrollCont {
     padding: 0rem !important;
-}
-
-.initialSection {
-    background-color: gray;
-    color: white;
-}
-
-.scalebar {
-    background-color: white;
-    color: black;
-    text-align: left;
 }
 
 .upperCaseConversion {
@@ -1769,14 +1459,6 @@ OTHER
     position: relative;
 }
 
-.ylabel {
-    &:hover {
-        .tolltip {
-            visibility: visible;
-        }
-    }
-}
-
 .tooltip {
     @extend %tooltip;
 }
@@ -1788,10 +1470,6 @@ OTHER
 .dhx_cal_date {
     visibility: hidden;
     z-index: -1;
-}
-
-.otherStations {
-    @include background(#515456);
 }
 
 .white {
@@ -1837,96 +1515,8 @@ OTHER
     }
 }
 
-.panelContent {
-    .sapMPanelContent {
-        padding: 0rem;
-        background-color: #CCE6EE;
-    }
-}
-
-.panelContentList {
-    .sapMListBGSolid {
-        .sapMLIB {
-            background-color: #CCE6EE;
-        }
-    }
-}
-
-.textBlackPanel {
-    .sapMTB-Transparent-CTX {
-        .sapMLabel {
-            color: black;
-        }
-    }
-}
-
-.pageStation {
-    background: #006CA7 !important;
-}
-
-.pageWelcome2 {
-    @include font("Arial" !important,
-    bold,
-    14px !important);
-    text-align: center !important;
-    color: white !important;
-}
-
-.stationTitle {
-    color: #006CA7 !important;
-    @include font("Arial" !important,
-    400,
-    24px !important);
-}
-
-.blueTitle {
-    color: #006CA7;
-}
-
-.stationWelcome {
-    color: #006CA7 !important;
-    @include font("Arial" !important,
-    400,
-    14px !important);
-}
-
-.pageUsername {
-    @include font("Arial" !important,
-    400,
-    14px);
-    color: white !important;
-}
-
-.greenBottom {
-    box-shadow: 0 5px 0 green;
-}
-
-.redBottom {
-    color: red;
-    box-shadow: 0 5px 0 red;
-}
-
 .rond {
     @extend %rond;
-}
-
-.duck-egg-blue {
-    background-color: $duck-egg-blue !important;
-}
-
-.eventOrange {
-    background-color: #F9DAAB;
-    color: black;
-}
-
-.Hour {
-    background-color: grey;
-    opacity: 0.5;
-    filter: alpha(opacity=25);
-}
-
-.notifDetails {
-    font-size: smaller !important;
 }
 
 #operationDetailPopup--operationDetailPopUp-scrollCont {
@@ -1997,54 +1587,13 @@ OTHER
     margin: 0 1rem 1rem 1rem;
 }
 
-.slidingUpDownPanel {
-    height: 100%;
-    /* height - change this with JavaScript*/
-    width: 100%;
-    /*100% Full-width */
-    position: fixed;
-    /* Stay in place */
-    z-index: 101;
-    /* Stay on top */
-    overflow-y: hidden;
-    /* Disable horizontal scroll */
-    display: none;
-}
-
-#stationTrackerView--disruptNotifications {
-    &>.sapMFlexItem {
-        width: 100% !important;
-        height: 100% !important;
-    }
-}
-
 .wrap {
     .sapMLabel {
         white-space: normal !important;
     }
 }
 
-.disruptionTextSize {
-    .sapSuiteCmpChartItemTitle {
-        font-size: 0.8vw !important;
-        padding-right: 2vw;
-        padding-bottom: 0.25vw;
-    }
-}
-
-.spaceBetweenCharts {
-    .sapSuiteCmpChartItem {
-        &.Normal {
-            &.Auto {
-                margin-top: 0.5rem !important;
-            }
-        }
-    }
-}
-
-
 /* oswPopover */
-
 .oswPopover {
     .sapUiTinyMarginBeginEnd[role="checkbox"] {
         margin: 0!important;
@@ -2083,7 +1632,7 @@ reschedule
 }
 
 /********************
-TABLE
+DHTMLX LEFT SIDEBAR
 *********************/
 
 .dhx_matrix_scell {
@@ -2113,6 +1662,7 @@ TABLE
     }
     &.lineYaxis {
         >div {
+            padding-left: 10px !important;
             height: inherit;
             .dhx_scell_name {
                 height: inherit;
@@ -2123,6 +1673,61 @@ TABLE
                     height: inherit;
                     display: flex;
                     width: 189px;
+                    >.yContainerWithImage {
+                        display: flex;
+                        align-self: center;
+                        flex-direction: column-reverse;
+                        >* {
+                            width: 154px;
+                        }
+                        >.ylabel {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            color: rgba(0, 86, 112, 0.94);
+                            font-size: 14px;
+                            padding: 2px 0;
+                        }
+                    }
+                    >.yContainerWithoutImage {
+                        display: flex;
+                        align-self: center;
+                        flex-direction: column-reverse;
+                        >* {
+                            width: 189px;
+                        }
+                    }
+                    >.ylabelIcon {
+                            @extend %stationViewYlabelIconAndImage;
+                    }
+                    >div {
+                        >.ylabelUser {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            color: $petrol;
+                            font-size: 14px;
+                            padding: 2px 0;
+                            font-weight: bold;
+                        }
+                        >.yMoreLabel {
+                            color: #8db9ca;
+                            display: flex;
+                            justify-content: space-between;
+                            padding-top: 4px;
+                            >.avlLine {
+                                overflow: hidden;
+                                white-space: nowrap;
+                                color: #0D5D76;
+                                text-overflow: ellipsis;
+                                padding-left: 2px;
+                            }
+                            .fa-pencil {
+                                width: 30px;
+                                text-align: center;
+                            }
+                        }
+                    }
                 }
             }
         }

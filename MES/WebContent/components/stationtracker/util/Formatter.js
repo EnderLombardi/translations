@@ -673,7 +673,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					var imgId = sap.ui.getCore().byId("stationTrackerView").createId("folder_" + oSection.key + "Image--" + oCurrentAffectedUser.picture);
 
 					html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId + '" src='
-						+ airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserIcon"/>' // To display User Image
+						+ airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelIcon"/>' // To display User Image
 
 					yContainerClass = "yContainerWithImage";
 				} else {
@@ -698,7 +698,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 			html = sNotConfirmedOpLS + '<div>';
 
-			html += '<i class="fa fa-pencil ylabelEditIcon"></i>';
+			html += '<i class="fa fa-pencil ylabelIcon"></i>';
 
 			html += '<div class="yContainerWithImage">'
 						+ '<span class="ylabel">'

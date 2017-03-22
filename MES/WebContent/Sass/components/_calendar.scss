@@ -1,16 +1,18 @@
 /********************
 TABLE
 *********************/
-.dhx_matrix_scell{
-    &.folder {
-        max-width:199px;
-        .ylabelfolder {
-            @extend %ylabelfolder;
-            padding-left: 20px;
+#calendar{
+    .dhx_matrix_scell{
+        &.folder {
+            max-width:199px;
+            .ylabelfolder {
+                @extend %ylabelfolder;
+                padding-left: 20px;
+            }
         }
-    }
-    &>div{
-        padding-left: 10px !important;
+        &>div{
+            padding-left: 10px !important;
+        }
     }
 }
 
@@ -258,11 +260,6 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     .dhx_matrix_line {
         overflow:visible;
     }
-    .yText{
-        width: 100px;
-        float: left;
-        height: 40px;
-    }
     .avlLine{
         overflow: hidden;
         text-overflow: ellipsis;
@@ -274,20 +271,6 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         text-overflow: ellipsis;
         display: inline-block;
         overflow: hidden;
-    }
-    .ylabel{
-        white-space: nowrap;
-        color: #0D5D76;
-        vertical-align: middle;
-        text-overflow: ellipsis;
-        display: inline-block;
-        overflow: hidden ;
-        max-width: 80px;
-        height: 15px;
-    }
-    .ylabelEditIcon{
-        @extend %stationViewYlabelIconAndImage;
-        float: left;
     }
     .ylabelUser {
         white-space: nowrap;
@@ -305,7 +288,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         border-radius: 999px;
         float: left;
         margin-right:10px;
-        }
+    }
     .yMoreLabel{
         position: absolute;
         right: 2px;
@@ -391,9 +374,6 @@ div{
     }
 }
 
-.ganttBar{
-    height: 2rem !important;
-}
 /***********************************
 STATION TRACKER TOOLBAR
 ************************************/
