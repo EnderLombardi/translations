@@ -399,8 +399,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     },
 
     setBtnCommittedFittedValue: function (oButton, bValue) {
-        var committedFitted = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("CommittedFitted");
-        var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");
+        var committedFitted = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("Components");
+        var components = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("CommittedFitted");
 
         //change button text
         if (bValue) {
