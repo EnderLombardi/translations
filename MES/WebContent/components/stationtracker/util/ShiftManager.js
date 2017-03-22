@@ -388,13 +388,13 @@ airbus.mes.stationtracker.util.ShiftManager = {
 		
 		if ( this.shiftDisplay ) {
 		
-		    scheduler.matrix.timeline.x_size = Math.ceil((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
-		    
+		    scheduler.matrix.timeline.x_size = Math.ceil(( this.roundDate(new Date(this.shifts[c].EndDate),1) -  this.roundDate(new Date(this.shifts[c].StartDate),0))/1000/60/30);
+
 		    if ( new Date(date).getMinutes() >= 30 ) {
 		    	scheduler.matrix.timeline.x_size ++;		    	
 		    }
 		    
-		    var date = new Date(this.shifts[c].StartDate).setMinutes(0);
+		    var date = this.roundDate(new Date(this.shifts[c].StartDate),0);
 		    		    
 		    return new Date( date );
 		    
@@ -457,7 +457,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 //				
 //			}
 			/**Compute the number of 1hour step needed to display all the time between start and day of the current day */ 
-		    scheduler.matrix.timeline.x_size += Math.ceil((new Date(fEndDate) - new Date(fStartDate))/1000/60/60);
+		    scheduler.matrix.timeline.x_size += Math.ceil((this.roundDate(new Date(fEndDate),1) - this.roundDate(new Date(fStartDate),0))/1000/60/60);
 		   // scheduler.matrix.timeline.x_size += Math.ceil(fTotalMS/1000/60/60);
 
 		    this.ignoreTimeLineFirst = true;
@@ -499,14 +499,6 @@ airbus.mes.stationtracker.util.ShiftManager = {
 			
 			if (d1 > date) {
 				if (iMin === iMed) {
-					
-					//The first date ignore have to be not set to true otherwise the event onYScaleClick is not triggered. 
-					if ( d1-date <= 1000*60*30 ) {
-						
-						return false;						
-					}
-					
-					//		 scheduler.matrix.timeline.x_size += 1; 
 					return true;
 				} else {
 					iMax = iMed - 1;
@@ -567,7 +559,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 		}
 	
 		// start and end of shift
-		for (var index = 0; index < this.shifts.length - 1; ++index) {
+		for (var index = 0; index <= this.shifts.length - 1; ++index) {
 			
 			// Display the border of the start shift
 			d3 = this.shifts[index].StartDate;
@@ -580,23 +572,20 @@ airbus.mes.stationtracker.util.ShiftManager = {
 				css : "begin_shifht"
 			});
 			
-			//after the first step
-			if (index > 0){
 				// If different date show border of the start shift
 				//EndDate of current shift
 				d8 =  this.shifts[index].EndDate;
 				//StartDate of next shift
-				d9 = this.shifts[index+1].StartDate;
+				d9 = d4 = scheduler.date.copy(d8);
+				d9.setMinutes(d9.getMinutes() + 5)
 				//console.log("d8 :"+  (d8.getTime() + 1000) +" ou " + d8);
 				//console.log("d9 :"+  d9.getTime() +" ou " + d9);
-				if((d8.getTime() + 1000) != d9.getTime()){
-					scheduler.addMarkedTimespan({
+				scheduler.addMarkedTimespan({
 						start_date : d8,
 						end_date : d9,
 						css : "end_shifht"
 					});
-				}
-			}
+				
 		}
 		
 		// Add maker for takt time
