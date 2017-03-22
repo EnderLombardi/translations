@@ -6,19 +6,19 @@
 			<VBox class="setMinWidth">
 
 				<HBox>
-					<Label text="{i18nModel>start}:" class= "sapUiSmallMarginBegin" />
+					<Label text="{i18nModel>start}:" class= "sapUiSmallMarginBegin sapUiTinyMarginEnd" />
 					<Text text="{DisruptionDetailModel>/operationStartDateTime}"  />
 				</HBox>
 				<HBox>
-					<Label text="{i18nModel>end}:" class="sapUiSmallMarginBegin" />
+					<Label text="{i18nModel>end}:" class="sapUiSmallMarginBegin sapUiTinyMarginEnd" />
 					<Text text="{DisruptionDetailModel>/operationEndDateTime}"  />
 				</HBox>
 				<HBox>
-					<Label text="{i18nModel>closureDate}:" class="sapUiSmallMarginBegin" />
+					<Label text="{i18nModel>closureDate}:" class="sapUiSmallMarginBegin sapUiTinyMarginEnd" />
 					<Text text="{= ${DisruptionDetailModel>/closureDate} === '' ? '--' : ${DisruptionDetailModel>/closureDate}}"  />
 				</HBox>
 				<HBox>
-					<Label text="{i18nModel>workcenter}:" class="sapUiSmallMarginBegin" />
+					<Label text="{i18nModel>workcenter}:" class="sapUiSmallMarginBegin sapUiTinyMarginEnd" />
 					<Text text="{ path:'DisruptionDetailModel>/workCenter', formatter:'airbus.mes.disruptions.Formatter.workCenterText' }" width="100%" >
 					</Text>
 					<layoutData>
@@ -26,7 +26,7 @@
 				</layoutData>
 				</HBox>
 				<HBox>
-					<Label text="{i18nModel>status}:" class="sapUiSmallMarginBegin"></Label>
+					<Label text="{i18nModel>status}:" class="sapUiSmallMarginBegin sapUiTinyMarginEnd"></Label>
 					<Text text="{path: 'DisruptionDetailModel>/status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}" />
 				</HBox>
 				<HBox class=" sapUiSmallMarginTop sapUiTinyMarginBegin">
