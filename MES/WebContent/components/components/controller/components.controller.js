@@ -352,7 +352,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var url = airbus.mes.components.util.ModelManager.urlModel.getProperty("componentsSaveFreeze");
 //		We inverse the freeze status
         this.freeze = !this.freeze
-
+        var that = this;
+        
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.components.oView.getController().getOwnerComponent().getSite());
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$workorder", airbus.mes.components.oView.getController().getOwnerComponent().getWorkOrder());
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$freeze", this.freeze);
@@ -360,12 +361,22 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 //      call service
         jQuery.ajax({
             type: 'get',
-            async: false,
+            async: true,
             url: url,
             contentType: 'application/json',
             
             success: function (data) {
                 console.log("sucess");
+                
+//              Refresh station tracker to reload operation model
+				airbus.mes.shell.oView.getController().renderStationTracker();                
+
+//				We update the freeze button display
+//				The ‘freeze components’ button will become an ‘unfreeze components’ button
+				that.manageFreezeButton(that.freeze);
+		        
+//	            We update display of column
+				that.manageFreezeAction();				
             },
 
             error: function (error, jQXHR) {
@@ -373,12 +384,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             }
         });        
         
-//      We update the freeze button display
-//      The ‘freeze components’ button will become an ‘unfreeze components’ button
-        this.manageFreezeButton(this.freeze);
-        
-//      We update display of column
-        this.manageFreezeAction();
+
 
     },
 
