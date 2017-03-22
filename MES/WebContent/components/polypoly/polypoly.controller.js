@@ -784,8 +784,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 
             } else {
 //                airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter();
-            	
-                airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(3);
+            	//FIXME : Temporary fix for Defect 823.
+//                airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(3);
+                airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(0);
                 airbus.mes.polypoly.oView.getController().setRowCountVisible(false);
             }
         }
@@ -1275,7 +1276,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 
         $(window).on("resize", function() {
             // do nothing if the width is the same
-            if ($(window).height()==height) return;
+            if ($(window).height()==height) { return; }
             // update new width value
             height = $(window).height();
             airbus.mes.polypoly.oView.getController().setRowCountVisible(true);
