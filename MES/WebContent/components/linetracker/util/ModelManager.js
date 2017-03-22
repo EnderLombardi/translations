@@ -98,7 +98,7 @@ airbus.mes.linetracker.util.ModelManager = {
 				if (typeof data == "string") {
 					data = JSON.parse(data);
 				}
-				if(!data.variantNameList[0]){
+				if(data.variantNameList && !data.variantNameList[0]){
 					data.variantNameList = [data.variantNameList];
 				}
 				oViewModel.setData(data);
