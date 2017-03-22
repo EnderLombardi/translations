@@ -116,6 +116,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * @param oEvent
 	 */
 	filterDisruptions : function(oEvent) {
+		
 		var sStatus = this.getView().byId("statusComboBox").getSelectedKey().toUpperCase();
 		var sResoGroup = this.getView().byId("resolutionGroupBox").getSelectedKey();
 		var sSeverity = this.getView().byId("severityComboBox").getSelectedKey();
@@ -123,29 +124,46 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var sCategory = this.getView().byId("disruptionCategoryBox").getSelectedKey();	
 		var sReason = this.getView().byId("disruptionReasonBox").getSelectedKey();
 
-		var aFilters = [];
-		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
+//		var aFilters = [];
+//		var oBinding = this.getView().byId("disruptionsTable").getBinding("rows");
+		
 
-		if (sStatus != ""){
-			aFilters.push(new sap.ui.model.Filter("status", "EQ", sStatus));
-		}
-		if (sResoGroup != "")	{
-			aFilters.push(new sap.ui.model.Filter("responsibleGroup", "EQ", sResoGroup));
-		}
-		if(sSeverity != ""){
-			aFilters.push(new sap.ui.model.Filter("severity", "EQ", sSeverity));
-		}
-		if(sEscLevel != ""){
-			aFilters.push(new sap.ui.model.Filter("escalationLevel", "EQ", sEscLevel));
-		}
-		if(sCategory != ""){
-			aFilters.push(new sap.ui.model.Filter("category", "EQ", sCategory));
-		}
-		if(sReason != ""){
-			aFilters.push(new sap.ui.model.Filter("reason", "EQ", sReason));
-		}
-
-		oBinding.filter(aFilters);
+		this.getView().byId("categoryColfilter").setFilterOperator("EQ");
+		this.getView().byId("categoryColfilter").filter(sCategory);
+		this.getView().byId("reasonColfilter").setFilterOperator("EQ");
+		this.getView().byId("reasonColfilter").filter(sReason);
+		this.getView().byId("gravityColfilter").setFilterOperator("EQ");
+        this.getView().byId("gravityColfilter").filter(sSeverity);
+		this.getView().byId("statusColfilter").setFilterOperator("EQ");
+		this.getView().byId("statusColfilter").filter(sStatus);
+		this.getView().byId("resolutionGroupColfilter").setFilterOperator("EQ");
+		this.getView().byId("resolutionGroupColfilter").filter(sResoGroup);
+		this.getView().byId("escalationColfilter").setFilterOperator("EQ");
+		this.getView().byId("escalationColfilter").filter(sEscLevel);
+		
+		
+//		if (sStatus != ""){
+//			aFilters.push(new sap.ui.model.Filter("status", "EQ", sStatus));
+//		}
+//		if (sResoGroup != "")	{
+//			aFilters.push(new sap.ui.model.Filter("responsibleGroup", "EQ", sResoGroup));
+//		}
+//		if(sSeverity != ""){
+//			aFilters.push(new sap.ui.model.Filter("severity", "EQ", sSeverity));
+//		}
+//		if(sEscLevel != ""){
+//			aFilters.push(new sap.ui.model.Filter("escalationLevel", "EQ", sEscLevel));
+//		}
+//		if(sCategory != ""){
+//		
+//			aFilters.push(new sap.ui.model.Filter("category", "EQ", sCategory));
+//	}
+//		
+//		if(sReason != ""){
+//			aFilters.push(new sap.ui.model.Filter("reason", "EQ", sReason));
+//		}
+//        
+//		oBinding.filter(aFilters);
 
 	},
 

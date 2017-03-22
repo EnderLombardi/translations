@@ -115,7 +115,7 @@
 
 
 		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="true" selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: '.setSelectionMode'}" selectionBehavior="Row"
-			rows="{ path: 'disruptionsTrackerModel>/' }" filter="filterDisruptions"
+			rows="{ path: 'disruptionsTrackerModel>/' }" 
 			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick">
 
 			<ui:columns>
@@ -134,16 +134,30 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="categoryCol"
-					sortProperty="category">
+				<ui:Column id="categoryCol" 
+					sortProperty="category" >
 					<Label text="{disruptiontrackerI18n>object}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>category}" />						
 					</ui:template>
 				</ui:Column>
-				
+			   
+			   <ui:Column id="categoryColfilter"  visible="false"
+				            filterProperty="category">
+					<Label text="{disruptiontrackerI18n>object}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>category}" />						
+					</ui:template>
+				</ui:Column>
 				<ui:Column id="reasonCol"
-					sortProperty="reason">
+					sortProperty="reason" >
+					<Label text="{disruptiontrackerI18n>attribute}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>reason}" />
+					</ui:template>
+				</ui:Column>
+				<ui:Column id="reasonColfilter" visible="false"
+					filterProperty="reason">
 					<Label text="{disruptiontrackerI18n>attribute}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>reason}" />
@@ -181,6 +195,15 @@
 					</ui:template>
 				</ui:Column>
 				
+				<ui:Column id="gravityColfilter" visible="false"
+					sortProperty="severity" filterProperty="severity">
+					<Label text="{disruptiontrackerI18n>severity}" />
+					<ui:template>
+							<Text
+								text="{disruptionsTrackerModel>severity}" />
+					</ui:template>
+				</ui:Column>
+				
 				<ui:Column id="statusCol"
 					sortProperty="status">
 					<Label text="{disruptiontrackerI18n>status}" />
@@ -189,7 +212,15 @@
 							text="{path: 'disruptionsTrackerModel>status', formatter: 'airbus.mes.disruptiontracker.Formatter.setDisruptionTrackerStatus'}" />
 					</ui:template>
 				</ui:Column>
-
+				
+				<ui:Column id="statusColfilter" visible="false"
+					sortProperty="status" filterProperty="status">
+					<Label text="{disruptiontrackerI18n>status}" />
+					<ui:template>
+						<Text
+							text="{disruptionsTrackerModel>status}" />
+					</ui:template>
+				</ui:Column>
 				
 				<ui:Column id="solutionCol" filterProperty="solution"
 					sortProperty="solution">
@@ -206,7 +237,15 @@
 						<Text text="{disruptionsTrackerModel>responsibleGroupDesc}" />
 					</ui:template>
 				</ui:Column>
-				
+
+				<ui:Column id="resolutionGroupColfilter" visible="false"
+					filterProperty="responsibleGroup">
+					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>responsibleGroup}" />
+					</ui:template>
+				</ui:Column>
+								
 				<ui:Column id="resolver" filterProperty="resolverName"
 					sortProperty="resolverName">
 					<Label text="{disruptiontrackerI18n>resolver}" />
@@ -231,6 +270,14 @@
 					</ui:template>
 				</ui:Column>
 				
+				<ui:Column id="escalationColfilter" visible="false"
+					 filterProperty="escalationLevel">
+					<Label text="{disruptiontrackerI18n>escalation}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>escalationLevel}" />
+					</ui:template>
+				</ui:Column>
+								
 				<ui:Column id="escalationDate" filterProperty="escalationDateTime"
 					sortProperty="escalationDateTime">
 					<Label text="{disruptiontrackerI18n>dateofescalation}" />
