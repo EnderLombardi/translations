@@ -533,7 +533,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 		if (this.shifts.length === 0)
 			return; // do nothing
 		
-		var d1, d2, d3, d4, d6, d7, d8, d9;
+		var d1, d2, d3, d4, d6, d7, d8, d9,d10;
 		
 		d2 = aShiftBreak[0].StartDate;
 		d1 = scheduler.date.copy(d2);
@@ -559,7 +559,7 @@ airbus.mes.stationtracker.util.ShiftManager = {
 		}
 	
 		// start and end of shift
-		for (var index = 0; index <= this.shifts.length - 1; ++index) {
+		for (var index = 0; index < this.shifts.length ; ++index) {
 			
 			// Display the border of the start shift
 			d3 = this.shifts[index].StartDate;
@@ -572,20 +572,27 @@ airbus.mes.stationtracker.util.ShiftManager = {
 				css : "begin_shifht"
 			});
 			
+			//after the first step
 				// If different date show border of the start shift
 				//EndDate of current shift
 				d8 =  this.shifts[index].EndDate;
+				d10 = scheduler.date.copy(d8);
+				d10.setMinutes(d10.getMinutes() + 5);
 				//StartDate of next shift
-				d9 = d4 = scheduler.date.copy(d8);
-				d9.setMinutes(d9.getMinutes() + 5)
-				//console.log("d8 :"+  (d8.getTime() + 1000) +" ou " + d8);
-				//console.log("d9 :"+  d9.getTime() +" ou " + d9);
-				scheduler.addMarkedTimespan({
+				if ( index === this.shifts.length - 1 ) {
+					//On last shift we dont have next start date si we put a random one
+					d9 = new Date();
+				} else {
+					d9 = this.shifts[index+1].StartDate;					
+				}
+				if(d8.getTime() != d9.getTime()){
+					scheduler.addMarkedTimespan({
 						start_date : d8,
-						end_date : d9,
+						end_date : d10,
 						css : "end_shifht"
 					});
-				
+				}
+		
 		}
 		
 		// Add maker for takt time
