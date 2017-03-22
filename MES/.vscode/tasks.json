@@ -18,10 +18,14 @@
         {
             "taskName": "translation_tool",
             "command": "gulp",
-            "args": ["serve-table-translate"],
+            "args": ["serve-translate-tool"],
+            "isShellCommand": true
+        },
+        {
+            "taskName": "tableviewer_tool",
+            "command": "gulp",
+            "args": ["serve-tableviewer-tool"],
             "isShellCommand": true
         }
-
-
     ]
 }
