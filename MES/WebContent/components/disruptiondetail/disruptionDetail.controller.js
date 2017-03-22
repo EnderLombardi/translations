@@ -227,6 +227,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 
 						}
 					});
+					oCommentBox.setValue();
 			
 				}else{
 					var sMessageSuccess = i18nModel.getProperty("missingDescription");
