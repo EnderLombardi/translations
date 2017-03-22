@@ -49,9 +49,10 @@
 					
 					<Text text="{i18nModel>PeriodOfTime}:" class="subHeaderthemeColor sapUiTinyMarginBegin" />
 					<DateTimePicker id="startDateTime" placeholder="{i18nModel>EnterStartDateTime}" change="onChangeSelection" displayFormat="medium"
-							valueFormat="yyyy-MM-ddThh:mm:ss" />
+							valueFormat="yyyy-MM-ddTHH:mm:ss" />
 					<Text text="{i18nModel>To}" class="subHeaderthemeColor sapUiTinyMarginBegin" />
-					<DateTimePicker id="endDateTime" placeholder="{i18nModel>EnterEndDateTime}" change="onChangeSelection" displayFormat="medium" valueFormat="yyyy-MM-ddThh:mm:ss"/>
+					<DateTimePicker id="endDateTime" placeholder="{i18nModel>EnterEndDateTime}" change="onChangeSelection" displayFormat="medium"
+							valueFormat="yyyy-MM-ddTHH:mm:ss"/>
 					
 					<ToolbarSpacer />
 					<Label text='{i18nModel>ToggleDisruptions}' design="Bold"></Label>

@@ -331,7 +331,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 					
 					var sMessageError = this.getView().getModel("i18nModel").getProperty("wrongDateRange");
 					airbus.mes.shell.ModelManager.messageShow(sMessageError);
-					return false;
+					return;
 				}
 				
 	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.startDateTime = oTime;
@@ -350,7 +350,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 					
 					var sMessageError = this.getView().getModel("i18nModel").getProperty("wrongDateRange");
 					airbus.mes.shell.ModelManager.messageShow(sMessageError);
-					return false;
+					return;
 				}
 				
 				airbus.mes.disruptionkpi.ModelManager.oFilters.endDateTime = oTime;
