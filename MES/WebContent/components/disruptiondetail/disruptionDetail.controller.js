@@ -130,13 +130,14 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 	onUpdateDisruption: function (oEvt) {
 		var oView = this.getView();
 		var i18nModel = oView.getModel("i18nModel");
-		var sComment = airbus.mes.disruptions.Formatter.actions.update + this.getView().byId("comment").getValue();
+		var oCommentBox = sap.ui.getCore().byId("disruptionDetailView--comment");
+		var sComment ;
+		var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/messageRef");
 		var resolverId = this.getView().byId("selectResolver").getSelectedKey()
 		var resolverGroup = this.getView().byId("selectResponsibleGrp").getSelectedKey();
-		var oCommentBox = sap.ui.getCore().byId("disruptionDetailView--comment");
-		if(resolverId != airbus.mes.disruptions.ModelManager.resolver || resolverGroup != airbus.mes.disruptions.ModelManager.resolverGroup || oCommentBox.getValue() != ""){
-			
-			var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/messageRef");
+		
+		if(resolverId != airbus.mes.disruptions.ModelManager.resolver || resolverGroup != airbus.mes.disruptions.ModelManager.resolverGroup){
+			sComment = airbus.mes.disruptions.Formatter.actions.update + oCommentBox.getValue();
 			jQuery
 				.ajax({
 					url: airbus.mes.disruptions.ModelManager.getUrlupdateDisruption(),
@@ -160,7 +161,8 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 							var sMessageSuccess = i18nModel.getProperty("successUpdate");
 							airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
 							// var currDate = new Date();
-							// var commentDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+							// var commentDate = currDate.getFullYear() + "-" +
+							// currDate.getMonth() + "-" + currDate.getDate();
 							var commentDate = airbus.mes.disruptiondetail.oView.oController.getDateNow();
 							var oUserDetailModel = sap.ui.getCore().getModel("userDetailModel")
 							var oComment = {
@@ -169,7 +171,7 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 								"date": commentDate,
 								"userFullName": (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase()+ " " +oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() )
 							};
-							oView.getModel("DisruptionDetailModel").getProperty("/disruptionComments").unshift(oComment);;
+							oView.getModel("DisruptionDetailModel").getProperty("/disruptionComments").unshift(oComment);
 							oView.getModel("DisruptionDetailModel").setProperty("/resolverID", resolverId);
 							oView.getModel("DisruptionDetailModel").setProperty("/responsibleGroup", resolverGroup);
 							sap.ui.getCore().byId("disruptionDetailView--selectResolver").setSelectedKey(resolverId);
@@ -185,13 +187,52 @@ airbus.mes.disruptions.createDisruptions.extend("airbus.mes.disruptiondetail.dis
 					}
 				})
 			
-		} else{
-			var sMessageSuccess = i18nModel.getProperty("missingDescription");
-			airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
-			oCommentBox.setValue();
-		}
-		
-		
+				}else if(oCommentBox.getValue() != ""){
+					sComment = oCommentBox.getValue();
+					sComment = airbus.mes.disruptions.Formatter.actions.comment + sComment;
+					// Call Add comment Service
+					jQuery.ajax({
+						url: airbus.mes.disruptions.ModelManager.getUrlToAddComment(),
+						data: {
+							"Param.1": airbus.mes.settings.ModelManager.site,
+							"Param.2": sComment,
+							"Param.3": airbus.mes.settings.ModelManager.user,
+							"Param.4": sMessageRef
+
+						},
+						error: function (xhr, status, error) {
+
+							airbus.mes.disruptions.func.tryAgainError(i18nModel);
+
+						},
+						success: function (result, status, xhr) {
+							if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined && result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+								airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+
+							} else {
+								var sMessageSuccess = i18nModel.getProperty("commentSuccessful");
+								airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+								var commentDate = airbus.mes.disruptiondetail.oView.oController.getDateNow();
+								var oUserDetailModel = sap.ui.getCore().getModel("userDetailModel")
+								var oComment = {
+									"action": i18nModel.getProperty("update"),
+									"comments": sComment,
+									"date": commentDate,
+									"userFullName": (oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase()+ " " +oUserDetailModel.getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() )
+								};
+								oView.getModel("DisruptionDetailModel").getProperty("/disruptionComments").unshift(oComment);
+								oView.getModel("DisruptionDetailModel").refresh();
+								
+							}
+
+						}
+					});
+			
+				}else{
+					var sMessageSuccess = i18nModel.getProperty("missingDescription");
+					airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+					oCommentBox.setValue();
+				}
 	},
 
 	onNavBack: function () {
