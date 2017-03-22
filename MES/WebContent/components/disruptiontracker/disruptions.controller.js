@@ -303,18 +303,21 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 					  oModel.getProperty("workOrder") + ',' +
 					  oModel.getProperty("object") + ',' +
 					  oModel.getProperty("attribute") + ',' +
-					  oModel.getProperty("originatorGroup") + ',' +
 					  oModel.getProperty("originator") + ',' +
 					  oModel.getProperty("openDate") + ',' +
 					  oModel.getProperty("severity") + ',' +
 					  oModel.getProperty("status") + ',' +
+					  oModel.getProperty("solution") + ',' +
 					  oModel.getProperty("resolutionGroup") + ',' +
 					  oModel.getProperty("resolver") + ',' +
 					  oModel.getProperty("expectedResolutionDate") + ',' +
-					  oModel.getProperty("escalationLevel") + ',' +
+					  oModel.getProperty("escalation") + ',' +
 					  oModel.getProperty("dateofescalation") + ',' +
+					  oModel.getProperty("resolverafterescalation") + ',' +
+					  oModel.getProperty("timeToGetFix") + ',' +
+					  oModel.getProperty("timeLost") + ',' +
 					  oModel.getProperty("dateofanswer") + ',' +
-					  oModel.getProperty("solution");
+					  oModel.getProperty("originatorGroup");
 		return sHeader;
 	},
 
@@ -334,11 +337,11 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		// loop to extract each row
 		for (var i = 0; i < arrData.length; i++) {
 			var row = airbus.mes.disruptiontracker.Formatter.setOperationText(arrData[i].operation).toString() + ',' + arrData[i].workOrder + ',' + arrData[i].category
-				+ ',' + arrData[i].reason + ',' + arrData[i].originatorGroup + ',' + arrData[i].originatorName + ',' + arrData[i].openingTime + ','
-				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].severity) + ',' + arrData[i].status + ',' + arrData[i].responsibleGroup + ','
+				+ ',' + arrData[i].reason + ','  + arrData[i].originatorName + ',' + arrData[i].openDateTime + ','
+				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].severity) + ',' + arrData[i].status + ','+ airbus.mes.disruptions.Formatter.formatComment(arrData[i].solution) + ',' + arrData[i].responsibleGroup + ','
 				+ arrData[i].resolverName + ',' + arrData[i].requiredFixBy + ','
-				+ this.getView().getModel("disruptiontrackerI18n").getProperty("level") + " " + arrData[i].escalationLevel + ',' + arrData[i].escalationDateTime + ','
-				+ arrData[i].dateOfAnswer + ',' + airbus.mes.disruptions.Formatter.formatComment(arrData[i].solution);
+				+ this.getView().getModel("disruptiontrackerI18n").getProperty("level") + " " + arrData[i].escalationLevel + ',' + arrData[i].escalationDateTime + ',' + arrData[i].escalationGroup + ',' + airbus.mes.disruptiontracker.Formatter.timeMillisecondsToConfig(arrData[i].openDuration) + ',' 
+				+ airbus.mes.disruptiontracker.Formatter.timeMillisecondsToConfig(arrData[i].timeLost) + ',' + arrData[i].dateOfAnswer + ',' + arrData[i].originatorGroupDesc ;
 
 			// add a line break after each row
 			CSV += row + '\r\n';
