@@ -255,7 +255,7 @@
 					</ui:template>
 				</ui:Column>
 
-				<ui:Column id="timeLost" filterProperty="timeLost">
+				<ui:Column id="timeLost">
 					<Label text="{disruptiontrackerI18n>timeLost}" />
 					<ui:template>
 						<Text text="{path: 'disruptionsTrackerModel>timeLost', formatter: 'airbus.mes.disruptiontracker.Formatter.timeMillisecondsToConfig'}" />
