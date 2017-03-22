@@ -139,23 +139,20 @@ airbus.mes.qdc.util.ModelManager = {
 				var oModel = sap.ui.getCore().getModel("QDCModel").getData();
 				
 				try {
-					if(data.Rowsets.Rowset[0].Row[0].Tracea === "true") {
-					
-						if(oModel.root[0] === undefined ) {
-								var oTracea = { 
-				                    "name": "Serial Number",
-				                    "description": data.Rowsets.Rowset[0].Row[0].ReckordedMaterials + "/" + data.Rowsets.Rowset[0].Row[0].TotalMaterials,
-				                    "docType":"NonDoc",
-				                    "checked": airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TotalMaterials , data.Rowsets.Rowset[0].Row[0].ReckordedMaterials),
-				                    "exclamation:" : airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TotalMaterials , data.Rowsets.Rowset[0].Row[0].ReckordedMaterials),
-				                    "button" : true,
-				                    "workorder" : data.Rowsets.Rowset[0].Row[0].WorkOrder,
-				                    "operation" : data.Rowsets.Rowset[0].Row[0].OperationID
-								}
-								oModel.root[0] = oTracea;
-								oModel = sap.ui.getCore().getModel("QDCModel");
-								oModel.refresh(true);								
-						}
+					if(oModel.root[0] === undefined ) {
+							var oTracea = { 
+			                    "name": "Serial Number",
+			                    "description": data.Rowsets.Rowset[0].Row[0].ReckordedMaterials + "/" + data.Rowsets.Rowset[0].Row[0].TotalMaterials,
+			                    "docType":"NonDoc",
+			                    "checked": airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TotalMaterials , data.Rowsets.Rowset[0].Row[0].ReckordedMaterials),
+			                    "exclamation:" : airbus.mes.qdc.util.Formatter.getExclamationVisible(data.Rowsets.Rowset[0].Row[0].TotalMaterials , data.Rowsets.Rowset[0].Row[0].ReckordedMaterials),
+			                    "button" : true,
+			                    "workorder" : data.Rowsets.Rowset[0].Row[0].WorkOrder,
+			                    "operation" : data.Rowsets.Rowset[0].Row[0].OperationID
+							}
+							oModel.root[0] = oTracea;
+							oModel = sap.ui.getCore().getModel("QDCModel");
+							oModel.refresh(true);								
 					}
 				} catch(e) {
 					
