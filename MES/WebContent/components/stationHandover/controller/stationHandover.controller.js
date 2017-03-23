@@ -9,10 +9,6 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
     /**                                                                    **/
     /************************************************************************/
     /************************************************************************/
-	onAfterRendering : function() {
-		
-	},
-
 	onBackPress : function() {
 		nav.back();
 	},
@@ -97,10 +93,38 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		}
 
 		airbus.mes.stationHandover.oView.byId("TreeTableBasic").expandToLevel(99);
-		// ReBind to apply colors
-		setTimeout(function() {
-			airbus.mes.stationHandover.oView.byId("TreeTableBasic").getModel("oswModel").refresh(true);
-		}, 1);
+
+		// Permit to launch the resize column after the filter...
+		setTimeout(function(){
+    
+        	// Resize the width of column regarding space free
+   		 var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
+   	        // Resize the width of column regarding space free
+   	        aColumns.forEach(function (el, indice) {
+   	            // Don't do auto resize blocked line it bug
+   	          
+   	            	if ( airbus.mes.stationHandover.util.ModelManager.modeDialog ) {
+   		            	// Don't do auto resize blocked line it bug
+   				         if (indice === 1 || indice === 5 || indice === 6) {
+   				
+   				         } else {   				
+   				             airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);  				
+   				         }
+   		
+   		            } else {
+   		        	
+   		            	if ( indice !== 1 ) {
+   		                    airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
+   		                }
+
+   	            }
+
+   	        });
+   	        //Permit to scroll back horizontally to the begining
+               airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(2);
+         },0);
+        
+	
 
 	},
 	/***************************************************************************

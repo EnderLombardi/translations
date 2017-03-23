@@ -2,7 +2,7 @@
 	xmlns:core="sap.ui.core">
 
 	<Dialog id="oswDialog" afterClose="afterCloseOperationDetailPopup" class="sapUiPopupWithPadding" 
-		verticalScrolling="false" horizontalScrolling="false"	afterOpen="onOswOpen" contentWidth="100%"
+		verticalScrolling="false" horizontalScrolling="false" contentWidth="100%"
 		 contentHeight="100%" resizable="false" stretch="false" draggable="false" title="{StationTrackerI18n>Osw}" >
 		<content>
 

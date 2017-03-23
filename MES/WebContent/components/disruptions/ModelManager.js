@@ -487,7 +487,7 @@ airbus.mes.disruptions.ModelManager = {
 					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
 
 					// Refresh station tracker
-					if (nav.getCurrentPage().getId() == "stationtrackerView") {
+					if (nav.getCurrentPage().getId() == "stationTrackerView") {
 						airbus.mes.shell.oView.getController().renderStationTracker();
 					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
 						// Set Refresh disruption tracker flag
@@ -598,7 +598,7 @@ airbus.mes.disruptions.ModelManager = {
 					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
 
 					// Refresh station tracker
-					if (nav.getCurrentPage().getId() == "stationtrackerView") {
+					if (nav.getCurrentPage().getId() == "stationTrackerView") {
 						airbus.mes.shell.oView.getController().renderStationTracker();
 					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
 						// Set Refresh disruption tracker flag
@@ -714,7 +714,7 @@ airbus.mes.disruptions.ModelManager = {
 					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
 
 					// Refresh station tracker
-					if (nav.getCurrentPage().getId() == "stationtrackerView") {
+					if (nav.getCurrentPage().getId() == "stationTrackerView") {
 						airbus.mes.shell.oView.getController().renderStationTracker();
 					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
 						// Set Refresh disruption tracker flag
@@ -778,7 +778,7 @@ airbus.mes.disruptions.ModelManager = {
 					airbus.mes.disruptionslist.oView.getController().loadDisruptionDetail(msgRef, sPath);
 
 					// Refresh station tracker
-					if (nav.getCurrentPage().getId() == "stationtrackerView") {
+					if (nav.getCurrentPage().getId() == "stationTrackerView") {
 						airbus.mes.shell.oView.getController().renderStationTracker();
 					} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
 						// Set Refresh disruption tracker flag

@@ -3,6 +3,7 @@ jQuery.sap.declare("airbus.mes.stationHandover.util.ModelManager");
 
 airbus.mes.stationHandover.util.ModelManager = {
 	urlModel : undefined,
+	modeDialog : false,
 	aSelectedStartDate : [],
 	aSelectedEndDate : [],
 	queryParams : jQuery.sap.getUriParameters(),

@@ -371,28 +371,9 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[5].setVisible(false);
         airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[6].setVisible(false);
 
+        airbus.mes.stationHandover.util.ModelManager.modeDialog = true;
+
         airbus.mes.stationtracker.oswDialog.open();
-
-    },
-    /***************************************************************************
-     * Fire on after open the pop-up of OSW
-     *
-     ****************************************************************************/
-    onOswOpen: function () {
-        var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
-        // Resize the width of column regarding space free
-        aColumns.forEach(function (el, indice) {
-            // Don't do auto resize blocked line it bug
-            if (indice === 1 || indice === 5 || indice === 6) {
-
-            } else {
-
-                airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
-
-            }
-
-        });
-        airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(2);
 
     },
     /***************************************************************************
@@ -474,6 +455,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
     onCloseWorklist: function (oEvent) {
         //Close Popup
         this.onCloseDialog(oEvent);
+        airbus.mes.stationHandover.util.ModelManager.modeDialog = false;
     },
     /**
      * Fire when the user click on confirm in the operation info popup in folder
@@ -1443,24 +1425,6 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
         binding.filter(Filter);
 
         airbus.mes.stationtracker.util.ModelManager.savePhStation(aValueSelected);
-    },
-    /**
-     * Fire when the user open the osw popup in the stationtracker resize the column regarding space free
-     */
-    resizeDialog: function (oEvt) {
-
-        var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
-
-        aColumns.forEach(function (el, indice) {
-            // Don't do auto resize blocked line it bug
-            if (indice === 1 || indice === 5 || indice === 6) {
-
-            } else {
-
-                airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
-
-            }
-        });
     },
     /**
     * Go the the calendar view
