@@ -6,7 +6,7 @@
 	<content>
 		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="true"  inset="false"
 			selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: '.setSelectionMode'}"
-			selectionBehavior="Row" rows="{ path: 'disruptionsTrackerModel>/' }" filter="filterDisruptions" 
+			selectionBehavior="Row" rows="{ path: 'disruptionsTrackerModel>/' }"  
 			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick"
 			visibleRowCountMode="Auto" enableBusyIndicator="true" rowHeight="60px">
 
