@@ -199,7 +199,9 @@ sap.ui.controller("airbus.mes.qdc.controller.Checklist", {
 		var sUrl = airbus.mes.qdc.util.ModelManager.urlModel.getProperty("openSerialTnG");
 
 //		Replace paramters
-		sUrl = sUrl.replace("$workorder", sap.ui.getCore().getModel("QDCModel").getData().root[0].workorder);
+        
+        sUrl = sUrl.replace("$erpSystem", sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system.toLowerCase());
+        sUrl = sUrl.replace("$workorder", sap.ui.getCore().getModel("QDCModel").getData().root[0].workorder);
 		sUrl = sUrl.replace("$operation", sap.ui.getCore().getModel("QDCModel").getData().root[0].operation);
 		
 //		Launch URL
