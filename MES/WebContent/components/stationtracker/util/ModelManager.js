@@ -39,7 +39,6 @@ airbus.mes.stationtracker.util.ModelManager = {
             "affectationModel",
             "unPlannedModel", // Unplanned// // model
             "groupModel",  // Unplanned      // Filter// Model
-            "OSWModel", // OutStanding// Work      // model
             "stationTrackerShift", // Shifts// for/ station// tracker
             "KPI", // KPI
             "productionGroupModel", // production Group model
@@ -69,7 +68,6 @@ airbus.mes.stationtracker.util.ModelManager = {
         core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onShiftsLoad);
         core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onAffectationLoad);
         core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onUnPlannedLoad);
-        core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onOWSLoad);
         core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onRessourcePoolLoad);
         core.getModel("phStationSelected").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onPhStationLoad);
         core.getModel("taktModel").attachRequestCompleted(airbus.mes.stationtracker.util.ModelManager.onTaktLoad);
@@ -241,11 +239,7 @@ airbus.mes.stationtracker.util.ModelManager = {
                 airbus.mes.stationtracker.oView.byId("unplannedButton").setBusy(true);
                 oViewModel = sap.ui.getCore().getModel("unPlannedModel");
                 break;
-            case "O":
-                airbus.mes.stationtracker.oView.byId("oswButton").setBusy(true);
-                oViewModel = sap.ui.getCore().getModel("OSWModel");
-                break;
-            default:
+                default:
 
         }
 
@@ -360,13 +354,12 @@ airbus.mes.stationtracker.util.ModelManager = {
                         airbus.mes.stationtracker.CheckQa = "";
                         airbus.mes.shell.oView.getController().renderStationTracker();
                         airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
-                        if (airbus.mes.stationtracker.dialogProdGroup != undefined) { airbus.mes.stationtracker.dialogProdGroup.close(); }
                     }
                 } else {
 
                     airbus.mes.shell.oView.getController().renderStationTracker();
                     airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
-                    if (airbus.mes.stationtracker.dialogProdGroup != undefined) { airbus.mes.stationtracker.dialogProdGroup.close(); }
+                    
                 }
             },
         });
@@ -409,25 +402,6 @@ airbus.mes.stationtracker.util.ModelManager = {
 
         }
 
-        // Compute status for Unplanned and OSW Model
-        airbus.mes.stationtracker.util.ModelManager.computeStatus(aModel);
-
-    },
-
-    onOWSLoad: function () {
-
-        airbus.mes.stationtracker.oView.byId("oswButton").setBusy(false);
-        var aModel = sap.ui.getCore().getModel("OSWModel");
-
-        if (!aModel.getProperty("/Rowsets/Rowset/0/Row")) {
-
-            aModel = [];
-            console.log("no OWS operation load");
-
-        } else {
-
-            aModel = aModel.getProperty("/Rowsets/Rowset/0/Row")
-        }
         // Compute status for Unplanned and OSW Model
         airbus.mes.stationtracker.util.ModelManager.computeStatus(aModel);
 

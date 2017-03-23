@@ -536,78 +536,15 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
                 airbus.mes.stationtracker.ImportOswUnplannedPopover.aSFC_Step = aSFC_Step;
                 airbus.mes.stationtracker.util.ModelManager.setOSW(aSFC_Step, "", false, false);
 
-            } else {
-
-                var oModel = sap.ui.getCore().getModel("productionGroupModel");
-                if (!airbus.mes.stationtracker.dialogProdGroup) {
-                    airbus.mes.stationtracker.dialogProdGroup = sap.ui.xmlfragment("dialogProdGroup", "airbus.mes.stationtracker.fragment.dialogProdGroup", airbus.mes.stationtracker.oView.getController());
-                    airbus.mes.stationtracker.dialogProdGroup.setModel(oModel, "productionGroupModel");
-                    airbus.mes.stationtracker.dialogProdGroup.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"), "StationTrackerI18n");
-                }
-
-                var temp = [];
-                var binding = sap.ui.getCore().byId("dialogProdGroup--selectProdGroup").getBinding("items");
-                //                path correspond to relatif path after binding, here absolute path is /Rowsets/Rowset/0/Row
-                var Filter = new sap.ui.model.Filter({
-                    path: "PROD_GROUP",
-                    test: function (value) {
-                        if (temp.indexOf(value) == -1) {
-                            temp.push(value);
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                });
-
-                binding.filter(Filter);
-
-                airbus.mes.stationtracker.dialogProdGroup.open();
             }
+            
         } else {
 
             sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n")
-                .getProperty("NoOSWData"));
+                .getProperty("NoUnplanned selected "));
         }
 
     },
-
-    /***************************************************************************
-     * Fire selected the prodGroup and import osw
-     *
-     ****************************************************************************/
-    onOswImport: function () {
-
-        var sProdGroup = airbus.mes.stationtracker.dialogProdGroup.getContent()[0].getSelectedItem().getText();
-        var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1];
-        var aPath = oList.getSelectedContextPaths();
-        var aSFC_Step = [];
-        var sNewSkill = "Osw";
-        var sNewAvl = "1";
-        //Prepare data for the update query for MII
-        aPath.forEach(function (el) {
-
-            aSFC_Step.push(
-                {
-                    "sfcStepBO": airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).SFC_STEP_REF,
-                    "Previous_Skill": airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).SKILLS,
-                    "Previous_Line": airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).AVL_LINE,
-                    "Skill": sNewSkill,
-                    "Line": sNewAvl,
-                }
-            );
-
-        });
-
-        //store sfcstep and prodgroup if Qa check is not succesfull
-        airbus.mes.stationtracker.ImportOswUnplannedPopover.aSFC_Step = aSFC_Step;
-        airbus.mes.stationtracker.ImportOswUnplannedPopover.sProdGroup = sProdGroup;
-
-        airbus.mes.stationtracker.util.ModelManager.setOSW(aSFC_Step, sProdGroup, false, true);
-
-
-    },
-
     onUnplannedSelectAll: function (oEvent) {
         var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1];
         if (oEvent.getParameter("selected")) {

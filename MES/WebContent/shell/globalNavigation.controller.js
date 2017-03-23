@@ -517,7 +517,6 @@ sap.ui.controller(
             oModule.loadRessourcePool(true);
             oModule.loadStationTracker("I");
             oModule.loadStationTracker("U");
-            oModule.loadStationTracker("O");
             airbus.mes.stationtracker.util.ShiftManager.updateShift = false;
             oModule.loadStationTracker("R");
             oModule.loadProductionGroup();

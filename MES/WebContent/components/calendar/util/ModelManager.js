@@ -87,8 +87,7 @@ airbus.mes.calendar.util.ModelManager = {
 						data.userCalendarDisplayData = [oData];
 						
 					}
-			
-					console.log(data);
+					
 					oViewModel.setData(data);
 					airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad();
 		
