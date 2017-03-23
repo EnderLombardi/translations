@@ -271,6 +271,8 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
                     airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                
 					// Insert the page in the splitter
 					airbus.mes.stationtracker.oView.byId("splitWorkTra").addContentArea(sap.ui.getCore().byId("missingPartsView--MPTable"));
+					airbus.mes.missingParts.util.ModelManager.operation = "";
+					airbus.mes.missingParts.util.ModelManager.workOrder  = "";
 					airbus.mes.stationtracker.oView.byId("splitWorkTra").rerender();
 					airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 
