@@ -11,5 +11,15 @@ airbus.mes.missingParts.util.Formatter = {
      */
     getTranslation: function(sIdText){
         return airbus.mes.missingParts.oView.getModel("i18nmissingPartsModel").getProperty(sIdText);
+    },
+    
+    splitName : function(sText) {
+    	
+    	if ( sText != undefined && !null ) {
+    		
+    		return sText.split("-").slice(-1)[0];
+    	}
+    	
+    	return;
     }
 };

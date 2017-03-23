@@ -41,7 +41,7 @@
 						<Column width="10rem">
 							<m:Label class="MPTLabel" text="{i18nmissingPartsModel>operation}" />
 							<template>
-								<m:Text text="{getMissingParts>operation}" />
+								<m:Text text="{path: 'getMissingParts>operation' , formatter: 'airbus.mes.missingParts.util.Formatter.splitName'}" />
 							</template>
 						</Column>
 						<Column width="10rem">

@@ -82,7 +82,7 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 		
 		if ( oModel.workOrder != undefined ) {
 			
-			airbus.mes.missingParts.util.ModelManager.operation = oModel.operation.split(",")[1];
+			airbus.mes.missingParts.util.ModelManager.operation = oModel.operation.split("-").slice(-1)[0];
 			airbus.mes.missingParts.util.ModelManager.workOrder = oModel.workOrder;
 			//Search the start date of missingPart operation clicked...
 			if ( aModelR != undefined ) {
@@ -95,7 +95,7 @@ sap.ui.controller("airbus.mes.missingParts.controller.missingParts", {
 			
 				if ( aModelGood.length > 0 ) {
 										
-					scheduler.updateView(aModelGood.START_TIME);
+					scheduler.updateView(aModelGood[0].START_TIME);
 					airbus.mes.stationtracker.util.ModelManager.selectMyShift();
 					
 				} else {
