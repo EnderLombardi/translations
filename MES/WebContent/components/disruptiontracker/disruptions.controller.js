@@ -354,9 +354,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		
 		// loop to extract each row
 		for (var i = 0; i < arrData.length; i++) {
-			var row = airbus.mes.disruptiontracker.Formatter.setOperationText(arrData[i].operation).toString() + ',' + arrData[i].workOrder + ',' + arrData[i].category
+			var row = arrData[i].workOrder + ',' + airbus.mes.disruptiontracker.Formatter.setOperationText(arrData[i].operation).toString() + ',' + arrData[i].category
 				+ ',' + arrData[i].reason + ','  + arrData[i].originatorName + ',' + arrData[i].openDateTime + ','
-				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].severity) + ',' + arrData[i].status + ','+ airbus.mes.disruptions.Formatter.formatComment(arrData[i].solution) + ',' + arrData[i].responsibleGroup + ','
+				+ airbus.mes.disruptiontracker.Formatter.setGravityText(arrData[i].severity) + ',' + arrData[i].status + ','+ airbus.mes.disruptions.Formatter.formatComment(arrData[i].solution) + ',' + arrData[i].responsibleGroupDesc + ','
 				+ arrData[i].resolverName + ',' + arrData[i].requiredFixBy + ','
 				+ this.getView().getModel("disruptiontrackerI18n").getProperty("level") + " " + arrData[i].escalationLevel + ',' + arrData[i].escalationDateTime + ',' + arrData[i].escalationGroup + ',' + airbus.mes.disruptiontracker.Formatter.timeMillisecondsToConfig(arrData[i].openDuration) + ',' 
 				+ airbus.mes.disruptiontracker.Formatter.timeMillisecondsToConfig(arrData[i].timeLost) + ',' + arrData[i].dateOfAnswer + ',' + arrData[i].originatorGroupDesc ;
