@@ -272,7 +272,7 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
 					// Insert the page in the splitter
 					airbus.mes.stationtracker.oView.byId("splitWorkTra").addContentArea(sap.ui.getCore().byId("missingPartsView--MPTable"));
 					airbus.mes.stationtracker.oView.byId("splitWorkTra").rerender();
-		            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+					airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 
 
 				}
@@ -1129,6 +1129,12 @@ sap.ui.controller("airbus.mes.stationtracker.controller.stationtracker", {
             airbus.mes.stationtracker.oView.byId("hideKPI").setText(airbus.mes.stationtracker.oView.getController().getI18nValue("HideKPIS"));
             $("#stationTrackerView--splitWorkTra").removeClass("withoutKPI");
 
+        }
+        
+        // Resize the second element of splitWorkTra when expand or collapse
+        if ( airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[1] != undefined ) {
+        	
+        	airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[1].getLayoutData().setSize("auto");        	
         }
 
         oPanel.setExpanded(!bIsExpanded);
