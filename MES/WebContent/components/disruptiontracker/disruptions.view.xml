@@ -8,7 +8,7 @@
 			selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: '.setSelectionMode'}"
 			selectionBehavior="Row" rows="{ path: 'disruptionsTrackerModel>/' }"  
 			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick"
-			visibleRowCountMode="Auto" enableBusyIndicator="true" rowHeight="60px">
+			visibleRowCountMode="Auto" enableBusyIndicator="true" rowHeight="85px" width="100%">
 
 			<ui:extension >
 				<OverflowToolbar class="pageHeader" id="disruptionTrackerToolbar">
@@ -100,69 +100,69 @@
 			</ui:extension>
 
 			<ui:columns>
-				<ui:Column id="workOrderCol" filterProperty="workOrder"
-					sortProperty="workOrder">
+				<ui:Column minScreenWidth="Desktop" id="workOrderCol" filterProperty="workOrder"
+					sortProperty="workOrder" autoResizable="true" flexible="false" width="7rem">
 					<Label text="{disruptiontrackerI18n>workOrder}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>workOrder}" />
 					</ui:template>
 				</ui:Column>
-				<ui:Column id="operationCol" filterProperty="operation"
-					sortProperty="operation">
+				<ui:Column minScreenWidth="Desktop" id="operationCol" filterProperty="operation"
+					sortProperty="operation" autoResizable="true" flexible="false" width="5rem">
 					<Label text="{disruptiontrackerI18n>operation}" />
 					<ui:template>
 						<Text text="{path: 'disruptionsTrackerModel>operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="categoryCol" 
-					sortProperty="category" >
+				<ui:Column minScreenWidth="Desktop" id="categoryCol" 
+					sortProperty="category" autoResizable="true" flexible="false" width="5rem">
 					<Label text="{disruptiontrackerI18n>object}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>category}" />						
 					</ui:template>
 				</ui:Column>
 			   
-			   <ui:Column id="categoryColfilter"  visible="false"
-				            filterProperty="category">
+			   <ui:Column minScreenWidth="Desktop" id="categoryColfilter"  visible="false"
+				     filterProperty="category" autoResizable="true" flexible="false" width="5rem">
 					<Label text="{disruptiontrackerI18n>object}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>category}" />						
 					</ui:template>
 				</ui:Column>
-				<ui:Column id="reasonCol"
-					sortProperty="reason" >
+				<ui:Column minScreenWidth="Desktop" id="reasonCol"
+					sortProperty="reason" autoResizable="true" flexible="false" width="5rem">
 					<Label text="{disruptiontrackerI18n>attribute}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>reason}" />
 					</ui:template>
 				</ui:Column>
-				<ui:Column id="reasonColfilter" visible="false"
-					filterProperty="reason">
+				<ui:Column minScreenWidth="Desktop" id="reasonColfilter" visible="false" 
+					filterProperty="reason" autoResizable="true" flexible="false" width="5rem">
 					<Label text="{disruptiontrackerI18n>attribute}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>reason}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="originator" filterProperty="originatorName"
-					sortProperty="originatorName">
+				<ui:Column minScreenWidth="Desktop" id="originator" filterProperty="originatorName"
+					sortProperty="originatorName" autoResizable="true" flexible="false" width="5rem">
 					<Label text="{disruptiontrackerI18n>originator}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>originatorName}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="openingTime" filterProperty="openDateTime"
-					sortProperty="openDateTime">
+				<ui:Column minScreenWidth="Desktop" id="openingTime" filterProperty="openDateTime"
+					sortProperty="openDateTime" autoResizable="true" flexible="false" width="7rem">
 					<Label text="{disruptiontrackerI18n>openingTime}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>openDateTime}" />
 					</ui:template>
 				</ui:Column>
 					
-				<ui:Column id="gravityCol"
-					sortProperty="severity">
+				<ui:Column minScreenWidth="Desktop" id="gravityCol"
+					sortProperty="severity" autoResizable="true" flexible="false" width="7rem">
 					<Label text="{disruptiontrackerI18n>severity}" />
 					<ui:template>
 						<HBox>
@@ -176,8 +176,8 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="gravityColfilter" visible="false"
-					sortProperty="severity" filterProperty="severity">
+				<ui:Column minScreenWidth="Desktop" id="gravityColfilter" visible="false"
+					sortProperty="severity" filterProperty="severity" autoResizable="true" width="5rem">
 					<Label text="{disruptiontrackerI18n>severity}" />
 					<ui:template>
 							<Text
@@ -185,8 +185,8 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="statusCol"
-					sortProperty="status">
+				<ui:Column minScreenWidth="Desktop" id="statusCol"
+					sortProperty="status" autoResizable="true" flexible="false" width="5rem">
 					<Label text="{disruptiontrackerI18n>status}" />
 					<ui:template>
 						<Text
@@ -194,8 +194,8 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="statusColfilter" visible="false"
-					sortProperty="status" filterProperty="status">
+				<ui:Column minScreenWidth="Desktop" id="statusColfilter" visible="false"
+					sortProperty="status" filterProperty="status" autoResizable="true" width="5rem">
 					<Label text="{disruptiontrackerI18n>status}" />
 					<ui:template>
 						<Text
@@ -203,87 +203,88 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="solutionCol" filterProperty="solution"
-					sortProperty="solution">
+				<ui:Column minScreenWidth="Desktop" id="solutionCol" filterProperty="solution"
+					sortProperty="solution" autoResizable="true" flexible="false" width="5rem">
 					<Label text="{disruptiontrackerI18n>solution}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>solution}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="resolutionGroupCol"
-					sortProperty="responsibleGroupDesc">
+				<ui:Column minScreenWidth="Desktop" id="resolutionGroupCol"
+					sortProperty="responsibleGroupDesc" autoResizable="true" flexible="false" width="9rem">
 					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>responsibleGroupDesc}" />
 					</ui:template>
 				</ui:Column>
 
-				<ui:Column id="resolutionGroupColfilter" visible="false"
-					filterProperty="responsibleGroup">
+				<ui:Column minScreenWidth="Desktop" id="resolutionGroupColfilter" visible="false"
+					filterProperty="responsibleGroup" autoResizable="true" width="9rem">
 					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>responsibleGroup}" />
 					</ui:template>
 				</ui:Column>
 								
-				<ui:Column id="resolver" filterProperty="resolverName"
-					sortProperty="resolverName">
+				<ui:Column minScreenWidth="Desktop" id="resolver" filterProperty="resolverName"
+					sortProperty="resolverName" autoResizable="true" flexible="false" width="5rem">
 					<Label text="{disruptiontrackerI18n>resolver}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>resolverName}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="fixByTimeCol" filterProperty="requiredFixBy"
-					sortProperty="requiredFixBy">
+				<ui:Column minScreenWidth="Desktop" id="fixByTimeCol" filterProperty="requiredFixBy"
+					sortProperty="requiredFixBy" autoResizable="true" flexible="false" width="12rem">
 					<Label text="{disruptiontrackerI18n>fixByTime}" />
 					<ui:template>
 						<Text text="{path :'disruptionsTrackerModel>requiredFixBy'}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="escalationCol"
-					sortProperty="escalationLevel">
+				<ui:Column minScreenWidth="Desktop" id="escalationCol"
+					sortProperty="escalationLevel" autoResizable="true" flexible="false" width="8rem">
 					<Label text="{disruptiontrackerI18n>escalation}" />
 					<ui:template>
 						<Text text="{disruptiontrackerI18n>level} {disruptionsTrackerModel>escalationLevel}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="escalationColfilter" visible="false"
-					 filterProperty="escalationLevel">
+				<ui:Column minScreenWidth="Desktop" id="escalationColfilter" visible="false"
+					 filterProperty="escalationLevel" autoResizable="true" width="8rem">
 					<Label text="{disruptiontrackerI18n>escalation}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>escalationLevel}" />
 					</ui:template>
 				</ui:Column>
 								
-				<ui:Column id="escalationDate" filterProperty="escalationDateTime"
-					sortProperty="escalationDateTime">
+				<ui:Column minScreenWidth="Desktop" id="escalationDate" filterProperty="escalationDateTime"
+					sortProperty="escalationDateTime" autoResizable="true" flexible="false" width="10rem">
 					<Label text="{disruptiontrackerI18n>dateofescalation}" />
 					<ui:template>
 						<Text text="{path: 'disruptionsTrackerModel>escalationDateTime'}" />
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="escalationGroup" 
-					sortProperty="escalationGroup">
+				<ui:Column minScreenWidth="Desktop" id="escalationGroup" 
+					sortProperty="escalationGroup" autoResizable="true" flexible="false" width="11rem">
 					<Label text="{disruptiontrackerI18n>escalationGroup}" />
 					<ui:template>
 						<Text text="{path: 'disruptionsTrackerModel>escalationGroup'}" />
 					</ui:template>
 				</ui:Column>
 
-				<ui:Column id="timetoGetFix" filterProperty="openDuration"
-					sortProperty="openDuration">
+				<ui:Column minScreenWidth="Desktop" id="timetoGetFix" filterProperty="openDuration"
+					sortProperty="openDuration" autoResizable="true" flexible="false" width="10rem">
 					<Label text="{disruptiontrackerI18n>timeToGetFix}" />
 					<ui:template>
 						<Text text="{path: 'disruptionsTrackerModel>openDuration', formatter: 'airbus.mes.disruptiontracker.Formatter.timeMillisecondsToConfig'}" />
 					</ui:template>
 				</ui:Column>
 
-				<ui:Column id="timeLost">
+				<ui:Column minScreenWidth="Desktop" id="timeLost"
+					autoResizable="true" flexible="false" width="7rem">
 					<Label text="{disruptiontrackerI18n>timeLost}" />
 					<ui:template>
 						<Text text="{path: 'disruptionsTrackerModel>timeLost', formatter: 'airbus.mes.disruptiontracker.Formatter.timeMillisecondsToConfig'}" />
@@ -291,8 +292,8 @@
 				</ui:Column>
 				
 								
-				<ui:Column id="dateOfanswer" filterProperty="dateOfAnswer"
-					sortProperty="dateOfAnswer">
+				<ui:Column minScreenWidth="Desktop" id="dateOfanswer" filterProperty="dateOfAnswer"
+					sortProperty="dateOfAnswer" autoResizable="true" flexible="false" width="10rem">
 					<Label text="{disruptiontrackerI18n>dateofanswer}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>dateOfAnswer}" />
@@ -300,8 +301,8 @@
 				</ui:Column>
 				
 				
-				<ui:Column id="originatorGroupCol" filterProperty="originatorGroupDesc"
-					sortProperty="originatorGroupDesc">
+				<ui:Column minScreenWidth="Desktop" id="originatorGroupCol" filterProperty="originatorGroupDesc"
+					sortProperty="originatorGroupDesc" autoResizable="true" flexible="false" width="8rem">
 					<Label text="{disruptiontrackerI18n>originatorGroup}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>originatorGroupDesc}" />

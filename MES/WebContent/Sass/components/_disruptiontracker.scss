@@ -240,3 +240,7 @@ DISRUPTIONTRACKER
         }
     }
 }
+/* Center column label */ 
+#disruptiontrackerView--disruptionsTable-sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableColCell  {
+    text-align: center !important;
+}
