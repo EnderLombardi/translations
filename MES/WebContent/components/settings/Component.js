@@ -66,18 +66,3 @@ airbus.mes.settings.Component.prototype.createContent = function() {
 	return this.oView;
 	
 };
-
-// override the setTextButtonTo function to return user interface
-airbus.mes.settings.Component.prototype.setTextButtonTo = function(sText) {
-	this.oView.byId("Back").setText(sText);
-	this.setProperty("textButtonTo", sText);
-	airbus.mes.settings.textButtonTo = sText;
-	return this;
-};
-
-// override the setButtonAction function to return user interface
-airbus.mes.settings.Component.prototype.setButtonAction = function(sText) {
-	this.setProperty("buttonAction", sText);
-	airbus.mes.settings.buttonAction = sText;
-	return this;
-};

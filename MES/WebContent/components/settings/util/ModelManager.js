@@ -14,7 +14,7 @@ airbus.mes.settings.util.ModelManager = {
 	taktEnd : undefined,
 	taktDuration : undefined,
 	plantModelSaved : undefined,
-	currentMsnSelected : false, //bBatch1 ? false : true
+//	currentMsnSelected : false, //bBatch1 ? false : true
 	currentMsnValue : "",
 	core : undefined,
 	urlModel : undefined,
@@ -200,21 +200,20 @@ airbus.mes.settings.util.ModelManager = {
 				urlSaveUserSetting, "$taktEnd",
 				airbus.mes.settings.util.ModelManager.taktEnd);
 
-		if (airbus.mes.settings.util.ModelManager.currentMsnSelected) {
+//		if (airbus.mes.settings.util.ModelManager.current_flag === "X") {
 
-			urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
-					urlSaveUserSetting, "$msn", "");
+//			urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
+//					urlSaveUserSetting, "$msn", "");
 
-		} else {
+//		} else {
 
 			urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
 					urlSaveUserSetting, "$msn",
 					airbus.mes.settings.util.ModelManager.msn);
 
-		}
+//		}
 		urlSaveUserSetting = airbus.mes.settings.util.ModelManager.replaceURI(
-				urlSaveUserSetting, "$current_flag",
-				airbus.mes.settings.util.ModelManager.current_flag);
+				urlSaveUserSetting, "$current_flag", airbus.mes.settings.util.ModelManager.current_flag);
 
 		jQuery.ajax({
 			url : urlSaveUserSetting,

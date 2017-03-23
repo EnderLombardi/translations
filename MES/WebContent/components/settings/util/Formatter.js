@@ -31,6 +31,15 @@ airbus.mes.settings.util.Formatter = {
 		} else {
 			return false;
 		}
+	},
+	
+	enabledCurrentMSN : function(sValue) {
+		if (sValue === "X") {
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 
 };
