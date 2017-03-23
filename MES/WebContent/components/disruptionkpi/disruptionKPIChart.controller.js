@@ -385,11 +385,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 	},
 	
 	onNavBack: function(oEvent){
-		if (nav.getPreviousPage() != undefined && nav.getPreviousPage().sId == "disruptiontrackerView") {
-			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.util.ModelManager.station;
-			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
-			airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
-		}
+//		if (nav.getPreviousPage() != undefined && nav.getPreviousPage().sId == "disruptiontrackerView") {
+//			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.util.ModelManager.station;
+//			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
+//			airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
+//		}
 		nav.back();
 	},
 	

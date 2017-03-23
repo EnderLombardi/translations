@@ -24,9 +24,9 @@ airbus.mes.disruptiontracker.ModelManager = {
 		var site = airbus.mes.settings.util.ModelManager.site;
 		var workCenterBO = "";
 		var msnNumber = "";
-		
+
 		if(oFilters.station != undefined && oFilters.station != ""){
-			workCenterBO = "WorkCenterBO:" + airbus.mes.settings.util.ModelManager.site + "," + oFilters.station;
+			workCenterBO = "WorkCenterBO:" + airbus.mes.settings.util.ModelManager.site + "," + airbus.mes.settings.util.ModelManager.station;
 		}
 		
 		if(oFilters.msn != undefined && oFilters.msn != ""){

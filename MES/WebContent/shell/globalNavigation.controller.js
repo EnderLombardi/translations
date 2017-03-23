@@ -303,7 +303,7 @@ sap.ui.controller(
                     break;
                 case "disruptiontrackerView":
                     //refresh
-
+                	this.renderDisruptionTracker();
                     airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
                     airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
@@ -1060,6 +1060,11 @@ sap.ui.controller(
         
         onPressCancel: function(){
         	this.logoutDialog.close();
+        },
+        renderDisruptionTracker :function(){
+        		airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.util.ModelManager.station;
+        		airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
+        		airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
         },
     
 
