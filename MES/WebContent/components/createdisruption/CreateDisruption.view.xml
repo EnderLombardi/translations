@@ -21,7 +21,7 @@
 						<Label required="true" text="{i18nModel>CategoryClass}" class="textAlignLeft"/>
 						<Select id="selectFivemCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}" forceSelection="false" change="onSelectionChange" selectedKey="{DisruptionDetailModel>/categoryClass}">
 							<items>
-								<core:Item text="{disruptionCategoryModel>CATEGORY_CLASS}" key="{disruptionCategoryModel>CATEGORY_CLASS}" />
+								<core:Item text="{disruptionCategoryModel>DESCRIPTION}" key="{disruptionCategoryModel>CATEGORY_CLASS}" />
 							</items>
 						</Select>
 						<Label required="true" text="{i18nModel>Category}" class="textAlignLeft"/>
