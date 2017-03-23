@@ -1,6 +1,6 @@
 {
   "name": "mes",
-  "version": "1.5.1-131",
+  "version": "1.5.1-132",
   "description": "MES - AOS",
   "main": "WebContent/shell/index.html",
   "scripts": {
