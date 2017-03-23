@@ -1014,9 +1014,14 @@ sap.ui.controller(
             
         	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout");
             sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
-        	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
-                
-        	location.href = sUrl; 
+            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+
+            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
+        	
+             
+//        	location.href = sUrl;
+        	
+        	this.openNewURLInTheSameWindow(sUrl);
 //          jQuery.ajax({
 ////              url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout") + "&target="+window.location.origin+"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled"),
 //        	  url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout")),
@@ -1034,10 +1039,13 @@ sap.ui.controller(
         
          	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled");
             sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
         	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
                 
-        	location.href = sUrl;
-//            jQuery.ajax({
+//        	location.href = sUrl;
+        	this.openNewURLInTheSameWindow(sUrl);
+        	
+        	//            jQuery.ajax({
 ////                url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout") + "&target="+window.location.origin+"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled"),
 //            	url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout")),
 //            	type: 'POST',
@@ -1052,6 +1060,27 @@ sap.ui.controller(
         
         onPressCancel: function(){
         	this.logoutDialog.close();
-        }
+        },
+    
+
+    // this function will setup a virtual anchor element
+    // and fire click handler to open new URL in the same room
+    // it works better than location.href=something or location.reload()
+    // this function can fire onclick handler for any DOM-Element
+
+        openNewURLInTheSameWindow:function (targetURL) {
+        var a = document.createElement('a');
+        a.href = targetURL;
+        var evt = new window.MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+        });
+
+        a.dispatchEvent(evt);
+
+    }
+    
+
     });
 
