@@ -359,8 +359,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.util.customProgressIndicat
 					default:		
 				}
 					
-				// Operation Completed
-				if (Status === "C") {
+				// Operation Completed and its display if no disruption is raised
+				if ( Status === "C" && DisruptionStatus === "---" ) {
 					
 					r.addStyle('background-color','#0085ad');
 					PercValue = 0;
