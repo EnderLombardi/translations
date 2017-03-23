@@ -176,7 +176,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					// loanedTo 	
 					} else {
 						
-						var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoadedTo");
+						var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoanedTo");
 			
 					}
 				}
@@ -224,7 +224,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					"key": airbus.mes.calendar.util.Formatter.idName(line)
 				};
 				
-				if ( group != airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoadedTo") ) {
+				if ( group != airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoanedTo") ) {
 					
 					fTotalUser++;
 				}
