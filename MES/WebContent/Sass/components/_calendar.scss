@@ -403,15 +403,20 @@ STATION TRACKER TOOLBAR
         }
     }
     .initialFont{
-        font-style: initial;       
+        font-style: initial;
+        padding-bottom: 2px;      
     }
     .sapMBtnIconLeft,
     .sapMBtnContent{
         color: #0D5D76;
     }
-    #calendar--calendarAbsence{
+    #calendar--calendarValidatedAbsence{
         margin-left: 15px;
         color:$cool-grey-hover;        
+    }
+    #calendar--calendarPendingAbsence{
+        margin-left: 15px;
+        color:$cool-grey-active;        
     }
     /* Defect #897 - FIT 1.5 - Planned Absences - HMI screen
     #calendar--calendarDiversion{
@@ -517,8 +522,3 @@ DATE PICKER
 #calendar--calendardateButton-content {
     color: $white-two !important;
 }
-
-
-
-
-

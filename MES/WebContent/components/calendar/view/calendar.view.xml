@@ -31,8 +31,11 @@
 					<Label text="{calendarI18n>teamavaibility}" class="sapUiSmallMarginBegin" />
 					-->
 					
-					<core:Icon id="calendarAbsence" src="sap-icon://color-fill" />
-					<Label id="calendarAbsenceLabel" text="{calendarI18n>calendarAbsence}" class="initialFont" />
+					<core:Icon id="calendarValidatedAbsence" src="sap-icon://color-fill" />
+					<Label id="calendarValidatedAbsenceLabel" text="{calendarI18n>calendarValidatedAbsence}" class="initialFont" />
+
+					<core:Icon id="calendarPendingAbsence" src="sap-icon://color-fill" />
+					<Label id="calendarPendingAbsenceLabel" text="{calendarI18n>calendarPendingAbsence}" class="initialFont" />
 
 					<!-- Defect #897 - FIT 1.5 - Planned Absences - HMI screen 
 					<core:Icon id="calendarDiversion" src="sap-icon://color-fill"/>
