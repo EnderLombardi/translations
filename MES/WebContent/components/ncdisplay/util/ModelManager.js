@@ -80,7 +80,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
 
 					console.log("NO NC Display data load");
 				}
-
+   
 			},
 
 			error: function (error, jQXHR) {

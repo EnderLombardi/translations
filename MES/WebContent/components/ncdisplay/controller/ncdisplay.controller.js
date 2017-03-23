@@ -22,7 +22,7 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
                 this.sSet = sSet;
             }
 
-        }
+        }         
 
         switch (this.sSet) {
             case airbus.mes.ncdisplay.util.ModelManager.operation://operation
@@ -52,16 +52,18 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
         var sId = oEvent.mParameters.selectedIndex;
         var ncDisplayData = sap.ui.getCore().getModel("ncdisplaydata").oData;
         switch (sId) {
-            case 0://operation button
-                this.filterNcDisplay(airbus.mes.ncdisplay.util.ModelManager.operation);
-                ncDisplayData.count = airbus.mes.ncdisplay.util.ModelManager.getOperationCount(ncDisplayData.ncDetailList,
-                    airbus.mes.ncdisplay.oView.oController.getOwnerComponent().mProperties.operation
-                );
-                break;
-            case 1://work order button
-                this.filterNcDisplay(airbus.mes.ncdisplay.util.ModelManager.workOrder);
-                ncDisplayData.count = ncDisplayData.ncDetailList.length;
-                break;
+        case 0://operation button
+            this.filterNcDisplay(airbus.mes.ncdisplay.util.ModelManager.operation);
+            ncDisplayData.count = airbus.mes.ncdisplay.util.ModelManager.getOperationCount(ncDisplayData.ncDetailList,
+				airbus.mes.ncdisplay.oView.oController.getOwnerComponent().mProperties.operation
+			);
+            break;
+        case 1://work order button
+            this.filterNcDisplay(airbus.mes.ncdisplay.util.ModelManager.workOrder);
+            ncDisplayData.count = airbus.mes.ncdisplay.util.ModelManager.getOperationCount(ncDisplayData.ncDetailList,
+				"%"
+			);
+            break;
             default:
                 break;
         }
