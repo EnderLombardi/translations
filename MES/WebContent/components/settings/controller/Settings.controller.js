@@ -104,16 +104,14 @@ sap.ui.controller("airbus.mes.settings.controller.Settings",
                         if (sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row") != undefined) {
                             var oModel = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
                             // Find automatically the msn with the flag Current MSN different of "---"
-                            oModel = oModel.filter(function (el) {
-                                return el.program === airbus.mes.settings.util.ModelManager.program &&
-                                    el.line === airbus.mes.settings.oView.byId("selectLine").getSelectedKey() &&
-                                    el.station === airbus.mes.settings.oView.byId("selectStation").getSelectedKey() &&
-                                    el.Current_MSN === "X"
-                            });
-                            if (oModel.length > 0) {
+           				 var currentMSN = airbus.mes.settings.util.ModelManager.retrieveCurrentMSN(oModel,
+																		           					airbus.mes.settings.util.ModelManager.program,
+																		           					airbus.mes.settings.oView.byId("selectLine").getSelectedKey(),
+																		           					airbus.mes.settings.oView.byId("selectStation").getSelectedKey());
+                            if (currentMSN !== "") {
                                 // This is need to reset the previous current msn value when we reload the application
-                                airbus.mes.settings.util.ModelManager.currentMsnValue = oModel[0].msn;
-                                airbus.mes.settings.oView.byId("selectMSN").setSelectedKey(oModel[0].msn);
+                                airbus.mes.settings.util.ModelManager.currentMsnValue = currentMSN;
+                                airbus.mes.settings.oView.byId("selectMSN").setSelectedKey(currentMSN);
                             }
                         }
                     }

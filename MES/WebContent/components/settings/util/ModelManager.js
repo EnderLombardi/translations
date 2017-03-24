@@ -30,7 +30,7 @@ airbus.mes.settings.util.ModelManager = {
 		airbus.mes.shell.ModelManager.createJsonModel(core,["plantModel","siteModel","program","site"]);
 
 		core.getModel("userSettingModel").attachRequestCompleted(airbus.mes.settings.util.ModelManager.onUserSettingLoad);
-		core.getModel("plantModel").attachRequestCompleted(airbus.mes.settings.util.ModelManager.onPLantModelLoad);
+		core.getModel("plantModel").attachRequestCompleted(airbus.mes.settings.util.ModelManager.onPlantModelLoad);
 
 		// Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.settings.config.url_config");
@@ -338,7 +338,7 @@ airbus.mes.settings.util.ModelManager = {
 		
 	},
 	
-	onPLantModelLoad : function () {
+	onPlantModelLoad : function () {
 		
 		 var oModel = sap.ui.getCore().getModel("plantModel");
 		
@@ -350,15 +350,10 @@ airbus.mes.settings.util.ModelManager = {
 			 if(airbus.mes.settings.util.ModelManager.current_flag === "X") {
 				 
 //				if yes, change to MSN on settings to current MSN
-	            var aModel = airbus.mes.settings.util.ModelManager.plantModelSaved.filter(function (el) {
-	                return el.program === airbus.mes.settings.util.ModelManager.program &&
-	                    el.line === airbus.mes.settings.util.ModelManager.line &&
-	                    el.station === airbus.mes.settings.util.ModelManager.station &&
-	                    el.Current_MSN === "X";
-	            })[0];			
-	            
-	            airbus.mes.settings.util.ModelManager.msn = aModel.msn;
-	                
+				 airbus.mes.settings.util.ModelManager.msn = airbus.mes.settings.util.ModelManager.retrieveCurrentMSN(airbus.mes.settings.util.ModelManager.plantModelSaved,
+					 																 airbus.mes.settings.util.ModelManager.program,
+					 															 	 airbus.mes.settings.util.ModelManager.line,
+					 															 	airbus.mes.settings.util.ModelManager.station);
 			 }
 			 
         } else  {
@@ -366,6 +361,22 @@ airbus.mes.settings.util.ModelManager = {
 	        console.log("no plantModelLoad");
 	     }
 		
+	},
+	
+	retrieveCurrentMSN : function(aModel, sProgram, sLine, sStation) {
+        var currentMSN = aModel.filter(function (el) {
+            return el.program === sProgram &&
+                el.line === sLine &&
+                el.station === sStation &&
+                el.Current_MSN === "X";
+        })[0];	
+        if(currentMSN) {
+//        	If a current MSN is defined
+        	return currentMSN.msn;
+        } else {
+//			If no current MSN, we return an empty MSN
+        	return ""; 
+        }
 	}
 	
 
