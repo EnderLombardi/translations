@@ -5,8 +5,10 @@
 		<content>	
 		<VBox>
 		<HBox>
-		<Button id="idLoginUser" text="{ShellI18n>LoginAsUser}" press="onPressLoginUser" class="sapUiLargeMarginBeginEnd"></Button>
-		<Button id="idAutoLogin" text="{ShellI18n>AutoLogin}" press="onPressAutoLogin"></Button>
+<!-- 		<Button id="idLoginUser" text="{ShellI18n>LoginAsUser}" press="onPressLoginUser" class="sapUiLargeMarginBeginEnd"></Button> -->
+		<Link id="idLoginUser" text="{ShellI18n>LoginAsUser}" href="{path :'test1', formatter : 'airbus.mes.shell.util.Formatter.onLogout'}" class="sapUiLargeMarginBeginEnd"></Link>
+ 		<!-- <Button id="butidAutoLogin" text="{ShellI18n>AutoLogin}" press="onPressAutoLogin"></Button>  -->
+         <Link id="idAutoLogin" text="{ShellI18n>AutoLogin}" href="{path :'test2', formatter : 'airbus.mes.shell.util.Formatter.onPressAutoLogin'}" class="sapUiLargeMarginBeginEnd"></Link>
 		</HBox></VBox>
 		</content>
 		<endButton>

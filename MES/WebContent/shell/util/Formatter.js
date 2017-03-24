@@ -134,7 +134,7 @@ airbus.mes.shell.util.Formatter = {
 	 */
 	onCheckLogout: function () {
 		if(window.location.hostname === "localhost"){
-  		  return false;
+  		  return true;
   	  } else {
   		  return true;
   	  }
@@ -169,5 +169,26 @@ airbus.mes.shell.util.Formatter = {
 		return new Date(day.slice(0,4),day.slice(5,7)-1,day.slice(8,10),day.slice(11,13),day.slice(14,16),day.slice(17,19));
 		
 	},
+	
+	onLogout: function(obj){
+        
+     	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout");
+        sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+        sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+    	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
+
+    	return sUrl;
+    },
+    
+    onPressAutoLogin: function(){
+        
+     	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled");
+        sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+        sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+    	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
+            
+    	return sUrl;
+
+    },
 
 };

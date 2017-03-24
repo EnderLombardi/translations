@@ -1014,53 +1014,34 @@ sap.ui.controller(
             this.logoutDialog.open();
 
         },
-        onPressLoginUser: function(){
-            
-        	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout");
-            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
-            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+        
 
-            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
-        	
-             
-//        	location.href = sUrl;
-        	
-        	this.openNewURLInTheSameWindow(sUrl);
-//          jQuery.ajax({
-////              url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout") + "&target="+window.location.origin+"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled"),
-//        	  url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout")),
-//              type: 'POST',
-//              async: true,
-//              complete: function () {
-////                  location.href = window.location.origin + "/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled";
-//            	  location.href = window.location.origin + "/XMII/Illuminator?service=Logout&target=" + window.location.origin +"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=disabled";
-//              }
+//        onPressLoginUser: function(){
+//            
+//        	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout");
+//            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+//            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
 //
-//          })
-        },
-        
-        onPressAutoLogin: function(){
-        
-         	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled");
-            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
-            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
-        	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
-                
-//        	location.href = sUrl;
-        	this.openNewURLInTheSameWindow(sUrl);
-        	
-        	//            jQuery.ajax({
-////                url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout") + "&target="+window.location.origin+"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled"),
-//            	url: (airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout")),
-//            	type: 'POST',
-//                async: true,
-//                complete: function () {
-////                    location.href = window.location.origin + "/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled";
-//                	location.href = window.location.origin + "/XMII/Illuminator?service=Logout&target=" + window.location.origin +"/XMII/CM/XX_MOD1684_MES/ui/mes/index.html?saml2=enabled";
-//                }
+//            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
+//        	
+//             
+////        	location.href = sUrl;
+//        	
+//        	this.openNewURLInTheSameWindow(sUrl);
 //
-//            })	
-        },
+//        },
+        
+//        onPressAutoLogin: function(){
+//        
+//         	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled");
+//            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+//            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+//        	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
+//                
+////        	location.href = sUrl;
+//        	this.openNewURLInTheSameWindow(sUrl);
+//
+//        },
         
         onPressCancel: function(){
         	this.logoutDialog.close();
@@ -1077,18 +1058,18 @@ sap.ui.controller(
     // it works better than location.href=something or location.reload()
     // this function can fire onclick handler for any DOM-Element
 
-        openNewURLInTheSameWindow:function (targetURL) {
-        var a = document.createElement('a');
-        a.href = targetURL;
-        var evt = new window.MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true
-        });
-
-        a.dispatchEvent(evt);
-
-    }
+//        openNewURLInTheSameWindow:function (targetURL) {
+//        var a = document.createElement('a');
+//        a.href = targetURL;
+//        var evt = new window.MouseEvent('click', {
+//            view: window,
+//            bubbles: true,
+//            cancelable: true
+//        });
+//
+//        a.dispatchEvent(evt);
+//
+//    }
     
 
     });
