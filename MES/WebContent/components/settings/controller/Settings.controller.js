@@ -166,7 +166,7 @@ sap.ui.controller("airbus.mes.settings.controller.Settings",
                         break;
                     default:
                         //if nothing selected we select the first element of the items filtered
-                        if (!this.getView().byId(oElement.id).getSelectedKey()) {
+                        if (!this.getView().byId(oElement.id).getSelectedKey() && this.getView().byId(oElement.id).getItems()[0]) {
                             this.getView().byId(oElement.id).setSelectedKey(this.getView().byId(oElement.id).getItems()[0].getKey());
                         }
 
@@ -256,8 +256,16 @@ sap.ui.controller("airbus.mes.settings.controller.Settings",
             // Delete value of other Selects
             this.getView().byId("headTextProgram").getItems().forEach(function (el) {
                 el.getContent()[0].getItems()[0].setSelected(false);
-
             });
+
+            //we force the selection to false to be able to set at undefined the value
+            //in this way we can display nothing when we press the site
+            airbus.mes.settings.oView.byId("selectLine").setForceSelection(false);
+            airbus.mes.settings.oView.byId("selectLine").setSelectedKey(undefined);
+            airbus.mes.settings.oView.byId("selectStation").setForceSelection(false);
+            airbus.mes.settings.oView.byId("selectStation").setSelectedKey(undefined);
+            airbus.mes.settings.oView.byId("selectMSN").setForceSelection(false);
+            airbus.mes.settings.oView.byId("selectMSN").setSelectedKey(undefined);
 
             //disabled the Selects of Other Settings, refresh the model to keep Program selected in the view
             this.setEnabledSelect(true, false, false, false);
