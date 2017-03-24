@@ -22,13 +22,16 @@
             <Toolbar class="resourcePoolSubheader">
                 <content>
                     <Button id="navBack" icon="sap-icon://arrow-left" press="onNavBack" type="Transparent"/>
+
                     <SegmentedButton id="IconTabsPages">
                         <items>
-                            <SegmentedButtonItem id="idUsers" icon="sap-icon://group"
-                                text="{i18nModel>Users}" key="users" press="openPage" width="" />
-                            <SegmentedButtonItem id="idWorkCenters" icon="sap-icon://factory"
-                                text="{i18nModel>WorkCenters}" key="workcenters"  press="openPage" />
-                            <SegmentedButtonItem id="idShifts" icon="sap-icon://future"
+                            <SegmentedButtonItem id="idUsers" icon="sap-icon://group" width="auto" 
+                                text="{i18nModel>Users}" key="users" press="openPage"/>
+
+                            <SegmentedButtonItem id="idWorkCenters" icon="sap-icon://factory" width="auto" 
+                                text="{i18nModel>WorkCenters}" key="workcenters" press="openPage" />
+
+                            <SegmentedButtonItem id="idShifts" icon="sap-icon://future" width="auto" 
                                 text="{i18nModel>Shifts}" key="shifts" press="openPage" />
                         </items>
                     </SegmentedButton>
