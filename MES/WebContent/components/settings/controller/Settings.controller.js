@@ -423,6 +423,18 @@ sap.ui.controller("airbus.mes.settings.controller.Settings",
          * Fire when the user press confirm it save data.
          */
         onConfirm: function (oEvent) {
+        	
+//        	Check if user has selected current MSN flag and current MSN is available
+        	if(airbus.mes.settings.util.ModelManager.current_flag === "X" && airbus.mes.settings.util.ModelManager.msn === "---") {
+//        		case of error
+                sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n")
+                    .getProperty("NoUnplanned selected "));        		
+        		
+        		
+        		return;
+        	}
+        	
+        	
             //Firstly, save the new user settings
             this.saveUserSettings();
             //load appconfiguration for that site
@@ -441,8 +453,6 @@ sap.ui.controller("airbus.mes.settings.controller.Settings",
             airbus.mes.homepage.oView.getController().enableDisableFactoryView();
 
             this.navigate(oEvent);
-
-
         },
 
         saveUserSettings: function () {

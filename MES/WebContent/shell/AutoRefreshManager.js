@@ -269,21 +269,21 @@ airbus.mes.shell.AutoRefreshManager =  {
              this.clearInterval();
        },
        
-//       resumeRefresh:function(){
-//             // global time - time before pause
-//             var remainingTime = this.refreshInterval - ( this.pauseTime - this.lastRefreshTime );
-//             // If the remaining time is very small
-//             remainingTime = remainingTime < 60000 ? 60000 : remainingTime;
-//             
-//              this.remainingTimeRefresher = setInterval(
-//                           function () {
-////                                  airbus.mes.shell.AutoRefreshManager.autoRefreshAPI();
-//                                  clearInterval(airbus.mes.shell.AutoRefreshManager.remainingTimeRefresher);
-//                                  airbus.mes.shell.AutoRefreshManager.setInterval(airbus.mes.shell.AutoRefreshManager.viewName);                    
-//                           },
-//                           remainingTime
-//             );
-//       },
+       resumeRefresh:function(){
+             // global time - time before pause
+             var remainingTime = this.refreshInterval - ( this.pauseTime - this.lastRefreshTime );
+             // If the remaining time is very small
+             remainingTime = remainingTime < 60000 ? 60000 : remainingTime;
+             
+              this.remainingTimeRefresher = setInterval(
+                           function () {
+//                                  airbus.mes.shell.AutoRefreshManager.autoRefreshAPI();
+                                  clearInterval(airbus.mes.shell.AutoRefreshManager.remainingTimeRefresher);
+                                  airbus.mes.shell.AutoRefreshManager.setInterval(airbus.mes.shell.AutoRefreshManager.viewName);                    
+                           },
+                           remainingTime
+             );
+       },
        
        autoRefreshFunc: function(){
              // Store last refresh time

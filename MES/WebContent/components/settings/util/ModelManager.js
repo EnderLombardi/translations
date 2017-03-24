@@ -374,8 +374,8 @@ airbus.mes.settings.util.ModelManager = {
 //        	If a current MSN is defined
         	return currentMSN.msn;
         } else {
-//			If no current MSN, we return an empty MSN
-        	return ""; 
+//			If no current MSN, we return an empty MSN ---
+        	return "---"; 
         }
 	}
 	
