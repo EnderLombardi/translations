@@ -517,8 +517,15 @@ airbus.mes.stationtracker.util.ModelManager = {
                 //if we are in station stacker mode we reset the user to --> ALL USERS in order to reload the complete station tracker list
                 airbus.mes.stationtracker.util.AssignmentManager.userSelected = '%';
                 if (sap.ui.getCore().getModel("Profile").getProperty("/identifiedUser/permissions/STATION_KPI_TAKT")) {
-                    airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(true);
-                    airbus.mes.stationtracker.oView.oController.showKPI();
+                    //Check if missing part is active or not
+                	if ( !airbus.mes.shell.util.navFunctions.splitMissingPart ) {
+                    	airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(true);
+                        airbus.mes.stationtracker.oView.oController.showKPI();                    	
+                    } else {
+                    	airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
+                        airbus.mes.stationtracker.oView.oController.hideKPI();                    	
+                    }
+         
                 }
                 sap.ui.getCore().byId("stationTrackerView--selectUser").setSelectedKey("ALL");
             }

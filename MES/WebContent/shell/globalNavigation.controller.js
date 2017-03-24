@@ -443,24 +443,7 @@ sap.ui.controller(
                 airbus.mes.stationtracker.util.ShiftManager.updateShift = false;
                 var oModule = airbus.mes.stationtracker.util.ModelManager;
                 airbus.mes.shell.oView.getController().setInformationVisibility(true);
-                	
-                //show split worktracker
-                var MyModele = airbus.mes.shell.util.navFunctions.splitMode;
-                if (MyModele == "WorkTracker") {
-                    airbus.mes.shell.oView.oController.renderWorkTracker();
-                } else if (MyModele == "StationTracker") {
-                    //if already exist remove content
-                    if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
-                       //Check if Missing Parts is open in case of yes we let it displayed and update it
-                    	if ( !airbus.mes.shell.util.navFunctions.splitMissingPart ) {
-                    		airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
-            airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                    		
-                       } else {
-                    	   airbus.mes.missingParts.util.ModelManager.loadMPDetail();              	   
-                       }
-                    }
-                 }
-
+             
                 // ** synchrone call **//
                 oModule.loadShifts();
                 oModule.loadAffectation();
@@ -470,6 +453,28 @@ sap.ui.controller(
                 // ** asynchrone call **//
                 airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
 
+                //show split worktracker
+                var MyModele = airbus.mes.shell.util.navFunctions.splitMode;
+                if (MyModele == "WorkTracker") {
+                    airbus.mes.shell.oView.oController.renderWorkTracker();
+                } else if (MyModele == "StationTracker") {
+                    //if already exist remove content
+                    if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
+                       //Check if Missing Parts is open in case of yes we let it displayed and update it
+                    	if ( !airbus.mes.shell.util.navFunctions.splitMissingPart ) {
+                    		
+                    		
+                    		airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+                    		airbus.mes.stationtracker.oView.byId("splitWorkTra").getAggregation("contentAreas")[0].getLayoutData().setSize("auto");                    		
+                       } else {
+                    	   airbus.mes.missingParts.util.ModelManager.loadMPDetail();    
+                    	 //Hide KPI
+                           airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
+                           airbus.mes.stationtracker.oView.getController().hideKPI();
+                       }
+                    }
+                 }
+                
             }
         },
 
