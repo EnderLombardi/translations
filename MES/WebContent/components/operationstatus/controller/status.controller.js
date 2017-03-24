@@ -303,8 +303,8 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
      *
      */
     onPressGotoDisruptios : function() {
-        this.nav = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer")
-        airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav, sap.ui.getCore().byId(
+    	this.nav = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer")
+        airbus.mes.shell.util.navFunctions.viewDisruptionsList(this.nav, sap.ui.getCore().byId(
                 "operationDetailPopup--reportDisruption"), // Report
         // Disruption
         // Button
@@ -312,10 +312,10 @@ sap.ui.controller("airbus.mes.operationstatus.controller.status", {
         sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update
         sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption") // Cancel
         );
-        this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
+        this.nav.to(airbus.mes.disruptionslist.oView.getId());
 
-        sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(
-                sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getButtons()[2].sId);
+        sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedItem(sap.ui.getCore().byId("operationDetailsView--idDisruption"));
+
 
     },
 
