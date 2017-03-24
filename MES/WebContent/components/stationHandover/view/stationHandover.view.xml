@@ -35,29 +35,30 @@
 						<m:SearchField width="15%" id="searchHandover"
 							enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"
 							liveChange="filterWo" />
-						<m:Select id="groupHandover" change="sorterMode"
+						<m:Select id="groupHandover" change="sorterMode" class="stHandoverTlBarBtn"
 							enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"
 							items="{ path : 'groupModel>/' }">
 							<core:Item key="{groupModel>key}"
 								text="{path:'groupModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
 						</m:Select>
-						<m:Button id="typeHandOver" press="openFilterType"
+						<m:Button id="typeHandOver" press="openFilterType" class="stHandoverTlBarBtn"
 							text="{stationHandoverI18n>typeOfWo}" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"></m:Button>
-						<m:Button id="originHandOver" press="openFilterStation"
+						<m:Button id="originHandOver" press="openFilterStation" class="stHandoverTlBarBtn"
 							text="{stationHandoverI18n>originStation}" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}"></m:Button>
+						
 						<m:ToolbarSpacer />
 
-						<m:CheckBox text="{stationHandoverI18n>ShowOpwithNoTime}"
-							selected="false" select="filterNoTime"
+						<m:CheckBox id="ShowOpHandOver" text="{stationHandoverI18n>ShowOpwithNoTime}"
+							selected="false" select="filterNoTime" class="stHandoverTlBarBtn"
 							enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}" />
-						<m:CheckBox text="{stationHandoverI18n>ShowInsertedLines}"
-							selected="false" select="filterInsertedLines"
+						<m:CheckBox id="ShowInsertHandOver" text="{stationHandoverI18n>ShowInsertedLines}" 
+							selected="false" select="filterInsertedLines" class="stHandoverTlBarBtn"
 							enabled="{Profile>/identifiedUser/permissions/STATION_OSW_FILTER}" />
 
 						<m:ToolbarSpacer />
 
 						<m:Button icon="sap-icon://add-activity" id="insertHandOver"
-							text="{stationHandoverI18n>Insert}" press="onPressInsert"
+							text="{stationHandoverI18n>Insert}" press="onPressInsert" class="stHandoverTlBarBtn"
 							visible="{Profile>/identifiedUser/permissions/STATION_OSW_SELECT}" />
 
 					</m:OverflowToolbar>

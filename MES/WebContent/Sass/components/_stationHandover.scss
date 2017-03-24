@@ -150,6 +150,21 @@
     }
 }
 
+.stHandoverTlBarBtn {
+    margin: 0;
+    >div {
+        >span {
+            color: #0D5D76;
+        }
+    }
+    &:hover {
+        background-color: $petrol-20;
+        >div {
+            background-color: transparent;
+        }
+    }
+}
+
 #stationHandoverView--headerstationhandover {
     label {
         background-color: transparent;
@@ -157,7 +172,7 @@
         height: 3rem;
         line-height: 3rem;
         border-right: 1px solid #8db9ca;
-        padding-right: 5px;
+        
     }
     .sapMSltArrow {
         background-color: transparent;
@@ -181,14 +196,42 @@
         border: none;
         color: #0D5D76;
     }
+    #stationHandoverView--groupHandover {
+        margin-right: 0;
+    }
     #stationHandoverView--typeHandOver {
+        margin-right: 0;
+        margin-left: 0;
         border-right: 1px solid #8db9ca;
     }
     #stationHandoverView--originHandOver {
+        margin-right: 0;
+        margin-left: 0;
         border-right: 1px solid #8db9ca;
     }
-    #stationHandoverView--insertHandOver {
+    #stationHandoverView--ShowOpHandOver {
+        label {
+            padding-right: 5px;
+            border-right: 0;
+        }
+        margin-right: 0;
+        margin-left: 0;
         border-left: 1px solid #8db9ca;
-        background-color: $duck-egg-blue !important;
     }
+    #stationHandoverView--ShowInsertHandOver {
+        margin-right: 0;
+        margin-left: 0;
+        border-left: 1px solid #8db9ca;
+        //background-color: $duck-egg-blue !important;
+    }
+    #stationHandoverView--ShowOpHandOver-label,
+    #stationHandoverView--ShowInsertHandOver-label {
+        margin-right: 10px;
+    }
+    #stationHandoverView--insertHandOver {
+        margin-right: 0;
+        margin-left: 0;
+        border-left: 1px solid #8db9ca;
+    }
+
 }
