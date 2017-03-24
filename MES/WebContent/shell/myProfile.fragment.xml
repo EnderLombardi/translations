@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
 	xmlns:l="sap.ui.layout">
-	<Dialog title="{ShellI18n>myProfileTitle}" contentHeight="auto" contentWidth="30%"	id="badgeMngMyProfile">
+	<Dialog title="{ShellI18n>myProfileTitle}" contentHeight="auto" contentWidth="30%"	id="badgeMngMyProfile" afterClose="onCancelMyProfile">
 		<Toolbar class="toolBarBottom">
 			<Button id="scanButtonMyProfile" icon="sap-icon://business-card" text="{ShellI18n>scan}" type="Emphasized" press="onScanMyProfile" visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayBadge'}"/>
 			<ToolbarSpacer/>

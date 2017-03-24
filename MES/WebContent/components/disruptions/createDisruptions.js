@@ -433,7 +433,7 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 					"value" : sJigtools
 				}, {
 					"attribute" : "ISSUER", // V1.5
-					"value" : airbus.mes.disruptions.ModelManager.getIssuer()
+					"value" : airbus.mes.disruptions.ModelManager.issuer
 				}, {
 					"attribute" : "FIVEM_CATEGORY", // V1.5
 					"value" : oView.byId("selectFivemCategory").getSelectedKey()

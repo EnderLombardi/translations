@@ -1152,6 +1152,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         // Check if generic User
         var sUser = sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
         if (sUser == undefined) {
+        	//this is wrong. it is not going to return anything. :( although normally this condition will never occur but it is still wrong. -
             sUser = airbus.mes.shell.oView.getController().goToMyProfile();
         } else {
             return sUser;

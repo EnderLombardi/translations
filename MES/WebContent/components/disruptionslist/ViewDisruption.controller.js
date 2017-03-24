@@ -659,24 +659,27 @@ sap.ui.controller("airbus.mes.disruptionslist.ViewDisruption", {
 	 * Call Report Disruption Screen
 	 */
 	onReportDisruption: function (oEvent) {
-
-		airbus.mes.shell.util.navFunctions.createDisruptionScreen(
-			sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer"),
-			{ mode: "Create", oData: {} },
-			sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
-			sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-			sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption"),  // Cancel Button
-			sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption")   //create and close button
-		);
-
-		// Destroying Material List dialog which might have already loaded and will show inconsistent data otherwise
-		if (sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog) {
-			sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog.destroy(false);
-			sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog = undefined;
-		}
-		if (sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog) {
-			sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog.destroy(false);
-			sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog = undefined;
+		
+		airbus.mes.disruptions.ModelManager.setIssuer();
+		if(airbus.mes.disruptions.ModelManager.issuer){
+			airbus.mes.shell.util.navFunctions.createDisruptionScreen(
+				sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer"),
+				{ mode: "Create", oData: {} },
+				sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
+				sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
+				sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption"),  // Cancel Button
+				sap.ui.getCore().byId("operationDetailPopup--reportandCloseDisruption")   //create and close button
+			);
+	
+			// Destroying Material List dialog which might have already loaded and will show inconsistent data otherwise
+			if (sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog) {
+				sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog.destroy(false);
+				sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog = undefined;
+			}
+			if (sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog) {
+				sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog.destroy(false);
+				sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog = undefined;
+			}
 		}
 	},
 

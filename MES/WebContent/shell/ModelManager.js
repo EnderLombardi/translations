@@ -221,25 +221,6 @@ airbus.mes.shell.ModelManager = {
 		  return myProfileUrl;		  
 	  },
 	  
-	  /* **************************** *
-	   * Get URL for Login popup      *
-	   * **************************** */
-	  getuserLoginUrl: function(bID,user,pass,pinCode,uID) {
-		  var userLoginUrl = this.urlModel.getProperty("userLoginUrl");
-		  
-		  var erpSystem = airbus.mes.operationstatus.oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system;
-		  
-		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
-			  userLoginUrl, "$bid", bID);
-		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
-			  userLoginUrl, "$userid", user);		  
-		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
-			  userLoginUrl, "$pin", pinCode);
-		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
-			  userLoginUrl, "$erpsystem", erpSystem);
-		  
-		  return userLoginUrl;		  
-	  },
 	  
 		/* *********************** *
 		 *  BadeReader functions   *

@@ -602,7 +602,7 @@ sap.ui.controller(
         /***********************************************************
          * User login Popup
          */
-        userLogin: function () {
+      /*  userLogin: function () {
         	if (!this.userLoginDailog) {
                 this.userLoginDailog = sap.ui.xmlfragment("airbus.mes.shell.userLogin", this);
                 this.getView().addDependent(this._userLoginDailog);
@@ -615,9 +615,9 @@ sap.ui.controller(
             sap.ui.getCore().byId("userNameMyProfile").setValue("");
             sap.ui.getCore().byId("passwordMyProfile").setValue("");
             sap.ui.getCore().byId("pinCodeMyProfile").setValue("");
-        },
+        },*/
         
-        onCanceluserLoginDailog: function () {
+        /*onCanceluserLoginDailog: function () {
             sap.ui.getCore().getElementById("userNameMyProfile").setValueState(sap.ui.core.ValueState.None);
             sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);
 
@@ -629,9 +629,9 @@ sap.ui.controller(
 
 
             this.userLoginDailog.close();
-        },
+        },*/
         
-        onLogin: function (oEvent) {
+        /*onLogin: function (oEvent) {
             sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
             var badgeID = sap.ui.getCore().getElementById("badgeIdMyProfile").getValue();
             var uID = sap.ui.getCore().getElementById("uIdMyProfile").getValue();
@@ -715,13 +715,18 @@ sap.ui.controller(
                 });
             }
 
-        },
+        },*/
         
 
         /***********************************************************
          * My Profile PopUp
          */
-        goToMyProfile: function () {
+        goToMyProfile: function (bDisruption) {
+        	/*flag for generic user login popup in disruptions*/
+        	/*checked for true as bDisruption can even be an event and can have any value not just boolean*/
+        	if(bDisruption == true)
+        		this.bDisruption = bDisruption;
+        	
             if (!this.myProfileDailog) {
                 this.myProfileDailog = sap.ui.xmlfragment("airbus.mes.shell.myProfile", this);
                 this.getView().addDependent(this._myProfileDialog);
@@ -740,13 +745,18 @@ sap.ui.controller(
             sap.ui.getCore().getElementById("userNameMyProfile").setValueState(sap.ui.core.ValueState.None);
             sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);
 
-
+            
             // Reset Fields Edit Mode
             sap.ui.getCore().byId("uIdMyProfile").setEnabled(false);
             sap.ui.getCore().byId("badgeIdMyProfile").setEnabled(false);
             sap.ui.getCore().byId("editMyProfile").setVisible(true);
-
-
+            
+            /*for generic user login popup in disruptions*/
+            if(this.bDisruption){
+            	airbus.mes.disruptions.ModelManager.issuer=undefined;
+            	this.bDisruption = false;
+            }
+            
             this.myProfileDailog.close();
         },
 
@@ -917,9 +927,17 @@ sap.ui.controller(
                 sap.ui.getCore().byId("badgeMngMyProfile").setBusyIndicatorDelay(0);
                 sap.ui.getCore().byId("badgeMngMyProfile").setBusy(true);
 
+                var url ;
+                var that = this;
+                /*for generic user login popup in disruptions*/
+                if(that.bDisruption){
+                	url = airbus.mes.disruptions.ModelManager.getIssuerLoginUrl(badgeID, user, pass, pinCode, uID);
+                }
+                else{
+                	url = airbus.mes.shell.ModelManager.getMyProfileUrl(badgeID, user, pass, pinCode, uID);
+                }
                 jQuery.ajax({
-                    url: airbus.mes.shell.ModelManager
-                        .getMyProfileUrl(badgeID, user, pass, pinCode, uID),
+                    url:url,
                     async: true,
                     error: function (xhr, status, error) {
 
@@ -946,6 +964,11 @@ sap.ui.controller(
                             var sMessageSuccess = sap.ui.getCore().getModel("ShellI18n").getProperty("successMsgwhileSavingProfile");
 
                             airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+                            /*for generic user login popup in disruptions*/
+                            if(that.bDisruption){
+                            	airbus.mes.disruptions.ModelManager.issuer = user;
+                            	that.bDisruption = false;
+                            }
                         }
 
 

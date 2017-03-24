@@ -3,7 +3,7 @@
 jQuery.sap.declare("airbus.mes.disruptions.ModelManager")
 
 airbus.mes.disruptions.ModelManager = {
-
+	issuer : undefined,
 	sCurrentViewId: undefined,
 	createEditFlag: false,
 	createViewMode: undefined,  // (Values: Create, Edit) To check if create disruption view is called in edit more or creation mode
@@ -838,21 +838,19 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	/**
-	 * Get the issuer of the disruption
+	 * Set the issuer of the disruption
 	 */
-	getIssuer: function () {
+	setIssuer: function () {
 		// Check if generic User, "Generic users are starting with SH*."
-		var sUser = (airbus.mes.settings.util.ModelManager.user.substring(0, 2) == "SH") ?
+		airbus.mes.disruptions.ModelManager.issuer = (airbus.mes.settings.util.ModelManager.user.substring(0, 2) == "SH") ?
 			// then send operator of operation as issuer
 			(sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1]) :
 			// else Current logged in user for a real user as Issuer
 			airbus.mes.settings.util.ModelManager.user;
 
 		// If generic user and no operator assigned, prompt for username
-		if (sUser == undefined) {
-			sUser = airbus.mes.shell.oView.getController().userLogin();
-		} else {
-			return sUser;
+		if (airbus.mes.disruptions.ModelManager.issuer == undefined || airbus.mes.disruptions.ModelManager.issuer == "") {
+			airbus.mes.shell.oView.getController().goToMyProfile(true);
 		}
 	},
 
@@ -1019,5 +1017,28 @@ airbus.mes.disruptions.ModelManager = {
 	getCurrentSiteTimeURL: function () {
 		return this.urlModel.getProperty("getCurrentSiteTime");
 	},
+	 /* ******************************** *
+	   * Get URL for Login for issuer *
+	   * ******************************** */
+	  getIssuerLoginUrl: function(bID,user,pass,pinCode,uID) {
+		  var userLoginUrl = airbus.mes.disruptions.ModelManager.urlModel.getProperty("urlissuerlogin");
+		  
+		  var erpSystem = airbus.mes.operationstatus.oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system;
+		  
+		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
+			  userLoginUrl, "$bid", bID);
+		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
+			  userLoginUrl, "$userid", user);		  
+		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
+			  userLoginUrl, "$password", pass);
+		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
+			  userLoginUrl, "$pin", pinCode);
+		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
+			  userLoginUrl, "$uid", uID);
+		  userLoginUrl = airbus.mes.shell.ModelManager.replaceURI(
+			  userLoginUrl, "$erpsystem", erpSystem);
+		  
+		  return userLoginUrl;		  
+	  },
 
 };
