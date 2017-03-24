@@ -75,8 +75,17 @@ sap.ui.core.mvc.Controller.extend("airbus.mes.disruptions.createDisruptions", {
 		case "selectAttribute":
 			var sPath = oEvt.getSource().getSelectedItem().getBindingContext("disruptionRsnRespGrp").getPath()+"/DEFAULT_RESOLVER_GROUP";
 			if(sap.ui.getCore().getModel("disruptionRsnRespGrp").getProperty(sPath)!='---' && sap.ui.getCore().getModel("disruptionRsnRespGrp").getProperty(sPath)!='NA'){
+				var flag = false;
+				var arr = sap.ui.getCore().byId("createDisruptionView--selectResponsibleGrp").getItems();
+				for(var i = 0; i< arr.length; i++){
+					if(arr[0].getKey() == sap.ui.getCore().getModel("disruptionRsnRespGrp").getProperty(sPath) ){
+						flag=true;
+					}
+				}
+				if(flag){
 				sap.ui.getCore().getModel("DisruptionDetailModel").setProperty("/responsibleGroup",sap.ui.getCore().getModel("disruptionRsnRespGrp").getProperty(sPath));
 				sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
+				}
 			} else{
 				sap.ui.getCore().getModel("DisruptionDetailModel").setProperty("/responsibleGroup","");
 			}
