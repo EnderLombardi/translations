@@ -1830,12 +1830,12 @@ airbus.mes.stationtracker.util.ModelManager = {
 			}),
 
 			success : function(data) {
-
-				
+		
 				try {
 									
 					console.log(data);
-										
+					oViewModel.setData(data);
+					
 				} catch (e) {
 					oViewModel.setData({});
 					console.log("NO osw load problem");

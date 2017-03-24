@@ -343,7 +343,7 @@
 		
 					<Button text="{StationTrackerI18n>disruptions/andon}" press="showDisruption"
 						type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd" visible="{Profile>/identifiedUser/permissions/STATION_DRILL_DISRUPTION}"></Button>
-					<custom:util.customButton id="oswButton" text1="{StationTrackerI18n>ButtonOutstandingWork}" text2="{oswQuantityModel>ordersNumber}"
+					<custom:util.customButton id="oswButton" text1="{StationTrackerI18n>ButtonOutstandingWork}" text2="{oswQuantityModel>/ordersNumber}"
 						type="Transparent" class="sapUiTinyMarginBeginEnd"
 						press="onOSWPress" visible="{Profile>/identifiedUser/permissions/STATION_DRILL_OSW}" enabled="{Profile>/identifiedUser/permissions/STATION_OSW_OPEN}" ></custom:util.customButton>
 					<Button id="unplannedButton" text="{StationTrackerI18n>UnplannedActivities}" type="Transparent"
