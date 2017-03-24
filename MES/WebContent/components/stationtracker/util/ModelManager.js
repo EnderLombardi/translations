@@ -78,7 +78,7 @@ airbus.mes.stationtracker.util.ModelManager = {
         this.loadFilterUnplanned();
         
         this.toRescheduleAllCount = 0;
-        console.log("INIT toRescheduleAllCount");
+        //console.log("First INIT toRescheduleAllCount");
 
     },
 
@@ -1005,6 +1005,7 @@ airbus.mes.stationtracker.util.ModelManager = {
      * @PARAM {Boolean} Check if request is for reschedule all
 	----------------------------------------------------------------------------*/
     sendRescheduleLineRequest: function (lines) {
+        airbus.mes.stationtracker.oView.byId("splitWorkTra").setBusy(true);
         // Get Url of the service
         var urlReschedulingLineService = this.urlModel.getProperty("urlReschedulingLinesService");
 
@@ -1067,13 +1068,13 @@ airbus.mes.stationtracker.util.ModelManager = {
                 //console.log("data message : " + data.message)
                  
                 if (data.message.charAt(0) == "E") {
-                	console.log("Request reschedule Error");
+                	console.log("Reschedule request Error");
                 	sap.m.MessageToast.show("An error has occured: no operation was rescheduled");
                 } else if (data.message.charAt(0) == "W") {
-                	console.log("Request reschedule Warning");
+                	console.log("Reschedule request Warning");
                 	sap.m.MessageToast.show("An warning has occured");
                 } else if (data.message.charAt(0) == "S") {
-                	console.log("Request reschedule Success");
+                	console.log("Reschedule request Success");
                 	airbus.mes.shell.oView.getController().renderStationTracker();
                 }
                 //we reload the work tracker
@@ -1091,6 +1092,8 @@ airbus.mes.stationtracker.util.ModelManager = {
                 console.log("Request Debug => error : " + JSON.stringify(error) + ", " + jQXHR);
             }
         });
+
+        airbus.mes.stationtracker.oView.byId("splitWorkTra").setBusy(false);
     },
 
     /*----------------------------------------------------------------------------
@@ -1098,6 +1101,7 @@ airbus.mes.stationtracker.util.ModelManager = {
      * Used for refresh
     ----------------------------------------------------------------------------*/
     initToRescheduleAllCount: function () {
+        //console.log("===== ToRescheduleAllCount = 0");
     	this.toRescheduleAllCount = 0;
         // If reschedule all,reinit global count of late operation
         if(airbus.mes.stationtracker.util.ModelManager.toRescheduleAllCount === 0) {
