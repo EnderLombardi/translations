@@ -219,12 +219,19 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	     *
 	     ****************************************************************************/
 	    filterByRessourcePool : function(oEvt) {
-	    		    	
+	    	
+			//When filtering on ressourcePool reselect the shift corresponding of the date selected in the calendar.
+
+	    	airbus.mes.calendar.util.ShiftManager.bSelection = true;
+	    	
+	    	airbus.mes.calendar.util.ShiftManager.dShiftBeforeSelection = airbus.mes.calendar.util.ShiftManager.current_day;	    		
 	    	airbus.mes.calendar.util.ShiftManager.shiftIdSelected = oEvt.getSource().getSelectedKey();
 	    	airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
 	    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
 	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
 	    	
+	   		airbus.mes.calendar.util.ShiftManager.bSelection = false;	
+	   			    	
 	    }
 	
 });

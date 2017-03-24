@@ -368,14 +368,14 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		calendar.callEvent("onOptionsLoad", []);
 		var ShiftManager = airbus.mes.calendar.util.ShiftManager;
 		
-		// Use the previous start date and test if it is in shift hierearchy otherwise take last shift of the shift collection
-//		if  ( airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
-//			
-//			calendar.updateView();
-			
-	//	} else {
-			
-			if ( ShiftManager.shifts.length != 0 ) {
+		var ShiftManager = airbus.mes.calendar.util.ShiftManager;
+		var oShiftSelection = airbus.mes.calendar.util.ShiftManager.shifts.filter(function(el){return el.day === airbus.mes.calendar.util.ShiftManager.dShiftBeforeSelection});
+		//When filtering on ressourcePool reselect the shift corresponding of the date selected in the calendar.
+		if  ( airbus.mes.calendar.util.ShiftManager.bSelection && oShiftSelection.length > 0 ) {
+		
+			calendar.init( airbus.mes.calendar.oView.byId("calendar").getId() , oShiftSelection[0].StartDate, "timeline");
+		
+		} else if ( ShiftManager.shifts.length != 0 ) {
 				
 				if ( ShiftManager.current_Date != undefined) {
 				
@@ -405,7 +405,6 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 				aBox = [];
 				calendar.callEvent("onOptionsLoad", []);
 			}
-	//	} 
 		
 		calendar.clearAll();
 		calendar.deleteMarkedTimespan();
