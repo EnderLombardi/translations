@@ -410,13 +410,16 @@ STATION TRACKER TOOLBAR
     .sapMBtnContent{
         color: #0D5D76;
     }
-    #calendar--calendarValidatedAbsence{
+
+    #calendar--calendarValidatedAbsence.sapUiIcon {
         margin-left: 15px;
-        color:$cool-grey-hover;        
+        color:$cool-grey-hover;
+        //color: #767879;
     }
-    #calendar--calendarPendingAbsence{
+    #calendar--calendarPendingAbsence.sapUiIcon {
         margin-left: 15px;
-        color:$cool-grey-active;        
+        color:$cool-grey-active;
+        //color: #000000;
     }
     /* Defect #897 - FIT 1.5 - Planned Absences - HMI screen
     #calendar--calendarDiversion{
