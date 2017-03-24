@@ -296,6 +296,7 @@ sap.ui.controller(
 
                     //refresh
                     airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+//                    airbus.mes.shell.AutoRefreshManager.setIntervalCurrentMSN();
                     airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
                     airbus.mes.shell.oView.byId("homeButton").setVisible(true);

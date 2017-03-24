@@ -8,7 +8,7 @@ airbus.mes.shell.AutoRefreshManager =  {
        
        autoRefresh: undefined,
        
-       autoRefreshAPI: function(){},
+//       autoRefreshAPI: function(){},
 
        viewName: undefined,       
        pauseTime: undefined,
@@ -16,13 +16,81 @@ airbus.mes.shell.AutoRefreshManager =  {
        refreshInterval: undefined,
        lastRefreshTime: undefined,
        lastRefreshTime2: undefined,
-       pauseRefreshTime: undefined,
-       globalRefreshTime : undefined,
-       customRefreshTime : undefined,
-       initDate : undefined,
+//       pauseRefreshTime: undefined,
+//       globalRefreshTime : undefined,
+//       customRefreshTime : undefined,
+//       initDate : undefined,
        nowDate : undefined,
        addtime : 0,
        timer : 0,
+       
+//      refresh current MSN
+       autoRefreshCurrentMSN: undefined,
+       refreshIntervalCurrentMSN : undefined,
+       lastRefreshTimeCurrentMSN : undefined,
+       
+       
+       /**
+        *  Set Refresh Interval based on configuration for Current MSN
+        */       
+       setIntervalCurrentMSN: function(){
+
+           //shortcut
+           var config = airbus.mes.shell.AutoRefreshConfig;
+           var sVal = airbus.mes.shell.AutoRefreshManager;    	   
+    	   
+//    	   Check if current MSN is on user settings
+    	   if(airbus.mes.settings.util.ModelManager.current_flag !== "X") {
+    		   return;
+    	   }
+    	   
+    	   
+    	   this.refreshIntervalCurrentMSN = 1;
+           // init function
+           airbus.mes.shell.AutoRefreshManager.lastRefreshTimefct();
+           airbus.mes.shell.AutoRefreshManager.dateNow();
+
+           this.refreshIntervalcurrentMSN = 1;
+           
+           // Button refresh
+           this.autoRefreshCurrentMSN = window.setInterval(function refreshTime(){
+                  
+                  //Difference in second between the two dates
+                  sVal.timer=Math.floor((sVal.dateNow()-sVal.lastRefreshTime2)/1000);
+                  
+                  //console.log("timer :" + sVal.timer);
+
+                  // writte "s" or "min" in the button 
+//                  if(sVal.timer < 60 ){
+//                         airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh " + sVal.timer + "s");
+//                  } else {
+//                         airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh >" + Math.trunc(sVal.timer/60) + "min");
+//                  }
+                  
+                  //Add 60sec if time is <60sec
+                  if(sVal.addtime != 0){
+                         sVal.refreshIntervalcurrentMSN += sVal.addtime ;
+                         sVal.addtime = 0;
+                  }
+                  //console.log("refreshInterval :" + sVal.refreshInterval);
+                  
+                  //refresh when times are equal
+                  if(sVal.timer%sVal.refreshIntervalcurrentMSN == 0 && sVal.timer !=0) {
+                         //change last Refresh Time 
+                         sVal.lastRefreshTimefct();
+                                //refresh zone if exist
+                                if(config[sVal.viewName].area){
+                              	  	console.log("========== refresh current MSN ==========");
+                                      config[sVal.viewName].area();
+                                }
+                                sVal.refreshIntervalcurrentMSN = config[sVal.viewName].timer;
+                                sVal.addtime = 0 ;
+                 }
+                  sVal.timer++;
+         }, 1000);                  
+    	   
+       },
+//     refresh current MSN       
        
        /**
        *  Set Refresh Interval based on configuration
@@ -201,28 +269,28 @@ airbus.mes.shell.AutoRefreshManager =  {
              this.clearInterval();
        },
        
-       resumeRefresh:function(){
-             // global time - time before pause
-             var remainingTime = this.refreshInterval - ( this.pauseTime - this.lastRefreshTime );
-             // If the remaining time is very small
-             remainingTime = remainingTime < 60000 ? 60000 : remainingTime;
-             
-              this.remainingTimeRefresher = setInterval(
-                           function () {
-                                  airbus.mes.shell.AutoRefreshManager.autoRefreshAPI();
-                                  clearInterval(airbus.mes.shell.AutoRefreshManager.remainingTimeRefresher);
-                                  airbus.mes.shell.AutoRefreshManager.setInterval(airbus.mes.shell.AutoRefreshManager.viewName);                    
-                           },
-                           remainingTime
-             );
-       },
+//       resumeRefresh:function(){
+//             // global time - time before pause
+//             var remainingTime = this.refreshInterval - ( this.pauseTime - this.lastRefreshTime );
+//             // If the remaining time is very small
+//             remainingTime = remainingTime < 60000 ? 60000 : remainingTime;
+//             
+//              this.remainingTimeRefresher = setInterval(
+//                           function () {
+////                                  airbus.mes.shell.AutoRefreshManager.autoRefreshAPI();
+//                                  clearInterval(airbus.mes.shell.AutoRefreshManager.remainingTimeRefresher);
+//                                  airbus.mes.shell.AutoRefreshManager.setInterval(airbus.mes.shell.AutoRefreshManager.viewName);                    
+//                           },
+//                           remainingTime
+//             );
+//       },
        
        autoRefreshFunc: function(){
              // Store last refresh time
              var d = new Date();
              this.lastRefreshTime = d.getTime();
              // Call Auto Refresh API
-             airbus.mes.shell.AutoRefreshManager.autoRefreshAPI()
+//             airbus.mes.shell.AutoRefreshManager.autoRefreshAPI()
        }
 }
 

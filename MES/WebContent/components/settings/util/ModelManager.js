@@ -18,7 +18,7 @@ airbus.mes.settings.util.ModelManager = {
 	currentMsnValue : "",
 	core : undefined,
 	urlModel : undefined,
-	current_flag : "X",
+	current_flag : undefined,
 	//queryParams : jQuery.sap.getUriParameters(),
 
 	i18nModel : undefined,
@@ -345,8 +345,23 @@ airbus.mes.settings.util.ModelManager = {
 		 if (oModel.getProperty("/Rowsets/Rowset/0/Row")) {              
 				
 			 airbus.mes.settings.util.ModelManager.plantModelSaved = sap.ui.getCore().getModel("plantModel").oData.Rowsets.Rowset[0].Row;
-				
-	        } else  {
+			
+//			 Check if current MSN is flagged on user settings, if yes, change the MSN to current MSN
+			 if(airbus.mes.settings.util.ModelManager.current_flag === "X") {
+				 
+//				if yes, change to MSN on settings to current MSN
+	            var aModel = airbus.mes.settings.util.ModelManager.plantModelSaved.filter(function (el) {
+	                return el.program === airbus.mes.settings.util.ModelManager.program &&
+	                    el.line === airbus.mes.settings.util.ModelManager.line &&
+	                    el.station === airbus.mes.settings.util.ModelManager.station &&
+	                    el.Current_MSN === "X";
+	            })[0];			
+	            
+	            airbus.mes.settings.util.ModelManager.msn = aModel.msn;
+	                
+			 }
+			 
+        } else  {
 	        airbus.mes.settings.util.ModelManager.plantModelSaved = [];
 	        console.log("no plantModelLoad");
 	     }

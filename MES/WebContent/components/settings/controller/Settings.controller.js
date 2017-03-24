@@ -342,6 +342,7 @@ sap.ui.controller("airbus.mes.settings.controller.Settings",
             airbus.mes.settings.util.ModelManager.line = oModel.Rowsets.Rowset[0].Row[0].line;
             airbus.mes.settings.util.ModelManager.station = oModel.Rowsets.Rowset[0].Row[0].station;
             airbus.mes.settings.util.ModelManager.msn = oModel.Rowsets.Rowset[0].Row[0].msn;
+            airbus.mes.settings.util.ModelManager.current_flag = oModel.Rowsets.Rowset[0].Row[0].current_flag;
             // Maybe change regarding model get from mii
             airbus.mes.settings.util.ModelManager.taktStart = oModel.Rowsets.Rowset[0].Row[0].Takt_Start;
             airbus.mes.settings.util.ModelManager.taktEnd = oModel.Rowsets.Rowset[0].Row[0].Takt_End;
@@ -383,7 +384,7 @@ sap.ui.controller("airbus.mes.settings.controller.Settings",
 
                 if (airbus.mes.settings.util.ModelManager.msn != "---") {
 
-                    airbus.mes.settings.util.ModelManager.current_flag = "";
+//                    airbus.mes.settings.util.ModelManager.current_flag = "";
                     this.getView().getController().onSelectionChange("selectStation");
                     this.getView().byId("selectMSN").setSelectedKey(airbus.mes.settings.util.ModelManager.msn);
 
