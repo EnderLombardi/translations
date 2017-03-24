@@ -57,7 +57,7 @@
 						<m:ToolbarSpacer />
 
 						<m:Button icon="sap-icon://add-activity" id="insertHandOver"
-							text="{stationHandoverI18n>insert}" press="onPressInsert"
+							text="{stationHandoverI18n>Insert}" press="onPressInsert"
 							visible="{Profile>/identifiedUser/permissions/STATION_OSW_SELECT}" />
 
 					</m:OverflowToolbar>
