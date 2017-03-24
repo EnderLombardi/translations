@@ -45,11 +45,16 @@ airbus.mes.stationtracker.util.GraphManager = {
 		}
 
 		var chart = $("#stationTrackerView--chartId");
+
 		/*******************************************************************
 		 * Chart creation
 		 ******************************************************************/
 		var contHeight = 119;
-		var contWidth = chart.width();
+		
+		// Fix width of takt adherence chart when kpi Header is hide and reloaded 
+		// var contWidth = chart.width();
+		var contWidth = Math.floor($(document).width() / 100 * 32 / 2) - 5;
+
 		var margin = { top: 10, right: 5, bottom: 5, left: 20 },
 			width = contWidth - margin.left - margin.right,
 			height = contHeight - margin.top - margin.bottom;
@@ -161,7 +166,11 @@ airbus.mes.stationtracker.util.GraphManager = {
 
 		$(window).on("resize", function () {
 			chart = $("#stationTrackerView--chartId");
-			contWidth = chart.width();
+
+			// Fix width of takt adherence chart when kpi Header is hide and reloaded 
+			//contWidth = chart.width();
+			contWidth = Math.floor($(document).width() / 100 * 32 / 2) - 5;
+			
 			if (contWidth > 0) {
 				// var resize
 				width = contWidth - margin.left - margin.right;
