@@ -2239,10 +2239,7 @@ Physical Station Popover
 
 #lineDisruptionAndonTracker-inner { text-align: left !important; }
 
-/*!
-*  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
-*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-*/
+/*! Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) */
 @font-face { font-family: 'FontAwesome'; src: url("./fontawesome-webfont.eot.png?v=4.5.0"); src: url("./fontawesome-webfont.eot.png?#iefix&v=4.5.0") format("embedded-opentype"), url("./fontawesome-webfont.woff2.png?v=4.5.0") format("woff2"), url("./fontawesome-webfont.woff.png?v=4.5.0") format("woff"), url("./fontawesome-webfont.ttf.png?v=4.5.0") format("truetype"), url("./fontawesome-webfont.svg.png?v=4.5.0#fontawesomeregular") format("svg"); font-weight: normal; font-style: normal; }
 
 .fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -3690,11 +3687,13 @@ STATION TRACKER TOOLBAR
 
 #calendar--toolbarcalendar .comboBoxStyle.sapMSltPressed .sapMSltArrow { background-color: #74d2e7; }
 
-#calendar--toolbarcalendar .initialFont { font-style: initial; }
+#calendar--toolbarcalendar .initialFont { font-style: initial; padding-bottom: 2px; }
 
 #calendar--toolbarcalendar .sapMBtnIconLeft, #calendar--toolbarcalendar .sapMBtnContent { color: #0D5D76; }
 
-#calendar--toolbarcalendar #calendar--calendarAbsence { margin-left: 15px; color: #767879; }
+#calendar--toolbarcalendar #calendar--calendarValidatedAbsence.sapUiIcon { margin-left: 15px; color: #767879; }
+
+#calendar--toolbarcalendar #calendar--calendarPendingAbsence.sapUiIcon { margin-left: 15px; color: #171818; }
 
 #calendar--toolbarcalendar > label { color: #767879; text-shadow: none; font-style: italic; }
 
@@ -4088,6 +4087,9 @@ DISRUPTIONTRACKER
 #disruptiontrackerView--disruptionsTable .sapUiTableColHdrCnt { height: 40px !important; }
 
 #disruptiontrackerView--disruptionsTable #disruptiontrackerView--disruptionsTable-tblBody tr td { text-align: justify !important; }
+
+/* Center column label */
+#disruptiontrackerView--disruptionsTable-sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableColCell { text-align: center !important; }
 
 .disruptionKPI .chart { float: left; }
 
