@@ -10,7 +10,8 @@
 			<items>
 	
 				<StandardListItem class="stationFilter" key="{phStation>meOriginPhysicalStation}"
-					title="{phStation>meOriginPhysicalStation}  {phStation>taktStartDate} {phStation>taktEndDate}" iconDensityAware="false"
+					title="{phStation>meOriginPhysicalStation} : {path :'phStation>taktStartDate', formatter:'airbus.mes.stationHandover.util.Formatter.dateToStringFormat'}
+					 / {path :'phStation>taktEndDate', formatter:'airbus.mes.stationHandover.util.Formatter.dateToStringFormat'}" iconDensityAware="false"
 					iconInset="false" />
 	
 			</items>
