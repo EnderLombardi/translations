@@ -1038,35 +1038,6 @@ sap.ui.controller(
             this.logoutDialog.open();
 
         },
-        
-
-//        onPressLoginUser: function(){
-//            
-//        	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout");
-//            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
-//            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
-//
-//            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
-//        	
-//             
-////        	location.href = sUrl;
-//        	
-//        	this.openNewURLInTheSameWindow(sUrl);
-//
-//        },
-        
-//        onPressAutoLogin: function(){
-//        
-//         	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled");
-//            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
-//            sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
-//        	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
-//                
-////        	location.href = sUrl;
-//        	this.openNewURLInTheSameWindow(sUrl);
-//
-//        },
-        
         onPressCancel: function(){
         	this.logoutDialog.close();
         },
@@ -1075,26 +1046,6 @@ sap.ui.controller(
         		airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
         		airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
         },
-    
-
-    // this function will setup a virtual anchor element
-    // and fire click handler to open new URL in the same room
-    // it works better than location.href=something or location.reload()
-    // this function can fire onclick handler for any DOM-Element
-
-//        openNewURLInTheSameWindow:function (targetURL) {
-//        var a = document.createElement('a');
-//        a.href = targetURL;
-//        var evt = new window.MouseEvent('click', {
-//            view: window,
-//            bubbles: true,
-//            cancelable: true
-//        });
-//
-//        a.dispatchEvent(evt);
-//
-//    }
-    
 
     });
 

@@ -170,21 +170,31 @@ airbus.mes.shell.util.Formatter = {
 		
 	},
 	
-	onLogout: function(obj){
+	LogoutSSODisabled: function(msn){
         
      	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogout");
         sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+        sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Url",window.location.pathname);        
         sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
     	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
+    	
+    	var aSearch = window.location.search.split("&");
+    	if(aSearch.indexOf("?features=role") >= 0){
+    		sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Search",aSearch[aSearch.indexOf("?features=role")]);
+    	}else if(aSearch.indexOf("features=role") >= 0){
+    		sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Search","?" + aSearch[aSearch.indexOf("features=role")]);
+    	}else{ 
+    	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Search","");
+    	}
 
     	return sUrl;
     },
     
-    onPressAutoLogin: function(){
+    LogoutSSOEnabled: function(msn){
         
      	var sUrl = airbus.mes.shell.ModelManager.urlModel.getProperty("urllogoutssoEnabled");
         sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
-        sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Host", window.location.host);
+        sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Url", window.location.pathname);
     	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$TimeStamp", Date.now());
             
     	return sUrl;

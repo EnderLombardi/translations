@@ -6,9 +6,9 @@
 		<VBox>
 		<HBox>
 <!-- 		<Button id="idLoginUser" text="{ShellI18n>LoginAsUser}" press="onPressLoginUser" class="sapUiLargeMarginBeginEnd"></Button> -->
-		<Link id="idLoginUser" text="{ShellI18n>LoginAsUser}" href="{path :'test1', formatter : 'airbus.mes.shell.util.Formatter.onLogout'}" class="sapUiLargeMarginBeginEnd"></Link>
+		<Link id="idLoginUser" text="{ShellI18n>LoginAsUser}" href="{path :'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.shell.util.Formatter.LogoutSSODisabled'}" class="sapUiLargeMarginBeginEnd"></Link>
  		<!-- <Button id="butidAutoLogin" text="{ShellI18n>AutoLogin}" press="onPressAutoLogin"></Button>  -->
-         <Link id="idAutoLogin" text="{ShellI18n>AutoLogin}" href="{path :'test2', formatter : 'airbus.mes.shell.util.Formatter.onPressAutoLogin'}" class="sapUiLargeMarginBeginEnd"></Link>
+         <Link id="idAutoLogin" text="{ShellI18n>AutoLogin}" href="{path :'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.shell.util.Formatter.LogoutSSOEnabled'}" class="sapUiLargeMarginBeginEnd"></Link>
 		</HBox></VBox>
 		</content>
 		<endButton>
