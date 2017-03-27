@@ -134,7 +134,7 @@ airbus.mes.shell.util.Formatter = {
 	 */
 	onCheckLogout: function () {
 		if(window.location.hostname === "localhost"){
-  		  return true;
+  		  return false;
   	  } else {
   		  return true;
   	  }
