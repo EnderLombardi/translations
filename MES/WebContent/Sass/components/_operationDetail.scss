@@ -522,7 +522,7 @@
 			    position: relative;
 			    top : 0;
 			    background: transparent;	
-				content: " ⇧HO  ";
+				content: " \21e7HO ";  // code hex fleche ⇧
 				color : $kelly-green;
 				font-size : 80%;
 				font-weight : bold;
@@ -541,7 +541,7 @@
 			    position: relative;
 			    top : 0;
 			    background: transparent;	
-				content: " ⇧HO  ";
+				content: " \21e7HO ";  // code hex fleche ⇧
 				color : $kelly-green;
 				font-size : 80%;
 				font-weight : bold;
@@ -562,7 +562,7 @@
                 bottom:0;
                 left:0;
                 right:0;
-                background:$blood-orange;
+                background:$blood-orange ;
         }
     }
 }

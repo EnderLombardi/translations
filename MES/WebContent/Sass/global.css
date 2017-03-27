@@ -3174,7 +3174,7 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   position: relative;
   top: 0;
   background: transparent;
-  content: " ÔçºHO┬á ";
+  content: " \21e7HO ";
   color: #4CBB17;
   font-size: 80%;
   font-weight: bold;
@@ -3185,7 +3185,7 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   position: relative;
   top: 0;
   background: transparent;
-  content: " ÔçºHO┬á ";
+  content: " \21e7HO ";
   color: #4CBB17;
   font-size: 80%;
   font-weight: bold;
