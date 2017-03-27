@@ -184,7 +184,7 @@ airbus.mes.shell.util.Formatter = {
     	}else if(aSearch.indexOf("features=role") >= 0){
     		sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Search","?" + aSearch[aSearch.indexOf("features=role")]);
     	}else{ 
-    	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Search","");
+    	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Search","?");
     	}
 
     	return sUrl;
@@ -203,9 +203,9 @@ airbus.mes.shell.util.Formatter = {
     	}else if(aSearch.indexOf("features=role") >= 0){
     		sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Search","?" + aSearch[aSearch.indexOf("features=role")]);
     	}else{ 
-    	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Search","");
+    	sUrl = airbus.mes.shell.ModelManager.replaceURI(sUrl, "$Search","?");
     	}
-    	
+
     	return sUrl;
 
     },
