@@ -1002,7 +1002,7 @@ div#iconTabBar--header {
   display: block !important; }
 .dhx_cal_event_line:hover .tooltipTextTrackerBox1 {
   z-index: 99;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -130%);
   position: absolute;
